@@ -2,7 +2,7 @@
 title: Actions API revision
 title: 修正 Actions API
 description: Removes need for FocusNode in invocations, map Intent types to Actions.
-description: 调用它将不再需要 FocusNode，将 Intent 类型映射到 Actions。
+description: 呼叫它將不再需要 FocusNode，將 Intent 型別對映到 Actions。
 ---
 
 ## Summary

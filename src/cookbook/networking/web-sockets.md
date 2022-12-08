@@ -1,17 +1,17 @@
 ---
 title: Work with WebSockets
-title: 发起 WebSockets 请求
+title: 發起 WebSockets 請求
 description: How to connect to a web socket.
-description: 如何建立 web socket 连接。
-tags: cookbook, 实用教程, 网络请求
+description: 如何建立 web socket 連線。
+tags: cookbook, 實用課程, 網路請求
 keywords: WebSockets
 prev:
   title: Update data over the internet
-  title: 通过网络更新数据
+  title: 透過網路更新資料
   path: /docs/cookbook/networking/update-data
 next:
   title: Persist data with SQLite
-  title: 用 SQLite 做数据持久化
+  title: 用 SQLite 做資料持久化
   path: /docs/cookbook/persistence/sqlite
 ---
 
@@ -22,58 +22,58 @@ you can connect to servers using `WebSockets`.
 `WebSockets` allow for two-way communication with a server
 without polling.
 
-除了普通的 HTTP 请求，你还可以通过 `WebSockets` 来连接服务器，
-`WebSockets` 可以以非轮询的方式与服务器进行双向通信。
+除了普通的 HTTP 請求，你還可以透過 `WebSockets` 來連線伺服器，
+`WebSockets` 可以以非輪詢的方式與伺服器進行雙向通訊。
 
 In this example, connect to a
 [test WebSocket server sponsored by Lob.com][].
 The server sends back the same message you send to it.
 
-在这里，你可以连接一个 
-[由 Lob.com 赞助的测试服务器][test WebSocket server sponsored by Lob.com]。
-该服务器只会返回你发送的信息。
+在這裡，你可以連線一個 
+[由 Lob.com 贊助的測試伺服器][test WebSocket server sponsored by Lob.com]。
+該伺服器只會返回你傳送的資訊。
 
 This recipe uses the following steps:
 
-这个教程里包含以下步骤：
+這個課程裡包含以下步驟：
 
   1. Connect to a WebSocket server.
 
-     连接 WebSocket 服务器
+     連線 WebSocket 伺服器
 
   2. Listen for messages from the server.
 
-     监听来自服务器的消息
+     監聽來自伺服器的訊息
 
   3. Send data to the server.
 
-     向服务器发送数据
+     向伺服器傳送資料
   
   4. Close the WebSocket connection.
 
-     关闭 WebSocket 连接
+     關閉 WebSocket 連線
 
 ## 1. Connect to a WebSocket server
 
-## 1. 连接 WebSocket 服务器
+## 1. 連線 WebSocket 伺服器
 
 The [`web_socket_channel`][] package provides the
 tools you need to connect to a WebSocket server.
 
-[`web_socket_channel`][] 这个 package 提供了
-连接 WebSocket 服务器所需的一些工具。
+[`web_socket_channel`][] 這個 package 提供了
+連線 WebSocket 伺服器所需的一些工具。
 
 The package provides a `WebSocketChannel`
 that allows you to both listen for messages
 from the server and push messages to the server.
 
-该包提供的 `WebSocketChannel` 不仅可以让你监听到来自服务器的消息
-还可以让你向服务器推送消息。
+該套件提供的 `WebSocketChannel` 不僅可以讓你監聽到來自伺服器的訊息
+還可以讓你向伺服器推送訊息。
 
 In Flutter, use the following line to
 create a `WebSocketChannel` that connects to a server:
 
-在 Flutter 中，只用一行代码就可以创建一个连接到服务器的 `WebSocketChannel`。
+在 Flutter 中，只用一行程式碼就可以建立一個連線到伺服器的 `WebSocketChannel`。
 
 <?code-excerpt "lib/main.dart (connect)" replace="/_channel/channel/g"?>
 ```dart
@@ -84,24 +84,24 @@ final channel = WebSocketChannel.connect(
 
 ## 2. Listen for messages from the server
 
-## 2. 监听来自服务器的消息
+## 2. 監聽來自伺服器的訊息
 
 Now that you've established a connection,
 listen to messages from the server.
 
-建立了连接之后，你就可以监听来自服务器的消息了。
+建立了連線之後，你就可以監聽來自伺服器的訊息了。
 
 After sending a message to the test server,
 it sends the same message back.
 
-当你向测试服务器发送一条消息之后，它会将同样的消息发送回来。
+當你向測試伺服器傳送一條訊息之後，它會將同樣的訊息傳送回來。
 
 In this example, use a [`StreamBuilder`][]
 widget to listen for new messages, and a
 [`Text`][] widget to display them.
 
-在这个例子中，我们用 [`StreamBuilder`][] 组件来监听新消息，
-并使用 [`Text`][] 组件来展示它们。
+在這個例子中，我們用 [`StreamBuilder`][] 元件來監聽新訊息，
+並使用 [`Text`][] 元件來展示它們。
 
 <?code-excerpt "lib/main.dart (StreamBuilder)" replace="/_channel/channel/g"?>
 ```dart
@@ -115,41 +115,41 @@ StreamBuilder(
 
 ### How this works
 
-### 这样为什么可行？
+### 這樣為什麼可行？
 
 The `WebSocketChannel` provides a
 [`Stream`][] of messages from the server.
 
-`WebSocketChannel` 提供了一个来自服务器的 [`Stream`][] 类消息。
+`WebSocketChannel` 提供了一個來自伺服器的 [`Stream`][] 類訊息。
 
 The `Stream` class is a fundamental part of the `dart:async` package.
 It provides a way to listen to async events from a data source.
 Unlike `Future`, which returns a single async response,
 the `Stream` class can deliver many events over time.
 
-这个 `Stream` 类是 `dart:async` 包的基本组成部分，
-它提供了一个从数据源监听异步事件的方法。
-和 `Future` 不一样的是，`Future` 只能返回一个单独的异步响应，
-而 `Stream` 类可以随着时间的推移传递很多事件。
+這個 `Stream` 類是 `dart:async` 套件的基本組成部分，
+它提供了一個從資料源監聽非同步事件的方法。
+和 `Future` 不一樣的是，`Future` 只能返回一個單獨的非同步響應，
+而 `Stream` 類可以隨著時間的推移傳遞很多事件。
 
 The [`StreamBuilder`][] widget connects to a `Stream`
 and asks Flutter to rebuild every time it
 receives an event using the given `builder()` function.
 
-[`StreamBuilder`][] widget 会和 `Stream` 建立起连接，
-并且每当它接收到一个使用给定 `builder()` 函数的事件时，
-就会通知 Flutter 去 rebuild。
+[`StreamBuilder`][] widget 會和 `Stream` 建立起連線，
+並且每當它接收到一個使用給定 `builder()` 函式的事件時，
+就會通知 Flutter 去 rebuild。
 
 ## 3. Send data to the server
 
-## 3. 向服务器发送数据
+## 3. 向伺服器傳送資料
 
 To send data to the server,
 `add()` messages to the `sink` provided
 by the `WebSocketChannel`.
 
-要向服务器发送数据，
-可以使用 `WebSocketChannel` 提供的 `sink` 下的 `add()` 方法来发送信息。
+要向伺服器傳送資料，
+可以使用 `WebSocketChannel` 提供的 `sink` 下的 `add()` 方法來發送資訊。
 
 <?code-excerpt "lib/main.dart (add)" replace="/_channel/channel/g;/_controller.text/'Hello!'/g"?>
 ```dart
@@ -158,27 +158,27 @@ channel.sink.add('Hello!');
 
 ### How this works
 
-### 这又是如何工作的呢
+### 這又是如何工作的呢
 
 The `WebSocketChannel` provides a
 [`StreamSink`][] to push messages to the server.
 
-`WebSocketChannel` 提供了一个 [`StreamSink`][] 来向服务器推送消息。
+`WebSocketChannel` 提供了一個 [`StreamSink`][] 來向伺服器推送訊息。
 
 The `StreamSink` class provides a general way to add sync or async
 events to a data source.
 
-这个 `StreamSink` 类提供了一个可以向数据源添加同步或者异步事件的通用方法。
+這個 `StreamSink` 類提供了一個可以向資料源新增同步或者非同步事件的通用方法。
 
 ## 4. Close the WebSocket connection
 
-## 4. 关闭 WebSocket 连接
+## 4. 關閉 WebSocket 連線
 
 After you're done using the WebSocket, close the connection:
 To do so, close the `sink`.
 
-当你使用完 WebSocket 之后，记得关闭这个连接。
-要关闭这个 WebSocket 连接，只需要关闭 `sink`。
+當你使用完 WebSocket 之後，記得關閉這個連線。
+要關閉這個 WebSocket 連線，只需要關閉 `sink`。
 
 <?code-excerpt "lib/main.dart (close)" replace="/_channel/channel/g"?>
 ```dart
@@ -187,7 +187,7 @@ channel.sink.close();
 
 ## Complete example
 
-## 完整样例
+## 完整範例
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

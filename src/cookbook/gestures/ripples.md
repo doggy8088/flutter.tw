@@ -1,17 +1,17 @@
 ---
 title: Add Material touch ripples
-title: 添加点按涟漪效果 (Material Design)
+title: 新增點按漣漪效果 (Material Design)
 description: How to implement ripple animations.
-description: 如何实现涟漪动画。
-tags: cookbook, 实用教程, 手势操作
-keywords: 动画,涟漪效果
+description: 如何實現漣漪動畫。
+tags: cookbook, 實用課程, 手勢操作
+keywords: 動畫,漣漪效果
 prev:
   title: Retrieve the value of a text field
-  title: 获取文本框的输入值
+  title: 獲取文字框的輸入值
   path: /docs/cookbook/forms/retrieve-input
 next:
   title: Handle taps
-  title: 捕获和处理点击动作
+  title: 捕獲和處理點選動作
   path: /docs/cookbook/gestures/handling-taps
 js:
   - defer: true
@@ -29,25 +29,25 @@ prev:
 Widgets that follow the Material Design guidelines display
 a ripple animation when tapped.
 
-当我们在开发遵循 Material Design 规范应用的时候，
-我们可能会需要为某个 widgets 的点击加入涟漪效果。
+當我們在開發遵循 Material Design 規範應用的時候，
+我們可能會需要為某個 widgets 的點選加入漣漪效果。
 
 Flutter provides the [`InkWell`][]
 widget to perform this effect.
 Create a ripple effect using the following steps:
 
-Flutter 提供了 [`InkWell`][] widget 来实现这个功能。
-你可以通过以下步骤实现涟漪效果：
+Flutter 提供了 [`InkWell`][] widget 來實現這個功能。
+你可以透過以下步驟實現漣漪效果：
 
   1. Create a widget that supports tap.
 
-     创建一个想要点击的 widget；
+     建立一個想要點選的 widget；
 
   2. Wrap it in an `InkWell` widget to manage tap callbacks and
      ripple animations.
 
-     用 `InkWell` widget 包裹它，并设置回调函数，
-     就可以显示涟漪动画了。
+     用 `InkWell` widget 包裹它，並設定回呼(Callback)函式，
+     就可以顯示漣漪動畫了。
 
 <?code-excerpt "lib/main.dart (InkWell)" replace="/return //g;/;$//g"?>
 ```dart
@@ -68,7 +68,7 @@ InkWell(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

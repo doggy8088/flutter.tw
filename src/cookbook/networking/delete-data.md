@@ -1,17 +1,17 @@
 ---
 title: Delete data on the internet
-title: 删除网络数据
+title: 刪除網路資料
 description: How to use the http package to delete data on the internet.
-description: 如何使用 http 这个 package 来删除远程服务器的数据。
-tags: cookbook, 实用教程, 网络请求
+description: 如何使用 http 這個 package 來刪除遠端伺服器的資料。
+tags: cookbook, 實用課程, 網路請求
 keywords: 
 prev:
   title: Send data to a new screen
-  title: 传递数据到新页面
+  title: 傳遞資料到新頁面
   path: /docs/cookbook/navigation/passing-data
 next:
   title: Fetch data from the internet
-  title: 通过网络获取数据
+  title: 透過網路獲取資料
   path: /docs/cookbook/networking/fetch-data
 ---
 

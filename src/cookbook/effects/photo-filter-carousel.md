@@ -1,15 +1,15 @@
 ---
 title: Create a photo filter carousel
-title: 创建一个照片滤镜选择器
+title: 建立一個照片濾鏡選擇器
 description: How to implement a photo filter carousel.
-description: 学习如何实现一个照片滤镜的轮播选择器
+description: 學習如何實現一個照片濾鏡的輪播選擇器
 prev:
   title: Create a nested navigation flow
-  title: 创建一个嵌套导航
+  title: 建立一個巢狀(Nesting)導航
   path: /docs/cookbook/effects/nested-nav
 next:
   title: Create a scrolling parallax effect
-  title: 创建一个滚动视差效果
+  title: 建立一個滾動視差效果
   path: /docs/cookbook/effects/parallax-scrolling
 js:
   - defer: true

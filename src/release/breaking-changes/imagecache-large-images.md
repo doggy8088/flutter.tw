@@ -1,8 +1,8 @@
 ---
 title: ImageCache large images
-title: ImageCache 较大的图片
+title: ImageCache 較大的圖片
 description: Stop increasing the ImageCache maxByteSize to accommodate large images.
-description: 停止增加 ImageCache 的 maxByteSize 以容纳较大的图片。
+description: 停止增加 ImageCache 的 maxByteSize 以容納較大的圖片。
 ---
 
 ## Summary

@@ -1,10 +1,10 @@
 ---
 title: Free Flutter course from the App Brewery
-title: 来自 App Brewery 提供的免费 Flutter 教程
+title: 來自 App Brewery 提供的免費 Flutter 課程
 description: Link for registering for the free App Brewery course.
-description: 链接到 App Brewery 提供的免费 Flutter 教程。
-tags: 课程
-keywords: Flutter系列课程, Flutter视频教程, App Brewery
+description: 連結到 App Brewery 提供的免費 Flutter 課程。
+tags: 課程
+keywords: Flutter系列課程, Flutter影片課程, App Brewery
 ---
 
 <h1>This course is closed for enrollment.</h1>

@@ -1,24 +1,24 @@
 ---
 title: Videos and online courses
-title: 学习 Flutter 的视频列表与在线课程
+title: 學習 Flutter 的影片列表與線上課程
 description: Available videos and online courses on various aspects of developing in Flutter.
-description: 开发 Flutter 应用时的技术学习视频与在线课程。
-tags: Flutter参考资料
-keywords: Flutter视频资料,Flutter学习,Flutter社区视频
+description: 開發 Flutter 應用時的技術學習影片與線上課程。
+tags: Flutter參考資料
+keywords: Flutter影片資料,Flutter學習,Flutter社群影片
 ---
 
 These Flutter videos, produced both internally
 at Google and by the Flutter community,
 might help if you are a visual learner.
 
-如果你是一个视觉型学习者 (visual learner)，
-那么这些由 Google 或者社区（非 Google 官方）制作的 Flutter 的视频可能会对你有所帮助。
+如果你是一個視覺型學習者 (visual learner)，
+那麼這些由 Google 或者社群（非 Google 官方）製作的 Flutter 的影片可能會對你有所幫助。
 
 Note that many people make Flutter videos.
 This page shows some that we like,
 but there are many others.
 
-这个页面仅列举部分 Flutter 视频，其他 Flutter 相关的视频可能会有很多。
+這個頁面僅列舉部分 Flutter 影片，其他 Flutter 相關的影片可能會有很多。
 
 ---
 
@@ -29,7 +29,7 @@ but there are many others.
 Here are some of the series offered on the
 [flutterdev YouTube channel][].
 
-如下是一些 [flutterdev YouTube channel][] 的系列视频。
+如下是一些 [flutterdev YouTube channel][] 的系列影片。
 
 [flutterdev YouTube channel]: {{site.youtube-site}}/channel/UCwXdFgeE9KYzlDdR7TG9cMw
 
@@ -48,13 +48,13 @@ the great Flutter content!
 [Flutter Engage 2021][] was a day-long event that
 officially launched Flutter 2.
 
-[Flutter Engage 2021][] 是一个为期一天的活动，并正式发布了 Flutter 2。
+[Flutter Engage 2021][] 是一個為期一天的活動，並正式釋出了 Flutter 2。
 
 [Flutter Engage 2021]: https://events.flutter.dev/
 
 Check out the Flutter Engage 2021 highlights reel:
 
-查看 Flutter Engage 2021 主要亮点：
+檢視 Flutter Engage 2021 主要亮點：
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=760318790&bvid=BV1g64y117Jo&cid=330239820&page=1" title="Bilibili video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -89,7 +89,7 @@ Introducing Decoding Flutter
 
 Five-to-ten minute tutorials (more or less) on using Flutter.
 
-5 - 10 分钟左右的 Flutter 教程视频。
+5 - 10 分鐘左右的 Flutter 課程影片。
 
 <iframe width="560" height="315" src="https://player.bilibili.com/player.html?aid=55794948&cid=97538589&page=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Introducing Flutter in focus<br>
@@ -99,12 +99,12 @@ Introducing Flutter in focus<br>
 
 ### Flutter widget of the week
 
-### 每周 Flutter Widgets
+### 每週 Flutter Widgets
 
 Do you have 60 seconds?
 Each one-minute video highlights a Flutter widget.
 
-每周一分钟，为你种草一个 Flutter widget！
+每週一分鐘，為你種草一個 Flutter widget！
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55815727&cid=97573460&page=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Introducing widget of the week<br>
@@ -117,7 +117,7 @@ Introducing widget of the week<br>
 If you have another minute (or two),
 each of these videos highlights a Flutter package.
 
-你是否有几分钟时间，让我们用这些视频为你介绍一些精选 Flutter package。
+你是否有幾分鐘時間，讓我們用這些影片為你介紹一些精選 Flutter package。
 
 ### The Boring Flutter show
 
@@ -128,7 +128,7 @@ unscripted and in real time. Mistakes, solutions
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55815727&bvid=BV18441157SS&cid=97573460&page=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Introducing the Boring Flutter show<br>
 
- The Boring Flutter Show 视频播放列表介绍<br>
+ The Boring Flutter Show 影片播放列表介紹<br>
 
 [The Boring Flutter show playlist][]
 
@@ -150,11 +150,11 @@ Building my first Flutter app | Learning to Fly<br>
 
 ## Conference talks
 
-## 会议讲座
+## 會議講座
 
 Here are a some recent Flutter talks given at various conferences.
 
-以下是各种会议上最近的一些Flutter会谈。
+以下是各種會議上最近的一些Flutter會談。
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55833267&cid=97603337&page=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 [Conference talks playlist][]
@@ -163,25 +163,25 @@ Here are a some recent Flutter talks given at various conferences.
 
 ## Flutter developer stories
 
-## Flutter 开发者成功故事
+## Flutter 開發者成功故事
 
 Videos showing how various customers, such as Abbey Road Studio, Hamilton,
 and Alibaba, have used Flutter to create beautiful compelling apps with
 millions of downloads.
 
-视频展示了艾比路工作室 (Abbey Road Studio)、汉密尔顿 (Hamilton) 和阿里巴巴 (Alibaba)
-等开发者 / 公司如何使用 Flutter 开发出百万级别下载量，引人注目的应用程序。
+影片展示了艾比路工作室 (Abbey Road Studio)、漢密爾頓 (Hamilton) 和阿里巴巴 (Alibaba)
+等開發者 / 公司如何使用 Flutter 開發出百萬級別下載量，引人注目的應用程式。
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55812033&cid=97567456&page=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 [Flutter developer stories playlist][]
 
 [Flutter developer stories playlist]: {{site.youtube-site}}/playlist?list=PLjxrf2q8roU33POuWi4bK0zvDpAHK6759
 
-[Flutter: 开发者成功故事播放列表][Flutter developer stories playlist]
+[Flutter: 開發者成功故事播放列表][Flutter developer stories playlist]
 
 ## Online courses
 
-## 在线课程
+## 線上課程
 
 Learn how to build Flutter apps with these video courses.
 Before signing up for a course, verify that it includes
@@ -189,14 +189,14 @@ up-to-date information, such as null safe Dart code.
 These courses are listed alphabetically.
 To include your course, [submit a PR][]:
 
-通过这些免费的课程学习如何构建 Flutter 应用。
-在注册课程之前，请验证它的内容是否及时更新，例如 Dart 的空安全代码等。
-这些课程按照字幕排序。
-若想要加入你的课程，请 [提交一个 PR][submit a PR]。
+透過這些免費的課程學習如何建構 Flutter 應用。
+在註冊課程之前，請驗證它的內容是否及時更新，例如 Dart 的空安全程式碼等。
+這些課程按照字幕排序。
+若想要加入你的課程，請 [提交一個 PR][submit a PR]。
 
 * [The Complete 2021 Flutter Development Bootcamp Using Dart][] by App Brewery
 
-  [2021 年 Flutter 开发 Dart 训练营]，由 App Brewery 录制。
+  [2021 年 Flutter 開發 Dart 訓練營]，由 App Brewery 錄製。
 
 * [Flutter & Dart - the Complete Guide, 2021 edition][]
 
@@ -204,15 +204,15 @@ To include your course, [submit a PR][]:
 
 * [Flutter Crash Course][] by Nick Manning
 
-  [Flutter 速成课][Flutter Crash Course], 由 Nick Manning (社区) 录制。
+  [Flutter 速成課][Flutter Crash Course], 由 Nick Manning (社群) 錄製。
 
 * [Flutter leicht gemacht 2022 - Zero to Mastery!][] by Max Berktold (German)
 
-  [Dart 和 Flutter 从入门到精通][Flutter leicht gemacht 2022 - Zero to Mastery!]，由社区成员 Max Berktold 录制（德语）
+  [Dart 和 Flutter 從入門到精通][Flutter leicht gemacht 2022 - Zero to Mastery!]，由社群成員 Max Berktold 錄製（德語）
   
 * [Flutter Zero to Hero][] by Veli Bacik (Turkish)
 
-  [Flutter 入门到精通][Flutter Zero to Hero]，由社区成员 Veli Bacik 录制 (土耳其语)
+  [Flutter 入門到精通][Flutter Zero to Hero]，由社群成員 Veli Bacik 錄製 (土耳其語)
 
 
 [Flutter & Dart - the Complete Guide, 2021 edition]: https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/

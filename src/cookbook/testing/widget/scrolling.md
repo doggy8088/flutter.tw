@@ -1,15 +1,15 @@
 ---
 title: Handle scrolling
-title: 处理滚动
+title: 處理滾動
 description: How to handle scrolling in a widget test.
-description: 如何在 widget 测试中处理滚动。
+description: 如何在 widget 測試中處理滾動。
 prev:
   title: Find widgets
-  title: 定位到目标 widgets
+  title: 定位到目標 widgets
 path: /docs/cookbook/testing/widget/finders
 next:
   title: Tap, drag, and enter text
-  title: 点击、拖拽事件和文本输入
+  title: 點選、拖拽事件和文字輸入
   path: /docs/cookbook/testing/widget/tap-drag
 ---
 

@@ -1,89 +1,89 @@
 ---
-title: Flutter 1.5 发布：适用于移动、Web、嵌入式和桌面平台的便携式界面框架
+title: Flutter 1.5 釋出：適用於移動、Web、嵌入式和桌面平台的行動式介面框架
 toc: true
 ---
 
-**作者: Flutter 团队**
+**作者: Flutter 團隊**
 
-I/O 期间我们迎来 [Flutter 框架](https://flutter.dev/) 的一个重要里程碑，因为我们的开发重点从移动平台扩展到了更广泛的设备和机型。在 I/O 大会上，我们发布了 [Web 版 Flutter 的首个技术预览版](https://flutter.dev/web)，宣布 Flutter 将为包括 Google Home Hub 在内的 Google Smart Display 平台提供技术支持，并迈出利用 Chrome 操作系统支持桌面级应用的第一步。
+I/O 期間我們迎來 [Flutter 框架](https://flutter.dev/) 的一個重要里程碑，因為我們的開發重點從行動平台擴充到了更廣泛的裝置和機型。在 I/O 大會上，我們釋出了 [Web 版 Flutter 的首個技術預覽版](https://flutter.dev/web)，宣佈 Flutter 將為包括 Google Home Hub 在內的 Google Smart Display 平台提供技術支援，並邁出利用 Chrome 作業系統支援桌面級應用的第一步。
 
-## 从移动设备到多平台
+## 從移動裝置到多平臺
 
-长期以来，Flutter 团队的使命一直是为开发 iOS 和 Android 版移动应用构建最佳框架。我们认为对移动开发作出改进的时机已经成熟，因为现在开发者不得不选择在两个平台上构建相同的应用两次，或者作出某些妥协以使用跨平台框架。Flutter 提供了一种最有效的方式，使单个代码库能够为两个平台提供美观、快速和量身定制的体验，并提高开发者的工作效率。我们很高兴能够看到早期的努力成功催生出目前最热门的[开源项目](https://github.com/flutter/flutter)之一。
+長期以來，Flutter 團隊的使命一直是為開發 iOS 和 Android 版移動應用建構最佳框架。我們認為對行動開發作出改進的時機已經成熟，因為現在開發者不得不選擇在兩個平臺上建構相同的應用兩次，或者作出某些妥協以使用跨平臺框架。Flutter 提供了一種最有效的方式，使單個程式碼庫能夠為兩個平台提供美觀、快速和量身客製的體驗，並提高開發者的工作效率。我們很高興能夠看到早期的努力成功催生出目前最熱門的[開源專案](https://github.com/flutter/flutter)之一。
 
-从去年开始着力开发 1.0 版本时，我们就开始尝试将 Flutter 的范围扩展到其他平台。这是基于两方面考虑: 一是 Google 内部团队越来越依赖于 Flutter，二是 [Dart 平台](https://dart.dev)有提供便捷式体验的潜力。特别是，已经着手为 Dart 构建 Web 框架以供内部使用的小型团队启动了一个探索性项目 (代号为 "Hummingbird")，以评估移植 Flutter 引擎以支持基于标准的 Web 有何技术优势。
+從去年開始著力開發 1.0 版本時，我們就開始嘗試將 Flutter 的範圍擴充到其他平台。這是基於兩方面考慮: 一是 Google 內部團隊越來越依賴於 Flutter，二是 [Dart 平台](https://dart.dev)有提供便捷式體驗的潛力。特別是，已經著手為 Dart 建構 Web 框架以供內部使用的小型團隊啟動了一個探索性專案 (代號為 "Hummingbird")，以評估移植 Flutter 引擎以支援基於標準的 Web 有何技術優勢。
 
-该项目的成效令人惊叹，这在很大程度上要归功于 Chrome、Firefox 和 Safari 等网络浏览器的快速发展。这些浏览器广泛地提供了硬件加速的图形、动画和文本，以及较快的 JavaScript 执行速度。在项目刚开始的几个月内，我们就成功构建了 Flutter 的核心框架原语。不久之后，我们在移动和桌面浏览器上运行了演示版本。长期以来，Dart 语言经常用于编译网页内容，这证明我们也能在 Web 端运行 Flutter 框架和应用。
+該專案的成效令人驚歎，這在很大程度上要歸功於 Chrome、Firefox 和 Safari 等網路瀏覽器的快速發展。這些瀏覽器廣泛地提供了硬體加速的圖形、動畫和文字，以及較快的 JavaScript 執行速度。在專案剛開始的幾個月內，我們就成功建構了 Flutter 的核心框架原語。不久之後，我們在移動和桌面瀏覽器上運行了示範版本。長期以來，Dart 語言經常用於編譯網頁內容，這證明我們也能在 Web 端執行 Flutter 框架和應用。
 
-与此同时，Flutter 核心项目不断取得进展，进而推动桌面级应用的发展，其中包括键盘和鼠标等输入工具、窗口大小调整，以及适用于 Chrome 操作系统应用开发的调试工具。针对在 Windows、Mac 和 Linux 上运行的桌面级应用，我们嵌入了 Flutter，而这项探索性工作已逐步演变成 Flutter 的核心引擎。
+與此同時，Flutter 核心專案不斷取得進展，進而推動桌面級應用的發展，其中包括鍵盤和滑鼠等輸入工具、視窗大小調整，以及適用於 Chrome 作業系統應用開發的除錯工具。針對在 Windows、Mac 和 Linux 上執行的桌面級應用，我們嵌入了 Flutter，而這項探索性工作已逐步演變成 Flutter 的核心引擎。
 
-## 适用于所有屏幕的便携式界面框架
+## 適用於所有螢幕的行動式介面框架
 
 ![Flutter Mobile, Web, Desktop, and Embedded](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot5-release/flutter-platforms.png){:width="85%"}
 
-毋庸置疑，高性能的便携式界面框架具有巨大的商业潜力。该框架可以通过单个代码库来为各种设备提供量身定制的出色体验。
+毋庸置疑，高效能的行動式介面框架具有巨大的商業潛力。該框架可以透過單個程式碼庫來為各種裝置提供量身客製的出色體驗。
 
-对于创业公司来说，这让他们能够通过同一个应用在移动端、Web 端或桌面端接触用户。如此一来，他们从一开始就能全面覆盖所有用户，而不会受到技术上的限制。对于大型组织来说尤其如此，因为他们能够使用同一个代码库为所有用户提供相同的体验，而这会降低工作复杂度和开发成本，更加专注于提升相关体验的质量。
+對於創業公司來說，這讓他們能夠透過同一個應用在移動端、Web 端或桌面端接觸使用者。如此一來，他們從一開始就能全面覆蓋所有使用者，而不會受到技術上的限制。對於大型組織來說尤其如此，因為他們能夠使用同一個程式碼庫為所有使用者提供相同的體驗，而這會降低工作複雜度和開發成本，更加專注於提升相關體驗的品質。
 
-实现对移动、桌面和网络应用的支持后，我们肩负更大的使命: **我们要构建最佳框架，以便为所有屏幕开发出色体验。**
+實現對移動、桌面和網路應用的支援後，我們肩負更大的使命: **我們要建構最佳框架，以便為所有螢幕開發出色體驗。**
 
-## 适用于 Web 平台的 Flutter
+## 適用於 Web 平台的 Flutter
 
-我们即将发布 Web 版 Flutter 的**首个技术预览版**。虽然这项技术还在开发中，但我们准备邀请尝鲜者来试用并提供反馈。对于 Web 版 Flutter，我们的最初设想并不是将其用作文档体验 (针对其优化 HTML ) 的通用替代品；相反，我们打算通过这种有效方式构建高度交互和图形丰富的内容，从而切实感受到成熟界面框架所带来的益处。
+我們即將釋出 Web 版 Flutter 的**首個技術預覽版**。雖然這項技術還在開發中，但我們準備邀請嚐鮮者來試用並提供反饋。對於 Web 版 Flutter，我們的最初設想並不是將其用作文件體驗 (針對其最佳化 HTML ) 的通用替代品；相反，我們打算透過這種有效方式建構高度互動和圖形豐富的內容，從而切實感受到成熟介面框架所帶來的益處。
 
-为了展示 Web 版 Flutter，我们与《纽约时报》合作构建了一个演示版本。《纽约时报》不仅是世界一流的新闻媒体，而且以设计纵横字谜等益智游戏而闻名。由于狂热的解谜玩家希望能在当时使用的任何设备上玩游戏，所以《纽约时报》的开发团队把目光转向 Flutter，将其作为满足读者需求的潜在解决方案。发现能够利用同一组代码访问网页给他们带来了巨大裨益。在 Google I/O 大会上，您可以率先了解他们最近更新的 [KENKEN 解谜游戏](https://www.nytimes.com/games/prototype/kenken)。该游戏利用同一组代码在 Android、iOS、Web、Mac 和 Chrome 操作系统上运行。
+為了展示 Web 版 Flutter，我們與《紐約時報》合作建構了一個示範版本。《紐約時報》不僅是世界一流的新聞媒體，而且以設計縱橫字謎等益智遊戲而聞名。由於狂熱的解謎玩家希望能在當時使用的任何裝置上玩遊戲，所以《紐約時報》的開發團隊把目光轉向 Flutter，將其作為滿足讀者需求的潛在解決方案。發現能夠利用同一組程式碼存取網頁給他們帶來了巨大裨益。在 Google I/O 大會上，您可以率先了解他們最近更新的 [KENKEN 解謎遊戲](https://www.nytimes.com/games/prototype/kenken)。該遊戲利用同一組程式碼在 Android、iOS、Web、Mac 和 Chrome 作業系統上執行。
 
 ![ken-gratulations puzzle](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot5-release/nyt-game.gif){:width="85%"}
 
-以下是《纽约时报》解谜游戏执行总监 Eric von Coelln 对 Flutter 使用体验的看法:
+以下是《紐約時報》解謎遊戲執行總監 Eric von Coelln 對 Flutter 使用體驗的看法:
 
-> “《纽约时报》纵横字谜游戏的单独订阅数量已超过 40 万份，玩这款游戏已经成为解谜者每天必做的事情。除了纵横字谜游戏，我们还开发了数字解谜游戏，每个月都吸引了超过 200 万名解谜者。 
-> 我们已经开始探索 Flutter，并将其作为快速开发有趣和优质的移动体验这一挑战的潜在解决方案。现在，我们能够在 Web 端发布游戏，这使 Flutter 成为在所有用户平台快速部署内容的更具吸引力的选择。之前基于 Flash 的 KenKen 游戏经过更新，能够提供多平台的畅玩体验。今年我们很高兴能为解谜者带来全新体验。"
+> “《紐約時報》縱橫字謎遊戲的單獨訂閱數量已超過 40 萬份，玩這款遊戲已經成為解謎者每天必做的事情。除了縱橫字謎遊戲，我們還開發了數字解謎遊戲，每個月都吸引了超過 200 萬名解謎者。 
+> 我們已經開始探索 Flutter，並將其作為快速開發有趣和優質的移動體驗這一挑戰的潛在解決方案。現在，我們能夠在 Web 端釋出遊戲，這使 Flutter 成為在所有使用者平台快速部署內容的更具吸引力的選擇。之前基於 Flash 的 KenKen 遊戲經過更新，能夠提供多平臺的暢玩體驗。今年我們很高興能為解謎者帶來全新體驗。"
 
-由于篇幅有限，我们无法在此一一详述 Web 版 Flutter。若有兴趣，请前往 [Flutter 博客](https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0)，阅读专门介绍 Web 版 Flutter 的文章。
+由於篇幅有限，我們無法在此一一詳述 Web 版 Flutter。若有興趣，請前往 [Flutter 部落格](https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0)，閱讀專門介紹 Web 版 Flutter 的文章。
 
-鉴于目前处于早期开发阶段，我们非常希望收到您的反馈，了解您希望如何使用 Web 版 Flutter。我们希望以性能为重中之重，快速开发代码，并与 Flutter 项目的其他部分协调代码库。
+鑑於目前處於早期開發階段，我們非常希望收到您的反饋，瞭解您希望如何使用 Web 版 Flutter。我們希望以效能為重中之重，快速開發程式碼，並與 Flutter 專案的其他部分協調程式碼庫。
 
-## 适用于移动设备的 Flutter
+## 適用於移動裝置的 Flutter
 
-我们还会升级核心 Flutter 框架，并会在**稳定版 channel 立即提供 Flutter 1.5**。根据开发者的反馈，我们对 [Flutter 1.5](https://medium.com/flutter-io/announcing-flutter-1-5-6e5d7e35b75f) 进行了数百处更改，包括对全新应用商店 iOS SDK 要求、iOS 和材料微件的更新，新增对新设备类型的引擎支持，以及对具有最新 [UI-as-code](https://medium.com/dartlang/making-dart-a-better-language-for-ui-f1ccaf9f546c) 语言特征的 Dart 2.3 作出改进。 
+我們還會升級核心 Flutter 框架，並會在**穩定版 channel 立即提供 Flutter 1.5**。根據開發者的反饋，我們對 [Flutter 1.5](https://medium.com/flutter-io/announcing-flutter-1-5-6e5d7e35b75f) 進行了數百處更改，包括對全新應用商店 iOS SDK 要求、iOS 和材料微件的更新，新增對新裝置型別的引擎支援，以及對具有最新 [UI-as-code](https://medium.com/dartlang/making-dart-a-better-language-for-ui-f1ccaf9f546c) 語言特徵的 Dart 2.3 作出改進。 
 
-随着框架本身逐渐成熟，我们正在设法构建支持生态系统。Flutter 的架构模型一贯优先考虑小型核心框架，并辅以丰富的软件包社区。在过去的几个月，Google 为网页视图、Google 地图和 Firebase ML Vision 提供了产品级质量的软件包。我们还将新增对 [应用内支付](https://pub.flutter-io.cn/packages/in_app_purchase) 的初步支持。得益于 2,000 多个适用于 Flutter 的开放源代码软件包，大多数场景均有合适的选择。 
+隨著框架本身逐漸成熟，我們正在設法建構支援生態系統。Flutter 的架構模型一貫優先考慮小型核心框架，並輔以豐富的軟體包社群。在過去的幾個月，Google 為網頁檢視、Google 地圖和 Firebase ML Vision 提供了產品級品質的軟體套件。我們還將新增對 [應用內支付](https://pub.flutter-io.cn/packages/in_app_purchase) 的初步支援。得益於 2,000 多個適用於 Flutter 的開放原始碼軟體套件，大多數場景均有合適的選擇。 
 
-在今年的 I/O 上，我们宣布推出一个尤其令人振奋的项目，即 [ML Kit 自定义图像分类器](http://github.com/firebase/mlkit-custom-image-classifier)。该工具利用 Flutter 和 Firebase 构建，可为创建自定义图像分类模型提供基于应用的简易工作流。您可以使用手机的摄像头收集训练数据、邀请他人为您的数据集贡献素材、触发模型训练以及使用训练过的模型，这些操作都可以在同一个应用中实现。
+在今年的 I/O 上，我們宣佈推出一個尤其令人振奮的專案，即 [ML Kit 自訂影象分類器](http://github.com/firebase/mlkit-custom-image-classifier)。該工具利用 Flutter 和 Firebase 建構，可為建立自訂影象分類模型提供基於應用的簡易工作流。您可以使用手機的攝影頭收集訓練資料、邀請他人為您的資料集貢獻素材、觸發模型訓練以及使用訓練過的模型，這些操作都可以在同一個應用中實現。
 
 ![Flutter ML Kit: create datasets, collaborate to collect data, train model, run inference](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot5-release/flutter-mlkit.png){:width="85%"}
 
-Flutter 越来越受欢迎，使用人数也越来越多。[有需求的客户](https://flutter.dev/showcase)不断增加，其中包括 eBay、Sonos、Square、Capital One、Alibaba 和 Tencent。这些公司正在利用 Flutter 开发应用，并从中发现乐趣！以下是 eBay 的高级开发者 Larry McKenzie 对 Flutter 的看法:
+Flutter 越來越受歡迎，使用人數也越來越多。[有需求的客戶](https://flutter.dev/showcase)不斷增加，其中包括 eBay、Sonos、Square、Capital One、Alibaba 和 Tencent。這些公司正在利用 Flutter 開發應用，並從中發現樂趣！以下是 eBay 的高階開發者 Larry McKenzie 對 Flutter 的看法:
 
-> **“Flutter 运行速度很快！过去需要很多天才能实现的功能，现在只需一天就能完成。过去我们花费很多时间处理的问题，如今再也不会发生了。我们的团队现在可以专注于创建更出色的用户体验和提供相关功能。Flutter 让我们能够超越期望！”**
+> **“Flutter 執行速度很快！過去需要很多天才能實現的功能，現在只需一天就能完成。過去我們花費很多時間處理的問題，如今再也不會發生了。我們的團隊現在可以專注於建立更出色的使用者體驗和提供相關功能。Flutter 讓我們能夠超越期望！”**
 
-从更广泛的角度上看，LinkedIn 最近进行的一项研究显示，根据网站成员在过去一年中所添加的个人资料，Flutter 是软件工程师中[增长最快的一项技能](https://learning.linkedin.com/blog/tech-tips/the-fastest-growing-skills-among-software-engineers--and-how-to-)。在最近的 2019 年 StackOverflow 开发者调查问卷中，Flutter 被列为 [最受欢迎的开发者框架之一](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-other-frameworks-libraries-and-tools)。
+從更廣泛的角度上看，LinkedIn 最近進行的一項研究顯示，根據網站成員在過去一年中所新增的個人資料，Flutter 是軟體工程師中[增長最快的一項技能](https://learning.linkedin.com/blog/tech-tips/the-fastest-growing-skills-among-software-engineers--and-how-to-)。在最近的 2019 年 StackOverflow 開發者調查問卷中，Flutter 被列為 [最受歡迎的開發者框架之一](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-other-frameworks-libraries-and-tools)。
 
-## 适用于桌面平台的 Flutter
+## 適用於桌面平台的 Flutter
 
-Flutter 目前也被用于桌面平台。在过去几个月，我们一直在研究桌面平台这一 [实验性项目](https://github.com/google/flutter-desktop-embedding)。但现在该项目逐渐演变成 Flutter 引擎，并将这项工作直接集成到 mainline repo 中。尽管这些目标尚未在生产环境中部署，但我们已发布早期说明，以便开发 [在 Mac、Windows 和 Linux 上运行的 Flutter 应用](https://github.com/flutter/flutter/wiki/Desktop-shells)。
+Flutter 目前也被用於桌面平台。在過去幾個月，我們一直在研究桌面平台這一 [實驗性專案](https://github.com/google/flutter-desktop-embedding)。但現在該專案逐漸演變成 Flutter 引擎，並將這項工作直接整合到 mainline repo 中。儘管這些目標尚未在生產環境中部署，但我們已釋出早期說明，以便開發 [在 Mac、Windows 和 Linux 上執行的 Flutter 應用](https://github.com/flutter/flutter/wiki/Desktop-shells)。
 
-另一个快速发展的 Flutter 平台是 Chrome 操作系统，每年售出的 Chromebook 多达数百万台，尤其是在教育领域。无论是运行 Flutter 应用，还是作为开发者平台，Chrome 操作系统都为 Flutter 提供了绝佳环境，因为该系统支持执行 Android 和 Linux 应用。借助 Chrome 操作系统，您可以使用 Visual Studio Code 或 Android Studio 来开发 Flutter 应用，并在没有模拟器的情况下使用同一台设备本机测试和运行应用。您还可以在 Play Store 发布适用于 Chrome 操作系统的 Flutter 应用，让数百万用户因您的创作而受益。
+另一個快速發展的 Flutter 平台是 Chrome 作業系統，每年售出的 Chromebook 多達數百萬台，尤其是在教育領域。無論是執行 Flutter 應用，還是作為開發者平台，Chrome 作業系統都為 Flutter 提供了絕佳環境，因為該系統支援執行 Android 和 Linux 應用。藉助 Chrome 作業系統，您可以使用 Visual Studio Code 或 Android Studio 來開發 Flutter 應用，並在沒有模擬器的情況下使用同一台裝置本機測試和執行應用。您還可以在 Play Store 釋出適用於 Chrome 作業系統的 Flutter 應用，讓數百萬使用者因您的創作而受益。
 
-## 适用于嵌入式设备的 Flutter
+## 適用於嵌入式裝置的 Flutter
 
-举例说明 Flutter 便携性的最后，我们将介绍可嵌入其他设备的 Flutter。最近我们发布了一些示例，演示了直接在 Raspberry Pi 等小型设备上运行 Flutter 的情况。我们还为 Flutter 开发了一个嵌入式 API，以便将其用于家庭和汽车等场景。
+舉例說明 Flutter 便攜性的最後，我們將介紹可嵌入其他裝置的 Flutter。最近我們釋出了一些範例，示範了直接在 Raspberry Pi 等小型裝置上執行 Flutter 的情況。我們還為 Flutter 開發了一個嵌入式 API，以便將其用於家庭和汽車等場景。
 
-Smart Display 操作系统或许是 Flutter 目前已运行的最常见嵌入式平台之一，其为类似于 Google Home Hub 的设备提供技术支持。
+Smart Display 作業系統或許是 Flutter 目前已執行的最常見嵌入式平台之一，其為類似於 Google Home Hub 的裝置提供技術支援。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot5-release/flutter-google-home-hub.png){:width="85%"}
 
-目前在 Google 中，Smart Display 平台的部分 Google 自建功能由 Flutter 提供技术支持。Google 助理团队很高兴能够在接下来的几个月继续扩展通过 Flutter 为 Smart Display 构建的各项功能；而今年的目标是利用 Flutter 来驱动整个系统界面。
+目前在 Google 中，Smart Display 平台的部分 Google 自建功能由 Flutter 提供技術支援。Google 助理團隊很高興能夠在接下來的幾個月繼續擴充透過 Flutter 為 Smart Display 建構的各項功能；而今年的目標是利用 Flutter 來驅動整個系統介面。
 
-## 其他资源
+## 其他資源
 
-开发者经常询问我们如何完成 Flutter 入门。现在我们很高兴地宣布推出全新的综合性 Flutter 培训课程。该课程由 Udemy 上评分最高的 iOS 培训课程的制作者 The App Brewery 构建。他们的最新课程涵盖 30 多个小时的 Flutter 内容，其中包括视频、演示和实验。在 Google 的赞助下，The App Brewery 宣布推出此课程的限时折扣，原来的零售价为 199 美元，现只需 10 美元。
+開發者經常詢問我們如何完成 Flutter 入門。現在我們很高興地宣佈推出全新的綜合性 Flutter 培訓課程。該課程由 Udemy 上評分最高的 iOS 培訓課程的製作者 The App Brewery 建構。他們的最新課程涵蓋 30 多個小時的 Flutter 內容，其中包括影片、示範和實驗。在 Google 的贊助下，The App Brewery 宣佈推出此課程的限時折扣，原來的零售價為 199 美元，現只需 10 美元。
 
-许多开发者正在利用 Flutter 开发振奋人心的应用。在 Google I/O 大会的筹备阶段，我们举办了名为 Flutter Create 的挑战赛，鼓励开发者使用不超过 5KB 的 Dart 代码通过 Flutter 构建内容。我们收到来自世界各地的 750 多个独特参赛作品，其中一些作品让我们大开眼界，谁能想到如此少的代码竟然能创造出如此精彩的作品。
+許多開發者正在利用 Flutter 開發振奮人心的應用。在 Google I/O 大會的籌備階段，我們舉辦了名為 Flutter Create 的挑戰賽，鼓勵開發者使用不超過 5KB 的 Dart 程式碼透過 Flutter 建構內容。我們收到來自世界各地的 750 多個獨特參賽作品，其中一些作品讓我們大開眼界，誰能想到如此少的程式碼竟然能創造出如此精彩的作品。
 
-我们在此宣布获胜者，您可前往 flutter.dev/create 查看获胜名单。祝贺总冠军 Zebiao Hu，其将荣获价值超过 1 万美元的全加载式 iMac Pro！
+我們在此宣佈獲勝者，您可前往 flutter.dev/create 檢視獲勝名單。祝賀總冠軍 Zebiao Hu，其將榮獲價值超過 1 萬美元的全載入式 iMac Pro！
 
 <iframe src="//player.bilibili.com/player.html?aid=52416421&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-Flutter 不再只是一个移动框架，更是一个多平台框架，可帮助您触及任何地方的用户。我们迫不及待地看到您利用 Flutter 在 Web、桌面、移动及其他平台上构建的内容！
+Flutter 不再只是一個移動框架，更是一個多平臺框架，可幫助您觸及任何地方的使用者。我們迫不及待地看到您利用 Flutter 在 Web、桌面、移動及其他平臺上建構的內容！

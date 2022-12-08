@@ -1,12 +1,12 @@
 ---
 title: Flutter documentation
-title: Flutter 开发文档
+title: Flutter 開發文件
 short-title: Docs
-short-title: 文档
+short-title: 文件
 description: Get started with Flutter. Widgets, examples, updates, and API docs to help you write your first Flutter app.
-description: Flutter 上手起步，包括 widgets 介绍、样例代码、最新更新和 API 文档，帮助您撰写第一个 Flutter 应用。
-tags: Flutter中文文档
-keywords: Flutter文档,Flutter汉语文档,Flutter开发导航
+description: Flutter 上手起步，包括 widgets 介紹、範例程式碼、最新更新和 API 文件，幫助您撰寫第一個 Flutter 應用。
+tags: Flutter中文文件
+keywords: Flutter文件,Flutter漢語文件,Flutter開發導航
 ---
 
 {% for card in site.data.docs_cards -%}
@@ -29,45 +29,45 @@ keywords: Flutter文档,Flutter汉语文档,Flutter开发导航
 **To see changes to the site since our last release,
 see [What's new][].**
 
-查看最近网站更新的内容，请查阅
-[文档网站更新内容归档][What's new]。
+檢視最近網站更新的內容，請查閱
+[文件網站更新內容歸檔][What's new]。
 
 [What's new]: {{site.url}}/whats-new
 
 ## New to Flutter?
 
-## 新接触 Flutter 吗
+## 新接觸 Flutter 嗎
 
 Once you've gone through [Get started][],
 including [Write your first Flutter app][],
 here are some next steps.
 
-你可以从 [安装和环境配置][Get Started] 开始，
-也可以上手试试看 [第一个 Flutter 应用的开发][Write your first Flutter app]。
+你可以從 [安裝和環境配置][Get Started] 開始，
+也可以上手試試看 [第一個 Flutter 應用的開發][Write your first Flutter app]。
 
 [Write your first Flutter app]: {{site.url}}/get-started/codelab
 
 ### Docs
 
-### 文档
+### 文件
 
 Coming from another platform? Check out Flutter for:
 [Android][], [iOS][], [web][], [React Native][], and
 [Xamarin.Forms][] developers.
 
-看我们为各种已经有相关平台开发经验的开发者准备的文档：
-- [给 Android 开发者的 Flutter 指南][Android]
-- [给 iOS 开发者的 Flutter 指南][iOS]
-- [给 React Native 开发者的 Flutter 指南][React Native]
-- [给 Web 开发者的 Flutter 指南][Web]
-- [给 Xamarin.Forms 开发者的 Flutter 指南][Xamarin.Forms]
+看我們為各種已經有相關平臺開發經驗的開發者準備的文件：
+- [給 Android 開發者的 Flutter 指南][Android]
+- [給 iOS 開發者的 Flutter 指南][iOS]
+- [給 React Native 開發者的 Flutter 指南][React Native]
+- [給 Web 開發者的 Flutter 指南][Web]
+- [給 Xamarin.Forms 開發者的 Flutter 指南][Xamarin.Forms]
 
 [Building layouts][]
 <br> Learn how to create layouts in Flutter,
   where everything is a widget.
 
-[Flutter 中的布局][Building layouts]
-<br> 学习如何在 Flutter 中创建布局，在 Flutter 里，所有事物都是 widget。
+[Flutter 中的佈局][Building layouts]
+<br> 學習如何在 Flutter 中建立佈局，在 Flutter 裡，所有事物都是 widget。
 
 [Understanding constraints][]
 <br> Once you understand that "Constraints
@@ -75,27 +75,27 @@ Coming from another platform? Check out Flutter for:
   positions", then you are well on your
   way to understanding Flutter's layout model.
 
-[理解布局约束][Understanding constraints]
+[理解佈局約束][Understanding constraints]
 <br> 一旦你理解了 Constraints flow up. Sizes flow down. Parents set positions
-这个思路之后，就能更好帮助你了解 Flutter 的布局模型。
+這個思路之後，就能更好幫助你瞭解 Flutter 的佈局模型。
 
 [Adding interactivity to your Flutter app][interactivity]
 <br> Learn how to add a stateful widget to your app.
 
-[为你的 Flutter 应用加入交互体验][interactivity]
-<br> 在 app 里使用有状态的 widget。
+[為你的 Flutter 應用加入互動體驗][interactivity]
+<br> 在 app 裡使用有狀態的 widget。
 
 [A tour of the Flutter widget framework][]
 <br> Learn more about Flutter's react-style framework.
 
-[Widgets 介绍][A tour of the Flutter widget framework]
-<br> 学习 Flutter 响应式框架的核心。
+[Widgets 介紹][A tour of the Flutter widget framework]
+<br> 學習 Flutter 響應式框架的核心。
 
 [FAQ][]
 <br> Get the answers to frequently asked questions.
 
-[常见问题][FAQ]
-<br> 常见问题解答
+[常見問題][FAQ]
+<br> 常見問題解答
 
 [A tour of the Flutter widget framework]: {{site.url}}/development/ui/widgets-intro
 [Android]: {{site.url}}/get-started/flutter-for/android-devs
@@ -111,7 +111,7 @@ Coming from another platform? Check out Flutter for:
 
 ### Videos
 
-### 视频资源
+### 影片資源
 
 Check out the Introducing Flutter series.
 Learn Flutter basics like
@@ -120,15 +120,15 @@ In Flutter, "everything is a widget"!
 Learn more about `Stateless` and `Stateful`
 widgets in [What is State?][]
 
-我们在 YouTube 上有一个 [Flutter 频道](https://www.youtube.com/c/flutterdev)，欢迎订阅！
-更多视频和播放列表介绍，以及社区制作的视频教程，
-可以查看我们的 [Flutter 技术视频资源][videos] 页面。
-同时，你可以关注 [“Google中国”的哔哩哔哩账号](https://space.bilibili.com/64169458)
-了解更多更全面的谷歌技术中文内容，
-也可以关注 [“Flutter 社区”的哔哩哔哩账号](https://space.bilibili.com/344928717)
-了解更多来自社区的内容更新。
+我們在 YouTube 上有一個 [Flutter 頻道](https://www.youtube.com/c/flutterdev)，歡迎訂閱！
+更多影片和播放列表介紹，以及社群製作的影片課程，
+可以檢視我們的 [Flutter 技術影片資源][videos] 頁面。
+同時，你可以關注 [“Google中國”的嗶哩嗶哩帳號](https://space.bilibili.com/64169458)
+瞭解更多更全面的谷歌技術中文內容，
+也可以關注 [“Flutter 社群”的嗶哩嗶哩帳號](https://space.bilibili.com/344928717)
+瞭解更多來自社群的內容更新。
 
-请查看下述 Flutter 入门系列视频，通过 [构建第一个 Flutter 应用][] 学习 Flutter 基础内容，Flutter 里 “所有的事物都是 widget”，如果你想更好了解有状态 `Stateful` 和无状态 `Stateless` 的 widget，查看视频 [什么是状态][]？
+請檢視下述 Flutter 入門系列影片，透過 [建構第一個 Flutter 應用][] 學習 Flutter 基礎內容，Flutter 裡 “所有的事物都是 widget”，如果你想更好了解有狀態 `Stateful` 和無狀態 `Stateless` 的 widget，檢視影片 [什麼是狀態][]？
 
 <div class="card-deck card-deck--responsive">
     <div class="video-card">
@@ -145,13 +145,13 @@ widgets in [What is State?][]
 
 [first-app]: {{site.youtube-site}}/watch?v=xWV71C2kp38
 [What is State?]: {{site.youtube-site}}/watch?v=QlwiL_yLh6E
-[构建第一个 Flutter 应用]: https://www.bilibili.com/video/BV1Se4y1Z74p
-[什么是状态]: https://www.bilibili.com/video/BV14G4y167Tu
+[建構第一個 Flutter 應用]: https://www.bilibili.com/video/BV1Se4y1Z74p
+[什麼是狀態]: https://www.bilibili.com/video/BV14G4y167Tu
 
 {:.text-center}
 #### Only have 60 seconds? Learn how to build and deploy a Flutter App!
 
-#### 一分钟！快速学习构建和部署 Flutter 应用
+#### 一分鐘！快速學習建構和部署 Flutter 應用
 
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
   <iframe style="max-width: 100%" width="560" height="315" src="{{site.youtube-site}}/embed/ZnufaryH43s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -159,16 +159,16 @@ widgets in [What is State?][]
 
 ## Want to skill up?
 
-## 提升内容
+## 提升內容
 
 Dive deeper into how Flutter works under the hood!
 Learn [why you write standalone widgets instead of
 using helper methods][standalone-widgets] or
 [what is "BuildContext" and how is it used][buildcontext]?
 
-深入了解 Flutter 的工作原理，
-了解为什么要编写独立的 widget 而不是使用 help 方法，
-以及 BuildContext 是什么，以及如何使用：
+深入瞭解 Flutter 的工作原理，
+瞭解為什麼要編寫獨立的 widget 而不是使用 help 方法，
+以及 BuildContext 是什麼，以及如何使用：
 
 <div class="card-deck card-deck--responsive">
     <div class="video-card">
@@ -189,17 +189,17 @@ using helper methods][standalone-widgets] or
 To learn about all of the Flutter video series,
 see our [videos][] page.
 
-了解更多 Flutter 的视频系列内容，可以查看 [视频学习资源][videos] 页面。
+瞭解更多 Flutter 的影片系列內容，可以檢視 [影片學習資源][videos] 頁面。
 
 We release new videos almost every week on the Flutter YouTube channel:
 
-我们每周都会在 Flutter 的 YouTube 频道更新视频，欢迎关注:
+我們每週都會在 Flutter 的 YouTube 頻道更新影片，歡迎關注:
 
-<a class="btn btn-primary" target="_blank" href="https://www.youtube.com/c/flutterdev">Flutter 的 YouTube 频道</a>
+<a class="btn btn-primary" target="_blank" href="https://www.youtube.com/c/flutterdev">Flutter 的 YouTube 頻道</a>
 
 **The documentation on this site reflects the
 latest stable release of Flutter.**
 
-本网站的文档基于 Flutter 最新的稳定版。
+本網站的文件基於 Flutter 最新的穩定版。
 
 [videos]: {{site.url}}/resources/videos

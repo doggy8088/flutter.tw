@@ -2,9 +2,9 @@
 title: Creating useful bug reports
 title: 如何有效提出 Bug
 description: Where to file bug reports and enhancement requests for flutter and the website.
-description: 在哪里提出 bug 最有效呢？
-tags: Flutter参考资料
-keywords: 提出错误,Flutter调试信息,Flutter反馈指南,Flutter doctor
+description: 在哪裡提出 bug 最有效呢？
+tags: Flutter參考資料
+keywords: 提出錯誤,Flutter除錯資訊,Flutter反饋指南,Flutter doctor
 ---
 
 The instructions in this document detail the current steps

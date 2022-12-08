@@ -1,6 +1,6 @@
 ---
 title: Preserving your battery
-title: 节省电量
+title: 節省電量
 ---
 
 TBD

@@ -1,39 +1,39 @@
 ---
-title: 使用 Flutter 与 Firebase 制作弹球游戏
+title: 使用 Flutter 與 Firebase 製作彈球遊戲
 toc: true
-keywords: 弹球游戏, pinball, Firebase, Flutter 游戏开发
-description: 让 Flutter 游戏开发能力更上一层楼。
+keywords: 彈球遊戲, pinball, Firebase, Flutter 遊戲開發
+description: 讓 Flutter 遊戲開發能力更上一層樓。
 image:
     path: https://files.flutter-io.cn/events/gdd2022/pinball/pinball_share_image.png
 ---
 
-*文/ Very Good Ventures 团队，5 月 11 日发表于 Flutter 官方博客*
+*文/ Very Good Ventures 團隊，5 月 11 日發表於 Flutter 官方部落格*
 
 ![](https://files.flutter-io.cn/events/gdd2022/pinball/pinball_share_image.png)
 
-Flutter 团队使用 Flutter 以及 Firebase 构建了一款经典的弹球游戏。
-下面将会介绍我们是如何通过 Flame 游戏引擎将 [Flutter 弹球游戏](https://pinball.flutter.cn/ "Flutter 弹球游戏主页") 带到 Web 端的。
+Flutter 團隊使用 Flutter 以及 Firebase 建構了一款經典的彈球遊戲。
+下面將會介紹我們是如何透過 Flame 遊戲引擎將 [Flutter 彈球遊戲](https://pinball.flutter.cn/ "Flutter 彈球遊戲主頁") 帶到 Web 端的。
 
-## 游戏开发要点
+## 遊戲開發要點
 
-使用 Flutter 打造用户交互类型的游戏是一个很棒的选择，例如拼图或者文字游戏这样的游戏。
-[Flame](https://docs.flame-engine.org/ "Flame 开发文档主页") 是一个在 Flutter 上构建的 2D 游戏引擎，
-当涉及到使用游戏循环的游戏时它会非常有用。
-Flutter 弹球游戏使用了 Flame 提供的一系列特性，例如动画、物理引擎、碰撞检测等等，
-同时还借助了 Flutter 框架的基础架构。
-如果你能用 Flutter 构建应用，你就获得 Flame 构建游戏所需的基础。
+使用 Flutter 打造使用者互動型別的遊戲是一個很棒的選擇，例如拼圖或者文字遊戲這樣的遊戲。
+[Flame](https://docs.flame-engine.org/ "Flame 開發文件主頁") 是一個在 Flutter 上建構的 2D 遊戲引擎，
+當涉及到使用遊戲迴圈的遊戲時它會非常有用。
+Flutter 彈球遊戲使用了 Flame 提供的一系列特性，例如動畫、物理引擎、碰撞檢測等等，
+同時還藉助了 Flutter 框架的基礎架構。
+如果你能用 Flutter 建構應用，你就獲得 Flame 建構遊戲所需的基礎。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/8Qcwcy.jpg)
 
-## 游戏循环
+## 遊戲迴圈
 
-通常来说应用屏幕在没有用户交互事件的时候都会保持视觉静止状态。
-游戏中则是相反的—— UI 会持续的渲染，而且游戏状态会不断变化。
-Flame 提供了一个 game widget，它内部管理了一个游戏循环，
-所以能恒定且高效地进行渲染。`Game` 类包含了游戏组件以及其逻辑的实现，
-然后被交给 widget 树中的 `GameWidget`。
-在 Flutter 弹球游戏中，游戏循环反映了弹球在游戏场的位置以及状态，
-然后如果球与物体碰撞或跌出比赛则需要给出必要的反馈。
+通常來說應用螢幕在沒有使用者互動事件的時候都會保持視覺靜止狀態。
+遊戲中則是相反的—— UI 會持續的渲染，而且遊戲狀態會不斷變化。
+Flame 提供了一個 game widget，它內部管理了一個遊戲迴圈，
+所以能恆定且高效地進行渲染。`Game` 類包含了遊戲元件以及其邏輯的實現，
+然後被交給 widget 樹中的 `GameWidget`。
+在 Flutter 彈球遊戲中，遊戲迴圈反映了彈球在遊戲場的位置以及狀態，
+然後如果球與物體碰撞或跌出比賽則需要給出必要的反饋。
 
 
 ```dart
@@ -47,17 +47,17 @@ void update(double dt) {
 }
 ```
 
-## 使用 2D 组件渲染 3D 空间
+## 使用 2D 元件渲染 3D 空間
 
-在做 Flutter 弹球游戏的时候，其中遇到的一个挑战即是如何使用 2D 元素渲染一个 3D 的交互体验。
-组件需要知道在屏幕上渲染的前后顺序。
-例如，当小球发射到斜坡上时，它的顺序会向前，这样就会让它看起来出现在斜坡的顶部。
+在做 Flutter 彈球遊戲的時候，其中遇到的一個挑戰即是如何使用 2D 元素渲染一個 3D 的互動體驗。
+元件需要知道在螢幕上渲染的前後順序。
+例如，當小球發射到斜坡上時，它的順序會向前，這樣就會讓它看起來出現在斜坡的頂部。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/Ko46wg.jpg)
 
-弹球、弹射活塞、挡板以及 Chrome 小恐龙等等这些元素都是可活动的，这意味着它应该遵循真实世界的物理规则。
-而且弹球也需要根据它在板子上的位置改变其大小。当弹球滚到顶部时，
-它应该越来越小，以让它看着离用户更远。此外，重力还会让弹球调整角度，让它能在斜坡上更快地落下。
+彈球、彈射活塞、擋板以及 Chrome 小恐龍等等這些元素都是可活動的，這意味著它應該遵循真實世界的物理規則。
+而且彈球也需要根據它在板子上的位置改變其大小。當彈球滾到頂部時，
+它應該越來越小，以讓它看著離使用者更遠。此外，重力還會讓彈球調整角度，讓它能在斜坡上更快地落下。
 
 ```dart
 /// Scales the ball's body and sprite according to its position on the board.
@@ -84,15 +84,15 @@ final ballSprite = parent.descendants().whereType<SpriteComponent>();
 
 ## Forge 2D 的物理引擎
 
-Flutter 弹球游戏很大程度依赖了 Flame 团队维护的
-[forge2d](https://pub.flutter-io.cn/packages/forge2d "Flame 团队维护的 package: forge2d") package。
-这个 package 将开源的 [Box2D 物理引擎](https://box2d.org/ "Box2D 物理引擎官网") 移植到 Dart 中，以便可以轻松集成到 Flutter。
-我们使用 `forge2d` 增强游戏中的物理特性，例如物体（夹板）在游戏场上的之间的碰撞检测。
-使用 `forge2D` 能够我们监听夹板发生碰撞的时机。
-我们就可以在这里向夹板添加交互的回调，当两个物体发生碰撞的时候我们就能收到通知。
-例如，弹球（它是圆形的）与弹簧（它是椭圆形的）接触时，我们就会增加它的得分。
-在这些回调中，我们可以清楚地设置接触开始和结束的位置，
-以便当两个物体相互接触时，会发生碰撞。
+Flutter 彈球遊戲很大程度依賴了 Flame 團隊維護的
+[forge2d](https://pub.flutter-io.cn/packages/forge2d "Flame 團隊維護的 package: forge2d") package。
+這個 package 將開源的 [Box2D 物理引擎](https://box2d.org/ "Box2D 物理引擎官網") 移植到 Dart 中，以便可以輕鬆整合到 Flutter。
+我們使用 `forge2d` 增強遊戲中的物理特性，例如物體（夾板）在遊戲場上的之間的碰撞檢測。
+使用 `forge2D` 能夠我們監聽夾板發生碰撞的時機。
+我們就可以在這裡向夾板新增互動的回呼(Callback)，當兩個物體發生碰撞的時候我們就能收到通知。
+例如，彈球（它是圓形的）與彈簧（它是橢圓形的）接觸時，我們就會增加它的得分。
+在這些回呼(Callback)中，我們可以清楚地設定接觸開始和結束的位置，
+以便當兩個物體相互接觸時，會發生碰撞。
 
 ```dart
 @override
@@ -108,19 +108,19 @@ Body createBody() {
 }
 ```
 
-## Sprite sheet 动画
+## Sprite sheet 動畫
 
-在弹球游戏场中有一些小东西，
-例如 Android、Dash（Dart 吉祥物）、Sparky（Firebase 吉祥物）以及 Chrome 小恐龙，这些都是动画。
-对于这些东西，我们使用了 sprite sheets，它已经包含在 Flame 引擎中了，
+在彈球遊戲場中有一些小東西，
+例如 Android、Dash（Dart 吉祥物）、Sparky（Firebase 吉祥物）以及 Chrome 小恐龍，這些都是動畫。
+對於這些東西，我們使用了 sprite sheets，它已經包含在 Flame 引擎中了，
 叫做 `SpriteAnimationComponent`。
-对于每个元素，我们都有一个文件，其中包含不同方向的图像、文件中的帧数以及帧之间的时间。
-使用这些数据，Flame 中的 `SpriteAnimationComponent` 能够在一个循环中将所有图像编在一起，
-使元素看起来在运动。
+對於每個元素，我們都有一個檔案，其中包含不同方向的影象、檔案中的幀數以及幀之間的時間。
+使用這些資料，Flame 中的 `SpriteAnimationComponent` 能夠在一個迴圈中將所有影象編在一起，
+使元素看起來在運動。
 
-![△ Sprite sheet 示例](https://devrel.andfun.cn/devrel/posts/2022/05/sMkc3K.jpg)
+![△ Sprite sheet 範例](https://devrel.andfun.cn/devrel/posts/2022/05/sMkc3K.jpg)
 
-△ Sprite sheet 示例
+△ Sprite sheet 範例
 
 ```dart
 final spriteSheet = gameRef.images.fromCache(
@@ -144,13 +144,13 @@ animation = SpriteAnimation.fromFrameData(
 );
 ```
 
-接下来详细解析 Flutter 弹球游戏代码。
+接下來詳細解析 Flutter 彈球遊戲程式碼。
 
-## 来自 Firebase 的实时积分排行榜
+## 來自 Firebase 的即時積分排行榜
 
-Flutter 弹球排行榜实时地显示世界各地玩家的最高分数。
-我们使用 Firebase [Cloud Firestore](https://firebase.google.cn/docs/firestore "Firebase Cloud Firestore 文档") 记录排名前十的分数，将其显示在排行榜上。
-当一个新的分数计入排行榜时，一个 [Cloud Function](https://firebase.google.cn/docs/functions "Firebase Cloud Function 文档") 会将分数按降序排列并删除目前不在前十的分数。
+Flutter 彈球排行榜即時地顯示世界各地玩家的最高分數。
+我們使用 Firebase [Cloud Firestore](https://firebase.google.cn/docs/firestore "Firebase Cloud Firestore 文件") 記錄排名前十的分數，將其顯示在排行榜上。
+當一個新的分數計入排行榜時，一個 [Cloud Function](https://firebase.google.cn/docs/functions "Firebase Cloud Function 文件") 會將分數按降序排列並刪除目前不在前十的分數。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/PTfsgf.png)
 
@@ -173,22 +173,22 @@ Future<List<LeaderboardEntryData>> fetchTop10Leaderboard() async {
 }
 ```
 
-## 构建 Web 应用
+## 建構 Web 應用
 
-与传统应用相比，制作响应式的游戏更容易。弹球游戏只需要根据设备的大小进行缩放即可。
-对于 Flutter 弹球游戏，我们基于固定比例的设备大小进行缩放。
-确保了无论在何种显示大小，坐标系统总是相同的。保证组件在不同设备之间的一致显示和交互非常重要。
+與傳統應用相比，製作響應式的遊戲更容易。彈球遊戲只需要根據裝置的大小進行縮放即可。
+對於 Flutter 彈球遊戲，我們基於固定比例的裝置大小進行縮放。
+確保了無論在何種顯示大小，座標系統總是相同的。保證元件在不同裝置之間的一致顯示和互動非常重要。
 
-Flutter 弹球游戏也适配了移动和桌面浏览器。
-在移动浏览器上，用户可以点击启动按钮开始播放，也可以点击屏幕左右两侧来控制相应的挡板。
-在桌面浏览器上，用户可以使用键盘来发射弹球和控制挡板。
+Flutter 彈球遊戲也適配了移動和桌面瀏覽器。
+在移動瀏覽器上，使用者可以點選啟動按鈕開始播放，也可以點選螢幕左右兩側來控制相應的擋板。
+在桌面瀏覽器上，使用者可以使用鍵盤來發射彈球和控制擋板。
 
-## 代码架构
+## 程式碼架構
 
-弹球代码遵循分层架构，每个功能都在自己的文件夹中。
-在这个项目中，游戏逻辑也与视觉组件分离。让我们能独立于游戏逻辑轻松地更新视觉元素。
-弹球游戏的主题取决于玩家在游戏开始前选择的角色。主题是由 `CharacterThemeCubit` 类控制的。
-根据角色的选择，球的颜色、背景和其他元素都会更新。
+彈球程式碼遵循分層架構，每個功能都在自己的資料夾中。
+在這個專案中，遊戲邏輯也與視覺元件分離。讓我們能獨立於遊戲邏輯輕鬆地更新視覺元素。
+彈球遊戲的主題取決於玩家在遊戲開始前選擇的角色。主題是由 `CharacterThemeCubit` 類控制的。
+根據角色的選擇，球的顏色、背景和其他元素都會更新。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/BPnkOM.png)
 
@@ -226,13 +226,13 @@ abstract class CharacterTheme extends Equatable {
 }
 ```
 
-Flutter 弹球的游戏状态是用
-[flam_bloc](https://pub.flutter-io.cn/packages/flame_bloc "Flutter package: flam_bloc 页面") 这个 package 处理的，
-这是一个组合了 bloc 和 Flame 组件的 package。
-例如，我们使用 `flame_bloc` 来记录剩余的游戏回合数、游戏中获得的奖励以及当前的游戏分数。
-另外，在 wdget 树顶层有一个 widget，它包含加载页面的逻辑以及玩游戏的说明。
-我们还遵循 [行为型模式](http://baike.baidu.com/l/i4znnfCN "百度百科: 设计模式行为型模式") 来封装和隔离基于组件的游戏功能元素。
-例如，保险杠在被球击中时会发出声音，所以我们实现了 `BumperNoiseBehavior` 类来处理这个问题。
+Flutter 彈球的遊戲狀態是用
+[flam_bloc](https://pub.flutter-io.cn/packages/flame_bloc "Flutter package: flam_bloc 頁面") 這個 package 處理的，
+這是一個組合了 bloc 和 Flame 元件的 package。
+例如，我們使用 `flame_bloc` 來記錄剩餘的遊戲回合數、遊戲中獲得的獎勵以及當前的遊戲分數。
+另外，在 wdget 樹最上層有一個 widget，它包含載入頁面的邏輯以及玩遊戲的說明。
+我們還遵循 [行為型模式](http://baike.baidu.com/l/i4znnfCN "百度百科: 設計模式行為型模式") 來封裝和隔離基於元件的遊戲功能元素。
+例如，保險槓在被球擊中時會發出聲音，所以我們實現了 `BumperNoiseBehavior` 類來處理這個問題。
 
 
 ```dart
@@ -245,26 +245,26 @@ class BumperNoiseBehavior extends ContactBehavior {
 }
 ```
 
-代码库还包含全面的单元测试、组件测试和黄金测试。测试游戏会带来一些挑战，
-因为一个组件可能具有多个职责，使得它们很难单独地进行测试。
-最终我们定义了更好的隔离和测试组件的模式，
-并将其改进整合到
-[flame_test](https://pub.flutter-io.cn/packages/flame_test "Flutter package: flame_test 页面") 这个 package 中。
+程式碼庫還包含全面的單元測試、元件測試和黃金測試。測試遊戲會帶來一些挑戰，
+因為一個元件可能具有多個職責，使得它們很難單獨地進行測試。
+最終我們定義了更好的隔離和測試元件的模式，
+並將其改進整合到
+[flame_test](https://pub.flutter-io.cn/packages/flame_test "Flutter package: flame_test 頁面") 這個 package 中。
 
-## 组件沙盒
+## 元件沙盒
 
-这个项目高度依赖于 Flame 组件带来的仿真弹球体验。
-代码附带了一个组件沙盒，它类似于 Flutter Gallery 中展示的
-[UI 组件库](https://gallery.flutter.cn/#/ "Flutter Gallery 网页版")。
-在开发游戏时，这是一个很有用的工具，
-因为它提供了独立的每个游戏组件以确保它们的外观和行为符合预期，然后再将它们整合到游戏中。
+這個專案高度依賴於 Flame 元件帶來的模擬彈球體驗。
+程式碼附帶了一個元件沙盒，它類似於 Flutter Gallery 中展示的
+[UI 元件庫](https://gallery.flutter.cn/#/ "Flutter Gallery 網頁版")。
+在開發遊戲時，這是一個很有用的工具，
+因為它提供了獨立的每個遊戲元件以確保它們的外觀和行為符合預期，然後再將它們整合到遊戲中。
 
-## 接下来
+## 接下來
 
-邀请你来 [Flutter Pinball](https://pinball.flutter.cn/ "Flutter Pinball 弹球游戏") 试玩并获取高分！
-关注积分排行榜并且在社交媒体上分享你的分数，
-也可以在 [GitHub repo](https://github.com/flutter/pinball "弹球游戏源代码仓库") 访问并学习项目的开源代码。
+邀請你來 [Flutter Pinball](https://pinball.flutter.cn/ "Flutter Pinball 彈球遊戲") 試玩並獲取高分！
+關注積分排行榜並且在社交媒體上分享你的分數，
+也可以在 [GitHub repo](https://github.com/flutter/pinball "彈球遊戲原始碼儲存庫") 存取並學習專案的開原始碼。
 
 ---
 [原文](https://medium.com/flutter/i-o-pinball-powered-by-flutter-and-firebase-d22423f3f5d)，
-本地化：CFUG 团队，[中文链接](https://flutter.cn/posts/i-o-pinball)。
+本地化：CFUG 團隊，[中文連結](https://flutter.cn/posts/i-o-pinball)。

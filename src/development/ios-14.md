@@ -1,9 +1,9 @@
 ---
 title: Developing for iOS 14
-title: Flutter 的 iOS 14 支持
+title: Flutter 的 iOS 14 支援
 description: Describes a couple gotchas (and how to work around them) when developing for iOS 14.
-description: 介绍为 iOS 14 系统开发时候可能会遇到的坑以及解决办法。
-tags: Flutter开发,部署,原生系统
+description: 介紹為 iOS 14 系統開發時候可能會遇到的坑以及解決辦法。
+tags: Flutter開發,部署,原生系統
 keywords: iOS 14,iOS 14填坑
 ---
 

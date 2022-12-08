@@ -1,7 +1,7 @@
 ---
 title: Flutter Brand Guidelines
 title: Flutter 品牌指南
-tags: 站点资源
+tags: 站點資源
 keywords: Flutter logo, Dart logo, 官方
 ---
 

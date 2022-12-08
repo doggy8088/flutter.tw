@@ -1,17 +1,17 @@
 ---
 title: Navigate with named routes
-title: 导航到对应名称的 routes 里
+title: 導航到對應名稱的 routes 裡
 description: How to implement named routes for navigating between screens.
-description: 如何实现用于导航的命名路由。
-tags: cookbook, 实用教程, 路由
-keywords: 页面跳转
+description: 如何實現用於導航的命名路由。
+tags: cookbook, 實用課程, 路由
+keywords: 頁面跳轉
 prev:
   title: Navigate to a new screen and back
-  title: 导航到一个新页面和返回
+  title: 導航到一個新頁面和返回
   path: /docs/cookbook/navigation/navigation-basics
 next:
   title: Pass arguments to a named route
-  title: 给特定的 route 传参
+  title: 給特定的 route 傳參
   path: /docs/cookbook/navigation/navigate-with-arguments
 js:
   - defer: true
@@ -33,59 +33,59 @@ In the [Navigate to a new screen and back][] recipe,
 you learned how to navigate to a new screen by creating a new route and
 pushing it to the [`Navigator`][].
 
-在 [导航到一个新页面和返回][Navigate to a new screen and back] 一节中，
-我们通过创建一个新的路由并将它推到 [`Navigator`][] 
-类中学习到了如何导航到新的一个界面 (screen)。
+在 [導航到一個新頁面和返回][Navigate to a new screen and back] 一節中，
+我們透過建立一個新的路由並將它推到 [`Navigator`][] 
+類中學習到了如何導航到新的一個介面 (screen)。
 
 However, if you need to navigate to the same screen in many parts
 of your app, this approach can result in code duplication.
 The solution is to define a _named route_,
 and use the named route for navigation.
 
-然而，如果我们需要在应用的很多地方导航到同一界面，
-这样做就会导致代码重复。
-在这种情况下，定义 **命名路由 (named route)** 
-并使用它进行导航就会非常方便。
+然而，如果我們需要在應用的很多地方導航到同一介面，
+這樣做就會導致程式碼重複。
+在這種情況下，定義 **命名路由 (named route)** 
+並使用它進行導航就會非常方便。
 
 To work with named routes,
 use the [`Navigator.pushNamed()`][] function.
 This example replicates the functionality from the original recipe,
 demonstrating how to use named routes using the following steps:
 
-要使用命名路由，我们可以使用 [`Navigator.pushNamed()`][] 方法。
-下面的例子展示如何使用“命名路由”来实现前一节中的功能。
+要使用命名路由，我們可以使用 [`Navigator.pushNamed()`][] 方法。
+下面的例子展示如何使用“命名路由”來實現前一節中的功能。
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Create two screens.
   
-     创建两个界面
+     建立兩個介面
 
   2. Define the routes.
 
-     定义路由
+     定義路由
 
   3. Navigate to the second screen using `Navigator.pushNamed()`.
 
-     使用 `Navigator.pushNamed()` 跳转到第二个界面
+     使用 `Navigator.pushNamed()` 跳轉到第二個介面
 
   4. Return to the first screen using `Navigator.pop()`.
 
-     使用 `Navigator.pop()` 返回到第一个界面
+     使用 `Navigator.pop()` 返回到第一個介面
 
 ## 1. Create two screens
 
-## 1. 创建两个界面
+## 1. 建立兩個介面
 
 First, create two screens to work with. The first screen contains a
 button that navigates to the second screen. The second screen contains a
 button that navigates back to the first.
 
-首先，我们需要两个界面来开始。
-第一个界面将包含一个跳转到第二个界面的按钮，
-第二个界面将包含一个跳转回第一个界面的按钮。
+首先，我們需要兩個介面來開始。
+第一個介面將包含一個跳轉到第二個介面的按鈕，
+第二個介面將包含一個跳轉回第一個介面的按鈕。
 
 <?code-excerpt "lib/main_original.dart"?>
 ```dart
@@ -136,22 +136,22 @@ class SecondScreen extends StatelessWidget {
 
 ## 2. Define the routes
 
-## 2. 定义路由
+## 2. 定義路由
 
 Next, define the routes by providing additional properties
 to the [`MaterialApp`][] constructor: the `initialRoute`
 and the `routes` themselves.
 
-接下来，我们需要通过为 [`MaterialApp`][] 的构造函数额外的属性：
-`initialRoute` 和 `routes` 来定义我们的路由。
+接下來，我們需要透過為 [`MaterialApp`][] 的建構函式額外的屬性：
+`initialRoute` 和 `routes` 來定義我們的路由。
 
 The `initialRoute` property defines which route the app should start with.
 The `routes` property defines the available named routes and the widgets
 to build when navigating to those routes.
 
-`initialRoute` 属性定义了应用应该从哪个路由启动。
-`routes` 属性定义了所有可用的命名路由，
-以及当我们跳转到这些路由时应该构建的 widgets。
+`initialRoute` 屬性定義了應用應該從哪個路由啟動。
+`routes` 屬性定義了所有可用的命名路由，
+以及當我們跳轉到這些路由時應該建構的 widgets。
 
 {% comment %}
 RegEx removes the trailing comma
@@ -176,27 +176,27 @@ MaterialApp(
 
   When using `initialRoute`, **don't** define a `home` property.
 
-  当使用 `initialRoute` 时，需要确保你没有同时定义 `home` 属性。
+  當使用 `initialRoute` 時，需要確保你沒有同時定義 `home` 屬性。
 {{site.alert.end}}
 
 ## 3. Navigate to the second screen
 
-## 3. 跳转到第二个界面
+## 3. 跳轉到第二個介面
 
 With the widgets and routes in place, trigger navigation by using the
 [`Navigator.pushNamed()`][] method.
 This tells Flutter to build the widget defined in the
 `routes` table and launch the screen.
 
-准备好了 Widgets 和路由，我们就可以开始进行页面跳转。
-在这里，我们将使用 [`Navigator.pushNamed()`][] 函数。
-它会告诉 Flutter 去构建我们在 `routes` 表中定义的 widget 并启动该界面。
+準備好了 Widgets 和路由，我們就可以開始進行頁面跳轉。
+在這裡，我們將使用 [`Navigator.pushNamed()`][] 函式。
+它會告訴 Flutter 去建構我們在 `routes` 表中定義的 widget 並啟動該介面。
 
 In the `build()` method of the `FirstScreen` widget, update the `onPressed()`
 callback:
 
 在 `FirstScreen` widget 的 `build()` 方法中，
-我们将更新 `onPressed()` 回调：
+我們將更新 `onPressed()` 回呼(Callback)：
 
 {% comment %}
 RegEx removes the trailing comma
@@ -212,13 +212,13 @@ onPressed: () {
 
 ## 4. Return to the first screen
 
-## 4. 返回到第一个界面
+## 4. 返回到第一個介面
 
 To navigate back to the first screen, use the
 [`Navigator.pop()`][] function.
 
-为了能够跳转回第一个页面，
-我们可以使用 [`Navigator.pop()`][] 方法。
+為了能夠跳轉回第一個頁面，
+我們可以使用 [`Navigator.pop()`][] 方法。
 
 {% comment %}
 RegEx removes the trailing comma
@@ -235,7 +235,7 @@ onPressed: () {
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

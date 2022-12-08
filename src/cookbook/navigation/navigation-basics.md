@@ -1,17 +1,17 @@
 ---
 title: Navigate to a new screen and back
-title: 导航到一个新页面和返回
+title: 導航到一個新頁面和返回
 description: How to navigate between routes.
-description: 如何在路由之间进行导航。
-tags: cookbook, 实用教程, 路由
-keywords: 路由之间的切换
+description: 如何在路由之間進行導航。
+tags: cookbook, 實用課程, 路由
+keywords: 路由之間的切換
 prev:
   title: Animate a widget across screens
-  title: 跨页面切换的动效 Widget (Hero animations)
+  title: 跨頁面切換的動效 Widget (Hero animations)
   path: /docs/cookbook/navigation/hero-animations
 next:
   title: Navigate with named routes
-  title: 导航到对应名称的 routes 里
+  title: 導航到對應名稱的 routes 裡
   path: /docs/cookbook/navigation/named-routes
 js:
   - defer: true
@@ -26,17 +26,17 @@ For example, an app might have a screen that displays products.
 When the user taps the image of a product, a new screen displays
 details about the product.
 
-我们通常会用“屏”来表示应用的不同页面（界面）。
-比如，某个应用有一“屏”展示商品列表，当用户点击某个商品的图片，
-会跳到新的一“屏”展示商品的详细信息。
+我們通常會用“屏”來表示應用的不同頁面（介面）。
+比如，某個應用有一“屏”展示商品列表，當用戶點選某個商品的圖片，
+會跳到新的一“屏”展示商品的詳細資訊。
 
 {{site.alert.secondary}}
 
   **Terminology**: In Flutter, _screens_ and _pages_ are called _routes_.
   The remainder of this recipe refers to routes.
   
-  **术语**: 在 Flutter 中，**屏 (screen)** 和 **页面 (page)** 都叫做 **路由 (route)**，
-  在下文中统称为“路由 (route)”。
+  **術語**: 在 Flutter 中，**屏 (screen)** 和 **頁面 (page)** 都叫做 **路由 (route)**，
+  在下文中統稱為“路由 (route)”。
   
 {{site.alert.end}}
 
@@ -44,53 +44,53 @@ In Android, a route is equivalent to an Activity.
 In iOS, a route is equivalent to a ViewController.
 In Flutter, a route is just a widget.
 
-在 Android 开发中，Activity 相当于“路由”，
-在 iOS 开发中，ViewController 相当于“路由”。
-在 Flutter 中，“路由”也是一个 widget。
+在 Android 開發中，Activity 相當於“路由”，
+在 iOS 開發中，ViewController 相當於“路由”。
+在 Flutter 中，“路由”也是一個 widget。
 
 This recipe uses the [`Navigator`][] to navigate to a new route.
 
-怎么样从一个“路由”跳转到新的“路由”呢？[`Navigator`][] 类。
+怎麼樣從一個“路由”跳轉到新的“路由”呢？[`Navigator`][] 類別。
 
-这个教程里我们使用 [`Navigator`][] 来跳转到一个新的“路由”：
+這個課程裡我們使用 [`Navigator`][] 來跳轉到一個新的“路由”：
 
 ## Directions
 
-## 步骤
+## 步驟
 
 The next few sections show how to navigate between two routes,
 using these steps:
 
-下面来展示如何在两个路由间跳转，总共分三步：
+下面來展示如何在兩個路由間跳轉，總共分三步：
 
   1. Create two routes.
   
-     创建两个路由
+     建立兩個路由
      
   2. Navigate to the second route using Navigator.push().
      
-     用 Navigator.push() 跳转到第二个路由
+     用 Navigator.push() 跳轉到第二個路由
      
   3. Return to the first route using Navigator.pop().
   
-     用 Navigator.pop() 回退到第一个路由
+     用 Navigator.pop() 回退到第一個路由
 
 ## 1. Create two routes
 
-## 1. 创建两个路由
+## 1. 建立兩個路由
 
 First, create two routes to work with. Since this is a basic example,
 each route contains only a single button. Tapping the button on the
 first route navigates to the second route. Tapping the button on the
 second route returns to the first route.
 
-首先，我们来创建两个路由。这是个最简单的例子，每个路由只包含一个按钮。
-点击第一个路由上的按钮会跳转到第二个路由，
-点击第二个路由上的按钮，会回退到第一个路由。
+首先，我們來建立兩個路由。這是個最簡單的例子，每個路由只包含一個按鈕。
+點選第一個路由上的按鈕會跳轉到第二個路由，
+點選第二個路由上的按鈕，會回退到第一個路由。
 
 First, set up the visual structure:
 
-首先来编写界面布局代码：
+首先來編寫介面佈局程式碼：
 
 <?code-excerpt "lib/main_step1.dart (FirstSecondRoutes)"?>
 ```dart
@@ -139,7 +139,7 @@ class SecondRoute extends StatelessWidget {
 
 ## 2. Navigate to the second route using Navigator.push()
 
-## 2. 用 Navigator.push() 跳转到第二个路由
+## 2. 用 Navigator.push() 跳轉到第二個路由
 
 To switch to a new route, use the [`Navigator.push()`][]
 method. The `push()` method adds a `Route` to the stack of routes managed by
@@ -148,18 +148,18 @@ You can create your own, or use a [`MaterialPageRoute`][],
 which is useful because it transitions to the
 new route using a platform-specific animation.
 
-使用 [`Navigator.push()`] 方法跳转到新的路由，
-`push()` 方法会添加一个 `Route` 对象到导航器的堆栈上。
-那么这个 `Route` 对象是从哪里来的呢？
-你可以自己实现一个，或者直接使用 [`MaterialPageRoute`][] 类。
+使用 [`Navigator.push()`] 方法跳轉到新的路由，
+`push()` 方法會新增一個 `Route` 物件到導航器的堆疊上。
+那麼這個 `Route` 物件是從哪裡來的呢？
+你可以自己實現一個，或者直接使用 [`MaterialPageRoute`][] 類別。
 使用 `MaterialPageRoute` 是非常方便的，
-框架已经为我们实现了和平台原生类似的切换动画。 
+框架已經為我們實現了和平台原生類似的切換動畫。 
 
 In the `build()` method of the `FirstRoute` widget,
 update the `onPressed()` callback:
 
 在 `FirstRoute` widget 的 `build()` 方法中，
-我们来修改  `onPressed()` 回调函数：
+我們來修改  `onPressed()` 回呼(Callback)函式：
 
 <?code-excerpt "lib/main_step2.dart (FirstRouteOnPressed)"?>
 ```dart
@@ -174,22 +174,22 @@ onPressed: () {
 
 ## 3. Return to the first route using Navigator.pop()
 
-## 3. 用 Navigator.pop() 回退到第一个路由
+## 3. 用 Navigator.pop() 回退到第一個路由
 
 How do you close the second route and return to the first?
 By using the [`Navigator.pop()`][] method.
 The `pop()` method removes the current `Route` from the stack of
 routes managed by the `Navigator`.
 
-怎么关闭第二个路由回退到第一个呢? 
+怎麼關閉第二個路由回退到第一個呢? 
 使用 [`Navigator.pop()`][] 方法，
-`pop()` 方法会从导航器堆栈上移除 `Route` 对象。
+`pop()` 方法會從導航器堆疊上移除 `Route` 物件。
 
 To implement a return to the original route, update the `onPressed()`
 callback in the `SecondRoute` widget:
 
-实现返回第一个页面，更新 `SecondRoute` widget
-的 `onPressed()` 方法回调。
+實現返回第一個頁面，更新 `SecondRoute` widget
+的 `onPressed()` 方法回呼(Callback)。
 
 <?code-excerpt "lib/main_step2.dart (SecondRouteOnPressed)"?>
 ```dart
@@ -201,7 +201,7 @@ onPressed: () {
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

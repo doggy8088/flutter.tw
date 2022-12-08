@@ -1,17 +1,17 @@
 ---
 title: Play and pause a video
-title: 视频的播放和暂停
+title: 影片的播放和暫停
 description: How to use the video_player plugin.
-description: 如何使用 video_player 插件。
-tags: cookbook, 实用教程, 原生插件
-keywords: Flutter播放视频
+description: 如何使用 video_player 外掛。
+tags: cookbook, 實用課程, 原生外掛
+keywords: Flutter播放影片
 prev:
   title: Store key-value data on disk
-  title: 存储键值对数据
+  title: 儲存鍵值對資料
   path: /docs/cookbook/persistence/key-value
 next:
   title: Take a picture using the camera
-  title: 使用 Camera 插件实现拍照功能
+  title: 使用 Camera 外掛實現拍照功能
   path: /docs/cookbook/plugins/picture-using-camera
 ---
 
@@ -23,57 +23,57 @@ the Flutter team provides the [`video_player`][] plugin.
 You can use the `video_player` plugin to play videos
 stored on the file system, as an asset, or from the internet.
 
-在任何应用开发中，视频播放都是一项常见任务，Flutter 应用也不例外。
-为了支持视频播放，Flutter 团队提供了 [`video_player`][] 插件。
-你可以使用 `video_player` 插件播放存储在本地文件系统中的视频或者网络视频。
+在任何應用開發中，影片播放都是一項常見任務，Flutter 應用也不例外。
+為了支援影片播放，Flutter 團隊提供了 [`video_player`][] 外掛。
+你可以使用 `video_player` 外掛播放儲存在本地檔案系統中的影片或者網路影片。
 
 On iOS, the `video_player` plugin makes use of
 [`AVPlayer`][] to handle playback. On Android,
 it uses [`ExoPlayer`][].
 
-在 iOS 上，`video_player` 使用 [`AVPlayer`][] 进行播放控制。
+在 iOS 上，`video_player` 使用 [`AVPlayer`][] 進行播放控制。
 在 Android 上，使用的是 [`ExoPlayer`][]。
 
 This recipe demonstrates how to use the `video_player` package to stream a
 video from the internet with basic play and pause controls using
 the following steps:
 
-这个章节讲解的是如何借助 `video_player` 包接收网络视频流，
-并加入基本的播放、暂停操作。
+這個章節講解的是如何藉助 `video_player` 包接收網路影片流，
+並加入基本的播放、暫停操作。
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Add the `video_player` dependency.
      
-     添加 `video_player` 依赖
+     新增 `video_player` 依賴
 
   2. Add permissions to your app.
 
-     添加权限
+     新增許可權
 
   3. Create and initialize a `VideoPlayerController`.
 
-     创建并初始化 `VideoPlayerController`
+     建立並初始化 `VideoPlayerController`
 
   4. Display the video player.
 
-     展示视频播放器
+     展示影片播放器
 
   5. Play and pause the video.
 
-     播放视频和暂停视频
+     播放影片和暫停影片
 
 ## 1. Add the `video_player` dependency
 
-## 1. 添加 `video_player` 依赖
+## 1. 新增 `video_player` 依賴
 
 This recipe depends on one Flutter plugin: `video_player`. First, add this
 dependency to your `pubspec.yaml`.
 
-这个章节基于一个 Flutter 插件： `video_player`。
-首先，添加依赖到 `pubspec.yaml` 中：
+這個章節基於一個 Flutter 外掛： `video_player`。
+首先，新增依賴到 `pubspec.yaml` 中：
 
 ```yaml
 dependencies:
@@ -84,13 +84,13 @@ dependencies:
 
 ## 2. Add permissions to your app
 
-## 2. 添加权限
+## 2. 新增許可權
 
 Next, update your `android` and `ios` configurations to ensure
 that your app has the correct permissions to stream videos
 from the internet.
 
-然后，你需要确保你的应用拥有从网络中获取视频流的权限。
+然後，你需要確保你的應用擁有從網路中獲取影片流的許可權。
 因此，你需要更新你的 `android` 和 `ios` 配置。
 
 ### Android
@@ -101,8 +101,8 @@ Add the following permission to the `AndroidManifest.xml` file just after the
 `<application>` definition. The `AndroidManifest.xml` file is found at
 `<project root>/android/app/src/main/AndroidManifest.xml`.
 
-在 `AndroidManifest.xml` 文件中的 `<application>` 配置项下加入如下权限。
-`AndroidManifest.xml` 文件的路径是
+在 `AndroidManifest.xml` 檔案中的 `<application>` 配置項下加入如下許可權。
+`AndroidManifest.xml` 檔案的路徑是
 `<project root>/android/app/src/main/AndroidManifest.xml`
 
 <!-- skip -->
@@ -123,8 +123,8 @@ Add the following permission to the `AndroidManifest.xml` file just after the
 For iOS, add the following to the `Info.plist` file found at 
 `<project root>/ios/Runner/Info.plist`. 
 
-针对 iOS，你需要在 `<project root>/ios/Runner/Info.plist`
-路径下的 `Info.plist` 文件中加入如下配置。
+針對 iOS，你需要在 `<project root>/ios/Runner/Info.plist`
+路徑下的 `Info.plist` 檔案中加入如下配置。
 
 <!-- skip -->
 ```xml
@@ -140,54 +140,54 @@ For iOS, add the following to the `Info.plist` file found at
   The `video_player` plugin doesn't work on iOS simulators.
   You must test videos on real iOS devices.
   
-  `video_player` 插件在 iOS 模拟器上不能使用，必须要在 iOS 真机上进行测试。
+  `video_player` 外掛在 iOS 模擬器上不能使用，必須要在 iOS 真機上進行測試。
 
 {{site.alert.end}}
 
 ## 3. Create and initialize a `VideoPlayerController`
 
-## 3. 创建并初始化 `VideoPlayerController`
+## 3. 建立並初始化 `VideoPlayerController`
 
 Now that you have the `video_player` plugin installed with the correct
 permissions, create a `VideoPlayerController`. The
 `VideoPlayerController` class allows you to connect to different types of
 videos and control playback.
 
-`video_player` 插件成功安装且权限设置完成后，
-需要创建一个 `VideoPlayerController`。
-`VideoPlayerController` 类允许你播放不同类型的视频并进行播放控制。
+`video_player` 外掛成功安裝且許可權設定完成後，
+需要建立一個 `VideoPlayerController`。
+`VideoPlayerController` 類允許你播放不同型別的影片並進行播放控制。
 
 Before you can play videos, you must also `initialize` the controller.
 This establishes the connection to the video and prepare the
 controller for playback.
 
-在播放视频前，需要对播放控制器进行初始化。
-初始化过程主要是与视频源建立连接和播放控制的准备。
+在播放影片前，需要對播放控制器進行初始化。
+初始化過程主要是與影片源建立連線和播放控制的準備。
 
 To create and initialize the `VideoPlayerController` do the following:
 
-创建和初始化 `VideoPlayerController` 时，请遵循以下步骤：
+建立和初始化 `VideoPlayerController` 時，請遵循以下步驟：
 
   1. Create a `StatefulWidget` with a companion `State` class 
 
-     创建一个 `StatefulWidget` 组件和 `State` 类
+     建立一個 `StatefulWidget` 元件和 `State` 類
 
   2. Add a variable to the `State` class to store the `VideoPlayerController`
 
-     在 `State` 类中增加一个变量来存放 `VideoPlayerController`
+     在 `State` 類中增加一個變數來存放 `VideoPlayerController`
 
   3. Add a variable to the `State` class to store the `Future` returned from
   `VideoPlayerController.initialize`
 
-     在 `State` 类中增加另外一个变量来存放 `VideoPlayerController.initialize` 返回的 `Future`
+     在 `State` 類中增加另外一個變數來存放 `VideoPlayerController.initialize` 返回的 `Future`
 
   4. Create and initialize the controller in the `initState` method
 
-     在 `initState` 方法里创建和初始化控制器
+     在 `initState` 方法裡建立和初始化控制器
 
   5. Dispose of the controller in the `dispose` method
 
-     在 `dispose` 方法里销毁控制器
+     在 `dispose` 方法裡銷燬控制器
 
 <?code-excerpt "lib/main_step3.dart (VideoPlayerScreen)"?>
 ```dart
@@ -234,7 +234,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
 ## 4. Display the video player
 
-## 4. 展示视频播放器
+## 4. 展示影片播放器
 
 Now, display the video. The `video_player` plugin provides the
 [`VideoPlayer`][] widget to display the video initialized by
@@ -243,26 +243,26 @@ By default, the `VideoPlayer` widget takes up as much space as possible.
 This often isn't ideal for videos because they are meant
 to be displayed in a specific aspect ratio, such as 16x9 or 4x3.
 
-现在到了展示播放器的时候。`video_player` 插件提供了 [`VideoPlayer`][] 组件
-来展示已经被 `VideoPlayerController` 初始化完成的视频。
-默认情况下，`VideoPlayer` 组件会尽可能撑满整个空间。
-但是这通常不会太理想，因为很多时候视频需要在特定的宽高比下展示，
+現在到了展示播放器的時候。`video_player` 外掛提供了 [`VideoPlayer`][] 元件
+來展示已經被 `VideoPlayerController` 初始化完成的影片。
+預設情況下，`VideoPlayer` 元件會盡可能撐滿整個空間。
+但是這通常不會太理想，因為很多時候影片需要在特定的寬高比下展示，
 比如 16x9 或者 4x3。
 
 Therefore, wrap the `VideoPlayer` widget in an [`AspectRatio`][]
 widget to ensure that the video has the correct proportions.
 
-因此，你可以把 `VideoPlayer` 组件嵌进一个
-[`AspectRatio`][] 组件中，保证视频播放保持正确的比例。
+因此，你可以把 `VideoPlayer` 元件嵌進一個
+[`AspectRatio`][] 元件中，保證影片播放保持正確的比例。
 
 Furthermore, you must display the `VideoPlayer` widget after the
 `_initializeVideoPlayerFuture()` completes. Use `FutureBuilder` to
 display a loading spinner until the controller finishes initializing.
 Note: initializing the controller does not begin playback.
 
-此外，你必须在 `_initializeVideoPlayerFuture` 完成后才展示 `VideoPlayer` 组件。
-你可以使用 `FutureBuilder` 来展示一个旋转的加载图标直到初始化完成。
-请注意：控制器初始化完成并不会立即开始播放。
+此外，你必須在 `_initializeVideoPlayerFuture` 完成後才展示 `VideoPlayer` 元件。
+你可以使用 `FutureBuilder` 來展示一個旋轉的載入圖示直到初始化完成。
+請注意：控制器初始化完成並不會立即開始播放。
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/body: //g;/,$//g"?>
 ```dart
@@ -292,15 +292,15 @@ FutureBuilder(
 
 ## 5. Play and pause the video
 
-## 5. 播放视频和暂停视频
+## 5. 播放影片和暫停影片
 
 By default, the video starts in a paused state. To begin playback,
 call the [`play()`][] method provided by the `VideoPlayerController`.
 To pause playback, call the [`pause()`][] method.
 
-默认情况下，播放器启动时会处于暂停状态。开始播放，
-需要调用 `VideoPlayerController` 提供的[`play()`][] 方法。
-停止播放，需要调用 [`pause()`][] 方法。
+預設情況下，播放器啟動時會處於暫停狀態。開始播放，
+需要呼叫 `VideoPlayerController` 提供的[`play()`][] 方法。
+停止播放，需要呼叫 [`pause()`][] 方法。
 
 For this example,
 add a `FloatingActionButton` to your app that displays a play
@@ -309,10 +309,10 @@ When the user taps the button,
 play the video if it's currently paused,
 or pause the video if it's playing.
 
-在这个示例中，向应用加入了一个 `FloatingActionButton`，
-这个按钮会根据播放状态展示播放或者暂停的图标。
-当用户点击按钮，会切换播放状态。
-如果当前是暂停状态，就开始播放。如果当前是播放状态，就暂停播放。
+在這個範例中，嚮應用加入了一個 `FloatingActionButton`，
+這個按鈕會根據播放狀態展示播放或者暫停的圖示。
+當用戶點選按鈕，會切換播放狀態。
+如果當前是暫停狀態，就開始播放。如果當前是播放狀態，就暫停播放。
 
 <?code-excerpt "lib/main.dart (FAB)" replace="/^floatingActionButton: //g;/,$//g"?>
 ```dart
@@ -339,7 +339,7 @@ FloatingActionButton(
 
 ## Complete example
 
-## 完整样例
+## 完整範例
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

@@ -1,16 +1,16 @@
 ---
 title: Flutter compatibility policy
-title: Flutter 兼容性策略
+title: Flutter 相容性策略
 description: How Flutter approaches the question of breaking changes.
-description: Flutter 团队如何处理破坏性改动 (breaking changes) 的问题。
+description: Flutter 團隊如何處理破壞性改動 (breaking changes) 的問題。
 ---
 
 The Flutter team tries to balance the need for API stability with the
 need to keep evolving APIs to fix bugs, improve API ergonomics,
 and provide new features in a coherent manner.
 
-Flutter 团队努力平衡对 API 稳定性的需求和对 API 持续研发以修复 bug，提升其人机工程学体验的需求。
-并且我们会通过一种连贯的方式来提供新特性。
+Flutter 團隊努力平衡對 API 穩定性的需求和對 API 持續研發以修復 bug，提升其人機工程學體驗的需求。
+並且我們會透過一種連貫的方式來提供新特性。
 
 To this end, we have created a test registry where you can provide
 unit tests for your own applications or libraries that we run
@@ -20,71 +20,71 @@ changes that break these tests without working with the developers of
 those tests to (a) determine if the change is sufficiently valuable,
 and (b) provide fixes for the code so that the tests continue to pass.
 
-为此，我们已经创建了一个测试登记。你可以在这里针对每个改动为你的应用或库提供单元测试，
-以帮助我们追踪对现存应用造成破坏的那些改动。
-我们承诺，与这些测试的开发者进行合作以确定以下两点之前，将不会有任何改动破坏这些测试。
-（1）决定改动是否足够有价值；（2）提供对代码的修复方案使得这些测试能够继续通过。
+為此，我們已經建立了一個測試登記。你可以在這裡針對每個改動為你的應用或庫提供單元測試，
+以幫助我們追蹤對現存應用造成破壞的那些改動。
+我們承諾，與這些測試的開發者進行合作以確定以下兩點之前，將不會有任何改動破壞這些測試。
+（1）決定改動是否足夠有價值；（2）提供對程式碼的修復方案使得這些測試能夠繼續透過。
 
 If you would like to provide tests as part of this program, please
 submit a PR to the [flutter/tests repository][]. The README.md file on
 that repository describes the process in detail.
 
-作为该计划的一部分，如果你想要提供一些测试方案，
-请向 [flutter/tests repository][] 提交 PR。
-这个仓库中的 README.md 文件描述了具体流程。
+作為該計劃的一部分，如果你想要提供一些測試方案，
+請向 [flutter/tests repository][] 提交 PR。
+這個儲存庫中的 README.md 檔案描述了具體流程。
 
 ## Announcements and migration guides
 
-## 公告和迁移指南
+## 公告和遷移指南
 
 If we do make a breaking change (defined as a change that caused one
 or more of these submitted tests to require changes), we will announce
 the change on our [flutter-announce][]
 mailing list as well as in our release notes.
 
-如果我们确实发布了一项破坏性改动（定义为：会导致一个或更多已提交的测试需要变化的改动），
-我们将通过 [flutter-announce][] 邮件列表公布，并且同时写在发布版说明上。
+如果我們確實釋出了一項破壞性改動（定義為：會導致一個或更多已提交的測試需要變化的改動），
+我們將透過 [flutter-announce][] 郵件列表公佈，並且同時寫在釋出版說明上。
 
 We provide a list of [guides for migrating code][] affected by
 breaking changes.
 
-我们提供一个受破坏性改动影响的
-[迁移代码指南][guides for migrating code] 列表。
+我們提供一個受破壞性改動影響的
+[遷移程式碼指南][guides for migrating code] 列表。
 
 ## Deprecation policy
 
-## 废弃政策
+## 廢棄政策
 
 We will, on occasion, deprecate certain APIs rather than outright
 break them overnight. This is independent of our compatibility policy
 which is exclusively based on whether submitted tests fail, as
 described above.
 
-我们将会不定期的废弃一些确定的 API，而不是直接让他们不可用。
-这将独立于我们的兼容性政策，只基于已提交的测试是否失败，就如同之前描述的那样。
+我們將會不定期的廢棄一些確定的 API，而不是直接讓他們不可用。
+這將獨立於我們的相容性政策，只基於已提交的測試是否失敗，就如同之前描述的那樣。
 
 Deprecated APIs are removed after a migration grace period. This grace
 period is one calendar year after being released on the stable channel,
 or after 4 stable releases, whichever is longer.
 
-已经废弃的 API 将会在一个宽限周期后移除。
-以发布至稳定版本时开始至一个日历年，
-或是 4 个稳定版本的发布为一个宽限周期，以时间最长的为准。
+已經廢棄的 API 將會在一個寬限週期後移除。
+以釋出至穩定版本時開始至一個日曆年，
+或是 4 個穩定版本的釋出為一個寬限週期，以時間最長的為準。
 
 When a deprecation does reach end of life, we follow the same procedures
 listed above for making breaking changes in removing the deprecated API.
 
-当已经废弃的 API 到达了弃用期限时，我们会依照同上的步骤移除废弃的 API。
+當已經廢棄的 API 到達了棄用期限時，我們會依照同上的步驟移除廢棄的 API。
 
 ## Dart and other libraries used by Flutter
 
-## Dart 和其它被 Flutter 使用的库
+## Dart 和其它被 Flutter 使用的函式庫
 
 The Dart language itself has a [separate breaking-change policy][],
 with announcements on [Dart announce][].
 
-Dart 编程语言有 [自己的破坏性改动和弃用政策][separate breaking-change policy]，
-并会在 [Dart 编程语言通知邮件列表][Dart announce] 里公布。
+Dart 程式語言有 [自己的破壞性改動和棄用政策][separate breaking-change policy]，
+並會在 [Dart 程式語言通知郵件列表][Dart announce] 裡公佈。
 
 In general, the Flutter team does not currently have any commitment
 regarding breaking changes for other dependencies. For example,
@@ -94,10 +94,10 @@ engine used by Flutter) would have changes that affect contributed
 tests. Such changes would not necessarily be accompanied by a
 migration guide.
 
-总而言之，关于其它依赖的破坏性改动，Flutter 团队目前没有做出任何承诺。
-例如，有可能 Flutter 的一个新版本使用了新版本的 Skia（Flutter 使用的图形引擎）
-或者 Harfbuzz（Flutter 使用的字体形状引擎），将会影响到已提交测试的改动。
-这一类的改动不一定会被写入迁移指南。
+總而言之，關於其它依賴的破壞性改動，Flutter 團隊目前沒有做出任何承諾。
+例如，有可能 Flutter 的一個新版本使用了新版本的 Skia（Flutter 使用的圖形引擎）
+或者 Harfbuzz（Flutter 使用的字型形狀引擎），將會影響到已提交測試的改動。
+這一類別的改動不一定會被寫入遷移指南。
 
 [flutter/tests repository]: {{site.github}}/flutter/tests
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce

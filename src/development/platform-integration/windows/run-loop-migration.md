@@ -1,14 +1,14 @@
 ---
 title: Migrate a Windows project to the idiomatic run loop
-title: 将工程迁移到「更 Windows」的事件循环系统
+title: 將工程遷移到「更 Windows」的事件迴圈系統
 description: How to update a Windows project to use the idiomatic run loop
-description: 学习如何将你的 Windows 工程升级为使用「更 Windows」的事件循环策略
+description: 學習如何將你的 Windows 工程升級為使用「更 Windows」的事件迴圈策略
 ---
 
 Flutter 2.5 replaced Windows apps' run loop with an idiomatic
 Windows message pump to reduce CPU usage.
 
-Flutter 2.5 开始使用「更 Windows」的事件循环系统来降低 CPU 使用率。
+Flutter 2.5 開始使用「更 Windows」的事件迴圈系統來降低 CPU 使用率。
 
 Projects created before Flutter version 2.5 need to be
 migrated to get this improvement. You should follow the

@@ -1,27 +1,27 @@
 ## iOS setup
 
-## 设置 iOS 开发环境
+## 設定 iOS 開發環境
 
 ### Install Xcode
 
-### 安装 Xcode
+### 安裝 Xcode
 
 To develop Flutter apps for iOS, you need a Mac with Xcode installed.
 
-开发 iOS 平台上的 Flutter 应用，你需要一个安装了 Xcode 的 Mac 设备。
+開發 iOS 平臺上的 Flutter 應用，你需要一個安裝了 Xcode 的 Mac 裝置。
 
  1. Install the latest stable version of Xcode
     (using [web download][] or the [Mac App Store][]).
 
-    通过 [直接下载][web download] 或者通过 [Mac App Store][]
-    来安装最新稳定版 Xcode；
+    透過 [直接下載][web download] 或者透過 [Mac App Store][]
+    來安裝最新穩定版 Xcode；
 
  1. Configure the Xcode command-line tools to use the
     newly-installed version of Xcode by
     running the following from the command line:
 
-    配置 Xcode 命令行工具以使用新安装的 Xcode 版本。
-    从命令行中运行以下命令：
+    配置 Xcode 命令列工具以使用新安裝的 Xcode 版本。
+    從命令列中執行以下命令：
 
     ```terminal
     $ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
@@ -33,40 +33,40 @@ To develop Flutter apps for iOS, you need a Mac with Xcode installed.
     If you need to use a different version,
     specify that path instead.
 
-    当你安装了最新版本的 Xcode，大部分情况下，上面的路径都是一样的。
-    但如果你安装了不同版本的 Xcode，你可能要更改一下上述命令中的路径。
+    當你安裝了最新版本的 Xcode，大部分情況下，上面的路徑都是一樣的。
+    但如果你安裝了不同版本的 Xcode，你可能要更改一下上述命令中的路徑。
 
 1. Make sure the Xcode license agreement is signed by
     either opening Xcode once and confirming or running
     `sudo xcodebuild -license` from the command line.
  
-    运行一次 Xcode 或者通过输入命令 `sudo xcodebuild -license`
-    来确保已经同意 Xcode 的许可协议。
+    執行一次 Xcode 或者透過輸入命令 `sudo xcodebuild -license`
+    來確保已經同意 Xcode 的許可協議。
 
 Versions older than the latest stable version may still work,
 but are not recommended for Flutter development.
 
-旧版本可能也能够正常工作，但是不建议在 Flutter 开发环境中使用。
-旧版本的 Xcode 不支持定位代码，还可能无法正常工作。
+舊版本可能也能夠正常工作，但是不建議在 Flutter 開發環境中使用。
+舊版本的 Xcode 不支援定位程式碼，還可能無法正常工作。
 
 With Xcode, you’ll be able to run Flutter apps on
 an iOS device or on the simulator.
 
-安装了 Xcode 之后，你就可以在 iOS 真机或者模拟器上运行 Flutter 应用了。
+安裝了 Xcode 之後，你就可以在 iOS 真機或者模擬器上執行 Flutter 應用了。
 
 ### Set up the iOS simulator
 
-### 配置 iOS 模拟器
+### 配置 iOS 模擬器
 
 To prepare to run and test your Flutter app on the iOS simulator,
 follow these steps:
 
-如果想要在 iOS 模拟器中运行和测试 Flutter 应用，按照以下步骤即可：
+如果想要在 iOS 模擬器中執行和測試 Flutter 應用，按照以下步驟即可：
 
  1. On your Mac, find the Simulator via Spotlight or
     by using the following command:
 
-    在你的 Mac 中，通过 Spotlight 或者以下命令来运行模拟器：
+    在你的 Mac 中，透過 Spotlight 或者以下命令來執行模擬器：
 
     ```terminal
     $ open -a Simulator
@@ -76,8 +76,8 @@ follow these steps:
     (iPhone 5s or later).  You can check the device by viewing the settings in
     the simulator's **Hardware > Device** or **File > Open Simulator** menus.
 
-    通过模拟器菜单中的 **Hardware > Device** 或者 **File > Open Simulator** 
-    选项检查当前模拟器是否是 64 位机型（iPhone 5S 或之后的机型）。
+    透過模擬器選單中的 **Hardware > Device** 或者 **File > Open Simulator** 
+    選項檢查當前模擬器是否是 64 位機型（iPhone 5S 或之後的機型）。
 
  3. Depending on your development machine's screen size,
     simulated high-screen-density iOS devices
@@ -86,28 +86,28 @@ follow these steps:
     use the **Window > Physical Size** or **Window > Pixel Accurate**
     options if your computer's resolution is high enough.
 
-    根据你当前开发机器的屏幕尺寸，
-    模拟器模拟出来的高密度屏幕的设备可能会溢出你的屏幕，
-    你可以调整模拟器的边角来拖动改变比例，
-    如果你的开发机分辨率很高的话，也可以通过菜单中的
+    根據你當前開發機器的螢幕尺寸，
+    模擬器模擬出來的高密度螢幕的裝置可能會溢位你的螢幕，
+    你可以調整模擬器的邊角來拖動改變比例，
+    如果你的開發機解析度很高的話，也可以透過選單中的
     **Window > Physical Size** or **Window > Pixel Accurate**
-    选项来更改模拟器的缩放比例。
-    * 如果你只用 Xcode 版本低于 9.1，调整模拟器比例的菜单选项应该是
+    選項來更改模擬器的縮放比例。
+    * 如果你只用 Xcode 版本低於 9.1，調整模擬器比例的選單選項應該是
     **Window > Scale**。
 
 ### Create and run a simple Flutter app
 
-### 创建并运行一个简单的 Flutter 应用
+### 建立並執行一個簡單的 Flutter 應用
 
 To create your first Flutter app and test your setup,
 follow these steps:
 
-通过以下步骤来创建你的第一个 Flutter 应用并进行测试：
+透過以下步驟來建立你的第一個 Flutter 應用並進行測試：
 
  1. Create a new Flutter app by running the following from the
     command line:
 
-    通过运行以下命令来创建一个新的 Flutter 应用：
+    透過執行以下命令來建立一個新的 Flutter 應用：
  
     ```terminal
     $ flutter create my_app
@@ -116,8 +116,8 @@ follow these steps:
  2. A `my_app` directory is created, containing Flutter's starter app.
     Enter this directory:
 
-    上述命令创建了一个 `my_app` 的目录，
-    包含了 Flutter 初始的应用模版，切换路径到这个目录内：
+    上述命令建立了一個 `my_app` 的目錄，
+    包含了 Flutter 初始的應用模版，切換路徑到這個目錄內：
  
     ```terminal
     $ cd my_app
@@ -126,7 +126,7 @@ follow these steps:
  3. To launch the app in the Simulator,
     ensure that the Simulator is running and enter:
 
-    确保模拟器已经处于运行状态，输入以下命令来启动应用：
+    確保模擬器已經處於執行狀態，輸入以下命令來啟動應用：
 
     ```terminal
     $ flutter run
@@ -134,16 +134,16 @@ follow these steps:
 
 ### Deploy to iOS devices
 
-### 部署到 iOS 设备
+### 部署到 iOS 裝置
 
 To deploy your Flutter app to a physical iPhone or iPad
 you'll need to set up physical device deployment in Xcode
 and an Apple Developer account. If your app is using Flutter plugins,
 you will also need the third-party CocoaPods dependency manager.
 
-如果你想把 Flutter 应用部署到  iPhone 或 iPad 上，
-你还需要一些别的工具和一个 Apple 开发者账号。
-另外，你还需要在 Xcode 上针对你的机器做一些设置。
+如果你想把 Flutter 應用部署到  iPhone 或 iPad 上，
+你還需要一些別的工具和一個 Apple 開發者帳號。
+另外，你還需要在 Xcode 上針對你的機器做一些設定。
 
 <ol markdown="1">
 
@@ -177,8 +177,8 @@ You can skip this step if your apps do not depend on
 [Flutter plugins][] with native iOS code.
 [Install and set up CocoaPods][] by running the following commands:
 
-如果你的应用不依赖 [Flutter plugins][] 与原生 iOS 代码交互，你可以跳过这一步。
-通过运行以下命令 [安装和设置CocoaPods][Install and set up CocoaPods]。
+如果你的應用不依賴 [Flutter plugins][] 與原生 iOS 程式碼互動，你可以跳過這一步。
+透過執行以下命令 [安裝和設定CocoaPods][Install and set up CocoaPods]。
 
 ```terminal
 $ sudo gem install cocoapods
@@ -188,13 +188,13 @@ $ sudo gem install cocoapods
   The default version of Ruby requires `sudo` to install the CocoaPods gem.
   If you are using a Ruby Version manager, you may need to run without `sudo`.
 
-  Ruby 的默认版本需要 root 权限 `sudo` 来安装 CocoaPods gem，
-  如果你使用的是 Ruby Version 管理器，可能就无需 root 权限。
+  Ruby 的預設版本需要 root 許可權 `sudo` 來安裝 CocoaPods gem，
+  如果你使用的是 Ruby Version 管理器，可能就無需 root 許可權。
 
   Additionally, if you are installing on an [Apple Silicon Mac][],
   run the command:
 
-  除此之外，如果你是在 Apple 芯片的 Mac 上安装，则需要运行下面的命令：
+  除此之外，如果你是在 Apple 晶片的 Mac 上安裝，則需要執行下面的命令：
 
   ```terminal
   $ sudo gem uninstall ffi && sudo gem install ffi -- --enable-libffi-alloc
@@ -208,40 +208,40 @@ $ sudo gem install cocoapods
 
 Follow the Xcode signing flow to provision your project:
 
-按照下面 Xcode 签名流程来配置你的项目:
+按照下面 Xcode 簽名流程來配置你的專案:
 
    {: type="a"}
    1. Open the default Xcode workspace in your project by
       running `open ios/Runner.xcworkspace` in a terminal
       window from your Flutter project directory.
 
-      通过在命令行中于你当前 Flutter 项目目录下运行
-      `open ios/Runner.xcworkspace` 命令来打开默认的 Xcode 工程。
+      透過在命令列中於你當前 Flutter 專案目錄下執行
+      `open ios/Runner.xcworkspace` 命令來開啟預設的 Xcode 工程。
 
    1. Select the device you intend to deploy to in the device
       drop-down menu next to the run button.
 
-      在运行按钮的下拉列表里选择你想要部署到的设备；
+      在執行按鈕的下拉列表裡選擇你想要部署到的裝置；
 
    1. Select the `Runner` project in the left navigation panel.
 
-      在左侧的导航面板中选择 `Runner` 项目；
+      在左側的導航面板中選擇 `Runner` 專案；
 
    1. In the `Runner` target settings page,
       make sure your Development Team is selected
       under **Signing & Capabilities > Team**.
 
-      在 `Runner` 项目的设置页面，请确保勾选你的开发团队。
-      在不同的 Xcode 版本里，这一部分的操作界面不同：
+      在 `Runner` 專案的設定頁面，請確保勾選你的開發團隊。
+      在不同的 Xcode 版本里，這一部分的操作介面不同：
 
       When you select a team,
       Xcode creates and downloads a Development Certificate,
       registers your device with your account,
       and creates and downloads a provisioning profile (if needed).
 
-      当选择了一个团队之后，Xcode 会创建和下载一个开发证书，
-      并在你的账户里为你的设备注册，
-      并在需要的时候创建和下载一个配置文件。
+      當選擇了一個團隊之後，Xcode 會建立和下載一個開發證書，
+      並在你的賬戶裡為你的設備註冊，
+      並在需要的時候建立和下載一個配置檔案。
 
       * To start your first iOS development project,
         you might need to sign into
@@ -252,18 +252,18 @@ Follow the Xcode signing flow to provision your project:
         For details about membership types,
         see [Choosing a Membership][].
 
-        在开始你的第一个 iOS 项目开发之前，
-        你需要先在 Xcode 中登陆你的 Apple 开发者账号
+        在開始你的第一個 iOS 專案開發之前，
+        你需要先在 Xcode 中登陸你的 Apple 開發者帳號
         ![Xcode account add][]{:.mw-100}
-        任何 Apple ID 都可以进行开发和测试。
-        如果想将应用上架 App Store，你需要加入 Apple Developer Program，
-        你可以在 [Choosing a Membership][] 页面中查看详细的说明。
+        任何 Apple ID 都可以進行開發和測試。
+        如果想將應用上架 App Store，你需要加入 Apple Developer Program，
+        你可以在 [Choosing a Membership][] 頁面中檢視詳細的說明。
 
       * If automatic signing fails in Xcode, verify that the project's
         **General > Identity > Bundle Identifier** value is unique.
 
-        如果 Xcode 的自动签名失败了，你可以检查以下项目中
-        **General > Identity > Bundle Identifier** 里的值是否是唯一的。
+        如果 Xcode 的自動簽名失敗了，你可以檢查以下專案中
+        **General > Identity > Bundle Identifier** 裡的值是否是唯一的。
 
         ![Check the app's Bundle ID][]{:.mw-100}
 
@@ -274,8 +274,8 @@ Follow the Xcode signing flow to provision your project:
 Start your app by running `flutter run`
 or clicking the Run button in Xcode.
 
-执行 `flutter run` 命令，或者在 Xcode 里点击运行，
-来运行你的应用。
+執行 `flutter run` 命令，或者在 Xcode 裡點選執行，
+來執行你的應用。
 
 </li>
 </ol>

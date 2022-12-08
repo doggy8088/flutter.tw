@@ -1,5 +1,5 @@
 ---
 layout: toc
 title: DevTools
-title: 开发者工具
+title: 開發者工具
 ---

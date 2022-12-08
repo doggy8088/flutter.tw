@@ -1,65 +1,65 @@
 ---
-title: 参与 2022 第二季度 Flutter 开发者调查
+title: 參與 2022 第二季度 Flutter 開發者調查
 toc: true
-keywords: 开发者调查
+keywords: 開發者調查
 description: 
 image:
     path: https://devrel.andfun.cn/devrel/posts/2022/05/3b9459874d504.png
 ---
 
-2022 Google I/O 大会正式落下帷幕，Flutter 作为 14 个开发者产品和平台中的一款，
-吸引了来自全球的很多开发者们的关注。
-随着全国很多地方已经进入夏季，**Flutter 今年第二季度的开发者调查也如约而至**。
-在此，我们特别邀请大家 [参与本次开发者调查](https://flutter.cn/urls/survey-22-q2)，
-本次调查自今日正式开始，并于一周之后截止。
+2022 Google I/O 大會正式落下帷幕，Flutter 作為 14 個開發者產品和平臺中的一款，
+吸引了來自全球的很多開發者們的關注。
+隨著全國很多地方已經進入夏季，**Flutter 今年第二季度的開發者調查也如約而至**。
+在此，我們特別邀請大家 [參與本次開發者調查](https://flutter.cn/urls/survey-22-q2)，
+本次調查自今日正式開始，並於一週之後截止。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/d2feb49b99930.png)
 
 [Flutter 3](https://flutter.cn/posts/introducing-flutter-3)
-和 [Dart 2.17](https://flutter.cn/posts/dart-2-17) 的发布，
-让 Flutter 从移动端和 Web 端，正式来到了 **对桌面端的稳定支持**；
-Flutter 今年也延续了去年 I/O 的「传统」，
-发布了一个结合了 **Flutter 和 Firebase** 的 Web 应用
-[I/O 弹球游戏](https://flutter.cn/posts/i-o-pinball)」，
-我们也看到社区的成员们玩儿的不亦乐乎。
-伴随着和 Firebase 团队的深入合作，
-现在 **Flutter 已经正式成为 Firebase 官方支持的平台之一** 了。
-与此同时，除了在应用开发上能够让开发者得心应手之外，
-Flutter 还拓展和探索了 **新的使用场景——「休闲小游戏」**，
-这一类「游戏」有点类似「应用」，比如棋牌、消消乐等。
-从技术角度说，这类游戏拥有「应用」一样的设计和逻辑，并不像大型游戏应用一样需要投入大量资源，
-因此，**「休闲小游戏」非常值得应用开发者们尝试**。
-为此，Flutter 团队发布了
-[Flutter 休闲游戏工具包 (Casual Game Toolkit)](https://flutter.cn/posts/announcing-the-flutter-casual-games-toolkit)，
-帮助开发者拓展更多新的业务和方向。
+和 [Dart 2.17](https://flutter.cn/posts/dart-2-17) 的釋出，
+讓 Flutter 從移動端和 Web 端，正式來到了 **對桌面端的穩定支援**；
+Flutter 今年也延續了去年 I/O 的「傳統」，
+釋出了一個結合了 **Flutter 和 Firebase** 的 Web 應用
+[I/O 彈球遊戲](https://flutter.cn/posts/i-o-pinball)」，
+我們也看到社群的成員們玩兒的不亦樂乎。
+伴隨著和 Firebase 團隊的深入合作，
+現在 **Flutter 已經正式成為 Firebase 官方支援的平台之一** 了。
+與此同時，除了在應用開發上能夠讓開發者得心應手之外，
+Flutter 還拓展和探索了 **新的使用場景——「休閒小遊戲」**，
+這一類「遊戲」有點類似「應用」，比如棋牌、消消樂等。
+從技術角度說，這類遊戲擁有「應用」一樣的設計和邏輯，並不像大型遊戲應用一樣需要投入大量資源，
+因此，**「休閒小遊戲」非常值得應用開發者們嘗試**。
+為此，Flutter 團隊釋出了
+[Flutter 休閒遊戲工具套件 (Casual Game Toolkit)](https://flutter.cn/posts/announcing-the-flutter-casual-games-toolkit)，
+幫助開發者拓展更多新的業務和方向。
 
-随着 Flutter **产品逐渐走向成熟**，
-越来越多的不同规模的团队、公司、组织开始使用 Flutter 构建，
-从微信 (WeChat) 等 **社交应用**，到 Betterment 和 Nubank 等 **金融和银行类应用**，
-再到 SHEIN 和 trip.com 等 **商旅应用** 以及 Fastic、Tabcorp 等 **生活方式类应用**，
-还有 My BMW 此类的 **硬件连接类应用**，最后是巴西 **政府等公共机构** 的官方应用等，
-Flutter 在这些细分领域也在大放异彩。
-在本次 I/O 大会的这个重要时间节点上，
-Flutter 团队特别发布了
-[字节跳动内部各个团队和产品使用 Flutter 的视频](https://flutter.cn/posts/flutter-bytedance-dev-story)，
-字节跳动对 Flutter 的使用包括娱乐、企业、行业应用，
-从移动端到 Web 端，再到硬件产品上。
-**字节跳动也把 Flutter 规划和定位为公司多平台开发战略的核心**。
+隨著 Flutter **產品逐漸走向成熟**，
+越來越多的不同規模的團隊、公司、組織開始使用 Flutter 建構，
+從微信 (WeChat) 等 **社交應用**，到 Betterment 和 Nubank 等 **金融和銀行類應用**，
+再到 SHEIN 和 trip.com 等 **商旅應用** 以及 Fastic、Tabcorp 等 **生活方式類應用**，
+還有 My BMW 此類別的 **硬體連線類應用**，最後是巴西 **政府等公共機構** 的官方應用等，
+Flutter 在這些細分領域也在大放異彩。
+在本次 I/O 大會的這個重要時間節點上，
+Flutter 團隊特別釋出了
+[位元組跳動內部各個團隊和產品使用 Flutter 的影片](https://flutter.cn/posts/flutter-bytedance-dev-story)，
+位元組跳動對 Flutter 的使用包括娛樂、企業、行業應用，
+從移動端到 Web 端，再到硬體產品上。
+**位元組跳動也把 Flutter 規劃和定位為公司多平臺開發戰略的核心**。
 
-我们鼓励大家 **到全球技术社区发声**，
-Flutter 作为一个 **完全以开源的方式运作的产品**，
-它的每一项产品特性决策和优先级分配，
-都是由 **社区成员们「你一票、我一票」投出来的**，
-包括每一季度的开发者调查表，都是由 Google 内部专门做 **开发者体验**
-的研究员持续跟进 Flutter 产品动态和反馈并完成，
-这是一个非常重要并非常高效的提交 Flutter 使用反馈的途径，
-**你的参与或转发都可以让产品变得更好**！
+我們鼓勵大家 **到全球技術社群發聲**，
+Flutter 作為一個 **完全以開源的方式運作的產品**，
+它的每一項產品特性決策和優先順序分配，
+都是由 **社群成員們「你一票、我一票」投出來的**，
+包括每一季度的開發者調查表，都是由 Google 內部專門做 **開發者體驗**
+的研究員持續跟進 Flutter 產品動態和反饋並完成，
+這是一個非常重要並非常高效的提交 Flutter 使用反饋的途徑，
+**你的參與或轉發都可以讓產品變得更好**！
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/642e4e9acad35.png)
 
-同时，我们再次邀请开发者们参加
-[字节跳动 UME 插件开发竞赛](https://mp.weixin.qq.com/s/BwImT3xUKCCmxSPP4q40NA)（5 月 30 日截止作品提交），
-也邀请各位参加 [Google 的应用 & 游戏出海](https://flutter.cn/posts/google-2022-soas-5)
-分享活动，为未来拓展更多可能！
+同時，我們再次邀請開發者們參加
+[位元組跳動 UME 外掛開發競賽](https://mp.weixin.qq.com/s/BwImT3xUKCCmxSPP4q40NA)（5 月 30 日截止作品提交），
+也邀請各位參加 [Google 的應用 & 遊戲出海](https://flutter.cn/posts/google-2022-soas-5)
+分享活動，為未來拓展更多可能！
 
-谢谢！
+謝謝！

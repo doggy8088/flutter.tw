@@ -1,15 +1,15 @@
 ## Linux setup
 
-## Linux 安装
+## Linux 安裝
 
 ### Additional Linux requirements
 
-### 其他 Linux 需要的内容
+### 其他 Linux 需要的內容
 
 For Linux desktop development,
 you need the following in addition to the Flutter SDK:
 
-对于开发 Linux 桌面端应用来说，除了 Flutter SDK 以外你还需要以下内容：
+對於開發 Linux 桌面端應用來說，除了 Flutter SDK 以外你還需要以下內容：
 
 * [Clang][]
 * [CMake][]
@@ -22,7 +22,7 @@ you need the following in addition to the Flutter SDK:
 
 Run the following command
 
-运行以下命令进行安装：
+執行以下命令進行安裝：
 
 ```terminal
 $ sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev

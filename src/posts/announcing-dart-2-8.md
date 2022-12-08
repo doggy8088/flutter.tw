@@ -1,5 +1,5 @@
 ---
-title: Dart 2.8 同期发布
+title: Dart 2.8 同期釋出
 toc: true
 ---
 
@@ -7,64 +7,64 @@ toc: true
 
 *作者 / Michael Thomsen, Dart & Flutter Product Manager, Google*
 
-我们同样为大家带来了 Dart SDK 的新版本: Dart 2.8。Dart 社区保持着惊人的增长，如今有 [数百万 Flutter 开发者](https://flutter.cn/posts/flutter-spring-2020-update) 使用 Dart 作为针对客户端优化的开发语言，在各个平台上构建高速流畅的应用。我们仍在努力完成 [即将推出的空安全 (null safety) 功能](https://flutter.cn/posts/dart-2-7)，使 Dart 成为一种更优化的语言，打造高速且稳定的用户界面。我们准备了一些激动人心的新功能，让开发者在管理依赖关系时更加高效。
+我們同樣為大家帶來了 Dart SDK 的新版本: Dart 2.8。Dart 社群保持著驚人的增長，如今有 [數百萬 Flutter 開發者](https://flutter.cn/posts/flutter-spring-2020-update) 使用 Dart 作為針對客戶端最佳化的開發語言，在各個平臺上建構高速流暢的應用。我們仍在努力完成 [即將推出的空安全 (null safety) 功能](https://flutter.cn/posts/dart-2-7)，使 Dart 成為一種更最佳化的語言，打造高速且穩定的使用者介面。我們準備了一些激動人心的新功能，讓開發者在管理依賴關係時更加高效。
 
-Dart 平台通过 [pub 客户端工具](https://dart.dev/tools/pub/cmd) 和 [pub.dev](https://pub.dev/) package 库内置了代码包管理功能。在过去的一年里，pub.dev package 库增长了 200%，现在已经拥有近 10,000 个 package。作为持续改进 Dart 生态系统的一环，Dart 2.8 SDK 为 pub 客户端工具带来了两个改进: 更强的 pub get 性能，以及一款新工具，可确保您的 package 依赖始终保持最新。
+Dart 平台透過 [pub 客戶端工具](https://dart.dev/tools/pub/cmd) 和 [pub.dev](https://pub.dev/) package 庫內建了程式碼包管理功能。在過去的一年裡，pub.dev package 庫增長了 200%，現在已經擁有近 10,000 個 package。作為持續改進 Dart 生態系統的一環，Dart 2.8 SDK 為 pub 客戶端工具帶來了兩個改進: 更強的 pub get 效能，以及一款新工具，可確保您的 package 依賴始終保持最新。
 
-Dart 2.8 还在 Dart 语言和代码库中引入了一些小幅度的重要改动 (Breaking Changes)。这些变更为我们的第一版空安全功能奠定了基础。
+Dart 2.8 還在 Dart 語言和程式碼庫中引入了一些小幅度的重要改動 (Breaking Changes)。這些變更為我們的第一版空安全功能奠定了基礎。
 
-## **为空安全奠基**
+## **為空安全奠基**
 
-应用崩溃的一个常见原因是代码试图使用一个恰好为空 (null) 的变量。Tony Hoare 爵士于 1965 年在 ALGOL 编程语言中引入了空引用，他在 [2009 年 QCon 演讲](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/) 中，把空引用称为 "价值十亿美元的错误"。在某些情况下，空值是有用的；但难点在于如何把这些有用的情况甄别出来。在过去的一年中，我们一直忙于在 Dart 中打造 [健全的空安全支持](https://github.com/dart-lang/language/issues/110)。这种支持将扩展类型系统，以表达始终不可空的变量；类型系统也会是完全健全的: Dart 编译器和运行时都将信任这些类型，并能够在类型系统保证变量不为空的情况下生成优化过的代码。
+應用崩潰的一個常見原因是程式碼試圖使用一個恰好為空 (null) 的變數。Tony Hoare 爵士於 1965 年在 ALGOL 程式語言中引入了空參考，他在 [2009 年 QCon 演講](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/) 中，把空參考稱為 "價值十億美元的錯誤"。在某些情況下，空值是有用的；但難點在於如何把這些有用的情況甄別出來。在過去的一年中，我們一直忙於在 Dart 中打造 [健全的空安全支援](https://github.com/dart-lang/language/issues/110)。這種支援將擴充型別系統，以表達始終不可空的變數；型別系統也會是完全健全的: Dart 編譯器和執行時都將信任這些型別，並能夠在型別系統保證變數不為空的情況下產生最佳化過的程式碼。
 
-如您所想，这是一项浩大的工程，牵涉到的内容很多。为了确保用简洁的语义构建空安全，我们决定在 Dart 语言和库中引入一些小幅的重要改动。这些重要改动是对 Dart 类型系统边界情况和一些 Dart 核心库所做的小调整，以确保可空性相关的可用性和性能。我们已经在 Dart 公告列表中 [预先宣布](https://groups.google.com/a/dartlang.org/g/announce/c/JwPWiC0jTiU) 了这些改动，而且我们估计这些重要改动对普通应用的代码影响很小。如果您在使用 Dart 2.8 时遇到任何问题，建议您查看这些 [重要改动](https://github.com/dart-lang/sdk/issues/40686)，了解其详情以及应对方法。如果这样依然不能解决问题，请在我们的 [问题反馈页](https://github.com/dart-lang/sdk/issues) 提交报告。想提前体验空安全，请 [通过 DartPad 一睹为快](https://nullsafety.dartpad.cn/53257b6da4cb128dc1e069df64748ed1)。
+如您所想，這是一項浩大的工程，牽涉到的內容很多。為了確保用簡潔的語義建構空安全，我們決定在 Dart 語言和庫中引入一些小幅的重要改動。這些重要改動是對 Dart 型別系統邊界情況和一些 Dart 核心函式庫所做的小調整，以確保可空性相關的可用性和效能。我們已經在 Dart 公告列表中 [預先宣佈](https://groups.google.com/a/dartlang.org/g/announce/c/JwPWiC0jTiU) 了這些改動，而且我們估計這些重要改動對普通應用的程式碼影響很小。如果您在使用 Dart 2.8 時遇到任何問題，建議您檢視這些 [重要改動](https://github.com/dart-lang/sdk/issues/40686)，瞭解其詳情以及應對方法。如果這樣依然不能解決問題，請在我們的 [問題反饋頁](https://github.com/dart-lang/sdk/issues) 提交報告。想提前體驗空安全，請 [透過 DartPad 一睹為快](https://nullsafety.dartpad.cn/53257b6da4cb128dc1e069df64748ed1)。
 
-## **更优质的 package 生态**
+## **更優質的 package 生態**
 
-Pub package 管理器和 pub.dev 网站为 Dart 和 Flutter 提供了欣欣向荣的生态系统。在 pub.dev 上有近 10,000 个 package，许多有趣的 package 更是让我们拍案叫绝。我们的核心任务之一就是帮助众多作者打造高品质的 package，并帮助开发者找到它们。在这方面我们已经做了一些工作，比如 [改进 pub.dev 的可发现性](https://medium.com/dartlang/improved-discovery-on-the-dart-package-site-9bfe24c3d7d3)，[Verified Publishers](https://medium.com/dartlang/verified-publishers-98f05466558a) (发布者认证)，以及 [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites) 项目。
+Pub package 管理器和 pub.dev 網站為 Dart 和 Flutter 提供了欣欣向榮的生態系統。在 pub.dev 上有近 10,000 個 package，許多有趣的 package 更是讓我們拍案叫絕。我們的核心任務之一就是幫助眾多作者打造高品質的 package，並幫助開發者找到它們。在這方面我們已經做了一些工作，比如 [改進 pub.dev 的可發現性](https://medium.com/dartlang/improved-discovery-on-the-dart-package-site-9bfe24c3d7d3)，[Verified Publishers](https://medium.com/dartlang/verified-publishers-98f05466558a) (釋出者認證)，以及 [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites) 專案。
 
-现在您从 pub.dev 获取 package 的速度会快上许多。我们还提供了一款新工具来帮助您更新所有 package 的依赖关系。现在的应用颇为复杂，很可能依赖几十个 package。如何把它们都更新到最新版本，确保满足最新的依赖关系，并获得所有的 bug 修复和性能优化？从 Dart 2.8 开始，您可以使用 pub outdated，这款新工具将自动判断哪些依赖项需要更新到最新、最合适的版本。
+現在您從 pub.dev 獲取 package 的速度會快上許多。我們還提供了一款新工具來幫助您更新所有 package 的依賴關係。現在的應用頗為複雜，很可能依賴幾十個 package。如何把它們都更新到最新版本，確保滿足最新的依賴關係，並獲得所有的 bug 修復和效能最佳化？從 Dart 2.8 開始，您可以使用 pub outdated，這款新工具將自動判斷哪些依賴項需要更新到最新、最合適的版本。
 
-## **Dart 2.8 发布工具性能改进**
+## **Dart 2.8 釋出工具效能改進**
 
-我们优化了 pub 工具的性能，在运行 pub get 时会并行获取 package，并且推迟了 pub run 预编译的运行时机。
+我們優化了 pub 工具的效能，在執行 pub get 時會並行獲取 package，並且推遲了 pub run 預編譯的執行時機。
 
-在使用 flutter create 创建的新项目上运行 flutter pub get 的非正式基准测试，使用 Flutter 1.12 (使用 Dart 2.7) 总执行时间约为 6.5 秒，而在 Flutter 1.17 (使用 Dart 2.8) 中下降至 2.5 秒。在 [Flutter Gallery](https://github.com/flutter/gallery) 这样更大型的应用中，时间则从约 15 秒降到了 3 秒左右！
+在使用 flutter create 建立的新專案上執行 flutter pub get 的非正式基準測試，使用 Flutter 1.12 (使用 Dart 2.7) 總執行時間約為 6.5 秒，而在 Flutter 1.17 (使用 Dart 2.8) 中下降至 2.5 秒。在 [Flutter Gallery](https://github.com/flutter/gallery) 這樣更大型的應用中，時間則從約 15 秒降到了 3 秒左右！
 
-## **使用 pub outdated 管理依赖**
+## **使用 pub outdated 管理依賴**
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/LpzhUs.gif)
 
-Dart 代码中的依赖关系会被收集到 [pubspec 文件](https://kw-staging-dartlang-2.firebaseapp.com/tools/pub/pubspec) 中。当您运行 pub get 命令，从 pub.dev 中获取 package 时，pub 版本求解器 (使用 [PubGrub 算法](https://medium.com/@nex3/pubgrub-2fb6470504f)) 会运行一个进程来得出满足 pubspec 中所有约束条件的所有依赖项的最新版本。请注意，pub 使用的是单版本方案，您的应用中只包含每个 package 的单一版本，这个方案可以确保您的应用获得尽可能小的体积。
+Dart 程式碼中的依賴關係會被收集到 [pubspec 檔案](https://kw-staging-dartlang-2.firebaseapp.com/tools/pub/pubspec) 中。當您執行 pub get 命令，從 pub.dev 中獲取 package 時，pub 版本求解器 (使用 [PubGrub 演算法](https://medium.com/@nex3/pubgrub-2fb6470504f)) 會執行一個處理序來得出滿足 pubspec 中所有約束條件的所有依賴項的最新版本。請注意，pub 使用的是單版本方案，您的應用中只包含每個 package 的單一版本，這個方案可以確保您的應用獲得儘可能小的體積。
 
-始终使用最新的稳定版 package 是 [最佳开发实践](http://dart.dev/tools/pub/dependencies#best-practices) 之一，但这样做会很费力。Dart 支持使用 [pub upgrade](https://dart.dev/tools/pub/cmd/pub-upgrade) 升级到 [语义上兼容](https://dart.dev/tools/pub/dependencies#version-constraints) 的最新版本，但如果不更新 pubspec，就不能包含 package 最新的大版本。pub outdated 命令通过比较当前使用的版本和 pub.dev 上的最新版本，让您知晓小版本和大版本何时可用。
+始終使用最新的穩定版 package 是 [最佳開發實踐](http://dart.dev/tools/pub/dependencies#best-practices) 之一，但這樣做會很費力。Dart 支援使用 [pub upgrade](https://dart.dev/tools/pub/cmd/pub-upgrade) 升級到 [語義上相容](https://dart.dev/tools/pub/dependencies#version-constraints) 的最新版本，但如果不更新 pubspec，就不能包含 package 最新的大版本。pub outdated 命令透過比較當前使用的版本和 pub.dev 上的最新版本，讓您知曉小版本和大版本何時可用。
 
-我们来看一个例子。假如您正在构建一款应用，这款应用的 pubspec.yaml 包含下列内容:
+我們來看一個例子。假如您正在建構一款應用，這款應用的 pubspec.yaml 包含下列內容:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/9DxuuV.png)
 
-运行 pub get，这款工具会创建一个 pubspec.lock 文件，包含如下版本信息:
+執行 pub get，這款工具會建立一個 pubspec.lock 檔案，包含如下版本資訊:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/FYXC5g.png)
 
-几个月过去了，pub.dev 现在有了新版本的 foo (1.3.1) 和 bar (2.1.0 和 3.0.3)。那么我们如何才能知道这些新版本是可用的？对于小版本升级 (foo 1.4.0 和 bar 2.1.0)，您可以运行 pub upgrade，但这样您不会得到 bar 3.0.0。为了版本更新您不得不访问 pub.dev 上对应 package 的页面来了解详情。或者您也可以尝试社区提供的解决方案，比如 Paulina Szklarska 的 [version checker](https://plugins.jetbrains.com/plugin/12400-flutter-pub-version-checker) 或者 Jeroen Meijer 的 [pubspec assist](https://marketplace.visualstudio.com/items?itemName=jeroen-meijer.pubspec-assist)。
+幾個月過去了，pub.dev 現在有了新版本的 foo (1.3.1) 和 bar (2.1.0 和 3.0.3)。那麼我們如何才能知道這些新版本是可用的？對於小版本升級 (foo 1.4.0 和 bar 2.1.0)，您可以執行 pub upgrade，但這樣您不會得到 bar 3.0.0。為了版本更新您不得不存取 pub.dev 上對應 package 的頁面來了解詳情。或者您也可以嘗試社群提供的解決方案，比如 Paulina Szklarska 的 [version checker](https://plugins.jetbrains.com/plugin/12400-flutter-pub-version-checker) 或者 Jeroen Meijer 的 [pubspec assist](https://marketplace.visualstudio.com/items?itemName=jeroen-meijer.pubspec-assist)。
 
-Dart SDK 现在通过 `pub outdated` 支持发现新版本。如果您使用的是支持 Dart 或 Flutter 的 IDE，请使用 **Pub outdated** 指令，这个指令在 `pubspec.yaml` 文件被打开时会显示。或者通过终端运行 `pub outdated` 或者 f`lutter pub outdated` 命令:
+Dart SDK 現在透過 `pub outdated` 支援發現新版本。如果您使用的是支援 Dart 或 Flutter 的 IDE，請使用 **Pub outdated** 指令，這個指令在 `pubspec.yaml` 檔案被開啟時會顯示。或者透過終端執行 `pub outdated` 或者 f`lutter pub outdated` 命令:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/B9BoA1.png)
 
-上面的输出结果表明，我们可以使用 pub upgrade 自动升级到 foo 1.3.1，也就是 foo 的最新可用版本。与此同时，虽然我们可以自动升级到 bar 2.1.0，但最新可用的版本其实是 3.0.3。升级到 bar 3.0.3 属于大版本升级，所以我们需要编辑 pubspec.yaml 文件，才能完成升级:
+上面的輸出結果表明，我們可以使用 pub upgrade 自動升級到 foo 1.3.1，也就是 foo 的最新可用版本。與此同時，雖然我們可以自動升級到 bar 2.1.0，但最新可用的版本其實是 3.0.3。升級到 bar 3.0.3 屬於大版本升級，所以我們需要編輯 pubspec.yaml 檔案，才能完成升級:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/oGr7Qc.png)
 
-在编辑完 pubspec 并运行 pub upgrade 之后，pub outdated 会报告所有的依赖均已是最新版本:
+在編輯完 pubspec 並執行 pub upgrade 之後，pub outdated 會報告所有的依賴均已是最新版本:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/RwkudP.png)
 
-成功更新到最新版本了！由于我们刚才获取了最新的版本，包括一次大版本升级，现在我们需要查看一下这些版本中是否存在重要改动。然后运行各种测试，确保我们的应用可以正常运行。
+成功更新到最新版本了！由於我們剛才獲取了最新的版本，包括一次大版本升級，現在我們需要檢視一下這些版本中是否存在重要改動。然後執行各種測試，確保我們的應用可以正常執行。
 
 ## **下一步**
 
-性能改善、[重要改动](https://github.com/dart-lang/sdk/issues/40686)，以及全新的 `pub outdated` 命令，现已加入稳定版 [Dart 2.8 SDK](https://dart.dev/get-dart) 和稳定版 [Flutter 1.17 SDK](https://flutter.dev/docs/get-started/install)。我们建议您尽快开始使用 [pub outdated](https://dart.dev/tools/pub/cmd/pub-outdated)，掌握自己项目中依赖的健康状况！
+效能改善、[重要改動](https://github.com/dart-lang/sdk/issues/40686)，以及全新的 `pub outdated` 命令，現已加入穩定版 [Dart 2.8 SDK](https://dart.dev/get-dart) 和穩定版 [Flutter 1.17 SDK](https://flutter.dev/docs/get-started/install)。我們建議您儘快開始使用 [pub outdated](https://dart.dev/tools/pub/cmd/pub-outdated)，掌握自己專案中依賴的健康狀況！
 
-如果您遇到了问题，请前往 [pub 问题反馈页](https://github.com/dart-lang/pub/issues) 报告给我们；如果您遇到了通用问题，请前往 [SDK 问题反馈页](https://github.com/dart-lang/sdk/issues) 进行上报。我们非常期待大家分享 `pub outdated` 的使用体验。
+如果您遇到了問題，請前往 [pub 問題反饋頁](https://github.com/dart-lang/pub/issues) 報告給我們；如果您遇到了通用問題，請前往 [SDK 問題反饋頁](https://github.com/dart-lang/sdk/issues) 進行上報。我們非常期待大家分享 `pub outdated` 的使用體驗。

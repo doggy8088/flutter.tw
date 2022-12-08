@@ -1,36 +1,36 @@
 ---
 title: Disclaimer
-title: Flutter 社区中文资源网站特别说明 (免责条款)
-tags: 站点资源
-keywords: 免责声明, Flutter.cn免责说明
+title: Flutter 社群中文資源網站特別說明 (免責條款)
+tags: 站點資源
+keywords: 免責宣告, Flutter.cn免責說明
 ---
 
 *英文在下方 (ENGLISH BELOW)*
 
-### 网站所有权相关
+### 網站所有權相關
 
-声明：你正在浏览的网站不隶属于谷歌或 Alphabet 公司，它由热爱 Flutter 和开源技术，以及希望在中国向全球 Flutter 做贡献的开发者们维护。
-Flutter 这几个文英文字母和 Flutter 图标及任何相关标志均为 Google LLC 公司的商标，
-我们根据 Flutter 官方的 [品牌说明](https://flutter.dev/brand)，遵从社区使用例外的原则，
-使用了修改为红色为主色调的 Flutter Logo。
-更多 Flutter 图标和品牌的使用，请参考 Flutter 官方的 [品牌说明](https://flutter.dev/brand)。
+宣告：你正在瀏覽的網站不隸屬於谷歌或 Alphabet 公司，它由熱愛 Flutter 和開源技術，以及希望在中國向全球 Flutter 做貢獻的開發者們維護。
+Flutter 這幾個文英文字母和 Flutter 圖示及任何相關標誌均為 Google LLC 公司的商標，
+我們根據 Flutter 官方的 [品牌說明](https://flutter.dev/brand)，遵從社群使使用案例外的原則，
+使用了修改為紅色為主色調的 Flutter Logo。
+更多 Flutter 圖示和品牌的使用，請參考 Flutter 官方的 [品牌說明](https://flutter.dev/brand)。
 
-### 适用范围
+### 適用範圍
 
-Flutter 中文资源网站(flutter.cn / flutter-io.cn) 及其分站，均在本免责条款下运行。
+Flutter 中文資源網站(flutter.cn / flutter-io.cn) 及其分站，均在本免責條款下執行。
 
-### 服务等级协议
+### 服務等級協議
 
-* 中文文档网站与英文网站内容同步时间间隔不会超过一个月（首次完全翻译发布之后）；
-* 针对开发者在 GitHub Issues 里提出的针对翻译内容的修复，通常在三个工作日之内处理；
-* 本网站承诺不收集任何用户敏感数据，如 [个人可标识信息（PII）](https://support.google.com/analytics/answer/7686480)；
-* 本网站将不具备任何用户交互功能，不产生任何用户生产的内容（UGC）；
-* 因不可抗力因素产生的问题，本网站有权随时关停任何服务。
+* 中文文件網站與英文網站內容同步時間間隔不會超過一個月（首次完全翻譯釋出之後）；
+* 針對開發者在 GitHub Issues 裡提出的針對翻譯內容的修復，通常在三個工作日之內處理；
+* 本網站承諾不收集任何使用者敏感資料，如 [個人可標識資訊（PII）](https://support.google.com/analytics/answer/7686480)；
+* 本網站將不具備任何使用者互動功能，不產生任何使用者生產的內容（UGC）；
+* 因不可抗力因素產生的問題，本網站有權隨時關停任何服務。
 
-### 特别说明
+### 特別說明
 
-* 网站中文资源的筛选和发布不代表本站和谷歌的立场；
-* 网站的中文翻译内容贡献者将以个人名义贡献内容，与贡献者公司无关。
+* 網站中文資源的篩選和釋出不代表本站和谷歌的立場；
+* 網站的中文翻譯內容貢獻者將以個人名義貢獻內容，與貢獻者公司無關。
 
 ### Ownership
 

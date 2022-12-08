@@ -1,8 +1,8 @@
 ---
 title: TextInputClient currentTextEditingValue
-title: TextInputClient currentTextEditingValue 属性
+title: TextInputClient currentTextEditingValue 屬性
 description: Add a new field to the TextInputClient interface to get the current TextEditingValue from a client.
-description: 向 TextInputClient 接口添加了一个新属性，以从客户端获取当前的 TextEditingValue。
+description: 向 TextInputClient 介面添加了一個新屬性，以從客戶端獲取當前的 TextEditingValue。
 ---
 
 ## Summary

@@ -1,8 +1,8 @@
 ---
 title: Adding 'linux' and 'windows' to TargetPlatform enum
-title: 向 TargetPlatform 枚举添加 'linux' 和 'windows'
+title: 向 TargetPlatform 列舉新增 'linux' 和 'windows'
 description: Two new values were added to the TargetPlatform enum that could require additional cases in switch statements that switch on a TargetPlatform.
-description: 向 TargetPlatform 枚举添加了两个新的值，这两个值可能需要在打开 TargetPlatform 的 switch 语句中使用额外的目标。
+description: 向 TargetPlatform 列舉添加了兩個新的值，這兩個值可能需要在開啟 TargetPlatform 的 switch 陳述式中使用額外的目標。
 ---
 
 ## Summary

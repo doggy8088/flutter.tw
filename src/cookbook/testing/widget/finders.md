@@ -1,17 +1,17 @@
 ---
 title: Find widgets
-title: 定位到目标 widget
+title: 定位到目標 widget
 description: How to use the Finder classes for testing widgets.
-description: 如何在 widget 测试中使用 Finder 类。
-tags: cookbook, 实用教程, 测试
+description: 如何在 widget 測試中使用 Finder 類別。
+tags: cookbook, 實用課程, 測試
 keywords: 定位 widget,CommonFinders,flutter_test
 prev:
   title: An introduction to widget testing
-  title: Widget 测试介绍
+  title: Widget 測試介紹
   path: /docs/cookbook/testing/widget/introduction
 next:
   title: Handle scrolling
-  title: 处理滚动
+  title: 處理滾動
   path: /docs/cookbook/testing/widget/scrolling
 ---
 
@@ -24,16 +24,16 @@ classes. While it's possible to write your own `Finder` classes,
 it's generally more convenient to locate widgets using the tools
 provided by the [`flutter_test`][] package.
 
-在测试环境下，为了定位 widgets，我们需要用到 [`Finder`][] 类。
-我们可以编写自己的 `finder` 类，
-不过通常使用 [`flutter_test`][] package 提供的工具来定位 widgets 更加方便。
+在測試環境下，為了定位 widgets，我們需要用到 [`Finder`][] 類別。
+我們可以編寫自己的 `finder` 類，
+不過通常使用 [`flutter_test`][] package 提供的工具來定位 widgets 更加方便。
 
 During a `flutter run` session on a widget test, you can also
 interactively tap parts of the screen for the Flutter tool to
 print the suggested `Finder`.
 
-运行 widget 测试，在执行 `flutter run` 的时候，你还可以与屏幕进行交互点击，
-Flutter 工具会输出建议的 `Finder`。
+執行 widget 測試，在執行 `flutter run` 的時候，你還可以與螢幕進行互動點選，
+Flutter 工具會輸出建議的 `Finder`。
 
 This recipe looks at the [`find`][] constant provided by
 the `flutter_test` package, and demonstrates how
@@ -41,46 +41,46 @@ to work with some of the `Finders` it provides.
 For a full list of available finders,
 see the [`CommonFinders` documentation][].
 
-下面，我们来看看 `flutter_test` package 提供的 [`find`][]
-常量并演示如何使用其所提供的 `Finders`。
-如需查看完整的 finders 的列表，
-请参阅 [`CommonFinders` 文档][`CommonFinders` documentation]。
+下面，我們來看看 `flutter_test` package 提供的 [`find`][]
+常量並示範如何使用其所提供的 `Finders`。
+如需檢視完整的 finders 的列表，
+請參閱 [`CommonFinders` 文件][`CommonFinders` documentation]。
 
 If you're unfamiliar with widget testing and the role of
 `Finder` classes,
 review the [Introduction to widget testing][] recipe.
 
-如果你还不熟悉 Widget 测试和 Finder 类使用方法，
-请参阅 [Widget 测试介绍][Introduction to widget testing]。
+如果你還不熟悉 Widget 測試和 Finder 類使用方法，
+請參閱 [Widget 測試介紹][Introduction to widget testing]。
 
 This recipe uses the following steps:
 
-本教程包含以下步骤：
+本課程包含以下步驟：
 
   1. Find a `Text` widget.
   
-     查找 `Text` Widget 
+     查詢 `Text` Widget 
   
   2. Find a widget with a specific `Key`.
   
-     使用具体 `Key` 查找 Widget
+     使用具體 `Key` 查詢 Widget
   
   3. Find a specific widget instance.
   
-     查找具体的 Widget 实例
+     查詢具體的 Widget 例項
   
 
 ### 1. Find a `Text` widget
 
-### 一. 查找 `Text` widget
+### 一. 查詢 `Text` widget
 
 In testing, you often need to find widgets that contain specific text.
 This is exactly what the `find.text()` method is for. It creates a
 `Finder` that searches for widgets that display a specific `String` of text.
 
-在测试中，我们经常需要查找含有特定文本的 widget。
-这正是 `find.text()` 的用途。它会创建一个 `Finder`
-来寻找显示特定文本 `String` 的 widget。
+在測試中，我們經常需要查詢含有特定文字的 widget。
+這正是 `find.text()` 的用途。它會建立一個 `Finder`
+來尋找顯示特定文字 `String` 的 widget。
 
 <?code-excerpt "test/tests.dart (test1)"?>
 ```dart
@@ -99,25 +99,25 @@ testWidgets('finds a Text widget', (tester) async {
 
 ### 2. Find a widget with a specific `Key`
 
-### 二. 使用具体 `Key` 查找 widget
+### 二. 使用具體 `Key` 查詢 widget
 
 In some cases, you might want to find a widget based on the Key that has been
 provided to it. This can be handy if displaying multiple instances of the
 same widget. For example, a `ListView` might display several
 `Text` widgets that contain the same text.
 
-有时，我们可能想要通过已经提供给 widget 的 Key 来查找 widget。
-这样在显示多个相同 widget 实体时会很方便。
-比如，我们有一个 `ListView` 列表，
-它显示了数个含有相同文本的 `Text` widgets。
+有時，我們可能想要透過已經提供給 widget 的 Key 來查詢 widget。
+這樣在顯示多個相同 widget 實體時會很方便。
+比如，我們有一個 `ListView` 列表，
+它顯示了數個含有相同文字的 `Text` widgets。
 
 In this case, provide a `Key` to each widget in the list. This allows
 an app to uniquely identify a specific widget, making it easier to find
 the widget in the test environment.
 
-在这种情况下，我们可以为列表中的每一个 widget 赋予一个 `Key`。
-这样我们就可以唯一识别特定的 widget，
-在测试环境中更容易查找 widget。
+在這種情況下，我們可以為列表中的每一個 widget 賦予一個 `Key`。
+這樣我們就可以唯一識別特定的 widget，
+在測試環境中更容易查詢 widget。
 
 <?code-excerpt "test/tests.dart (test2)"?>
 ```dart
@@ -135,14 +135,14 @@ testWidgets('finds a widget using a Key', (tester) async {
 
 ### 3. Find a specific widget instance
 
-### 三. 查找具体的 Widget 实例
+### 三. 查詢具體的 Widget 例項
 
 Finally, you might be interested in locating a specific instance of a widget.
 For example, this can be useful when creating widgets that take a `child`
 property and you want to ensure you're rendering the `child` widget.
 
-最后，我们有时会需要查找 widget 的具体实例。
-比如，当创建含有 `child` 属性的 widget 并需要确保渲染 `child` widget。
+最後，我們有時會需要查詢 widget 的具體例項。
+比如，當建立含有 `child` 屬性的 widget 並需要確保渲染 `child` widget。
 
 <?code-excerpt "test/tests.dart (test3)"?>
 ```dart
@@ -159,27 +159,27 @@ testWidgets('finds a specific instance', (tester) async {
 
 ### Summary
 
-### 总结
+### 總結
 
 The `find` constant provided by the `flutter_test` package provides
 several ways to locate widgets in the test environment. This recipe
 demonstrated three of these methods, and several more methods exist
 for different purposes.
 
-在测试环境下，`flutter_test` 包提供的 `find` 常量
-给了我们多种查找 widget 的方法。
-本篇列举了三种方法，另外还有一些其他用途的方法。
+在測試環境下，`flutter_test` 套件提供的 `find` 常量
+給了我們多種查詢 widget 的方法。
+本篇列舉了三種方法，另外還有一些其他用途的方法。
 
 If the above examples do not work for a particular use-case,
 see the [`CommonFinders` documentation][]
 to review all available methods.
 
-如果上述示例不适用于一些特殊情况，
-请到 [`CommonFinders` 文档][`CommonFinders` documentation] 中查看更多用法。
+如果上述範例不適用於一些特殊情況，
+請到 [`CommonFinders` 文件][`CommonFinders` documentation] 中檢視更多用法。
 
 ### Complete example
 
-### 完整样例
+### 完整範例
 
 <?code-excerpt "test/tests.dart"?>
 ```dart

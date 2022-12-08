@@ -1,7 +1,7 @@
 ---
-title: Flutter 1.12.13 发行说明
-short-title: 1.12.13 发行说明
-description: Flutter 1.12.13 的发行说明。
+title: Flutter 1.12.13 發行說明
+short-title: 1.12.13 發行說明
+description: Flutter 1.12.13 的發行說明。
 ---
 
 Welcome to Flutter 1.12, our biggest stable release so far!

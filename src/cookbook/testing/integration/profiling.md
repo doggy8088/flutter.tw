@@ -1,17 +1,17 @@
 ---
 title: Performance profiling
-title: 性能分析
+title: 效能分析
 description: How to profile performance for a Flutter app.
-description: 本篇将如何测量你的 Flutter 应用的性能。
-tags: cookbook, 实用教程, 测试
-keywords: 性能优化,卡顿,时间轴
+description: 本篇將如何測量你的 Flutter 應用的效能。
+tags: cookbook, 實用課程, 測試
+keywords: 效能最佳化,卡頓,時間軸
 prev:
   title: An introduction to integration testing
-  title: 集成测试介绍
+  title: 整合測試介紹
   path: /docs/cookbook/testing/integration/introduction
 next:
   title: An introduction to unit testing
-  title: Flutter 集成测试介绍
+  title: Flutter 整合測試介紹
   path: /docs/cookbook/testing/unit/introduction
 ---
 
@@ -22,8 +22,8 @@ Users expect apps to have smooth scrolling and meaningful animations free of
 stuttering or skipped frames, known as "jank". How to ensure that your app
 is free of jank on a wide variety of devices?
 
-性能移动应用用户来说相当重要，用户希望应用程序有流畅的滚动和优雅的动画，
-不愿看到卡顿和掉帧现象。我们如何确保我们的应用程序在各种设备上不会受到卡顿的影响？
+效能移動應用使用者來說相當重要，使用者希望應用程式有流暢的滾動和優雅的動畫，
+不願看到卡頓和掉幀現象。我們如何確保我們的應用程式在各種裝置上不會受到卡頓的影響？
 
 There are two options: first, manually test the app on different devices.
 While that approach might work for a smaller app, it becomes more
@@ -32,71 +32,71 @@ test that performs a specific task and records a performance timeline.
 Then, examine the results to determine whether a specific section of
 the app needs to be improved.
 
-以下两种方式可供选择：首先，我们可以在不同的设备对应用程序进行手动测试。
-这种方式适用于较小的应用程序，但随着应用程序扩展性的提升，它将变得更加繁琐。
-另外，我们可以运行集成测试，执行特定任务并记录性能时间轴。
-然后，我们可以检验结果，以确定是否需要对我们应用程序的特定部分进行改善。
+以下兩種方式可供選擇：首先，我們可以在不同的裝置對應用程式進行手動測試。
+這種方式適用於較小的應用程式，但隨著應用程式擴充性的提升，它將變得更加繁瑣。
+另外，我們可以執行整合測試，執行特定任務並記錄效能時間軸。
+然後，我們可以檢驗結果，以確定是否需要對我們應用程式的特定部分進行改善。
 
 In this recipe, learn how to write a test that records a performance
 timeline while performing a specific task and saves a summary of the
 results to a local file.
 
-在本文中，我们将学习如何在执行特定任务时编写记录性能时间轴的测试，
-并将结果的摘要保存到本地文件中。
+在本文中，我們將學習如何在執行特定任務時編寫記錄效能時間軸的測試，
+並將結果的摘要儲存到本地檔案中。
 
 This recipe uses the following steps:
 
-步骤：
+步驟：
 
 1. Write a test that scrolls through a list of items.
 
-   编写一个滚动列表的测试项目；
+   編寫一個滾動列表的測試專案；
 
 1. Record the performance of the app.
 
-   记录应用程序的性能；
+   記錄應用程式的效能；
 
 1. Save the results to disk.
 
-   将结果保存到磁盘；
+   將結果儲存到磁碟；
 
 1. Run the test.
 
-   运行测试；
+   執行測試；
 
 1. Review the results.
 
-   检查结果。
+   檢查結果。
 
 ### 1. Write a test that scrolls through a list of items
 
-### 1.  编写一个滚动列表的测试项目
+### 1.  編寫一個滾動列表的測試專案
 
 In this recipe, record the performance of an app as it scrolls through a
 list of items. To focus on performance profiling, this recipe builds
 on the [Scrolling][] recipe in widget tests.
 
-在这一小节，我们将记录当滚动列表条目时应用程序的性能。
-为了专注于性能分析，这一小节在组件测试中
-[Scrolling in integration tests（列表滚动集成测试）][Scrolling]
-的基础上进行。
+在這一小節，我們將記錄當滾動列表條目時應用程式的效能。
+為了專注於效能分析，這一小節在元件測試中
+[Scrolling in integration tests（列表滾動整合測試）][Scrolling]
+的基礎上進行。
 
 Follow the instructions in that recipe to create an app and write a test to
 verify that everything works as expected.
 
-请按照基础章节的指南新建一个应用程序，编写一个测试程序。
-最终，确保应用程序按预期运行。
+請按照基礎章節的指南新建一個應用程式，編寫一個測試程式。
+最終，確保應用程式按預期執行。
 
 ### 2. Record the performance of the app
 
-### 2. 记录应用程序的性能
+### 2. 記錄應用程式的效能
 
 Next, record the performance of the app as it scrolls through the
 list. Perform this task using the [`traceAction()`][]
 method provided by the [`IntegrationTestWidgetsFlutterBinding`][] class.
 
-然后，我们需要再应用程序的列表滚动的时候记录它的性能。
-使用 [`IntegrationTestWidgetsFlutterBinding`][] 类中的 [`traceAction()`][] 方法实现这项功能。
+然後，我們需要再應用程式的列表滾動的時候記錄它的效能。
+使用 [`IntegrationTestWidgetsFlutterBinding`][] 類中的 [`traceAction()`][] 方法實現這項功能。
 
 This method runs the provided function and records a [`Timeline`][]
 with detailed information about the performance of the app. This example
@@ -104,17 +104,17 @@ provides a function that scrolls through the list of items,
 ensuring that a specific item is displayed. When the function completes,
 the `traceAction()` creates a report data `Map` that contains the `Timeline`.
 
-这种方式运行提供的方法，并将应用程序性能的详细信息记录在 [`Timeline`][] 中。
-在这个示例中，我们提供一个方法，用以滚动列表的条目并确保指定条目是否被显示出来。
-当方法执行完成的时候，`traceAction()` 会返回一个 `Timeline`。
+這種方式執行提供的方法，並將應用程式效能的詳細資訊記錄在 [`Timeline`][] 中。
+在這個範例中，我們提供一個方法，用以滾動列表的條目並確保指定條目是否被顯示出來。
+當方法執行完成的時候，`traceAction()` 會返回一個 `Timeline`。
 
 Specify the `reportKey` when running more than one `traceAction`.
 By default all `Timelines` are stored with the key `timeline`,
 in this example the `reportKey` is changed to `scrolling_timeline`.
 
-当运行一个以上的 `traceAction` 的时候需要指定 `reportKey`。
-默认情况下，所有的 `Timelines` 都会存在 `timeline` 里，
-在这个例子中，`reportKey` 被修改为了 `scrolling_timeline`:
+當執行一個以上的 `traceAction` 的時候需要指定 `reportKey`。
+預設情況下，所有的 `Timelines` 都會存在 `timeline` 裡，
+在這個例子中，`reportKey` 被修改為了 `scrolling_timeline`:
 
 <?code-excerpt "integration_test/scrolling_test.dart (traceAction)"?>
 ```dart
@@ -133,42 +133,42 @@ await binding.traceAction(
 
 ### 3. Save the results to disk
 
-### 3. 将结果保存到磁盘
+### 3. 將結果儲存到磁碟
 
 Now that you've captured a performance timeline, you need a way to review it.
 The `Timeline` object provides detailed information about all of the events
 that took place, but it doesn't provide a convenient way to review the results.
 
-我们已经获取了一个性能时间轴，我们需要一种方式来对它进行检验，
-`Timeline` 对象提供所有已发生事件的相关详细信息，但它不提供快捷方式查看结果。
+我們已經獲取了一個性能時間軸，我們需要一種方式來對它進行檢驗，
+`Timeline` 物件提供所有已發生事件的相關詳細資訊，但它不提供快捷方式檢視結果。
 
 Therefore, convert the `Timeline` into a [`TimelineSummary`][].
 The `TimelineSummary` can perform two tasks that make it easier
 to review the results:
 
-因此，我们可以将 `Timeline` 转换成 [`TimelineSummary`][]，
-`TimelineSummary` 通过执行两个任务可以使我们更容易的检查结果：
+因此，我們可以將 `Timeline` 轉換成 [`TimelineSummary`][]，
+`TimelineSummary` 透過執行兩個任務可以使我們更容易的檢查結果：
 
   1. Writing a json document on disk that summarizes the data contained
      within the `Timeline`. This summary includes information about the
      number of skipped frames, slowest build times, and more.
 
-     将一个 json 文件写入磁盘，它包含了 `Timeline` 中包含的数据的摘要。
-     此摘要包括掉帧数量，最慢构建时间等的信息。
+     將一個 json 檔案寫入磁碟，它包含了 `Timeline` 中包含的資料的摘要。
+     此摘要包括掉幀數量，最慢建構時間等的資訊。
 
   2. Saving the complete `Timeline` as a json file on disk.
      This file can be opened with the Chrome browser's
      tracing tools found at `chrome://tracing`.
 
-     它可以将完整的 `Timeline` 以 json 文件的形式存储在磁盘上，
-     可以使用 Chrome 浏览器的追踪工具打开此文件。
-     追踪工具在这里: `chrome://tracing`。
+     它可以將完整的 `Timeline` 以 json 檔案的形式儲存在磁碟上，
+     可以使用 Chrome 瀏覽器的追蹤工具開啟此檔案。
+     追蹤工具在這裡: `chrome://tracing`。
 
 To capture the results, create a file named `perf_driver.dart`
 in the `test_driver` folder and add the following code:
 
-为了捕获结果内容，需要在 `test_driver` 文件夹中
-新建一个 `perf_driver.dart` 文件，并加入如下代码:
+為了捕獲結果內容，需要在 `test_driver` 資料夾中
+新建一個 `perf_driver.dart` 檔案，並加入如下程式碼:
 
 <?code-excerpt "test_driver/perf_driver.dart"?>
 ```dart
@@ -206,19 +206,19 @@ which you can customize.
 By default, it writes the results to the `integration_response_data.json` file,
 but you can customize it to generate a summary like in this example.
 
-你可以自定义 `integrationDriver` 函数的 `responseDataCallback` 方法，
-默认情况下，它会将结果写入 `integration_response_data.json` 文件，
-不过你也可以通过这个例子里的方法重写为生成摘要。
+你可以自訂 `integrationDriver` 函式的 `responseDataCallback` 方法，
+預設情況下，它會將結果寫入 `integration_response_data.json` 檔案，
+不過你也可以透過這個例子裡的方法重寫為產生摘要。
 
 ### 4. Run the test
 
-### 4. 运行测试
+### 4. 執行測試
 
 After configuring the test to capture a performance `Timeline` and save a
 summary of the results to disk, run the test with the following command:
 
-在我们为了捕获一个性能 `Timeline` 配置了测试代码，并且将结果的摘要保存在了磁盘上，
-我们可以使用以下命令运行测试代码：
+在我們為了捕獲一個性能 `Timeline` 配置了測試程式碼，並且將結果的摘要儲存在了磁碟上，
+我們可以使用以下命令執行測試程式碼：
 
 ```
 flutter drive \
@@ -231,8 +231,8 @@ The `--profile` option means to compile the app for the "profile mode"
 rather than the "debug mode", so that the benchmark result is closer to 
 what will be experienced by end users. 
 
-`--profile` 命令行选项代表着应用将以 profile 模式 (性能模式) 运行，
-这种模式下运行的应用会比 debug 模式更接近最终用户的体验。
+`--profile` 命令列選項代表著應用將以 profile 模式 (效能模式) 執行，
+這種模式下執行的應用會比 debug 模式更接近終端使用者的體驗。
 
 {{site.alert.note}}
 
@@ -240,19 +240,19 @@ what will be experienced by end users.
   This option disables the Dart Development Service (DDS), which won't
   be accessible from your computer.
 
-  在真机或者模拟器上运行的时候，加入 `--no-dds` 命令行选项代表着禁用 Dart 开发环境服务 (DDS)，
-  此时就无法在电脑上访问。
+  在真機或者模擬器上執行的時候，加入 `--no-dds` 命令列選項代表著禁用 Dart 開發環境服務 (DDS)，
+  此時就無法在電腦上存取。
 
 {{site.alert.end}}
 
 ### 5. Review the results
 
-### 5. 检查结果
+### 5. 檢查結果
 
 After the test completes successfully, the `build` directory at the root of
 the project contains two files:
 
-在测试代码运行成功以后，在项目根目录下的 `build` 文件夹里包含以下两个文件：
+在測試程式碼執行成功以後，在專案根目錄下的 `build` 資料夾裡包含以下兩個檔案：
 
   1. `scrolling_summary.timeline_summary.json` contains the summary. Open
      the file with any text editor to review the information contained
@@ -260,8 +260,8 @@ the project contains two files:
      time the test runs and create a graph of the results.
 
      `scrolling_summary.timeline_summary.json` 包含摘要。
-     可以使用任何文本编辑器打开它并查看其中包含的信息。
-     通过更高级的设置，我们可以在每次测试时保存摘要并创建一个结果图。
+     可以使用任何文字編輯器開啟它並檢視其中包含的資訊。
+     透過更進階的設定，我們可以在每次測試時儲存摘要並建立一個結果圖。
 
   2. `scrolling_timeline.timeline.json` contains the complete timeline data.
      Open the file using the Chrome browser's tracing tools found at
@@ -269,14 +269,14 @@ the project contains two files:
      convenient interface for inspecting the timeline data to discover
      the source of a performance issue.
 
-     `scrolling_timeline.timeline.json` 包含完整的时间轴数据。
-     使用 Chorme 浏览器的追踪工具打开这个文件。
-     追踪工具在这里：`chrome://tracing`。
-     追踪工具提供了一个便捷的用户界面，用以检测时间轴数据并发现其中导致性能问题的源头。
+     `scrolling_timeline.timeline.json` 包含完整的時間軸資料。
+     使用 Chorme 瀏覽器的追蹤工具開啟這個檔案。
+     追蹤工具在這裡：`chrome://tracing`。
+     追蹤工具提供了一個便捷的使用者介面，用以檢測時間軸資料平行處理現其中導致效能問題的源頭。
 
 #### Summary example
 
-#### 摘要的示例
+#### 摘要的範例
 
 ```json
 {
@@ -302,7 +302,7 @@ the project contains two files:
 
 ### Complete example
 
-### 完整样例
+### 完整範例
 
 **integration_test/scrolling_test.dart**
 

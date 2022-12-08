@@ -1,9 +1,9 @@
 ---
 title: Using the Network View
-title: 使用网络视图 (Network View)
+title: 使用網路檢視 (Network View)
 description: How to use the DevTools network view.
-tags: Flutter开发工具,DevTools
-keywords: 开发者工具,网络视图,Dart
+tags: Flutter開發工具,DevTools
+keywords: 開發者工具,網路檢視,Dart
 ---
 
 {{site.alert.note}}

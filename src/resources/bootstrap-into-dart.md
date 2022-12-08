@@ -1,11 +1,11 @@
 ---
 title: Bootstrap into Dart
-title: Dart 语言指引
+title: Dart 語言指引
 toc: false
 description: How to get started with the Dart programming language.
-description: 如何开始学习和使用 Dart 语言。
-tags: Flutter参考资料
-keywords: Dart开发语言,Dart是什么,Flutter为什么要用Dart
+description: 如何開始學習和使用 Dart 語言。
+tags: Flutter參考資料
+keywords: Dart開發語言,Dart是什麼,Flutter為什麼要用Dart
 ---
 
 New to the [Dart][] language?
@@ -16,26 +16,26 @@ Many people have reported that
 We hope these resources make Dart easy for
 you to learn, too.
 
-初学 [Dart]({{site.dart-site}}) 语言？
-我们准备了一些最受欢迎的资源来帮助你快速上手 Dart。
-很多人说，[Dart 是非常简单易学的][Dart is easy and fun to learn]。
-我们希望这些资源同样能够让你学习 Dart 变得更加简单。
+初學 [Dart]({{site.dart-site}}) 語言？
+我們準備了一些最受歡迎的資源來幫助你快速上手 Dart。
+很多人說，[Dart 是非常簡單易學的][Dart is easy and fun to learn]。
+我們希望這些資源同樣能夠讓你學習 Dart 變得更加簡單。
 
 [Language tour][]
 <br> Your best introduction to the Dart language. Learn about Dart's
   features such as _strong types_, _closures_, _libraries_, _lexical scoping_,
   _top-level functions_, _named parameters_, _async / await_, and lots more.
   
-[Dart 语言学习之旅][Language tour]
-<br> 这是对 Dart 语言最好的介绍。能够帮助你学习 Dart 的特性，比
-如 **强类型**、**闭包**、**库**、**词法作用域**、**顶级函数**、**命名参数**、**async / await** 等等。
+[Dart 語言學習之旅][Language tour]
+<br> 這是對 Dart 語言最好的介紹。能夠幫助你學習 Dart 的特性，比
+如 **強型別**、**閉包**、**庫**、**詞法作用域**、**最上層函式**、**命名引數**、**async / await** 等等。
 
 [Library tour][]
 <br> A good overview of Dart's powerful core libraries. Learn about
   Dart's support for collections, async, math, numbers, strings, JSON, and more.
 
-[Dart 库学习之旅][Library tour]
-<br> 这是一个对 Dart 强大的核心库的概述。你能够学习到关于 Dart 对于集合、async、math、number、strings、JSON 的支持。
+[Dart 庫學習之旅][Library tour]
+<br> 這是一個對 Dart 強大的核心庫的概述。你能夠學習到關於 Dart 對於集合、async、math、number、strings、JSON 的支援。
 
 [Learning Dart as a JavaScript developer][]
 <br> Use your JavaScript knowledge to get up and running quickly with Dart.
@@ -43,30 +43,30 @@ you to learn, too.
   as well as concepts and conventions not present in vanilla JavaScript.
 
 [Learning Dart as a JavaScript developer][]
-<br> 借助现有的 JavaScript 知识，快速掌握并运行 Dart 编程语言。
-了解两种语言之间相似之处，以及一些普通的 JavaScript 中
-不存在的概念和习惯用法。
+<br> 藉助現有的 JavaScript 知識，快速掌握並執行 Dart 程式語言。
+瞭解兩種語言之間相似之處，以及一些普通的 JavaScript 中
+不存在的概念和習慣用法。
 
 [Intro to Dart for Java Developers][] codelab
 <br> Use your Java knowledge to get up and running quickly with Dart.
   Learn about classes, constructors, parameters,
   and interfaces with examples from the Java Tutorial.
 
-[给 Java 开发者的 Dart 入门代码实验室]({{site.codelabs}}/codelabs/from-java-to-dart-cn/index.html)
-<br> 使用你的 Java 知识来快速上手 Dart。你可以在这个 Java 指南中学习关于类、构造器、参数和接口的相关案例。
+[給 Java 開發者的 Dart 入門程式碼實驗室]({{site.codelabs}}/codelabs/from-java-to-dart-cn/index.html)
+<br> 使用你的 Java 知識來快速上手 Dart。你可以在這個 Java 指南中學習關於類、構造器、引數和介面的相關案例。
 
 [Effective Dart][]
 <br> Guides for style, authoring documentation, usage, and more.
 
 [高效 Dart 指南]({{site.dart-site}}/guides/language/effective-dart)
-<br> 在这个指南中你可以查阅关于样式、写作文档、用法等内容
+<br> 在這個指南中你可以查閱關於樣式、寫作文件、用法等內容
 
 [Asynchronous programming: futures, async, await][]
 <br> Learn how to use Futures, which are used extensively in the Dart core
   libraries.  Futures can be used instead of one-time callbacks.
 
-[异步编程: futures, async, await 指南][Asynchronous programming: futures, async, await]
-<br> 这能够帮助你在 Dart 核心库中熟练使用 Futures。Futures 可以用来替代一次性回调。
+[非同步程式設計: futures, async, await 指南][Asynchronous programming: futures, async, await]
+<br> 這能夠幫助你在 Dart 核心函式庫中熟練使用 Futures。Futures 可以用來替代一次性回呼(Callback)。
 
 [Asynchronous programming: streams][]
 <br> Learn how to use Streams, which are used extensively in the Dart core
@@ -75,13 +75,13 @@ you to learn, too.
   [File class]({{site.api}}/flutter/dart-io/File-class.html)
   uses Streams to read bytes from a file.
 
-[异步编程: Streams 指南]({{site.dart-site}}/docs/tutorials/streams)
-<br> 这能够帮助你在 Dart 核心库中熟练使用 Streams。其中 Streams 可以用来替代重复使用的回调。比如，我们在 [File 类]({{site.api}}/flutter/dart-io/File-class.html) 中可以使用 Streams 从文件中读取字节。
+[非同步程式設計: Streams 指南]({{site.dart-site}}/docs/tutorials/streams)
+<br> 這能夠幫助你在 Dart 核心函式庫中熟練使用 Streams。其中 Streams 可以用來替代重複使用的回呼(Callback)。比如，我們在 [File 類]({{site.api}}/flutter/dart-io/File-class.html) 中可以使用 Streams 從檔案中讀取位元組。
 
 Want to learn more and perhaps contribute? Check out the
 [Dart community]({{site.dart-site}}/community).
 
-如果你想了解更多信息或是想要参与贡献，欢迎查看我们的 [Dart 社区]({{site.dart-site}}/community)。
+如果你想了解更多資訊或是想要參與貢獻，歡迎檢視我們的 [Dart 社群]({{site.dart-site}}/community)。
 
 [Asynchronous programming: futures, async, await]: {{site.dart-site}}/codelabs/async-await
 [Asynchronous programming: streams]: {{site.dart-site}}/tutorials/language/streams

@@ -1,17 +1,17 @@
 ---
 title: Persist data with SQLite
-title: 用 SQLite 做数据持久化
+title: 用 SQLite 做資料持久化
 description: How to use SQLite to store and retrieve data.
-description: 如何使用 SQLite 做数据持久化。
-tags: cookbook, 实用教程, 持久化
-keywords: SQLite,数据库
+description: 如何使用 SQLite 做資料持久化。
+tags: cookbook, 實用課程, 持久化
+keywords: SQLite,資料庫
 prev:
   title: Work with WebSockets
-  title: 发起 WebSockets 请求
+  title: 發起 WebSockets 請求
   path: /docs/cookbook/networking/web-sockets
 next:
   title: Read and write files
-  title: 文件读写
+  title: 檔案讀寫
   path: /docs/cookbook/persistence/reading-writing-files
 ---
 
@@ -22,57 +22,57 @@ the local device, consider using a database instead of a local file or
 key-value store. In general, databases provide faster inserts, updates,
 and queries compared to other local persistence solutions.
 
-如果您正在编写一个需要持久化且查询大量本地设备数据的 app，
-可考虑采用数据库，而不是本地文件夹或关键值库。
-总的来说，相比于其他本地持久化方案来说，
-数据库能够提供更为迅速的插入、更新、查询功能。
+如果您正在編寫一個需要持久化且查詢大量本地裝置資料的 app，
+可考慮採用資料庫，而不是本地資料夾或關鍵值庫。
+總的來說，相比於其他本地持久化方案來說，
+資料庫能夠提供更為迅速的插入、更新、查詢功能。
 
 Flutter apps can make use of the SQLite databases via the
 [`sqflite`][] plugin available on pub.dev.
 This recipe demonstrates the basics of using `sqflite`
 to insert, read, update, and remove data about various Dogs.
 
-Flutter应用程序中可以通过 [`sqflite`][] package
-来使用 SQLite 数据库。
-本文将通过使用 `sqflite` 来演示插入，读取，更新，删除各种狗狗的数据。
+Flutter應用程式中可以透過 [`sqflite`][] package
+來使用 SQLite 資料庫。
+本文將透過使用 `sqflite` 來示範插入，讀取，更新，刪除各種狗狗的資料。
 
 If you are new to SQLite and SQL statements, review the
 [SQLite Tutorial][] to learn the basics before
 completing this recipe.
 
-如果你对于 SQLite 和 SQL 的各种语句还不熟悉，请查看 SQLite 官方的教程
-[SQLite 教程][SQLite Tutorial]，在查看本文之前需要掌握基本的SQL语句。
+如果你對於 SQLite 和 SQL 的各種陳述式還不熟悉，請檢視 SQLite 官方的課程
+[SQLite 課程][SQLite Tutorial]，在檢視本文之前需要掌握基本的SQL陳述式。
 
 This recipe uses the following steps:
 
-步骤：
+步驟：
 
-1. 添加依赖
-1. 定义 `Dog（狗）` 数据模型；
-1. 打开数据库；
-1. 创建 `dogs` 数据表；
-1. 将一条 `Dog` 数据插入数据库；
-1. 查询所有狗狗的数据；
-1. 更新（修改）一条 `Dog` 的数据；
-1. 删除一条 `Dog` 的数据。
+1. 新增依賴
+1. 定義 `Dog（狗）` 資料模型；
+1. 開啟資料庫；
+1. 建立 `dogs` 資料表；
+1. 將一條 `Dog` 資料插入資料庫；
+1. 查詢所有狗狗的資料；
+1. 更新（修改）一條 `Dog` 的資料；
+1. 刪除一條 `Dog` 的資料。
 
 ## 1. Add the dependencies
 
-## 1. 添加依赖
+## 1. 新增依賴
 
 To work with SQLite databases, import the `sqflite` and `path` packages. 
 
-为了使用 SQLite 数据库，首先需要导入 `sqflite` 和 `path` 这两个 package。
+為了使用 SQLite 資料庫，首先需要匯入 `sqflite` 和 `path` 這兩個 package。
 
   * The `sqflite` package provides classes and functions to
     interact with a SQLite database. 
     
-    `sqflite` 提供了丰富的类和方法，以便你能便捷实用 SQLite 数据库。
+    `sqflite` 提供了豐富的類和方法，以便你能便捷實用 SQLite 資料庫。
     
   * The `path` package provides functions to
     define the location for storing the database on disk.
     
-    `path` 提供了大量方法，以便你能正确的定义数据库在磁盘上的存储位置。
+    `path` 提供了大量方法，以便你能正確的定義資料庫在磁碟上的儲存位置。
 
 ```yaml
 dependencies:
@@ -84,7 +84,7 @@ dependencies:
 
 Make sure to import the packages in the file you'll be working in.
 
-确保你已将 packages 导入要使用的文件中。
+確保你已將 packages 匯入要使用的檔案中。
 
 <?code-excerpt "lib/main.dart (imports)"?>
 ```dart
@@ -97,16 +97,16 @@ import 'package:sqflite/sqflite.dart';
 
 ## 2. Define the Dog data model
 
-## 2. 定义狗狗的数据模型
+## 2. 定義狗狗的資料模型
 
 Before creating the table to store information on Dogs, take a few moments to
 define the data that needs to be stored. For this example, define a Dog class
 that contains three pieces of data:
 A unique `id`, the `name`, and the `age` of each dog.
 
-在你准备在新建的表里存储狗狗们的信息的的时候，你需要先定义这些数据。
-例如，定义一个狗类时，每一条狗狗的数据将包含三个字段：
-一个唯一的 `id` ；名字 `name` ；年龄 `age`。
+在你準備在新建的表裡儲存狗狗們的資訊的的時候，你需要先定義這些資料。
+例如，定義一個狗類時，每一條狗狗的資料將包含三個欄位：
+一個唯一的 `id` ；名字 `name` ；年齡 `age`。
 
 <?code-excerpt "lib/step2.dart"?>
 ```dart
@@ -125,23 +125,23 @@ class Dog {
 
 ## 3. Open the database
 
-## 3. 打开数据库
+## 3. 開啟資料庫
 
 Before reading and writing data to the database, open a connection 
 to the database. This involves two steps:
 
-在你准备读写数据库的数据之前，你要先打开这个数据库。
-打开一个数据库有以下两个步骤：
+在你準備讀寫資料庫的資料之前，你要先開啟這個資料庫。
+開啟一個數據庫有以下兩個步驟：
 
   1. Define the path to the database file using `getDatabasesPath()` from the
   `sqflite` package, combined with the `join` function from the `path` package.
   
-     使用 `sqflite` package 里的 `getDatabasesPath` 方法并配合 `path` package里的
-     `join` 方法定义数据库的路径。
+     使用 `sqflite` package 裡的 `getDatabasesPath` 方法並配合 `path` package裡的
+     `join` 方法定義資料庫的路徑。
      
   2. Open the database with the `openDatabase()` function from `sqflite`.
   
-  	 使用 `sqflite` package 里的 `openDatabase` 方法打开数据库。
+  	 使用 `sqflite` package 裡的 `openDatabase` 方法開啟資料庫。
 
 {{site.alert.note}}
   In order to use the keyword `await`, the code must be placed
@@ -165,41 +165,41 @@ final database = openDatabase(
 
 ## 4. Create the `dogs` table
 
-## 4. 创建 `dogs` 表
+## 4. 建立 `dogs` 表
 
 Next, create a table to store information about various Dogs.
 For this example, create a table called `dogs` that defines the data
 that can be stored. Each `Dog` contains an `id`, `name`, and `age`.
 Therefore, these are represented as three columns in the `dogs` table.
 
-接下来，你需要创建一个表用以存储各种狗狗的信息。
-在这个示例中，创建一个名为 `dogs` 数据库表，它定义了可以被存储的数据。
-这样，每条 `Dog` 数据就包含了一个 `id`， `name` 和 `age`。
-因此，在 `dogs` 数据库表中将有三列，分别是 `id`， `name` 和 `age`。
+接下來，你需要建立一個表用以儲存各種狗狗的資訊。
+在這個範例中，建立一個名為 `dogs` 資料庫表，它定義了可以被儲存的資料。
+這樣，每條 `Dog` 資料就包含了一個 `id`， `name` 和 `age`。
+因此，在 `dogs` 資料庫表中將有三列，分別是 `id`， `name` 和 `age`。
 
 
   1. The `id` is a Dart `int`, and is stored as an `INTEGER` SQLite
      Datatype. It is also good practice to use an `id` as the primary
      key for the table to improve query and update times.
      
-     `id` 是 Dart 的 `int` 类型，在数据表中是 SQLite 的 `INTEGER` 数据类型。
-     最佳实践是将 `id` 作为数据库表的主键，用以改善查询和修改的时间。
+     `id` 是 Dart 的 `int` 型別，在資料表中是 SQLite 的 `INTEGER` 資料型別。
+     最佳實踐是將 `id` 作為資料庫表的主鍵，用以改善查詢和修改的時間。
      
   2. The `name` is a Dart `String`, and is stored as a `TEXT` SQLite
      Datatype.
      
-     `name` 是Dart的 `String`类型，在数据表中是SQLite的 `TEXT` 数据类型。
+     `name` 是Dart的 `String`型別，在資料表中是SQLite的 `TEXT` 資料型別。
      
   3. The `age` is also a Dart `int`, and is stored as an `INTEGER`
      Datatype.
      
-     `age` 也是Dart的 `int` 类型，在数据表中是SQLite的 `INTEGER` 数据类型。
+     `age` 也是Dart的 `int` 型別，在資料表中是SQLite的 `INTEGER` 資料型別。
 
 For more information about the available Datatypes that can be stored in a
 SQLite database, see the [official SQLite Datatypes documentation][].
 
-关于 SQLite 数据库能够存储的更多的数据类型信息请查阅官方的
-[SQLite Datatypes 文档](https://www.sqlite.org/datatype3.html)。
+關於 SQLite 資料庫能夠儲存的更多的資料型別資訊請查閱官方的
+[SQLite Datatypes 文件](https://www.sqlite.org/datatype3.html)。
 
 <?code-excerpt "lib/main.dart (openDatabase)"?>
 ```dart
@@ -223,25 +223,25 @@ final database = openDatabase(
 
 ## 5. Insert a Dog into the database
 
-## 5. 插入一条狗狗的数据
+## 5. 插入一條狗狗的資料
 
 Now that you have a database with a table suitable for storing information 
 about various dogs, it's time to read and write data.
 
-现在你已经准备好了一个数据库用于存储各种狗狗的信息数据，现在开始读写数据咯。
+現在你已經準備好了一個數據庫用於儲存各種狗狗的資訊資料，現在開始讀寫資料咯。
 
 First, insert a `Dog` into the `dogs` table. This involves two steps:
 
-首先，在 `dogs` 数据表中插入一条 `Dog` 数据。分以下两步：
+首先，在 `dogs` 資料表中插入一條 `Dog` 資料。分以下兩步：
 
 1. Convert the `Dog` into a `Map`
   
-   把 `Dog` 转换成一个 `Map` 数据类型；
+   把 `Dog` 轉換成一個 `Map` 資料型別；
      
 2. Use the [`insert()`][] method to store the
    `Map` in the `dogs` table.
   
-   使用 [`insert()`][] 方法把 `Map` 保存到 `dogs` 数据表中。
+   使用 [`insert()`][] 方法把 `Map` 儲存到 `dogs` 資料表中。
 
 <?code-excerpt "lib/main.dart (Dog)"?>
 ```dart
@@ -308,21 +308,21 @@ await insertDog(fido);
 
 ## 6. Retrieve the list of Dogs
 
-## 6. 查询狗狗列表
+## 6. 查詢狗狗列表
 
 Now that a `Dog` is stored in the database, query the database
 for a specific dog or a list of all dogs. This involves two steps:
 
-现在已经有了一条 `Dog` 存储在数据库里。
-你可以通过查询数据库，检索到一只狗狗的数据或者所有狗狗的数据。分为以下两步:
+現在已經有了一條 `Dog` 儲存在資料庫裡。
+你可以透過查詢資料庫，檢索到一隻狗狗的資料或者所有狗狗的資料。分為以下兩步:
 
   1. Run a `query` against the `dogs` table. This returns a `List<Map>`.
   
-     调用 `dogs` 表对像的 `query` 方法。这将返回一个`List <Map>`。
+     呼叫 `dogs` 表對像的 `query` 方法。這將返回一個`List <Map>`。
      
   2. Convert the `List<Map>` into a `List<Dog>`.
   
-     将 `List<Map>` 转换成 `List<Dog>` 数据类型。
+     將 `List<Map>` 轉換成 `List<Dog>` 資料型別。
 
 <?code-excerpt "lib/main.dart (dogs)"?>
 ```dart
@@ -353,7 +353,7 @@ print(await dogs()); // Prints a list that include Fido.
 
 ## 7. Update a `Dog` in the database
 
-## 7. 修改一条 `Dog` 数据
+## 7. 修改一條 `Dog` 資料
 
 After inserting information into the database,
 you might want to update that information at a later time.
@@ -361,19 +361,19 @@ You can do this by using the [`update()`][]
 method from the `sqflite` library.
 
 使用 `sqflite` package 中的 [`update()`][]方法，
-可以对已经插入到数据库中的数据进行修改（更新）。
+可以對已經插入到資料庫中的資料進行修改（更新）。
 
 This involves two steps:
 
-修改数据操作包含以下两步：
+修改資料操作包含以下兩步：
 
   1. Convert the Dog into a Map.
   
-     将一条狗狗的数据转换成 `Map` 数据类型；
+     將一條狗狗的資料轉換成 `Map` 資料型別；
   
   2. Use a `where` clause to ensure you update the correct Dog.
      
-     使用  `where` 语句定位到具体将要被修改的数据。
+     使用  `where` 陳述式定位到具體將要被修改的資料。
 
 <?code-excerpt "lib/main.dart (update)"?>
 ```dart
@@ -412,31 +412,31 @@ print(await dogs()); // Prints Fido with age 42.
   Always use `whereArgs` to pass arguments to a `where` statement.
   This helps safeguard against SQL injection attacks.
 
-  使用 `whereArgs` 将参数传递给 `where` 语句。有助于防止 SQL 注入攻击。
+  使用 `whereArgs` 將引數傳遞給 `where` 陳述式。有助於防止 SQL 注入攻擊。
 
   Do not use string interpolation, such as `where: "id = ${dog.id}"`!
   
-  这里不要使用字符串模板，比如： `where: "id = ${dog.id}"`！
+  這裡不要使用字串範本，比如： `where: "id = ${dog.id}"`！
   
 {{site.alert.end}}
 
 ## 8. Delete a `Dog` from the database
 
-## 8. 删除一条 `Dog` 的数据
+## 8. 刪除一條 `Dog` 的資料
 
 In addition to inserting and updating information about Dogs,
 you can also remove dogs from the database. To delete data,
 use the [`delete()`][] method from the `sqflite` library.
 
-除了插入和修改狗狗们的数据，你还可以从数据库中删除狗狗的数据。
-删除数据用到了 `sqflite` package 中的 [`delete()`][] 方法。
+除了插入和修改狗狗們的資料，你還可以從資料庫中刪除狗狗的資料。
+刪除資料用到了 `sqflite` package 中的 [`delete()`][] 方法。
 
 In this section, create a function that takes an id and deletes the dog with
 a matching id from the database. To make this work, you must provide a `where`
 clause to limit the records being deleted.
 
-在这一小节，新建一个方法用来接收一个 id 并且删除数据库中与这个 id 匹配的那一条数据。
-为了达到这个目的，你必须使用 `where` 语句限定哪一条才是被删除的数据。
+在這一小節，新建一個方法用來接收一個 id 並且刪除資料庫中與這個 id 匹配的那一條資料。
+為了達到這個目的，你必須使用 `where` 陳述式限定哪一條才是被刪除的資料。
 
 
 <?code-excerpt "lib/main.dart (deleteDog)"?>
@@ -458,27 +458,27 @@ Future<void> deleteDog(int id) async {
 
 ## Example
 
-## 示例
+## 範例
 
 To run the example:
 
-运行示例需要以下几步：
+執行範例需要以下幾步：
 
 1. Create a new Flutter project.
    
-   创建一个新的 Flutter 工程；
+   建立一個新的 Flutter 工程；
   	 
 2. Add the `sqflite` and `path` packages to your `pubspec.yaml`.
    
-   将 `sqflite` 和 `path` 包添加到 `pubspec.yaml` 文件里；
+   將 `sqflite` 和 `path` 包新增到 `pubspec.yaml` 檔案裡；
   
 3. Paste the following code into a new file called `lib/db_test.dart`.
   
-   将以下代码粘贴在 `lib/db_test.dart` 文件里（若无则新建，若有则覆盖）；
+   將以下程式碼貼上在 `lib/db_test.dart` 檔案裡（若無則新建，若有則覆蓋）；
   
 4. Run the code with `flutter run lib/db_test.dart`.
   
-   运行 `flutter run lib/db_test.dart`。
+   執行 `flutter run lib/db_test.dart`。
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

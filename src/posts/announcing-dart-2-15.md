@@ -1,35 +1,35 @@
 ---
-title: Dart 2.15 现已发布
+title: Dart 2.15 現已釋出
 toc: true
 ---
 
 *作者 / Michael Thomsen, Dart & Flutter Product Manager, Google*
 
-我们已经正式发布了 Dart SDK 的 2.15 版本，该版本新增了可快速并发的工作器 isolate、新的构造函数拆分 (tear-off) 语言特性、经过改进的 dart:core 库枚举支持、package 发布者相关的新功能，等等。
+我們已經正式釋出了 Dart SDK 的 2.15 版本，該版本新增了可快速併發的工作器 isolate、新的建構函式拆分 (tear-off) 語言特性、經過改進的 dart:core 庫列舉支援、package 釋出者相關的新功能，等等。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/12/8CA8pZ.png)
 
-## **工作器 isolate 的快速并发**
+## **工作器 isolate 的快速併發**
 
-如今，几乎所有现代设备都使用多核 CPU，可以并行执行多个任务。对于大多数 Dart 程序来说，这些内核的使用情况对开发者而言是透明的: 默认情况下，Dart 运行时系统在单个内核上运行所有的 Dart 代码，不过会使用其他内核来执行系统级任务，比如异步输入/输出，包括写入文件或者调用网络等。
+如今，幾乎所有現代裝置都使用多核 CPU，可以並行執行多個任務。對於大多數 Dart 程式來說，這些核心的使用情況對開發者而言是透明的: 預設情況下，Dart 執行時系統在單個核心上執行所有的 Dart 程式碼，不過會使用其他核心來執行系統級任務，比如非同步輸入/輸出，包括寫入檔案或者呼叫網路等。
 
-不过您自己的 Dart 代码可能也需要并发运行。例如，您可能需要展示一个连续的动画，同时执行一个长时间运行的任务，比如解析一个大型 JSON 文件。如果额外任务花了太长时间，就可能会导致界面卡顿或延迟。如果将这些额外的任务移动到另一个单独的内核，动画就可以在主执行线程上继续运行而不受干扰。
+不過您自己的 Dart 程式碼可能也需要併發執行。例如，您可能需要展示一個連續的動畫，同時執行一個長時間執行的任務，比如解析一個大型 JSON 檔案。如果額外任務花了太長時間，就可能會導致介面卡頓或延遲。如果將這些額外的任務移動到另一個單獨的核心，動畫就可以在主執行執行緒上繼續執行而不受干擾。
 
-Dart 的并发模型基于 [isolate](https://dart.dev/guides/language/concurrency)，isolate 是一种相互隔离的独立执行单元，这是为了避免出现与共享内存相关的大量并发编程错误，如 [数据争用等竞态条件](https://en.wikipedia.org/wiki/Race_condition#In_software)。Dart 通过禁止在 isolate 之间共享任何可变对象来避免这些错误，并使用 [消息传递](https://dart.dev/guides/language/concurrency#sending-multiple-messages-between-isolates) 在 isolate 之间交换状态。在 Dart 2.15 中，我们对 isolate 进行了许多实质性的改进。
+Dart 的併發模型基於 [isolate](https://dart.dev/guides/language/concurrency)，isolate 是一種相互隔離的獨立執行單元，這是為了避免出現與共享記憶體相關的大量併發程式設計錯誤，如 [資料爭用等競態條件](https://en.wikipedia.org/wiki/Race_condition#In_software)。Dart 透過禁止在 isolate 之間共享任何可變物件來避免這些錯誤，並使用 [訊息傳遞](https://dart.dev/guides/language/concurrency#sending-multiple-messages-between-isolates) 在 isolate 之間交換狀態。在 Dart 2.15 中，我們對 isolate 進行了許多實質性的改進。
 
-我们首先重新设计和实现了 isolate 的工作方式，引入了一个新概念: isolate 组。Isolate 组中的 isolate 共享各种内部数据结构，这些数据结构则表示正在运行的程序。这使得组中的单个 isolate 变得更加轻便。如今，因为不需要初始化程序结构，在现有 isolate 组中启动额外的 isolate 比之前快 100 多倍，并且产生的 isolate 所消耗的内存减少了 10 至 100 倍。
+我們首先重新設計和實現了 isolate 的工作方式，引入了一個新概念: isolate 組。Isolate 組中的 isolate 共享各種內部資料結構，這些資料結構則表示正在執行的程式。這使得組中的單個 isolate 變得更加輕便。如今，因為不需要初始化程式結構，在現有 isolate 組中啟動額外的 isolate 比之前快 100 多倍，並且產生的 isolate 所消耗的記憶體減少了 10 至 100 倍。
 
-虽然 isolate 组仍然阻止在 isolate 间共享访问可变对象，但由于 isolate 组使用共享堆实现，这也让其拥有了更多的功能。我们可以将对象从一个 isolate 传递到另一个 isolate，这可用于执行返回大量内存数据的任务的工作器 isolate。例如，工作器 isolate 通过网络调用获得数据，将该数据解析为大型 JSON 对象图，然后将这个 JSON 图返回到主 isolate 中。在推出 Dart 2.15 之前，执行该操作需要深度复制，如果复制花费的时间超过帧预算时间，就会导致界面卡顿。
+雖然 isolate 組仍然阻止在 isolate 間共享存取可變物件，但由於 isolate 組使用共享堆實現，這也讓其擁有了更多的功能。我們可以將物件從一個 isolate 傳遞到另一個 isolate，這可用於執行返回大量記憶體資料的任務的工作器 isolate。例如，工作器 isolate 透過網路呼叫獲得資料，將該資料解析為大型 JSON 物件圖，然後將這個 JSON 圖返回到主 isolate 中。在推出 Dart 2.15 之前，執行該操作需要深度複製，如果複製花費的時間超過幀預算時間，就會導致介面卡頓。
 
-在 Dart 2.15 中，工作器 isolate 可以调用 [`Isolate.exit()`](https://api.dart.cn/stable/2.15.0/dart-isolate/Isolate/exit.html)，将其结果作为参数传递。然后，Dart 运行时将包含结果的内存数据从工作器 isolate 传递到主 isolate 中，无需复制，且主 isolate 可以在固定时间内接收结果。我们已经在 [Flutter 2.8](https://mp.weixin.qq.com/s/22Ylncb3V95MGkMBRSrZoA) 中更新了 [compute()](https://api.flutter-io.cn/flutter/foundation/compute-constant.html) 实用函数，来利用 Isolate.exit()。如果您已经在使用 compute()，那么在升级到 Flutter 2.8 后，您将自动获得这些性能提升。
+在 Dart 2.15 中，工作器 isolate 可以呼叫 [`Isolate.exit()`](https://api.dart.cn/stable/2.15.0/dart-isolate/Isolate/exit.html)，將其結果作為引數傳遞。然後，Dart 執行時將包含結果的記憶體資料從工作器 isolate 傳遞到主 isolate 中，無需複製，且主 isolate 可以在固定時間內接收結果。我們已經在 [Flutter 2.8](https://mp.weixin.qq.com/s/22Ylncb3V95MGkMBRSrZoA) 中更新了 [compute()](https://api.flutter-io.cn/flutter/foundation/compute-constant.html) 實用函式，來利用 Isolate.exit()。如果您已經在使用 compute()，那麼在升級到 Flutter 2.8 後，您將自動獲得這些效能提升。
 
-最后，我们还重新设计了 isolate 消息传递机制的实现方式，使得中小型消息的传递速度提高了大约 8 倍。发送消息的速度明显更快，而接收信息几乎总是在恒定的时间内完成。另外，我们扩展了 isolate 可以相互发送的对象种类，增加了对函数类型、闭包和堆栈跟踪对象的支持。请参阅 [SendPort.send()](https://api.dart.cn/stable/2.15.0/dart-isolate/SendPort/send.html) 的 API 文档了解详情。
+最後，我們還重新設計了 isolate 訊息傳遞機制的實現方式，使得中小型訊息的傳遞速度提高了大約 8 倍。傳送訊息的速度明顯更快，而接收資訊幾乎總是在恆定的時間內完成。另外，我們擴充了 isolate 可以相互發送的物件種類，增加了對函式型別、閉套件和堆疊追蹤物件的支援。請參閱 [SendPort.send()](https://api.dart.cn/stable/2.15.0/dart-isolate/SendPort/send.html) 的 API 文件瞭解詳情。
 
-要了解有关如何使用 isolate 的更多信息，请参阅我们为 Dart 2.15 添加的官方文档 [Dart 中的并发](https://dart.cn/guides/language/concurrency)，以及更多 [代码示例](https://github.com/dart-lang/samples/tree/master/isolates)。
+要了解有關如何使用 isolate 的更多資訊，請參閱我們為 Dart 2.15 新增的官方文件 [Dart 中的併發](https://dart.cn/guides/language/concurrency)，以及更多 [程式碼範例](https://github.com/dart-lang/samples/tree/master/isolates)。
 
-## **新语言特性: 构造函数拆分**
+## **新語言特性: 建構函式拆分**
 
-在 Dart 中，您可以使用函数名称创建一个函数对象，该对象指向另一个对象的函数。在以下示例中，main() 方法的第二行演示了将 `g` 指向 `m.greet` 的语法:
+在 Dart 中，您可以使用函式名稱建立一個函式物件，該物件指向另一個物件的函式。在以下範例中，main() 方法的第二行示範了將 `g` 指向 `m.greet` 的語法:
 
 ```Dart
 class Greeter {
@@ -47,7 +47,7 @@ void main() {
 }
 ```
 
-在使用 Dart 核心库时，这种函数指针 (也被称为函数*拆分*) 经常出现。下面是通过传递函数指针在 iterable 上调用 `foreach()` 的示例:
+在使用 Dart 核心函式庫時，這種函式指標 (也被稱為函式*拆分*) 經常出現。下面是透過傳遞函式指標在 iterable 上呼叫 `foreach()` 的範例:
 
 ```Dart
 final m = Greeter('Michael');
@@ -56,7 +56,7 @@ final m = Greeter('Michael');
 // "Michael says: Hello Erik!"
 ```
 
-在之前的版本中，Dart SDK 不支持创建构造函数的拆分 (语言问题 [#216](https://github.com/dart-lang/language/issues/2))。这就有点烦人，因为在许多情况下，例如构建 Flutter 界面时，就需要用到构造函数的拆分。从 Dart 2.15 开始，我们支持这种语法。以下是构建包含三个 `Text` widget 的 `Column` widget 的示例，通过调用 `.map()` 将 Text 构造函数的拆分传递给 `Column` 的子项。
+在之前的版本中，Dart SDK 不支援建立建構函式的拆分 (語言問題 [#216](https://github.com/dart-lang/language/issues/2))。這就有點煩人，因為在許多情況下，例如建構 Flutter 介面時，就需要用到建構函式的拆分。從 Dart 2.15 開始，我們支援這種語法。以下是建構包含三個 `Text` widget 的 `Column` widget 的範例，透過呼叫 `.map()` 將 Text 建構函式的拆分傳遞給 `Column` 的子項。
 
 ```Dart
 class FruitWidget extends StatelessWidget {
@@ -68,11 +68,11 @@ class FruitWidget extends StatelessWidget {
 }
 ```
 
-`Text.new` 指 `Text` 类的默认构造函数。您也可以引用命名构造函数，例如 `.map(Text.rich)`。
+`Text.new` 指 `Text` 類別的預設建構函式。您也可以參考命名建構函式，例如 `.map(Text.rich)`。
 
-## **相关语言变化**
+## **相關語言變化**
 
-在实现构造函数拆分时，我们也借此机会修复了现有的函数指针功能中的一些不一致问题。现在可以特化泛型方法来创建非泛型方法:
+在實現建構函式拆分時，我們也藉此機會修復了現有的函式指標功能中的一些不一致問題。現在可以特化泛型方法來建立非泛型方法:
 
 ```Dart
 T id<T>(T value) => value;
@@ -80,14 +80,14 @@ var intId = id<int>; // New in 2.15.
 int Function(int) intId = id; // Pre-2.15 workaround.
 ```
 
-您甚至可以特化一个泛型函数对象来创建一个非泛型函数对象:
+您甚至可以特化一個泛型函式物件來建立一個非泛型函式物件:
 
 ```Dart
 const fo = id; // Tear off `id`, creating a function object.
 const c1 = fo<int>; // New in 2.15; error before.
 ```
 
-最后，Dart 2.15 清理了涉及泛型的类型字面量:
+最後，Dart 2.15 清理了涉及泛型的型別字面量:
 
 ```Dart
 var y = List; // Already supported.
@@ -95,9 +95,9 @@ var z = List<int>; // New in 2.15.
 var z = typeOf<List<int>>(); // Pre-2.15 workaround.
 ```
 
-**改进 dart:core 库中的枚举**
+**改進 dart:core 庫中的列舉**
 
-我们为 dart:core 库的枚举 API 添加了许多优化 (语言问题 [#1511](https://github.com/dart-lang/language/issues/1511))。现在您可以通过 `.name` 获取每个枚举值的 `String` 值:
+我們為 dart:core 庫的列舉 API 添加了許多最佳化 (語言問題 [#1511](https://github.com/dart-lang/language/issues/1511))。現在您可以透過 `.name` 獲取每個列舉值的 `String` 值:
 
 ```Dart
 enum MyEnum {
@@ -108,38 +108,38 @@ void main() {
 }
 ```
 
-还可以按名称查找枚举值:
+還可以按名稱查詢列舉值:
 
 ```Dart
 print(MyEnum.values.byName('two') == MyEnum.two);  // Prints "true".
 ```
 
-最后，您可以获得所有名称-值对的映射:
+最後，您可以獲得所有名稱-值對的對映:
 
 ```Dart
 final map = MyEnum.values.asNameMap();
 print(map['three'] == MyEnum.three);  // Prints "true".
 ```
 
-请参阅此 [Flutter PR](https://github.com/flutter/flutter/pull/94496/files) 查看这些新 API 的使用示例。
+請參閱此 [Flutter PR](https://github.com/flutter/flutter/pull/94496/files) 檢視這些新 API 的使用範例。
 
-## **压缩指针**
+## **壓縮指標**
 
-Dart 2.15 增加了对压缩指针的支持，这样，如果只需要支持 32 位的地址空间 (最多 4 GB 内存)，则 64 位 SDK 可以使用更加节省空间的指针表示形式。压缩指针显著减少了内存占用，在对 Google Pay 应用的内部测试中，我们发现 Dart 堆的体积减少了大约 10%。
+Dart 2.15 增加了對壓縮指標的支援，這樣，如果只需要支援 32 位的地址空間 (最多 4 GB 記憶體)，則 64 位 SDK 可以使用更加節省空間的指標表示形式。壓縮指標顯著減少了記憶體佔用，在對 Google Pay 應用的內部測試中，我們發現 Dart 堆的體積減少了大約 10%。
 
-压缩指针意味着无法处理 4 GB 以上的可用 RAM，因此该功能只存在于 Dart SDK 的配置选项中，只能在构建 SDK 时由 Dart SDK 的嵌入器启用。Flutter SDK 2.8 版已为 Android 构建启用此配置，Flutter 团队正在考虑在后续版本中 [为 iOS 构建启用此配置](https://github.com/flutter/flutter/issues/94753)。
+壓縮指標意味著無法處理 4 GB 以上的可用 RAM，因此該功能只存在於 Dart SDK 的配置選項中，只能在建構 SDK 時由 Dart SDK 的嵌入器啟用。Flutter SDK 2.8 版已為 Android 建構啟用此配置，Flutter 團隊正在考慮在後續版本中 [為 iOS 建構啟用此配置](https://github.com/flutter/flutter/issues/94753)。
 
 ## **Dart SDK 中包含 Dart DevTools**
 
-以往 Dart SDK 不提供调试和性能工具的 [DevTools 套件](https://dart.dev/tools/dart-devtools#using-devtools-with-a-command-line-app)，您需要单独下载。从 Dart 2.15 开始，下载 Dart SDK 时也会获取 DevTools，无需进一步的安装步骤。有关在 Dart 命令行应用中使用 DevTools 的更多信息，请参阅 [DevTools 文档](https://dart.dev/tools/dart-devtools#)。
+以往 Dart SDK 不提供除錯和效能工具的 [DevTools 套件](https://dart.dev/tools/dart-devtools#using-devtools-with-a-command-line-app)，您需要單獨下載。從 Dart 2.15 開始，下載 Dart SDK 時也會獲取 DevTools，無需進一步的安裝步驟。有關在 Dart 命令列應用中使用 DevTools 的更多資訊，請參閱 [DevTools 文件](https://dart.dev/tools/dart-devtools#)。
 
-## **面向 package 发布者的新 pub 功能**
+## **面向 package 釋出者的新 pub 功能**
 
-Dart 2.15 SDK 在 `dart pub` 开发者命令和 [pub.dev](https://pub.dev) package repo 中还新增了两个功能。
+Dart 2.15 SDK 在 `dart pub` 開發者命令和 [pub.dev](https://pub.dev) package repo 中還新增了兩個功能。
 
-首先，为 package 发布者新增了一个安全功能，用于检测发布者在 pub package 中意外发布 secret，例如 Cloud 或 CI 凭据。在了解到 GitHub repo 中 [每天都有数以千计的 secret 被泄露后](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf)，我们便决定添加这个泄露检测功能。
+首先，為 package 釋出者新增了一個安全功能，用於檢測釋出者在 pub package 中意外發布 secret，例如 Cloud 或 CI 憑據。在瞭解到 GitHub repo 中 [每天都有數以千計的 secret 被洩露後](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf)，我們便決定新增這個洩露檢測功能。
 
-泄露检测作为 `dart pub publish` 命令中的预发布验证的一部分运行。如果它在即将发布的文件中检测到潜在的 secret，`publish` 命令会退出，而不进行发布，并打印如下输出:
+洩露檢測作為 `dart pub publish` 命令中的預釋出驗證的一部分執行。如果它在即將釋出的檔案中檢測到潛在的 secret，`publish` 命令會退出，而不進行釋出，並列印如下輸出:
 
 ```
 Publishing my_package 1.0.0 to https://pub.dartlang.org:
@@ -155,13 +155,13 @@ Package validation found the following errors:
 2 │ final refreshToken = "1//042ys8uoFwZrkCgYIARAAGAQSNwF-L9IrXmFYE-sfKefSpoCnyqEcsHX97Y90KY-p8TPYPPnY2IPgRXdy0QeVw7URuF5u9oUeIF0";
 ```
 
-在极少数情况下，此项检测可能会出现误报，将您实际上打算发布的内容或文件标记为潜在泄露。在这些情况下，您可以将文件添加到 [许可名单](https://dart.cn/tools/pub/pubspec#false_secrets) 中。
+在極少數情況下，此項檢測可能會出現誤報，將您實際上打算釋出的內容或檔案標記為潛在洩露。在這些情況下，您可以將檔案新增到 [許可名單](https://dart.cn/tools/pub/pubspec#false_secrets) 中。
 
-其次，我们还为发布者添加了另一个功能: 撤销已发布的 package 版本。当发布了有问题的 package 版本时，我们通常的建议是发布一个小幅升级的新版本来修复意外问题。但在极少数情况下，例如您尚未修复这些问题，或是您在原打算只发布一个次要版本时意外发布了一个主要版本，那么您就可以使用新的 [package 撤销功能](https://dart.cn/tools/pub/publishing#retract)，作为最后的补救方法。此功能在 pub.dev 的管理界面中提供:
+其次，我們還為釋出者添加了另一個功能: 撤銷已釋出的 package 版本。當釋出了有問題的 package 版本時，我們通常的建議是釋出一個小幅升級的新版本來修復意外問題。但在極少數情況下，例如您尚未修復這些問題，或是您在原打算只發佈一個次要版本時意外發布了一個主要版本，那麼您就可以使用新的 [package 撤銷功能](https://dart.cn/tools/pub/publishing#retract)，作為最後的補救方法。此功能在 pub.dev 的管理介面中提供:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/12/Cr4RZ4.png)
 
-在 package 版本被撤销后，pub 客户端在 `pub get` 或 `pub upgrade` 中将不再解析该版本。如果有开发者已经解析该撤销的版本 (并存在于他们的 `pubspec.lock` 文件中)，他们将在下次运行 `pub` 时看到警告:
+在 package 版本被撤銷後，pub 客戶端在 `pub get` 或 `pub upgrade` 中將不再解析該版本。如果有開發者已經解析該撤銷的版本 (並存在於他們的 `pubspec.lock` 檔案中)，他們將在下次執行 `pub` 時看到警告:
 
 ```
 $ dart pub get
@@ -170,9 +170,9 @@ mypkg 0.0.181-buggy (retracted, 0.0.182-fixed available)
 Got dependencies!
 ```
 
-## **检测双向 Unicode 字符的安全性分析 (CVE-2021–22567)**
+## **檢測雙向 Unicode 字元的安全性分析 (CVE-2021–22567)**
 
-最近发现了一个涉及双向 Unicode 字符的通用编程语言漏洞 ([CVE-2021–42574](https://nvd.nist.gov/vuln/detail/CVE-2021-42574))。这个漏洞影响了大多数支持 Unicode 的现代编程语言。下面的 Dart 源代码演示了这个问题:
+最近發現了一個涉及雙向 Unicode 字元的通用程式語言漏洞 ([CVE-2021–42574](https://nvd.nist.gov/vuln/detail/CVE-2021-42574))。這個漏洞影響了大多數支援 Unicode 的現代程式語言。下面的 Dart 原始碼示範了這個問題:
 
 ```Dart
 main() {
@@ -185,11 +185,11 @@ main() {
 }
 ```
 
-您可能会认为该程序会打印出 *You are a regular user.*，但实际上它打印出的是 *You are an admin.*！通过使用包含双向 Unicode 字符的字符串，您就可能会造成这一漏洞。这些双向字符针对在同一行的文本，可以将文本的方向由从左到右更改为从右到左，反之亦然。双向字符文本在屏幕上的呈现与实际文本内容截然不同。您可以进一步查看此 [GitHub gist 示例](https://gist.github.com/mit-mit/7dda00ca6278ce7d2555f78d59d9e67b?h=1)。
+您可能會認為該程式會打印出 *You are a regular user.*，但實際上它打印出的是 *You are an admin.*！透過使用包含雙向 Unicode 字元的字串，您就可能會造成這一漏洞。這些雙向字元針對在同一行的文字，可以將文字的方向由從左到右更改為從右到左，反之亦然。雙向字元文字在螢幕上的呈現與實際文字內容截然不同。您可以進一步檢視此 [GitHub gist 範例](https://gist.github.com/mit-mit/7dda00ca6278ce7d2555f78d59d9e67b?h=1)。
 
-针对此漏洞的缓解措施包括使用检测双向 Unicode 字符的工具 (编辑器、代码审查工具等)，以便开发者发现它们，并在知情的情况下使用这些字符。上面提到的 GitHub gist 文件查看器便是发现这些字符的工具的一个例子。
+針對此漏洞的緩解措施包括使用檢測雙向 Unicode 字元的工具 (編輯器、程式碼審查工具等)，以便開發者發現它們，並在知情的情況下使用這些字元。上面提到的 GitHub gist 檔案檢視器便是發現這些字元的工具的一個例子。
 
-Dart 2.15 引入了进一步的缓解措施 ([Dart 安全建议 CVE-2021–22567](https://github.com/dart-lang/sdk/security/advisories/GHSA-8pcp-6qc9-rqmv))。现在，Dart 分析器会扫描双向 Unicode 字符，并标记对它们的任何使用:
+Dart 2.15 引入了進一步的緩解措施 ([Dart 安全建議 CVE-2021–22567](https://github.com/dart-lang/sdk/security/advisories/GHSA-8pcp-6qc9-rqmv))。現在，Dart 分析器會掃描雙向 Unicode 字元，並標記對它們的任何使用:
 
 ```
 $ dart analyze
@@ -201,18 +201,18 @@ info • bin/cvetest.dart:4:27 • The Unicode code point 'U+202E'
       text_direction_code_point_in_literal
 ```
 
-我们建议用 Unicode 转义序列替换这些字符，这样它们就可在任何文本编辑器或查看器中显示出来。或者，如果您确实正当使用了这些字符，您可以在使用这些字符的代码行之前添加覆盖语句来禁用警告:
+我們建議用 Unicode 轉義序列替換這些字元，這樣它們就可在任何文字編輯器或檢視器中顯示出來。或者，如果您確實正當使用了這些字元，您可以在使用這些字元的程式碼行之前新增覆蓋陳述式來禁用警告:
 
 ```
 // ignore: text_direction_code_point_in_literal
 ```
 
-## **使用第三方 pub 服务器时的 pub.dev 凭据漏洞 (CVE-2021–22568)**
+## **使用第三方 pub 伺服器時的 pub.dev 憑據漏洞 (CVE-2021–22568)**
 
-我们也发布了第二个与 pub.dev 相关的 Dart 安全建议: [CVE-2021–22568](https://github.com/dart-lang/sdk/security/advisories/GHSA-r32f-vhjp-qhj7)。此建议针对可能将 package 发布到第三方 pub package 服务器 (例如私人或公司内部 package 服务器) 的 package 发布者。仅将 package 发布到公开 pub.dev repo (标准配置) 的开发者 **不受此漏洞的影响**。
+我們也釋出了第二個與 pub.dev 相關的 Dart 安全建議: [CVE-2021–22568](https://github.com/dart-lang/sdk/security/advisories/GHSA-r32f-vhjp-qhj7)。此建議針對可能將 package 釋出到第三方 pub package 伺服器 (例如私人或公司內部 package 伺服器) 的 package 釋出者。僅將 package 釋出到公開 pub.dev repo (標準配置) 的開發者 **不受此漏洞的影響**。
 
-如果您已经将 package 发布至第三方 repo，那么漏洞是: 用于在第三方 repo 进行身份验证的 OAuth2 临时 (一小时) 访问令牌可能被误用，以在公开 pub.dev repo 上进行身份验证。因此恶意的第三方 pub 服务器可能会使用访问令牌，在 pub.dev 上冒充您，并发布 package。如果您已经将 package 发布到一个不受信任的第三方 package repo，请考虑审查您的帐号在 pub.dev 公开 package repo 上的所有活动。我们推荐您使用 [pub.dev 活动日志](https://pub.dev/my-activity-log) 进行查看。
+如果您已經將 package 釋出至第三方 repo，那麼漏洞是: 用於在第三方 repo 進行身份驗證的 OAuth2 臨時 (一小時) 存取令牌可能被誤用，以在公開 pub.dev repo 上進行身份驗證。因此惡意的第三方 pub 伺服器可能會使用存取令牌，在 pub.dev 上冒充您，併發布 package。如果您已經將 package 釋出到一個不受信任的第三方 package repo，請考慮審查您的帳號在 pub.dev 公開 package repo 上的所有活動。我們推薦您使用 [pub.dev 活動日誌](https://pub.dev/my-activity-log) 進行檢視。
 
-## **最后**
+## **最後**
 
-希望您喜欢 [已经推出](https://dart.cn/get-dart) 的 Dart 2.15 中的新功能。这是我们今年的最后一个版本，我们想借此机会表达我们对美妙的 Dart 生态系统的感谢。感谢大家的宝贵反馈，以及对我们一直以来的支持，感谢大家在过去的一年中在 [pub.dev](https://pub.dev) 上发布的数千个 package，它们丰富了我们的生态系统。我们迫切期待明年再次投入工作，我们计划在 2022 年推出很多激动人心的内容。预祝大家新年快乐，好好享受即将到来的假期吧！
+希望您喜歡 [已經推出](https://dart.cn/get-dart) 的 Dart 2.15 中的新功能。這是我們今年的最後一個版本，我們想借此機會表達我們對美妙的 Dart 生態系統的感謝。感謝大家的寶貴反饋，以及對我們一直以來的支援，感謝大家在過去的一年中在 [pub.dev](https://pub.dev) 上釋出的數千個 package，它們豐富了我們的生態系統。我們迫切期待明年再次投入工作，我們計劃在 2022 年推出很多激動人心的內容。預祝大家新年快樂，好好享受即將到來的假期吧！

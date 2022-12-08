@@ -1,6 +1,6 @@
 ---
 title: Using the CPU profiler view
-title: 使用 CPU 探测视图
+title: 使用 CPU 探測檢視
 description: Learn how to use the DevTools CPU profiler view.
 ---
 
@@ -10,19 +10,19 @@ description: Learn how to use the DevTools CPU profiler view.
   Use Chrome DevTools to [analyze performance][]
   of a web app.
 
-  CPU 探测视图仅能在 Dart CLI 以及移动应用中使用。
-  请使用 Chrome DevTools [测量][analyze performance] web 应用的性能。
+  CPU 探測檢視僅能在 Dart CLI 以及移動應用中使用。
+  請使用 Chrome DevTools [測量][analyze performance] web 應用的效能。
 
 {{site.alert.end}}
 
 ## What is it?
 
-## 它是什么？
+## 它是什麼？
 
 The CPU profiler view allows you to record and profile a
 session from your Dart or Flutter application.
 
-CPU 探测视图能够测量并记录你的 Dart 或 Flutter 应用的片段。
+CPU 探測檢視能夠測量並記錄你的 Dart 或 Flutter 應用的片段。
 
 {{site.alert.note}}
 
@@ -31,8 +31,8 @@ CPU 探测视图能够测量并记录你的 Dart 或 Flutter 应用的片段。
   CPU profiles are not indicative of release performance
   unless your Flutter application is run in profile mode.
 
-  **如果你正在运行 Flutter 应用，请在 profile 模式下测量性能。**
-  CPU 探测器无法测量 release 模式下的性能，你应该使用 profile 模式构建应用。
+  **如果你正在執行 Flutter 應用，請在 profile 模式下測量效能。**
+  CPU 探測器無法測量 release 模式下的效能，你應該使用 profile 模式建構應用。
 
 {{site.alert.end}}
 

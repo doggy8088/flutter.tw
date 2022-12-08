@@ -1,98 +1,98 @@
 ---
-title: Flutter 1.9 正式发布
+title: Flutter 1.9 正式釋出
 toc: true
 ---
 
  
 ![Google Developer Days taking place in China](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/flutter1-9-gdd-keynote.jpg){:width="95%"}
 
-本周对 [Flutter](http://flutter.cn) 意义非凡。Google 面向中国开发者举办的重量级年度盛会——[中国 Google 开发者大会](https://events.google.cn/intl/en/developerdays2019/) 于今日正式拉开帷幕。在主题演讲环节，Flutter 团队宣布推出最新稳定版: Flutter 1.9。这是 Flutter 迄今为止最大的一次版本更新，100 余位贡献者提交共计超过 1,500 份 pull request。Flutter 1.9 引入的新特性与更新涵盖范围广泛，包括 macOS Catalina 和 iOS 13 支持、工具支持优化、多项 Dart 语言新特性以及全新的 Material widget。
+本週對 [Flutter](http://flutter.cn) 意義非凡。Google 面向中國開發者舉辦的重量級年度盛會——[中國 Google 開發者大會](https://events.google.cn/intl/en/developerdays2019/) 於今日正式拉開帷幕。在主題演講環節，Flutter 團隊宣佈推出最新穩定版: Flutter 1.9。這是 Flutter 迄今為止最大的一次版本更新，100 餘位貢獻者提交共計超過 1,500 份 pull request。Flutter 1.9 引入的新特性與更新涵蓋範圍廣泛，包括 macOS Catalina 和 iOS 13 支援、工具支援最佳化、多項 Dart 語言新特性以及全新的 Material widget。
 
-团队还在会上宣布了另一个具有里程碑意义的重磅消息: **Flutter web 支持现已成功合并到 Flutter 的主 repo**，自此以后，开发者只需使用同一套基准代码，便可为移动平台、桌面端和网页端开发应用。此外，团队也分享了来自全球互联网公司 [腾讯](https://www.youtube.com/watch?v=DVGIBU109nI&feature=youtu.be) 的成功案例，让现场观众体验了一把 Flutter 的蓬勃活力，亲眼见证越来越多的应用正在通过 Flutter 缔造精彩。
+團隊還在會上宣佈了另一個具有里程碑意義的重磅訊息: **Flutter web 支援現已成功合併到 Flutter 的主 repo**，自此以後，開發者只需使用同一套基準程式碼，便可為行動平台、桌面端和網頁端開發應用。此外，團隊也分享了來自全球網際網路公司 [騰訊](https://www.youtube.com/watch?v=DVGIBU109nI&feature=youtu.be) 的成功案例，讓現場觀眾體驗了一把 Flutter 的蓬勃活力，親眼見證越來越多的應用正在透過 Flutter 締造精彩。
 
-接下来，让我们一起回顾一下 Flutter 要闻。首先，给大家介绍一下 Flutter 1.9 带来了哪些重要的更新内容。
+接下來，讓我們一起回顧一下 Flutter 要聞。首先，給大家介紹一下 Flutter 1.9 帶來了哪些重要的更新內容。
 
-## macOS Catalina 和 iOS 13 支持
+## macOS Catalina 和 iOS 13 支援
 
-苹果将在近期内推出新版本的 macOS 操作系统 Catalina，为此，团队付出了巨大努力，以确保 Flutter 做好升级准备，顺利适配新平台。比如说，我们进一步优化了端到端的工具体验，保证 Flutter 工具能够与 Xcode 妥善协作，助力开发者面向 Catalina 开发出优质应用，具体优化项包括：为新的 Xcode 构建系统提供支持、全工具链启用 64 位支持、简化平台依赖项等。
+蘋果將在近期內推出新版本的 macOS 作業系統 Catalina，為此，團隊付出了巨大努力，以確保 Flutter 做好升級準備，順利適配新平台。比如說，我們進一步優化了端到端的工具體驗，保證 Flutter 工具能夠與 Xcode 妥善協作，助力開發者面向 Catalina 開發出優質應用，具體最佳化項包括：為新的 Xcode 建構系統提供支援、全工具鏈啟用 64 位支援、簡化平台依賴項等。
 
-此外，随着 iOS 13 即将面世，团队也在积极推进相关的支持工作，以确保您的 Flutter 应用在新款 iPhone 设备上保持美观的界面。Flutter 1.9 实现了 [iOS 13 的拖曳式工具栏功能](https://github.com/flutter/flutter/pull/35829)，允许长按与从右往左拖动两项操作，并且为 [触感反馈](https://github.com/flutter/flutter/pull/37724) 提供了支持。不少开发者已经提交了 [pull request](https://github.com/flutter/flutter/issues/35541)，希望 Flutter 支持 iOS 夜间模式，团队目前已开始着手解决这方面的需求，争取尽早推出解决方案。 
+此外，隨著 iOS 13 即將面世，團隊也在積極推進相關的支援工作，以確保您的 Flutter 應用在新款 iPhone 裝置上保持美觀的介面。Flutter 1.9 實現了 [iOS 13 的拖曳式工具欄功能](https://github.com/flutter/flutter/pull/35829)，允許長按與從右往左拖動兩項操作，並且為 [觸感反饋](https://github.com/flutter/flutter/pull/37724) 提供了支援。不少開發者已經提交了 [pull request](https://github.com/flutter/flutter/issues/35541)，希望 Flutter 支援 iOS 夜間模式，團隊目前已開始著手解決這方面的需求，爭取儘早推出解決方案。 
 
-最后，最新版本的开发构建允许您启用 [Bitcode 实验性支持](https://github.com/flutter/flutter/wiki/Creating-an-iOS-Bitcode-enabled-app)。Bitcode 是苹果新添加的一个编译特性，开启 Bitcode 功能后，开发者只需在编译环节上传与平台无关的 Intermediate Representation (中间文件) 即可。以 Bitcode 的形式上传应用后，苹果可以在后期直接对二进制文件进行优化，免除了开发者二次上传的麻烦，与此同时，这也为 Flutter 开启了更多的使用场景，比如说为 watchOS 和 tvOS 等要求上传 Bitcode 文件的平台提供支持。
+最後，最新版本的開發建構允許您啟用 [Bitcode 實驗性支援](https://github.com/flutter/flutter/wiki/Creating-an-iOS-Bitcode-enabled-app)。Bitcode 是蘋果新新增的一個編譯特性，開啟 Bitcode 功能後，開發者只需在編譯環節上傳與平台無關的 Intermediate Representation (中間檔案) 即可。以 Bitcode 的形式上傳應用後，蘋果可以在後期直接對二進位制檔案進行最佳化，免除了開發者二次上傳的麻煩，與此同時，這也為 Flutter 開啟了更多的使用場景，比如說為 watchOS 和 tvOS 等要求上傳 Bitcode 檔案的平台提供支援。
 
 ## 全新的 Material widget
 
-Flutter 1.9 也对 [Material](https://material-io.cn/) 组件和特性进行了升级。作为一款全球顶尖的开源设计系统，Material 提供了丰富多彩、灵活易操作的视觉元素，助力开发者在多个平台实现高交互性的用户体验。
+Flutter 1.9 也對 [Material](https://material-io.cn/) 元件和特性進行了升級。作為一款全球頂尖的開源設計系統，Material 提供了豐富多彩、靈活易操作的視覺元素，助力開發者在多個平台實現高互動性的使用者體驗。
 
-在 Flutter 1.9 中，我们新添加了若干 widget, 其中包括 ToggleButtons 和 ColorFiltered。
+在 Flutter 1.9 中，我們新添加了若干 widget, 其中包括 ToggleButtons 和 ColorFiltered。
 
 ![Flutter ToggleButtons Demo](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/image1phone.gif){:width="45%"}
 
 ![Flutter ColorFilter Demo](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/image2phone.gif){:width="45%"}
 
-ToggleButtons widget 可将同一行的多个 ToggleButton widget 组合到一起，其中每个 widget 各自又由一组图标和文本 widget 构成。通过这种组合，开发者将得到一组外观与行为完全可自定义的按钮。它能为您的应用按钮实现更加多元化的设计——不论是单选还是多选，选择至少一个或是零个，尖角还是圆角、粗边或细边，图标或文本——ToggleButtons widget 全都可以满足。请查看 [ToggleButtons 示例](https://github.com/csells/flutter_toggle_buttons)，了解以上需求的具体实现。
+ToggleButtons widget 可將同一行的多個 ToggleButton widget 組合到一起，其中每個 widget 各自又由一組圖示和文字 widget 構成。透過這種組合，開發者將得到一組外觀與行為完全可自訂的按鈕。它能為您的應用按鈕實現更加多元化的設計——不論是單選還是多選，選擇至少一個或是零個，尖角還是圓角、粗邊或細邊，圖示或文字——ToggleButtons widget 全都可以滿足。請檢視 [ToggleButtons 範例](https://github.com/csells/flutter_toggle_buttons)，瞭解以上需求的具體實現。
 
-正如上文右图所示，ColorFiltered widget 允许您更改子 widget 树的颜色，这与利用算法 (部分算法见上图样例) 给图片重新上色差不多。该 widget 能够帮您处理许多用例，例如: 向用户提供更好的色彩无障碍服务等等。请查看 [ColorFiltered 示例](https://github.com/csells/flutter_color_filter)，了解该 widget 的工作细节。
+正如上文右圖所示，ColorFiltered widget 允許您更改子 widget 樹的顏色，這與利用演算法 (部分演算法見上圖範例) 給圖片重新上色差不多。該 widget 能夠幫您處理許多使用案例，例如: 向用戶提供更好的色彩無障礙服務等等。請檢視 [ColorFiltered 範例](https://github.com/csells/flutter_color_filter)，瞭解該 widget 的工作細節。
 
-## 全球语言支持
+## 全球語言支援
 
-我们还新增了南非语 (Afrikaans)、祖鲁语 (Zulu) 等 24 种语言的支持。
+我們還新增了南非語 (Afrikaans)、祖魯語 (Zulu) 等 24 種語言的支援。
 
 ![Table of languages supported](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/i18n.png){:width="95%"}
 
-## Dart 2.5 发布
+## Dart 2.5 釋出
 
-如要保障流畅的端到端 Flutter 开发体验，仅仅凭借强劲的特性是不够的，底层语言也至关重要。在 Flutter 1.9 发布之际，我们也推出了最新版本的 Dart 语言——[Dart 2.5](https://medium.com/dartlang/dart-2-5-release-328822024970)，内含预发布版本的 Dart: FFI ( 外部函数接口 )，它可用于实现 Dart 语言与 C 语言之间的互操作 (interop)，以及由机器学习驱动的 IDE/ 编辑器代码补全功能。更多技术细节，请阅读 [Dart 2.5 发布说明](https://medium.com/dartlang/dart-2-5-release-328822024970)（请关注微信公众号后续推文）。
+如要保障流暢的端到端 Flutter 開發體驗，僅僅憑藉強勁的特性是不夠的，底層語言也至關重要。在 Flutter 1.9 釋出之際，我們也推出了最新版本的 Dart 語言——[Dart 2.5](https://medium.com/dartlang/dart-2-5-release-328822024970)，內含預釋出版本的 Dart: FFI ( 外部函式介面 )，它可用於實現 Dart 語言與 C 語言之間的互操作 (interop)，以及由機器學習驅動的 IDE/ 編輯器程式碼自動完成功能。更多技術細節，請閱讀 [Dart 2.5 釋出說明](https://medium.com/dartlang/dart-2-5-release-328822024970)（請關注微信公眾號後續推文）。
 
-## 工具链优化
+## 工具鏈最佳化
 
-从 Flutter 1.9 开始，iOS 新项目默认使用 Swift 语言，而非 Objective-C；Android 新项目则默认使用 Kotlin，而非 Java。由于许多 [Flutter package](https://pub.dev/) 使用 Swift 编写，因此，一旦将 Swift 设置为默认语言后，开发者便无需再为启用默认设置的应用手动添加包。Swift 5 实现了 ABI 稳定，而且 [苹果在近期几个系统版本中也为应用瘦身做了许多工作](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_release_notes/swift_5_release_notes_for_xcode_10_2#3138038)，因此 12.2 或更高版本的 iOS 系统将不再包含用于 Swift 的动态链接库，从而大幅缩小了 Swift 应用的体积。 
+從 Flutter 1.9 開始，iOS 新專案預設使用 Swift 語言，而非 Objective-C；Android 新專案則預設使用 Kotlin，而非 Java。由於許多 [Flutter package](https://pub.dev/) 使用 Swift 編寫，因此，一旦將 Swift 設定為預設語言後，開發者便無需再為啟用預設設定的應用手動新增套件。Swift 5 實現了 ABI 穩定，而且 [蘋果在近期幾個系統版本中也為應用瘦身做了許多工作](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_release_notes/swift_5_release_notes_for_xcode_10_2#3138038)，因此 12.2 或更高版本的 iOS 系統將不再包含用於 Swift 的動態連結庫，從而大幅縮小了 Swift 應用的體積。 
 
-考虑到 Android Studio 新项目现在已经默认采用 Kotlin 作为开发语言了，因此，很自然地，我们就想着再往前迈一步，把所有 Android 项目的默认语言统一为 Kotlin。flutter CLI 工具、[IntelliJ/Android Studio](https://plugins.jetbrains.com/plugin/9212-flutter) 和 [VS Code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) 插件均默认启用这些选项，不过，如有需要，您可随时切换回之前的 Objective-C 或 Java 语言。
+考慮到 Android Studio 新專案現在已經預設採用 Kotlin 作為開發語言了，因此，很自然地，我們就想著再往前邁一步，把所有 Android 專案的預設語言統一為 Kotlin。flutter CLI 工具、[IntelliJ/Android Studio](https://plugins.jetbrains.com/plugin/9212-flutter) 和 [VS Code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) 外掛均預設啟用這些選項，不過，如有需要，您可隨時切換回之前的 Objective-C 或 Java 語言。
 
-此外，我们也在一直改善 Flutter 应用中的错误信息质量。优化之后，信息的可读性、简洁性和可操作性均有明显提升。
+此外，我們也在一直改善 Flutter 應用中的錯誤資訊品質。最佳化之後，資訊的可讀性、簡潔性和可操作性均有明顯提升。
 
 ![Flutter error message](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/fluttererrormessage.png){:width="95%"}
 
-该项目由 Flutter 用户体验团队负责牵头，如果您想了解更多有关结构化错误显示的内容，请阅读 [更精准更简洁: Flutter 改进错误信息提示](https://medium.com/flutter/improving-flutters-error-messages-e098513cecf9)。我们才刚刚开始采用这些新格式，预计未来将有更多错误信息会以结构化的形式呈现。
+該專案由 Flutter 使用者體驗團隊負責牽頭，如果您想了解更多有關結構化錯誤顯示的內容，請閱讀 [更精準更簡潔: Flutter 改進錯誤資訊提示](https://medium.com/flutter/improving-flutters-error-messages-e098513cecf9)。我們才剛剛開始採用這些新格式，預計未來將有更多錯誤資訊會以結構化的形式呈現。
 
-## 在 web 平台运行 Flutter
+## 在 web 平台執行 Flutter
 
-最后，我们很高兴地宣布，flutter_web 这个 [repo](https://github.com/flutter/flutter_web) 已经完成了自己的使命，现在所有的 web 支持已经合并到 flutter 的 [主 repo](https://github.com/flutter/flutter)！这意味着，如果您通过 master 或 dev 渠道安装最新版本的 Flutter 构建，您只需要运行 flutter run -d chrome 就可以使用最新的试验版本 Flutter 来开发 web 应用。
+最後，我們很高興地宣佈，flutter_web 這個 [repo](https://github.com/flutter/flutter_web) 已經完成了自己的使命，現在所有的 web 支援已經合併到 flutter 的 [主 repo](https://github.com/flutter/flutter)！這意味著，如果您透過 master 或 dev 渠道安裝最新版本的 Flutter 建構，您只需要執行 flutter run -d chrome 就可以使用最新的試驗版本 Flutter 來開發 web 應用。
 
-在您创建项目时，Flutter 会通过一个最小的 web/index.html 文件来生成一个 web 运行引擎 (web runner)，其中 web/index.html 文件主要用于自举 (bootstrap) 基于 web 编译的 Flutter 代码，有了这文件后，您可使用 Flutter CLI 工具或 IDE 中的 Flutter 插件来编辑或运行针对 web 平台开发的 Flutter 应用。
+在您建立專案時，Flutter 會透過一個最小的 web/index.html 檔案來產生一個 web 執行引擎 (web runner)，其中 web/index.html 檔案主要用於自舉 (bootstrap) 基於 web 編譯的 Flutter 程式碼，有了這檔案後，您可使用 Flutter CLI 工具或 IDE 中的 Flutter 外掛來編輯或運行針對 web 平臺開發的 Flutter 應用。
 
 ![screenshot of VS Code with web support enabled for Flutter](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/vscode.png){:width="95%"}
 
-上图为启用了 Flutter web 支持的 VS Code 界面截屏。请注意 web/index.html 文件和顶部的下拉列表允许您选择 Chrome 作为目标设备。尽管 Flutter 的 web 支持还不成熟，但是我们在 Flutter 1.9 中朝着正确的方向迈进了一大步。
+上圖為啟用了 Flutter web 支援的 VS Code 介面截圖。請注意 web/index.html 檔案和頂部的下拉列表允許您選擇 Chrome 作為目標裝置。儘管 Flutter 的 web 支援還不成熟，但是我們在 Flutter 1.9 中朝著正確的方向邁進了一大步。
 
-我们在今年 7 月底启动了一项 [早期体验计划](https://medium.com/flutter/flutter-for-web-early-adopter-program-now-open-9f1fb146e4c4)，其主要目的是加快 web 版 Flutter 应用的落地速度。获选开发者能得到必要协助，在接下来的 6 到 12 个月内在 web 环境中推出生产版本的 Flutter 应用。非常感谢大家的踊跃报名，我们收到了超过 1,000 份示例与申请，但由于名额有限，对无法参加的开发者，我们深表遗憾。不过，目前 web 支持已正式合并到 Flutter 框架中，因此，每一位开发者都有机会利用 Flutter web 支持构建出精美的应用。
+我們在今年 7 月底啟動了一項 [早期體驗計劃](https://medium.com/flutter/flutter-for-web-early-adopter-program-now-open-9f1fb146e4c4)，其主要目的是加快 web 版 Flutter 應用的落地速度。獲選開發者能得到必要協助，在接下來的 6 到 12 個月內在 web 環境中推出生產版本的 Flutter 應用。非常感謝大家的踴躍報名，我們收到了超過 1,000 份範例與申請，但由於名額有限，對無法參加的開發者，我們深表遺憾。不過，目前 web 支援已正式合併到 Flutter 框架中，因此，每一位開發者都有機會利用 Flutter web 支援構建出精美的應用。
 
-我们的开发者已经构建了许多实用的 web 工具，下面就简单介绍一下 Flutter Widget Livebook 和 Panache。
+我們的開發者已經建構了許多實用的 web 工具，下面就簡單介紹一下 Flutter Widget Livebook 和 Panache。
 
 ![Flutter Widget Livebook](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/communityexperiment1.png){:width="45%"}
 
 ![Panache](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot9-release/communityexperiment2.png){:width="45%"}
 
-[Flutter Widget Livebook](https://flutter-widget-livebook.blankapp.org/) 是一个在网页上展示 widget 运行效果的网站，它使用 Flutter 开发，并直接运行在网页上。[Panache](https://rxlabz.github.io/panache_web/) 则是一款为 Flutter 创建主题的工具，您可以下载创建好的主题，然后将其直接添加到代码中。
+[Flutter Widget Livebook](https://flutter-widget-livebook.blankapp.org/) 是一個在網頁上展示 widget 執行效果的網站，它使用 Flutter 開發，並直接執行在網頁上。[Panache](https://rxlabz.github.io/panache_web/) 則是一款為 Flutter 建立主題的工具，您可以下載建立好的主題，然後將其直接新增到程式碼中。
 
-欢迎大家尝试更新后的实验性 web 支持，并向我们 [分享您的使用感受](https://github.com/flutter/flutter/issues)。
+歡迎大家嘗試更新後的實驗性 web 支援，並向我們 [分享您的使用感受](https://github.com/flutter/flutter/issues)。
 
-## 社区
+## 社群
 
-Flutter 惊人的成长速度和采用率让我们倍感欣慰。在 Google 内部，有超过 20 个项目正在稳步推进中，凝集着数千位工程师的辛勤付出，其中有部分项目已成功落地，其余的则尚在开发阶段。在本周的 Google 开发者大会上，我们已经与大家分享了全球互联网巨头腾讯的成功经验，介绍了腾讯是如何把 Flutter 灵活地运用到越来越多的产品中，欢迎收看下方视频，了解更多。
-Bilibili 视频链接 https://www.bilibili.com/video/av67230699/
+Flutter 驚人的成長速度和採用率讓我們倍感欣慰。在 Google 內部，有超過 20 個專案正在穩步推進中，凝集著數千位工程師的辛勤付出，其中有部分專案已成功落地，其餘的則尚在開發階段。在本週的 Google 開發者大會上，我們已經與大家分享了全球網際網路巨頭騰訊的成功經驗，介紹了騰訊是如何把 Flutter 靈活地運用到越來越多的產品中，歡迎收看下方影片，瞭解更多。
+Bilibili 影片連結 https://www.bilibili.com/video/av67230699/
 
 <iframe src="//player.bilibili.com/player.html?aid=67230699&cid=116573649&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-现在，让我们插个轻松的话题，邀请您参加一个有趣的小游戏。请找到您手边的 Google Assistant 设备，然后对它说 “OK Google. Talk to Flutter Widget Quiz.” (OK Google, [为我接通 Flutter Widget 问答挑战赛](https://assistant.google.com/services/a/uid/000000f3a4034e91))。十分感谢 Flutter 社区对这份小测试的倾情贡献，期待各位小伙伴的精彩表现:
+現在，讓我們插個輕鬆的話題，邀請您參加一個有趣的小遊戲。請找到您手邊的 Google Assistant 裝置，然後對它說 “OK Google. Talk to Flutter Widget Quiz.” (OK Google, [為我接通 Flutter Widget 問答挑戰賽](https://assistant.google.com/services/a/uid/000000f3a4034e91))。十分感謝 Flutter 社群對這份小測試的傾情貢獻，期待各位小夥伴的精彩表現:
 
 ![Flutter Widget Quiz](https://devrel.andfun.cn/devrel/posts/2021/02/36cc2facf9626.png){:width="80%"}
 
-## 结语
+## 結語
 
-十分感谢 Flutter 开发者社区一路以来对我们的支持。来自全球各地的贡献者们为 Flutter 1.9 的发布投入了巨大的热情与努力，通过博客、文章、应用发布、报错、代码贡献等多种渠道为我们提供帮助。如果您想了解 Flutter 1.9 的升级方法，学习如何修复迁移过程中可能出现的问题，请参阅 [Flutter 1.9.1 版本说明](https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1)。
+十分感謝 Flutter 開發者社群一路以來對我們的支援。來自全球各地的貢獻者們為 Flutter 1.9 的釋出投入了巨大的熱情與努力，透過部落格、文章、應用釋出、報錯、程式碼貢獻等多種渠道為我們提供幫助。如果您想了解 Flutter 1.9 的升級方法，學習如何修復遷移過程中可能出現的問題，請參閱 [Flutter 1.9.1 版本說明](https://github.com/flutter/flutter/wiki/Release-Notes-Flutter-1.9.1)。
 
-Flutter 1.9 提供了超级丰富的新功能等您前来体验，比如，新的 [dart:ffi](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970) 或者 [基于机器学习的代码补全功能](https://flutter.dev/web)，通过自己爱用且顺手的开发工具探索在 web 平台运行 Flutter、Catalina 与 iOS 13 支持、两款新出的 widget ([ToggleButtons](https://github.com/csells/flutter_toggle_buttons) 和 [ColorFiltered](https://github.com/csells/flutter_color_filter))，以及趣味满满的 [Flutter Widget 知识问答挑战赛](https://assistant.google.com/services/a/uid/000000f3a4034e91)。
+Flutter 1.9 提供了超級豐富的新功能等您前來體驗，比如，新的 [dart:ffi](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970) 或者 [基於機器學習的程式碼自動完成功能](https://flutter.dev/web)，透過自己愛用且順手的開發工具探索在 web 平台執行 Flutter、Catalina 與 iOS 13 支援、兩款新出的 widget ([ToggleButtons](https://github.com/csells/flutter_toggle_buttons) 和 [ColorFiltered](https://github.com/csells/flutter_color_filter))，以及趣味滿滿的 [Flutter Widget 知識問答挑戰賽](https://assistant.google.com/services/a/uid/000000f3a4034e91)。
 
-Flutter 1.9 已至，您将构建怎样的精彩？
+Flutter 1.9 已至，您將建構怎樣的精彩？

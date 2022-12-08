@@ -1,42 +1,42 @@
-name: 镜像问题
-description: Flutter 中国镜像问题或错误
-title: '[Mirror issue] 使用 Flutter 中国镜像的问题'
-labels: ['E: 镜像问题']
+name: 映象問題
+description: Flutter 中國映象問題或錯誤
+title: '[Mirror issue] 使用 Flutter 中國映象的問題'
+labels: ['E: 映象問題']
 assignees:
   - chenglu
 body:
   - type: input
     id: page-url
     attributes:
-      label: 问题镜像 URL
+      label: 問題映象 URL
       placeholder: '例如：https://pub.flutter-io.cn/packages/args'
     validations:
       required: true
   - type: textarea
     id: error-content
     attributes:
-      label: 错误内容截图或 log
-      placeholder: '请使用 `<details>(换行)你的内容(换行)</details>` 嵌套内容。'
+      label: 錯誤內容截圖或 log
+      placeholder: '請使用 `<details>(換行)你的內容(換行)</details>` 巢狀(Nesting)內容。'
     validations:
       required: true
   - type: textarea
     id: pubspec
     attributes:
       label: pubspec.yaml
-      placeholder: '请附上你的 pubspec.yaml 文件内容。'
+      placeholder: '請附上你的 pubspec.yaml 檔案內容。'
     validations:
       required: false
   - type: input
     id: network-env
     attributes:
-      label: 网络环境
-      placeholder: '内网/公网访问，若为公网访问请说明运营商。'
+      label: 網路環境
+      placeholder: '內網/公網存取，若為公網存取請說明營運商。'
     validations:
       required: false
   - type: textarea
     id: flutter-doctor
     attributes:
       label: 'flutter doctor -v'
-      placeholder: '请附上 `flutter doctor -v` 的输出内容。'
+      placeholder: '請附上 `flutter doctor -v` 的輸出內容。'
     validations:
       required: false

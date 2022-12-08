@@ -1,8 +1,8 @@
 ---
 title: Widget catalog
-title: 核心 Widget 目录
+title: 核心 Widget 目錄
 description: A catalog of some of Flutter's rich set of widgets.
-description: 一组丰富的 Flutter widget 目录。
+description: 一組豐富的 Flutter widget 目錄。
 short-title: Widgets
 short-title: 核心 Widgets
 toc: false
@@ -12,8 +12,8 @@ Create beautiful apps faster with Flutter's collection of visual, structural,
 platform, and interactive widgets. In addition to browsing widgets by category,
 you can also see all the widgets in the [widget index][].
 
-借助 Flutter 上关于视觉、结构、平台和交互的 widgets，我们可以快速创建出色的应用程序。
-除了能够按照如下类别浏览 widgets，你还可以在 [Flutter Widget 目录]({{site.url}}/reference/widgets) 中查看所有的 widgets。
+藉助 Flutter 上關於視覺、結構、平臺和互動的 widgets，我們可以快速創建出色的應用程式。
+除了能夠按照如下類別瀏覽 widgets，你還可以在 [Flutter Widget 目錄]({{site.url}}/reference/widgets) 中檢視所有的 widgets。
 
 <div class="card-deck card-deck--responsive">
 {% assign categories = site.data.catalog.index | sort: 'name' -%}
@@ -24,7 +24,7 @@ you can also see all the widgets in the [widget index][].
             <p class="card-text">{{section.description}}</p>
         </div>
         <div class="card-footer card-footer--transparent">
-            <a href="{{site.main-url}}{{page.url}}{{section.id}}">查看</a>
+            <a href="{{site.main-url}}{{page.url}}{{section.id}}">檢視</a>
         </div>
     </div>
 {% endfor %}

@@ -1,12 +1,12 @@
 ---
 title: Adding assets and images
-title: 添加资源和图片
+title: 新增資源和圖片
 description: How to use images (and other assets) in your Flutter app.
-description: 如何在你的 Flutter 应用中使用图片或者其他类型的资源。
+description: 如何在你的 Flutter 應用中使用圖片或者其他型別的資源。
 short-title: Assets and images
-short-title: 资源和图片
-tags: 用户界面,Flutter UI,布局
-keywords: Flutter资源优化,添加图片
+short-title: 資源和圖片
+tags: 使用者介面,Flutter UI,佈局
+keywords: Flutter資源最佳化,新增圖片
 ---
 
 <?code-excerpt path-base="ui/assets_and_images/lib"?>
@@ -19,24 +19,24 @@ static data (for example, JSON files),
 configuration files, icons, and images
 (JPEG, WebP, GIF, animated WebP/GIF, PNG, BMP, and WBMP).
 
-Flutter 应用程序包含代码和 **assets**（也为资源）。资源是被打包到应用程序安装包中，
-可以在运行时访问的一种文件。常见的资源类型包括静态数据（例如 JSON 文件），配置文件，图标和
-图片（JPEG，WebP，GIF，动画 WebP / GIF，PNG，BMP 和 WBMP）。
+Flutter 應用程式包含程式碼和 **assets**（也為資源）。資源是被打包到應用程式安裝套件中，
+可以在執行時存取的一種檔案。常見的資源型別包括靜態資料（例如 JSON 檔案），配置檔案，圖示和
+圖片（JPEG，WebP，GIF，動畫 WebP / GIF，PNG，BMP 和 WBMP）。
 
 ## Specifying assets
 
-## 指定资源
+## 指定資源
 
 Flutter uses the [`pubspec.yaml`][] file,
 located at the root of your project,
 to identify assets required by an app.
 
-Flutter 使用 [`pubspec.yaml`][] 文件，
-位于项目根目录，来识别应用程序所需的资源。
+Flutter 使用 [`pubspec.yaml`][] 檔案，
+位於專案根目錄，來識別應用程式所需的資源。
 
 Here is an example:
 
-下面举个例子:
+下面舉個例子:
 
 ```yaml
 flutter:
@@ -48,8 +48,8 @@ flutter:
 To include all assets under a directory,
 specify the directory name with the `/` character at the end:
 
-如果要包含一个目录下的所有 assets，
-需要在目录名称的结尾加上  `/`：
+如果要包含一個目錄下的所有 assets，
+需要在目錄名稱的結尾加上  `/`：
 
 ```yaml
 flutter:
@@ -65,15 +65,15 @@ flutter:
   (see [Asset Variants](#asset-variants)). To add files located in subdirectories, create 
   an entry per directory.
 
-  仅包含当前目录下的所有文件，以及子目录下（与主目录中的文件）的同名文件
-  （请参阅 [Asset 变体](#asset-variants)）。如果想要添加子文件夹中的文件，
-  请为每个目录创建一个条目。
+  僅包含當前目錄下的所有檔案，以及子目錄下（與主目錄中的檔案）的同名檔案
+  （請參閱 [Asset 變體](#asset-variants)）。如果想要新增子資料夾中的檔案，
+  請為每個目錄建立一個條目。
 
 {{site.alert.end}}
 
 ### Asset bundling
 
-### 资源打包
+### 資源打包
 
 The `assets` subsection of the `flutter` section
 specifies files that should be included with the app.
@@ -84,21 +84,21 @@ declared doesn't matter. The actual directory name used
 (`assets` in first example or `directory` in the above
 example) doesn't matter.
 
-该 `assets` 部分的 `flutter` 部分需要指定包含在应用程序中的文件。
-每个资源都通过相对于 `pubspec.yaml` 文件所在位置的路径进行标识。
-资源的声明顺序是无关紧要的。
-资源的实际目录可以是任意文件夹（在第一个样例中是 `assets`，其他的是 `directory`）
+該 `assets` 部分的 `flutter` 部分需要指定包含在應用程式中的檔案。
+每個資源都透過相對於 `pubspec.yaml` 檔案所在位置的路徑進行標識。
+資源的宣告順序是無關緊要的。
+資源的實際目錄可以是任意資料夾（在第一個範例中是 `assets`，其他的是 `directory`）
 
 During a build, Flutter places assets into a special
 archive called the _asset bundle_ that apps read
 from at runtime.
 
-在一次构建中，Flutter 将 assets 放到 **asset bundle**
-的特殊归档中，以便应用程序在运行时读取它们。
+在一次建構中，Flutter 將 assets 放到 **asset bundle**
+的特殊歸檔中，以便應用程式在執行時讀取它們。
 
 ### Asset variants
 
-### 资源变体
+### 資源變體
 
 The build process supports the notion of asset variants:
 different versions of an asset that might be displayed
@@ -108,15 +108,15 @@ the build process looks for any files with the same
 name in adjacent subdirectories. Such files are then
 included in the asset bundle along with the specified asset.
 
-构建过程支持 asset 变体：不同版本的资源可能会显示在不同的上下文中。
-在 `pubspec.yaml` 的 `assets` 部分中指定的资源路径，
-会在构建过程中，查找同级子目录中相同名称的任何文件。
-这些文件会与指定的资源一起被打包在资源 bundle 中。
+建構過程支援 asset 變體：不同版本的資源可能會顯示在不同的上下文中。
+在 `pubspec.yaml` 的 `assets` 部分中指定的資源路徑，
+會在建構過程中，查詢同級子目錄中相同名稱的任何檔案。
+這些檔案會與指定的資源一起被打包在資源 bundle 中。
 
 For example, if you have the following files in
 your application directory:
 
-例如，你的应用程序目录中有以下文件：
+例如，你的應用程式目錄中有以下檔案：
 
 ```text
 .../pubspec.yaml
@@ -128,7 +128,7 @@ your application directory:
 
 And your `pubspec.yaml` file contains the following:
 
-...同时 `pubspec.yaml` 文件包含：
+...同時 `pubspec.yaml` 檔案包含：
 
 ```yaml
 flutter:
@@ -140,14 +140,14 @@ Then both `graphics/background.png` and `graphics/dark/background.png`
 are included in your asset bundle. The former is considered the
 _main asset_, while the latter is considered a _variant_.
 
-那么这两个图片：
+那麼這兩個圖片：
 `graphics/background.png` 和 `graphics/dark/background.png`
-将被打包在你的资源 bundle 中。
-前者被称为是 **main asset**，后者被称为是一种变体（**variant**）。
+將被打包在你的資源 bundle 中。
+前者被稱為是 **main asset**，後者被稱為是一種變體（**variant**）。
 
 If, on the other hand, the graphics directory is specified:
 
-如果指定的是 graphics 目录：
+如果指定的是 graphics 目錄：
 
 ```yaml
 flutter:
@@ -158,38 +158,38 @@ flutter:
 Then the `graphics/my_icon.png`, `graphics/background.png`
 and `graphics/dark/background.png` files are also included.
 
-... 那么 `graphics/my_icon.png`，
-`graphics/background.png` 和 `graphics/dark/background.png` 同时被包含。
+... 那麼 `graphics/my_icon.png`，
+`graphics/background.png` 和 `graphics/dark/background.png` 同時被包含。
 
 Flutter uses asset variants when choosing resolution-appropriate
 images. In the future, this mechanism might be extended to
 include variants for different locales or regions,
 reading directions, and so on.
 
-在选择当前设备分辨率的图片时，Flutter 会使用资源变体；见下文。
-将来，这种机制可能会扩展到本地化、阅读提示等方面。
+在選擇當前裝置解析度的圖片時，Flutter 會使用資源變體；見下文。
+將來，這種機制可能會擴充到本地化、閱讀提示等方面。
 
 ## Loading assets
 
-## 加载 assets
+## 載入 assets
 
 Your app can access its assets through an
 [`AssetBundle`][] object.
 
-你的应用程序可以通过 [`AssetBundle`][] 对象访问其资源。
+你的應用程式可以透過 [`AssetBundle`][] 物件存取其資源。
 
 The two main methods on an asset bundle allow you to load a
 string/text asset (`loadString()`) or an image/binary asset (`load()`)
 out of the bundle, given a logical key. The logical key maps to the path
 to the asset specified in the `pubspec.yaml` file at build time.
 
-Asset bundle 通过指定一个逻辑键（key），允许你读取 string/text（`loadString`）
-和 image/binary（`load`）。在编译期间，
-这个逻辑键（key）会映射在 `pubspec.yaml` 中指定的资源路径。
+Asset bundle 透過指定一個邏輯鍵（key），允許你讀取 string/text（`loadString`）
+和 image/binary（`load`）。在編譯期間，
+這個邏輯鍵（key）會對映在 `pubspec.yaml` 中指定的資源路徑。
 
 ### Loading text assets
 
-### 加载文本 assets
+### 載入文字 assets
 
 Each Flutter app has a [`rootBundle`][]
 object for easy access to the main asset bundle.
@@ -197,10 +197,10 @@ It is possible to load assets directly using the
 `rootBundle` global static from
 `package:flutter/services.dart`.
 
-每个 Flutter 应用程序都有一个 [`rootBundle`][] 对象， 
-可以轻松访问主资源 bundle 。还可以直接使用
+每個 Flutter 應用程式都有一個 [`rootBundle`][] 物件， 
+可以輕鬆存取主資源 bundle 。還可以直接使用
 `package:flutter/services.dart` 中
-全局静态的 `rootBundle` 来加载资源。
+全域靜態的 `rootBundle` 來載入資源。
 
 However, it's recommended to obtain the `AssetBundle`
 for the current `BuildContext` using
@@ -211,22 +211,22 @@ different `AssetBundle` at run time,
 which can be useful for localization or testing
 scenarios.
 
-但是，如果获取当前 `BuildContext` 的 `AssetBundle`，建议
+但是，如果獲取當前 `BuildContext` 的 `AssetBundle`，建議
 使用 [`DefaultAssetBundle`][]。
-这种方式不是使用应用程序构建的默认资源 bundle，而是让父级 widget 在
-运行时替换的不同的 AssetBundle，这对于本地化或测试场景很有用。
+這種方式不是使用應用程式建構的預設資源 bundle，而是讓父級 widget 在
+執行時替換的不同的 AssetBundle，這對於本地化或測試場景很有用。
 
 Typically, you'll use `DefaultAssetBundle.of()`
 to indirectly load an asset, for example a JSON file,
 from the app's runtime `rootBundle`.
 
-通常，你可以从应用程序运行时的 `rootBundle` 中，间接使用 `DefaultAssetBundle.of()` 
-来加载资源（例如 JSON 文件）。
+通常，你可以從應用程式執行時的 `rootBundle` 中，間接使用 `DefaultAssetBundle.of()` 
+來載入資源（例如 JSON 檔案）。
 
 {% comment %}
 Need example here to show obtaining the AssetBundle for the current
 BuildContext using DefaultAssetBundle.of
-这里需要举个例子说明使用 DefaultAssetBundle.of 来获取当前 BuildContext 的 AssetBundle
+這裡需要舉個例子說明使用 DefaultAssetBundle.of 來獲取當前 BuildContext 的 AssetBundle
 {% endcomment %}
 
 Outside of a `Widget` context, or when a handle
@@ -234,8 +234,8 @@ to an `AssetBundle` is not available,
 you can use `rootBundle` to directly load such assets.
 For example:
 
-在 Widget 上下文之外，或 AssetBundle 的句柄不可用时，你可以使用 `rootBundle` 
-直接加载这些 assets，例如：
+在 Widget 上下文之外，或 AssetBundle 的控制代碼不可用時，你可以使用 `rootBundle` 
+直接載入這些 assets，例如：
 
 <?code-excerpt "main.dart (RootBundle)"?>
 ```dart
@@ -248,16 +248,16 @@ Future<String> loadAsset() async {
 
 ### Loading images
 
-### 加载图片
+### 載入圖片
 
 Flutter can load resolution-appropriate images for
 the current device pixel ratio.
 
-Flutter 可以为当前设备加载适合其分辨率的图像。
+Flutter 可以為當前裝置載入適合其解析度的影象。
 
 #### Declaring resolution-aware image assets {#resolution-aware}
 
-#### 声明分辨率相关的图片 assets
+#### 宣告解析度相關的圖片 assets
 
 [`AssetImage`][] understands how to map a logical requested
 asset onto one that most closely matches the current
@@ -265,9 +265,9 @@ asset onto one that most closely matches the current
 In order for this mapping to work, assets should be arranged
 according to a particular directory structure:
 
-[`AssetImage`][] 可以将逻辑请求资源映射到最接近当前
-[设备像素比][device pixel ratio] 的资源。
-为了使这种映射起作用，应该根据特定的目录结构来保存资源：
+[`AssetImage`][] 可以將邏輯請求資源對映到最接近當前
+[裝置畫素比][device pixel ratio] 的資源。
+為了使這種對映起作用，應該根據特定的目錄結構來儲存資源：
 
 ```text
 .../image.png
@@ -281,14 +281,14 @@ to the nominal resolution of the images contained within.
 In other words, they specify the device pixel ratio that
 the images are intended for.
 
-...其中 _M_ 和 _N_  是数字标识符，对应于其中包含的图像的分辨率，换句话说，
-它们指定不同设备像素比例的图片。
+...其中 _M_ 和 _N_  是數字識別符號，對應於其中包含的影象的解析度，換句話說，
+它們指定不同裝置畫素比例的圖片。
 
 The main asset is assumed to correspond to a resolution of 1.0.
 For example, consider the following asset layout for an
 image named `my_icon.png`:
 
-主资源默认对应于 1.0 倍的分辨率图片。比如下面的图片 `my_icon.png`：
+主資源預設對應於 1.0 倍的解析度圖片。比如下面的圖片 `my_icon.png`：
 
 ```text
 .../my_icon.png
@@ -301,8 +301,8 @@ On devices with a device pixel ratio of 1.8, the asset
 For a device pixel ratio of 2.7, the asset
 `.../3.0x/my_icon.png` is chosen.
 
-而在设备像素比率为 1.8 的设备上，对应是 `.../2.0x/my_icon.png` 。
-如果是 2.7 的设备像素比，对应是 `.../3.0x/my_icon.png` 。
+而在裝置畫素比率為 1.8 的裝置上，對應是 `.../2.0x/my_icon.png` 。
+如果是 2.7 的裝置畫素比，對應是 `.../3.0x/my_icon.png` 。
 
 If the width and height of the rendered image are not specified
 on the `Image` widget, the nominal resolution is used to scale
@@ -313,13 +313,13 @@ That is, if `.../my_icon.png` is 72px by 72px, then
 but they both render into 72px by 72px (in logical pixels),
 if width and height are not specified.
 
-如果在 `Image` widget 上未指定渲染图像的宽度和高度，
-通常会扩展资源来保证与主资源相同的屏幕空间量，
-并不是相同的物理像素，只是分辨率更高。
-换句话说，`.../my_icon.png` 是 72 px 乘 72 px，
-那么 `.../3.0x/my_icon.png` 应该是 216 px 乘 216 px；
-但如果未指定宽度和高度，
-它们都将渲染为 72 px 乘 72 px（以逻辑像素为单位）。
+如果在 `Image` widget 上未指定渲染影象的寬度和高度，
+通常會擴充資源來保證與主資源相同的螢幕空間量，
+並不是相同的物理畫素，只是解析度更高。
+換句話說，`.../my_icon.png` 是 72 px 乘 72 px，
+那麼 `.../3.0x/my_icon.png` 應該是 216 px 乘 216 px；
+但如果未指定寬度和高度，
+它們都將渲染為 72 px 乘 72 px（以邏輯畫素為單位）。
 
 Each entry in the asset section of the `pubspec.yaml`
 should correspond to a real file, with the exception of
@@ -329,24 +329,24 @@ is used as the fallback for devices with device pixel
 ratios below that resolution. The entry should still
 be included in the `pubspec.yaml` manifest, however.
 
-在 `pubspec.yaml` 中资源部分的每一项都应与实际文件相对应，
-除过主资源节点。当主资源缺少某个文件时，会按分辨率从低到高的顺序去选择，
-也就是说 1x 中没有的话会在 2x 中找，2x 中还没有的话就在 3x 中找。
-该条目需要在 `pubspec.yaml` 中指定。
+在 `pubspec.yaml` 中資源部分的每一項都應與實際檔案相對應，
+除過主資源節點。當主資源缺少某個檔案時，會按解析度從低到高的順序去選擇，
+也就是說 1x 中沒有的話會在 2x 中找，2x 中還沒有的話就在 3x 中找。
+該條目需要在 `pubspec.yaml` 中指定。
 
 #### Loading images
 
-#### 加载 images
+#### 載入 images
 
 To load an image, use the [`AssetImage`][]
 class in a widget's `build()` method.
 
-加载图片，请在 widget 的 `build` 方法中使用 [`AssetImage`][] 类。
+載入圖片，請在 widget 的 `build` 方法中使用 [`AssetImage`][] 類別。
 
 For example, your app can load the background
 image from the asset declarations above:
 
-例如，你的应用程序可以从上面的资源声明中加载背景图片：
+例如，你的應用程式可以從上面的資源宣告中載入背景圖片：
 
 <?code-excerpt "main.dart (BackgroundImage)"?>
 ```dart
@@ -358,9 +358,9 @@ awareness when loading images. (If you work with some of the lower
 level classes, like [`ImageStream`][] or [`ImageCache`][],
 you'll also notice parameters related to scale.)
 
-使用默认的资源 bundle 加载资源时，系统会自动处理分辨率等。
-（如果你使用一些更低级别的类，如 [`ImageStream`][] 或
-[`ImageCache`][]，你需要注意 scale 相关的参数)。
+使用預設的資源 bundle 載入資源時，系統會自動處理解析度等。
+（如果你使用一些更低級別的類，如 [`ImageStream`][] 或
+[`ImageCache`][]，你需要注意 scale 相關的引數)。
 
 {{site.alert.note}}
 
@@ -368,27 +368,27 @@ you'll also notice parameters related to scale.)
   which requires to have either a [MaterialApp][] or [CupertinoApp][]
   as an ancestor of your [`AssetImage`][].
 
-  [设备像素比][Device pixel ratio] 取决于
+  [裝置畫素比][Device pixel ratio] 取決於
   [MediaQueryData.size][] 的大小，
-  它需要在祖先节点提供 [MaterialApp][] 或者
-  [CupertinoApp][] 作为 [`AssetImage`][] 的祖先节点。
+  它需要在祖先節點提供 [MaterialApp][] 或者
+  [CupertinoApp][] 作為 [`AssetImage`][] 的祖先節點。
 
 {{site.alert.end}}
 
 ### Asset images in package dependencies {#from-packages}
 
-### 依赖包中的资源图片
+### 相依套件中的資源圖片
 
 To load an image from a [package][] dependency,
 the `package` argument must be provided to [`AssetImage`][].
 
-加载依赖 [package][] 中的图像，
-必须给 [`AssetImage`][] 提供 `package` 参数。
+載入依賴 [package][] 中的影象，
+必須給 [`AssetImage`][] 提供 `package` 引數。
 
 For instance, suppose your application depends on a package
 called `my_icons`, which has the following directory structure:
 
-例如，你的应用程序依赖于一个名为 `my_icons` 的 package，它的目录结构如下：
+例如，你的應用程式依賴於一個名為 `my_icons` 的 package，它的目錄結構如下：
 
 ```text
 .../pubspec.yaml
@@ -400,7 +400,7 @@ called `my_icons`, which has the following directory structure:
 
 To load the image, use:
 
-然后加载 image, 使用：
+然後載入 image, 使用：
 
 <?code-excerpt "main.dart (PackageImage)"?>
 ```dart
@@ -410,7 +410,7 @@ return const AssetImage('icons/heart.png', package: 'my_icons');
 Assets used by the package itself should also be fetched
 using the `package` argument as above.
 
-package 使用本身的 Assets 也需要加上 `package` 参数来获取。
+package 使用本身的 Assets 也需要加上 `package` 引數來獲取。
 
 #### Bundling of package assets
 
@@ -421,8 +421,8 @@ file of the package, it's bundled automatically with the
 application. In particular, assets used by the package
 itself must be specified in its `pubspec.yaml`.
 
-如果期望的资源文件被指定在 package 的 `pubspec.yaml` 文件中，它会被自动打包到应用程序中。
-特别是，package 本身使用的资源必须在 `pubspec.yaml` 中指定。
+如果期望的資原始檔被指定在 package 的 `pubspec.yaml` 檔案中，它會被自動打包到應用程式中。
+特別是，package 本身使用的資源必須在 `pubspec.yaml` 中指定。
 
 A package can also choose to have assets in its `lib/`
 folder that are not specified in its `pubspec.yaml` file.
@@ -431,12 +431,12 @@ the application has to specify which ones to include in its
 `pubspec.yaml`. For instance, a package named `fancy_backgrounds`
 could have the following files:
 
-package 也可以选择在其 `lib/`
-文件夹中包含未在 `pubspec.yaml` 文件中声明的资源。
-在这种情况下，对于要打包的图片，
-应用程序必须在 `pubspec.yaml` 中指定包含哪些图像。 
-例如，一个名为 `fancy_backgrounds` 的包，
-可能包含以下文件：
+package 也可以選擇在其 `lib/`
+資料夾中包含未在 `pubspec.yaml` 檔案中宣告的資源。
+在這種情況下，對於要打套件的圖片，
+應用程式必須在 `pubspec.yaml` 中指定包含哪些影象。 
+例如，一個名為 `fancy_backgrounds` 的套件，
+可能包含以下檔案：
 
 ```text
 .../lib/backgrounds/background1.png
@@ -447,7 +447,7 @@ package 也可以选择在其 `lib/`
 To include, say, the first image, the `pubspec.yaml` of the
 application should specify it in the `assets` section:
 
-总而言之，要包含第一张图像，必须在 `pubspec.yaml` 的 `assets` 部分中声明它：
+總而言之，要包含第一張影象，必須在 `pubspec.yaml` 的 `assets` 部分中宣告它：
 
 ```yaml
 flutter:
@@ -458,11 +458,11 @@ flutter:
 The `lib/` is implied,
 so it should not be included in the asset path.
 
-`lib/` 是隐含的，所以它不应该包含在资源路径中。
+`lib/` 是隱含的，所以它不應該包含在資源路徑中。
 
 If you are developing a package, to load an asset within the package, specify it in the 'pubspec.yaml' of the package:
 
-如果你正在开发 package，想要从 package 中加载资源，首先要在 pubspec.yaml 中定义：
+如果你正在開發 package，想要從 package 中載入資源，首先要在 pubspec.yaml 中定義：
 
 ```yaml
 flutter:
@@ -472,7 +472,7 @@ flutter:
 
 To load the image within your package, use:
 
-在 package 中加载图片，按以下方式：
+在 package 中載入圖片，按以下方式：
 
 ```dart
 return const AssetImage('packages/fancy_backgrounds/backgrounds/background1.png');
@@ -485,12 +485,12 @@ return const AssetImage('packages/fancy_backgrounds/backgrounds/background1.png'
 Flutter assets are readily available to platform code
 using the `AssetManager` on Android and `NSBundle` on iOS.
 
-在不同平台读取 Flutter assets，
-Android 是通过 `AssetManager`，iOS 是 `NSBundle`。
+在不同平台讀取 Flutter assets，
+Android 是透過 `AssetManager`，iOS 是 `NSBundle`。
 
 ### Loading Flutter assets in Android
 
-### 在 Android 中加载 Flutter 资源文件
+### 在 Android 中載入 Flutter 資原始檔
 
 On Android the assets are available through the
 [`AssetManager`][] API.  The lookup key used in,
@@ -501,17 +501,17 @@ for instance [`openFd`][], is obtained from
 while `FlutterView` would be the choice when developing an
 app including a platform view.
 
-在 Android 平台上，assets 通过 [`AssetManager`][] API 读取。
-通过 [`PluginRegistry.Registrar`][] 的 `lookupKeyForAsset` 方法，
-或者 [`FlutterView`][] 的 `getLookupKeyForAsset` 方法来获取文件路径，
-然后 [`AssetManager`][] 的 [`openFd`][] 根据文件路径得到文件描述符。
-开发插件时可以使用 `PluginRegistry.Registrar`，
-而开发应用程序使用平台视图时，[`FlutterView`][] 是最好的选择。
+在 Android 平臺上，assets 透過 [`AssetManager`][] API 讀取。
+透過 [`PluginRegistry.Registrar`][] 的 `lookupKeyForAsset` 方法，
+或者 [`FlutterView`][] 的 `getLookupKeyForAsset` 方法來獲取檔案路徑，
+然後 [`AssetManager`][] 的 [`openFd`][] 根據檔案路徑得到檔案描述符。
+開發外掛時可以使用 `PluginRegistry.Registrar`，
+而開發應用程式使用平臺視圖時，[`FlutterView`][] 是最好的選擇。
 
 As an example, suppose you have specified the following
 in your pubspec.yaml
 
-举个例子，假设你在 pubspec.yaml 中这样指定：
+舉個例子，假設你在 pubspec.yaml 中這樣指定：
 
 ```yaml
 flutter:
@@ -521,7 +521,7 @@ flutter:
 
 This reflects the following structure in your Flutter app.
 
-在你的 Flutter 应用程序对应以下结构。
+在你的 Flutter 應用程式對應以下結構。
 
 ```text
 .../pubspec.yaml
@@ -532,7 +532,7 @@ This reflects the following structure in your Flutter app.
 To access `icons/heart.png` from your Java plugin code,
 do the following:
 
-想要在 Java 插件中访问 `icons/heart.png`；
+想要在 Java 外掛中存取 `icons/heart.png`；
 
 ```java
 AssetManager assetManager = registrar.context().getAssets();
@@ -542,7 +542,7 @@ AssetFileDescriptor fd = assetManager.openFd(key);
 
 ### Loading Flutter assets in iOS
 
-### 在 iOS 中加载 Flutter 资源文件
+### 在 iOS 中載入 Flutter 資原始檔
 
 On iOS the assets are available through the [`mainBundle`][].
 The lookup key used in, for instance [`pathForResource:ofType:`][],
@@ -553,22 +553,22 @@ on [`FlutterPluginRegistrar`][], or `lookupKeyForAsset:` or
 a plugin while `FlutterViewController` would be the choice
 when developing an app including a platform view.
 
-在 iOS 平台上，assets 资源文件通过 [`mainBundle`][] 读取。
-通过 [`pathForResource:ofType:`][] 的 `lookupKeyForAsset` 
-或者 `lookupKeyForAsset:fromPackage:` 方法获取文件路径，
-同样，[`FlutterViewController`][] 的 `lookupKeyForAsset:` 
-或者 `lookupKeyForAsset:fromPackage:` 方法也可以获取文件路径。
-开发插件时可以使用 `FlutterPluginRegistrar`，
-而开发应用程序使用平台视图时， `FlutterViewController` 是最好的选择。
+在 iOS 平臺上，assets 資原始檔透過 [`mainBundle`][] 讀取。
+透過 [`pathForResource:ofType:`][] 的 `lookupKeyForAsset` 
+或者 `lookupKeyForAsset:fromPackage:` 方法獲取檔案路徑，
+同樣，[`FlutterViewController`][] 的 `lookupKeyForAsset:` 
+或者 `lookupKeyForAsset:fromPackage:` 方法也可以獲取檔案路徑。
+開發外掛時可以使用 `FlutterPluginRegistrar`，
+而開發應用程式使用平臺視圖時， `FlutterViewController` 是最好的選擇。
 
 As an example, suppose you have the Flutter setting from above.
 
-举个例子，假设你的 Flutter 配置和上面一样。
+舉個例子，假設你的 Flutter 配置和上面一樣。
 
 To access `icons/heart.png` from your Objective-C plugin code you
 would do the following:
 
-要在 Objective-C 插件中访问 `icons/heart.png`：
+要在 Objective-C 外掛中存取 `icons/heart.png`：
 
 ```objective-c
 NSString* key = [registrar lookupKeyForAsset:@"icons/heart.png"];
@@ -578,14 +578,14 @@ NSString* path = [[NSBundle mainBundle] pathForResource:key ofType:nil];
 For a more complete example, see the implementation of the
 Flutter [`video_player` plugin][] on pub.dev.
 
-这有一个更完整的实例可以理解 Flutter 的应用：[`video_player` plugin][]。
+這有一個更完整的例項可以理解 Flutter 的應用：[`video_player` plugin][]。
 
 The [`ios_platform_images`][] plugin on pub.dev wraps
 up this logic in a convenient category. You fetch
 an image as follows:
 
-pub.dev 上的 [`ios_platform_images`][] plugin 将这些逻辑封装成方便的类别。
-它允许编写：
+pub.dev 上的 [`ios_platform_images`][] plugin 將這些邏輯封裝成方便的類別。
+它允許編寫：
 
 **Objective-C:**
 ```objective-c
@@ -599,7 +599,7 @@ UIImage.flutterImageNamed("icons/heart.png")
 
 ### Loading iOS images in Flutter
 
-### 在 Flutter 中加载 iOS 的图片
+### 在 Flutter 中載入 iOS 的圖片
 
 When implementing Flutter by
 [adding it to an existing iOS app][add-to-app],
@@ -617,19 +617,19 @@ platform projects directly. Below are two common cases
 where assets are used before the Flutter framework is
 loaded and running.
 
-某些场景可以直接在平台项目中使用 assets。
-以下是在 Flutter 框架加载并运行之前使用资源的两种常见情况。
+某些場景可以直接在平台專案中使用 assets。
+以下是在 Flutter 框架載入並執行之前使用資源的兩種常見情況。
 
 ### Updating the app icon
 
-### 更新桌面图标
+### 更新桌面圖示
 
 Updating a Flutter application's launch icon works
 the same way as updating launch icons in native
 Android or iOS applications.
 
-更新你的 Flutter 应用程序启动图标，
-和原生 Android 或 iOS 应用程序中更新启动图标的方法相同。
+更新你的 Flutter 應用程式啟動畫標，
+和原生 Android 或 iOS 應用程式中更新啟動畫標的方法相同。
 
 ![Launch icon]({{site.url}}/assets/images/docs/assets-and-images/icon.png)
 
@@ -642,10 +642,10 @@ images named `ic_launcher.png`. Replace them with your
 desired assets respecting the recommended icon size per
 screen density as indicated by the [Android Developer Guide][].
 
-在 Flutter 项目的根目录中，导航到 `.../android/app/src/main/res` 路径。
-各种位图资源文件夹，比如 `mipmap-hdpi`，已包含占位符图像 `ic_launcher.png`。 
-只需按照 [Android 开发者指南][Android Developer Guide] 中的说明，
-将其替换为所需的资源，并遵守每种屏幕分辨率的建议图标大小标准。
+在 Flutter 專案的根目錄中，導航到 `.../android/app/src/main/res` 路徑。
+各種點陣圖資原始檔夾，比如 `mipmap-hdpi`，已包含佔位符影象 `ic_launcher.png`。 
+只需按照 [Android 開發者指南][Android Developer Guide] 中的說明，
+將其替換為所需的資源，並遵守每種螢幕解析度的建議圖示大小標準。
 
 ![Android icon location]({{site.url}}/assets/images/docs/assets-and-images/android-icon-path.png)
 
@@ -655,8 +655,8 @@ screen density as indicated by the [Android Developer Guide][].
   corresponding name in your `AndroidManifest.xml`'s
   `<application>` tag's `android:icon` attribute.
 
-  如果你重命名了 `.png` 文件，则还必须在 `AndroidManifest.xml` 
-  中 `<application>` 标签的 `android:icon` 属性中更新名称。
+  如果你重新命名了 `.png` 檔案，則還必須在 `AndroidManifest.xml` 
+  中 `<application>` 標籤的 `android:icon` 屬性中更新名稱。
 
 {{site.alert.end}}
 
@@ -670,16 +670,16 @@ sized images as indicated by their filename as dictated by the
 Apple [Human Interface Guidelines][].
 Keep the original file names.
 
-在你的 Flutter 项目的根目录中，导航到 `.../ios/Runner` 路径。
-该目录中 `Assets.xcassets/AppIcon.appiconset`已经包含占位符图片，
-只需将它们替换为适当大小的图片，
-并且根据 [iOS 开发指南][Human Interface Guidelines]，文件名称保持不变。
+在你的 Flutter 專案的根目錄中，導航到 `.../ios/Runner` 路徑。
+該目錄中 `Assets.xcassets/AppIcon.appiconset`已經包含佔位符圖片，
+只需將它們替換為適當大小的圖片，
+並且根據 [iOS 開發指南][Human Interface Guidelines]，檔名稱保持不變。
 
 ![iOS icon location]({{site.url}}/assets/images/docs/assets-and-images/ios-icon-path.png)
 
 ### Updating the launch screen
 
-### 更新启动图
+### 更新啟動畫
 
 <p align="center">
   <img src="/assets/images/docs/assets-and-images/launch-screen.png" alt="Launch screen" />
@@ -690,8 +690,8 @@ transitional launch screens to your Flutter app while the
 Flutter framework loads. This launch screen persists until
 Flutter renders the first frame of your application.
 
-在 Flutter 框架加载时，Flutter 会使用原生平台机制绘制启动页。
-此启动页将持续到 Flutter 渲染应用程序的第一帧。
+在 Flutter 框架載入時，Flutter 會使用原生平臺機制繪製啟動頁。
+此啟動頁將持續到 Flutter 渲染應用程式的第一幀。
 
 {{site.alert.note}}
 
@@ -700,9 +700,9 @@ Flutter renders the first frame of your application.
   [`window.render()`][] in response to [`window.onDrawFrame`][]),
   the launch screen persists forever.
 
-  这意味着如果你不在应用程序的 `main()` 方法中调用 [`runApp()`][] 函数
-  （或者更具体地说，如果你不调用 [`window.render()`][] 去响应 
-  [`window.onDrawFrame`][]的话， 启动页将永远持续显示。
+  這意味著如果你不在應用程式的 `main()` 方法中呼叫 [`runApp()`][] 函式
+  （或者更具體地說，如果你不呼叫 [`window.render()`][] 去響應 
+  [`window.onDrawFrame`][]的話， 啟動頁將永遠持續顯示。
 
 {{site.alert.end}}
 
@@ -717,18 +717,18 @@ an example of adding an image to the middle of a white splash
 screen in commented code. You can uncomment it or use other
 [drawables][] to achieve the intended effect.
 
-将启动屏幕「splash screen」添加到你的 Flutter 应用程序， 
-请导航至 `.../android/app/src/main` 路径。
-在 `res/drawable/launch_background.xml` 文件中 ，通过使用
-[图层列表][layer list drawable]  XML 来实现自定义启动页。
-现有模板提供了一个示例，用于将图片添加到白色启动页的中间（注释代码中）。
-你也可以取消注释使用 [可绘制对象资源][drawables] 来实现预期效果。
+將啟動螢幕「splash screen」新增到你的 Flutter 應用程式， 
+請導航至 `.../android/app/src/main` 路徑。
+在 `res/drawable/launch_background.xml` 檔案中 ，透過使用
+[圖層列表][layer list drawable]  XML 來實現自訂啟動頁。
+現有範本提供了一個範例，用於將圖片新增到白色啟動頁的中間（註釋程式碼中）。
+你也可以取消註釋使用 [可繪製物件資源][drawables] 來實現預期效果。
 
 For more details, see
 [Adding a splash screen to your mobile app][].
 
-更多详细信息，请查看
-[在 Android 应用中添加闪屏页与启动页][Adding a splash screen to your mobile app]。
+更多詳細資訊，請檢視
+[在 Android 應用中新增閃屏頁與啟動頁][Adding a splash screen to your mobile app]。
 
 #### iOS
 
@@ -740,11 +740,11 @@ drop in images named `LaunchImage.png`,
 If you use different filenames,
 update the `Contents.json` file in the same directory.
 
-将图片添加到启动屏幕「splash screen」的中心，请导航至 `.../ios/Runner` 路径。
-在 `Assets.xcassets/LaunchImage.imageset` ，拖入图片，
-并命名为 `LaunchImage.png`， `LaunchImage@2x.png`，`LaunchImage@3x.png`。 
-如果你使用不同的文件名，
-那你还必须更新同一目录中的 `Contents.json` 文件中对应的名称。
+將圖片新增到啟動螢幕「splash screen」的中心，請導航至 `.../ios/Runner` 路徑。
+在 `Assets.xcassets/LaunchImage.imageset` ，拖入圖片，
+並命名為 `LaunchImage.png`， `LaunchImage@2x.png`，`LaunchImage@3x.png`。 
+如果你使用不同的檔名，
+那你還必須更新同一目錄中的 `Contents.json` 檔案中對應的名稱。
 
 You can also fully customize your launch screen storyboard
 in Xcode by opening `.../ios/Runner.xcworkspace`.
@@ -753,17 +753,17 @@ drop in images by opening `Assets.xcassets` or do any
 customization using the Interface Builder in
 `LaunchScreen.storyboard`.
 
-你也可以通过打开 `.../ios/Runner.xcworkspace` ，完全自定义 storyboard。
-在 Project Navigator 中导航到 `Runner/Runner` ，然后打开 `Assets.xcassets` 拖入图片，或者
-在 `LaunchScreen.storyboard` 中使用 Interface Builder 进行自定义。
+你也可以透過開啟 `.../ios/Runner.xcworkspace` ，完全自訂 storyboard。
+在 Project Navigator 中導航到 `Runner/Runner` ，然後開啟 `Assets.xcassets` 拖入圖片，或者
+在 `LaunchScreen.storyboard` 中使用 Interface Builder 進行自訂。
 
 ![Adding launch icons in Xcode]({{site.url}}/assets/images/docs/assets-and-images/ios-launchscreen-xcode.png){:width="100%"}
 
 For more details, see
 [Adding a splash screen to your mobile app][].
 
-更多详细信息，请查看 
-[在 Android 应用中添加闪屏页与启动页][Adding a splash screen to your mobile app]。
+更多詳細資訊，請檢視 
+[在 Android 應用中新增閃屏頁與啟動頁][Adding a splash screen to your mobile app]。
 
 [add-to-app]: {{site.url}}/development/add-to-app/ios
 [Adding a splash screen to your mobile app]: {{site.url}}/development/ui/advanced/splash-screen

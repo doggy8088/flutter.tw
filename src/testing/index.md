@@ -1,46 +1,46 @@
 ---
 title: Testing Flutter apps
-title: 测试 Flutter 应用
+title: 測試 Flutter 應用
 description: Learn more about the different types of testing and how to write them.
-description: 学习不同类型的测试以及如何编写它们。
-tags: Flutter测试
-keywords: 单元测试,Widget 测试,组件测试,集成测试,代码覆盖率
+description: 學習不同型別的測試以及如何編寫它們。
+tags: Flutter測試
+keywords: 單元測試,Widget 測試,元件測試,整合測試,程式碼覆蓋率
 ---
 
 The more features your app has, the harder it is to test manually.
 Automated tests help ensure that your app performs correctly before
 you publish it, while retaining your feature and bug fix velocity.
 
-通常一个应用的功能越多，手工测试就越困难。
-自动化测试在发布之前运行，有助于保证我们应用的稳定性和功能的完整性，
-并且可以快速修复问题。
+通常一個應用的功能越多，手工測試就越困難。
+自動化測試在釋出之前執行，有助於保證我們應用的穩定性和功能的完整性，
+並且可以快速修復問題。
 
 {{site.alert.note}}
 
   For hands-on practice of testing Flutter apps, see the
   [How to test a Flutter app][] codelab.
   
-  动手试试看测试你的 Flutter 应用？
-  请关注 codelab：[如何测试一个 Flutter 应用][How to test a Flutter app]。
+  動手試試看測試你的 Flutter 應用？
+  請關注 codelab：[如何測試一個 Flutter 應用][How to test a Flutter app]。
 {{site.alert.end}}
 
 Automated testing falls into a few categories:
 
-自动化测试可分为以下几类：
+自動化測試可分為以下幾類：
 
 * A [_unit test_](#unit-tests) tests a single function, method, or class.
     
-  [**单元测试**](#unit-tests) 测试单一的函数，方法或类。
+  [**單元測試**](#unit-tests) 測試單一的函式，方法或類別。
 
 * A [_widget test_](#widget-tests) (in other UI frameworks referred to
   as _component test_) tests a single widget.
 
-  [**Widget 测试**](#widget-tests)（在其他 UI 框架中指 **组件测试**）测试单一的 widget 。
+  [**Widget 測試**](#widget-tests)（在其他 UI 框架中指 **元件測試**）測試單一的 widget 。
 
 * An [_integration test_](#integration-tests)
   tests a complete app or a large part of an app.
 
-  [**集成测试**](#integration-tests) 测试一个完整的应用或者一个应用的大部分功能。
+  [**整合測試**](#integration-tests) 測試一個完整的應用或者一個應用的大部分功能。
   
 Generally speaking, a well-tested app has many unit and widget tests,
 tracked by [code coverage][], plus enough integration tests
@@ -48,27 +48,27 @@ to cover all the important use cases. This advice is based on
 the fact that there are trade-offs between different kinds of testing,
 seen below.
 
-一般来说，在自动化测试方面做的比较好的应用会有许多单元测试和 widget 测试，
-并且使用 [代码覆盖率][code coverage] 进行追踪，
-还会有足够的集成测试来覆盖所有的重要使用场景。
-这样做是因为不同类型的测试之间需要权衡，如下所示：
+一般來說，在自動化測試方面做的比較好的應用會有許多單元測試和 widget 測試，
+並且使用 [程式碼覆蓋率][code coverage] 進行追蹤，
+還會有足夠的整合測試來覆蓋所有的重要使用場景。
+這樣做是因為不同型別的測試之間需要權衡，如下所示：
 
-|                      | <t>Unit</t><t>单元测试</t> | <t>Widget</t><t>Widget 测试</t> | <t>Integration</t><t>集成测试</t> |
+|                      | <t>Unit</t><t>單元測試</t> | <t>Widget</t><t>Widget 測試</t> | <t>Integration</t><t>整合測試</t> |
 |----------------------|--------|--------|-------------|
 | **Confidence**       | Low    | Higher | Highest     |
-| **置信度**            | 低    | 较高 | 最高     |
+| **置信度**            | 低    | 較高 | 最高     |
 | **Maintenance cost** | Low    | Higher | Highest     |
-| **维护成本**           | 低    | 较高 | 最高     |
+| **維護成本**           | 低    | 較高 | 最高     |
 | **Dependencies**     | Few    | More   | Most        |
-| **依赖程度**              | 少    | 较多   | 最多        |
+| **依賴程度**              | 少    | 較多   | 最多        |
 | **Execution speed**  | Quick  | Slower | Slow     |
-| **执行速度**           | 快  | 较慢 | 慢     |
+| **執行速度**           | 快  | 較慢 | 慢     |
 {:.table.table-striped} 
 
 
 ## Unit tests
 
-## 单元测试
+## 單元測試
 
 A _unit test_ tests a single function, method, or class.
 The goal of a unit test is to verify the correctness of a
@@ -82,11 +82,11 @@ For more information regarding unit tests,
 you can view the following recipes 
 or run `flutter test --help` in your terminal.
 
-**单元测试** 测试单一的函数，方法或类。
-单元测试的目标是验证逻辑单元在各种条件下的正确性。
-被测试单元的外部依赖通常需要 [模拟]({{site.url}}/cookbook/testing/unit/mocking)。
-单元测试通常不会读写磁盘，将数据渲染到屏幕，也不会从运行测试进程的外部去接收用户的操作。
-你可以在终端执行 `flutter test --help` 命令获得更多有关单元测试的帮助：
+**單元測試** 測試單一的函式，方法或類別。
+單元測試的目標是驗證邏輯單元在各種條件下的正確性。
+被測試單元的外部依賴通常需要 [模擬]({{site.url}}/cookbook/testing/unit/mocking)。
+單元測試通常不會讀寫磁碟，將資料渲染到螢幕，也不會從執行測試處理序的外部去接收使用者的操作。
+你可以在終端執行 `flutter test --help` 命令獲得更多有關單元測試的幫助：
 
 {{site.alert.note}}
 
@@ -94,8 +94,8 @@ or run `flutter test --help` in your terminal.
   uses plugins, see
   [Plugins in Flutter tests][].
 
-  如果你在为 plugin 编写单元测试，
-  请查看 [如何测试 Flutter Plugin][Plugins in Flutter tests]。
+  如果你在為 plugin 編寫單元測試，
+  請檢視 [如何測試 Flutter Plugin][Plugins in Flutter tests]。
 
 {{site.alert.end}}
 
@@ -103,13 +103,13 @@ or run `flutter test --help` in your terminal.
 
 ### Recipes
 
-### 更多信息
+### 更多資訊
 
 {% include docs/testing-toc.md type='unit' %}
 
 ## Widget tests
 
-## Widget测试
+## Widget測試
 
 A _widget test_ (in other UI frameworks referred to as _component test_)
 tests a single widget. The goal of a widget test is to verify that the
@@ -117,9 +117,9 @@ widget's UI looks and interacts as expected. Testing a widget involves
 multiple classes and requires a test environment that provides the
 appropriate widget lifecycle context.
 
-**Widget 测试**（在其他 UI 框架中指 **组件测试**）是用来测试单一的 widget，
-widget 测试的目标是验证 widget 的 UI 表现和交互行为是否符合预期。
-测试一个 widget 涉及多个类，并且测试环境需要提供具有 widget 生命周期的上下文。
+**Widget 測試**（在其他 UI 框架中指 **元件測試**）是用來測試單一的 widget，
+widget 測試的目標是驗證 widget 的 UI 表現和互動行為是否符合預期。
+測試一個 widget 涉及多個類，並且測試環境需要提供具有 widget 生命週期的上下文。
 
 For example, the Widget being tested should be able to receive and
 respond to user actions and events, perform layout, and instantiate child
@@ -127,19 +127,19 @@ widgets. A widget test is therefore more comprehensive than a unit test.
 However, like a unit test, a widget test's environment is replaced with
 an implementation much simpler than a full-blown UI system.
 
-例如，被测试的 widget 可以接收和响应用户操作和事件，进行布局并实例化子 widget。
-所以，widget 测试比单元测试更全面。
-但是，就像单元测试一样，widget 测试环境实现上比成熟的 UI 系统简单得多。
+例如，被測試的 widget 可以接收和響應使用者操作和事件，進行佈局並例項化子 widget。
+所以，widget 測試比單元測試更全面。
+但是，就像單元測試一樣，widget 測試環境實現上比成熟的 UI 系統簡單得多。
 
 ### Recipes
 
-### 更多信息
+### 更多資訊
 
 {% include docs/testing-toc.md type='widget' %}
 
 ## Integration tests
 
-## 集成测试
+## 整合測試
 
 An _integration test_ tests a complete app or a large part of an app.
 The goal of an integration test is to verify that all the widgets
@@ -147,72 +147,72 @@ and services being tested work together as expected.
 Furthermore, you can use integration
 tests to verify your app's performance.
 
-**集成测试** 测试一个完整的应用或者一个应用的大部分功能。
-集成测试的目标是验证正在测试的所有 widget 和服务是否按照预期的方式一起工作。
-此外，还可以使用集成测试来验证应用的性能。
+**整合測試** 測試一個完整的應用或者一個應用的大部分功能。
+整合測試的目標是驗證正在測試的所有 widget 和服務是否按照預期的方式一起工作。
+此外，還可以使用整合測試來驗證應用的效能。
 
 Generally, an _integration test_ runs on a real device or an OS emulator,
 such as iOS Simulator or Android Emulator.
 The app under test is typically isolated
 from the test driver code to avoid skewing the results.
 
-通常情况下，一个 **集成测试** 运行在真机或 OS 模拟器上，
-如 iOS 模拟器 (iOS Simulator) 或 Android 模拟器 (Android Emulator) 。
-测试中的应用通常与测试驱动程序代码隔离，以避免结果出现偏差。
+通常情況下，一個 **整合測試** 執行在真機或 OS 模擬器上，
+如 iOS 模擬器 (iOS Simulator) 或 Android 模擬器 (Android Emulator) 。
+測試中的應用通常與測試驅動程式程式碼隔離，以避免結果出現偏差。
 
 For more information on how to write integration tests, see the [integration
 testing page][].
 
-更多关于如何编写集成测试的相关信息，请参阅[集成测试文档][integration testing page]。
+更多關於如何編寫整合測試的相關資訊，請參閱[整合測試文件][integration testing page]。
 
 ### Recipes
 
-### 更多信息
+### 更多資訊
 
 {% include docs/testing-toc.md type='integration' %}
 
 ## Continuous integration services
 
-## 持续集成服务
+## 持續整合服務
 
 Continuous integration (CI) services allow you to run your
 tests automatically when pushing new code changes.
 This provides timely feedback on whether the code
 changes work as expected and do not introduce bugs.
 
-持续集成 (CI) 服务允许我们在推送新代码（代码变更）时自动运行测试。
-当代码变更后，会立即收到关于代码是否
-仍按预期工作、是否引入新问题的反馈。
+持續整合 (CI) 服務允許我們在推送新程式碼（程式碼變更）時自動執行測試。
+當代碼變更後，會立即收到關於程式碼是否
+仍按預期工作、是否引入新問題的反饋。
 
 For information on running tests on various continuous
 integration services, see the following:
 
-有关各种持续集成服务的信息，
-参考如下：
+有關各種持續整合服務的資訊，
+參考如下：
 
 * [Continuous delivery using fastlane with Flutter][]
  
-  [Flutter 里的持续部署][Continuous delivery using fastlane with Flutter]
+  [Flutter 裡的持續部署][Continuous delivery using fastlane with Flutter]
 
 * [Test Flutter apps on Appcircle][]
  
-  [使用 Appcircle 测试 Flutter 应用][Test Flutter apps on Appcircle]
+  [使用 Appcircle 測試 Flutter 應用][Test Flutter apps on Appcircle]
 
 * [Test Flutter apps on Travis][]
 
-  [使用 Travis 测试 Flutter 应用][Test Flutter apps on Travis]
+  [使用 Travis 測試 Flutter 應用][Test Flutter apps on Travis]
 
 * [Test Flutter apps on Cirrus][]
 
-  [使用 Cirrus 测试 Flutter 应用][Test Flutter apps on Cirrus]
+  [使用 Cirrus 測試 Flutter 應用][Test Flutter apps on Cirrus]
 
 * [Codemagic CI/CD for Flutter][]
  
-  [使用 Codemagic 进行 Flutter 持续集成/持续交付][Codemagic CI/CD for Flutter]
+  [使用 Codemagic 進行 Flutter 持續整合/持續交付][Codemagic CI/CD for Flutter]
 
 * [Flutter CI/CD with Bitrise][]
 
-  [使用 Bitrise 进行 Flutter 持续集成/持续交付][Flutter CI/CD with Bitrise]
+  [使用 Bitrise 進行 Flutter 持續整合/持續交付][Flutter CI/CD with Bitrise]
 
 
 [code coverage]: https://en.wikipedia.org/wiki/Code_coverage

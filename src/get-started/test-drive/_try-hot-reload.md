@@ -1,6 +1,6 @@
 After the app build completes, you'll see the starter app on your device.
 
-当应用编译完成后，就可以在设备上运行这个起步应用了。
+當應用編譯完成後，就可以在裝置上執行這個起步應用了。
 
 {% include docs/app-figure.md img-class="site-mobile-screenshot border"
     path-prefix="get-started" platform="iOS" image="starter-app.png"
@@ -8,7 +8,7 @@ After the app build completes, you'll see the starter app on your device.
 
 ## Try hot reload
 
-## 尝试热重载 (hot reload)
+## 嘗試熱重載 (hot reload)
 
 Flutter offers a fast development cycle with _Stateful Hot Reload_,
 the ability to reload the code of a live running app without
@@ -17,19 +17,19 @@ Make a change to app source,
 tell your IDE or command-line tool that you want to hot reload,
 and see the change in your simulator, emulator, or device.
 
-Flutter 通过 **热重载** 提供快速开发周期，
-该功能支持应用程序在运行状态下重载代码，
-无需重新启动应用程序或者丢失程序运行状态。
-修改一下代码，然后告诉 IDE 或者命令行工具你需要热重载，
-然后看一下模拟器或者设备上应用的变化。
+Flutter 透過 **熱重載** 提供快速開發週期，
+該功能支援應用程式在執行狀態下重載程式碼，
+無需重新啟動應用程式或者丟失程式執行狀態。
+修改一下程式碼，然後告訴 IDE 或者命令列工具你需要熱重載，
+然後看一下模擬器或者裝置上應用的變化。
 
  1. Open `lib/main.dart`.
  
-    打开 `lib/main.dart`。
+    開啟 `lib/main.dart`。
     
  1. Change the string
 
-    修改字符串
+    修改字串
 
     {% prettify dart %}
       'You have [[strike]]pushed[[/strike]] the button this many times'
@@ -37,7 +37,7 @@ Flutter 通过 **热重载** 提供快速开发周期，
 
     to
     
-    改为
+    改為
     
     {% prettify dart %}
       'You have [!clicked!] the button this many times'
@@ -47,14 +47,14 @@ Flutter 通过 **热重载** 提供快速开发周期，
     
       Do _not_ stop your app. Let your app run.
       
-      **不要** 停止应用。保持应用处于运行状态。
+      **不要** 停止應用。保持應用處於執行狀態。
       
     {{site.alert.end}}
 
  1. Save your changes{{include.save_changes}}
     
-    保存修改{{include.save_changes}}
+    儲存修改{{include.save_changes}}
 
 You'll see the updated string in the running app almost immediately.
 
-你会发现修改后的字符串几乎马上出现在正在运行的应用程序上。
+你會發現修改後的字串幾乎馬上出現在正在執行的應用程式上。

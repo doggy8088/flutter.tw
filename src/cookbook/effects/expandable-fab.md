@@ -1,15 +1,15 @@
 ---
 title: Create an expandable FAB
-title: 创建一个点击展开的 FAB
+title: 建立一個點選展開的 FAB
 description: How to implement a FAB that expands to multiple buttons when tapped.
-description: 如何实现一个可以点击展开为好几个按钮的 FAB。
+description: 如何實現一個可以點選展開為好幾個按鈕的 FAB。
 prev:
   title: Create a typing indicator
-  title: 创建一个「正在输入」的指示器
+  title: 建立一個「正在輸入」的指示器
   path: /docs/cookbook/effects/typing-indicator
 next:
   title: Create gradient chat bubbles
-  title: 创建一个渐变的聊天气泡
+  title: 建立一個漸變的聊天氣泡
   path: /docs/cookbook/effects/gradient-bubbles
 js:
   - defer: true

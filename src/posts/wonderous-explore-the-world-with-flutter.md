@@ -1,5 +1,5 @@
 ---
-title: 新渲染引擎、自定义设计和高质量用户体验的样例应用 Wonderous 现已开源
+title: 新渲染引擎、自訂設計和高品質使用者體驗的範例應用 Wonderous 現已開源
 toc: true
 keywords: gskinner, Wonderous
 description: 
@@ -7,34 +7,34 @@ image:
     path: https://devrel.andfun.cn/devrel/posts/2022/09/vUAjc5.png
 ---
 
-探索世界奇观，并体验 Flutter 的强大之处。
+探索世界奇觀，並體驗 Flutter 的強大之處。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/09/vUAjc5.png)
 
-Flutter 的愿景是让你能够在空白画布上绘制出不受限制的精美应用。最近，通过与 gskinner 团队的通力合作，我们打造了一个全新的移动应用 Wonderous 来实现这个愿景。我们采用不同以往的设计系统，借助于 Flutter 为 Wonderous 创建出了极具表现力的界面，这个界面为移动设备量身定制并实现了设计者的创意愿景。
+Flutter 的願景是讓你能夠在空白畫布上繪製出不受限制的精美應用。最近，透過與 gskinner 團隊的通力合作，我們打造了一個全新的移動應用 Wonderous 來實現這個願景。我們採用不同以往的設計系統，藉助於 Flutter 為 Wonderous 創建出了極具表現力的介面，這個介面為移動裝置量身客製並實現了設計者的創意願景。
 
-![Wonderous 应用截图](https://devrel.andfun.cn/devrel/posts/2022/09/xCWqni.png)
+![Wonderous 應用截圖](https://devrel.andfun.cn/devrel/posts/2022/09/xCWqni.png)
 
-△ Wonderous 应用截图
+△ Wonderous 應用截圖
 
-### 在开发 Wonderous 时，我们始终关注下列目标：
+### 在開發 Wonderous 時，我們始終關注下列目標：
 
-1. 打造一款有用且有趣的应用。通过探索世界的神奇景观，Wonderous 应用可让用户遨游在历史、艺术和文化的交汇之地。当前，很多人都难以出门旅游，但 Wonderous 可利用精美的插图和优化的动画在你的设备上直接为你展现各地奇观。
+1. 打造一款有用且有趣的應用。透過探索世界的神奇景觀，Wonderous 應用可讓使用者遨遊在歷史、藝術和文化的交匯之地。當前，很多人都難以出門旅遊，但 Wonderous 可利用精美的插圖和最佳化的動畫在你的裝置上直接為你展現各地奇觀。
 
-2. 展示高质量的用户体验。我们希望 Wonderous 在质量上可与系统框架中的其他任何应用相媲美。Wonderous 以其量身定制、富有想象力的设计吸引用户，但也使用熟悉的手势和行为来确保无缝的用户体验。
+2. 展示高品質的使用者體驗。我們希望 Wonderous 在品質上可與系統框架中的其他任何應用相媲美。Wonderous 以其量身客製、富有想象力的設計吸參考戶，但也使用熟悉的手勢和行為來確保無縫的使用者體驗。
 
-3. 创建一个用于测试和基准测试的应用。我们使用 Wonderous 来测试 Impeller，Impeller 是一款新的渲染引擎，现已可在 iOS 系统上进行实验性预览。到目前为止，我们对测试结果感到满意，这将有助于验证我们对 Impeller 可以提高性能的假设。目下在 App Store 上架的这个版本就使用了 Impeller，欢迎下载体验，我们非常期待了解 Impeller 在生产环境中更广泛的 iOS 设备中的表现。
+3. 建立一個用於測試和基準測試的應用。我們使用 Wonderous 來測試 Impeller，Impeller 是一款新的渲染引擎，現已可在 iOS 系統上進行實驗性預覽。到目前為止，我們對測試結果感到滿意，這將有助於驗證我們對 Impeller 可以提高效能的假設。目下在 App Store 上架的這個版本就使用了 Impeller，歡迎下載體驗，我們非常期待了解 Impeller 在生產環境中更廣泛的 iOS 裝置中的表現。
 
-4. 提供一个可供参考的、开源的最佳实践应用。我们的 Wonderous 代码 在 GitHub 开源，这是一个拥有自定义的设计、吸引人的交互方式和新颖的动画效果的最佳实践应用，并且将无障碍的功能放在首位。
+4. 提供一個可供參考的、開源的最佳實踐應用。我們的 Wonderous 程式碼 在 GitHub 開源，這是一個擁有自訂的設計、吸引人的互動方式和新穎的動畫效果的最佳實踐應用，並且將無障礙的功能放在首位。
 
-5. 创建其他人可以从中学习的材料及文档。在接下来的几周，gskinner 团队将发布更多关于 Wonderous 的内容，其中包括关于如何创建动画、如何整合无障碍功能以及应用性能最佳实践的具体信息。敬请期待！
+5. 建立其他人可以從中學習的材料及文件。在接下來的幾周，gskinner 團隊將釋出更多關於 Wonderous 的內容，其中包括關於如何建立動畫、如何整合無障礙功能以及應用效能最佳實踐的具體資訊。敬請期待！
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/09/KL1vRF.png)
 
-在 App Store 或 Google Play 商店中下载 Wonderous 之后，你可能想要探索以下内容：
+在 App Store 或 Google Play 商店中下載 Wonderous 之後，你可能想要探索以下內容：
 
-* Wonders 中左右滑动时的过渡效果，如果不使用 Flutter 可能会比较难以实现；
-* 当你在“世界历史年表”中移动时的独特滚动模式；
-* 与 Wonderous 设计系统匹配的定制按钮和图标。
+* Wonders 中左右滑動時的過渡效果，如果不使用 Flutter 可能會比較難以實現；
+* 當你在“世界歷史年表”中移動時的獨特滾動模式；
+* 與 Wonderous 設計系統匹配的客製按鈕和圖示。
 
-该应用已为国内用户提供中文版，请访问 [应用官网](https://wonderous.app/) 或者到 Wonderous 的 [GitHub 开源仓库页面](https://github.com/gskinnerTeam/flutter-wonderous-app) 了解更多。
+該應用已為國內使用者提供中文版，請存取 [應用官網](https://wonderous.app/) 或者到 Wonderous 的 [GitHub 開源儲存庫頁面](https://github.com/gskinnerTeam/flutter-wonderous-app) 瞭解更多。

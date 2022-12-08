@@ -1,10 +1,10 @@
 ---
 title: Debugging Flutter apps
-title: 调试 Flutter 应用
+title: 除錯 Flutter 應用
 description: How to debug your app using the DevTools suite.
-description: 如何使用开发者工具来调试你的 Flutter 应用。
-tags: Flutter测试
-keywords: Flutter调试工具,Flutter开发者工具,Flutter性能调试,Flutter打断点
+description: 如何使用開發者工具來除錯你的 Flutter 應用。
+tags: Flutter測試
+keywords: Flutter除錯工具,Flutter開發者工具,Flutter效能除錯,Flutter打斷點
 ---
 
 <?code-excerpt path-base="testing/debugging"?>
@@ -12,12 +12,12 @@ keywords: Flutter调试工具,Flutter开发者工具,Flutter性能调试,Flutter
 There's a wide variety of tools and features to help debug
 Flutter applications. Here are some of the available tools:
 
-有很多工具和特性可以帮助调试 Flutter 应用程序，如下列举了一些：
+有很多工具和特性可以幫助除錯 Flutter 應用程式，如下列舉了一些：
 
 * [DevTools][], a suite of performance and profiling
   tools that run in a browser.
 
-  [开发者工具][DevTools]，是一套运行在浏览器的性能及分析工具。
+  [開發者工具][DevTools]，是一套執行在瀏覽器的效能及分析工具。
 
 * [Android Studio/IntelliJ][], and [VS Code][]
   (enabled with the Flutter and Dart plugins)
@@ -25,8 +25,8 @@ Flutter applications. Here are some of the available tools:
   the ability to set breakpoints, step through code,
   and examine values.
 
-  [Android Studio/IntelliJ][] 和 [VS Code][]（借助 Flutter 和 Dart 插件）
-  支持内置的源代码调试器，可以设置断点，单步调试，检查数值。
+  [Android Studio/IntelliJ][] 和 [VS Code][]（藉助 Flutter 和 Dart 外掛）
+  支援內建的原始碼偵錯程式，可以設定斷點，單步除錯，檢查數值。
 
 * [Flutter inspector][], a widget inspector available
   in DevTools, and also directly from Android Studio
@@ -36,45 +36,45 @@ Flutter applications. Here are some of the available tools:
   individual widgets and their property values,
   enable the performance overlay, and more.
 
-  [Flutter inspector][]，是开发者工具提供的 widget 检查器，
-  也可直接在 Android Studio 和 IntelliJ 中使用（借助 Flutter 插件）。
-  检查器可以可视化展现 widget 树，查看单个 widget 及其属性值，开启性能图层，等等。
+  [Flutter inspector][]，是開發者工具提供的 widget 檢查器，
+  也可直接在 Android Studio 和 IntelliJ 中使用（藉助 Flutter 外掛）。
+  檢查器可以視覺化展現 widget 樹，檢視單個 widget 及其屬性值，開啟效能圖層，等等。
 
 ## DevTools
 
-## 开发者工具
+## 開發者工具
 
 For debugging and profiling apps, DevTools might be
 the first tool you reach for. DevTools runs in a
 browser and supports a variety of features:
 
-要调试及分析应用，开发者工具可能是你的首选。
-开发者工具运行在浏览器，支持以下特性：
+要除錯及分析應用，開發者工具可能是你的首選。
+開發者工具執行在瀏覽器，支援以下特性：
 
 * source-level debugger
 
-  源代码调试器
+  原始碼偵錯程式
 
 * widget inspector that displays a visual widget tree,
   and "widget select" mode where you select a widget
   in the app and it drills down to that widget in
   the tree
 
-  widget 检查器，展示可视化的 widget 树；
-  “widget select” 模式，在应用中选择一个 widget，会在 widget 树直接定位到它的位置。
+  widget 檢查器，展示視覺化的 widget 樹；
+  “widget select” 模式，在應用中選擇一個 widget，會在 widget 樹直接定位到它的位置。
 
 * memory profiler
 
-  内存分析
+  記憶體分析
 
 * timeline view that supports tracing, and importing
   and exporting trace information
 
-  时间线视图，支持跟踪，导入及导出跟踪信息
+  時間線檢視，支援追蹤，匯入及匯出追蹤資訊
 
 * logging view
 
-  日志视图
+  日誌檢視
 
 If you run your application in [debug mode][] or
 [profile mode][], while it's running you can open
@@ -84,10 +84,10 @@ DevTools doesn't work well with an app compiled to
 information has been stripped away.
 
 如果你在 [debug 模式][debug mode] 或
-[profile 模式][profile mode] 运行，
-那么可以在浏览器打开开发者工具连接到你的应用。
-开发者工具不能用在以 [release 模式][release mode]
-编译的应用，因为调试和分析信息都被删除了。
+[profile 模式][profile mode] 執行，
+那麼可以在瀏覽器開啟開發者工具連線到你的應用。
+開發者工具不能用在以 [release 模式][release mode]
+編譯的應用，因為除錯和分析資訊都被刪除了。
 
 If you use DevTools for profiling, make sure to
 run your application in [profile mode][]. Otherwise,
@@ -95,30 +95,30 @@ the main output that appears on your profile are the
 debug asserts verifying the framework's various invariants
 (see [Debug mode assertions](#debug-mode-assertions)).
 
-如果你要用开发者工具分析应用，需确保使用 [性能模式][profile mode]。
-否则，分析的主要输出将会是用于验证框架中各种不变式的调试断言
-（查看 [debug 模式断言](#debug-mode-assertions)）。
+如果你要用開發者工具分析應用，需確保使用 [效能模式][profile mode]。
+否則，分析的主要輸出將會是用於驗證框架中各種不變式的除錯斷言
+（檢視 [debug 模式斷言](#debug-mode-assertions)）。
 
 ![GIF showing DevTools features]({{site.url}}/assets/images/docs/tools/devtools/inspector.gif){:width="100%"}
 
 For more information, see the
 [DevTools][] documentation.
 
-想获取更多信息，请查看 [开发者工具][DevTools] 文档。
+想獲取更多資訊，請檢視 [開發者工具][DevTools] 文件。
 
 ## Setting breakpoints
 
-## 设置断点
+## 設定斷點
 
 You can set breakpoints directly in your IDE/editor
 (such as [Android Studio/IntelliJ][] and [VS Code][]),
 in the [DevTools debugger][],
 or [programmatically][breakpoints].
 
-要设置断点，可以直接在 IDE 或编辑器
+要設定斷點，可以直接在 IDE 或編輯器
 （比如 [Android Studio/IntelliJ][] 和 [VS Code][]）、
-[开发者工具调试器][DevTools debugger] 设置，
-或者 [通过编码的方式设置][breakpoints]。
+[開發者工具偵錯程式][DevTools debugger] 設定，
+或者 [透過編碼的方式設定][breakpoints]。
 
 ## The Dart analyzer
 
@@ -128,13 +128,13 @@ If you're using a [Flutter enabled IDE/editor][],
 the Dart analyzer is already checking your code
 and looking for possible mistakes.
 
-如果你使用的是 [Flutter 推荐的 IDE 或编辑器][Flutter enabled IDE/editor]，
-则自带的 Dart 分析器默认会检查代码，并发现可能的错误。
+如果你使用的是 [Flutter 推薦的 IDE 或編輯器][Flutter enabled IDE/editor]，
+則自帶的 Dart 分析器預設會檢查程式碼，平行處理現可能的錯誤。
 
 If you run from the command line,
 test your code with `flutter analyze`.
 
-如果你使用命令行，则可以使用 `flutter analyze` 检查代码。
+如果你使用命令列，則可以使用 `flutter analyze` 檢查程式碼。
 
 The Dart analyzer makes heavy use of type annotations that
 you put in your code to help track problems down.
@@ -143,39 +143,39 @@ untyped arguments, untyped list literals, and so on)
 as this is the quickest and least painful way of tracking
 down problems.
 
-Dart 分析器非常依赖你在代码中添加的类型注解，以帮助跟踪问题。
-建议您在各个地方都加上注解（避免 `var`，无类型参数，无类型 list 字面量，等等），
-因为这是跟踪问题最快且最不痛苦的方式。
+Dart 分析器非常依賴你在程式碼中新增的型別註解，以幫助追蹤問題。
+建議您在各個地方都加上註解（避免 `var`，無型別引數，無型別 list 字面量，等等），
+因為這是追蹤問題最快且最不痛苦的方式。
 
 For more information, see [Using the Dart analyzer][].
 
-想获取更多信息，请查看 [使用 Dart 分析器][Using the Dart analyzer]。
+想獲取更多資訊，請檢視 [使用 Dart 分析器][Using the Dart analyzer]。
 
 ## Logging
 
-## 日志
+## 日誌
 
 Another useful debugging tool is logging. 
 You set logging up [programmatically][logging]
 then view the output in the DevTools
 [logging view][], or in the console.
 
-另一个有用的调试工具是日志。
-通过 [编码][logging] 配置日志，然后在开发者工具中的
-[日志视图][logging view] 或控制台查看输出。
+另一個有用的除錯工具是日誌。
+透過 [編碼][logging] 配置日誌，然後在開發者工具中的
+[日誌檢視][logging view] 或控制檯檢視輸出。
 
 ## Debugging application layers
 
-## 调试应用层
+## 除錯應用層
 
 Flutter was designed with a layered architecture that includes
 widget, rendering, and painting layers. For links to more
 information and videos, see [The Framework architecture][] on the
 [GitHub wiki][], and the community article, [The Layer Cake][].
 
-Flutter 采用分层架构，包括 widget、渲染和绘制等层。
-想获取更多信息和视频，请查看 [GitHub wiki][] 上的
-[The Framework architecture][]，和社区文章 [The Layer Cake][]。
+Flutter 採用分層架構，包括 widget、渲染和繪製等層。
+想獲取更多資訊和影片，請檢視 [GitHub wiki][] 上的
+[The Framework architecture][]，和社群文章 [The Layer Cake][]。
 
 The Flutter widget inspector provides a visual representation
 of the widget tree, but if you want a greater level of detail,
@@ -184,14 +184,14 @@ layer, or render trees, see
 [Debug flags: application layers][]
 in the [Debugging Flutter apps programmatically][] page.
 
-Flutter widget 检查器提供了 widget 树的视觉展现，如果你想要更多细节，
-或关于 wiget、层级或渲染树的详尽文本转储，请查看 
-[添加输出代码的方式调试 Flutter 应用][Debugging Flutter apps programmatically] 
-页面的 [调试标志：应用层][Debug flags: application layers] 部分。
+Flutter widget 檢查器提供了 widget 樹的視覺展現，如果你想要更多細節，
+或關於 wiget、層級或渲染樹的詳盡文字轉儲，請檢視 
+[新增輸出程式碼的方式除錯 Flutter 應用][Debugging Flutter apps programmatically] 
+頁面的 [除錯標誌：應用層][Debug flags: application layers] 部分。
 
 ## Debug mode assertions
 
-## Debug 模式断言
+## Debug 模式斷言
 
 During development, you are highly encouraged to use Flutter's
 [debug mode][]. This is the default if you use bug icon in
@@ -199,9 +199,9 @@ Android Studio, or `flutter run` at the command line.
 Some tools support assert statements through the
 command-line flag `--enable-asserts`.
 
-在开发过程中，强烈建议您使用 Flutter 的 [debug 模式][debug mode]。
-如果你是用 Android Studio 的 bug 图标运行，或者在命令行执行 `flutter run`，则默认会使用 debug 模式。
-有些工具通过 `--enable-assets` 命令行标志可以支持断言语句。
+在開發過程中，強烈建議您使用 Flutter 的 [debug 模式][debug mode]。
+如果你是用 Android Studio 的 bug 圖示執行，或者在命令列執行 `flutter run`，則預設會使用 debug 模式。
+有些工具透過 `--enable-assets` 命令列標誌可以支援斷言陳述式。
 
 In this mode, Dart assert statements are enabled,
 and the Flutter framework evaluates the argument
@@ -211,52 +211,52 @@ This allows developers to enable or disable invariant
 checking, such that the associated performance cost
 is only paid during debugging sessions.
 
-在此模式，Dart 断言语句被开启，
-Flutter 框架在执行时会计算每一个遇到的断言语句的参数，
-当结果是 false 时抛出异常。
-如此一来，开发者可以控制不变式检查的开启或关闭，
-相应的性能损耗将只发生在调试期间。
+在此模式，Dart 斷言陳述式被開啟，
+Flutter 框架在執行時會計算每一個遇到的斷言陳述式的引數，
+當結果是 false 時丟擲例外。
+如此一來，開發者可以控制不變式檢查的開啟或關閉，
+相應的效能損耗將只發生在除錯期間。
 
 When an invariant is violated, it's reported to the
 console, with some context information to help track
 down the source of the problem.
 
-有不变式被违反时，它会被报告给控制台，并携带一些帮助跟踪问题源的上下文信息。
+有不變式被違反時，它會被報告給控制檯，並攜帶一些幫助追蹤問題源的上下文資訊。
 
 For more information, see [`Assert`][] in the
 [Dart language tour][].
 
-想获取更多信息，请查看 [探索 Dart 语言][Dart language tour]
-中的 [断言][`Assert`] 部分。
+想獲取更多資訊，請檢視 [探索 Dart 語言][Dart language tour]
+中的 [斷言][`Assert`] 部分。
 
 ## Debugging animations
 
-## 调试动画
+## 除錯動畫
 
 The easiest way to debug animations is to slow them down.
 The [Flutter inspector][] provides a **Slow Animations** button,
 or you can [slow the animations programmatically][].
 
-调试动画最简单的方法是让它们变慢。
-[Flutter inspector][] 提供一个 **放慢动画**(Slow Animations)
-的按钮，你也可以 [在代码中放慢动画][slow the animations programmatically]。
+除錯動畫最簡單的方法是讓它們變慢。
+[Flutter inspector][] 提供一個 **放慢動畫**(Slow Animations)
+的按鈕，你也可以 [在程式碼中放慢動畫][slow the animations programmatically]。
 
 For more information on debugging janky (non-smooth)
 applications, see [Flutter performance profiling][].
 
-想获取更多关于调试动画卡顿的信息，请查看
-[Flutter 性能分析][Flutter performance profiling]。
+想獲取更多關於除錯動畫卡頓的資訊，請檢視
+[Flutter 效能分析][Flutter performance profiling]。
 
 ## Measuring app startup time
 
-### 测量应用启动时间
+### 測量應用啟動時間
 
 To gather detailed information about the time it takes for your
 Flutter app to start, you can run the `flutter run` command
 with the `trace-startup` and `profile` options.
 
-要收集有关 Flutter 应用程序启动所需时间的详细信息，
-可以在运行 `flutter run` 时使用 `trace-startup` 和 `profile` 选项。
+要收集有關 Flutter 應用程式啟動所需時間的詳細資訊，
+可以在執行 `flutter run` 時使用 `trace-startup` 和 `profile` 選項。
 
 ```
 $ flutter run --trace-startup --profile
@@ -267,25 +267,25 @@ under the `build` directory of your Flutter project.
 The output lists the elapsed time from app startup to these trace
 events (captured in microseconds):
 
-跟踪输出被保存到 Flutter 工程目录在 `build` 目录下，
-一个名为 `start_up_info.json` 的 JSON 文件中。
-输出列出了从应用程序启动到这些跟踪事件（以微秒捕获）所用的时间：
+追蹤輸出被儲存到 Flutter 工程目錄在 `build` 目錄下，
+一個名為 `start_up_info.json` 的 JSON 檔案中。
+輸出列出了從應用程式啟動到這些追蹤事件（以微秒捕獲）所用的時間：
 
 + Time to enter the Flutter engine code.
   
-  进入 Flutter 引擎时
+  進入 Flutter 引擎時
   
 + Time to render the first frame of the app.
 
-  展示应用第一帧时
+  展示應用第一幀時
 
 + Time to initialize the Flutter framework.
 
-  初始化Flutter框架时
+  初始化Flutter框架時
 
 + Time to complete the Flutter framework initialization.
 
-  完成Flutter框架初始化时
+  完成Flutter框架初始化時
 
 For example:
 
@@ -302,7 +302,7 @@ For example:
 
 ## Tracing Dart code
 
-### 跟踪 Dart 代码性能
+### 追蹤 Dart 程式碼效能
 
 To perform a performance trace,
 you can use the DevTools [Timeline view][].
@@ -310,53 +310,53 @@ The Timeline view also supports importing
 and exporting trace files. For more
 information, see the [Timeline view][] docs.
 
-要进行性能跟踪，你可以使用开发者工具的
-[时间线视图][Timeline view]。
-时间线视图还支持导入和导出跟踪文件。
-想要获取更多信息，请查看 [时间线视图][Timeline view]。
+要進行效能追蹤，你可以使用開發者工具的
+[時間線檢視][Timeline view]。
+時間線檢視還支援匯入和匯出追蹤檔案。
+想要獲取更多資訊，請檢視 [時間線檢視][Timeline view]。
 
 You can also
 [perform traces programmatically][],
 though these traces can't be imported
 into DevTool's Timeline view.
 
-你也可以 [在代码中跟踪][perform traces programmatically]，
-不过这些跟踪信息无法导入到开发者模式的时间线视图。
+你也可以 [在程式碼中追蹤][perform traces programmatically]，
+不過這些追蹤資訊無法匯入到開發者模式的時間線檢視。
 
 Be sure to use run your app in [profile mode][]
 before tracing to ensure that the runtime performance
 characteristics closely matches that of your final product.
 
-跟踪时请确保在 [性能模式][profile mode] 运行应用，
-这样才能保证运行时性能特征同你最终产品高度一致。
+追蹤時請確保在 [效能模式][profile mode] 執行應用，
+這樣才能保證執行時效能特徵同你最終產品高度一致。
 
 ## Performance overlay
 
-## 性能图层
+## 效能圖層
 
 To get a graphical view of the performance of your application,
 turn on the performance overlay. You can do this in the
 by clicking the **Performance Overlay** button in the
 [Flutter inspector][].
 
-要图形化展现你应用的性能，可以开启性能图层。
-你可以在 [Flutter inspector][] 中点击 **Performance Overlay** 按钮。
+要圖形化展現你應用的效能，可以開啟效能圖層。
+你可以在 [Flutter inspector][] 中點選 **Performance Overlay** 按鈕。
 
 You can also turn on the overlay [programmatically][overlay].
 
-你也可以 [在代码中][overlay] 开启该图层。
+你也可以 [在程式碼中][overlay] 開啟該圖層。
 
 For information on how to interpret the graphs in the overlay,
 see [The performance overlay][] in
 the [Flutter performance profiling][] guide.
 
-关于如何解析图层中的图形，请查看
-[Flutter 性能分析][Flutter performance profiling]
-中的 [性能图层][The performance overlay] 部分。
+關於如何解析圖層中的圖形，請檢視
+[Flutter 效能分析][Flutter performance profiling]
+中的 [效能圖層][The performance overlay] 部分。
 
 ## Debug flags
 
-## 调试标志
+## 除錯標誌
 
 In most cases, you won't need to use the debug flags
 directly, as you'll find the most useful debugging
@@ -365,31 +365,31 @@ prefer to use the debug flags directly, see
 [Debug flags: performance][] in the
 [Debugging Flutter apps programmatically][] page.
 
-大部分情况，你不需要直接使用调试标志，因为可以在
-[开发者工具][DevTools] 找到最有用的调试功能。
-但是如果你偏好直接使用调试标志，请查看
-[添加输出代码的方式调试 Flutter 应用][Debugging Flutter apps programmatically]
-中的 [调试标志：性能][Debug flags: performance] 部分。
+大部分情況，你不需要直接使用除錯標誌，因為可以在
+[開發者工具][DevTools] 找到最有用的除錯功能。
+但是如果你偏好直接使用除錯標誌，請檢視
+[新增輸出程式碼的方式除錯 Flutter 應用][Debugging Flutter apps programmatically]
+中的 [除錯標誌：效能][Debug flags: performance] 部分。
 
 ## Common problems
 
-## 常见问题
+## 常見問題
 
 The following is a problem that some have encountered on macOS.
 
-下面是一些在 macOS 上遇到的问题。
+下面是一些在 macOS 上遇到的問題。
 
 ### "Too many open files" exception (macOS)
 
-### "句柄数超出系统限制" 异常 (macOS)
+### "控制代碼數超出系統限制" 例外 (macOS)
 
 The default limit for Mac OS on how many files it can have open at a
 time is rather low.  If you run into this limit,
 increase the number of available
 file handlers using the `ulimit` command:
 
-mac OS 在同一时间可以打开多少句柄的默认限制数相当低。如果你达到这个极限，
-可以用 `ulimit` 命令增加可用句柄的数量：
+mac OS 在同一時間可以開啟多少控制代碼的預設限制數相當低。如果你達到這個極限，
+可以用 `ulimit` 命令增加可用控制代碼的數量：
 
 ```
 ulimit -S -n 2048
@@ -399,22 +399,22 @@ If you use Travis or Cirrus for testing, increase the number of
 available file handlers that they can open by adding the same line to
 flutter/.travis.yml, or flutter/.cirrus.yml, respectively.
 
-如果您使用 Travis 或 Cirrus 进行测试，
-请通过在 flutter/.travis.yml 或 flutter/.cirrus.yml 
-中增加同样的命令来增加它们可以打开的句柄数量。
+如果您使用 Travis 或 Cirrus 進行測試，
+請透過在 flutter/.travis.yml 或 flutter/.cirrus.yml 
+中增加同樣的命令來增加它們可以開啟的控制代碼數量。
 
 ### Widgets marked const that should be equal to each other, aren't
 
-### 被标记为 const 的相同 Widget 应被视为同一对象，然而却并没有
+### 被標記為 const 的相同 Widget 應被視為同一物件，然而卻並沒有
 
 In debug mode, you might find that two `const` widgets that should to all
 appearances be equal (because of Dart's constant deduplication) are not.
 
-在 debug 模式下，（由于 Dart 的常量去重策略）你也许会发现两个 `const` 的 widget 长得并不完全一样。
+在 debug 模式下，（由於 Dart 的常量去重策略）你也許會發現兩個 `const` 的 widget 長得並不完全一樣。
 
 For example, this code should print 1:
 
-例如，下面的代码应该打印 1：
+例如，下面的程式碼應該列印 1：
 
 <?code-excerpt "lib/main.dart (Syntax)"?>
 ```dart
@@ -432,10 +432,10 @@ builds, it does print 1. However, in debug builds it prints 2. This is because t
 flutter tool injects the source location of Widget constructors into the code at compile
 time, so the code is effectively:
 
-这段代码应该打印 1（而不是 2），这是由于两个常量相同且在同一个 set 中（实际上分析器抱怨
-“集合文字中的两个元素不应相等”）。正如我们所期待的那样，在 release 模式下构建的时候，它确实打印了 1。
-然而，在 debug 模式下它却打印了 2。这是由于 Flutter tool 在编译期向 Widget 的构造器注入了源位置，
-所以下面的代码有效：
+這段程式碼應該列印 1（而不是 2），這是由於兩個常量相同且在同一個 set 中（實際上分析器抱怨
+“集合文字中的兩個元素不應相等”）。正如我們所期待的那樣，在 release 模式下建構的時候，它確實列印了 1。
+然而，在 debug 模式下它卻列印了 2。這是由於 Flutter tool 在編譯期向 Widget 的構造器注入了源位置，
+所以下面的程式碼有效：
 
 <?code-excerpt "lib/main.dart (SyntaxExplain)"?>
 ```dart
@@ -451,71 +451,71 @@ a widget is involved in an exception, by reporting where the relevant widget was
 Unfortunately, it has the visible side-effect of making otherwise-identical constants be
 different at compile time.
 
-上面的代码在结果中的实例不同，故它们在 set 中并没有重复。
-我们使用注入信息汇报相关 widget 的创建信息，
-使得 widget 出现异常时错误消息会更加清晰。
-不幸的是，它会导致相同常量在编译期变为不同实例。
+上面的程式碼在結果中的例項不同，故它們在 set 中並沒有重複。
+我們使用注入資訊彙報相關 widget 的建立資訊，
+使得 widget 出現例外時錯誤訊息會更加清晰。
+不幸的是，它會導致相同常量在編譯期變為不同例項。
 
 To disable this behavior, pass `--no-track-widget-creation` to the `flutter run` command.
 With that flag set, the code above prints "1" in debug and release builds, and error messages
 include a message saying that they cannot provide all the information that they would otherwise
 be able to provide if widget creation tracking was enabled.
 
-要关闭此行为，请在运行 `flutter run` 命令的同时传 `--no-track-widget-creation`。
-有了这个标记，代码将会在 debug 和 release 模式下打印 1，
-而错误消息这边会有一条消息说，
-除非打开 widget 创建跟踪器，否则我们将无法提供完整的信息。
+要關閉此行為，請在執行 `flutter run` 命令的同時傳 `--no-track-widget-creation`。
+有了這個標記，程式碼將會在 debug 和 release 模式下列印 1，
+而錯誤訊息這邊會有一條訊息說，
+除非開啟 widget 建立追蹤器，否則我們將無法提供完整的資訊。
 
 See also:
 
-你也可以查看：
+你也可以檢視：
 
  * Our documentation on [how the Widget Inspector uses widget creation tracking][].
 
-   文档 [Widget Inspector 是如何使用 widget 创建跟踪的][how the
+   文件 [Widget Inspector 是如何使用 widget 建立追蹤的][how the
    Widget Inspector uses widget creation tracking]。
 
  * [WidgetInspectorService.isWidgetCreationTracked][].
 
  * The `_Location` class in [widget_inspector.dart][].
 
-   [widget_inspector.dart][] 中的 `_Location` 类。
+   [widget_inspector.dart][] 中的 `_Location` 類別。
 
  * The [kernel transform that implements this feature][].
 
-   [实现该功能的核心转换][kernel transform that implements this feature]。
+   [實現該功能的核心轉換][kernel transform that implements this feature]。
 
 ## Other resources
 
-## 其他资源
+## 其他資源
 
 You might find the following docs useful:
 
-以下是其他一些有用的文档：
+以下是其他一些有用的文件：
 
 * [Performance best practices][]
 
-  [性能优化最佳实践][Performance best practices]
+  [效能最佳化最佳實踐][Performance best practices]
 
 * [Flutter performance profiling][]
 
-  [Flutter 性能分析][Flutter performance profiling]
+  [Flutter 效能分析][Flutter performance profiling]
 
 * [Using an OEM debugger][]
 
-  [使用原生的调试器][Using an OEM debugger]
+  [使用原生的偵錯程式][Using an OEM debugger]
 
 * [Flutter's modes][]
 
-  [Flutter 构建模式][Flutter's modes]
+  [Flutter 建構模式][Flutter's modes]
 
 * [Debugging Flutter apps programmatically][]
 
-  [添加输出代码的方式调试 Flutter 应用][Debugging Flutter apps programmatically]
+  [新增輸出程式碼的方式除錯 Flutter 應用][Debugging Flutter apps programmatically]
 
 * [DevTools][]
 
-  [开发者工具][DevTools]
+  [開發者工具][DevTools]
 
 * [Android Studio/IntelliJ][]
 

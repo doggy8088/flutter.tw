@@ -1,10 +1,10 @@
 ---
 title: Networking
-title: 网络
+title: 網路
 description: Internet network calls in Flutter.
-description: 在 Flutter 中访问网络
-tags: 数据调用和后端
-keywords: 网络请求
+description: 在 Flutter 中存取網路
+tags: 資料呼叫和後端
+keywords: 網路請求
 ---
 
 ## Cross-platform http networking

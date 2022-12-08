@@ -1,12 +1,12 @@
 ---
 title: Developing packages & plugins
-title: Flutter Packages 的开发和提交
+title: Flutter Packages 的開發和提交
 short-title: Developing
-short-title: 开发和提交
+short-title: 開發和提交
 description: How to write packages and plugins for Flutter.
-description: 如何编写和提交你的 Packages。
-tags: Packages,插件
-keywords: 插件开发,Flutter插件教程
+description: 如何編寫和提交你的 Packages。
+tags: Packages,外掛
+keywords: 外掛開發,Flutter外掛課程
 ---
 
 {{site.note.alert}}
@@ -16,44 +16,44 @@ keywords: 插件开发,Flutter插件教程
   indicate [which platforms a plugin][supported-platforms] supports, for example
   web and macOS.
 
-  插件 API 现已支持 [联合插件][federated plugins]，从而分离在不同平台上的实现。
-  你可以指定 [哪些平台有插件][supported-platforms] 支持，例如 Web 和 macOS。
+  外掛 API 現已支援 [聯合外掛][federated plugins]，從而分離在不同平臺上的實現。
+  你可以指定 [哪些平台有外掛][supported-platforms] 支援，例如 Web 和 macOS。
 
   Eventually, the old plugin APIs will be deprecated. In the short term, you
   will see a warning when the framework detects that you are using an old-style
   plugin. For information on how to upgrade your plugin, see [Supporting the new
   Android plugins APIs][].  
 
-  旧的插件 API 会在将来被废弃。如果在短期内你仍在使用旧版本的插件 API，你会看到警告。
-  想了解更多关于升级 Android 插件的内容，请阅读
-  [支持新的 Android 插件 API][Supporting the new Android plugins APIs]。
+  舊的外掛 API 會在將來被廢棄。如果在短期內你仍在使用舊版本的外掛 API，你會看到警告。
+  想了解更多關於升級 Android 外掛的內容，請閱讀
+  [支援新的 Android 外掛 API][Supporting the new Android plugins APIs]。
 
 {{site.note.end}}
 
 ## Package introduction
 
-## Package 介绍
+## Package 介紹
 
 Packages enable the creation of modular code that can be shared easily. A
 minimal package consists of the following:
 
-通过使用 package（的模式）可以创建易于共享的模块化代码。
-一个最基本的 package 由以下内容构成：
+透過使用 package（的模式）可以建立易於共享的模組化程式碼。
+一個最基本的 package 由以下內容構成：
 
 **`pubspec.yaml`**
 <br> A metadata file that declares the package name,
   version, author, and so on.
 
-**`pubspec.yaml` 文件**
-<br> 用于定义 package 名称、版本号、作者等其他信息的元数据文件。
+**`pubspec.yaml` 檔案**
+<br> 用於定義 package 名稱、版本號、作者等其他資訊的元資料檔案。
 
 **`lib`**
 <br> The `lib` directory contains the public code in
   the package, minimally a single `<package-name>.dart` file.
   
-**`lib` 目录**
-<br> 包含共享代码的 `lib` 目录，
-其中至少包含一个 `<package-name>.dart` 文件。
+**`lib` 目錄**
+<br> 包含共享程式碼的 `lib` 目錄，
+其中至少包含一個 `<package-name>.dart` 檔案。
 
 {{site.alert.note}}
 
@@ -61,18 +61,18 @@ minimal package consists of the following:
   see the Medium article by Mehmet Fidanboylu,
   [Writing a good plugin][].
   
-  有关编写高效插件的注意事项列表，请参考 Medium 上的文章：
+  有關編寫高效外掛的注意事項列表，請參考 Medium 上的文章：
   [Writing a good plugin][]。
 
 {{site.alert.end}}
 
 ### Package types {#types}
 
-### Package 类别 {#types}
+### Package 類別 {#types}
 
 Packages can contain more than one kind of content:
 
-Package 包含以下几种类别：
+Package 包含以下幾種類別：
 
 **Dart packages**
 <br> General packages written in Dart,
@@ -82,37 +82,37 @@ Package 包含以下几种类别：
   Flutter framework, restricting their use to Flutter only,
   for example the [`fluro`][] package.
   
-**纯 Dart 库 (Dart packages)**
-<br> 用 Dart 编写的传统 package，比如 [`path`][]。
-  其中一些可能包含 Flutter 的特定功能，因此依赖于 Flutter 框架，
-  其使用范围仅限于 Flutter，比如 [`fluro`][]。
+**純 Dart 庫 (Dart packages)**
+<br> 用 Dart 編寫的傳統 package，比如 [`path`][]。
+  其中一些可能包含 Flutter 的特定功能，因此依賴於 Flutter 框架，
+  其使用範圍僅限於 Flutter，比如 [`fluro`][]。
 
 **Plugin packages**
 <br> A specialized Dart package that contains an API written in
   Dart code combined with one or more platform-specific
   implementations.
 
-**原生插件 (Plugin packages)**
-<br> 使用 Dart 编写的，按需使用 Java 或 Kotlin、Objective-C
-  或 Swift 分别在 Android 和/或 iOS 平台实现的 package。
+**原生外掛 (Plugin packages)**
+<br> 使用 Dart 編寫的，按需使用 Java 或 Kotlin、Objective-C
+  或 Swift 分別在 Android 和/或 iOS 平台實現的 package。
 
   Plugin packages can be written for Android (using Kotlin or Java), iOS (using
   Swift or Objective-C), web, macOS, Windows, or Linux, or any combination
   thereof.
 
-  插件 package 可以针对 Android（使用 Kotlin 或 Java）、
+  外掛 package 可以針對 Android（使用 Kotlin 或 Java）、
   iOS（使用 Swift 或 Objective-C）、Web、macOS、Windows 或 Linux，
-  又或者它们的各种组合方式，进行编写。
+  又或者它們的各種組合方式，進行編寫。
 
   A concrete example is the [`url_launcher`][] plugin package.
   To see how to use the `url_launcher` package, and how it
   was extended to implement support for web,
   see the Medium article by Harry Terkelsen,
   [How to Write a Flutter Web Plugin, Part 1][].
-  一个较为具体的实现例子是 [`url_launcher`][] 插件 package。
-  想了解如何使用 `url_launcher` package，以及它如何扩展 Web 的实现，
-  请阅读 Medium 上由 Harry Terkelsen 撰写的文章
-  [如何编写 Flutter Web 插件，第一部分][How to Write a Flutter Web Plugin, Part 1]。
+  一個較為具體的實現例子是 [`url_launcher`][] 外掛 package。
+  想了解如何使用 `url_launcher` package，以及它如何擴充 Web 的實現，
+  請閱讀 Medium 上由 Harry Terkelsen 撰寫的文章
+  [如何編寫 Flutter Web 外掛，第一部分][How to Write a Flutter Web Plugin, Part 1]。
 
 
 **FFI Plugin packages**
@@ -120,28 +120,28 @@ Package 包含以下几种类别：
   Dart code combined with one or more platform-specific
   implementations that use Dart FFI([Android][Android], [iOS][iOS], [macOS][macOS]).
 
-**FFI 插件**
-<br> 用 Dart 语言编写针对一个或多个特定平台的 API，
+**FFI 外掛**
+<br> 用 Dart 語言編寫針對一個或多個特定平台的 API，
 使用 Dart FFI ([Android][Android]、[iOS][iOS]、[macOS][macOS])。
 
 ## Developing Dart packages {#dart}
 
-## 开发纯 Dart 的 packages {#dart}
+## 開發純 Dart 的 packages {#dart}
 
 The following instructions explain how to write a Flutter
 package.
 
-下面会为你介绍如何写 Flutter package。
+下面會為你介紹如何寫 Flutter package。
 
 ### Step 1: Create the package
 
-### 第一步：创建 package
+### 第一步：建立 package
 
 To create a starter Flutter package,
 use the `--template=package` flag with `flutter create`:
 
-想要创建初始的 Flutter package，
-请使用带有 `--template=package` 标志的
+想要建立初始的 Flutter package，
+請使用帶有 `--template=package` 標誌的
 `flutter create` 命令：
 
 ```terminal
@@ -151,115 +151,115 @@ $ flutter create --template=package hello
 This creates a package project in the `hello`
 folder with the following content:
 
-这将在 `hello` 目录下创建一个 package 项目，其中包含以下内容：
+這將在 `hello` 目錄下建立一個 package 專案，其中包含以下內容：
 
 **LICENSE**
 <br> A (mostly) empty license text file.
 
-**LICENSE 文件**
-<br> 大概率会是空的一个许可证文件。
+**LICENSE 檔案**
+<br> 大機率會是空的一個許可證檔案。
 
 **test/hello_test.dart**
 <br> The [unit tests][] for the package.
 
-**test/hello_test.dart 文件**
-<br> Package 的 [单元测试][unit tests] 文件。
+**test/hello_test.dart 檔案**
+<br> Package 的 [單元測試][unit tests] 檔案。
 
 **hello.iml**
 <br> A configuration file used by the IntelliJ IDEs.
 
-**hello.iml 文件**
-<br> 由 IntelliJ 生成的配置文件。
+**hello.iml 檔案**
+<br> 由 IntelliJ 產生的配置檔案。
 
 **.gitignore**
 <br> A hidden file that tells Git which files or
   folders to ignore in a project.
 
-**.gitignore 文件**
-<br> 告诉 Git 系统应该隐藏哪些文件或文件夹的一个隐藏文件。
+**.gitignore 檔案**
+<br> 告訴 Git 系統應該隱藏哪些檔案或資料夾的一個隱藏檔案。
 
 **.metadata**
 <br> A hidden file used by IDEs to track the properties
   of the Flutter project.
 
-**.metadata 文件**
-<br> IDE 用来记录某个 Flutter 项目属性的的隐藏文件。
+**.metadata 檔案**
+<br> IDE 用來記錄某個 Flutter 專案屬性的的隱藏檔案。
 
 **pubspec.yaml**
 <br> A yaml file containing metadata that specifies
   the package's dependencies. Used by the pub tool.
 
-**pubspec.yaml 文件**
-<br> pub 工具需要使用的，包含 package 依赖的 yaml 格式的文件。
+**pubspec.yaml 檔案**
+<br> pub 工具需要使用的，包含 package 依賴的 yaml 格式的檔案。
 
 **README.md**
 <br> A starter markdown file that briefly describes
   the package's purpose.
 
-**README.md 文件**
-<br> 起步文档，用于描述 package。
+**README.md 檔案**
+<br> 起步文件，用於描述 package。
 
 **lib/hello.dart**
 <br> A starter app containing Dart code for the package.
 
-**lib/hello.dart 文件**
-<br> package 的 Dart 实现代码。
+**lib/hello.dart 檔案**
+<br> package 的 Dart 實現程式碼。
 
 **.idea/modules.xml**, **.idea/workspace.xml**
 <br> A hidden folder containing configuration files
   for the IntelliJ IDEs.
 
-**.idea/modules.xml**、**.idea/workspace.xml 文件**
-<br> IntelliJ 的各自配置文件（包含在 .idea 隐藏文件夹下）。
+**.idea/modules.xml**、**.idea/workspace.xml 檔案**
+<br> IntelliJ 的各自配置檔案（包含在 .idea 隱藏資料夾下）。
 
 **CHANGELOG.md**
 <br> A (mostly) empty markdown file for tracking
   version changes to the package.
 
-**CHANGELOG.md 文件**
-<br> 又一个大概率为空的文档，用于记录 package 的版本变更。
+**CHANGELOG.md 檔案**
+<br> 又一個大機率為空的文件，用於記錄 package 的版本變更。
 
 ### Step 2: Implement the package
 
-### 第二步：实现 package
+### 第二步：實現 package
 
 For pure Dart packages, simply add the functionality
 inside the main `lib/<package name>.dart` file,
 or in several files in the `lib` directory.
 
-对于纯 Dart 库的 package，只要在 `lib/<package name>.dart` 文件中添加功能实现，
-或在 `lib` 目录中的多个文件中添加功能实现。
+對於純 Dart 庫的 package，只要在 `lib/<package name>.dart` 檔案中新增功能實現，
+或在 `lib` 目錄中的多個檔案中新增功能實現。
 
 To test the package, add [unit tests][]
 in a `test` directory.
 
-如果要对 package 进行测试，
-在 `test` 目录下添加 [单元测试][unit tests]。
+如果要對 package 進行測試，
+在 `test` 目錄下新增 [單元測試][unit tests]。
 
 For additional details on how to organize the
 package contents,
 see the [Dart library package][] documentation.
 
-关于如何组织 package 内容的更多详细信息，
-请参考 [Dart library package][] 文档。
+關於如何組織 package 內容的更多詳細資訊，
+請參考 [Dart library package][] 文件。
 
 ## Developing plugin packages {#plugin}
 
-## 开发原生插件类型的 packages {#plugin}
+## 開發原生外掛型別的 packages {#plugin}
 
 If you want to develop a package that calls into platform-specific APIs, you
 need to develop a plugin package.
 
-如果想要开发一个调用特定平台 API 的 package，你需要开发一个原生插件 packgae。
+如果想要開發一個呼叫特定平台 API 的 package，你需要開發一個原生外掛 packgae。
 
 The API is connected to the platform-specific implementation(s) using a
 [platform channel][].
 
-它的 API 通过 [平台通道][platform channel] 连接到平台特定的实现。
+它的 API 透過 [平台通道][platform channel] 連線到平台特定的實現。
 
 ### Federated plugins
 
-### 联合插件
+### 聯合外掛
 
 Federated plugins are a way of splitting support for different platforms into
 separate packages. So, a federated plugin can use one package for iOS, another
@@ -267,22 +267,22 @@ for Android, another for web, and yet another for a car (as an example of an IoT
 device). Among other benefits, this approach allows a domain expert to extend an
 existing plugin to work for the platform they know best.
 
-Federated plugins (联合插件) 是一种将对不同平台的支持分为单独的软件包。
-所以，联合插件能够使用针对 iOS、Android、Web 甚至是针对汽车
-(例如在 IoT 设备上)分别使用对应的 package。
-除了这些好处之外，它还能够让领域专家在他们最了解的平台上扩展现有平台插件。
+Federated plugins (聯合外掛) 是一種將對不同平台的支援分為單獨的軟體套件。
+所以，聯合外掛能夠使用針對 iOS、Android、Web 甚至是針對汽車
+(例如在 IoT 裝置上)分別使用對應的 package。
+除了這些好處之外，它還能夠讓領域專家在他們最瞭解的平臺上擴充現有平台外掛。
 
 A federated plugin requires the following packages:
 
-联合插件需要以下 package：
+聯合外掛需要以下 package：
 
 **app-facing package**
 <br> The package that plugin users depend on to use the plugin.
   This package specifies the API used by the Flutter app.
 
-**面向应用的 package**
-<br> 该 package 是用户使用插件的的直接依赖。
-  它指定了 Flutter 应用使用的 API。
+**面向應用的 package**
+<br> 該 package 是使用者使用外掛的的直接依賴。
+  它指定了 Flutter 應用使用的 API。
 
 **platform package(s)**
 <br> One or more packages that contain the platform-specific
@@ -292,9 +292,9 @@ A federated plugin requires the following packages:
   accessible to the end user.
 
 **平台 package**
-<br> 一个或多个包含特定平台代码的 package。
-  面向应用的 package 会调用这些平台 package&mdash;&mdash;
-  除非它们带有一些终端用户需要的特殊平台功能，否则它们不会包含在应用中。
+<br> 一個或多個包含特定平台程式碼的 package。
+  面向應用的 package 會呼叫這些平台 package&mdash;&mdash;
+  除非它們帶有一些終端使用者需要的特殊平台功能，否則它們不會包含在應用中。
 
 **platform interface package**
 <br> The package that glues the app-facing packing
@@ -304,15 +304,15 @@ A federated plugin requires the following packages:
   that defines this interface ensures that all platform
   packages implement the same functionality in a uniform way.
 
-**平台接口 package**
-<br> 将面向应用的 package 与平台 package 进行整合的 package。
-  该 package 会声明平台 package 需要实现的接口，供面向应用的 package 使用。
-  使用单一的平台接口 package 可以确保所有平台 package
-  都按照各自的方法实现了统一要求的功能。
+**平台介面 package**
+<br> 將面向應用的 package 與平台 package 進行整合的 package。
+  該 package 會宣告平台 package 需要實現的介面，供面向應用的 package 使用。
+  使用單一的平台介面 package 可以確保所有平台 package
+  都按照各自的方法實現了統一要求的功能。
 
 #### Endorsed federated plugin
 
-#### 整合的联合插件
+#### 整合的聯合外掛
 
 Ideally, when adding a platform implementation to
 a federated plugin, you will coordinate with the package
@@ -320,8 +320,8 @@ author to include your implementation.
 In this way, the original author _endorses_ your
 implementation.
 
-理想情况下，当你在为一个联合插件添加某个平台的实现时，
-你会与 package 的作者合作，将你的实现纳入 package。
+理想情況下，當你在為一個聯合外掛新增某個平台的實現時，
+你會與 package 的作者合作，將你的實現納入 package。
 
 For example, say you write a `foobar_windows`
 implementation for the (imaginary) `foobar` plugin.
@@ -333,15 +333,15 @@ in their Flutter app, the Windows implementation,
 as well as the other endorsed implementations,
 are automatically available to the app.
 
-假设你开发了 `foobar_windows` 插件，用于对应 `foobar` 插件的实现。
-在整合的联合插件里，`foobar` 的原作者会将你的 Windows
-实现作为依赖添加在 pubspec 文件中，供面向应用的 package 调用。
-而后在开发者使用 `foobar` 插件时，Windows
-及已包含的其他平台的实现就自动可用了。
+假設你開發了 `foobar_windows` 外掛，用於對應 `foobar` 外掛的實現。
+在整合的聯合外掛裡，`foobar` 的原作者會將你的 Windows
+實現作為依賴新增在 pubspec 檔案中，供面向應用的 package 呼叫。
+而後在開發者使用 `foobar` 外掛時，Windows
+及已包含的其他平台的實現就自動可用了。
 
 #### Non-endorsed federated plugin
 
-#### 未整合的联合插件
+#### 未整合的聯合外掛
 
 If you can't, for whatever reason, get your implementation
 added by the original plugin author, then your plugin
@@ -352,33 +352,33 @@ must include both the `foobar` dependency _and_
 the `foobar_windows` dependency in order to achieve
 full functionality.
 
-如果你的实现出于某些原因无法被原作者整合，
-那么你的插件属于 **未整合** 的联合插件。
-开发者仍然可以使用你的实现，但是必须手动在 pubspec 文件里添加引用。
-意味着开发者需要同时引用 `foobar` **和** `foobar_windows` 依赖，
-才能使用对应平台的完整功能。
+如果你的實現出於某些原因無法被原作者整合，
+那麼你的外掛屬於 **未整合** 的聯合外掛。
+開發者仍然可以使用你的實現，但是必須手動在 pubspec 檔案裡新增參考。
+意味著開發者需要同時參考 `foobar` **和** `foobar_windows` 依賴，
+才能使用對應平台的完整功能。
 
 For more information on federated plugins,
 why they are useful, and how they are
 implemented, see the Medium article by Harry Terkelsen,
 [How To Write a Flutter Web Plugin, Part 2][].
 
-有关联合插件的更多信息、它为什么非常强大，以及如何实现联合插件，
-你可以阅读 Harry Terkelsen 在 Medium 撰写的
-[如何撰写 Flutter Web 插件，第 2 部分][How To Write a Flutter Web Plugin, Part 2]。
+有關聯合外掛的更多資訊、它為什麼非常強大，以及如何實現聯合外掛，
+你可以閱讀 Harry Terkelsen 在 Medium 撰寫的
+[如何撰寫 Flutter Web 外掛，第 2 部分][How To Write a Flutter Web Plugin, Part 2]。
 
 ### Specifying a plugin's supported platforms {#plugin-platforms}
 
-### 指定一个插件支持的平台 {#plugin-platforms}
+### 指定一個外掛支援的平台 {#plugin-platforms}
 
 Plugins can specify the platforms they support by adding keys to the `platforms`
 map in the `pubspec.yaml` file. For example, the following pubspec file shows
 the `flutter:` map for the `hello` plugin, which supports only iOS and Android:
 
-插件可以通过向 `pubspec.yaml` 中的 `platforms` map 
-添加 keys 来指定其支持的平台。
-例如，以下是 `hello` 插件的 `flutter:` map，
-它仅支持 Android 和 iOS：
+外掛可以透過向 `pubspec.yaml` 中的 `platforms` map 
+新增 keys 來指定其支援的平台。
+例如，以下是 `hello` 外掛的 `flutter:` map，
+它僅支援 Android 和 iOS：
 
 ```yaml
 flutter:
@@ -401,8 +401,8 @@ When adding plugin implementations for more platforms, the `platforms` map
 should be updated accordingly. For example, here's the map in the pubspec file
 for the `hello` plugin, when updated to add support for macOS and web:
 
-当为更多平台添加插件实现时，应相应地更新 `platforms` map，
-例如这是支持 Android、iOS、macOS 和 web 的 `hello` 插件的 map：
+當為更多平臺新增外掛實現時，應相應地更新 `platforms` map，
+例如這是支援 Android、iOS、macOS 和 web 的 `hello` 外掛的 map：
 
 ```yaml
 flutter:
@@ -428,17 +428,17 @@ environment:
 
 #### Federated platform packages
 
-#### 联合平台 package
+#### 聯合平台 package
 
 A platform package uses the same format, but includes an `implements` entry
 indicating which app-facing package it is an implementation for. For example,
 a `hello_windows` plugin containing the Windows implementation for `hello`
 would have the following `flutter:` map:
 
-平台 package 有着同样的格式，但会包含 `implements` 入口，
-用于指明 package 实现的平台。
-例如，实现了 `hello` package 的 Windows 平台的 `hello_windows` 插件，
-会在 `flutter:` 映射下包含以下内容：
+平台 package 有著同樣的格式，但會包含 `implements` 入口，
+用於指明 package 實現的平台。
+例如，實現了 `hello` package 的 Windows 平台的 `hello_windows` 外掛，
+會在 `flutter:` 對映下包含以下內容：
 
 ```yaml
 flutter:
@@ -451,17 +451,17 @@ flutter:
 
 #### Endorsed implementations
 
-#### 认可的实现
+#### 認可的實現
 
 An app facing package can endorse a platform package by adding a
 dependency on it, and including it as a `default_package` in the
 `platforms:` map. If the `hello` plugin above endorsed `hello_windows`,
 it would look like this:
 
-提供给 App 项目使用的 package
-可以通过在 `platform:` 映射下声明 `default_package`，
-认可一个平台实现插件。
-如果 `hello` 插件认可了 `hello_windows`，它看起来会是这样：
+提供給 App 專案使用的 package
+可以透過在 `platform:` 對映下宣告 `default_package`，
+認可一個平台實現外掛。
+如果 `hello` 外掛認可了 `hello_windows`，它看起來會是這樣：
 
 ```yaml
 flutter:
@@ -483,42 +483,42 @@ Note that as shown here, an app-facing package can have
 some platforms implementated within the package, and others in
 endorsed federated implementations.
 
-注意如上所示，面向 App 项目的 package 可能已经包含了某些平台的实现，
-同时也有认可的其他平台的实现。
+注意如上所示，面向 App 專案的 package 可能已經包含了某些平台的實現，
+同時也有認可的其他平台的實現。
 
 ### Step 1: Create the package
 
-### 第一步：创建 package
+### 第一步：建立 package
 
 To create a plugin package, use the `--template=plugin`
 flag with `flutter create`.
 
-想要创建原生插件 package，
-请使用带有 `--template=plugin` 标志的 `flutter create` 命令。
+想要建立原生外掛 package，
+請使用帶有 `--template=plugin` 標誌的 `flutter create` 命令。
 
 Use the `--platforms=` option followed by a comma separated list to specify the
 platforms that the plugin supports. Available platforms are: `android`, `ios`,
 `web`, `linux`, `macos`, and `windows`. If no platforms are specified, the
 resulting project doesn't support any platforms.
 
-你可以使用 `--platforms=` 命令行选项指定插件支持的平台，
-后面参数是用逗号分隔的列表。
+你可以使用 `--platforms=` 命令列選項指定外掛支援的平台，
+後面引數是用逗號分隔的列表。
 可用的平台有：`android`、`ios`、`web`、`linux`、`macos` 和 `windows`。
-如果没有指定平台，则生成的项目不支持任何平台。
+如果沒有指定平台，則產生的專案不支援任何平台。
 
 Use the `--org` option to specify your organization,
 using reverse domain name notation. This value is used
 in various package and bundle identifiers in the
 generated plugin code.
 
-使用 `--org` 选项，以反向域名表示法来指定你的组织。
-该值用于生成的 Android 及 iOS 代码。
+使用 `--org` 選項，以反向域名錶示法來指定你的組織。
+該值用於產生的 Android 及 iOS 程式碼。
 
 Use the `-a` option to specify the language for android or the `-i` option to
 specify the language for ios. Please choose **one** of the following:
 
-使用 `-a` 选项指定 Android 的语言，或使用 `-i` 选项指定 iOS 的语言。 
-请选择以下 **任一项**：
+使用 `-a` 選項指定 Android 的語言，或使用 `-i` 選項指定 iOS 的語言。 
+請選擇以下 **任一項**：
 
 ```terminal
 $ flutter create --org com.example --template=plugin --platforms=android,ios -a kotlin hello
@@ -536,45 +536,45 @@ $ flutter create --org com.example --template=plugin --platforms=android,ios -i 
 This creates a plugin project in the `hello` folder
 with the following specialized content:
 
-这将在 `hello` 目录下创建一个插件项目，其中包含以下内容：
+這將在 `hello` 目錄下建立一個外掛專案，其中包含以下內容：
 
 **`lib/hello.dart`**
 <br> The Dart API for the plugin.
 
-**`lib/hello.dart` 文件**
-<br> Dart 插件 API 实现。
+**`lib/hello.dart` 檔案**
+<br> Dart 外掛 API 實現。
 
 **`android/src/main/java/com/example/hello/HelloPlugin.kt`**
 <br> The Android platform-specific implementation of the plugin API
   in Kotlin.
 
-**`android/src/main/java/com/example/hello/HelloPlugin.kt` 文件**
-<br> Android 平台原生插件 API 实现（使用 Kotlin 编程语言）。
+**`android/src/main/java/com/example/hello/HelloPlugin.kt` 檔案**
+<br> Android 平台原生外掛 API 實現（使用 Kotlin 程式語言）。
 
 **`ios/Classes/HelloPlugin.m`**
 <br> The iOS-platform specific implementation of the plugin API
   in Objective-C.
 
-**`ios/Classes/HelloPlugin.m` 文件**
-<br> iOS 平台原生插件 API 实现（使用 Objective-C 编程语言）。
+**`ios/Classes/HelloPlugin.m` 檔案**
+<br> iOS 平台原生外掛 API 實現（使用 Objective-C 程式語言）。
 
 **`example/`**
 <br> A Flutter app that depends on the plugin,
   and illustrates how to use it.
 
-**`example/` 文件**
-<br> 一个依赖于该插件并说明了如何使用它的 Flutter 应用。
+**`example/` 檔案**
+<br> 一個依賴於該外掛並說明了如何使用它的 Flutter 應用。
 
 By default, the plugin project uses Swift for iOS code and
 Kotlin for Android code. If you prefer Objective-C or Java,
 you can specify the iOS language using `-i` and the
 Android language using `-a`. For example:
 
-默认情况下，插件项目中 iOS 代码使用 Swift 编写，
-Android 代码使用 Kotlin 编写。
-如果你更喜欢 Objective-C 或 Java，
-你可以通过 `-i` 指定 iOS 所使用的语言和/或
-使用`-a` 指定 Android 所使用的语言。比如：
+預設情況下，外掛專案中 iOS 程式碼使用 Swift 編寫，
+Android 程式碼使用 Kotlin 編寫。
+如果你更喜歡 Objective-C 或 Java，
+你可以透過 `-i` 指定 iOS 所使用的語言和/或
+使用`-a` 指定 Android 所使用的語言。比如：
 
 ```terminal
 $ flutter create --template=plugin --platforms=android,ios -i objc hello
@@ -585,82 +585,82 @@ $ flutter create --template=plugin --platforms=android,ios -a java hello
 
 ### Step 2: Implement the package {#edit-plugin-package}
 
-### 第二步：实现 package {#edit-plugin-package}
+### 第二步：實現 package {#edit-plugin-package}
 
 As a plugin package contains code for several platforms
 written in several programming languages,
 some specific steps are needed to ensure a smooth experience.
 
-由于原生插件类型的 package 包含了使用多种编程语言编写的多个平台代码，
-因此需要一些特定步骤来保证体验的流畅性。
+由於原生外掛型別的 package 包含了使用多種程式語言編寫的多個平台程式碼，
+因此需要一些特定步驟來保證體驗的流暢性。
 
 #### Step 2a: Define the package API (.dart)
 
-#### 步骤 2a：定义 package API（.dart）
+#### 步驟 2a：定義 package API（.dart）
 
 The API of the plugin package is defined in Dart code.
 Open the main `hello/` folder in your favorite [Flutter editor][].
 Locate the file `lib/hello.dart`.
 
-原生插件类型 package 的 API 在 Dart 代码中要首先定义好，
-使用你钟爱的 [Flutter 编辑器][Flutter editor]，
-打开 `hello` 主目录，并找到 `lib/hello.dart` 文件。
+原生外掛型別 package 的 API 在 Dart 程式碼中要首先定義好，
+使用你鍾愛的 [Flutter 編輯器][Flutter editor]，
+開啟 `hello` 主目錄，並找到 `lib/hello.dart` 檔案。
 
 #### Step 2b: Add Android platform code (.kt/.java)
 
-#### 步骤 2b：添加 Android 平台代码（.kt/.java）
+#### 步驟 2b：新增 Android 平台程式碼（.kt/.java）
 
 We recommend you edit the Android code using Android Studio.
 
-我们建议你使用 Android Studio 来编辑 Android 代码。
+我們建議你使用 Android Studio 來編輯 Android 程式碼。
 
 Then use the following steps:
 
-接下来进行如下步骤：
+接下來進行如下步驟：
 
 1. Launch Android Studio.
 
-   启动 Android Studio；
+   啟動 Android Studio；
    
 1. Select **Open an existing Android Studio Project** 
    in the **Welcome to Android Studio** dialog,
    or select **File > Open** from the menu,
    and select the `hello/example/android/build.gradle` file.
 
-   在 Android Studio 的欢迎菜单 (**Welcome to Android Studio**) 对话框中
-   选择打开现有的 Android Studio 项目
+   在 Android Studio 的歡迎選單 (**Welcome to Android Studio**) 對話方塊中
+   選擇開啟現有的 Android Studio 專案
    (**Open an existing Android Studio Project**)，
-   或在菜单中选择 **File > Open**，
-   然后选择 `hello/example/android/build.gradle` 文件；
+   或在選單中選擇 **File > Open**，
+   然後選擇 `hello/example/android/build.gradle` 檔案；
 
 1. In the **Gradle Sync** dialog, select **OK**.
 
-    在**Gradle Sync** 对话框中，选择 **OK**；
+    在**Gradle Sync** 對話方塊中，選擇 **OK**；
    
 1. In the **Android Gradle Plugin Update** dialog,
    select **Don't remind me again for this project**.
 
-   在“Android Gradle Plugin Update”对话框中，
-   选择“Don't remind me again for this project”。
+   在“Android Gradle Plugin Update”對話方塊中，
+   選擇“Don't remind me again for this project”。
 
 The Android platform code of your plugin is located in
 `hello/java/com.example.hello/HelloPlugin`.
 
-插件中与 Android 系统徐相关的代码在
-`hello/java/com.example.hello/HelloPlugin` 这个文件里。
+外掛中與 Android 系統徐相關的程式碼在
+`hello/java/com.example.hello/HelloPlugin` 這個檔案裡。
 
 You can run the example app from Android Studio by
 pressing the run (&#9654;) button.
 
-你可以在 Android Studio 中点击运行 &#9654; 按钮来运行示例程序。
+你可以在 Android Studio 中點選執行 &#9654; 按鈕來執行範例程式。
 
 #### Step 2c: Add iOS platform code (.swift/.h+.m)
 
-#### 步骤 2c：添加 iOS 平台代码（.swift/.h+.m）
+#### 步驟 2c：新增 iOS 平台程式碼（.swift/.h+.m）
 
 We recommend you edit the iOS code using Xcode.
 
-我们建议你使用 Xcode 来编辑 iOS 代码。
+我們建議你使用 Xcode 來編輯 iOS 程式碼。
 
 Before editing the iOS platform code in Xcode,
 first make sure that the code has been built at least once
@@ -668,38 +668,38 @@ first make sure that the code has been built at least once
 or in a terminal execute
 `cd hello/example; flutter build ios --no-codesign`).
 
-使用 Xcode 编辑 iOS 平台代码之前，首先确保代码至少被构建过一次
-（即从 IDE/编辑器执行示例程序，或在终端中执行以下命令：
+使用 Xcode 編輯 iOS 平台程式碼之前，首先確保程式碼至少被建構過一次
+（即從 IDE/編輯器執行範例程式，或在終端中執行以下命令：
 `cd hello/example; flutter build ios --no-codesign`）。
 
 Then use the following steps:
 
-接下来执行下面步骤：
+接下來執行下面步驟：
 
 1. Launch Xcode.
 
-   启动 Xcode
+   啟動 Xcode
    
 1. Select **File > Open**, and select the
    `hello/example/ios/Runner.xcworkspace` file.
 
-   选择“File > Open”，
-   然后选择 `hello/example/ios/Runner.xcworkspace` 文件。
+   選擇“File > Open”，
+   然後選擇 `hello/example/ios/Runner.xcworkspace` 檔案。
 
 The iOS platform code for your plugin is located in
 `Pods/Development Pods/hello/../../example/ios/.symlinks/plugins/hello/ios/Classes`
 in the Project Navigator.
 
-插件的 iOS 平台代码位于项目导航中的这个位置：
+外掛的 iOS 平台程式碼位於專案導航中的這個位置：
 `Pods/Development Pods/hello/../../example/ios/.symlinks/plugins/hello/ios/Classes`。
 
 You can run the example app by pressing the run (&#9654;) button.
 
-你可以点击运行 &#9654; 按钮来运行示例程序。
+你可以點選執行 &#9654; 按鈕來執行範例程式。
 
 #### Step 2d: Connect the API and the platform code
 
-#### 步骤 2d：关联 API 和平台代码
+#### 步驟 2d：關聯 API 和平台程式碼
 
 Finally, you need to connect the API written in Dart code with
 the platform-specific implementations.
@@ -707,20 +707,20 @@ This is done using a [platform channel][],
 or through the interfaces defined in a platform
 interface package.
 
-最后，你需要将 Dart 编写的 API 代码与特定平台的实现相互关联。
-这是通过 [平台通道][platform channel] 完成的。
+最後，你需要將 Dart 編寫的 API 程式碼與特定平台的實現相互關聯。
+這是透過 [平台通道][platform channel] 完成的。
 
 ### Add support for platforms in an existing plugin project
 
-### 为现有的插件项目加入平台的支持
+### 為現有的外掛專案加入平台的支援
 
 To add support for specific platforms to an existing plugin project, run `flutter create` with
 the `--template=plugin` flag again in the project directory.
 For example, to add web support in an existing plugin, run:
 
-要在现有的插件项目中添加对特定平台的支持，
-请在项目目录运行 `flutter create` 命令，并加入 `--template=plugin`。
-例如，要对现有的插件项目添加 Web 支持，请运行以下命令。
+要在現有的外掛專案中新增對特定平台的支援，
+請在專案目錄執行 `flutter create` 命令，並加入 `--template=plugin`。
+例如，要對現有的外掛專案新增 Web 支援，請執行以下命令。
 
 ```terminal
 $ flutter create --template=plugin --platforms=web .
@@ -729,19 +729,19 @@ $ flutter create --template=plugin --platforms=web .
 If this command displays a message about updating the `pubspec.yaml` file,
 follow the provided instructions.
 
-如果这个命令返回了一个关于需要更新 `pubspec.yaml` 文件的提醒，
-请按照提示的说明进行操作。
+如果這個命令返回了一個關於需要更新 `pubspec.yaml` 檔案的提醒，
+請按照提示的說明進行操作。
 
 ### Dart platform implementations
 
-### Dart 的平台实现
+### Dart 的平台實現
 
 In many cases, non-web platform implementations only use the
 platform-specific implementation language, as shown above. However,
 platform implementations can also use platform-specific Dart as well.
 
-在很多场景中，非 web 平台的实现仅仅使用了上述的平台特定语言。
-然而，Dart 也是平台特定的语言之一。
+在很多場景中，非 web 平台的實現僅僅使用了上述的平台特定語言。
+然而，Dart 也是平台特定的語言之一。
 
 {{site.alert.note}}
 
@@ -750,15 +750,15 @@ platform implementations can also use platform-specific Dart as well.
   `pluginClass` and `fileName` for their Dart implementations
   as shown above.
 
-  下方的例子仅适用于非 web 平台。
-  Web 平台的插件是用 Dart 编写的，
-  通过 `pluginClass` 和 `fileName` 来指定实现。
+  下方的例子僅適用於非 web 平台。
+  Web 平台的外掛是用 Dart 編寫的，
+  透過 `pluginClass` 和 `fileName` 來指定實現。
 
 {{site.alert.end}}
 
 #### Dart-only platform implementations
 
-#### 纯 Dart 平台的实现
+#### 純 Dart 平台的實現
 
 In some cases, some platforms can be
 implemented entirely in Dart (for example, using FFI).
@@ -767,11 +767,11 @@ replace the `pluginClass` in pubspec.yaml with a `dartPluginClass`.
 Here is the `hello_windows` example above modified for a
 Dart-only implementation:
 
-如先前描述，通常插件会使用第二种语言，实现对应平台的功能。
-然而，在某些场景下，部分平台可能会完全使用 Dart 进行实现（例如使用 FFI）。
-若需要仅 Dart 的平台实现，你可以将 pubspec.yaml 里的
-`pluginClass` 替换为 `dartPluginClass`。
-下面是 `hello_windows` 示例替换为仅 Dart 实现的代码：
+如先前描述，通常外掛會使用第二種語言，實現對應平台的功能。
+然而，在某些場景下，部分平台可能會完全使用 Dart 進行實現（例如使用 FFI）。
+若需要僅 Dart 的平台實現，你可以將 pubspec.yaml 裡的
+`pluginClass` 替換為 `dartPluginClass`。
+下面是 `hello_windows` 範例替換為僅 Dart 實現的程式碼：
 
 ```yaml
 flutter:
@@ -788,10 +788,10 @@ subclass the `hello` plugin's Dart platform interface class with a
 This method will be called during startup, and can be used to register the
 Dart implementation:
 
-在这样的模式下，插件内不包含 Windows 的 C++ 代码，
-它将继承 `hello` 插件的 Dart 平台接口，使用包含静态 `registerWith()`
-方法的 `HelloPluginWindows` 类进行实现。
-该方法会在启动时调用，用于注册 Dart 实现：
+在這樣的模式下，外掛內不包含 Windows 的 C++ 程式碼，
+它將繼承 `hello` 外掛的 Dart 平台介面，使用包含靜態 `registerWith()`
+方法的 `HelloPluginWindows` 類進行實現。
+該方法會在啟動時呼叫，用於註冊 Dart 實現：
 
 ```dart
 class HelloPluginWindows extends HelloPluginPlatform {
@@ -803,22 +803,22 @@ class HelloPluginWindows extends HelloPluginPlatform {
 
 #### Hybrid platform implementations
 
-#### 混合平台的实现
+#### 混合平台的實現
 
 Platform implementations can also use both Dart and a platform-specific
 language. For example, a plugin could use a different platform channel
 for each platform so that the channels can be customized per platform.
 
-平台实现可能同时会使用 Dart 以及某个特定平台的语言。
-例如，plugin 可能会在不同平台使用不同的 platform channel，
-这样 channel 就可以根据不同平台进行定制。
+平台實現可能同時會使用 Dart 以及某個特定平台的語言。
+例如，plugin 可能會在不同平台使用不同的 platform channel，
+這樣 channel 就可以根據不同平台進行客製。
 
 A hybrid implementation uses both of the registration systems
 described above. Here is the `hello_windows` example above modified for a
 hybrid implementation:
 
-就和之前说的那样，混合实现将会使用多种注册方式。
-这里有一个使用混合实现的 `hello_windows` 样例:
+就和之前說的那樣，混合實現將會使用多種註冊方式。
+這裡有一個使用混合實現的 `hello_windows` 範例:
 
 ```yaml
 flutter:
@@ -834,22 +834,22 @@ The Dart `HelloPluginWindows` class would use the `registerWith()`
 shown above for Dart-only implementations, while the C++ `HelloPlugin`
 class would be the same as in a C++-only implementation.
 
-Dart 类 `HelloPluginWindows` 会使用 `registerWith()` 方法做纯 Dart 的实现，
-`HelloPlugin` 类则用来做纯 C++ 代码的实现。
+Dart 類 `HelloPluginWindows` 會使用 `registerWith()` 方法做純 Dart 的實現，
+`HelloPlugin` 類則用來做純 C++ 程式碼的實現。
 
 ### Testing your plugin
 
-### 测试你的插件
+### 測試你的外掛
 
 We encourage you test your plugin with automated tests, to ensure that
 functionality does not regress as you make changes to your code. For more
 information, see [Testing your plugin][], a section in [Supporting the new
 Android plugins APIs][].
 
-我们鼓励您使用自动化测试来测试您的插件，以确保代码在修改时候功能保持完整。
-更多信息，请参见文档
-[支持新的 Android 的 API][Supporting the new Android plugins APIs]
-中关于 [测试你的插件][Testing your plugin] 这个小节。
+我們鼓勵您使用自動化測試來測試您的外掛，以確保程式碼在修改時候功能保持完整。
+更多資訊，請參見文件
+[支援新的 Android 的 API][Supporting the new Android plugins APIs]
+中關於 [測試你的外掛][Testing your plugin] 這個小節。
 
 ## Developing FFI plugin packages {#plugin-ffi}
 
@@ -957,50 +957,50 @@ For an example, see `sumAsync` in `lib/hello.dart`.
 
 ## Adding documentation
 
-## 添加文档
+## 新增文件
 
 It is recommended practice to add the following documentation
 to all packages:
 
-建议将下列文档添加到所有 package 中：
+建議將下列文件新增到所有 package 中：
 
 1. A `README.md` file that introduces the package
 
-   `README.md` 文件用来对 package 进行介绍
+   `README.md` 檔案用來對 package 進行介紹
    
 1. A `CHANGELOG.md` file that documents changes in each version
  
-   `CHANGELOG.md` 文件用来记录每个版本的更改
+   `CHANGELOG.md` 檔案用來記錄每個版本的更改
 
 1. A [`LICENSE`] file containing the terms under which the package
    is licensed
 
-   [`LICENSE`][] 文件用来阐述 package 的许可条款
+   [`LICENSE`][] 檔案用來闡述 package 的許可條款
    
 1. API documentation for all public APIs (see below for details)
 
-   API 文档包含所有的公共 API（详情参见下文）
+   API 文件包含所有的公共 API（詳情參見下文）
 
 ### API documentation
 
-### API 文档
+### API 文件
 
 When you publish a package,
 API documentation is automatically generated and
 published to pub.dev/documentation.
 For example, see the docs for [`device_info`][].
 
-当你提交一个 package 时，会自动生成 API 文档并将其提交到 
-pub.flutter-io.cn/documentation，示例请参见 [`device_info`][] 文档。
+當你提交一個 package 時，會自動產生 API 文件並將其提交到 
+pub.flutter-io.cn/documentation，範例請參見 [`device_info`][] 文件。
 
 
 If you wish to generate API documentation locally on
 your development machine, use the following commands:
 
-如果你希望在本地开发环境中生成 API 文档，可以使用以下命令：
+如果你希望在本地開發環境中產生 API 文件，可以使用以下命令：
 
 <ol markdown="1">
-<li markdown="1"><t>Change directory to the location of your package:</t><t>将当前工作目录切换到 package 所在目录：</t>
+<li markdown="1"><t>Change directory to the location of your package:</t><t>將當前工作目錄切換到 package 所在目錄：</t>
 
 ```terminal
 cd ~/dev/mypackage
@@ -1009,22 +1009,22 @@ cd ~/dev/mypackage
 
 <li markdown="1"><t>Tell the documentation tool where the
     Flutter SDK is located (change the following commands to reflect
-    where you placed it):</t><t>告知文档工具 Flutter SDK 所在位置（请自行更改 Flutter SDK 该在的位置）</t>
+    where you placed it):</t><t>告知文件工具 Flutter SDK 所在位置（請自行更改 Flutter SDK 該在的位置）</t>
 
 ```terminal
-   export FLUTTER_ROOT=~/dev/flutter  # on macOS or Linux (适用于 macOS 或 Linux 操作系统)
+   export FLUTTER_ROOT=~/dev/flutter  # on macOS or Linux (適用於 macOS 或 Linux 作業系統)
 
-   set FLUTTER_ROOT=~/dev/flutter     # on Windows (适用于 Windows 操作系统)
+   set FLUTTER_ROOT=~/dev/flutter     # on Windows (適用於 Windows 作業系統)
 ```
 </li>
 
 <li markdown="1"><t>Run the `dartdoc` tool
-    (included as part of the Flutter SDK), as follows:</t><t>运行 `dartdoc` 工具（已经包含到 Flutter SDK 了）：</t>
+    (included as part of the Flutter SDK), as follows:</t><t>執行 `dartdoc` 工具（已經包含到 Flutter SDK 了）：</t>
 
 ```terminal
-   $FLUTTER_ROOT/bin/cache/dart-sdk/bin/dartdoc   # on macOS or Linux (适用于 macOS 或 Linux 操作系统)
+   $FLUTTER_ROOT/bin/cache/dart-sdk/bin/dartdoc   # on macOS or Linux (適用於 macOS 或 Linux 作業系統)
 
-   %FLUTTER_ROOT%\bin\cache\dart-sdk\bin\dartdoc  # on Windows (适用于 Windows 操作系统)
+   %FLUTTER_ROOT%\bin\cache\dart-sdk\bin\dartdoc  # on Windows (適用於 Windows 作業系統)
 ```
 </li>
 </ol>
@@ -1032,17 +1032,17 @@ cd ~/dev/mypackage
 For tips on how to write API documentation, see
 [Effective Dart Documentation][].
 
-关于如何编写 API 文档的建议，请参阅 
+關於如何編寫 API 文件的建議，請參閱 
 [高效 Dart 指南][Effective Dart Documentation]。
 
 ### Adding licenses to the LICENSE file
 
-### 将许可证添加到 LICENSE 文件中
+### 將許可證新增到 LICENSE 檔案中
 
 Individual licenses inside each LICENSE file should
 be separated by 80 hyphens on their own on a line.
 
-每个 LICENSE 文件中的各个许可证应由 80 个短线字符组成的线段进行分割。
+每個 LICENSE 檔案中的各個許可證應由 80 個短線字元組成的線段進行分割。
 
 If a LICENSE file contains more than one component license,
 then each component license must start with the names of the
@@ -1055,14 +1055,14 @@ For example, a package might itself contain code from
 multiple third-party sources, and might need to include
 a license for each one.)
 
-如果 LICENSE 文件中包含多个组件许可证，那么每个组件许可证必须以其所在 package
-的名称开始，每个 package 名称单独一行显示，并且 package
-名称列表与实际许可证内容由空行隔开。（package 名称则需与 pub package 相匹配。
-比如，一个 package 可能包含多个第三方代码，并且可能需要为每个 package 添加许可证。）
+如果 LICENSE 檔案中包含多個元件許可證，那麼每個元件許可證必須以其所在 package
+的名稱開始，每個 package 名稱單獨一行顯示，並且 package
+名稱列表與實際許可證內容由空行隔開。（package 名稱則需與 pub package 相匹配。
+比如，一個 package 可能包含多個第三方程式碼，並且可能需要為每個 package 新增許可證。）
 
 The following example shows a well-organized license file:
 
-如下是一些优秀的许可证文件：
+如下是一些優秀的許可證檔案：
 
 ```none
 package_1
@@ -1077,7 +1077,7 @@ package_2
 
 Here is another example of a well-organized license file:
 
-这些也是可以的：
+這些也是可以的：
 
 ```none
 package_1
@@ -1093,7 +1093,7 @@ package_2
 
 Here is an example of a poorly-organized license file:
 
-这些是一些不太好的示例：
+這些是一些不太好的範例：
 
 ```none
 <some license text>
@@ -1104,7 +1104,7 @@ Here is an example of a poorly-organized license file:
 
 Another example of a poorly-organized license file:
 
-这也是一些不太好的示例：
+這也是一些不太好的範例：
 
 ```
 package_1
@@ -1128,18 +1128,18 @@ package_1
   To learn more,
   see the [Flutter Favorites program][].
   
-  你是否注意到一些 package 和插件旁边的 [Flutter Favorites][] 标识？
-  这是官方挑选出的、由认证的开发者发布的 packages，
-  并建议 Flutter 开发者们需要使用时首要考虑的 package。
-  了解更多 [Flutter Favorites 项目][Flutter Favorites program]。
+  你是否注意到一些 package 和外掛旁邊的 [Flutter Favorites][] 標識？
+  這是官方挑選出的、由認證的開發者釋出的 packages，
+  並建議 Flutter 開發者們需要使用時首要考慮的 package。
+  瞭解更多 [Flutter Favorites 專案][Flutter Favorites program]。
 
 {{site.alert.end}}
 
 Once you have implemented a package, you can publish it on
 [pub.dev][], so that other developers can easily use it.
 
-一旦完成了 package 的实现，你便可以将其提交到 [pub.dev][]
-上，以便其他开发者可以轻松地使用它。
+一旦完成了 package 的實現，你便可以將其提交到 [pub.dev][]
+上，以便其他開發者可以輕鬆地使用它。
 
 Prior to publishing, make sure to review the `pubspec.yaml`,
 `README.md`, and `CHANGELOG.md` files to make sure their
@@ -1148,26 +1148,26 @@ quality and usability of your package (and to make it
 more likely to achieve the status of a Flutter Favorite),
 consider including the following items:
 
-发布你的 package 之前，确保检查了这几个文件：`pubspec.yaml`、`README.md` 和
-`CHANGELOG.md`，确保它们完整且正确，另外，为了提高 package 的可用性，
-可以考虑加入如下的内容：
+釋出你的 package 之前，確保檢查了這幾個檔案：`pubspec.yaml`、`README.md` 和
+`CHANGELOG.md`，確保它們完整且正確，另外，為了提高 package 的可用性，
+可以考慮加入如下的內容：
 
 * Diverse code usage 
 
-  代码的示例用法
+  程式碼的範例用法
   
 * Screenshots, animated gifs, or videos
 
-  屏幕截图，GIF 动画或者视频
+  螢幕截圖，GIF 動畫或者影片
  
 * A link to the corresponding code repository
 
-  代码库的正确指向链接
+  程式碼庫的正確指向連結
 
 Next, run the publish command in `dry-run` mode
 to see if everything passes analysis:
 
-接下来，运行 dry-run 命令以检验是否所有内容都通过了分析：
+接下來，執行 dry-run 命令以檢驗是否所有內容都通過了分析：
 
 ```terminal
 $ flutter pub publish --dry-run
@@ -1177,17 +1177,17 @@ The next step is publishing to pub.dev,
 but be sure that you are ready because
 [publishing is forever][]:
 
-最后一步是发布，请注意：[发布是永久性][publishing is forever] 的，
-运行以下提交命令：
+最後一步是釋出，請注意：[釋出是永久性][publishing is forever] 的，
+執行以下提交命令：
 
 ```terminal
 $ flutter pub publish
 ```
 {{site.note.alert}}
-设置了中国镜像的开发者们请注意：
-目前所存在的镜像都不能（也不应该）进行 package 的上传。
-如果你设置了镜像，执行上述发布代码可能会造成发布失败。
-网络设定好后，无需取消中文镜像，执行下述代码可直接上传：
+設定了中國映象的開發者們請注意：
+目前所存在的映象都不能（也不應該）進行 package 的上傳。
+如果你設定了映象，執行上述釋出程式碼可能會造成釋出失敗。
+網路設定好後，無需取消中文映象，執行下述程式碼可直接上傳：
 
 ```terminal
 $ flutter pub publish --server=https://pub.dartlang.org
@@ -1197,11 +1197,11 @@ $ flutter pub publish --server=https://pub.dartlang.org
 For more details on publishing, see the
 [publishing docs][] on dart.dev.
 
-有关提交的详细信息，请查阅关于 Pub 站点的 [提交文档][publishing docs]。
+有關提交的詳細資訊，請查閱關於 Pub 站點的 [提交文件][publishing docs]。
 
 ## Handling package interdependencies {#dependencies}
 
-## Package 依赖处理 {#dependencies}
+## Package 依賴處理 {#dependencies}
 
 If you are developing a package `hello` that depends on
 the Dart API exposed by another package, you need to add
@@ -1209,9 +1209,9 @@ that package to the `dependencies` section of your
 `pubspec.yaml` file. The code below makes the Dart API
 of the `url_launcher` plugin available to `hello`:
 
-如果你正在开发的 `hello` 依赖于另外一个 package 所公开的 Dart API，
-你需要将该 package 添加到文件 `pubspec.yaml` 的 `dependencies` 段中。
-以下代码使得插件 `url_launcher` 的 Dart API 在 `hello` 中可用：
+如果你正在開發的 `hello` 依賴於另外一個 package 所公開的 Dart API，
+你需要將該 package 新增到檔案 `pubspec.yaml` 的 `dependencies` 段中。
+以下程式碼使得外掛 `url_launcher` 的 Dart API 在 `hello` 中可用：
 
 ```yaml
 dependencies:
@@ -1221,13 +1221,13 @@ dependencies:
 You can now `import 'package:url_launcher/url_launcher.dart'`
 and `launch(someUrl)` in the Dart code of `hello`.
 
-现在你可以在 `hello` 的 Dart 代码中使用
+現在你可以在 `hello` 的 Dart 程式碼中使用
 `import 'package:url_launcher/url_launcher.dart'` 和 `launch(someUrl)`。
 
 This is no different from how you include packages in
 Flutter apps or any other Dart project.
 
-这与你在 Flutter 应用或其他任何 Dart 项目中引入 package 的方式没什么区别。
+這與你在 Flutter 應用或其他任何 Dart 專案中引入 package 的方式沒什麼區別。
 
 But if `hello` happens to be a _plugin_ package
 whose platform-specific code needs access
@@ -1235,15 +1235,15 @@ to the platform-specific APIs exposed by `url_launcher`,
 you also need to add suitable dependency declarations
 to your platform-specific build files, as shown below.
 
-但碰巧 `hello` 是一个 **原生插件** package，其特定的平台代码如果需要访问 `url_launcher`
-所公开的平台特定 API，那么还需要为特定平台的构建文件添加适当的依赖说明，如下所示：
+但碰巧 `hello` 是一個 **原生外掛** package，其特定的平台程式碼如果需要存取 `url_launcher`
+所公開的平台特定 API，那麼還需要為特定平台的建構檔案新增適當的依賴說明，如下所示：
 
 ### Android
 
 The following example sets a dependency for
 `url_launcher` in `hello/android/build.gradle`:
 
-在 `hello/android/build.gradle` 文件中为 `url_launcher` 插件设定依赖关系。
+在 `hello/android/build.gradle` 檔案中為 `url_launcher` 外掛設定依賴關係。
 
 ```groovy
 android {
@@ -1258,22 +1258,22 @@ You can now `import io.flutter.plugins.urllauncher.UrlLauncherPlugin`
 and access the `UrlLauncherPlugin`
 class in the source code at `hello/android/src`.
 
-现在你可以在 `hello/android/src` 目录下的源代码文件中使用
+現在你可以在 `hello/android/src` 目錄下的原始碼檔案中使用
 `import io.flutter.plugins.urllauncher.UrlLauncherPlugin`
-并访问文件 `UrlLauncherPlugin`。
+並存取檔案 `UrlLauncherPlugin`。
 
 For more information on `build.gradle` files, see the
 [Gradle Documentation][] on build scripts.
 
-如果希望了解更多有关 `build.gradle` 文件更多的信息，请参阅
-[Gradle 文档][Gradle Documentation] 了解构建脚本。
+如果希望瞭解更多有關 `build.gradle` 檔案更多的資訊，請參閱
+[Gradle 文件][Gradle Documentation] 瞭解建構指令碼。
 
 ### iOS
 
 The following example sets a dependency for
 `url_launcher` in `hello/ios/hello.podspec`:
 
-在 `hello/ios/hello.podspec` 文件中为 `url_launcher` 插件设定依赖关系。
+在 `hello/ios/hello.podspec` 檔案中為 `url_launcher` 外掛設定依賴關係。
 
 ```ruby
 Pod::Spec.new do |s|
@@ -1284,22 +1284,22 @@ You can now `#import "UrlLauncherPlugin.h"` and
 access the `UrlLauncherPlugin` class in the source code
 at `hello/ios/Classes`.
 
-现在你可以在 `hello/ios/Classes` 目录下的源代码文件中使用 `#import "UrlLauncherPlugin.h"` 
-并访问 `UrlLauncherPlugin` 这个类了。
+現在你可以在 `hello/ios/Classes` 目錄下的原始碼檔案中使用 `#import "UrlLauncherPlugin.h"` 
+並存取 `UrlLauncherPlugin` 這個類了。
 
 For additional details on `.podspec` files, see the
 [CocoaPods Documentation][] on them.
 
-如果希望了解更多有关 `.podspec` 文件更多的信息，请参阅
-[CocoaPods 文档][CocoaPods Documentation] 了解。
+如果希望瞭解更多有關 `.podspec` 檔案更多的資訊，請參閱
+[CocoaPods 文件][CocoaPods Documentation] 瞭解。
 
 ### Web
 
 All web dependencies are handled by the `pubspec.yaml`
 file like any other Dart package.
 
-与其他的 Dart package 一样，
-所有的 Web 依赖都由文件 `pubspec.yaml` 来处理。
+與其他的 Dart package 一樣，
+所有的 Web 依賴都由檔案 `pubspec.yaml` 來處理。
 
 {% comment %}
 <!-- Remove until we have better text. -->

@@ -1,10 +1,10 @@
 ---
 title: Flutter release notes
-title: Flutter 发行说明
+title: Flutter 發行說明
 short-title: Release notes
-short-title: 发行说明
+short-title: 發行說明
 description: Release notes for Flutter for prior releases.
-description: Flutter 先前版本的发行说明。 
+description: Flutter 先前版本的發行說明。 
 ---
 
 This page links to announcements and release notes for

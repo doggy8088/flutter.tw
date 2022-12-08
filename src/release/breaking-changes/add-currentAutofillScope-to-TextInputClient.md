@@ -1,8 +1,8 @@
 ---
 title: Adding TextInputClient.currentAutofillScope property
-title: 添加新属性 TextInputClient.currentAutofillScope
+title: 新增新屬性 TextInputClient.currentAutofillScope
 description: A new getter TextInputClient.currentAutofillScope was added to the TextInputClient interface for autofill support.
-description: 新的 TextInputClient.currentAutofillScope 已添加到 TextInputClient 界面中，用于支持自动填充功能。
+description: 新的 TextInputClient.currentAutofillScope 已新增到 TextInputClient 介面中，用於支援自動填充功能。
 ---
 
 ## Summary

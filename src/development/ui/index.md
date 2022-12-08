@@ -1,6 +1,6 @@
 ---
 layout: toc
 title: User interface
-title: 用户界面
+title: 使用者介面
 short-title: UI
 ---

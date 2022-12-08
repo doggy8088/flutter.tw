@@ -1,10 +1,10 @@
 ---
 title: Books about Flutter
-title: Flutter 相关书籍
+title: Flutter 相關書籍
 description: Extra, extra! Here's a collection of books about Flutter.
-description: 号外，号外！Flutter 的书籍收藏清单都在这里啦。
-tags: Flutter参考资料
-keywords: Flutter出版书籍
+description: 號外，號外！Flutter 的書籍收藏清單都在這裡啦。
+tags: Flutter參考資料
+keywords: Flutter出版書籍
 toc: false
 ---
 

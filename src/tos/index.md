@@ -1,8 +1,8 @@
 ---
 title: Terms of Service
-title: 使用条款
-tags: 站点资源
-keywords: Flutter网站,使用条款
+title: 使用條款
+tags: 站點資源
+keywords: Flutter網站,使用條款
 ---
 
 The Flutter website (the "Website") is hosted by Google. By using and / or

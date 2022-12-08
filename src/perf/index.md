@@ -1,10 +1,10 @@
 ---
 title: Performance
-title: 性能评估
+title: 效能評估
 description: Evaluating the performance of your app from several angles.
-description: 从多个角度评估你的应用性能..
-tags: Flutter性能
-keywords: 性能评估,包体积,内存占用
+description: 從多個角度評估你的應用效能..
+tags: Flutter效能
+keywords: 效能評估,包體積,記憶體佔用
 ---
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=243695231&bvid=BV1zv411B7gY&cid=207457008&page=1" 
@@ -12,36 +12,36 @@ frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
 picture-in-picture" allowfullscreen></iframe>
 [Flutter performance basics]({{site.youtube-site}}/watch?v=PKGguGUwSYE)
 
-[Flutter 性能入门](https://www.bilibili.com/video/BV1zv411B7gY/)
+[Flutter 效能入門](https://www.bilibili.com/video/BV1zv411B7gY/)
 
 What is performance? Why is performance important? How do I improve performance?
 
-什么是性能？为什么性能很重要？如何才能提升性能？
+什麼是效能？為什麼效能很重要？如何才能提升效能？
 
 Our goal is to answer those three questions (mainly the third one), and 
 anything related to them. This document should serve as the single entry 
 point or the root node of a tree of resources that addresses any questions 
 that you have about performance.
 
-我们的目标是回答这三个问题（主要是第三个）以及任何与之相关的话题。
-如果你有任何关于性能方面的问题，本文档可以作为解决你疑惑的起点。
+我們的目標是回答這三個問題（主要是第三個）以及任何與之相關的話題。
+如果你有任何關於效能方面的問題，本文件可以作為解決你疑惑的起點。
 
 The answers to the first two questions are mostly philosophical, and not as 
 helpful to many developers who visit this page with specific
 performance issues that need to be solved. Therefore, the answers to those 
 questions are in the [appendix]({{site.url}}/perf/appendix).
 
-前两个问题的答案比较哲学，对于正在阅读这篇文章的开发者而言，当他们需要解决特定的性能问题时，并没有什么帮助。
-所以，我们将它们放在了 [附录]({{site.url}}/perf/appendix)。
+前兩個問題的答案比較哲學，對於正在閱讀這篇文章的開發者而言，當他們需要解決特定的效能問題時，並沒有什麼幫助。
+所以，我們將它們放在了 [附錄]({{site.url}}/perf/appendix)。
 
 To improve performance, you first need metrics: some measurable numbers to
 verify the problems and improvements. In the [metrics]({{site.url}}/perf/metrics) 
 page, you'll see which metrics are currently used, and which tools and APIs 
 are available to get the metrics.
 
-为了提升性能，首先你需要一些可以量化的指标来验证问题和性能的提升。
-在 [指标]({{site.url}}/perf/metrics) 页面，你可以看到一些现有的指标，
-以及哪些工具和 API 可以用于获取这些指标。
+為了提升效能，首先你需要一些可以量化的指標來驗證問題和效能的提升。
+在 [指標]({{site.url}}/perf/metrics) 頁面，你可以看到一些現有的指標，
+以及哪些工具和 API 可以用於獲取這些指標。
 
 There is a list of [Frequently asked questions]({{site.url}}/perf/faq), 
 so you can find out if the questions you have or the problems you're having 
@@ -49,72 +49,72 @@ were already answered or encountered, and whether there are existing solutions.
 (Alternatively, you can check the Flutter GitHub issue database using the
 [performance][performance] label.)
  
-这里有一个 [常见问题]({{site.url}}/perf/faq) 的列表，
-你可以查询你的问题是否出现过或者已经被解答，
-以及是否有现成的解决方案。
-（你也可以查看 GitHub issues 里含有 [性能][performance] 标签的内容。） 
+這裡有一個 [常見問題]({{site.url}}/perf/faq) 的列表，
+你可以查詢你的問題是否出現過或者已經被解答，
+以及是否有現成的解決方案。
+（你也可以檢視 GitHub issues 裡含有 [效能][performance] 標籤的內容。） 
 
 Finally, the performance issues are divided into four categories. They 
 correspond to the four labels that are used in the Flutter GitHub issue 
 database: "[perf: speed][speed]", "[perf: memory][memory]", 
 "[perf: app size][size]", "[perf: energy][energy]".
 
-最后，性能问题可以分为四类，对应 GitHub issue 里的四个标签：
-「[流畅度][speed]」、「[内存][memory]」、「[应用大小][size]」、和 「[功耗][energy]」。
+最後，效能問題可以分為四類，對應 GitHub issue 裡的四個標籤：
+「[流暢度][speed]」、「[記憶體][memory]」、「[應用大小][size]」、和 「[功耗][energy]」。
 
 The rest of the content is organized using those four categories.
 
-其它内容均已归纳到这四个类别中。
+其它內容均已歸納到這四個類別中。
 
 <!--
 Let's put "speed" (rendering) first as it's the most popular performance issue
 category.
 
-让我们把「流畅度」（渲染）放在第一位，因为它是最受欢迎的性能问题。
+讓我們把「流暢度」（渲染）放在第一位，因為它是最受歡迎的效能問題。
 
 -->
 ## Speed
 
-## 流畅度
+## 流暢度
 
 Are your animations janky (not smooth)? Learn how to 
 evaluate and fix rendering issues.
 
-你的动画是否卡顿（不流畅）？学习如何评估和修复渲染问题。
+你的動畫是否卡頓（不流暢）？學習如何評估和修復渲染問題。
 
 [Improving rendering performance]({{site.url}}/perf/rendering-performance)
 
-[提高渲染性能]({{site.url}}/perf/rendering-performance)
+[提高渲染效能]({{site.url}}/perf/rendering-performance)
 
 {% comment %}
 Do your apps take a long time to open? We'll also cover the startup speed issue
 in some future pages.
 
-你的应用需要很长时间打开吗？我们将在未来的一些文章中讨论启动速度问题。
+你的應用需要很長時間開啟嗎？我們將在未來的一些文章中討論啟動速度問題。
 
 {% endcomment %}
 
 
 ## Memory
 
-## 内存
+## 記憶體
 
 [Using memory wisely]({{site.url}}/perf/memory)
 
-[明智地使用内存]({{site.url}}/perf/memory)
+[明智地使用記憶體]({{site.url}}/perf/memory)
 
 ## App size
 
-## 应用大小
+## 應用大小
 
 How to measure your app's size. The smaller the size,
 the quicker it is to download.
 
-如何测量应用的体积。体积越小，下载就越快。
+如何測量應用的體積。體積越小，下載就越快。
 
 [Measuring your app's size][]
 
-[测量应用的体积][Measuring your app's size]
+[測量應用的體積][Measuring your app's size]
 
 {% comment %}
 
@@ -125,11 +125,11 @@ the quicker it is to download.
 
 How to ensure a longer battery life when running your app.
 
-当运行你的应用程序时，如何确保更久的电池续航。
+當執行你的應用程式時，如何確保更久的電池續航。
 
 [Preserving your battery]({{site.url}}/perf/power)
 
-[节省电量]({{site.url}}/perf/power)
+[節省電量]({{site.url}}/perf/power)
 
 {% endcomment %}
 

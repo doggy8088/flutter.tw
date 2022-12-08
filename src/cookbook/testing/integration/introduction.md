@@ -1,17 +1,17 @@
 ---
 title: An introduction to integration testing
-title: 集成测试介绍
+title: 整合測試介紹
 description: Learn about integration testing in Flutter.
-description: 了解 Flutter 中的集成测试。
+description: 瞭解 Flutter 中的整合測試。
 short-title: Introduction
-short-title: 介绍
+short-title: 介紹
 prev:
   title: Take a picture using the camera
-  title: 调用设备相机拍照
+  title: 呼叫裝置相機拍照
   path: /docs/cookbook/plugins/picture-using-camera
 next:
   title: Performance profiling
-  title: 性能调试
+  title: 效能除錯
   path: /docs/cookbook/testing/integration/profiling
 ---
 
@@ -23,69 +23,69 @@ individual pieces work together as a whole, or capture the performance
 of an application running on a real device. These tasks are performed
 with *integration tests*.
 
-Unit tests 和 Widget tests 在测试独立的类、函数或者组件时非常方便。
-然而，它们并不能够测试单独的模块形成的整体或者获取真实设备上应用运行状态。
-这些任务需要集成测试 (**integration tests**) 来处理。 
+Unit tests 和 Widget tests 在測試獨立的類、函式或者元件時非常方便。
+然而，它們並不能夠測試單獨的模組形成的整體或者獲取真實裝置上應用執行狀態。
+這些任務需要整合測試 (**integration tests**) 來處理。 
 
 Integration tests are written using the [integration_test][] package, provided
 by the SDK. 
 
-集成测试由 SDK 直接提供支持，使用 [integration_test][] 这个 package 实现。
+整合測試由 SDK 直接提供支援，使用 [integration_test][] 這個 package 實現。
 
 In this recipe, learn how to test a counter app. It demonstrates
 how to setup integration tests, how to verify specific text is displayed
 by the app, how to tap specific widgets, and how to run integration tests.
 
-在这个章节中，我们将会学习如何去测试一个计数器应用，
-包括如何设置集成测试、
-如何验证指定文本能否在应用内正常显示、
-如何模拟点击指定组件和如何运行集成测试。
+在這個章節中，我們將會學習如何去測試一個計數器應用，
+包括如何設定整合測試、
+如何驗證指定文字能否在應用內正常顯示、
+如何模擬點選指定元件和如何執行整合測試。
 
 This recipe uses the following steps:
 
-本教程将包含以下步骤：
+本課程將包含以下步驟：
 
   1. Create an app to test.
 
-     创建一个应用用于测试；
+     建立一個應用用於測試；
 
   2. Add the `integration_test` dependency.
 
-     添加 `integration_test` 依赖
+     新增 `integration_test` 依賴
 
   3. Create the test files.
 
-     创建测试文件
+     建立測試檔案
 
   4. Write the integration tests.
 
-     编写集成测试
+     編寫整合測試
      
   5. Run the integration test.
 
-     运行集成测试
+     執行整合測試
 
 ### 1. Create an app to test
 
-### 1. 创建一个应用用于测试
+### 1. 建立一個應用用於測試
 
 First, create an app for testing. In this example,
 test the counter app produced by the `flutter create`
 command. This app allows a user to tap on a button
 to increase a counter.
 
-首先，我们需要创建一个应用用于测试。
-在这个示例中，我们将会测试一个由 `flutter create` 命令创建的计数器应用。
-这个应用允许用户点击按钮增加计数。
+首先，我們需要建立一個應用用於測試。
+在這個範例中，我們將會測試一個由 `flutter create` 命令建立的計數器應用。
+這個應用允許使用者點選按鈕增加計數。
 
 Furthermore, provide a [`ValueKey`][] to
 the `Text` and `FloatingActionButton` widgets.
 This allows identifying and interacting with these
 specific widgets inside the test suite.
 
-此外，我们将会给 `Text` 组件和 `FloatingActionButton`
-组件增加 [`ValueKey`][] 属性。
-通过这个我们将可以在测试套件中标识特定组件并进行交互。
+此外，我們將會給 `Text` 元件和 `FloatingActionButton`
+元件增加 [`ValueKey`][] 屬性。
+透過這個我們將可以在測試套件中標識特定元件並進行互動。
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -162,16 +162,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ### 2. Add the `integration_test` dependency
 
-### 2. 添加 `integration_test` 依赖
+### 2. 新增 `integration_test` 依賴
 
 Next, use the `integration_test` and `flutter_test` packages
 to write integration tests. Add these dependencies to the `dev_dependencies`
 section of the app's `pubspec.yaml` file, specifying the Flutter SDK as the
 location of the package.
 
-接着，我们需要用到 `integration_test` 和 `flutter_test` package
-来编写集成测试，把依赖添加到应用`pubspec.yaml` 文件的
-`dev_dependencies` 区域。
+接著，我們需要用到 `integration_test` 和 `flutter_test` package
+來編寫整合測試，把依賴新增到應用`pubspec.yaml` 檔案的
+`dev_dependencies` 區域。
 
 ```yaml
 dev_dependencies:
@@ -183,12 +183,12 @@ dev_dependencies:
 
 ### 3. Create the test files
 
-### 3. 创建测试文件
+### 3. 建立測試檔案
 
 Create a new directory, `integration_test`, with an empty `app_test.dart` file:
 
-创建一个名为 `integration_test` 的新文件夹，
-并在文件夹中创建一个空的 `app_test.dart` 文件： 
+建立一個名為 `integration_test` 的新資料夾，
+並在資料夾中建立一個空的 `app_test.dart` 檔案： 
 
 ```
 counter_app/
@@ -200,25 +200,25 @@ counter_app/
 
 ### 4. Write the integration test
 
-### 4. 编写集成测试文件
+### 4. 編寫整合測試檔案
 
 Now you can write tests. This involves three steps:
 
-现在我们可以来写测试文件了，步骤如下列三项：
+現在我們可以來寫測試檔案了，步驟如下列三項：
 
   1. Initialize `IntegrationTestWidgetsFlutterBinding`, a singleton service that
      executes tests on a physical device.
 
-     初始化一个单例 `IntegrationTestWidgetsFlutterBinding`，
-     这将用于在物理设备上执行测试；
+     初始化一個單例 `IntegrationTestWidgetsFlutterBinding`，
+     這將用於在物理裝置上執行測試；
 
   2. Interact and tests widgets using the `WidgetTester` class.
 
-     使用 `WidgetTester` 类测试并与 widget 发生交互；
+     使用 `WidgetTester` 類測試並與 widget 發生互動；
 
   3. Test the important scenarios.
 
-     测试重要的应用场景。
+     測試重要的應用場景。
 
 <?code-excerpt "lib/integration_test/app_test.dart (IntegrationTest)"?>
 ```dart
@@ -257,23 +257,23 @@ void main() {
 
 ### 5. Run the integration test
 
-### 5. 运行集成测试
+### 5. 執行整合測試
 
 The process of running the integration tests varies depending on the platform
 you are testing against. You can test against a mobile platform or the web.
 
-集成测试的运行情况会根据需要进行测试的平台不同而不尽相同，
-你可以针对移动平台或者 Web 平台进行测试。
+整合測試的執行情況會根據需要進行測試的平台不同而不盡相同，
+你可以針對行動平台或者 Web 平台進行測試。
 
 #### 5a. Mobile
 
-#### 5a. 移动平台
+#### 5a. 行動平台
 
 To test on a real iOS / Android device, first connect the device and run the
 following command from the root of the project:
 
-在 iOS 或 Android 平台进行真机测试的时候，
-首先需要连接设备并在工程的根目录运行下面的命令：
+在 iOS 或 Android 平台進行真機測試的時候，
+首先需要連線裝置並在工程的根目錄執行下面的命令：
 
 ```terminal
 flutter test integration_test/app_test.dart
@@ -281,7 +281,7 @@ flutter test integration_test/app_test.dart
 
 Or, you can specify the directory to run all integration tests:
 
-或者你可以在指定目录下运行所有的集成测试：
+或者你可以在指定目錄下執行所有的整合測試：
 
 ```terminal
 flutter test integration_test
@@ -290,8 +290,8 @@ flutter test integration_test
 This command runs the app and integration tests on the target device. For more
 information, see the [Integration testing][] page.
 
-这个命令可以在目标设备上运行应用并执行集成测试，更多相关信息，
-请参阅文档：[集成测试][Integration testing] 页面。
+這個命令可以在目標裝置上執行應用並執行整合測試，更多相關資訊，
+請參閱文件：[整合測試][Integration testing] 頁面。
 
 #### 5b. Web
 
@@ -299,12 +299,12 @@ information, see the [Integration testing][] page.
 
 To get started testing in a web browser, [Download ChromeDriver][].
 
-在网页浏览器里开始进行集成测试，首先要下载 [ChromeDriver][Download ChromeDriver]。
+在網頁瀏覽器裡開始進行整合測試，首先要下載 [ChromeDriver][Download ChromeDriver]。
 
 Next, create a new directory named `test_driver` containing a new file
 named `integration_test.dart`:
 
-接下来，新建一个文件夹，命名为 `test_driver`，并包含一个新的文件，命名为
+接下來，新建一個資料夾，命名為 `test_driver`，幷包含一個新的檔案，命名為
 `integration_test.dart`。
 
 <?code-excerpt "lib/test_driver/integration_test.dart"?>
@@ -316,7 +316,7 @@ Future<void> main() => integrationDriver();
 
 Launch `chromedriver` as follows: 
 
-运行 `chromedriver`，执行如下命令：
+執行 `chromedriver`，執行如下命令：
 
 ```terminal
 chromedriver --port=4444
@@ -324,7 +324,7 @@ chromedriver --port=4444
 
 From the root of the project, run the following command:
 
-在工程的根目录下，运行如下命令：
+在工程的根目錄下，執行如下命令：
 
 ```terminal
 flutter drive \
@@ -336,8 +336,8 @@ flutter drive \
 For a headless testing experience, you can also run `flutter drive` 
 with `web-server` as the target device identifier as follows:
 
-如需 Headless 测试体验，你同样可以运行 `flutter drive` 命令，
-并加入 `web-server` 作为目标设备，参考如下命令：
+如需 Headless 測試體驗，你同樣可以執行 `flutter drive` 命令，
+並加入 `web-server` 作為目標裝置，參考如下命令：
 
 ```terminal
 flutter drive \

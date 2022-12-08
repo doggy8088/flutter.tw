@@ -1,10 +1,10 @@
 ---
 title: Obfuscating Dart code
-title: 混淆 Dart 代码
+title: 混淆 Dart 程式碼
 description: How to remove function and class names from your Dart binary.
-description: 如何移除你的 Dart 库中的方法名和类名。
-tags: 发布, Dart
-keywords: 代码混淆,保护
+description: 如何移除你的 Dart 庫中的方法名和類別名稱。
+tags: 釋出, Dart
+keywords: 程式碼混淆,保護
 ---
 
 <?code-excerpt path-base="deployment/obfuscate"?>

@@ -1,17 +1,17 @@
 ---
 title: Send data to a new screen
-title: 传递数据到新页面
+title: 傳遞資料到新頁面
 description: How to pass data to a new route.
-description: 如何向新路由传递数据。
-tags: cookbook, 实用教程, 路由
-keywords: 传参,待办事项应用
+description: 如何向新路由傳遞資料。
+tags: cookbook, 實用課程, 路由
+keywords: 傳參,待辦事項應用
 prev:
   title: Return data from a screen
-  title: 从一个页面回传数据
+  title: 從一個頁面回傳資料
   path: /docs/cookbook/navigation/returning-data
 next:
   title: Delete data on the internet
-  title: 删除网络数据
+  title: 刪除網路資料
   path: /docs/cookbook/networking/delete-data
 js:
   - defer: true
@@ -25,8 +25,8 @@ but also pass data to the screen as well.
 For example, you might want to pass information about
 the item that's been tapped.
 
-在开发的过程中，我们经常需要在跳转到新页面的时候，
-能同时传递一些数据。比如，传递用户点击的元素信息。
+在開發的過程中，我們經常需要在跳轉到新頁面的時候，
+能同時傳遞一些資料。比如，傳遞使用者點選的元素資訊。
 
 Remember: Screens are Just widgets.
 In this example, create a list of todos.
@@ -34,39 +34,39 @@ When a todo is tapped, navigate to a new screen (widget) that
 displays information about the todo.
 This recipe uses the following steps:
 
-还记得么，全屏的界面也只是 widget。在这个例子中，我们会创建一个待办事项列表，
-当某个事项被点击的时候，会跳转到新的一屏 (widget)，
-在新的一屏显示待办事项的详细信息。
+還記得麼，全屏的介面也只是 widget。在這個例子中，我們會建立一個待辦事項列表，
+當某個事項被點選的時候，會跳轉到新的一屏 (widget)，
+在新的一屏顯示待辦事項的詳細資訊。
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Define a todo class.
 
-     定义一个描述待办事项的数据类
+     定義一個描述待辦事項的資料類
 
   2. Display a list of todos.
 
-     显示待办事项
+     顯示待辦事項
 
   3. Create a detail screen that can display information about a todo.
 
-     创建一个显示待办事项详细信息的界面
+     建立一個顯示待辦事項詳細資訊的介面
 
   4. Navigate and pass data to the detail screen.
 
-     传递数据并跳转到待办事项详细信息界面
+     傳遞資料並跳轉到待辦事項詳細資訊介面
 
 ## 1. Define a todo class
 
-## 1. 定义一个描述待办事项的数据类
+## 1. 定義一個描述待辦事項的資料類
 
 First, you need a simple way to represent todos. For this example,
 create a class that contains two pieces of data: the title and description.
 
-首先，我们需要一个简单的方式来描述待办事项。
-我们创建一个类叫做 `Todo`，包含 `title` 和 `description` 两个成员变量。
+首先，我們需要一個簡單的方式來描述待辦事項。
+我們建立一個類別叫做 `Todo`，包含 `title` 和 `description` 兩個成員變數。
 
 <?code-excerpt "lib/main.dart (Todo)"?>
 ```dart
@@ -80,21 +80,21 @@ class Todo {
 
 ## 2. Create a list of todos
 
-## 2. 创建待办事项列表
+## 2. 建立待辦事項列表
 
 Second, display a list of todos. In this example, generate
 20 todos and show them using a ListView.
 For more information on working with lists,
 see the [Use lists][] recipe.
 
-第二步，我们需要显示一个待办事项列表，
-生成 20 条待办事项并用 `ListView` 显示。
-如果你想了解更多关于列表显示的内容，
-请阅读文档 [`基础列表`][Use lists]。
+第二步，我們需要顯示一個待辦事項列表，
+產生 20 條待辦事項並用 `ListView` 顯示。
+如果你想了解更多關於列表顯示的內容，
+請閱讀文件 [`基礎列表`][Use lists]。
 
 ### Generate the list of todos
 
-### 生成待办事项列表
+### 產生待辦事項列表
 
 <?code-excerpt "lib/main.dart (Generate)" replace="/^todos:/final todos =/g;/,$/;/g"?>
 ```dart
@@ -109,7 +109,7 @@ final todos = List.generate(
 
 ### Display the list of todos using a ListView
 
-### 用 `ListView` 显示待办事项列表
+### 用 `ListView` 顯示待辦事項列表
 
 <?code-excerpt "lib/main_todoscreen.dart (ListViewBuilder)" replace="/^body: //g;/;$//g"?>
 ```dart
@@ -126,29 +126,29 @@ ListView.builder(
 So far, so good.
 This generates 20 todos and displays them in a ListView.
 
-到目前为止，我们生成了 20 条待办事项，
-并用 `ListView` 把它显示出来了。
+到目前為止，我們生成了 20 條待辦事項，
+並用 `ListView` 把它顯示出來了。
 
 ## 3. Create a Todo screen to display the list
 
-## 3. 创建一个待办页面显示待办事件列表
+## 3. 建立一個待辦頁面顯示待辦事件列表
 
 For this, we create a `StatelessWidget`. We call it `TodosScreen`.
 Since the contents of this page won't change during runtime,
 we'll have to require the list
 of todos within the scope of this widget.
 
-为了实现这个，我们要创建一个无状态的 widget (`StatelessWidget`)，
-我们叫它 `TodosScreen`。
-因为这个页面在运行时内容并不会变动，
-在这个 widget 的 scope 里，
-我们会把这个待办事项的数组设置为必须 (加入 @require 限定符）。
+為了實現這個，我們要建立一個無狀態的 widget (`StatelessWidget`)，
+我們叫它 `TodosScreen`。
+因為這個頁面在執行時內容並不會變動，
+在這個 widget 的 scope 裡，
+我們會把這個待辦事項的陣列設定為必須 (加入 @require 限定符）。
 
 We pass in our `ListView.builder` as body of the widget we're returning to `build()`.
 This'll render the list on to the screen for you to get going!
 
-我们把 `ListView.builder` 作为 body 的参数返回给 `build()` 方法，
-这将会把列表渲染到屏幕上供你继续下一步。
+我們把 `ListView.builder` 作為 body 的引數返回給 `build()` 方法，
+這將會把列表渲染到螢幕上供你繼續下一步。
 
 <?code-excerpt "lib/main_todoscreen.dart (TodosScreen)"?>
 ```dart
@@ -181,25 +181,25 @@ class TodosScreen extends StatelessWidget {
 With Flutter's default styling, you're good to go without sweating about 
 things that you'd like to do later on!
 
-使用 Flutter 自带的样式，未来会变得很轻松。
+使用 Flutter 自帶的樣式，未來會變得很輕鬆。
 
 ## 4. Create a detail screen to display information about a todo
 
-## 4. 创建一个显示待办事项详细信息的界面
+## 4. 建立一個顯示待辦事項詳細資訊的介面
 
 Now, create the second screen. The title of the screen contains the
 title of the todo, and the body of the screen shows the description.
 
-现在，我们来创建第二个全屏的界面，
-界面的标题是待办事项的标题，
-界面下面显示待办事项的描述信息。
+現在，我們來建立第二個全屏的介面，
+介面的標題是待辦事項的標題，
+介面下面顯示待辦事項的描述資訊。
 
 Since the detail screen is a normal `StatelessWidget`,
 require the user to enter a `Todo` in the UI.
 Then, build the UI using the given todo.
 
-这个界面是一个 `StatelessWidget`，创建的时需要传递 `Todo` 对象给它，
-它就可以使用传给他的 `Todo` 对象来构建 UI 。
+這個介面是一個 `StatelessWidget`，建立的時需要傳遞 `Todo` 物件給它，
+它就可以使用傳給他的 `Todo` 物件來建構 UI 。
 
 <?code-excerpt "lib/main.dart (detail)"?>
 ```dart
@@ -228,24 +228,24 @@ class DetailScreen extends StatelessWidget {
 
 ## 5. Navigate and pass data to the detail screen
 
-## 5. 传递数据并跳转到待办事项详细信息界面
+## 5. 傳遞資料並跳轉到待辦事項詳細資訊介面
 
 With a `DetailScreen` in place,
 you're ready to perform the Navigation.
 In this example, navigate to the `DetailScreen` when a user
 taps a todo in the list. Pass the todo to the `DetailScreen`.
 
-上面写完了 `DetailScreen` ，现在该执行界面跳转啦！
-我们想让用户在点击列表中的某个待办事项时跳转到 `DetailScreen` 界面，
-同时能传递点击的这条代办事项对象（`Todo` 对象） 。
+上面寫完了 `DetailScreen` ，現在該執行介面跳轉啦！
+我們想讓使用者在點選列表中的某個待辦事項時跳轉到 `DetailScreen` 介面，
+同時能傳遞點選的這條代辦事項物件（`Todo` 物件） 。
 
 To capture the user's tap in the `TodosScreen`, write an [`onTap()`][]
 callback for the `ListTile` widget. Within the `onTap()` callback,
 use the [`Navigator.push()`][] method.
 
-想要获取到用户在 `TodosScreen` 的点击事件，
-我们来编写 `ListTile` widget 的 `onTap()` 回调函数，
-继续使用 [`Navigator.push()`][] 方法。
+想要獲取到使用者在 `TodosScreen` 的點選事件，
+我們來編寫 `ListTile` widget 的 `onTap()` 回呼(Callback)函式，
+繼續使用 [`Navigator.push()`][] 方法。
 
 <?code-excerpt "lib/main.dart (builder)"?>
 ```dart
@@ -272,7 +272,7 @@ body: ListView.builder(
 
 ### Interactive example
 
-### 交互式样例
+### 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example
@@ -361,24 +361,24 @@ class DetailScreen extends StatelessWidget {
 
 ## Alternatively, pass the arguments using RouteSettings
 
-## 或者使用 RouteSettings 传递参数
+## 或者使用 RouteSettings 傳遞引數
 
 Repeat the first two steps.
 
-重复前面两个步骤。
+重複前面兩個步驟。
 
 ### Create a detail screen to extract the arguments
 
-### 创建一个详情页以提取参数
+### 建立一個詳情頁以提取引數
 
 Next, create a detail screen that extracts and displays
 the title and description from the `Todo`. 
 To access the `Todo`, use the `ModalRoute.of()` method.
 This method returns the current route with the arguments.
 
-接下来，创建一个详情页用于提取并显示来自 `Todo` 页面的标题和描述信息。
-为了访问 `Todo` 页面，请使用 `ModalRoute.of()` 方法。
-它将会返回带有参数的当前路由。
+接下來，建立一個詳情頁用於提取並顯示來自 `Todo` 頁面的標題和描述資訊。
+為了存取 `Todo` 頁面，請使用 `ModalRoute.of()` 方法。
+它將會返回帶有引數的當前路由。
 
 <?code-excerpt "lib/main_routesettings.dart (DetailScreen)"?>
 ```dart
@@ -405,17 +405,17 @@ class DetailScreen extends StatelessWidget {
 
 ### Navigate and pass the arguments to the detail screen
 
-### 导航并向详情页传递参数
+### 導航並向詳情頁傳遞引數
 
 Finally, navigate to the `DetailScreen` when a user taps
 a `ListTile` widget using `Navigator.push()`.
 Pass the arguments as part of the [`RouteSettings`][].
 The `DetailScreen` extracts these arguments.
 
-最后，当用户点击 `ListTile` widget 时，
-使用 `Navigator.push()` 导航到 `DetailScreen`。
-将参数作为 [`RouteSettings`][] 的一部分进行传递，
-`DetailScreen` 将会提取这些参数。
+最後，當用戶點選 `ListTile` widget 時，
+使用 `Navigator.push()` 導航到 `DetailScreen`。
+將引數作為 [`RouteSettings`][] 的一部分進行傳遞，
+`DetailScreen` 將會提取這些引數。
 
 <?code-excerpt "lib/main_routesettings.dart (builder)" replace="/^body: //g;/,$//g"?>
 ```dart
@@ -447,7 +447,7 @@ ListView.builder(
 
 ### Complete example
 
-### 完整样例
+### 完整範例
 
 <?code-excerpt "lib/main_routesettings.dart"?>
 ```dart

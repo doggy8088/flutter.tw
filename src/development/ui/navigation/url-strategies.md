@@ -1,22 +1,22 @@
 ---
 title: Configuring the URL strategy on the web
-title: 配置 Web 应用的 URL 策略
+title: 配置 Web 應用的 URL 策略
 description: Use hash or path URL strategies on the web
-description: 在 Web 上使用路径 URL 策略
+description: 在 Web 上使用路徑 URL 策略
 ---
 
 Flutter web apps support two ways of configuring
 URL-based navigation on the web:
 
-Flutter Web 应用支持两种基于 URL 的路由的配置方式：
+Flutter Web 應用支援兩種基於 URL 的路由的配置方式：
 
 **Hash (default)**
 <br> Paths are read and written to the [hash fragment][].
 For example, `flutterexample.dev/#/path/to/screen`.
 
 
-**Hash（默认）**
-<br> 路径使用 [# + 锚点标识符][hash fragment] 读写，
+**Hash（預設）**
+<br> 路徑使用 [# + 錨點識別符號][hash fragment] 讀寫，
   例如：`flutterexample.dev/#/path/to/screen`。
 
 **Path**
@@ -24,7 +24,7 @@ For example, `flutterexample.dev/#/path/to/screen`.
 `flutterexample.dev/path/to/screen`.
 
 **Path**
-<br> 路径使用非 # 读写，
+<br> 路徑使用非 # 讀寫，
   例如：`flutterexample.dev/path/to/screen`。
 
 ## Configuring the URL strategy
@@ -35,8 +35,8 @@ To configure Flutter to use the path instead, use the
 [usePathUrlStrategy][] function provided by the [flutter_web_plugins][] library
 in the SDK:
 
-让 Flutter 使用 path 策略，请使用 [flutter_web_plugins][]
-库中提供的 [`setUrlStrategy`][] 方法。
+讓 Flutter 使用 path 策略，請使用 [flutter_web_plugins][]
+庫中提供的 [`setUrlStrategy`][] 方法。
 
 ```dart
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -65,7 +65,7 @@ handle any path gracefully and fallback to your app's `index.html` file.
 
 ## Hosting a Flutter app at a non-root location
 
-## 将 Flutter 应用部署在子目录下
+## 將 Flutter 應用部署在子目錄下
 
 Update the `<base href="/">` tag in `web/index.html`
 to the path where your app is hosted.
@@ -73,9 +73,9 @@ For example, to host your Flutter app at
 `my_app.dev/flutter_app`, change
 this tag to `<base href="/flutter_app/">`.
 
-更新 `web/index.html` 中的 `<base href="/">` 标签为你的应用部署路径。
-例如：如果你期望将 Flutter 应用部署在 `myapp.dev/flutter_app`，
-则更改此标签为 `<base href="/flutter_app/">`。
+更新 `web/index.html` 中的 `<base href="/">` 標籤為你的應用部署路徑。
+例如：如果你期望將 Flutter 應用部署在 `myapp.dev/flutter_app`，
+則更改此標籤為 `<base href="/flutter_app/">`。
 
 [hash fragment]: https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax
 [`HashUrlStrategy`]: {{site.api}}/flutter/flutter_web_plugins/HashUrlStrategy-class.html

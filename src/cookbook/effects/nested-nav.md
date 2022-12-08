@@ -1,14 +1,14 @@
 ---
 title: Create a nested navigation flow
-title: 创建一个嵌套导航
+title: 建立一個巢狀(Nesting)導航
 description: How to implement a flow with nested navigation.
 prev:
   title: Create a download button
-  title: 创建一个带进度条的下载按钮
+  title: 建立一個帶進度條的下載按鈕
   path: /docs/cookbook/effects/download-button
 next:
   title: Create a photo filter carousel
-  title: 创建一个照片滤镜选择器
+  title: 建立一個照片濾鏡選擇器
   path: /docs/cookbook/effects/photo-filter-carousel
 js:
   - defer: true

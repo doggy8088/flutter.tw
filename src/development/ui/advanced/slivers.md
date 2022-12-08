@@ -1,11 +1,11 @@
 ---
 title: Using slivers to achieve fancy scrolling
-title: 使用 sliver 实现出色的滑动效果
+title: 使用 sliver 實現出色的滑動效果
 description: Where to find information on using slivers to implement fancy scrolling effects, like elastic scrolling, in Flutter.
-description: 介绍如何通过 slivers 在 Flutter 里实现酷炫的滑动效果。
+description: 介紹如何透過 slivers 在 Flutter 裡實現酷炫的滑動效果。
 toc: false
-tags: 用户界面,Flutter UI
-keywords: 滑动效果, slivers
+tags: 使用者介面,Flutter UI
+keywords: 滑動效果, slivers
 ---
 
 A sliver is a portion of a scrollable area that you

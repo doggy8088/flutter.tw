@@ -1,10 +1,10 @@
 ---
 title: What’s new
-title: 文档网站更新内容归档
+title: 文件網站更新內容歸檔
 description: A list of what’s new on flutter.dev and related sites.
-description: Flutter 和 Dart 文档的相关更新说明页面。
-tags: Flutter文档更新
-keywords: 内容归档
+description: Flutter 和 Dart 文件的相關更新說明頁面。
+tags: Flutter文件更新
+keywords: 內容歸檔
 ---
 
 This page contains current and previous announcements of
@@ -12,22 +12,22 @@ what's new on the Flutter website and blog.
 For details about what's new in the Flutter releases
 see the [release notes][] page.
 
-该归档包含了历史公告，以及网站上的更新内容。
-想要了解每个 Flutter 发布的版本更新内容，
-请查看 [发布说明][release notes] 页面。
+該歸檔包含了歷史公告，以及網站上的更新內容。
+想要了解每個 Flutter 釋出的版本更新內容，
+請檢視 [釋出說明][release notes] 頁面。
 
 To stay on top of Flutter announcements,
 including breaking changes,
 join the [flutter-announce][] Google group.
 
-要及时同步最新 Flutter 公告，包括重大变更 (breaking changes) 等，
-请加入 [flutter-announce][] 邮件组。
+要及時同步最新 Flutter 公告，包括重大變更 (breaking changes) 等，
+請加入 [flutter-announce][] 郵件組。
 
 For Dart, you can join the [Dart Announce][] Google group,
 and review the [Dart changelog][].
 
-你可以加入 [Dart Announce][] 邮件组或查看 [Dart 更新日志][Dart changelog]
-了解 Dart 的更新内容。
+你可以加入 [Dart Announce][] 郵件組或檢視 [Dart 更新日誌][Dart changelog]
+瞭解 Dart 的更新內容。
 
 [release notes]: {{site.url}}/development/tools/sdk/release-notes
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
@@ -196,7 +196,7 @@ Flutter 2.8 is live! For details, see
 
 ## September 8, 2021: 2.5 release
 
-## 2021 年 9 月 8 日：2.5 版本发布
+## 2021 年 9 月 8 日：2.5 版本釋出
 
 Flutter 2.5 is live! For details, see
 [What's new in Flutter 2.5][].
@@ -523,49 +523,49 @@ publication since the last stable release:
 
 ## Aug 5, 2020: 1.20 release
 
-## 2020 年 5 月：1.20 发布
+## 2020 年 5 月：1.20 釋出
 
 Flutter 1.20 is live! For details,
 see [Announcing Flutter 1.20][].
 
-Flutter 1.20 版本正式发布！
-更多信息请参见 [Flutter 1.20 发布介绍][Announcing Flutter 1.20]。
+Flutter 1.20 版本正式釋出！
+更多資訊請參見 [Flutter 1.20 釋出介紹][Announcing Flutter 1.20]。
 
 **Docs updated or added to flutter.dev**
 
-**flutter.dev 文档更新**
+**flutter.dev 文件更新**
 
 * [Reducing shader compilation jank on mobile][] is added to the
   performance docs.
 
-  [减少移动设备上的着色器（shader）掉帧问题][Reducing shader compilation jank on mobile]
-  文档已添加到性能章节中。
+  [減少移動裝置上的著色器（shader）掉幀問題][Reducing shader compilation jank on mobile]
+  文件已新增到效能章節中。
 
 * [Developing for iOS 14 beta][] outlines some issues you might
   run into if developing for devices running iOS 14 beta.
 
-  [在 iOS 14 beta 上进行开发][Developing for iOS 14 beta]
-  介绍了一些你在 iOS 14 beta 开发中可能会遇到的一些问题。
+  [在 iOS 14 beta 上進行開發][Developing for iOS 14 beta]
+  介紹了一些你在 iOS 14 beta 開發中可能會遇到的一些問題。
 
 * New instructions for [installing Flutter on Linux using snapd.][]
 
-  [使用 snaped 在 Linux 安装 Flutter 应用][installing Flutter on Linux using snapd.]
-  提供了最新介绍。
+  [使用 snaped 在 Linux 安裝 Flutter 應用][installing Flutter on Linux using snapd.]
+  提供了最新介紹。
 
 * Updated the [Desktop support][] page to reflect that Linux
   desktop apps (as well as macOS) are available as alpha.
 
-  更新了 [桌面支持][Desktop support] 介绍页面，
-  Linux 桌面应用（以及 macOS）已经进入 alpha 阶段。
+  更新了 [桌面支援][Desktop support] 介紹頁面，
+  Linux 桌面應用（以及 macOS）已經進入 alpha 階段。
 
 * Several new Flutter books have been published. The
   [Flutter books][] page is updated.
 
-  多本全新 Flutter 书籍正式出版。更新了 [Flutter 书籍][Flutter books]页面。
+  多本全新 Flutter 書籍正式出版。更新了 [Flutter 書籍][Flutter books]頁面。
 
 * The [codelabs landing][] page has been updated.
 
-  更新了[代码实验室主页][codelabs landing]。
+  更新了[程式碼實驗室主頁][codelabs landing]。
 
 A deep dive into null safety has been added to dart.dev:
 
@@ -582,33 +582,33 @@ In preparation for the event,
 we wrote new codelabs and updated existing codelabs.
 New codelabs include:
 
-在 2020 年 6 月 25 日我们举办了 [Flutter Day][]。
-为了准备这次活动，我们编写了全新的代码实验室并更新了已有的 codelab。
-最新的 codelab 包括以下内容：
+在 2020 年 6 月 25 日我們舉辦了 [Flutter Day][]。
+為了準備這次活動，我們編寫了全新的程式碼實驗室並更新了已有的 codelab。
+最新的 codelab 包括以下內容：
 
 * [Adding Admob Ads to a Flutter app][]
 
-  [为 Flutter 应用添加 Admob 广告][Adding Admob Ads to a Flutter app]
+  [為 Flutter 應用新增 Admob 廣告][Adding Admob Ads to a Flutter app]
 
 * [How to write a Flutter plugin][]
 
-  [如何编写一个 Flutter plugin][How to write a Flutter plugin]
+  [如何編寫一個 Flutter plugin][How to write a Flutter plugin]
 
 * [Multi-platform Firestore Flutter][]
 
-  [使用 Flutter Firestore 支持多端存储][Multi-platform Firestore Flutter]
+  [使用 Flutter Firestore 支援多端儲存][Multi-platform Firestore Flutter]
 
 * [Using a plugin with a Flutter web app][]
 
-  [在 Flutter web 应用中使用 plugin][Using a plugin with a Flutter web app]
+  [在 Flutter web 應用中使用 plugin][Using a plugin with a Flutter web app]
 
 * [Write a Flutter desktop application][]
 
-  [编写一个 Flutter 桌面应用][Write a Flutter desktop application]
+  [編寫一個 Flutter 桌面應用][Write a Flutter desktop application]
 
 For a complete list, see [Flutter codelabs][].
 
-完整列表请查看[Flutter 代码实验室][Flutter codelabs]。
+完整列表請檢視[Flutter 程式碼實驗室][Flutter codelabs]。
 
 **Articles**
 
@@ -617,42 +617,42 @@ For a complete list, see [Flutter codelabs][].
 We've published the following articles on the [Flutter Medium][]
 publication since the last stable release:
 
-自从上次稳定版发布以来，我们在 [Flutter Medium][] 上发布了一系列文章：
+自從上次穩定版釋出以來，我們在 [Flutter Medium][] 上釋出了一系列文章：
 
   * [Announcing Adobe XD support for Flutter][]
 
-    [介绍 Flutter Adobe XD 支持][Announcing Adobe XD support for Flutter]
+    [介紹 Flutter Adobe XD 支援][Announcing Adobe XD support for Flutter]
 
   * [What are the important & difficult tasks for Flutter
      devs? - Q1 2020 survey results][q1-2020]
 
-    [对于 Flutter 开发者来说有哪些重要且困难的问题？ - 2020 第一季度调查结果][q1-2020]
+    [對於 Flutter 開發者來說有哪些重要且困難的問題？ - 2020 第一季度調查結果][q1-2020]
 
   * [Optimizing performance in Flutter web apps with tree
      shaking and deferred loading][shaking]
 
-    [Flutter web 应用中的性能优化，包括了 tree shaking 和延迟加载][shaking]
+    [Flutter web 應用中的效能最佳化，包括了 tree shaking 和延遲載入][shaking]
 
   * [Flutter Package Ecosystem Update][]
 
-    [Flutter package 生态更新][Flutter Package Ecosystem Update]
+    [Flutter package 生態更新][Flutter Package Ecosystem Update]
 
   * [Improving perceived performance with image placeholders,
      precaching, and disabled navigation transitions][web-perf]
 
-    [使用图片占位符改善感知性能，预缓存和禁用的导航转换][web-perf]
+    [使用圖片佔位符改善感知效能，預快取和禁用的導航轉換][web-perf]
 
   * [Two Months of #FlutterGoodNewsWednesday][]
 
-    [#FlutterGoodNewsWednesday 的两个月][Two Months of #FlutterGoodNewsWednesday]
+    [#FlutterGoodNewsWednesday 的兩個月][Two Months of #FlutterGoodNewsWednesday]
 
   * [Handling 404: Page not found error in Flutter][]
 
-    [在 Flutter 中处理 404 无法找到页面的问题][Handling 404: Page not found error in Flutter]
+    [在 Flutter 中處理 404 無法找到頁面的問題][Handling 404: Page not found error in Flutter]
 
   * [Flutter and Desktop apps][]
 
-    [Flutter 桌面应用][Flutter and Desktop apps]
+    [Flutter 桌面應用][Flutter and Desktop apps]
 
   * [What's new with the Slider widget?][]
 
@@ -660,39 +660,39 @@ publication since the last stable release:
 
   * [New tools for Flutter developers, built in Flutter][dev-tools]
 
-    [为 Flutter 开发者们带来全新工具，工具也是 Flutter 编写的哦][dev-tools]
+    [為 Flutter 開發者們帶來全新工具，工具也是 Flutter 編寫的哦][dev-tools]
 
   * [Canonical enables Linux desktop app support with Flutter][ubuntu]
 
-    [通过启用 Canonical Flutter Linux 开启桌面应用程序支持][ubuntu]
+    [透過啟用 Canonical Flutter Linux 開啟桌面應用程式支援][ubuntu]
 
   * [Enums with Extensions in Dart][]
 
-    [Dart 中对枚举值添加扩展方法][Enums with Extensions in Dart]
+    [Dart 中對列舉值新增擴充方法][Enums with Extensions in Dart]
 
   * [Managing issues in a large-scale open source project][]
 
-    [在大型开源项目中管理 issue][Managing issues in a large-scale open source project]
+    [在大型開源專案中管理 issue][Managing issues in a large-scale open source project]
 
   * [What we learned from the Flutter Q2 2020 survey][]
 
-    [我们在 Flutter 第二季度调查报告中发现了哪些亮点][What we learned from the Flutter Q2 2020 survey]
+    [我們在 Flutter 第二季度調查報告中發現了哪些亮點][What we learned from the Flutter Q2 2020 survey]
 
   * [Building performant Flutter widgets][]
 
-    [构建高性能 Flutter widgets][Building performant Flutter widgets]
+    [建構高效能 Flutter widgets][Building performant Flutter widgets]
 
   * [How to debug layout issues with the Flutter Inspector][]
 
-    [如何使用 Flutter Inspector 调试布局问题][How to debug layout issues with the Flutter Inspector]
+    [如何使用 Flutter Inspector 除錯佈局問題][How to debug layout issues with the Flutter Inspector]
 
   * [Going deeper with Flutter's web support][]
 
-    [深入 Flutter web 支持][Going deeper with Flutter's web support]
+    [深入 Flutter web 支援][Going deeper with Flutter's web support]
 
   * [Flutter Performance Updates in 2019][]
 
-    [Flutter 在 2019 年中性能有哪些改进][Flutter Performance Updates in 2019]
+    [Flutter 在 2019 年中效能有哪些改進][Flutter Performance Updates in 2019]
 
 
 [Adding Admob Ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-ads-in-flutter/
@@ -826,105 +826,105 @@ Other newness:
 
 Flutter 1.12 is live!
 
-Flutter 1.12 正式发布!
+Flutter 1.12 正式釋出!
 
 For more information, see
 [Flutter: the first UI platform designed for ambient computing][],
 [Announcing Flutter 1.12: What a year!][] and
 the [Flutter 1.12.13][] release notes.
 
-更多详细信息请参阅
-[Flutter：第一个为环境计算设计的 UI 平台][Flutter: the first UI platform designed for ambient computing]，
-[宣布 Flutter 1.12 正式发布：太棒的一年!][Announcing Flutter 1.12: What a year!] 
-以及 [Flutter 1.12.13][] 发行注记。
+更多詳細資訊請參閱
+[Flutter：第一個為環境計算設計的 UI 平台][Flutter: the first UI platform designed for ambient computing]，
+[宣佈 Flutter 1.12 正式釋出：太棒的一年!][Announcing Flutter 1.12: What a year!] 
+以及 [Flutter 1.12.13][] 發行註記。
 
 Docs added and updated since the last announcement include:
 
-自上次发布以来添加和更新的文档包括：
+自上次釋出以來新增和更新的文件包括：
 
 * To accompany an updated implementation of add-to-app,
   we have added documentation on how to
   [add Flutter to an existing app][] for both iOS and Android.
 
-  为配合最新版「添加到现有应用」的实现，我们添加了有关如何
-  [将 Flutter 添加到现有应用中][add Flutter to an existing app] 的文章，
-  同时适用于 iOS 和 Android。
+  為配合最新版「新增到現有應用」的實現，我們添加了有關如何
+  [將 Flutter 新增到現有應用中][add Flutter to an existing app] 的文章，
+  同時適用於 iOS 和 Android。
 
 * If you own plugin code, we encourage you to update to the
   new plugin APIs for Android. For more information, see
   [Migrating your plugin to the new Android APIs][].
 
-  如果您拥有插件代码，我们建议您更新到适用于 Android 插件的新的 API。
-  有关更多信息，请参阅
-  [将您的插件迁移到新的 Android API][Migrating your plugin to the new Android APIs]。
+  如果您擁有外掛程式碼，我們建議您更新到適用於 Android 外掛的新的 API。
+  有關更多資訊，請參閱
+  [將您的外掛遷移到新的 Android API][Migrating your plugin to the new Android APIs]。
 
 * Web support has moved to the beta channel. For more information,
   see [Web support for Flutter][] and
   [Web support for Flutter goes beta][] on the Medium publication.
   Also, the [building a web app with Flutter][] page is updated.
 
-  Web 支持已进入 Beta 频道，想要查看更多的信息，
-  请参阅 [Flutter 的 Web 支持][Web support for Flutter] 和
-  [Flutter 的 Web 支持变为 beta][Web support for Flutter goes beta]。
-  此外，[使用 Flutter 构建 Web 应用程序][building a web app with Flutter]
-  页面也已更新。
+  Web 支援已進入 Beta 頻道，想要檢視更多的資訊，
+  請參閱 [Flutter 的 Web 支援][Web support for Flutter] 和
+  [Flutter 的 Web 支援變為 beta][Web support for Flutter goes beta]。
+  此外，[使用 Flutter 建構 Web 應用程式][building a web app with Flutter]
+  頁面也已更新。
 
 * A new [write your first Flutter app on the web][] codelab
   is added to the [Get started][] docs, and includes
   instructions on setting breakpoints in DevTools!
 
-  全新的 [编写你的第一个 Flutter Web 应用][write your first Flutter app on the web]
-  codelab 已添加到 [使用入门][Get started] 文档中，其中包括在 DevTools 中设置断点的说明。
+  全新的 [編寫你的第一個 Flutter Web 應用][write your first Flutter app on the web]
+  codelab 已新增到 [使用入門][Get started] 文件中，其中包括在 DevTools 中設定斷點的說明。
 
 * We've introduced a program for recommending particular Dart and
   Flutter plugins and packages. Learn more about the
   [Flutter Favorite program][].
 
-  我们推出了一个计划以介绍特定 Dart 或者 Flutter package 或插件。
-  请在 [Flutter Favorite 项目计划中][Flutter Favorite program] 查看更多信息。
+  我們推出了一個計劃以介紹特定 Dart 或者 Flutter package 或外掛。
+  請在 [Flutter Favorite 專案計劃中][Flutter Favorite program] 檢視更多資訊。
 
 * A new [implicit animations][] codelab is available
   featuring DartPad.
   (To run it, you don't need to download any software!)
 
-  新的 [隐式动画][implicit animations] codelab 发布啦，
-  它还带有 DartPad。（直接运行它，你无需下载任何软件！）
+  新的 [隱含動畫][implicit animations] codelab 釋出啦，
+  它還帶有 DartPad。（直接執行它，你無需下載任何軟體！）
 
 * Alpha support for MacOS (desktop) is now available in
   release 1.13 on the master and dev channels.
   For more information, see [Desktop support for Flutter][].
 
-  现在可以在主频道和开发者频道上发布的 1.13 版获得对 MacOS（桌面）的 Alpha 支持。
-  有关更多信息，请参见 [Flutter 的桌面支持][Desktop support for Flutter]。
+  現在可以在主頻道和開發者頻道上釋出的 1.13 版獲得對 MacOS（桌面）的 Alpha 支援。
+  有關更多資訊，請參見 [Flutter 的桌面支援][Desktop support for Flutter]。
 
 * The iOS section of the [app size][] page is updated to reflect
   the inclusion of bitcode.
 
-  iOS 页面的 [app size][] 部分已更新，包含 bitcode。
+  iOS 頁面的 [app size][] 部分已更新，包含 bitcode。
 
 * An alpha release of Flutter Layout Explorer, a new feature
   (and part of the Flutter inspector) that allows you to
   explore a visual representation of your layout is available.
   For more information, see the [Flutter Layout Explorer][] docs.
 
-  Flutter Layout Explorer 的 Alpha 版本，一项新功能
-  （以及 Flutter inspector 的一部分），你可以探索您的布局的可视化表示形式。
-  有关更多信息，请参看 [探索 Flutter 中的布局][Flutter Layout Explorer] 文档。
+  Flutter Layout Explorer 的 Alpha 版本，一項新功能
+  （以及 Flutter inspector 的一部分），你可以探索您的佈局的視覺化表示形式。
+  有關更多資訊，請參看 [探索 Flutter 中的佈局][Flutter Layout Explorer] 文件。
 
 Other newness:
 
-其他新颖之处：
+其他新穎之處：
 
 * A brand new version of [Flutter Gallery][]. There's a 
   link to the runnable sample in the side nav under
   **Samples & Tutorials**.
 
   全新版本的 [Flutter Gallery][]。
-  侧面导航 **示例和教程** 下有个可运行示例的链接。
+  側面導航 **範例和課程** 下有個可執行範例的連結。
 
 Happy Fluttering!
 
-祝你在 Flutter 应用的开发中有一个愉快的经历和体验！
+祝你在 Flutter 應用的開發中有一個愉快的經歷和體驗！
 
 [add Flutter to an existing app]: {{site.url}}/development/add-to-app
 [Announcing Flutter 1.12: What a year!]: {{site.flutter-medium}}/announcing-flutter-1-12-what-a-year-22c256ba525d
@@ -1025,24 +1025,24 @@ Happy Fluttering!
 
 Flutter 1.7 is live!
 
-Flutter 1.7 正式发布！
+Flutter 1.7 正式釋出！
 
 For more information, see [Announcing Flutter 1.7][]
 on the [Flutter Medium Publication][], and the
 [1.7.8 release notes][].
 
-请参见 [这个文章][Announcing Flutter 1.7] 了解更多 1.7 的更新内容，
-在 [Flutter wiki 页面][1.7.8 release notes] 查看 1.7.8 的具体更新。
+請參見 [這個文章][Announcing Flutter 1.7] 瞭解更多 1.7 的更新內容，
+在 [Flutter wiki 頁面][1.7.8 release notes] 檢視 1.7.8 的具體更新。
 
-文档站的更新内容包括：
+文件站的更新內容包括：
 
 * The [Preparing an Android app for release][]
   page is updated to discuss how to build an Android release
   using an app bundle, as well as how to create separate APK
   files for both 32-bit and 64-bit devices.
 
-  [打包和发布到 Android 平台][Preparing an Android app for release] 有更新，
-  包括使用 app bundle 和为 32 位 / 64 位单独打包。
+  [打套件和釋出到 Android 平台][Preparing an Android app for release] 有更新，
+  包括使用 app bundle 和為 32 位 / 64 位單獨打套件。
 
 * The [DevTools][] docs are migrated
   to flutter.dev. If you haven't tried this browser-based suite
@@ -1050,35 +1050,35 @@ on the [Flutter Medium Publication][], and the
   work with both Flutter and Dart apps and can be launched from
   Android Studio/IntelliJ _and_ VS Code, please check it out!
 
-  新增 [开发者工具文档][DevTools] 系列内容，
-  这是个基于浏览器的开发者工具套件，可以帮助你对 Flutter 和 Dart 应用
-  做调试、性能监控、内存检测和检查器等，同时可以直接从 Android Studio 
-  或 IntelliJ 以及 VSCode 运行，如果你还没有试试看，推荐你看一下。
+  新增 [開發者工具文件][DevTools] 系列內容，
+  這是個基於瀏覽器的開發者工具套件，可以幫助你對 Flutter 和 Dart 應用
+  做除錯、效能監控、記憶體檢測和檢查器等，同時可以直接從 Android Studio 
+  或 IntelliJ 以及 VSCode 執行，如果你還沒有試試看，推薦你看一下。
 
 * The [Simple app state management][] page is updated.
   The example code in the page now uses the 3.0
   release of the Provider package.
 
-  [简单的应用状态管理][Simple app state management]
-  页面有所更新，新的文档是基于 Provider 3.0 正式版的。
+  [簡單的應用狀態管理][Simple app state management]
+  頁面有所更新，新的文件是基於 Provider 3.0 正式版的。
 
 * A new animation recipe, [Animate a page route transition][]
   has been added to the [Cookbook][].
 
-  [实用教程][Cookbook] 里添加了一篇新的文章：
-  [为页面切换加入动画效果][Animate a page route transition]。
+  [實用課程][Cookbook] 裡添加了一篇新的文章：
+  [為頁面切換加入動畫效果][Animate a page route transition]。
 
 * The [Debugging][], [Flutter's build modes][],
   [Performance best practices][], and [Performance profiling][]
   pages are updated to reflect DevTools. A
   [Debugging apps programmatically][] page has also been added.
 
-  [调试 Flutter 应用][Debugging]、
-  [Flutter 的构建模式选择][Flutter's build modes]、
-  [Flutter 应用性能优化最佳实践][Performance best practices] 和
-  [Flutter 性能分析][Performance profiling] 
-  页面中加入了开发者工具的使用说明。与此同时，还加入了这个文档页面：
-  [添加代码的方式来调试][Debugging apps programmatically]。
+  [除錯 Flutter 應用][Debugging]、
+  [Flutter 的建構模式選擇][Flutter's build modes]、
+  [Flutter 應用效能最佳化最佳實踐][Performance best practices] 和
+  [Flutter 效能分析][Performance profiling] 
+  頁面中加入了開發者工具的使用說明。與此同時，還加入了這個文件頁面：
+  [新增程式碼的方式來除錯][Debugging apps programmatically]。
 
 The Flutter 1.7 release includes the new [`RangeSlider`][]
 component, which allows the user to select both the upper and lower
@@ -1086,10 +1086,10 @@ endpoints in a range of values. For information about this
 component and how to customize it, see
 [Material RangeSlider in Flutter].
 
-Flutter 1.7 版本的更新同时加入了 [`RangeSlider`][] 这个 widget，
-可以让用户选择在最大值和最小值之间选择一个数字，本周稍晚些时候，
-在 Flutter 官方博客里可以看到关于这篇文章的介绍和以及如何自定义它，
-请关注 [这里][Material RangeSlider in Flutter]。
+Flutter 1.7 版本的更新同時加入了 [`RangeSlider`][] 這個 widget，
+可以讓使用者選擇在最大值和最小值之間選擇一個數字，本週稍晚些時候，
+在 Flutter 官方部落格裡可以看到關於這篇文章的介紹和以及如何自訂它，
+請關注 [這裡][Material RangeSlider in Flutter]。
 
 [1.7.8 release notes]: {{site.url}}/development/tools/sdk/release-notes/release-notes-1.7.8
 [Animate a page route transition]: {{site.url}}/cookbook/animation/page-route-animation
@@ -1109,24 +1109,24 @@ Flutter 1.7 版本的更新同时加入了 [`RangeSlider`][] 这个 widget，
 
 ## May 7, 2019, Google I/O Edition: 1.5 release
 
-**2019 年 5 月 7 日，Google I/O 版本：1.5 版本发布**
+**2019 年 5 月 7 日，Google I/O 版本：1.5 版本釋出**
 
 [Flutter 1.5][] is live!
 
-[Flutter 1.5 发布啦][Flutter 1.5]。
+[Flutter 1.5 釋出啦][Flutter 1.5]。
 
 For more information on updates, see the [1.5.4 release notes][]
 or [download the release][].
 
-更多关于此次发布的信息，可以在这里查看 [1.5.4 release notes][]
-或者 [下载最新版本][download the release]。
+更多關於此次釋出的資訊，可以在這裡檢視 [1.5.4 release notes][]
+或者 [下載最新版本][download the release]。
 
 We are updating DartPad to work with Flutter. Try our new
 [Basic Flutter layout codelab][] and tell us what you think!
 
-我们正在更新 DartPad 以支持 Flutter，可以通过这个新的 codelab
-[Flutter 布局基础教程][Basic Flutter layout codelab]
-来试试看吧。
+我們正在更新 DartPad 以支援 Flutter，可以透過這個新的 codelab
+[Flutter 佈局基礎課程][Basic Flutter layout codelab]
+來試試看吧。
 
 [Basic Flutter layout codelab]: {{site.url}}/codelabs/layout-basics
 [download the release]: {{site.url}}/development/tools/sdk/releases

@@ -4,9 +4,9 @@ title: Flutter SDK 版本列表
 short-title: Releases
 short-title: 版本列表
 description: All current Flutter SDK releases, both stable, and master.
-description: 所有 Flutter SDK 的版本列表，包括稳定版和主分支。
-tags: 下载,SDK下载,Flutter版本
-keywords: 构建渠道,Flutter SDK,SDK,中国镜像
+description: 所有 Flutter SDK 的版本列表，包括穩定版和主分支。
+tags: 下載,SDK下載,Flutter版本
+keywords: 建構渠道,Flutter SDK,SDK,中國映象
 toc: false
 ---
 
@@ -20,8 +20,8 @@ toc: false
 The {{site.sdk.channel | capitalize }} channel contains the
 most stable Flutter builds. See [Flutter’s channels][] for details.
 
-Flutter 的 {{site.sdk.channel | capitalize }} channel 是相对稳定的发布版本，
-查阅这个文档了解更多：[Flutter 的构建（发布）渠道 channels][Flutter’s channels]。
+Flutter 的 {{site.sdk.channel | capitalize }} channel 是相對穩定的釋出版本，
+查閱這個文件瞭解更多：[Flutter 的建構（釋出）渠道 channels][Flutter’s channels]。
 
 {% comment %} Nav tabs {% endcomment -%}
 <ul class="nav nav-tabs" id="editor-setup" role="tablist">
@@ -50,9 +50,9 @@ However, you can get the SDK directly from
 [GitHub repo][] by cloning the master channel,
 and then triggering a download of the SDK dependencies:
 
-我们并没有对 master channel 的提供打包下载，
-不过，你可以通过 `git clone` 我们在 
-[Github 上 repo]({{site.repo.flutter}}) 的 master 分支来使用。
+我們並沒有對 master channel 的提供打包下載，
+不過，你可以透過 `git clone` 我們在 
+[Github 上 repo]({{site.repo.flutter}}) 的 master 分支來使用。
 
 ```terminal
 $ git clone -b master https://github.com/flutter/flutter.git
@@ -62,14 +62,14 @@ $ ./flutter/bin/flutter --version
 For additional details on how our installation bundles are structured,
 see [Installation bundles][].
 
-关于安装包结构的更多信息，请查看这个页面：
-[Flutter 安装包结构][Installation bundles]。
+關於安裝包結構的更多資訊，請檢視這個頁面：
+[Flutter 安裝包結構][Installation bundles]。
 
 We will post a Weibo message with each Flutter releases and the merged PR,
 please follow us on Weibo: [Flutter Community](https://weibo.com/u/6723427904)!
 
-每次新版本发布以及 Flutter 主 repo 有新 PR 合并的时候，我们会在社区微博上发布一条信息，欢迎关注
-[Flutter社区](https://weibo.com/u/6723427904) 微博账号！
+每次新版本釋出以及 Flutter 主 repo 有新 PR 合併的時候，我們會在社群微博上釋出一條資訊，歡迎關注
+[Flutter社群](https://weibo.com/u/6723427904) 微博帳號！
 
 [Flutter Spring 2020 Update]: {{site.flutter-medium}}/flutter-spring-2020-update-f723d898d7af
 [Flutter’s channels]: {{site.repo.flutter}}/wiki/Flutter-build-release-channels

@@ -1,26 +1,26 @@
 ---
 title: Using the app size tool
-title: 使用应用体积工具
+title: 使用應用體積工具
 description: Learn how to use the DevTools app size tool.
-description: 学习如何使用 DevTools 中的应用体积工具。
+description: 學習如何使用 DevTools 中的應用體積工具。
 ---
 
 ## What is it?
 
-## 这是什么?
+## 這是什麼?
 
 The app size tool allows you to analyze the total size of your app.
 You can view a single snapshot of "size information"
 using the [Analysis tab][], or compare two different
 snapshots of "size information" using the [Diff tab][].
 
-应用程序体积工具可让您分析应用的总体积。 
-您可以使用 [Analysis 标签][Analysis tab] 来查看「体积信息」的单个快照，
-或使用 [Diff 标签][Diff tab] 比较使用「体积信息」的两个不同快照。
+應用程式體積工具可讓您分析應用的總體積。 
+您可以使用 [Analysis 標籤][Analysis tab] 來檢視「體積資訊」的單個快照，
+或使用 [Diff 標籤][Diff tab] 比較使用「體積資訊」的兩個不同快照。
 
 ### What is "size information"?
 
-### 什么是“体积信息”？
+### 什麼是“體積資訊”？
 
 "Size information" contains size data for Dart code,
 native code, and non-code elements of your app,
@@ -28,12 +28,12 @@ like the application package, assets and fonts. A "size
 information" file contains data for the total picture
 of your application size.
 
-「体积信息」包含 Dart 代码、原生代码和非代码部分（比如应用包，资源和字体）。
-一个「体积信息」文件包含您应用的所有图片数据。
+「體積資訊」包含 Dart 程式碼、原生程式碼和非程式碼部分（比如應用套件，資源和字型）。
+一個「體積資訊」檔案包含您應用的所有圖片資料。
 
 ### Dart size information
 
-### Dart 体积信息
+### Dart 體積資訊
 
 The Dart AOT compiler performs tree-shaking on your code
 when compiling your application (profile or release mode
@@ -42,10 +42,10 @@ which are JIT compiled). This means that the compiler
 attempts to optimize your app's size by removing
 pieces of code that are unused or unreachable.
 
-Dart AOT 编译器会在编译应用程序时对代码进行摇树优化
-（仅限 profile 或 release 模式 -
-AOT 编译器不用于 debug 生成，debug 模式是 JIT 编译的）。
-这意味着，编译器会尝试删除未使用或无法访问的代码，对应用体积进行优化。
+Dart AOT 編譯器會在編譯應用程式時對程式碼進行搖樹最佳化
+（僅限 profile 或 release 模式 -
+AOT 編譯器不用於 debug 產生，debug 模式是 JIT 編譯的）。
+這意味著，編譯器會嘗試刪除未使用或無法存取的程式碼，對應用體積進行最佳化。
 
 After the compiler optimizes your code as much as it can,
 the end result can be summarized as the collection of packages,
@@ -54,11 +54,11 @@ along with their size in bytes. This is the Dart portion of
 "size information" we can analyze in the app size tool to further
 optimize Dart code and track down size issues.
 
-当编译器尽全力优化您的代码后，
-产出的二进制文件会包含依赖、库、类和函数的集合，
-以及他们的体积（以字节为单位）。
-这是我们可以在应用体积工具中分析的 Dart 部分的「体积信息」,
-有了这些信息，我们便可以进一步优化 Dart 代码，并且跟踪体积问题。
+當編譯器盡全力最佳化您的程式碼後，
+產出的二進位制檔案會包含依賴、庫、類和函式的集合，
+以及他們的體積（以位元組為單位）。
+這是我們可以在應用體積工具中分析的 Dart 部分的「體積資訊」,
+有了這些資訊，我們便可以進一步最佳化 Dart 程式碼，並且追蹤體積問題。
 
 ## How to use it
 
@@ -67,7 +67,7 @@ optimize Dart code and track down size issues.
 If DevTools is already connected to a running application,
 navigate to the "App Size" tab.
 
-如果 DevTools 已经连接到了一个正在运行的应用，点击 "App Size" 标签。
+如果 DevTools 已經連線到了一個正在執行的應用，點選 "App Size" 標籤。
 
 ![Screenshot of app size tab]({{site.url}}/assets/images/docs/tools/devtools/app_size_tab.png)
 
@@ -75,14 +75,14 @@ If DevTools is not connected to a running application, you can
 access the tool from the landing page that appears once you have launched
 DevTools (see [installation instructions][]).
 
-如果 DevTools 未连接到应用，您可以从启动 DevTools 后出现的登录页访问该工具
-（查看[安装说明][installation instructions]）。
+如果 DevTools 未連線到應用，您可以從啟動 DevTools 後出現的登入頁存取該工具
+（檢視[安裝說明][installation instructions]）。
 
 ![Screenshot of app size access on landing page]({{site.url}}/assets/images/docs/tools/devtools/app_size_access_landing_page.png){:width="100%"}
 
 ## Analysis tab
 
-## 分析标签页
+## 分析標籤頁
 
 The analysis tab allows you to inspect a single snapshot
 of size information.  You can view the hierarchical structure
@@ -91,42 +91,42 @@ and you can view code attribution data
 (for example, why a piece of code is included in your compiled
 application) using the dominator tree and call graph.
 
-「分析」标签页允许您检查体积信息的单个快照。
-您可以看到层次结构的树状图和表格，
-并且可以使用 "dominator tree" 和 "call graph" 看到代码的属性数据
-（例如：为什么编译后的应用程序中包含一段代码）。
+「分析」標籤頁允許您檢查體積資訊的單個快照。
+您可以看到層次結構的樹狀圖和表格，
+並且可以使用 "dominator tree" 和 "call graph" 看到程式碼的屬性資料
+（例如：為什麼編譯後的應用程式中包含一段程式碼）。
 
 ![Screenshot of app size analysis]({{site.url}}/assets/images/docs/tools/devtools/app_size_analysis.png){:width="100%"}
 
 ### Loading a size file
 
-### 读取一个体积文件
+### 讀取一個體積檔案
 
 When you open the Analysis tab, you'll see instructions
 to load an app size file. Drag and drop an app size
 file into the dialog, and click "Analyze Size".
 
-当您打开分析标签页时，您可以看到加载一个体积文件的使用说明。
-拖动一个尺寸文件到弹框中，并点击 "Analyze Size"。
+當您開啟分析標籤頁時，您可以看到載入一個體積檔案的使用說明。
+拖動一個尺寸檔案到彈框中，並點選 "Analyze Size"。
 
 ![Screenshot of app size analysis loading screen]({{site.url}}/assets/images/docs/tools/devtools/app_size_load_analysis.png){:width="100%"}
 
 See [Generating size files][] below for information on
 generating size files.
 
-查看 [生成体积文件][Generating size files] 可以得到有关生成尺寸文件的信息。
+檢視 [產生體積檔案][Generating size files] 可以得到有關產生尺寸檔案的資訊。
 
 ### Treemap and table
 
-### 树状图和表格
+### 樹狀圖和表格
 
 The treemap and table show the hierarchical data for your app's size.
 
-树状图和表格可以查看您的应用体积的结构化数据。
+樹狀圖和表格可以檢視您的應用體積的結構化資料。
 
 #### Using the treemap
 
-#### 使用树状图
+#### 使用樹狀圖
 
 A treemap is a visualization for hierarchical data.
 The space is broken up into rectangles,
@@ -138,52 +138,52 @@ of each rectangle (call one A), there are additional
 rectangles that exist one level deeper in the data
 hierarchy (children of A).
 
-树状图是数据结构的可视化表示。
-在视图中，空间被分解成矩形，
-其中每个矩形的体积和顺序由一些定量变量决定 (在本例中，体积以字节为单位)。
-每个矩形的面积与节点在编译后的应用程序中所占的大小成比例关系。
-在每个矩形（称为 A）的内部，
-还有更多的矩形存在于数据层次结构的更深层（A 的子级）。
+樹狀圖是資料結構的視覺化表示。
+在檢視中，空間被分解成矩形，
+其中每個矩形的體積和順序由一些定量變數決定 (在本例中，體積以位元組為單位)。
+每個矩形的面積與節點在編譯後的應用程式中所佔的大小成比例關係。
+在每個矩形（稱為 A）的內部，
+還有更多的矩形存在於資料層次結構的更深層（A 的子級）。
 
 To drill into a cell in the treemap, select the cell.
 This re-roots the tree so that the selected cell becomes
 the visual root of the treemap.
 
-要查看树状图中的单元格的详情，请选择这个单元格。
-这将重新确定树的根节点，以便选中的单元格作为树状图中新的根节点。
+要檢視樹狀圖中的單元格的詳情，請選擇這個單元格。
+這將重新確定樹的根節點，以便選中的單元格作為樹狀圖中新的根節點。
 
 To navigate back, or up a level, use the breadcrumb
 navigator at the top of the treemap.
 
-如果要后退或向上导航，请使用树映射顶部的面包屑导航。
+如果要後退或向上導航，請使用樹對映頂部的麵包屑導航。
 
 ![Screenshot of treemap breadcrumb navigator]({{site.url}}/assets/images/docs/tools/devtools/treemap_breadcrumbs.png){:width="100%"}
 
 ### Dominator tree and call graph
 
-### 支配树和调用图
+### 支配樹和呼叫圖
 
 This section of the page shows code size attribution data
 (for example, why a piece of code is included in your
 compiled application). This data is visible
 in the form of a dominator tree as well as a call graph.
 
-这个部分显示了代码的体积属性信息（例如：为什么编译后的应用程序中包含一段代码）。
-这些数据以支配树和调用图的形式呈现。
+這個部分顯示了程式碼的體積屬性資訊（例如：為什麼編譯後的應用程式中包含一段程式碼）。
+這些資料以支配樹和呼叫圖的形式呈現。
 
 #### Using the dominator tree
 
-#### 使用支配树
+#### 使用支配樹
 
 A [dominator tree][] is a tree where each node's
 children are those nodes it immediately dominates.
 A node `a` is said to "dominate" a node `b` if
 every path to `b` must go through `a`.
 
-[支配树](https://zh.wikipedia.org/wiki/%E6%94%AF%E9%85%8D_(%E5%9C%96%E8%AB%96)) 是一个树形结构的图表，
-其子节点可以立刻被支配。
-如果通往 `b` 的每条路径都必经节点 `a`，
-那么我们可以说：节点 `a` 支配了节点 `b`。
+[支配樹](https://zh.wikipedia.org/wiki/%E6%94%AF%E9%85%8D_(%E5%9C%96%E8%AB%96)) 是一個樹形結構的圖表，
+其子節點可以立刻被支配。
+如果通往 `b` 的每條路徑都必經節點 `a`，
+那麼我們可以說：節點 `a` 支配了節點 `b`。
 
 [dominator tree]: https://en.wikipedia.org/wiki/Dominator_(graph_theory)
 
@@ -191,9 +191,9 @@ To put it in context of app size analysis,
 imagine `package:a` imports both `package:b` and `package:c`,
 and both `package:b` and `package:c` import `package:d`.
 
-把它放在应用程序大小分析的上下文中，
-想象一下 `package:a` 导入了 `package:b` 和 `package:c`，
-并且 `package:b` 和 `package:c` 都导入了 `package:d`。
+把它放在應用程式大小分析的上下文中，
+想象一下 `package:a` 匯入了 `package:b` 和 `package:c`，
+並且 `package:b` 和 `package:c` 都匯入了 `package:d`。
 
 ```
 package:a
@@ -206,7 +206,7 @@ package:a
 In this example, `package:a` dominates `package:d`,
 so the dominator tree for this data would look like:
 
-在这个例子中，`package:a` 支配 `package:d`，所以这个支配树看起来像是这样：
+在這個例子中，`package:a` 支配 `package:d`，所以這個支配樹看起來像是這樣：
 
 ```
 package:a
@@ -221,15 +221,15 @@ For example, if you are analyzing your app size and find
 an unexpected package included in your compiled app, you can
 use the dominator tree to trace the package to its root source.
 
-这些信息对于您而言，可以帮助您理解编译后的应用程序中为何出现某些代码片段。
-例如，如果您正在分析应用程序的体积，并发现编译后的应用程序中包含意外的包，
-则可以使用支配树来跟踪包到其根源。
+這些資訊對於您而言，可以幫助您理解編譯後的應用程式中為何出現某些程式碼片段。
+例如，如果您正在分析應用程式的體積，平行處理現編譯後的應用程式中包含意外的套件，
+則可以使用支配樹來追蹤包到其根源。
 
 ![Screenshot of code size dominator tree]({{site.url}}/assets/images/docs/tools/devtools/code_size_dominator_tree.png){:width="100%"}
 
 #### Using the call graph
 
-#### 使用调用图
+#### 使用呼叫圖
 
 A call graph provides similar information to the dominator
 tree in regards to helping you understand why code exists
@@ -238,14 +238,14 @@ the one-to-many dominant relationships between nodes of code
 size data like the dominator tree, the call graph shows the many-to-many
 relationships that existing between nodes of code size data.
 
-调用图提供了与支配树相似的信息，
-帮助您理解编译后的应用程序中为何出现某些代码片段。
-它并不像支配树一样提供了一对多的代码体积数据节点，
-而是展示了代码体积数据的节点之间存在的多对多关系。
+呼叫圖提供了與支配樹相似的資訊，
+幫助您理解編譯後的應用程式中為何出現某些程式碼片段。
+它並不像支配樹一樣提供了一對多的程式碼體積資料節點，
+而是展示了程式碼體積資料的節點之間存在的多對多關係。
 
 Again, using the following example:
 
-我们再来看下面这个例子：
+我們再來看下面這個例子：
 
 ```
 package:a
@@ -259,7 +259,7 @@ The call graph for this data would link `package:d`
 to its direct callers, `package:b` and `package:c`,
 instead of its "dominator", `package:a`.
 
-此数据的调用图会将直接调用者 `package：b` 和 `package：c` 与 `package：d` 链接到一起，
+此資料的呼叫圖會將直接呼叫者 `package：b` 和 `package：c` 與 `package：d` 連結到一起，
 而不是它的「支配者」 `package：a`。
 
 ```
@@ -272,21 +272,21 @@ This information is useful for understanding the
 fine-grained dependencies of between pieces of your code
 (packages, libraries, classes, functions).
 
-这些信息对于理解代码片段（包、库、类和函数）之间的细粒度依赖关系非常有用。
+這些資訊對於理解程式碼片段（包、庫、類和函式）之間的細粒度依賴關係非常有用。
 
 ![Screenshot of code size call graph]({{site.url}}/assets/images/docs/tools/devtools/code_size_call_graph.png){:width="100%"}
 
 #### Should I use the dominator tree or the call graph?
 
-#### 我应该使用支配树还是调用图？
+#### 我應該使用支配樹還是呼叫圖？
 
 Use the dominator tree if you want to understand the
 *root* cause for why a piece of code is included in your
 application. Use the call graph if you want to understand
 all the call paths to and from a piece of code.
 
-如果您想理解应用程序中包含一段代码的 **根本** 原因，请使用支配树。
-如果您想理解一段代码之间的所有调用路径，请使用调用图。
+如果您想理解應用程式中包含一段程式碼的 **根本** 原因，請使用支配樹。
+如果您想理解一段程式碼之間的所有呼叫路徑，請使用呼叫圖。
 
 A dominator tree is an analysis or slice of call graph data,
 where nodes are connected by "dominance" instead of
@@ -294,8 +294,8 @@ parent-child hierarchy. In the case where a parent node
 dominates a child, the relationship in the call graph and the
 dominator tree would be identical, but this is not always the case.
 
-支配树是调用图数据的分析或切片，其中节点是通过「支配」而不是父子层次结构连接。
-在父节点支配子节点的情况下，调用图和支配树中的关系是相同的，但情况并非总是如此。
+支配樹是呼叫圖資料的分析或切片，其中節點是透過「支配」而不是父子層次結構連線。
+在父節點支配子節點的情況下，呼叫圖和支配樹中的關係是相同的，但情況並非總是如此。
 
 In the scenario where the call graph is complete
 (an edge exists between every pair of nodes),
@@ -305,13 +305,13 @@ This is an example where the call graph would give
 you a better understanding around why a piece of code is
 included in your application.
 
-在调用图完成的情况下（每对节点之间存在一条边），
-支配树将显示出 `root` 是图中每个节点的支配者。
-调用图可以让您更好地理解为什么在应用程序中包含一段代码。
+在呼叫圖完成的情況下（每對節點之間存在一條邊），
+支配樹將顯示出 `root` 是圖中每個節點的支配者。
+呼叫圖可以讓您更好地理解為什麼在應用程式中包含一段程式碼。
 
 ## Diff tab
 
-## 差异标签页
+## 差異標籤頁
 
 The diff tab allows you to compare two snapshots of
 size information. The two size information files
@@ -322,16 +322,16 @@ changes to your code. You can visualize the
 difference between the two data sets
 using the treemap and table.
 
-diff 标签页让您可以比较体积信息的两个快照。
-您要比较的两个体积信息文件应该从同一个应用程序的两个不同版本生成，
-例如，在更改代码之前和之后生成的体积文件。
-您可以使用树状图和表格可视化两个数据集之间的差异。
+diff 標籤頁讓您可以比較體積資訊的兩個快照。
+您要比較的兩個體積資訊檔案應該從同一個應用程式的兩個不同版本產生，
+例如，在更改程式碼之前和之後產生的體積檔案。
+您可以使用樹狀圖和表格視覺化兩個資料集之間的差異。
 
 ![Screenshot of app size diff]({{site.url}}/assets/images/docs/tools/devtools/app_size_diff.png){:width="100%"}
 
 ### Loading size files
 
-### 读取体积文件
+### 讀取體積檔案
 
 When you open the **Diff** tab,
 you'll see instructions to load "old" and "new" size
@@ -339,33 +339,33 @@ files. Again, these files need to be generated from
 the same application. Drag and drop these files into
 their respective dialogs, and click **Analyze Diff**.
 
-当您打开 **Diff** 标签页时，您将看到加载「旧」和「新」大小文件的使用说明。
-同样，这些文件需要从同一个应用程序生成。
-将这些文件拖放到各自的对话框中，然后单击 **Analyze Diff**。
+當您開啟 **Diff** 標籤頁時，您將看到載入「舊」和「新」大小檔案的使用說明。
+同樣，這些檔案需要從同一個應用程式產生。
+將這些檔案拖放到各自的對話方塊中，然後單擊 **Analyze Diff**。
 
 ![Screenshot of app size diff loading screen]({{site.url}}/assets/images/docs/tools/devtools/app_size_load_diff.png){:width="100%"}
 
 See [Generating size files][] below for information
 on generating these files.
 
-查看 [生成体积文件][Generating size files] 可以得到有关生成这些文件的信息。
+檢視 [產生體積檔案][Generating size files] 可以得到有關產生這些檔案的資訊。
 
 ### Treemap and table
 
-### 树状图和表格
+### 樹狀圖和表格
 
 In the diff view, the treemap and tree table show
 only data that differs between the two imported size files.
 
-在差异视图中, 这个树状图和表格只会显示导入的两个文件中的差异数据。
+在差異檢視中, 這個樹狀圖和表格只會顯示匯入的兩個檔案中的差異資料。
 
 For questions about using the treemap, see [Using the treemap][] above.
 
-关于树状图的问题，可以查看[使用树状图][Using the treemap]。
+關於樹狀圖的問題，可以檢視[使用樹狀圖][Using the treemap]。
 
 ## Generating size files
 
-## 生成尺寸文件
+## 產生尺寸檔案
 
 To use the app size tool, you'll need to generate a
 Flutter size analysis file. This file contains size
@@ -373,9 +373,9 @@ information for your entire application (native code,
 Dart code, assets, fonts, etc.), and you can generate it using the
 `--analyze-size` flag:
 
-要使用应用体积工具，您需要生成一个 flutter 体积分析文件。
-此文件包含整个应用程序的体积信息（本机代码、Dart 代码、资源和字体等），
-您可以使用 `--analyze size` 标志生成它：
+要使用應用體積工具，您需要產生一個 flutter 體積分析檔案。
+此檔案包含整個應用程式的體積資訊（本機程式碼、Dart 程式碼、資源和字型等），
+您可以使用 `--analyze size` 標誌產生它：
 
 ```
 flutter build <your target platform> --analyze-size
@@ -385,8 +385,8 @@ This builds your application, prints a size summary
 to the command line, and prints a line
 telling you where to find the size analysis file.
 
-这会构建您的应用并输出尺寸的摘要到命令行，
-同时告诉您在哪里找到体积分析文件。
+這會建構您的應用並輸出尺寸的摘要到命令列，
+同時告訴您在哪裡找到體積分析檔案。
 
 ```
 flutter build apk --analyze-size --target-platform=android-arm64
@@ -402,9 +402,9 @@ In this example, import the `build/apk-code-size-analysis_01.json`
 file into the app size tool to analyze further.
 For more information, see [App Size Documentation][].
 
-在这个示例中，想要进行更进一步的分析，
-可以导入 `build/apk-code-size-analysis_01.json` 文件到体积分析工具。
-更多信息，可以查看 [应用体积尺寸文档][App Size Documentation]。
+在這個範例中，想要進行更進一步的分析，
+可以匯入 `build/apk-code-size-analysis_01.json` 檔案到體積分析工具。
+更多資訊，可以檢視 [應用體積尺寸文件][App Size Documentation]。
 
 [Using the treemap]: #using-the-treemap
 [Generating size files]: #generating-size-files

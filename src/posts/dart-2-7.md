@@ -1,18 +1,18 @@
 ---
-title: Dart 2.7 发布：更安全、更具表现力的 Dart
+title: Dart 2.7 釋出：更安全、更具表現力的 Dart
 toc: true
 ---
-上周，我们发布了 Dart 2.7 SDK 的稳定版本，它可以为开发者提供多项新功能。Dart 语言经过了充实的一年，它是一种针对客户端优化的语言，适用于在任何平台上开发高效运行的应用。我们今年发布了 6 个新版本，数十项新功能。我们很欣喜地看到这些功能已经被 Dart 社区广泛使用。最近的 [GitHub Octoverse](https://octoverse.github.com/) 显示，根据多个参与方的评估结果，Dart 被认定为 [增长速度最快的编程语言](https://octoverse.github.com/#top-languages) (排名第一)，这一消息让我们备受鼓舞。
+上週，我們釋出了 Dart 2.7 SDK 的穩定版本，它可以為開發者提供多項新功能。Dart 語言經過了充實的一年，它是一種針對客戶端最佳化的語言，適用於在任何平臺上開發高效執行的應用。我們今年釋出了 6 個新版本，數十項新功能。我們很欣喜地看到這些功能已經被 Dart 社群廣泛使用。最近的 [GitHub Octoverse](https://octoverse.github.com/) 顯示，根據多個參與方的評估結果，Dart 被認定為 [增長速度最快的程式語言](https://octoverse.github.com/#top-languages) (排名第一)，這一訊息讓我們備受鼓舞。
 
-Dart 2.7 增加了对扩展方法的支持，此外还添加了一个新的代码包，用来处理带有特殊字符的字符串。我们更新了空安全 (已经实现类型安全的可空和非空类型)，还通过 DartPad 带来了全新的代码体验环境 (而且支持空安全)。在生态系统层级，pub.dev 现在加入了新的点赞 (Like) 功能，用户们喜欢代码包如今更加一目了然。Dart 2.7 现在就可以 [从 dart.dev 下载](http://dart.dev/) 并作为 SDK 使用，并且它也包含在 [发布的 Flutter 1.12 中](https://flutter.cn/posts/announcing-flutter-1-12)。
+Dart 2.7 增加了對擴充方法的支援，此外還添加了一個新的程式碼套件，用來處理帶有特殊字元的字串。我們更新了空安全 (已經實現型別安全的可空和非空型別)，還透過 DartPad 帶來了全新的程式碼體驗環境 (而且支援空安全)。在生態系統層級，pub.dev 現在加入了新的點贊 (Like) 功能，使用者們喜歡程式碼包如今更加一目瞭然。Dart 2.7 現在就可以 [從 dart.dev 下載](http://dart.dev/) 並作為 SDK 使用，並且它也包含在 [釋出的 Flutter 1.12 中](https://flutter.cn/posts/announcing-flutter-1-12)。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/gw7QIg.png)
 
-## **扩展方法**
+## **擴充方法**
 
-Dart 2.7 加入了一个长期以来备受期待的强大新语言功能: 扩展方法。扩展方法可以让您给任何类型 (包括您无法控制的类型) 添加新功能，并依然享受和常规方法一样的简洁输入体验以及代码自动补全功能。
+Dart 2.7 加入了一個長期以來備受期待的強大新語言功能: 擴充方法。擴充方法可以讓您給任何型別 (包括您無法控制的型別) 新增新功能，並依然享受和常規方法一樣的簡潔輸入體驗以及程式碼自動自動完成功能。
 
-我们来看一个简单的例子: 如何从为 String 添加解析 int 和 double 的方法。作为应用开发者，我们无法更改 String 类，因为这个类是在 dart:core 代码库中定义的，但是在扩展方法的帮助下，我们就可以亲手扩展它！在定义了扩展方法之后，我们就可以在 String 上调用新的 parseInt 方法，就如同这个方法是在 String 类中被原生定义的那样:
+我們來看一個簡單的例子: 如何從為 String 新增解析 int 和 double 的方法。作為應用開發者，我們無法更改 String 類，因為這個類是在 dart:core 程式碼庫中定義的，但是在擴充方法的幫助下，我們就可以親手擴充它！在定義了擴充方法之後，我們就可以在 String 上呼叫新的 parseInt 方法，就如同這個方法是在 String 類中被原生定義的那樣:
 
 ```Dart
 extension ParseNumbers on String {
@@ -31,9 +31,9 @@ main() {
 }
 ```
 
-**扩展方法是静态的**
+**擴充方法是靜態的**
 
-扩展方法是静态解析、静态配置的，也就是说，您无法通过动态值来调用它们。如下所示，该调用在运行时会抛出异常:
+擴充方法是靜態解析、靜態配置的，也就是說，您無法透過動態值來呼叫它們。如下所示，該呼叫在執行時會丟擲例外:
 
 ```Dart
   dynamic d = '2';
@@ -42,18 +42,18 @@ main() {
 → Runtime exception: NoSuchMethodError
 ```
 
-扩展方法和 Dart 的 [类型推断](https://dart.dev/guides/language/sound-dart#type-inference) 可以很好地协作，所以在下面这个例子中，变量 "v" 被推断为 String 类，自然 String 上的扩展方法是可用的:
+擴充方法和 Dart 的 [型別推斷](https://dart.dev/guides/language/sound-dart#type-inference) 可以很好地協作，所以在下面這個例子中，變數 "v" 被推斷為 String 類，自然 String 上的擴充方法是可用的:
 
 ```Dart
   var v = '1';
   v.parseInt(); // Works!
 ```
 
-因为扩展方法是静态解析的，所以它们的速度就和调用静态方法或 helper 方法一样快，但调用语法则要友好很多
+因為擴充方法是靜態解析的，所以它們的速度就和呼叫靜態方法或 helper 方法一樣快，但呼叫語法則要友好很多
 
-**扩展可以拥有类型变量**
+**擴充可以擁有型別變數**
 
-因为扩展方法是静态解析的，所以它们的速度就和调用静态方法或 helper 方法一样假如我们想在 List 上定义一个扩展，用来获取序号为偶数的内容列表。那么我们就会希望让这个扩展运行在任何类型的列表上，返回和输入列表相同类型的新列表。为了做到这一点，我们可以把扩展泛型化，并将它的类型参数应用到它扩展的类型和方法里:
+因為擴充方法是靜態解析的，所以它們的速度就和呼叫靜態方法或 helper 方法一樣假如我們想在 List 上定義一個擴充，用來獲取序號為偶數的內容列表。那麼我們就會希望讓這個擴充執行在任何型別的列表上，返回和輸入列表相同型別的新列表。為了做到這一點，我們可以把擴充泛型化，並將它的型別引數應用到它擴充的型別和方法裡:
 
 ```Dart
 extension FancyList<T> on List<T> {
@@ -63,9 +63,9 @@ extension FancyList<T> on List<T> {
 }
 ```
 
-**扩展方法是扩展成员**
+**擴充方法是擴充成員**
 
-我们把这个功能称作 "扩展方法" 是因为，如果您在其他编程语言中使用过相应的语言功能，就会对这个术语感到熟悉。不过在 Dart 中，这个功能更加宽泛: 它还支持使用新的 getter、setter 以及运算符来扩展类。在上面那个 FancyList 的例子中，evenElements 就是一个 getter。下面则是一个例子，用来展示如何为 String 添加一个用于字符串移位的运算符:
+我們把這個功能稱作 "擴充方法" 是因為，如果您在其他程式語言中使用過相應的語言功能，就會對這個術語感到熟悉。不過在 Dart 中，這個功能更加寬泛: 它還支援使用新的 getter、setter 以及運算子來擴充類別。在上面那個 FancyList 的例子中，evenElements 就是一個 getter。下面則是一個例子，用來展示如何為 String 新增一個用於字串移位的運算子:
 
 ```
 extension ShiftString on String {
@@ -75,11 +75,11 @@ extension ShiftString on String {
 }
 ```
 
-**来自社区的优秀范例**
+**來自社群的優秀範例**
 
-我们已经看到 Dart 社区的很多开发者们开始试用扩展方法。下面列出我们见过的几个优秀范例。
+我們已經看到 Dart 社群的很多開發者們開始試用擴充方法。下面列出我們見過的幾個優秀範例。
 
-Jeremiah Ogbomo 创建了 [time 代码包](https://pub.dev/packages/time)，它在 num (int 和 double 的基类) 上使用扩展，从而简化了 Duration 的创建过程。
+Jeremiah Ogbomo 建立了 [time 程式碼包](https://pub.dev/packages/time)，它在 num (int 和 double 的基底類別) 上使用擴充，從而簡化了 Duration 的建立過程。
 
 ```Dart
 // Create a Duration via a `minutes` extension on num.
@@ -92,13 +92,13 @@ Duration oneHourThirtyMinutes = 1.5.hours;
 final DateTime afterTenMinutes = DateTime.now() + 10.minutes;
 ```
 
-Marcelo Glasberg 创建了 [i18n (国际化) 代码包](https://www.reddit.com/r/FlutterDev/comments/dm288s/dart_extensions_applied_to_i18n_you_have/)，它使用扩展方法来简化字符串的本地化操作:
+Marcelo Glasberg 建立了 [i18n (國際化) 程式碼包](https://www.reddit.com/r/FlutterDev/comments/dm288s/dart_extensions_applied_to_i18n_you_have/)，它使用擴充方法來簡化字串的本地化操作:
 
 ```
 Text('Hello'.i18n) // Displays Hello in English, Hola in Spanish, etc.
 ```
 
-Simon Leier 创建了 [dartx 代码包](https://pub.dev/packages/dartx)，其中包含了多个核心 Dart 类型的扩展，如:
+Simon Leier 建立了 [dartx 程式碼包](https://pub.dev/packages/dartx)，其中包含了多個核心 Dart 型別的擴充，如:
 
 ```Dart
 var allButFirstAndLast = list.slice(1, -2);   // [1, 2, 3, 4] 
@@ -108,13 +108,13 @@ print(file.name);           // testFile.dart
 print(file.nameWithoutExtension);       // testFile
 ```
 
-Brian Egan 正在更新广受欢迎的 RxDart 代码包，使用扩展方法重新定义 API，以便更好地操作流。
+Brian Egan 正在更新廣受歡迎的 RxDart 程式碼套件，使用擴充方法重新定義 API，以便更好地操作流。
 
-## **更安全的字符串截取操作**
+## **更安全的字串擷取操作**
 
-Dart 的标准 String 类使用 [UTF-16 编码](https://en.wikipedia.org/wiki/UTF-16)。这是编程语言的常见选择，特别是那些需要同时支持设备本地运行和 Web 端运行的编程语言。
+Dart 的標準 String 類使用 [UTF-16 編碼](https://en.wikipedia.org/wiki/UTF-16)。這是程式語言的常見選擇，特別是那些需要同時支援裝置本地執行和 Web 端執行的程式語言。
 
-UTF-16 字符串通常运作良好，编码过程对于开发者来说是透明的。然而，在操作字符串时，特别是操作那些由用户输入的字符串时，您可能会发现，某些被用户认为是字符的东西，和相应的被 UTF-16 编码系统认为是字符单元的东西，其实并不一致。下面我们来看一个例子，从用户输入的字符串中截取前三个字符:
+UTF-16 字串通常運作良好，編碼過程對於開發者來說是透明的。然而，在操作字串時，特別是操作那些由使用者輸入的字串時，您可能會發現，某些被使用者認為是字元的東西，和相應的被 UTF-16 編碼系統認為是字元單元的東西，其實並不一致。下面我們來看一個例子，從使用者輸入的字串中擷取前三個字元:
 
 ```
 var input = ['Resume'];
@@ -124,7 +124,7 @@ $ dart main.dart
 Res
 ```
 
-目前看来没有问题；我们打印出了输入列表中的字符串上的前三个字母，结果是 Res。现在我们来想想，假如用户来自世界上不同的地区，他们输入的字符中可能包含自己语言特有的符号，比如韩语，他们甚至还会创造性地用表情符号组合来表达出 "简历" 的含义:
+目前看來沒有問題；我們打印出了輸入列表中的字串上的前三個字母，結果是 Res。現在我們來想想，假如使用者來自世界上不同的地區，他們輸入的字元中可能包含自己語言特有的符號，比如韓語，他們甚至還會創造性地用表情符號組合來表達出 "簡歷" 的含義:
 
 ```
 // New longer input list:
@@ -138,9 +138,9 @@ Ré
 Cur
 ```
 
-那问题来了。有些字符串处理正常，但是 Résumé 和 💼📃 这些 "特殊" 字符串呢？先来看 Résumé，为什么我们的结果字符串里只有两个字符？再看看 💼📃，这个奇怪的问号又是怎么回事？这里的问题涉及到 [Unicode 中的一些不为人知的秘密](https://eev.ee/blog/2015/09/12/dark-corners-of-unicode/)。Résumé 中的字符 é 其实会占据两个编码位: 一个 e，还有一个 "[重音组合符](https://unicode.org/cldr/utility/character.jsp?a=0301)" 。而 [纸卷图标 📃](https://emojipedia.org/emoji/%F0%9F%93%83/)，确实只占据一个编码位，但这个编码却是用 U+d83d 和 U+dcc3 代理对 (surrogate pair) 来编码的。是不是被搞迷糊了？
+那問題來了。有些字串處理正常，但是 Résumé 和 💼📃 這些 "特殊" 字串呢？先來看 Résumé，為什麼我們的結果字串裡只有兩個字元？再看看 💼📃，這個奇怪的問號又是怎麼回事？這裡的問題涉及到 [Unicode 中的一些不為人知的秘密](https://eev.ee/blog/2015/09/12/dark-corners-of-unicode/)。Résumé 中的字元 é 其實會佔據兩個編碼位: 一個 e，還有一個 "[重音組合符](https://unicode.org/cldr/utility/character.jsp?a=0301)" 。而 [紙捲圖標 📃](https://emojipedia.org/emoji/%F0%9F%93%83/)，確實只佔據一個編碼位，但這個編碼卻是用 U+d83d 和 U+dcc3 代理對 (surrogate pair) 來編碼的。是不是被搞迷糊了？
 
-我们说过，您通常不需要担心字符和编码位。如果您要做的只是接收和传递完整字符串的话，那么内部编码系统对您来说就是透明的。但是如果您需要处理字符串内部的一些字符，或是需要操控字符串的内容，那么您可能就会遇到麻烦。好消息是，Dart 2.7 加入了全新的 characters 代码包来解决这些问题。这个代码包会按照用户期待的方式处理字符串中的字符，这个功能又被叫做 [Unicode 字形群集](https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries) (grapheme clusters)。有了 [characters 代码包](https://pub.dev/packages/characters)，我们只需稍微改动一下 shortenText() 方法，即可修正代码中的错误:
+我們說過，您通常不需要擔心字元和編碼位。如果您要做的只是接收和傳遞完整字串的話，那麼內部編碼系統對您來說就是透明的。但是如果您需要處理字串內部的一些字元，或是需要操控字串的內容，那麼您可能就會遇到麻煩。好訊息是，Dart 2.7 加入了全新的 characters 程式碼包來解決這些問題。這個程式碼包會按照使用者期待的方式處理字串中的字元，這個功能又被叫做 [Unicode 字形群集](https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries) (grapheme clusters)。有了 [characters 程式碼包](https://pub.dev/packages/characters)，我們只需稍微改動一下 shortenText() 方法，即可修正程式碼中的錯誤:
 
 ```
 // Before:
@@ -150,13 +150,13 @@ input.forEach((s) => print(s.substring(0, 3)));
 input.forEach((s) => print(s.characters.take(3)));
 ```
 
-首先，我们要使用便捷的 .characters 扩展方法，从文本中的 String 里创建出新的 Characters 实例。然后我们就可以使用 take() 方法提取出前 3 个字符。
+首先，我們要使用便捷的 .characters 擴充方法，從文字中的 String 裡創建出新的 Characters 例項。然後我們就可以使用 take() 方法提取出前 3 個字元。
 
-这个新代码包的技术预览版已经在 pub.dev 上发布。很期待听到大家对这个代码包的反馈。如果您发现了其中的任何问题，请随时 [告知我们](https://github.com/dart-lang/characters/issues)。
+這個新程式碼套件的技術預覽版已經在 pub.dev 上釋出。很期待聽到大家對這個程式碼套件的反饋。如果您發現了其中的任何問題，請隨時 [告知我們](https://github.com/dart-lang/characters/issues)。
 
-## **空安全预览**
+## **空安全預覽**
 
-几个月前，我们宣布 [即将在 Dart 中支持空安全](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970#0391)，支持安全访问对象，而不会触发空引用异常。我们为大家带来空安全静态分析的预览。下面我们来看一个颇令人激动的例子:
+幾個月前，我們宣佈 [即將在 Dart 中支援空安全](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970#0391)，支援安全存取物件，而不會觸發空參考例外。我們為大家帶來空安全靜態分析的預覽。下面我們來看一個頗令人激動的例子:
 
 ```Dart
 void main() {
@@ -178,44 +178,44 @@ class Person {
 }
 ```
 
-如果我们运行这段代码，它就会在运行第二个 Person 的 describe 方法时崩溃，并抛出一个空指针异常。因为这个人没有设定生日。我们在编程时犯了一个错误: 虽然我们已经预料到有些人的生日是未知的，在构造方法里中将 "生日" 设为可选，并在 birthday?.year 中有测试空生日，但我们忘了去处理 birthyear 也为空的情况。
+如果我們執行這段程式碼，它就會在執行第二個 Person 的 describe 方法時崩潰，並丟擲一個空指標例外。因為這個人沒有設定生日。我們在程式設計時犯了一個錯誤: 雖然我們已經預料到有些人的生日是未知的，在構造方法裡中將 "生日" 設為可選，並在 birthday?.year 中有測試空生日，但我們忘了去處理 birthyear 也為空的情況。
 
-现在我们把这段代码粘贴进我们新推出的 [空安全代码体验环境](https://nullsafety.dartpad.dev)，它是 DartPad 的一个特殊版本，其中包含静态分析功能 (是空安全功能的子集) 的技术预览。甚至都不需要运行代码，我们就可以看到 3 个问题:
+現在我們把這段程式碼貼上進我們新推出的 [空安全程式碼體驗環境](https://nullsafety.dartpad.dev)，它是 DartPad 的一個特殊版本，其中包含靜態分析功能 (是空安全功能的子集) 的技術預覽。甚至都不需要執行程式碼，我們就可以看到 3 個問題:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/0zBwPq.png)
 
-通过依次修复这些分析错误之后，我们就可以尽享空安全带来的好处了。请在空安全体验环境中试着做出如下修改 (并 [最终得到空安全代码](https://gist.github.com/mit-mit/c210bfb088545e69ba9231ee459615ba)):
+透過依次修復這些分析錯誤之後，我們就可以盡享空安全帶來的好處了。請在空安全體驗環境中試著做出如下修改 (並 [最終得到空安全程式碼](https://gist.github.com/mit-mit/c210bfb088545e69ba9231ee459615ba)):
 
-1. 声明 birthday 可空，将 DateTime birthday 修改为 DateTime? birthday
-2. 声明当 birthday 为空时 birthyear 可空，将 int birthyear 修改为 int? birthyear
-3. 将第二个 print 调用放进空测试中:if (birthyear != null) {...}
+1. 宣告 birthday 可空，將 DateTime birthday 修改為 DateTime? birthday
+2. 聲明當 birthday 為空時 birthyear 可空，將 int birthyear 修改為 int? birthyear
+3. 將第二個 print 呼叫放進空測試中:if (birthyear != null) {...}
 
-希望这个例子可以让您明白我们想使用空安全功能带来何种体验。如前所示，这个体验环境只是空安全功能中的一部分的早期技术预览，开发工作仍在进行。我们正在努力在 Dart SDK 中提供空安全功能的第一个 beta 版本。以下是我们准备在 beta 版中推出的内容:
+希望這個例子可以讓您明白我們想使用空安全功能帶來何種體驗。如前所示，這個體驗環境只是空安全功能中的一部分的早期技術預覽，開發工作仍在進行。我們正在努力在 Dart SDK 中提供空安全功能的第一個 beta 版本。以下是我們準備在 beta 版中推出的內容:
 
-1. 可空和非空引用的完整实现
+1. 可空和非空參考的完整實現
 
-2. 将空安全整合至 Dart 的类型推断和 smart promotion (例如，允许在分配或空检查后安全访问可空变量)
-3. 修改 Dart [核心代码库](https://dart.dev/guides/libraries)，使之声明可空和非可空类型
-4. 添加迁移工具，这个工具可以自动完成大部分的代码升级操作，协助开发者升级 Dart 应用和代码包
+2. 將空安全整合至 Dart 的型別推斷和 smart promotion (例如，允許在分配或空檢查後安全存取可空變數)
+3. 修改 Dart [核心程式碼庫](https://dart.dev/guides/libraries)，使之宣告可空和非可空型別
+4. 新增遷移工具，這個工具可以自動完成大部分的程式碼升級操作，協助開發者升級 Dart 應用和程式碼包
 
-此项工作完成后，我们会在 beta 版 SDK 中发布它，供大家在自己的应用和代码包中使用。我们还准备在新功能实现后对空安全体验环境进行更新。
+此項工作完成後，我們會在 beta 版 SDK 中釋出它，供大家在自己的應用和程式碼套件中使用。我們還準備在新功能實現後對空安全體驗環境進行更新。
 
-我们知道很多开发者都想尽快用上空安全功能，大家可以在自己方便的时候展开代码迁移工作，在做好准备之后再使用这项功能。尚未采用这项功能的代码库和代码包将可以依赖那些已经采用这项功能的代码库，反之亦然。
+我們知道很多開發者都想盡快用上空安全功能，大家可以在自己方便的時候展開程式碼遷移工作，在做好準備之後再使用這項功能。尚未採用這項功能的程式碼庫和程式碼包將可以依賴那些已經採用這項功能的程式碼庫，反之亦然。
 
-在今后的几个月中，我们还会带来更多关于空安全的消息，比如说，我们会提出更加详细的建议，引导大家为迁移做准备。
+在今後的幾個月中，我們還會帶來更多關於空安全的訊息，比如說，我們會提出更加詳細的建議，引導大家為遷移做準備。
 
-## **在 pub.dev 上为代码包点赞**
+## **在 pub.dev 上為程式碼包點贊**
 
-我们还在 pub.dev 上发布了 "为代码包点赞" 功能，方便大家 "亲手" 表明自己对代码包的喜爱。如果您想要为一个代码包点赞，只需点击代码包详情信息旁边的大拇指图标即可。
+我們還在 pub.dev 上釋出了 "為程式碼包點贊" 功能，方便大家 "親手" 表明自己對程式碼套件的喜愛。如果您想要為一個程式碼包點贊，只需點選程式碼包詳情資訊旁邊的大拇指圖示即可。
 
-![△ pub.dev 代码包详情页增加了点赞按钮](https://devrel.andfun.cn/devrel/posts/2021/05/Vw0mJN.png)
+![△ pub.dev 程式碼包詳情頁增加了點贊按鈕](https://devrel.andfun.cn/devrel/posts/2021/05/Vw0mJN.png)
 
-> △ pub.dev 代码包详情页增加了点赞按钮
+> △ pub.dev 程式碼包詳情頁增加了點贊按鈕
 
-目前我们并未考虑在我们的总体评分模型中纳入点赞数，但我们计划在今后的版本中纳入这个指标。我们还打算对我们的搜索界面和列表页面进行视觉更新，在其中强调代码包的点赞信息。
+目前我們並未考慮在我們的總體評分模型中納入點贊數，但我們計劃在今後的版本中納入這個指標。我們還打算對我們的搜尋介面和列表頁面進行視覺更新，在其中強調程式碼套件的點贊資訊。
 
-## **谢谢大家**
+## **謝謝大家**
 
-我们代表 Dart 团队感谢大家，感谢 Dart 社区的所有成员，谢谢您们持续不断的支持！请继续向我们提供反馈，并继续  [参与 Dart 相关讨论，继续融入 Dart 社区](https://dart.dev/community)。很显然，没有 Dart 社区的支持，我们不可能完成这个优异的开源项目。
+我們代表 Dart 團隊感謝大家，感謝 Dart 社群的所有成員，謝謝您們持續不斷的支援！請繼續向我們提供反饋，並繼續  [參與 Dart 相關討論，繼續融入 Dart 社群](https://dart.dev/community)。很顯然，沒有 Dart 社群的支援，我們不可能完成這個優異的開源專案。
 
-对 Dart 来说，2019 年是激动人心的一年，但我们并不会就此止步。我们为 2020 年制定了雄心勃勃的计划。我们准备发布一些功能的稳定版本，这些功能包括 [dart:ffi](https://dart.dev/guides/libraries/c-interop)、[空安全](https://github.com/dart-lang/language/issues/110)，以及其他全新功能。请大家开始使用 Dart 2.7，大家可以 [前往 dart.dev 下载](http://dart.dev)，另外最新发布的 [Flutter 1.12](https://flutter.cn/posts/announcing-flutter-1-12) 中也包含它，最近刚刚经过 [重新设计的 DartPad](https://medium.com/dartlang/a-brand-new-dartpad-dev-with-flutter-support-16fe6027784) 中也包含 Dart 2.7。
+對 Dart 來說，2019 年是激動人心的一年，但我們並不會就此止步。我們為 2020 年制定了雄心勃勃的計劃。我們準備釋出一些功能的穩定版本，這些功能包括 [dart:ffi](https://dart.dev/guides/libraries/c-interop)、[空安全](https://github.com/dart-lang/language/issues/110)，以及其他全新功能。請大家開始使用 Dart 2.7，大家可以 [前往 dart.dev 下載](http://dart.dev)，另外最新發布的 [Flutter 1.12](https://flutter.cn/posts/announcing-flutter-1-12) 中也包含它，最近剛剛經過 [重新設計的 DartPad](https://medium.com/dartlang/a-brand-new-dartpad-dev-with-flutter-support-16fe6027784) 中也包含 Dart 2.7。

@@ -1,58 +1,58 @@
 ---
-title: 流动的观察者模式
+title: 流動的觀察者模式
 toc: true
 ---
 
-文/ 杨加康，CFUG 社区成员，《Flutter 开发之旅从南到北》作者，小米工程师
+文/ 楊加康，CFUG 社群成員，《Flutter 開發之旅從南到北》作者，小米工程師
 
-**观察者模式**，又称发布订阅模式，是一种行为设计模式——你可以定义一种订阅机制，可在对象事件发生时通知多个 **观察** 该对象的其他对象。
+**觀察者模式**，又稱釋出訂閱模式，是一種行為設計模式——你可以定義一種訂閱機制，可在物件事件發生時通知多個 **觀察** 該物件的其他物件。
 
->> 观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。
+>> 觀察者模式定義了一種一對多的依賴關係，讓多個觀察者物件同時監聽某一個主題物件。
 >>
->> 这个主题对象在状态上发生变化时，会通知所有观察者对象，让它们能够自动更新自己。
+>> 這個主題物件在狀態上發生變化時，會通知所有觀察者物件，讓它們能夠自動更新自己。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-14-ObserverPattern.png)
 
-从定义中，不难发现，**观察者** 与 **被观察者 / 发布者** 是这个模式中最重要的组成元素。
+從定義中，不難發現，**觀察者** 與 **被觀察者 / 釋出者** 是這個模式中最重要的組成元素。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-14-Observer1.png)
 
-微信的公众号可以被视为生活中最典型的观察者模式的例子。如果你订阅了「Flutter社区」，每当 Flutter 社区发布文章时，就会给你及其他订阅者推送这个消息，这其中你就是 **观察者**，公众号「Flutter社区」就是 **被观察者 (Observable) 或发布者 (Subject)**。
+微信的公眾號可以被視為生活中最典型的觀察者模式的例子。如果你訂閱了「Flutter社群」，每當 Flutter 社群釋出文章時，就會給你及其他訂閱者推送這個訊息，這其中你就是 **觀察者**，公眾號「Flutter社群」就是 **被觀察者 (Observable) 或釋出者 (Subject)**。
 
-观察者模式经常被应用在这类事件处理系统中，从概念上理解，被观察者也经常被称作是 **事件流 (stream of events)** 或者说是 **事件流的来源 (stream source of events)**，而观察者相当于 **事件接收器 (sinks of events)**。
+觀察者模式經常被應用在這類事件處理系統中，從概念上理解，被觀察者也經常被稱作是 **事件流 (stream of events)** 或者說是 **事件流的來源 (stream source of events)**，而觀察者相當於 **事件接收器 (sinks of events)**。
 
-同时，观察者模式也是实现 **响应式编程** 的基础，RxDart、EventBus 等库都是观察者模式下的产物。
+同時，觀察者模式也是實現 **響應式程式設計** 的基礎，RxDart、EventBus 等庫都是觀察者模式下的產物。
 
-## 面向对象
+## 面向物件
 
-面向对象中，观察者和和发布者 (被观察者) 分别对应两个类 (Observer 和 Subject) 的对象。
+面向物件中，觀察者和和釋出者 (被觀察者) 分別對應兩個類 (Observer 和 Subject) 的物件。
 
-![观察者模式 UML 图，图源维基百科](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-04-2880px-Observer_w_update.svg.png)
+![觀察者模式 UML 圖，圖源維基百科](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-04-2880px-Observer_w_update.svg.png)
 
-发布类 (Subject) 中通常会有提供给每个对象订阅或取消订阅发布者事件流的 **订阅机制**，包括：
+釋出類 (Subject) 中通常會有提供給每個物件訂閱或取消訂閱釋出者事件流的 **訂閱機制**，包括：
 
-1. 一个用于存储订阅者对象引用的列表成员变量；
-2. 几个用于添加或删除该列表中订阅者的公有方法。
+1. 一個用於儲存訂閱者物件參考的列表成員變數；
+2. 幾個用於新增或刪除該列表中訂閱者的公有方法。
 
 ```dart
-// 被观察者
+// 被觀察者
 class Subject {
   List<Observer> _observers;
   Subject([List<Observer> observers]) {
     _observers = observers ?? [];
   }
 
-  // 注册观察者
+  // 註冊觀察者
   void registerObserver(Observer observer) {
     _observers.add(observer);
   }
   
-  // 解注册观察者
+  // 解註冊觀察者
   void unregisterObserver(Observer observer) {
     _observers.remove(observer)
   }
 
-  // 通知观察者
+  // 通知觀察者
   void notifyobservers(Notification notification) {
     for (var observer in _observers) {
       observer.notify(notification);
@@ -61,15 +61,15 @@ class Subject {
 }
 ```
 
-此时，每当事件发生，它只需遍历订阅者并调用其对象的特定通知方法即可 (如上面代码中的 `notifyobservers` 方法) 。
+此時，每當事件發生，它只需遍歷訂閱者並呼叫其物件的特定通知方法即可 (如上面程式碼中的 `notifyobservers` 方法) 。
 
-实际应用中，一个发布者通常会对应多个订阅者，且发布者与订阅者应当遵循面向对象的开发设计原则，因此：
+實際應用中，一個釋出者通常會對應多個訂閱者，且釋出者與訂閱者應當遵循面向物件的開發設計原則，因此：
 
-1. 为了避免耦合，订阅者们必须实现同样的接口；
-2. 发布者仅通过该接口与订阅者交互，接口方法可以声明参数， 这样发布者在发出通知时就能传递一些上下文数据 (如下面代码中的 notification 对象) 。
+1. 為了避免耦合，訂閱者們必須實現同樣的介面；
+2. 釋出者僅透過該介面與訂閱者互動，介面方法可以宣告引數， 這樣釋出者在發出通知時就能傳遞一些上下文資料 (如下面程式碼中的 notification 物件) 。
 
 ```dart
-// 观察者
+// 觀察者
 class Observer {
   String name;
   
@@ -81,11 +81,11 @@ class Observer {
 }
 ```
 
-这样，我们可以得出如下这样用 Dart 语言实现的观察者模式了，下面是一个简单的应用：
+這樣，我們可以得出如下這樣用 Dart 語言實現的觀察者模式了，下面是一個簡單的應用：
 
 ```dart
-// 具体的被观察者 CoffeeMaker
-// 每当 Coffee 制作完成发出通知给观察者。
+// 具體的被觀察者 CoffeeMaker
+// 每當 Coffee 製作完成發出通知給觀察者。
 class CoffeeMaker extends Subject {
   CoffeeMaker([List<Observer> observers]) : super(observers);
   
@@ -104,57 +104,57 @@ void main() {
 }
 ```
 
-这里的 CoffeeMaker 继承自 Subject，作为一个具体的发布类，`brew()` 方法是其内部，每当咖啡制作完成后，用于通知其他各个观察者的方法。上面代码中，我们在 `mrCoffee` 这台咖啡机上注册了 `myWife` 这一个观察者，`mrCoffee.brew();` 触发后，`myWife` 内部的 `notify`  方法就会被调用。
+這裡的 CoffeeMaker 繼承自 Subject，作為一個具體的釋出類，`brew()` 方法是其內部，每當咖啡製作完成後，用於通知其他各個觀察者的方法。上面程式碼中，我們在 `mrCoffee` 這台咖啡機上註冊了 `myWife` 這一個觀察者，`mrCoffee.brew();` 觸發後，`myWife` 內部的 `notify`  方法就會被呼叫。
 
-观察者模式很好的实现了他们两者之间发布订阅的关系，在实际应用中，被观察者正在处理的事件很可能是异步的，而作为观察者不必显示的去阻塞等待事件的完成，而是由被观察者通知，当事件完成后，再将事件主动地「推」给关心这个事件的观察者。与之相对的，有一类观察者也会使用后台线程时刻轮询地监听着其关心的主题事件，这个话题我们暂不展开。
+觀察者模式很好的實現了他們兩者之間釋出訂閱的關係，在實際應用中，被觀察者正在處理的事件很可能是非同步的，而作為觀察者不必顯示的去阻塞等待事件的完成，而是由被觀察者通知，當事件完成後，再將事件主動地「推」給關心這個事件的觀察者。與之相對的，有一類觀察者也會使用後臺執行緒時刻輪詢地監聽著其關心的主題事件，這個話題我們暫不展開。
 
-观察者模式使用不慎的话，也很容易出现传说中的 **失效监听器** 问题，导致内存泄漏，因为在基本实现中，被观察者依然持有观察者的强引用，如果事件中途，被观察者已经不存在时或不再关心此事件，就会导致观察者无法被回收，因此，我们在这种情况下应当在被观察中做好取消订阅的机制，及时释放无用的资源。
+觀察者模式使用不慎的話，也很容易出現傳說中的 **失效監聽器** 問題，導致記憶體洩漏，因為在基本實現中，被觀察者依然持有觀察者的強參考，如果事件中途，被觀察者已經不存在時或不再關心此事件，就會導致觀察者無法被回收，因此，我們在這種情況下應當在被觀察中做好取消訂閱的機制，及時釋放無用的資源。
 
 ## Dart
 
-Stream 可以被看作是 Dart 语言原生支持的观察者模式的典型模型之一，它本身是 `Dart:async` 包中一个用于异步操作的类，响应式编程库 RxDart 也是基于 Stream 封装而成的。
+Stream 可以被看作是 Dart 語言原生支援的觀察者模式的典型模型之一，它本身是 `Dart:async` 套件中一個用於非同步操作的類，響應式程式設計庫 RxDart 也是基於 Stream 封裝而成的。
 
-从概念上讲，我们可以将 Stream 看做是一个可以连接两端的传送带，作为开发者，我们可以在传送带的一端放入数据，Stream 就会将这些数据传送到另一端。
+從概念上講，我們可以將 Stream 看做是一個可以連線兩端的傳送帶，作為開發者，我們可以在傳送帶的一端放入資料，Stream 就會將這些資料傳送到另一端。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-12-stream.svg)
 
-和现实中的情况类似，如果传送带的另一端没有人接受数据，这些数据就会被程序丢弃，因此，我们通常会在传送到尾端安排一个接收数据的对象，在响应式编程中，它被称为数据的观察者。
+和現實中的情況類似，如果傳送帶的另一端沒有人接受資料，這些資料就會被程式丟棄，因此，我們通常會在傳送到尾端安排一個接收資料的物件，在響應式程式設計中，它被稱為資料的觀察者。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-12-stream4.svg)
 
-如果说上文 Dart 面向对象中，观察者和被观察者两者的关系是在尽量保持低耦合的情况下而形成的，相对独立。那么在响应式编程中，它们的关系就是变得更加紧密的 **上游与下游** 的关系。
+如果說上文 Dart 面向物件中，觀察者和被觀察者兩者的關係是在儘量保持低耦合的情況下而形成的，相對獨立。那麼在響應式程式設計中，它們的關係就是變得更加緊密的 **上游與下游** 的關係。
 
-因为 Stream，顾名思义，就是「流」的含义，被观察者在流的入口产生事件，观察者则在流的出口等待数据或事件的到来。
+因為 Stream，顧名思義，就是「流」的含義，被觀察者在流的入口產生事件，觀察者則在流的出口等待資料或事件的到來。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-08-14-Observer2.png)
 
-在这套流程里，观察者的 **订阅** 与被观察者的 **事件发布** 等一系列操作都直接在 Stream 或者说是框架内部完成的。
+在這套流程裡，觀察者的 **訂閱** 與被觀察者的 **事件釋出** 等一系列操作都直接在 Stream 或者說是框架內部完成的。
 
-Dart 中，我们可以使用 StreamController 来创建流：
+Dart 中，我們可以使用 StreamController 來建立流：
 
 ```dart
 var controller = new StreamController<int>();
 
-controller.add(1); // 将数据放入流中
+controller.add(1); // 將資料放入流中
 ```
 
-如上面代码所示，创建 `StreamController` 时必须指定泛型类型来定义可以加入 `Stream` 的数据对象，上面的 `controller` 可以接受 `int` 类型的数据，我们使用它的 `add` 方法就可以将数据放入到它的传送带中。
+如上面程式碼所示，建立 `StreamController` 時必須指定泛型型別來定義可以加入 `Stream` 的資料物件，上面的 `controller` 可以接受 `int` 型別的資料，我們使用它的 `add` 方法就可以將資料放入到它的傳送帶中。
 
-如果我们直接运行上面的两行代码，最终并不会不到任何结果，因为我们还没有为传送带设置接收数据的对象：
+如果我們直接執行上面的兩行程式碼，最終並不會不到任何結果，因為我們還沒有為傳送帶設定接收資料的物件：
 
 ```dart
 var controller = new StreamController<int>();
 
-controller.stream.listen((item) => print(item)); // 数据观察者函数
+controller.stream.listen((item) => print(item)); // 資料觀察者函式
 
 controller.add(1);
 controller.add(2);
 controller.add(3);
 ```
 
-上面的代码中，我们通过调用 StreamController 内部的 stream 对象的 listen 方法，就可以为 controller 对象添加监听这个 Stream 事件的观察者，这个方法接受一个回调函数，这个回调函数又接受一个我们在 `new StreamController<int>()` 泛型中声明的数据对象作为参数。
+上面的程式碼中，我們透過呼叫 StreamController 內部的 stream 物件的 listen 方法，就可以為 controller 物件新增監聽這個 Stream 事件的觀察者，這個方法接受一個回呼(Callback)函式，這個回呼(Callback)函式又接受一個我們在 `new StreamController<int>()` 泛型中宣告的資料物件作為引數。
 
-这时，每当我们再次通过 `add` 方法将数据放入传送带后，就会通知观察者，调用这个函数，并将传递的数据打印出来：
+這時，每當我們再次透過 `add` 方法將資料放入傳送帶後，就會通知觀察者，呼叫這個函式，並將傳遞的資料打印出來：
 
 ```dart
 1
@@ -162,7 +162,7 @@ controller.add(3);
 3
 ```
 
-另外，我们也可以使观察者在某个时间段后停止监听 Stream 中传递的数据，在上面代码中的 `listen` 函数会返回一个  `StreamSubscription` 类型的订阅对象，当我们调用它的 `.cancel()` 后就会释放这个观察者，不再接收数据：
+另外，我們也可以使觀察者在某個時間段後停止監聽 Stream 中傳遞的資料，在上面程式碼中的 `listen` 函式會返回一個  `StreamSubscription` 型別的訂閱物件，當我們呼叫它的 `.cancel()` 後就會釋放這個觀察者，不再接收資料：
 
 ```dart
 var controller = new StreamController<String>();
@@ -182,7 +182,7 @@ subscription.cancel();
 
 ### ChangeNotifier
 
-ChangeNotifier 大概是 Flutter 中实现观察者模式最典型的例子了，它实现自 Listenable，内部维护一个 `_listeners` 列表用来存放观察者，并实现了 `addListener`、`removeListener` 等方法来完成其内部的订阅机制：
+ChangeNotifier 大概是 Flutter 中實現觀察者模式最典型的例子了，它實現自 Listenable，內部維護一個 `_listeners` 列表用來存放觀察者，並實現了 `addListener`、`removeListener` 等方法來完成其內部的訂閱機制：
 
 ```dart
 class ChangeNotifier implements Listenable {
@@ -231,7 +231,7 @@ class ChangeNotifier implements Listenable {
 }
 ```
 
-在实际使用时，我们只需要继承 ChangeNotifier 便能具备这种订阅机制，如下这个 CartModel 类：
+在實際使用時，我們只需要繼承 ChangeNotifier 便能具備這種訂閱機制，如下這個 CartModel 類：
 
 ```dart
 class CartModel extends ChangeNotifier {
@@ -253,9 +253,9 @@ class CartModel extends ChangeNotifier {
 }
 ```
 
-`CartModel` 内部维护一个 `_items` 数组，`add`、`removeAll` 方法时提供给外部操作该数组的接口，每当 `_items` 改变则会调用 `notifyListeners()` 通知它的所有观察者。
+`CartModel` 內部維護一個 `_items` 陣列，`add`、`removeAll` 方法時提供給外部操作該陣列的介面，每當 `_items` 改變則會呼叫 `notifyListeners()` 通知它的所有觀察者。
 
-`ChangeNotifier` 作为 `flutter:foundation` 中最基础的类，不依赖其他任何上层的类，测试起来也非常简单，我们可以针对 `CartModel` 做一个简单的单元测试：
+`ChangeNotifier` 作為 `flutter:foundation` 中最基礎的類，不依賴其他任何上層的類，測試起來也非常簡單，我們可以針對 `CartModel` 做一個簡單的單元測試：
 
 ```dart
 test('adding item increases total cost', () {
@@ -268,13 +268,13 @@ test('adding item increases total cost', () {
 });
 ```
 
-这里，当我们调用 `cart.add(Item('Dash'));` 后，就是会触发观察者函数的调用，实现一种由数据的改变驱动事件执行的机制。
+這裡，當我們呼叫 `cart.add(Item('Dash'));` 後，就是會觸發觀察者函式的呼叫，實現一種由資料的改變驅動事件執行的機制。
 
-Flutter 应用中最传统的状态管理方案是使用有状态 widget 的 `setState` 的方法，这种方式暴露出来的问题是，大型应用中的 widget 树会非常复杂，每当状态更新调用 `setState` 时，则会牵一发而动全身，重建所有子树，使性能大打折扣。
+Flutter 應用中最傳統的狀態管理方案是使用有狀態 widget 的 `setState` 的方法，這種方式暴露出來的問題是，大型應用中的 widget 樹會非常複雜，每當狀態更新呼叫 `setState` 時，則會牽一髮而動全身，重建所有子樹，使效能大打折扣。
 
-那么，当将 `ChangeNotifier` 观察者模式应用在状态管理方案中时，便能解决这个问题。设想让每一个最小组件充当观察者，观察应用的状态，每当状态改变时即驱动该局部小组件更新，是不是就能达到这种目的。我们常用 provider 库就应用了这个原理。
+那麼，當將 `ChangeNotifier` 觀察者模式應用在狀態管理方案中時，便能解決這個問題。設想讓每一個最小元件充當觀察者，觀察應用的狀態，每當狀態改變時即驅動該區域性小元件更新，是不是就能達到這種目的。我們常用 provider 庫就應用了這個原理。
 
-provider 内部提供了一个 ChangeNotifierProvider widget，可以向其子组件暴露一个 ChangeNotifier 实例 (被观察者) ：
+provider 內部提供了一個 ChangeNotifierProvider widget，可以向其子元件暴露一個 ChangeNotifier 例項 (被觀察者) ：
 
 ```dart
 void main() {
@@ -287,7 +287,7 @@ void main() {
 }
 ```
 
-在子组件中，只需要使用 Consumer widget 注册观察者组件，就能接收到 `CartModel` 内部数据更新的通知：
+在子元件中，只需要使用 Consumer widget 註冊觀察者元件，就能接收到 `CartModel` 內部資料更新的通知：
 
 ```dart
 return Consumer<CartModel>(
@@ -297,15 +297,15 @@ return Consumer<CartModel>(
 );
 ```
 
-这里，使用 Consumer 必须指定要观察的 ChangeNotifier 类型，我们要访问 `CartModel` 那么就写上 `Consumer<CartModel>`，builder 最为 Consumer 唯一一个必要参数，用来构建展示在页面中的子组件。
+這裡，使用 Consumer 必須指定要觀察的 ChangeNotifier 型別，我們要存取 `CartModel` 那麼就寫上 `Consumer<CartModel>`，builder 最為 Consumer 唯一一個必要引數，用來建構展示在頁面中的子元件。
 
-当 `ChangeNotifier` 发生变化的时候会调用 builder 这个函数。 (换言之，当调用 `CartModel` 的  `notifyListeners()` 方法时，所有相关的 `Consumer` widget 的 builder 方法都会被调用。) ，重建子树，达到局部更新状态的目的。
+當 `ChangeNotifier` 發生變化的時候會呼叫 builder 這個函式。 (換言之，當呼叫 `CartModel` 的  `notifyListeners()` 方法時，所有相關的 `Consumer` widget 的 builder 方法都會被呼叫。) ，重建子樹，達到區域性更新狀態的目的。
 
 ### Navigator
 
-路由是在 Flutter 应用中常去讨论的话题，在整个应用运行过程中，路由操作也都需要被时刻关注着，它是我们了解用户行为的一种有效的方式。Flutter 提供了一套很方便的观察者模式的模型帮助我们实现这个功要求。
+路由是在 Flutter 應用中常去討論的話題，在整個應用執行過程中，路由操作也都需要被時刻關注著，它是我們瞭解使用者行為的一種有效的方式。Flutter 提供了一套很方便的觀察者模式的模型幫助我們實現這個功要求。
 
-Flutter 中每个 Navigator 对象都接受一个 NavigatorObserver 对象的数组，在实际开发过程中，我们可以通过根组件 `MaterialApp` (或 `CupertinoPageRoute`)  的 `navigatorObservers` 属性传递给根 Navigator 组件，用于观察根 Navigator 的路由行为，这一组 NavigatorObserver 对象就是一系列的路由观察者。
+Flutter 中每個 Navigator 物件都接受一個 NavigatorObserver 物件的陣列，在實際開發過程中，我們可以透過根元件 `MaterialApp` (或 `CupertinoPageRoute`)  的 `navigatorObservers` 屬性傳遞給根 Navigator 元件，用於觀察根 Navigator 的路由行為，這一組 NavigatorObserver 物件就是一系列的路由觀察者。
 
 ```dart
  Widget build(BuildContext context) {
@@ -318,12 +318,12 @@ Flutter 中每个 Navigator 对象都接受一个 NavigatorObserver 对象的数
   }
 ```
 
-路由观察者们统一继承自 RouteObserver，范型类型为 PageRoute，这时，它就能监听 CupertinoPageRoute 和 MaterialPageRoute 两种类型的路由了：
+路由觀察者們統一繼承自 RouteObserver，範型型別為 PageRoute，這時，它就能監聽 CupertinoPageRoute 和 MaterialPageRoute 兩種型別的路由了：
 
 ```dart
 class MyRouteObserver extends RouteObserver<PageRoute<dynamic>> {
 
-  // 监听导航器的 push 操作
+  // 監聽導航器的 push 操作
   @override
   void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPush(route, previousRoute);
@@ -332,7 +332,7 @@ class MyRouteObserver extends RouteObserver<PageRoute<dynamic>> {
     }
   }
 
-  // 监听导航器的 replace 操作
+  // 監聽導航器的 replace 操作
   @override
   void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
@@ -341,7 +341,7 @@ class MyRouteObserver extends RouteObserver<PageRoute<dynamic>> {
     }
   }
 
-  // 监听导航器的 pop 操作
+  // 監聽導航器的 pop 操作
   @override
   void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPop(route, previousRoute);
@@ -352,7 +352,7 @@ class MyRouteObserver extends RouteObserver<PageRoute<dynamic>> {
 }
 ```
 
-在我们做实际路由操作，调用 `Navigator` 的 `pop`，`push` 等方法时，就会按照惯例遍历调用这些观察者对象对应的方法：
+在我們做實際路由操作，呼叫 `Navigator` 的 `pop`，`push` 等方法時，就會按照慣例遍歷呼叫這些觀察者物件對應的方法：
 
 ```dart
  Future<T> push<T extends Object>(Route<T> route) {
@@ -363,24 +363,24 @@ class MyRouteObserver extends RouteObserver<PageRoute<dynamic>> {
 }
 ```
 
-这样，观察者模式在 Flutter 路由中又完成了这个非常重要的任务。
+這樣，觀察者模式在 Flutter 路由中又完成了這個非常重要的任務。
 
-## 本文小结
+## 本文小結
 
-本文内容到这里就结束了，观察者模式的场景例子数不胜数，在实际开发中，我们也会经常需要使用到，但我们要记住的是设计模式的运用并不是套用模版，而是要根据实际场景找到最合适的解决方案。
+本文內容到這裡就結束了，觀察者模式的場景例子數不勝數，在實際開發中，我們也會經常需要使用到，但我們要記住的是設計模式的運用並不是套用模版，而是要根據實際場景找到最合適的解決方案。
 
-对于行为型模式来说，观察者模式将被观察者与观察者这两件事物抽象出来，实现了代码上的解藕，在实际场景中，观察者可能是关心某种状态的组件，监听某个事件的监听器等等，整体的设计也会变得更加直观，希望大家能在以后的开发中多多使用。
+對於行為型模式來說，觀察者模式將被觀察者與觀察者這兩件事物抽象出來，實現了程式碼上的解藕，在實際場景中，觀察者可能是關心某種狀態的元件，監聽某個事件的監聽器等等，整體的設計也會變得更加直觀，希望大家能在以後的開發中多多使用。
 
-## 拓展阅读
+## 拓展閱讀
 
-- [《Flutter开发之旅从南到北》](https://item.jd.com/12757223.html) —— 第8章 路由管理 & 第9章 状态管理
-- [观察者模式 wikipedia](https://en.wikipedia.org/wiki/Observer_pattern)
+- [《Flutter開發之旅從南到北》](https://item.jd.com/12757223.html) —— 第8章 路由管理 & 第9章 狀態管理
+- [觀察者模式 wikipedia](https://en.wikipedia.org/wiki/Observer_pattern)
 - [Design Patterns in Dart](https://scottt2.github.io/design-patterns-in-dart/observer/)
-- [什么是Stream](https://juejin.cn/post/6844903686737494023)
-- [简单的应用状态管理](https://flutter.cn/docs/development/data-and-backend/state-mgmt/simple)
+- [什麼是Stream](https://juejin.cn/post/6844903686737494023)
+- [簡單的應用狀態管理](https://flutter.cn/docs/development/data-and-backend/state-mgmt/simple)
 
-## 关于本系列文章
+## 關於本系列文章
 
-Flutter / Dart 设计模式从南到北 (简称 Flutter 设计模式) 系列内容由 CFUG 社区成员、《Flutter 开发之旅从南到北》作者、小米工程师杨加康撰写并发布在 Flutter 社区公众号和 flutter.cn 网站的社区教程栏目。
+Flutter / Dart 設計模式從南到北 (簡稱 Flutter 設計模式) 系列內容由 CFUG 社群成員、《Flutter 開發之旅從南到北》作者、小米工程師楊加康撰寫併發布在 Flutter 社群公眾號和 flutter.cn 網站的社群課程節目。
 
-本系列预计两周发布一篇，着重向开发者介绍 Flutter 应用开发中常见的设计模式以及开发方式，旨在推进 Flutter / Dart 语言特性的普及，以及帮助开发者更高效地开发出高质量、可维护的 Flutter 应用。
+本系列預計兩週釋出一篇，著重向開發者介紹 Flutter 應用開發中常見的設計模式以及開發方式，旨在推進 Flutter / Dart 語言特性的普及，以及幫助開發者更高效地開發出高品質、可維護的 Flutter 應用。

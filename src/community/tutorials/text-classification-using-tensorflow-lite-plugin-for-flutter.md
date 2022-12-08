@@ -1,53 +1,53 @@
 ---
-title: 在 Flutter 中使用 TensorFlow Lite 插件实现文字分类
+title: 在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類
 ---
 
 ![](https://devrel.andfun.cn/devrel/posts/2020/09/a21e5b12e71bb.png)
 
-文/ Amish Garg，Google Summer of Code(GSoC) 实习生，译/ Yuan，谷创字幕组，审校/ Xinlei、Lynn Wang，CFUG 社区。
+文/ Amish Garg，Google Summer of Code(GSoC) 實習生，譯/ Yuan，谷創字幕組，審校/ Xinlei、Lynn Wang，CFUG 社群。
 
-如果您希望能有一种简单、高效且灵活的方式把 TensorFlow 模型集成到 Flutter 应用里，那请您一定不要错过我们今天介绍的这个全新插件 [tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter)。这个插件的开发者是 Google Summer of Code(GSoC) 的一名实习生 Amish Garg，本文来自他在 Medium 上的一篇文章[《在 Flutter 中使用 TensorFlow Lite 插件实现文字分类》](https://medium.com/@am15hg/text-classification-using-tensorflow-lite-plugin-for-flutter-3b92f6655982)。
+如果您希望能有一種簡單、高效且靈活的方式把 TensorFlow 模型整合到 Flutter 應用裡，那請您一定不要錯過我們今天介紹的這個全新外掛 [tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter)。這個外掛的開發者是 Google Summer of Code(GSoC) 的一名實習生 Amish Garg，本文來自他在 Medium 上的一篇文章[《在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類》](https://medium.com/@am15hg/text-classification-using-tensorflow-lite-plugin-for-flutter-3b92f6655982)。
 
-[tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter) 插件的核心特性：
+[tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter) 外掛的核心特性：
 
-* 它提供了与 TFLite Java 和 Swift API 相似的 Dart API，所以其灵活性和在这些平台上的效果是完全一样的
-* 通过 dart:ffi 直接与 TensorFlow Lite C API 相绑定，所以它比其它平台集成方式更加高效。
-* 无需编写特定平台的代码。
-* 通过 NNAPI 提供加速支持，在 Android 上使用 GPU Delegate，在 iOS 上使用 Metal Delegate。
+* 它提供了與 TFLite Java 和 Swift API 相似的 Dart API，所以其靈活性和在這些平臺上的效果是完全一樣的
+* 透過 dart:ffi 直接與 TensorFlow Lite C API 相繫結，所以它比其它平台整合方式更加高效。
+* 無需編寫特定平台的程式碼。
+* 透過 NNAPI 提供加速支援，在 Android 上使用 GPU Delegate，在 iOS 上使用 Metal Delegate。
 
-本文中，我们将使用 tflite_flutter 构建一个 **文字分类 Flutter 应用** 带您体验 tflite_flutter 插件，首先从新建一个 Flutter 项目 `text_classification_app` 开始。
+本文中，我們將使用 tflite_flutter 建構一個 **文字分類 Flutter 應用** 帶您體驗 tflite_flutter 外掛，首先從新建一個 Flutter 專案 `text_classification_app` 開始。
 
 ### （很重要）初始化配置
 
-#### Linux 和 Mac 用户
+#### Linux 和 Mac 使用者
 
 
-将 [`install.sh`](https://github.com/am15h/tflite_flutter_plugin/blob/master/install.sh) 拷贝到您应用的根目录，然后在根目录执行 `sh install.sh`，本例中就是目录 `text_classification_app/`。
+將 [`install.sh`](https://github.com/am15h/tflite_flutter_plugin/blob/master/install.sh) 複製到您應用的根目錄，然後在根目錄執行 `sh install.sh`，本例中就是目錄 `text_classification_app/`。
   
-#### Windows 用户
+#### Windows 使用者
 
-将 [install.bat](https://github.com/am15h/tflite_flutter_plugin/blob/master/install.bat) 文件拷贝到应用根目录，并在根目录运行批处理文件 `install.bat`，本例中就是目录 `text_classification_app/`。
+將 [install.bat](https://github.com/am15h/tflite_flutter_plugin/blob/master/install.bat) 檔案複製到應用根目錄，並在根目錄執行批處理檔案 `install.bat`，本例中就是目錄 `text_classification_app/`。
 
-它会自动从 [release assets](https://github.com/am15h/tflite_flutter_plugin/releases) 下载最新的二进制资源，然后把它放到指定的目录下。
+它會自動從 [release assets](https://github.com/am15h/tflite_flutter_plugin/releases) 下載最新的二進位制資源，然後把它放到指定的目錄下。
 
-请点击到 README 文件里查看更多 [关于初始配置的信息](https://github.com/am15h/tflite_flutter_plugin#important-initial-setup)。
+請點選到 README 檔案裡檢視更多 [關於初始配置的資訊](https://github.com/am15h/tflite_flutter_plugin#important-initial-setup)。
 
-### 获取插件
+### 獲取外掛
 
-在 `pubspec.yaml` 添加 `tflite_flutter: ^<latest_version>` （[详情](https://pub.flutter-io.cn/packages/tflite_flutter#-installing-tab-)）。
+在 `pubspec.yaml` 新增 `tflite_flutter: ^<latest_version>` （[詳情](https://pub.flutter-io.cn/packages/tflite_flutter#-installing-tab-)）。
 
-### 下载模型
+### 下載模型
 
-要在移动端上运行 TensorFlow 训练模型，我们需要使用 `.tflite` 格式。如果需要了解如何将 TensorFlow 训练的模型转换为 `.tflite` 格式，请参阅[官方指南](https://tensorflow.google.cn/lite/convert/python_api)。
+要在移動端上執行 TensorFlow 訓練模型，我們需要使用 `.tflite` 格式。如果需要了解如何將 TensorFlow 訓練的模型轉換為 `.tflite` 格式，請參閱[官方指南](https://tensorflow.google.cn/lite/convert/python_api)。
 
-这里我们准备使用 TensorFlow 官方站点上预训练的文字分类模型，可[从这里下载](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification.tflite)。
+這裡我們準備使用 TensorFlow 官方站點上預訓練的文字分類模型，可[從這裡下載](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification.tflite)。
 
 
-> 该预训练的模型可以预测当前段落的情感是积极还是消极。它是基于来自 Mass 等人的  [Large Movie Review Dataset v1.0](http://ai.stanford.edu/~amaas/data/sentiment/) 数据集进行训练的。数据集由基于 IMDB 电影评论所标记的积极或消极标签组成，[点击查看更多信息](https://tensorflow.google.cn/lite/models/text_classification/overview)。
+> 該預訓練的模型可以預測當前段落的情感是積極還是消極。它是基於來自 Mass 等人的  [Large Movie Review Dataset v1.0](http://ai.stanford.edu/~amaas/data/sentiment/) 資料集進行訓練的。資料集由基於 IMDB 電影評論所標記的積極或消極標籤組成，[點選檢視更多資訊](https://tensorflow.google.cn/lite/models/text_classification/overview)。
 
-将 [`text_classification.tflite`](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification.tflite) 和 [`text_classification_vocab.txt`](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification_vocab.txt) 文件拷贝到 text_classification_app/assets/ 目录下。
+將 [`text_classification.tflite`](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification.tflite) 和 [`text_classification_vocab.txt`](https://files.flutter-io.cn/posts/flutter-cn/2020/tensorflow-lite-plugin/text_classification_vocab.txt) 檔案複製到 text_classification_app/assets/ 目錄下。
 
-在 `pubspec.yaml` 文件中添加 `assets/`：
+在 `pubspec.yaml` 檔案中新增 `assets/`：
 
 <!-- skip -->
 ```
@@ -55,23 +55,23 @@ assets:
   - assets/
 ```
 
-现在万事俱备，我们可以开始写代码了。 🚀
+現在萬事俱備，我們可以開始寫程式碼了。 🚀
 
-### 实现分类器
+### 實現分類器
 
-### 预处理
+### 預處理
 
-正如 [文字分类模型页面](https://tensorflow.google.cn/lite/models/text_classification/overview#how_it_works) 里所提到的。可以按照下面的步骤使用模型对段落进行分类：
+正如 [文字分類模型頁面](https://tensorflow.google.cn/lite/models/text_classification/overview#how_it_works) 裡所提到的。可以按照下面的步驟使用模型對段落進行分類：
 
-1. 对段落文本进行分词，然后使用预定义的词汇集将它转换为一组词汇 ID；
-2. 将生成的这组词汇 ID 输入 TensorFlow Lite 模型里；
-3. 从模型的输出里获取当前段落是积极或者是消极的概率值。
+1. 對段落文字進行分詞，然後使用預定義的詞彙集將它轉換為一組詞彙 ID；
+2. 將產生的這組詞彙 ID 輸入 TensorFlow Lite 模型裡；
+3. 從模型的輸出裡獲取當前段落是積極或者是消極的機率值。
 
-我们首先写一个方法对原始字符串进行分词，其中使用 [`text_classification_vocab.txt`](https://github.com/am15h/tflite_flutter_plugin/blob/master/example/assets/text_classification_vocab.txt) 作为词汇集。
+我們首先寫一個方法對原始字串進行分詞，其中使用 [`text_classification_vocab.txt`](https://github.com/am15h/tflite_flutter_plugin/blob/master/example/assets/text_classification_vocab.txt) 作為詞彙集。
 
-在 `lib/` 文件夹下创建一个新文件 `classifier.dart`。 
+在 `lib/` 資料夾下建立一個新檔案 `classifier.dart`。 
 
-这里先写代码加载 `text_classification_vocab.txt` 到字典里。
+這裡先寫程式碼載入 `text_classification_vocab.txt` 到字典裡。
 
 <!-- skip -->
 ```dart
@@ -101,9 +101,9 @@ class Classifier {
 }
 ```
 
-加载字典
+載入字典
 
-现在我们来编写一个函数对原始字符串进行分词。
+現在我們來編寫一個函式對原始字串進行分詞。
 
 <!-- skip -->
 ```dart
@@ -112,7 +112,7 @@ import 'package:flutter/services.dart';
 class Classifier {
   final _vocabFile = 'text_classification_vocab.txt';
 
-  // 单句的最大长度
+  // 單句的最大長度
   final int _sentenceLen = 256;
 
   final String start = '<START>';
@@ -123,10 +123,10 @@ class Classifier {
   
   List<List<double>> tokenizeInputText(String text) {
     
-    // 使用空格进行分词
+    // 使用空格進行分詞
     final toks = text.split(' ');
     
-    // 创建一个列表，它的长度等于 _sentenceLen，并且使用 <pad> 的对应的字典值来填充
+    // 建立一個列表，它的長度等於 _sentenceLen，並且使用 <pad> 的對應的字典值來填充
     var vec = List<double>.filled(_sentenceLen, _dict[pad].toDouble());
 
     var index = 0;
@@ -134,7 +134,7 @@ class Classifier {
       vec[index++] = _dict[start].toDouble();
     }
 
-    // 对于句子里的每个单词在 dict 里找到相应的 index 值
+    // 對於句子裡的每個單詞在 dict 裡找到相應的 index 值
     for (var tok in toks) {
       if (index > _sentenceLen) {
         break;
@@ -144,7 +144,7 @@ class Classifier {
           : _dict[unk].toDouble();
     }
 
-    // 按照我们的解释器输入 tensor 所需的形状 [1,256] 返回 List<List<double>>
+    // 按照我們的直譯器輸入 tensor 所需的形狀 [1,256] 返回 List<List<double>>
     return [vec];
   }
 }
@@ -152,24 +152,24 @@ class Classifier {
 
 ```
 
-分词
+分詞
 
-### 使用 tflite_flutter 进行分析
+### 使用 tflite_flutter 進行分析
 
-这是本文的主体部分，这里我们会讨论 tflite_flutter 插件的用途。
+這是本文的主體部分，這裡我們會討論 tflite_flutter 外掛的用途。
 
-这里的分析是指基于输入数据在设备上使用 TensorFlow Lite 模型的处理过程。要使用 TensorFlow Lite 模型进行分析，需要通过 **解释器** 来运行它，[了解更多](https://tensorflow.google.cn/lite/guide/inference)。
+這裡的分析是指基於輸入資料在裝置上使用 TensorFlow Lite 模型的處理過程。要使用 TensorFlow Lite 模型進行分析，需要透過 **直譯器** 來執行它，[瞭解更多](https://tensorflow.google.cn/lite/guide/inference)。
 
-**创建解释器，加载模型**
+**建立直譯器，載入模型**
 
-tflite_flutter 提供了一个方法直接通过资源创建解释器。
+tflite_flutter 提供了一個方法直接透過資源建立直譯器。
 
 <!-- skip -->
 ```
 static Future<Interpreter> fromAsset(String assetName, {InterpreterOptions options})
 ```
 
-由于我们的模型在 `assets/` 文件夹下，需要使用上面的方法来创建解析器。对于 InterpreterOptions 的相关说明，请 [参考这里](https://github.com/am15h/tflite_flutter_plugin/blob/master/lib/src/interpreter_options.dart)。
+由於我們的模型在 `assets/` 資料夾下，需要使用上面的方法來建立解析器。對於 InterpreterOptions 的相關說明，請 [參考這裡](https://github.com/am15h/tflite_flutter_plugin/blob/master/lib/src/interpreter_options.dart)。
 
 <!-- skip -->
 ```dart
@@ -179,20 +179,20 @@ import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 class Classifier {
-  // 模型文件的名称
+  // 模型檔案的名稱
   final _modelFile = 'text_classification.tflite';
 
-  // TensorFlow Lite 解释器对象
+  // TensorFlow Lite 直譯器物件
   Interpreter _interpreter;
 
   Classifier() {
-    // 当分类器初始化以后加载模型
+    // 當分類器初始化以後載入模型
     _loadModel();
   }
 
   void _loadModel() async {
     
-    // 使用 Interpreter.fromAsset 创建解释器
+    // 使用 Interpreter.fromAsset 建立直譯器
     _interpreter = await Interpreter.fromAsset(_modelFile);
     print('Interpreter loaded successfully');
   }
@@ -201,36 +201,36 @@ class Classifier {
 
 ```
 
-创建解释器的代码
+建立直譯器的程式碼
 
 
-如果您不希望将模型放在 `assets/` 目录下，tflite_flutter 还提供了工厂构造函数创建解释器，[更多信息](https://github.com/am15h/tflite_flutter_plugin#creating-the-interpreter)。
+如果您不希望將模型放在 `assets/` 目錄下，tflite_flutter 還提供了工廠建構函式建立直譯器，[更多資訊](https://github.com/am15h/tflite_flutter_plugin#creating-the-interpreter)。
 
-**我们开始进行分析！**
+**我們開始進行分析！**
 
-现在用下面方法启动分析：
+現在用下面方法啟動分析：
 
 <!-- skip -->
 ```
 void run(Object input, Object output);
 ```
 
-注意这里的方法和 Java API 中的是一样的。
+注意這裡的方法和 Java API 中的是一樣的。
 
-`Object input` 和 `Object output` 必须是和 Input Tensor 与 Output Tensor 维度相同的列表。
+`Object input` 和 `Object output` 必須是和 Input Tensor 與 Output Tensor 維度相同的列表。
 
-要查看 input tensors 和 output tensors 的维度，可以使用如下代码：
+要檢視 input tensors 和 output tensors 的維度，可以使用如下程式碼：
 
 <!-- skip -->
 ```dart
 _interpreter.allocateTensors();
-// 打印 input tensor 列表
+// 列印 input tensor 列表
 print(_interpreter.getInputTensors());
-// 打印 output tensor 列表
+// 列印 output tensor 列表
 print(_interpreter.getOutputTensors());
 ```
 
-在本例中 text_classification 模型的输出如下：
+在本例中 text_classification 模型的輸出如下：
 
 <!-- skip -->
 ```
@@ -240,23 +240,23 @@ OutputTensorList:
 [Tensor{_tensor: Pointer<TfLiteTensor>: address=0xbffcf140, name: dense_1/Softmax, type: TfLiteType.float32, shape: [1, 2], data:  8]
 ```
 
-现在，我们实现分类方法，该方法返回值为 1 表示积极，返回值为 0 表示消极。
+現在，我們實現分類方法，該方法返回值為 1 表示積極，返回值為 0 表示消極。
 
 <!-- skip -->
 ```dart
 int classify(String rawText) {
     
-    //  tokenizeInputText 返回形状为 [1, 256] 的 List<List<double>>
+    //  tokenizeInputText 返回形狀為 [1, 256] 的 List<List<double>>
     List<List<double>> input = tokenizeInputText(rawText);
    
-    // [1,2] 形状的输出
+    // [1,2] 形狀的輸出
     var output = List<double>(2).reshape([1, 2]);
     
-    // run 方法会运行分析并且存储输出的值
+    // run 方法會執行分析並且儲存輸出的值
     _interpreter.run(input, output);
 
     var result = 0;
-    // 如果输出中第一个元素的值比第二个大，那么句子就是消极的
+    // 如果輸出中第一個元素的值比第二個大，那麼句子就是消極的
     
     if ((output[0][0] as double) > (output[0][1] as double)) {
       result = 0;
@@ -268,25 +268,25 @@ int classify(String rawText) {
 
 ```
 
-用于分析的代码
+用於分析的程式碼
 
-在 tflite_flutter 的 extension ListShape on List 下面定义了一些使用的扩展：
+在 tflite_flutter 的 extension ListShape on List 下面定義了一些使用的擴充：
 
 <!-- skip -->
 ```dart
-// 将提供的列表进行矩阵变形，输入参数为元素总数 // 保持相等 
+// 將提供的列表進行矩陣變形，輸入引數為元素總數 // 保持相等 
 // 用法：List(400).reshape([2,10,20]) 
 // 返回  List<dynamic>
 
 List reshape(List<int> shape)
-// 返回列表的形状
+// 返回列表的形狀
 List<int> get shape
-// 返回列表任意形状的元素数量
+// 返回列表任意形狀的元素數量
 int get computeNumElements
 
 ```
 
-最终的 `classifier.dart` 应该是这样的：
+最終的 `classifier.dart` 應該是這樣的：
 
 <!-- skip -->
 ```dart
@@ -296,11 +296,11 @@ import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 class Classifier {
-  // 模型文件的名称
+  // 模型檔案的名稱
   final _modelFile = 'text_classification.tflite';
   final _vocabFile = 'text_classification_vocab.txt';
 
-  // 语句的最大长度
+  // 陳述式的最大長度
   final int _sentenceLen = 256;
 
   final String start = '<START>';
@@ -309,17 +309,17 @@ class Classifier {
 
   Map<String, int> _dict;
 
-  // TensorFlow Lite 解释器对象
+  // TensorFlow Lite 直譯器物件
   Interpreter _interpreter;
 
   Classifier() {
-    // 当分类器初始化的时候加载模型
+    // 當分類器初始化的時候載入模型
     _loadModel();
     _loadDictionary();
   }
 
   void _loadModel() async {
-    // 使用 Intepreter.fromAsset 创建解析器
+    // 使用 Intepreter.fromAsset 建立解析器
     _interpreter = await Interpreter.fromAsset(_modelFile);
     print('Interpreter loaded successfully');
   }
@@ -337,17 +337,17 @@ class Classifier {
   }
 
   int classify(String rawText) {
-    // tokenizeInputText  返回形状为 [1, 256] 的 List<List<double>>
+    // tokenizeInputText  返回形狀為 [1, 256] 的 List<List<double>>
     List<List<double>> input = tokenizeInputText(rawText);
 
-    //输出形状为 [1, 2] 的矩阵
+    //輸出形狀為 [1, 2] 的矩陣
     var output = List<double>(2).reshape([1, 2]);
 
-    // run 方法会运行分析并且将结果存储在 output 中。
+    // run 方法會執行分析並且將結果儲存在 output 中。
     _interpreter.run(input, output);
 
     var result = 0;
-    // 如果第一个元素的输出比第二个大，那么当前语句是消极的
+    // 如果第一個元素的輸出比第二個大，那麼當前陳述式是消極的
 
     if ((output[0][0] as double) > (output[0][1] as double)) {
       result = 0;
@@ -358,10 +358,10 @@ class Classifier {
   }
 
   List<List<double>> tokenizeInputText(String text) {
-    // 用空格分词
+    // 用空格分詞
     final toks = text.split(' ');
 
-    // 创建一个列表，它的长度等于 _sentenceLen，并且使用 <pad> 对应的字典值来填充
+    // 建立一個列表，它的長度等於 _sentenceLen，並且使用 <pad> 對應的字典值來填充
     var vec = List<double>.filled(_sentenceLen, _dict[pad].toDouble());
 
     var index = 0;
@@ -369,7 +369,7 @@ class Classifier {
       vec[index++] = _dict[start].toDouble();
     }
 
-    // 对于句子中的每个单词，在 dict 中找到相应的 index 值
+    // 對於句子中的每個單詞，在 dict 中找到相應的 index 值
     for (var tok in toks) {
       if (index > _sentenceLen) {
         break;
@@ -379,59 +379,59 @@ class Classifier {
           : _dict[unk].toDouble();
     }
 
-    // 按照我们的解释器输入 tensor 所需的形状 [1,256] 返回 List<List<double>>
+    // 按照我們的直譯器輸入 tensor 所需的形狀 [1,256] 返回 List<List<double>>
     return [vec];
   }
 }
 
 ```
 
-现在，可以根据您的喜好实现 UI 的代码，分类器的用法比较简单。
+現在，可以根據您的喜好實現 UI 的程式碼，分類器的用法比較簡單。
 
 <!-- skip -->
 ```dart
-// 创建 Classifier 对象
+// 建立 Classifier 物件
 Classifer _classifier = Classifier();
-// 将目标语句作为参数，调用 classify 方法
+// 將目標陳述式作為引數，呼叫 classify 方法
 _classifier.classify("I liked the movie");
-// 返回 1 （积极的）
+// 返回 1 （積極的）
 _classifier.classify("I didn't liked the movie");
-// 返回 0 （消极的）
+// 返回 0 （消極的）
 ```
 
-请在这里查阅完整代码：[Text Classification Example app with UI](https://github.com/am15h/tflite_flutter_plugin/tree/master/example/)。
+請在這裡查閱完整程式碼：[Text Classification Example app with UI](https://github.com/am15h/tflite_flutter_plugin/tree/master/example/)。
 
 ![Text Classification Example App](https://devrel.andfun.cn/devrel/posts/2020/09/3547a17bcd6eb.gif)
 
-文字分类示例应用
+文字分類範例應用
 
-了解更多关于 tflite_flutter 插件的信息，请访问 GitHub repo: [**am15h/tflite_flutter_plugin**](https://github.com/am15h/tflite_flutter_plugin)。
+瞭解更多關於 tflite_flutter 外掛的資訊，請存取 GitHub repo: [**am15h/tflite_flutter_plugin**](https://github.com/am15h/tflite_flutter_plugin)。
 
 ### 答疑
 
-##### 问：[`tflite_flutter`](https://pub.flutter-io.cn/packages/tflite_flutter) 和 [`tflite v1.0.5`](https://pub.flutter-io.cn/packages/tflite) 有哪些区别？
+##### 問：[`tflite_flutter`](https://pub.flutter-io.cn/packages/tflite_flutter) 和 [`tflite v1.0.5`](https://pub.flutter-io.cn/packages/tflite) 有哪些區別？
 
-`tflite v1.0.5` 侧重于为特定用途的应用场景提供高级特性，比如图片分类、物体检测等等。而新的 tflite_flutter 则提供了与 Java API 相同的特性和灵活性，而且可以用于任何 tflite 模型中，它还支持 delegate。
+`tflite v1.0.5` 側重於為特定用途的應用場景提供高階特性，比如圖片分類、物體檢測等等。而新的 tflite_flutter 則提供了與 Java API 相同的特性和靈活性，而且可以用於任何 tflite 模型中，它還支援 delegate。
 
-由于使用 dart:ffi (dart ↔️ (ffi) ↔️ C)，tflite_flutter 非常快 (拥有低延时)。而 tflite 使用平台集成 (dart ↔️ platform-channel ↔️ (Java/Swift) ↔️ JNI ↔️ C)。
+由於使用 dart:ffi (dart ↔️ (ffi) ↔️ C)，tflite_flutter 非常快 (擁有低延時)。而 tflite 使用平台整合 (dart ↔️ platform-channel ↔️ (Java/Swift) ↔️ JNI ↔️ C)。
 
-##### 问：如何使用 tflite_flutter 创建图片分类应用？有没有类似 [TensorFlow Lite Android Support Library](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/lite/experimental/support/java/README.md) 的依赖包？
+##### 問：如何使用 tflite_flutter 建立圖片分類應用？有沒有類似 [TensorFlow Lite Android Support Library](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/lite/experimental/support/java/README.md) 的相依套件？
 
-更新（07/01/2020）: TFLite Flutter Helper 开发库已发布。
+更新（07/01/2020）: TFLite Flutter Helper 開發庫已釋出。
 
-[TensorFlow Lite Flutter Helper Library](https://github.com/am15h/tflite_flutter_helper) 为处理和控制输入及输出的 TFLite 模型提供了易用的架构。它的 API 设计和文档与 TensorFlow Lite Android Support Library 是一样的。更多信息请 [参考这里](https://github.com/am15h/tflite_flutter_helper#tensorflow-lite-flutter-helper-library)。
+[TensorFlow Lite Flutter Helper Library](https://github.com/am15h/tflite_flutter_helper) 為處理和控制輸入及輸出的 TFLite 模型提供了易用的架構。它的 API 設計和文件與 TensorFlow Lite Android Support Library 是一樣的。更多資訊請 [參考這裡](https://github.com/am15h/tflite_flutter_helper#tensorflow-lite-flutter-helper-library)。
 
-以上是本文的全部内容，欢迎大家对 tflite_flutter 插件进行反馈，请在这里 [上报 bug 或提出功能需求](https://github.com/am15h/tflite_flutter_plugin/issues)。
+以上是本文的全部內容，歡迎大家對 tflite_flutter 外掛進行反饋，請在這裡 [上報 bug 或提出功能需求](https://github.com/am15h/tflite_flutter_plugin/issues)。
 
-谢谢关注。
+謝謝關注。
 
-感谢 Michael Thomsen。
+感謝 Michael Thomsen。
 
-### 延展阅读
+### 延展閱讀
 
-如果需要关注更多 TensorFlow 和 Google AI 相关内容，请查阅下面资料
-- [TensorFlow 微信公众号](https://mp.weixin.qq.com/s/XCZ3xOZa7x1lfdoiHOLqrw)
-- [TensorFlow 官方文档](https://tensorflow.google.cn)
-- [最新简单粗暴 TF 手册](https://tf.wiki)
-- [TensorFlow 交流论坛](https://discuss.tf.wiki)
+如果需要關注更多 TensorFlow 和 Google AI 相關內容，請查閱下面資料
+- [TensorFlow 微信公眾號](https://mp.weixin.qq.com/s/XCZ3xOZa7x1lfdoiHOLqrw)
+- [TensorFlow 官方文件](https://tensorflow.google.cn)
+- [最新簡單粗暴 TF 手冊](https://tf.wiki)
+- [TensorFlow 交流論壇](https://discuss.tf.wiki)
 - [TensorFlow Codelabs](https://codelabs.tf.wiki)

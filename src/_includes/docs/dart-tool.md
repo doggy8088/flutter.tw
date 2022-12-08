@@ -12,14 +12,14 @@
   commands originate from the same `bin` directory and are
   therefore compatible.
 
-  自 1.19.0 dev 版开始，`dart` 命令就直接包含在 Flutter SDK 里了，
-  这样可以更轻松的运行 Dart 命令行应用。
-  下载 Flutter SDK 的时候也将同时包含兼容版本的 Dart SDK，
-  但是如果你已经单独的下载了 Dart SDK，需要请你确保
-  Flutter SDK 里包含的 `dart` 在 `PATH` 环境变量里靠前的位置，
-  因为这两个渠道下载的 `dart` 可能并不兼容。
-  下述命令将教你判断 `flutter` 与 `dart` 命令是否来自于相同的 `bin` 目录，
-  以及它们是否兼容。
+  自 1.19.0 dev 版開始，`dart` 命令就直接包含在 Flutter SDK 裡了，
+  這樣可以更輕鬆的執行 Dart 命令列應用。
+  下載 Flutter SDK 的時候也將同時包含相容版本的 Dart SDK，
+  但是如果你已經單獨的下載了 Dart SDK，需要請你確保
+  Flutter SDK 裡包含的 `dart` 在 `PATH` 環境變數裡靠前的位置，
+  因為這兩個渠道下載的 `dart` 可能並不相容。
+  下述命令將教你判斷 `flutter` 與 `dart` 命令是否來自於相同的 `bin` 目錄，
+  以及它們是否相容。
 
   ```terminal
   $ which flutter dart
@@ -36,12 +36,12 @@
   should show that the `flutter` and `dart` commands
   now come from the same directory.
 
-  如上命令行返回的内容所示，
-  看起来 `flutter` 和 `dart` 并非来自同一 `bin` 目录，
-  在上面的这个例子里，我们需要更新 `PATH` 环境变量，
-  将 `<path-to-flutter-sdk>/bin` 放在 `/usr/local/bin` 之前。
-  修改完并使命令行窗口生效之后，再次运行 `which` 命令，
-  就可以发现，`flutter` 和 `dart` 位于同一目录了：
+  如上命令列返回的內容所示，
+  看起來 `flutter` 和 `dart` 並非來自同一 `bin` 目錄，
+  在上面的這個例子裡，我們需要更新 `PATH` 環境變數，
+  將 `<path-to-flutter-sdk>/bin` 放在 `/usr/local/bin` 之前。
+  修改完並使命令列視窗生效之後，再次執行 `which` 命令，
+  就可以發現，`flutter` 和 `dart` 位於同一目錄了：
 
   ```terminal
   $ which flutter dart
@@ -52,8 +52,8 @@
   To learn more about the `dart` command, run `dart -h`
   from the command line, or see the [dart tool][] page.
 
-  了解更多关于 `dart` 命令的内容，可以在命令行运行 `dart -h`，
-  或者在 Dart 文档查看 [`dart` 工具][dart tool] 了解更多。
+  瞭解更多關於 `dart` 命令的內容，可以在命令列執行 `dart -h`，
+  或者在 Dart 文件檢視 [`dart` 工具][dart tool] 瞭解更多。
 
 {{site.alert.end}}
 

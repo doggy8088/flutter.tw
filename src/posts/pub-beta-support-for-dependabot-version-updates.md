@@ -1,27 +1,27 @@
 ---
-title: Dependabot 开始支持 pub package 版本检测
+title: Dependabot 開始支援 pub package 版本檢測
 toc: true
 ---
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2022/pub-beta-support-for-dependabot-version-updates/pub-dependabot-hero.png)
 
-今年年初，我们发布了 [Flutter 2022 产品路线图](https://flutter.cn/posts/flutter-2022-roadmap)，其中「基础设施建设」这部分提到：2022 年 Flutter 团队将增加对供应链的安全的投入，目的是达到符合基础设施 SLSA 4 级别中描述的要求。
+今年年初，我們釋出了 [Flutter 2022 產品路線圖](https://flutter.cn/posts/flutter-2022-roadmap)，其中「基礎設施建設」這部分提到：2022 年 Flutter 團隊將增加對供應鏈的安全的投入，目的是達到符合基礎設施 SLSA 4 級別中描述的要求。
 
-## 供应链安全
+## 供應鏈安全
 
-大多数开源项目依赖了数百个开源依赖项<sup>[[1]](https://go2.gdsub.com/ospd "GitHub 文档 - 供应链安全: 大多数开源项目依赖了数百个开源依赖项")</sup>，随着更多开源项目被更广泛地使用，这些依赖项给其使用者们带来了安全隐患：如果我们使用的开源项目的依赖项受到攻击和破坏该怎么办？这将让你的直接用户 (软件的最终使用者) 蒙受供应链攻击带来的风险。
+大多數開源專案依賴了數百個開源依賴項<sup>[[1]](https://go2.gdsub.com/ospd "GitHub 文件 - 供應鏈安全: 大多數開源專案依賴了數百個開源依賴項")</sup>，隨著更多開源專案被更廣泛地使用，這些依賴項給其使用者們帶來了安全隱患：如果我們使用的開源專案的依賴項受到攻擊和破壞該怎麼辦？這將讓你的直接使用者 (軟體的最終使用者) 蒙受供應鏈攻擊帶來的風險。
 
-供应链攻击是一种新兴的、针对软件开发者和供应商的安全威胁<sup>[[2]](https://go2.gdsub.com/scad "Microsoft 文档 - 供应链攻击: 供应链攻击是一种新兴的、针对软件开发者和供应商的安全威胁")</sup>，攻击者会通过寻找不安全的网络协议、不受保护的服务器以及不安全的代码等安全漏洞并更改代码，导致使用它的程序在构建和更新的过程中被加入隐藏的恶意代码。
+供應鏈攻擊是一種新興的、針對軟體開發者和供應商的安全威脅<sup>[[2]](https://go2.gdsub.com/scad "Microsoft 文件 - 供應鏈攻擊: 供應鏈攻擊是一種新興的、針對軟體開發者和供應商的安全威脅")</sup>，攻擊者會透過尋找不安全的網路協議、不受保護的伺服器以及不安全的程式碼等安全漏洞並更改程式碼，導致使用它的程式在建構和更新的過程中被加入隱藏的惡意程式碼。
 
-为了确保依赖项供应链的安全性，开发者们需要确保所有依赖项和工具定期更新到最新稳定版本，因为这些新的版本通常会包含最新功能和已知漏洞的安全修补程序。依赖项包括依赖的代码、使用的二进制文件、使用的工具以及其他组件等<sup>[[3]](https://docs.microsoft.com/zh-cn/nuget/concepts/security-best-practices#dependency-versions "Microsoft 文档 - 关于安全软件供应链的最佳做法")</sup>。在 GitHub 上托管的开源代码可以使用 GitHub 提供的代码扫描功能来查找项目中的安全漏洞和错误，并使用 Dependabot 维护项目的依赖项，以确保项目自动更新到依赖项的最新版本。
+為了確保依賴項供應鏈的安全性，開發者們需要確保所有依賴項和工具定期更新到最新穩定版本，因為這些新的版本通常會包含最新功能和已知漏洞的安全修補程式。依賴項包括依賴的程式碼、使用的二進位制檔案、使用的工具以及其他元件等<sup>[[3]](https://docs.microsoft.com/zh-cn/nuget/concepts/security-best-practices#dependency-versions "Microsoft 文件 - 關於安全軟體供應鏈的最佳做法")</sup>。在 GitHub 上託管的開原始碼可以使用 GitHub 提供的程式碼掃描功能來查詢專案中的安全漏洞和錯誤，並使用 Dependabot 維護專案的依賴項，以確保專案自動更新到依賴項的最新版本。
 
-## 启用 package 版本检测
+## 啟用 package 版本檢測
 
-对 Dart package 的支持可以回溯至 19 年 4 月初，当时的 Flutter 刚刚发布到 [v1.2 稳定版](https://flutter.cn/posts/launching-flutter-12-at-mobile-world)；同年 5 月，Dependabot 被 GitHub 收购并免费为开发者提供服务。有一位社区成员在 [dependabot-core#2166](https://github.com/dependabot/dependabot-core/issues/2166 "GitHub 议题: dependabot-core#2166") 这个议题 (issue) 中发起提问，希望 Dependabot 加入对 Flutter / Dart 的支持。通过 Dependabot 与 Dart 团队的共同努力，包括后期为 Flutter 命令行工具加入了一些对 package 版本检测等功能，最后在今年 3 月 22 日开启封闭测试，并于 4 月 5 日进行公开的 beta 测试。
+對 Dart package 的支援可以回溯至 19 年 4 月初，當時的 Flutter 剛剛釋出到 [v1.2 穩定版](https://flutter.cn/posts/launching-flutter-12-at-mobile-world)；同年 5 月，Dependabot 被 GitHub 收購併免費為開發者提供服務。有一位社群成員在 [dependabot-core#2166](https://github.com/dependabot/dependabot-core/issues/2166 "GitHub 議題: dependabot-core#2166") 這個議題 (issue) 中發起提問，希望 Dependabot 加入對 Flutter / Dart 的支援。透過 Dependabot 與 Dart 團隊的共同努力，包括後期為 Flutter 命令列工具加入了一些對 package 版本檢測等功能，最後在今年 3 月 22 日開啟封閉測試，並於 4 月 5 日進行公開的 beta 測試。
 
-目前，Dependabot 版本更新对 pub package 生态的支持已进入测试阶段，开发者们可以使用 Dependabot 为他们的 Flutter 或 Dart 项目加入 package 的更新检测。目前仅支持已发布到 pub.dev 网站上的 package。
+目前，Dependabot 版本更新對 pub package 生態的支援已進入測試階段，開發者們可以使用 Dependabot 為他們的 Flutter 或 Dart 專案加入 package 的更新檢測。目前僅支援已釋出到 pub.dev 網站上的 package。
 
-如果想在自己的 Dart 或 Flutter 仓库测试 Dependabot 版本更新检测，需要创建 `.github/dependabot.yml` 文件并添加如下内容：
+如果想在自己的 Dart 或 Flutter 儲存庫測試 Dependabot 版本更新檢測，需要建立 `.github/dependabot.yml` 檔案並新增如下內容：
 
 ```yaml
 version: 2
@@ -33,22 +33,22 @@ updates:
       interval: "weekly"
 ```
 
-请确保这两个参数设定: `package-ecosystem: "pub"` 以及 `enable-beta-ecosystems: true`。
+請確保這兩個引數設定: `package-ecosystem: "pub"` 以及 `enable-beta-ecosystems: true`。
 
 ## 已知限制
 
-目前的 pub package 版本检测支持仍处于测试阶段，并包含了一些已知的限制，例如 [Dependabot 安全更新](https://docs.github.com/cn/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates "GitHub 文档 - Dependabot 安全更新功能说明") 目前尚不支持，将在未来发布的版本中加入对其的支持。
+目前的 pub package 版本檢測支援仍處於測試階段，幷包含了一些已知的限制，例如 [Dependabot 安全更新](https://docs.github.com/cn/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates "GitHub 文件 - Dependabot 安全更新功能說明") 目前尚不支援，將在未來發布的版本中加入對其的支援。
 
 其他已知的限制：
 
-- 不支持更新以 git 方式引用的依赖
-- 如果在 dependabot 中配置忽略新版本检测，将不会进行任何更新
-- 不支持检测私享和自定义 pub 发布的 package
+- 不支援更新以 git 方式參考的依賴
+- 如果在 dependabot 中配置忽略新版本檢測，將不會進行任何更新
+- 不支援檢測私享和自訂 pub 釋出的 package
 
-开发者们可以在 [GitHub 官方的反馈讨论](https://github.com/github/feedback/discussions/14200 "提出反馈: Dependabot 开始支持 pub package 检测") 里提出建议或 vote +1，也可以在 [dependabot-core](https://go2.gdsub.com/pub-issues-dependabot "在 dependabot-core 仓库提交关于 pub 支持的议题") 仓库提交议题来帮助团队排查问题。
+開發者們可以在 [GitHub 官方的反饋討論](https://github.com/github/feedback/discussions/14200 "提出反饋: Dependabot 開始支援 pub package 檢測") 裡提出建議或 vote +1，也可以在 [dependabot-core](https://go2.gdsub.com/pub-issues-dependabot "在 dependabot-core 儲存庫提交關於 pub 支援的議題") 儲存庫提交議題來幫助團隊排查問題。
 
-## 致谢
+## 致謝
 
-- 消息源: GitHub 博客 - [pub beta support for Dependabot version updates](https://github.blog/changelog/2022-04-05-pub-beta-support-for-dependabot-version-updates/)
-- 编辑: CFUG 本地化团队 Alex, Luke
-- 制图: Lynn
+- 訊息源: GitHub 部落格 - [pub beta support for Dependabot version updates](https://github.blog/changelog/2022-04-05-pub-beta-support-for-dependabot-version-updates/)
+- 編輯: CFUG 本地化團隊 Alex, Luke
+- 製圖: Lynn

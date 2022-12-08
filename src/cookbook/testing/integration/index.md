@@ -1,6 +1,6 @@
 ---
 title: Integration
-title: 集成
+title: 整合
 ---
 
 {% include docs/cookbook-group-index.md %}

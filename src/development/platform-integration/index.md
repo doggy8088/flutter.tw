@@ -1,5 +1,5 @@
 ---
 layout: toc
 title: Platform integration
-title: 平台集成
+title: 平台整合
 ---

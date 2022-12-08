@@ -1,8 +1,8 @@
 ---
 title: ThemeData's accent properties have been deprecated
-title: ThemeData 的 accent 属性已经被弃用
+title: ThemeData 的 accent 屬性已經被棄用
 description: The ThemeData accentColor, accentColorBrightness, accentIconTheme, and accentTextTheme properties have been deprecated.
-description: ThemeData 的 accentColor、accentColorBrightness、accentIconTheme 和 accentTextTheme 属性已经被弃用。
+description: ThemeData 的 accentColor、accentColorBrightness、accentIconTheme 和 accentTextTheme 屬性已經被棄用。
 ---
 
 ## Summary
@@ -12,8 +12,8 @@ description: ThemeData 的 accentColor、accentColorBrightness、accentIconTheme
 The ThemeData [accentColor][], [accentColorBrightness][], [accentIconTheme][] and
 [accentTextTheme][] properties have been deprecated.
 
-主题信息 ThemeData 中的 [accentColor][]、[accentColorBrightness][]、[accentIconTheme][] 和
-[accentTextTheme][] 属性现已被弃用。 
+主題資訊 ThemeData 中的 [accentColor][]、[accentColorBrightness][]、[accentIconTheme][] 和
+[accentTextTheme][] 屬性現已被棄用。 
 
 The [Material Design spec][] no longer specifies or uses an "accent"
 color for the Material components. The default values for component
@@ -22,10 +22,10 @@ colors are derived from the overall theme's [color scheme][]. The
 `accentColor` and the [onSecondary color][] is used when a contrasting
 color is needed.
 
-[Material 设计规范][Material Design spec] 不再为 Material 组件指定或使用「强调」色。
-组件的默认颜色来自整个主题的 [颜色方案][color scheme]。
-现在通常使用 `ColorScheme` 的 [secondary color][] 代替 `accentColor`，
-并且在需要对比色时使用 [onSecondary 属性][onSecondary color]。
+[Material 設計規範][Material Design spec] 不再為 Material 元件指定或使用「強調」色。
+元件的預設顏色來自整個主題的 [顏色方案][color scheme]。
+現在通常使用 `ColorScheme` 的 [secondary color][] 代替 `accentColor`，
+並且在需要對比色時使用 [onSecondary 屬性][onSecondary color]。
 
 ## Context
 
@@ -33,7 +33,7 @@ color is needed.
 
 This was a small part of the [Material Theme System Updates][] project.
 
-这是 [Material 主题系统升级][Material Theme System Updates] 项目的一部分。
+這是 [Material 主題系統升級][Material Theme System Updates] 專案的一部分。
 
 As of Flutter 1.17, the ThemeData accent properties - accentColor,
 accentColorBrightness, accentIconTheme, and accentTextTheme - were no
@@ -43,10 +43,10 @@ part of the long-term goal of making the default configurations of the
 material components depend almost exclusively on these two
 properties.
 
-从 Flutter 1.17 开始，Material 库不再使用 ThemeData 的强调属性 - 
+從 Flutter 1.17 開始，Material 庫不再使用 ThemeData 的強調屬性 - 
 `accentColor`、`accentColorBrightness`、`accentIconTheme` 和 `accentTextTheme`。 
-它们已被主题的 [`colorScheme`][] 和 [`textTheme`][] 属性的依赖关系所取代。
-这是 material 组件的默认配置完全依赖这两个属性的长期目标中的一部分，
+它們已被主題的 [`colorScheme`][] 和 [`textTheme`][] 屬性的依賴關係所取代。
+這是 material 元件的預設配置完全依賴這兩個屬性的長期目標中的一部分，
 
 The motivation for these changes is to make the theme system easier to
 understand and use. The default colors for all components are to be
@@ -57,11 +57,11 @@ with component-specific themes like [`FloatingActionButtonThemeData`][] or
 handful of component types and only in some situations, which made it
 difficult to understand the implications of overriding them.
 
-改动的出发点是使主题系统更易于理解和使用。所有组件的默认颜色由组件本身根据颜色方案定义。
-特定组件类型的默认配置可以使用特定组件的主题来覆盖，
+改動的出發點是使主題系統更易於理解和使用。所有元件的預設顏色由元件本身根據顏色方案定義。
+特定元件型別的預設配置可以使用特定元件的主題來覆蓋，
 例如 [`FloatingActionButtonThemeData`][] 或 [`CheckBoxTheme`][]。
-以前，像 `accentColor` 这样的属性仅在某些情况下被少数组件类型使用，
-这使得很难理解覆盖它们的含义。
+以前，像 `accentColor` 這樣的屬性僅在某些情況下被少陣列件型別使用，
+這使得很難理解覆蓋它們的含義。
 
 ## Description of change
 
@@ -71,33 +71,33 @@ The ThemeData accentColor, accentColorBrightness, accentIconTheme and
 accentTextTheme properties have been deprecated because the Material
 library no longer uses them.
 
-主题信息 ThemeData 中的 [accentColor][]、[accentColorBrightness][]、[accentIconTheme][] 和
-[accentTextTheme][] 属性现已被弃用，因为 Material 不再使用它们。
+主題資訊 ThemeData 中的 [accentColor][]、[accentColorBrightness][]、[accentIconTheme][] 和
+[accentTextTheme][] 屬性現已被棄用，因為 Material 不再使用它們。
 
 ## Migration guide
 
-## 迁移指南
+## 遷移指南
 
 ### Application theme
 
-### 应用程序主题
+### 應用程式主題
 
 [`ThemeData`][] values no longer need to specify accentColor,
 accentColorBrightness, accentIconTheme, or accentTextTheme.
 
 [`ThemeData`][] 不再需要指定 accentColor、accentColorBrightness、
-accentIconTheme 或 accentTextTheme 属性。
+accentIconTheme 或 accentTextTheme 屬性。
 
 To configure the appearance of the material components in about the
 same way as before, specify the color scheme's secondary color
 instead of accentColor.
 
-要以与以前大致相同的方式配置 material 组件的样式，
-请指定配色方案的次要颜色，而不是 `accentColor`。
+要以與以前大致相同的方式配置 material 元件的樣式，
+請指定配色方案的次要顏色，而不是 `accentColor`。
 
 Code before migration:
 
-迁移前的代码：
+遷移前的程式碼：
 
 <!-- skip -->
 ```dart
@@ -109,7 +109,7 @@ MaterialApp(
 
 Code after migration:
 
-迁移后的代码：
+遷移後的程式碼：
 
 <!-- skip -->
 ```dart
@@ -129,18 +129,18 @@ The closest backwards compatible [`ColorScheme`][] color is
 Design guidelines one can substitute ColorScheme.primary instead.
 If a contrasting color is needed then use [`ColorScheme.onSecondary`][].
 
-最接近 [`ColorScheme`][] 的颜色是 [`ColorScheme.secondary`][]。
-为了跟上最新的 Material 设计指南，可以用 `ColorScheme.primary` 代替。
-如果需要对比色，使用 [`ColorScheme.onSecondary`][]。
+最接近 [`ColorScheme`][] 的顏色是 [`ColorScheme.secondary`][]。
+為了跟上最新的 Material 設計指南，可以用 `ColorScheme.primary` 代替。
+如果需要對比色，使用 [`ColorScheme.onSecondary`][]。
 
 Custom components that used to look up the theme's accentColor, can look up
 the `ColorScheme.secondary` instead.
 
-自定义组件中查找主题的 `accentColor` 属性可以改为查找 `ColorScheme.secondary`。
+自訂元件中查詢主題的 `accentColor` 屬性可以改為查詢 `ColorScheme.secondary`。
 
 Code before migration:
 
-迁移前的代码：
+遷移前的程式碼：
 
 <!-- skip -->
 ```dart
@@ -149,7 +149,7 @@ Color myColor = Theme.of(context).accentColor;
 
 Code after migration:
 
-迁移后的代码：
+遷移後的程式碼：
 
 <!-- skip -->
 ```dart
@@ -161,7 +161,7 @@ Color myColor = Theme.of(context).colorScheme.secondary;
 The static [`ThemeData.estimateBrightnessForColor()`][] method can be used
 to compute the brightness of any color.
 
-静态方法 [`ThemeData.estimateBrightnessForColor()`][] 可用于计算任何颜色的亮度。
+靜態方法 [`ThemeData.estimateBrightnessForColor()`][] 可用於計算任何顏色的亮度。
 
 ### `accentTextTheme`
 
@@ -173,15 +173,15 @@ well with the accent color (now `ColorScheme.secondaryColor`).  To get
 the same result now, specify the text style's color as
 `ColorScheme.onSecondary`:
 
-此属性在深色主题中代表白色的 [`TextStyle`]，黑色主题中代表浅色的 TextStyles。
-大多数情况下， 可以使用 `textTheme`。
-一个常见的用法是引用 `accentTextTheme` 中的 `TextStyle`，
-因为文本样式的颜色要与强调颜色（现在是 `ColorScheme.secondaryColor`）形成鲜明的对比。
-现在要获得相同的结果，请将文本样式的颜色指定为 `ColorScheme.secondaryColor`：
+此屬性在深色主題中代表白色的 [`TextStyle`]，黑色主題中代表淺色的 TextStyles。
+大多數情況下， 可以使用 `textTheme`。
+一個常見的用法是參考 `accentTextTheme` 中的 `TextStyle`，
+因為文字樣式的顏色要與強調顏色（現在是 `ColorScheme.secondaryColor`）形成鮮明的對比。
+現在要獲得相同的結果，請將文字樣式的顏色指定為 `ColorScheme.secondaryColor`：
 
 Code before migration:
 
-迁移前的代码：
+遷移前的程式碼：
 
 <!-- skip -->
 ```dart
@@ -190,7 +190,7 @@ TextStyle style = Theme.of(context).accentTextTheme.headline1;
 
 Code after migration:
 
-迁移后的代码：
+遷移後的程式碼：
 
 <!-- skip -->
 ```dart
@@ -207,27 +207,27 @@ within a [`FloatingActionButton`][]. It's now possible to configure the icon
 color directly or with the [`FloatingActionButtonThemeData`][]. See
 [FloatingActionButton and ThemeData's accent properties][].
 
-此属性仅用于配置 [`FloatingActionButton`][] 中图标的颜色。
-现在可以直接使用 [`FloatingActionButtonThemeData`][] 配置图标颜色。
-参阅 [FloatingActionButton 和 ThemeData 的强调属性][FloatingActionButton and ThemeData's accent properties]。
+此屬性僅用於配置 [`FloatingActionButton`][] 中圖示的顏色。
+現在可以直接使用 [`FloatingActionButtonThemeData`][] 配置圖示顏色。
+參閱 [FloatingActionButton 和 ThemeData 的強調屬性][FloatingActionButton and ThemeData's accent properties]。
 
 ## Timeline
 
-## 时间轴
+## 時間軸
 
 Landed in version: 2.3.0-0.1.pre<br>
 In stable release: 2.5
 
-发布于版本：2.3.0-0.1.pre<br>
-发布于稳定版本：2.5
+釋出於版本：2.3.0-0.1.pre<br>
+釋出於穩定版本：2.5
 
 ## References
 
-## 参考文献
+## 參考文獻
 
 API documentation:
 
-API 文档：
+API 文件：
 
 * [`ColorScheme`][]
 * [`FloatingActionButton`][]
@@ -239,13 +239,13 @@ API 文档：
 
 Relevant issues:
 
-相关 issues：
+相關 issues：
 
 * [Issue #56918][]
 
 Relevant PRs:
 
-相关 PR：
+相關 PR：
 
 * [PR #81336][]
 

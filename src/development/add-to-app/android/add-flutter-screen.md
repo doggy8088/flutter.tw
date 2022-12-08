@@ -1,12 +1,12 @@
 ---
 title: Adding a Flutter screen to an Android app
-title: 在 Android 应用中添加 Flutter 页面
+title: 在 Android 應用中新增 Flutter 頁面
 short-title: Add a Flutter screen
-short-title: 添加一个 Flutter 页面
+short-title: 新增一個 Flutter 頁面
 description: Learn how to add a single Flutter screen to your existing Android app.
-description: 了解如何在你现有的 Android 应用中添加单个 Flutter 页面。
+description: 瞭解如何在你現有的 Android 應用中新增單個 Flutter 頁面。
 tags: Flutter混合工程,add2app
-keywords: Android,Flutter 页面
+keywords: Android,Flutter 頁面
 ---
 
 This guide describes how to add a single Flutter screen to an
@@ -14,20 +14,20 @@ existing Android app. A Flutter screen can be added as a normal,
 opaque screen, or as a see-through, translucent screen.
 Both options are described in this guide.
 
-本指南讲述了如何在一个现有的 Android 应用中添加单个 Flutter 页面。
-添加到应用中的单个 Flutter 页面可以是不透明的普通页面，也可以是透明的页面。
-这两种页面的使用都会在本指南中提到。
+本指南講述瞭如何在一個現有的 Android 應用中新增單個 Flutter 頁面。
+新增到應用中的單個 Flutter 頁面可以是不透明的普通頁面，也可以是透明的頁面。
+這兩種頁面的使用都會在本指南中提到。
 
 ## Add a normal Flutter screen
 
-## 添加一个普通的 Flutter 页面
+## 新增一個普通的 Flutter 頁面
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen_header.png'
 class="mw-100" alt="Add Flutter Screen Header">
 
 ### Step 1: Add FlutterActivity to AndroidManifest.xml
 
-### 步骤 1：在 AndroidManifest.xml 中添加 FlutterActivity
+### 步驟 1：在 AndroidManifest.xml 中新增 FlutterActivity
 
 Flutter provides [`FlutterActivity`][] to display a Flutter
 experience within an Android app. Like any other [`Activity`][],
@@ -35,9 +35,9 @@ experience within an Android app. Like any other [`Activity`][],
 `AndroidManifest.xml`. Add the following XML to your
 `AndroidManifest.xml` file under your `application` tag:
 
-Flutter 提供了 [`FlutterActivity`][]，用于在 Android 应用内部展示一个 Flutter 的交互界面。
-和其他的 [`Activity`][] 一样，`FlutterActivity` 必须在项目的 `AndroidManifest.xml` 文件中注册。
-将下边的 XML 代码添加到你的 `AndroidManifest.xml` 文件中的 `application` 标签内：
+Flutter 提供了 [`FlutterActivity`][]，用於在 Android 應用內部展示一個 Flutter 的互動介面。
+和其他的 [`Activity`][] 一樣，`FlutterActivity` 必須在專案的 `AndroidManifest.xml` 檔案中註冊。
+將下邊的 XML 程式碼新增到你的 `AndroidManifest.xml` 檔案中的 `application` 標籤內：
 
 ```xml
 <activity
@@ -56,29 +56,29 @@ Android's system chrome, like Android's navigation bar, and to
 the background color of the `FlutterActivity` just before
 the Flutter UI renders itself for the first time.
 
-上述代码中的 `@style/LaunchTheme` 可以替换为想要在你的
-`FlutterActivity` 中使用的其他 Android 主题。
-主题的选择决定 Android 系统展示框架所使用的颜色，
-例如 Android 的导航栏，以及 Flutter UI 自身的第一次渲染前 `FlutterActivity` 的背景色。
+上述程式碼中的 `@style/LaunchTheme` 可以替換為想要在你的
+`FlutterActivity` 中使用的其他 Android 主題。
+主題的選擇決定 Android 系統展示框架所使用的顏色，
+例如 Android 的導航欄，以及 Flutter UI 自身的第一次渲染前 `FlutterActivity` 的背景色。
 
 ### Step 2: Launch FlutterActivity
 
-### 步骤 2：加载 FlutterActivity
+### 步驟 2：載入 FlutterActivity
 
 With `FlutterActivity` registered in your manifest file,
 add code to launch `FlutterActivity` from whatever point
 in your app that you'd like. The following example shows
 `FlutterActivity` being launched from an `OnClickListener`.
 
-在你的清单文件中注册了 `FlutterActivity` 之后，
-根据需要，你可以在应用中的任意位置添加打开 `FlutterActivity` 的代码。
-下边的代码展示了如何在 `OnClickListener` 的点击事件中打开 `FlutterActivity`。
+在你的清單檔案中註冊了 `FlutterActivity` 之後，
+根據需要，你可以在應用中的任意位置新增開啟 `FlutterActivity` 的程式碼。
+下邊的程式碼展示瞭如何在 `OnClickListener` 的點選事件中開啟 `FlutterActivity`。
 
 {{site.alert.note}}
 
   Make sure to use the following import:
 
-  确保使用如下的语句导入：
+  確保使用如下的陳述式匯入：
   
 <!--skip-->
 ```java
@@ -119,9 +119,9 @@ The following example demonstrates how to launch a
 `FlutterActivity` that initially renders a custom
 route in Flutter.
 
-上述的例子假定了你的 Dart 代码入口是调用 `main()`，并且你的 Flutter 初始路由是 '/'。
-Dart 代码入口不能通过 `Intent` 改变，但是初始路由可以通过 `Intent` 来修改。
-下面的例子讲解了如何打开一个自定义 Flutter 初始路由的 `FlutterActivity`。
+上述的例子假定了你的 Dart 程式碼入口是呼叫 `main()`，並且你的 Flutter 初始路由是 '/'。
+Dart 程式碼入口不能透過 `Intent` 改變，但是初始路由可以透過 `Intent` 來修改。
+下面的例子講解了如何開啟一個自訂 Flutter 初始路由的 `FlutterActivity`。
 
 {% samplecode custom-activity-launch %}
 {% sample Java %}
@@ -155,7 +155,7 @@ myButton.setOnClickListener {
 
 Replace `"/my_route"` with your desired initial route.
 
-可以用你想要的初始路由替换掉 `"/my_route"`。
+可以用你想要的初始路由替換掉 `"/my_route"`。
 
 The use of the `withNewEngine()` factory method
 configures a `FlutterActivity` that internally create
@@ -165,16 +165,16 @@ is to instruct `FlutterActivity` to use a pre-warmed,
 cached `FlutterEngine`, which minimizes Flutter's
 initialization time. That approach is discussed next.
 
-工厂方法 `withNewEngine()` 可以用于配置一个 `FlutterActivity`，
-它会在内部创建一个属于自己的 `FlutterEngine` 实例，这会有一个明显的初始化时间。
-另外一种可选的做法是让
-`FlutterActivity` 使用一个预热且缓存的 `FlutterEngine`，
-这可以最小化 Flutter 初始化的时间。
-这种方式接下来会讨论到。
+工廠方法 `withNewEngine()` 可以用於配置一個 `FlutterActivity`，
+它會在內部建立一個屬於自己的 `FlutterEngine` 例項，這會有一個明顯的初始化時間。
+另外一種可選的做法是讓
+`FlutterActivity` 使用一個預熱且快取的 `FlutterEngine`，
+這可以最小化 Flutter 初始化的時間。
+這種方式接下來會討論到。
 
 ### Step 3: (Optional) Use a cached FlutterEngine
 
-### 步骤 3：（可选）使用缓存的 FlutterEngine
+### 步驟 3：（可選）使用快取的 FlutterEngine
 
 Every `FlutterActivity` creates its own `FlutterEngine`
 by default. Each `FlutterEngine` has a non-trivial
@@ -185,21 +185,21 @@ you can warm up a `FlutterEngine` before arriving at
 your `FlutterActivity`, and then you can use
 your pre-warmed `FlutterEngine` instead.
 
-每一个 `FlutterActivity` 默认会创建它自己的 `FlutterEngine`。
-每一个 `FlutterEngine` 会有一个明显的预热时间。
-这意味着加载一个标准的 `FlutterActivity` 时，
-在你的 Flutter 交互页面可见之前会有一个短暂的延迟。
-想要最小化这个延迟时间，你可以在抵达你的 `FlutterActivity` 之前，
-初始化一个 `FlutterEngine`，然后使用这个已经预热好的 `FlutterEngine`。
+每一個 `FlutterActivity` 預設會建立它自己的 `FlutterEngine`。
+每一個 `FlutterEngine` 會有一個明顯的預熱時間。
+這意味著載入一個標準的 `FlutterActivity` 時，
+在你的 Flutter 互動頁面可見之前會有一個短暫的延遲。
+想要最小化這個延遲時間，你可以在抵達你的 `FlutterActivity` 之前，
+初始化一個 `FlutterEngine`，然後使用這個已經預熱好的 `FlutterEngine`。
 
 To pre-warm a `FlutterEngine`, find a reasonable
 location in your app to instantiate a `FlutterEngine`.
 The following example arbitrarily pre-warms a
 `FlutterEngine` in the `Application` class:
 
-要预热一个 `FlutterEngine`，
-可以在你的应用中找一个合理的地方实例化一个 `FlutterEngine`。
-下面的这个例子是在 `Application` 类中预先初始化一个 `FlutterEngine`：
+要預熱一個 `FlutterEngine`，
+可以在你的應用中找一個合理的地方例項化一個 `FlutterEngine`。
+下面的這個例子是在 `Application` 類中預先初始化一個 `FlutterEngine`：
 
 {% samplecode prewarm-engine %}
 {% sample Java %}
@@ -258,10 +258,10 @@ or [`FlutterFragment`][] that should use the cached `FlutterEngine`.
 Using `FlutterActivity` with a cached `FlutterEngine`
 is discussed next.
 
-传给 [`FlutterEngineCache`][] 的 ID 可以是你想要的任何名称。
-确保 `FlutterActivity` 或 [`FlutterFragment`][] 在使用缓存的
-`FlutterEngine` 时，传递了同样的 ID。
-基于缓存的 `FlutterEngine` 来使用 `FlutterActivity` 会在后续讨论到。
+傳給 [`FlutterEngineCache`][] 的 ID 可以是你想要的任何名稱。
+確保 `FlutterActivity` 或 [`FlutterFragment`][] 在使用快取的
+`FlutterEngine` 時，傳遞了同樣的 ID。
+基於快取的 `FlutterEngine` 來使用 `FlutterActivity` 會在後續討論到。
 
 {{site.alert.note}}
 
@@ -277,12 +277,12 @@ is discussed next.
   behaves appropriately between the time you warm it up and
   the time you display Flutter content.
 
-  要预热一个 `FlutterEngine`，你必须执行一个 Dart 入口。
-  切记当 `executeDartEntrypoint()` 方法调用时，你的 Dart 入口方法就会开始执行。
-  如果你的 Dart 入口调用了 `runApp()` 来运行一个 Flutter 应用，
-  那么你的 Flutter 应用会像是运行在一个大小为零的窗口中，
-  直至 `FlutterEngine` 附属到一个 `FlutterActivity`，`FlutterFragment` 或 `FlutterView`。
-  请确保你的应用在开始预热到你展示 Flutter 内容中间的这段时间里表现正常。
+  要預熱一個 `FlutterEngine`，你必須執行一個 Dart 入口。
+  切記當 `executeDartEntrypoint()` 方法呼叫時，你的 Dart 入口方法就會開始執行。
+  如果你的 Dart 入口呼叫了 `runApp()` 來執行一個 Flutter 應用，
+  那麼你的 Flutter 應用會像是執行在一個大小為零的視窗中，
+  直至 `FlutterEngine` 附屬到一個 `FlutterActivity`，`FlutterFragment` 或 `FlutterView`。
+  請確保你的應用在開始預熱到你展示 Flutter 內容中間的這段時間裡表現正常。
   
 {{site.alert.end}}
 
@@ -292,9 +292,9 @@ to instruct your `FlutterActivity` to use the cached
 To accomplish this, use `FlutterActivity`'s `withCachedEngine()`
 builder:
 
-要使用预热且缓存的 `FlutterEngine` 时，
-让你的 `FlutterActivity` 从缓存中获取 `FlutterEngine`，而不是创建一个新的。
-可以使用 `FlutterActivity` 的 `withCachedEngine()` 方法来实现：
+要使用預熱且快取的 `FlutterEngine` 時，
+讓你的 `FlutterActivity` 從快取中獲取 `FlutterEngine`，而不是建立一個新的。
+可以使用 `FlutterActivity` 的 `withCachedEngine()` 方法來實現：
 
 {% samplecode cached-engine-activity-launch %}
 {% sample Java %}
@@ -328,13 +328,13 @@ When using the `withCachedEngine()` factory method,
 pass the same ID that you used when caching the desired
 `FlutterEngine`.
 
-当使用 `withCachedEngine()` 方法时，传递你缓存对应 `FlutterEngine` 时用的相同 ID。
+當使用 `withCachedEngine()` 方法時，傳遞你快取對應 `FlutterEngine` 時用的相同 ID。
 
 Now, when you launch `FlutterActivity`,
 there is significantly less delay in
 the display of Flutter content.
 
-现在，当你加载 `FlutterActivity` 时，在展示 Flutter 内容前的延迟会明显降低。
+現在，當你載入 `FlutterActivity` 時，在展示 Flutter 內容前的延遲會明顯降低。
 
 {{site.alert.note}}
 
@@ -346,12 +346,12 @@ the display of Flutter content.
   obtain your `FlutterEngine` from the `FlutterEngineCache` and destroy the
   `FlutterEngine` with `FlutterEngine.destroy()`.
 
-  当使用一个缓存的 `FlutterEngine` 时，
-  `FlutterEngine` 会比展示它的 `FlutterActivity` 或 `FlutterFragment` 存活得更久。
-  切记，Dart 代码会在你预热 `FlutterEngine` 时就开始执行，
-  并且在你的 `FlutterActivity` 或 `FlutterFragment` 销毁后继续运行。
-  要停止代码运行和清理相关资源，可以从 `FlutterEngineCache` 中获取你的 `FlutterEngine`，
-  然后使用 `FlutterEngine.destroy()` 来销毁 `FlutterEngine`。
+  當使用一個快取的 `FlutterEngine` 時，
+  `FlutterEngine` 會比展示它的 `FlutterActivity` 或 `FlutterFragment` 存活得更久。
+  切記，Dart 程式碼會在你預熱 `FlutterEngine` 時就開始執行，
+  並且在你的 `FlutterActivity` 或 `FlutterFragment` 銷燬後繼續執行。
+  要停止程式碼執行和清理相關資源，可以從 `FlutterEngineCache` 中獲取你的 `FlutterEngine`，
+  然後使用 `FlutterEngine.destroy()` 來銷燬 `FlutterEngine`。
 
 {{site.alert.end}}
 
@@ -368,12 +368,12 @@ the display of Flutter content.
   to execute behavior in the background, be sure to adhere to all
   Android restrictions on background execution.
 
-  运行时的性能考量并不是你会预热和缓存一个 `FlutterEngine` 的唯一原因。
-  一个预热的 `FlutterEngine` 会独立于 `FlutterActivity` 执行 Dart 代码，
-  即一个 `FlutterEngine` 可以在任意时刻用于执行任意代码。
-  非 UI 的应用逻辑可以在 `FlutterEngine` 中执行，
-  例如网络请求和数据缓存，以及在 `Service` 中或其他地方的后台行为。
-  当使用 `FlutterEngine` 在后台执行任务时，确保满足 Android 对于后台执行的所有限制。
+  執行時的效能考量並不是你會預熱和快取一個 `FlutterEngine` 的唯一原因。
+  一個預熱的 `FlutterEngine` 會獨立於 `FlutterActivity` 執行 Dart 程式碼，
+  即一個 `FlutterEngine` 可以在任意時刻用於執行任意程式碼。
+  非 UI 的應用邏輯可以在 `FlutterEngine` 中執行，
+  例如網路請求和資料快取，以及在 `Service` 中或其他地方的後臺行為。
+  當使用 `FlutterEngine` 在後台執行任務時，確保滿足 Android 對於後臺執行的所有限制。
 
 {{site.alert.end}}
 
@@ -383,20 +383,20 @@ the display of Flutter content.
   performance characteristics. To evaluate the performance
   of Flutter, use a release build.
 
-  Flutter 的 debug 与 release 构建体现了完全不同的性能。
-  评估 Flutter 的性能表现时，请使用 release 构建版本。
+  Flutter 的 debug 與 release 建構體現了完全不同的效能。
+  評估 Flutter 的效能表現時，請使用 release 建構版本。
 
 {{site.alert.end}}
 
 #### Initial route with a cached engine
 
-#### 为缓存的 FlutterEngine 设置初始路由
+#### 為快取的 FlutterEngine 設定初始路由
 
 {% include_relative _initial-route-cached-engine.md %}
 
 ## Add a translucent Flutter screen
 
-## 添加一个透明主题的 FlutterActivity
+## 新增一個透明主題的 FlutterActivity
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen-transparent_header.png'
 class="mw-100" alt="Add Flutter Screen With Translucency Header">
@@ -407,28 +407,28 @@ screen that looks like a modal, for example,
 a dialog or bottom sheet. Flutter supports translucent
 `FlutterActivity`s out of the box.
 
-大部分的全屏 Flutter 交互页面是不透明的。
-但是，一些应用可能会发布一个类似模态框的 Flutter 页面，
-例如，一个对话框或者底部工作表。
-Flutter 默认支持透明的 `FlutterActivity`。
+大部分的全屏 Flutter 互動頁面是不透明的。
+但是，一些應用可能會發佈一個類似模態框的 Flutter 頁面，
+例如，一個對話方塊或者底部工作表。
+Flutter 預設支援透明的 `FlutterActivity`。
 
 To make your `FlutterActivity` translucent,
 make the following changes to the regular process of
 creating and launching a `FlutterActivity`.
 
-要将你的 `FlutterActivity` 设置为透明，
-在创建和加载 `FlutterActivity` 的常规步骤中做如下的变更。
+要將你的 `FlutterActivity` 設定為透明，
+在建立和載入 `FlutterActivity` 的常規步驟中做如下的變更。
 
 ### Step 1: Use a theme with translucency
 
-### 步骤 1：使用透明的主题
+### 步驟 1：使用透明的主題
 
 Android requires a special theme property for `Activity`s that render
 with a translucent background. Create or update an Android theme with the
 following property:
 
-Android 需要一个特殊的主题属性来让 `Activity` 以一个透明的背景渲染。
-使用如下属性来创建或者修改一个 Android 主题：
+Android 需要一個特殊的主題屬性來讓 `Activity` 以一個透明的背景渲染。
+使用如下屬性來建立或者修改一個 Android 主題：
 
 ```xml
 <style name="MyTheme" parent="@style/MyParentTheme">
@@ -438,7 +438,7 @@ Android 需要一个特殊的主题属性来让 `Activity` 以一个透明的背
 
 Then, apply the translucent theme to your `FlutterActivity`.
 
-然后，将透明主题应用到你的 `FlutterActivity`。
+然後，將透明主題應用到你的 `FlutterActivity`。
 
 ```xml
 <activity
@@ -454,17 +454,17 @@ Your `FlutterActivity` now supports translucency.
 Next, you need to launch your `FlutterActivity`
 with explicit transparency support.
 
-现在你的 `FlutterActivity` 已经支持透明化。
-下一步，你需要在打开 `FlutterActivity` 时显式启用透明模式。
+現在你的 `FlutterActivity` 已經支援透明化。
+下一步，你需要在開啟 `FlutterActivity` 時顯式啟用透明模式。
 
 ### Step 2: Start FlutterActivity with transparency
 
-### 步骤 2：启动透明的 FlutterActivity
+### 步驟 2：啟動透明的 FlutterActivity
 
 To launch your `FlutterActivity` with a transparent background,
 pass the appropriate `BackgroundMode` to the `IntentBuilder`:
 
-要打开透明背景的 `FlutterActivity`，需要把对应的 `BackgroundMode` 传递给 `IntentBuilder`：
+要開啟透明背景的 `FlutterActivity`，需要把對應的 `BackgroundMode` 傳遞給 `IntentBuilder`：
 
 {% samplecode transparent-activity-launch %}
 {% sample Java %}
@@ -510,7 +510,7 @@ startActivity(
 
 You now have a `FlutterActivity` with a transparent background.
 
-现在你的 `FlutterAcivity` 的背景已经是透明的了。
+現在你的 `FlutterAcivity` 的背景已經是透明的了。
 
 {{site.alert.note}}
 
@@ -519,9 +519,9 @@ You now have a `FlutterActivity` with a transparent background.
   solid background color, then it still appears as
   though your `FlutterActivity` has an opaque background.
 
-  确保你的 Flutter 内容也有一个透明的背景。
-  如果你的 Flutter UI 绘制了一个特定的背景颜色，
-  那么你的 `FlutterActivity` 依旧看起来会是有一个不透明的背景。
+  確保你的 Flutter 內容也有一個透明的背景。
+  如果你的 Flutter UI 繪製了一個特定的背景顏色，
+  那麼你的 `FlutterActivity` 依舊看起來會是有一個不透明的背景。
 
 {{site.alert.end}}
 

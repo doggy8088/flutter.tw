@@ -1,8 +1,8 @@
 ---
 title: Breaking changes
-title: 破坏性改动 (Breaking changes)
+title: 破壞性改動 (Breaking changes)
 description: A list of migration guides for breaking changes in Flutter.
-description: Flutter 破坏性改动的迁移文档。
+description: Flutter 破壞性改動的遷移文件。
 ---
 
 As described in the [breaking change policy][],
@@ -11,14 +11,14 @@ for migrating code across a breaking change.
 To be notified about future breaking changes,
 join the groups [Flutter announce][] and [Dart announce][].
 
-正如 [破坏性改动策略][breaking change policy] 中描述的，
-我们会不定期地发布关于破坏性改动的迁移指南。
+正如 [破壞性改動策略][breaking change policy] 中描述的，
+我們會不定期地釋出關於破壞性改動的遷移指南。
 
 The following guides are available. They are sorted by
 release, and listed in alphabetical order:
 
-以下是可用的迁移指南，
-它们按发行版本分类并按字母顺序排列。
+以下是可用的遷移指南，
+它們按發行版本分類並按字母順序排列。
 
 [breaking change policy]: {{site.url}}/resources/compatibility
 [Flutter announce]: {{site.groups}}/forum/#!forum/flutter-announce
@@ -26,7 +26,7 @@ release, and listed in alphabetical order:
 
 ### Not yet released to stable
 
-### 尚未发布到稳定版
+### 尚未釋出到穩定版
 
 * [Migrate `of` to non-nullable return values, and add `maybeOf`][]
 * [Deprecated API removed after v3.3][]
@@ -62,7 +62,7 @@ release, and listed in alphabetical order:
 
 ### Released in Flutter 2.10
 
-### 已经在 Flutter 2.10 中发布
+### 已經在 Flutter 2.10 中釋出
 
 * [Deprecated API removed after v2.5][]
 * [Raw images on Web uses correct origin and colors][]
@@ -76,7 +76,7 @@ release, and listed in alphabetical order:
 
 ### Released in Flutter 2.5
 
-### 已经在 Flutter 2.5 中发布
+### 已經在 Flutter 2.5 中釋出
 
 * [Default drag scrolling devices][]
 * [Deprecated API removed after v2.2][]
@@ -100,25 +100,25 @@ release, and listed in alphabetical order:
 
 ### Reverted change in 2.2
 
-### 在 2.2 版本中回退的改动
+### 在 2.2 版本中回退的改動
 
 The following breaking change was reverted in release 2.2:
 
-以下重要改动在 Flutter 2.2 中已被回退。
+以下重要改動在 Flutter 2.2 中已被回退。
 
 <b>[Network Policy on iOS and Android][]</b>
 <br/>  Introduced in version: 2.0.0<br>
    Reverted in version:   2.2.0 (proposed)
    
-<b>[iOS 端和 Android 端的网络策略][Network Policy on iOS and Android]</b>
+<b>[iOS 端和 Android 端的網路策略][Network Policy on iOS and Android]</b>
 <br/> 引入版本：2.0.0<br>
-      回退版本：2.2.0（建议）
+      回退版本：2.2.0（建議）
 
 [Network Policy on iOS and Android]: {{site.url}}/release/breaking-changes/network-policy-ios-android
 
 ### Released in Flutter 2.2
 
-### 发布于 Flutter 2.2
+### 釋出於 Flutter 2.2
 
 * [Default Scrollbars on Desktop][]
 
@@ -126,7 +126,7 @@ The following breaking change was reverted in release 2.2:
 
 ### Released in Flutter 2
 
-### 发布于 Flutter 2
+### 釋出於 Flutter 2
 
 * [Added BuildContext parameter to TextEditingController.buildTextSpan][]
 * [Android ActivityControlSurface attachToActivity signature change][]
@@ -156,7 +156,7 @@ The following breaking change was reverted in release 2.2:
 
 ### Released in Flutter 1.22
 
-### 发布于 Flutter 1.22
+### 釋出於 Flutter 1.22
 
 * [Android v1 embedding app and plugin creation deprecation][]
 * [Cupertino icons 1.0.0][]
@@ -168,7 +168,7 @@ The following breaking change was reverted in release 2.2:
 
 ### Released in Flutter 1.20
 
-### 发布于 Flutter 1.20
+### 釋出於 Flutter 1.20
 
 * [Actions API revision][]
 * [Adding TextInputClient.currentAutofillScope property][]
@@ -198,7 +198,7 @@ The following breaking change was reverted in release 2.2:
 
 ### Released in Flutter 1.17
 
-### 发布于 Flutter 1.17
+### 釋出於 Flutter 1.17
 
 * [Adding 'linux' and 'windows' to TargetPlatform enum][]
 * [Annotations return local position relative to object][]

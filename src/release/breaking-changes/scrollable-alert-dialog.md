@@ -1,8 +1,8 @@
 ---
 title: Scrollable AlertDialog
-title: 可滚动的 AlertDialog (不再弃用)
+title: 可滾動的 AlertDialog (不再棄用)
 description: AlertDialog should scroll automatically when it overflows.
-description: 当 AlertDialog 边界溢出时将会自动变为可滚动的。
+description: 當 AlertDialog 邊界溢位時將會自動變為可滾動的。
 ---
 
 ## Summary
@@ -16,15 +16,15 @@ description: 当 AlertDialog 边界溢出时将会自动变为可滚动的。
   Instead, the parameter will remain and you can set `scrollable`
   to true if you want a scrollable `AlertDialog`.
   
-  因为没有向后兼容的方法使 `AlertDialog` 在默认情况下可滚动，
-  所以 `AlertDialog.scrollable` 不再弃用。
-  相反，参数将保持不变，如果需要 `AlertDialog` 可滚动，可以将 `scrollable` 设置为 true。
+  因為沒有向後相容的方法使 `AlertDialog` 在預設情況下可滾動，
+  所以 `AlertDialog.scrollable` 不再棄用。
+  相反，引數將保持不變，如果需要 `AlertDialog` 可滾動，可以將 `scrollable` 設定為 true。
     
 {{site.alert.end}}
 
 An `AlertDialog` now scrolls automatically when it overflows.
 
-`AlertDialog` 现在会在绘制溢出时自动变为可滚动状态。
+`AlertDialog` 現在會在繪製溢位時自動變為可滾動狀態。
 
 ## Context
 
@@ -35,20 +35,20 @@ when an `AlertDialog` widget’s contents were too tall,
 the display overflowed, causing the contents to be clipped.
 This resulted in the following issues:
 
-在此更改之前，当 `AlertDialog` widget 中的内容过高时，
-会显示绘制溢出，使内容被剪裁。这会导致以下问题：
+在此更改之前，當 `AlertDialog` widget 中的內容過高時，
+會顯示繪製溢位，使內容被剪裁。這會導致以下問題：
 
 * There was no way to view the portion of the content that was clipped.
 
-  无法查看被剪裁的内容。
+  無法檢視被剪裁的內容。
 
 * Most alert dialogs have buttons beneath the content to prompt users for
   actions. If the content overflowed, obscuring the buttons,
   users might be unaware of their existence.
 
-  大多数 `AlertDialog` 的内容下方都有按钮，
-  用于提示用户执行操作。如果内容溢出，遮盖了按钮，
-  用户可能不知道它们的存在。
+  大多數 `AlertDialog` 的內容下方都有按鈕，
+  用於提示使用者執行操作。如果內容溢位，遮蓋了按鈕，
+  使用者可能不知道它們的存在。
 
 ## Description of change
 
@@ -57,7 +57,7 @@ This resulted in the following issues:
 The previous approach listed the title and content
 widgets consecutively in a `Column` widget.
 
-在改动前，可以使用下面的方法在 `Column` widget 中连续地列出标题和内容 widget。
+在改動前，可以使用下面的方法在 `Column` widget 中連續地列出標題和內容 widget。
 
 <!-- skip -->
 ```dart
@@ -97,9 +97,9 @@ The new approach wraps both widgets in a
 making both widgets part of the same scrollable
 and exposing the button bar at the bottom of the dialog.
 
-在改动后，它们被包裹在按钮栏上方的 `SingleChildScrollView` 中，
-作为同一个可滚动的模块的一部分，
-按钮栏将显示在对话框底部。
+在改動後，它們被包裹在按鈕欄上方的 `SingleChildScrollView` 中，
+作為同一個可滾動的模組的一部分，
+按鈕欄將顯示在對話方塊底部。
 
 <!-- skip -->
 ```dart
@@ -127,20 +127,20 @@ Column(
 
 ## Migration guide
 
-## 迁移指南
+## 遷移指南
 
 You might see the following issues as a result of this change:
 
-此更改可能会导致以下问题：
+此更改可能會導致以下問題：
 
 **Semantics tests might fail because of the addition of a `SingleChildScrollView`.**
 : Manual testing of the `Talkback` and `VoiceOver` features
   show that they still exhibit the same (correct)
   behavior as before.
   
-**由于添加了 `SingleChildScrollView`，语义测试可能会失败。**
-<br>对 `Talkback` 和 `VoiceOver` 功能的手动测试表明，
-它们仍然表现出与以前相同的（正确的）行为。
+**由於添加了 `SingleChildScrollView`，語義測試可能會失敗。**
+<br>對 `Talkback` 和 `VoiceOver` 功能的手動測試表明，
+它們仍然表現出與以前相同的（正確的）行為。
 
 **Golden tests might fail.**
 : This change might have caused diffs in (previously passing)
@@ -149,19 +149,19 @@ You might see the following issues as a result of this change:
   Some Flutter projects have taken to creating semantics tests
   by taking goldens of semantics nodes used in Flutter's debug build.
   
-**Golden Test 可能会失败。** 
-<br>由于 `SingleChildScrollView` 现在嵌套了标题和内容 widget，
-  因此可能导致 Golden Test 出现不同的结果。
-  一些 Flutter 项目已经开始通过获取 Flutter debug 构建过程中使用的语义节点 goldens 来创建语义测试。
+**Golden Test 可能會失敗。** 
+<br>由於 `SingleChildScrollView` 現在嵌套了標題和內容 widget，
+  因此可能導致 Golden Test 出現不同的結果。
+  一些 Flutter 專案已經開始透過獲取 Flutter debug 建構過程中使用的語義節點 goldens 來建立語義測試。
 
   <br>Any semantics golden updates that reflect the scrolling
   container addition are expected and these diffs should be safe to accept.
 
-  <br>滚动容器上附加的所有语义 golden 变动都是符合预期的，它们不会造成其他后果。
+  <br>滾動容器上附加的所有語義 golden 變動都是符合預期的，它們不會造成其他後果。
 
   Sample resulting Semantics tree:
   
-  语义树示例：
+  語義樹範例：
 
 ```
 flutter:        ├─SemanticsNode#30 <-- SingleChildScrollView
@@ -183,22 +183,22 @@ flutter:              label: "Huge content"
   this change corrects the problem.
   This layout change is expected.
   
-**滚动视图可能导致布局更改。**
-<br>该变更会修复对话框发生绘制溢出的问题。
-  这种布局上的变化是意料之中的。
+**滾動檢視可能導致佈局更改。**
+<br>該變更會修復對話方塊發生繪製溢位的問題。
+  這種佈局上的變化是意料之中的。
 
   <br>A nested `SingleChildScrollView` in `AlertDialog.content`
   should work properly if left in the code,
   but should be removed if unintended, since
   it might cause confusion.
     
-  <br>当代码中有 `SingleChildScrollView` 嵌套在
-  `AlertDialog.content` 时，那么对话框应正常展示。
-  但如果不是有意为之，则应将其移除，否则可能导致代码更为不可读。
+  <br>當代碼中有 `SingleChildScrollView` 巢狀(Nesting)在
+  `AlertDialog.content` 時，那麼對話方塊應正常展示。
+  但如果不是有意為之，則應將其移除，否則可能導致程式碼更為不可讀。
   
 Code before migration:
 
-迁移前的代码：
+遷移前的程式碼：
 
 <!-- skip -->
 ```dart
@@ -219,7 +219,7 @@ AlertDialog(
 
 Code after migration:
 
-迁移后的代码：
+遷移後的程式碼：
 
 <!-- skip -->
 ```dart
@@ -235,39 +235,39 @@ AlertDialog(
 
 ## Timeline
 
-## 时间线
+## 時間線
 
 Landed in version: 1.16.3<br>
 In stable release: 1.17
 
-发布于版本：1.16.3<br>
-发布于稳定版本：1.17
+釋出於版本：1.16.3<br>
+釋出於穩定版本：1.17
 
 ## References
 
-## 参考文献
+## 參考文獻
 
 Design doc:
 
-设计文档
+設計文件
 
 * [Scrollable `AlertDialog`][]
 
 API documentation:
 
-API 文档：
+API 文件：
 
 * [`AlertDialog`][]
 
 Relevant issue:
 
-相关 issue：
+相關 issue：
 
 * [Overflow exceptions with maximum accessibility font size][]
 
 Relevant PRs:
 
-相关 PRs：
+相關 PRs：
 
 * [Update to `AlertDialog.scrollable`][]
 * [Original attempt to implement scrollable `AlertDialog`][]

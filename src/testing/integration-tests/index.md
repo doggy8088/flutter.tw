@@ -1,9 +1,9 @@
 ---
 title: Integration testing
-title: 集成测试
+title: 整合測試
 description: Learn how to write integration tests
-description: 学习如何撰写集成测试
-tags: 测试,Flutter Test,集成测试
+description: 學習如何撰寫整合測試
+tags: 測試,Flutter Test,整合測試
 ---
 
 <?code-excerpt path-base="testing/integration_tests/how_to"?>

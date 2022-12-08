@@ -1,17 +1,17 @@
 ---
 title: Make authenticated requests
-title: 发起 HTTP 认证授权请求
+title: 發起 HTTP 認證授權請求
 description: How to fetch authorized data from a web service.
-description: 如何从 web 服务中获取授权信息。
-tags: cookbook, 实用教程, 网络请求
-keywords: HTTP 认证授权请求
+description: 如何從 web 服務中獲取授權資訊。
+tags: cookbook, 實用課程, 網路請求
+keywords: HTTP 認證授權請求
 prev:
   title: Fetch data from the internet
-  title: 获取网络数据
+  title: 獲取網路資料
   path: /docs/cookbook/networking/fetch-data
 next:
   title: Parse JSON in the background
-  title: 在后台处理 JSON 数据解析
+  title: 在後台處理 JSON 資料解析
   path: /docs/cookbook/networking/background-parsing
 ---
 
@@ -21,21 +21,21 @@ To fetch data from most web services, you need to provide
 authorization. There are many ways to do this,
 but perhaps the most common uses the `Authorization` HTTP header.
 
-为了从众多的网络服务中获取数据，你需要提供相应的授权认证信息。
-当然了，解决这一问题的方法有很多，
-而最常见的方法或许就是使用 `Authorization` HTTP header 了。
+為了從眾多的網路服務中獲取資料，你需要提供相應的授權認證資訊。
+當然了，解決這一問題的方法有很多，
+而最常見的方法或許就是使用 `Authorization` HTTP header 了。
 
 ## Add authorization headers
 
-## 添加 Authorization Headers
+## 新增 Authorization Headers
 
 The [`http`][] package provides a
 convenient way to add headers to your requests.
 Alternatively, use the [`HttpHeaders`][]
 class from the `dart:io` library.
 
-[`http`][] 这个 package 提供了相当实用的方法来向请求中添加 headers，
-你也可以使用 `dart:io` 来使用一些常见的 [`HttpHeaders`][]。
+[`http`][] 這個 package 提供了相當實用的方法來向請求中新增 headers，
+你也可以使用 `dart:io` 來使用一些常見的 [`HttpHeaders`][]。
 
 <?code-excerpt "lib/main.dart (get)"?>
 ```dart
@@ -50,13 +50,13 @@ final response = await http.get(
 
 ## Complete example
 
-## 完整样例
+## 完整範例
 
 This example builds upon the
 [Fetching data from the internet][] recipe.
 
-下面的例子是基于
-[获取网络数据][Fetching data from the internet] 中的方法编写的。
+下面的例子是基於
+[獲取網路資料][Fetching data from the internet] 中的方法編寫的。
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

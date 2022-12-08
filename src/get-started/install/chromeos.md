@@ -1,14 +1,14 @@
 ---
 title: Chrome OS install
-title: 在 Chrome OS 上安装和配置 Flutter 开发环境
+title: 在 Chrome OS 上安裝和配置 Flutter 開發環境
 description: How to install on Chrome OS.
-description: 如何在 Chrome OS 上安装 Flutter。
+description: 如何在 Chrome OS 上安裝 Flutter。
 short-title: Chrome OS
-tags: Flutter安装,Flutter环境搭建
-keywords: Flutter ChromsOS,ChromeOS上安装Flutter,ChromeOS开发
+tags: Flutter安裝,Flutter環境搭建
+keywords: Flutter ChromsOS,ChromeOS上安裝Flutter,ChromeOS開發
 next:
   title: Set up an editor
-  titie: 编辑工具设定
+  titie: 編輯工具設定
   path: /docs/get-started/editor
 ---
 
@@ -16,25 +16,25 @@ next:
 
 ## System requirements
 
-## 系统要求
+## 系統要求
 
 To install and run Flutter, your development environment
 must meet these minimum requirements:
 
-要安装并运行 Flutter，你的开发环境必须满足如下最低配置要求：
+要安裝並執行 Flutter，你的開發環境必須滿足如下最低配置要求：
 
 * **Operating Systems**: Chrome OS (64-bit) with [Linux (Beta)][] turned on
 
-  **操作系统**：64 位的 Chrome OS 系统（需开启 [Linux (Beta)][] 功能）
+  **作業系統**：64 位的 Chrome OS 系統（需開啟 [Linux (Beta)][] 功能）
 
 * **Disk Space**: 600 MB (does not include disk space for IDE/tools).
 
-  **磁盘空间**：600 MB （不包括 IDE/tools 所占的空间）
+  **磁碟空間**：600 MB （不包括 IDE/tools 所佔的空間）
 
 * **Tools**: Flutter depends on these command-line
   tools being available in your environment.
 
-  **工具**：Flutter 需要环境中安装如下命令行工具
+  **工具**：Flutter 需要環境中安裝如下命令列工具
 
   * `bash`
   * `curl`
@@ -48,13 +48,13 @@ must meet these minimum requirements:
 * **Shared libraries**: Flutter `test` command depends on
   this library being available in your environment.
 
-  **共享库**：Flutter 的 `test` 命令依赖下面的库
+  **共享庫**：Flutter 的 `test` 命令依賴下面的函式庫
 
   * `libGLU.so.1` - provided by mesa packages such as `libglu1-mesa` on
      Ubuntu/Debian
 
-    `libGLU.so.1` - 由 mesa 包提供，比如在 Ubuntu/Debian
-    系统上对应的包是 `libglu1-mesa`
+    `libGLU.so.1` - 由 mesa 套件提供，比如在 Ubuntu/Debian
+    系統上對應的包是 `libglu1-mesa`
 
 {% include_relative _get-sdk-chromeos.md %}
 
@@ -68,7 +68,7 @@ must meet these minimum requirements:
 
 Set up your preferred editor.
 
-编辑器设置。
+編輯器設定。
 
 ## Flutter & Chrome OS tips & tricks
 
@@ -80,8 +80,8 @@ Here’s an example of how to launch
 Flutter DevTools for an Android app with ports
 that will work:
 
-对于当前版本的 Chrome OS，只有 Crostini 的几个端口对环境开放。
-下面这个示例讲解了如何在可用端口上启动 Flutter DevTools:
+對於當前版本的 Chrome OS，只有 Crostini 的幾個埠對環境開放。
+下面這個範例講解了如何在可用埠上啟動 Flutter DevTools:
 
 ```terminal
 $ flutter pub global run devtools --port 8000
@@ -97,11 +97,11 @@ of `http://127.0.0.1:8080/auth_code=/`. Use this URL
 and select "Connect" to start the Flutter DevTools
 for your Android app.
 
-然后在你的 Chrome 浏览器里打开 URL: http://127.0.0.1:8000/#，
-上面最后一个 `flutter run` 命令会输出一个类似
+然後在你的 Chrome 瀏覽器裡開啟 URL: http://127.0.0.1:8000/#，
+上面最後一個 `flutter run` 命令會輸出一個類別似
 `http://127.0.0.1:8080/auth_code=/` 的 URL，
-使用这个 URL 并选择「Connect」来启动
-适用于 Android 应用的 Flutter DevTools。
+使用這個 URL 並選擇「Connect」來啟動
+適用於 Android 應用的 Flutter DevTools。
 
 #### Flutter Chrome OS lint analysis
 
@@ -117,20 +117,20 @@ permissions that imply requests for unsupported
 hardware, as well as other properties or code
 that would bring a lesser experience on these devices.
 
-Flutter 团队在 Chrome OS 中添加了 Lint Analysis 检查，
-用于保证所构建的应用程序在 Chrome OS 上运行正常。
-它会检查在 AndroidManifest 里是否存在所需的硬件是 Chrome OS 设备上所不支持的，
-是否向不支持的硬件请求了权限，以及是否存在会降低体验效果的代码。
+Flutter 團隊在 Chrome OS 中添加了 Lint Analysis 檢查，
+用於保證所建構的應用程式在 Chrome OS 上執行正常。
+它會檢查在 AndroidManifest 裡是否存在所需的硬體是 Chrome OS 裝置上所不支援的，
+是否向不支援的硬體請求了許可權，以及是否存在會降低體驗效果的程式碼。
 
 To activate these,
 you need to create a new analysis_options.yaml file to include these options.
 
-要启用上述的功能特性，你需要创建一个新的或者更新你现有的
-analysis_options.yaml 文件，使其包含如下选项：
+要啟用上述的功能特性，你需要建立一個新的或者更新你現有的
+analysis_options.yaml 檔案，使其包含如下選項：
 
 (If you have an existing analysis_options.yaml file, you can update it)
 
-（如果你已经有一个 analysis_options.yaml，直接更新它的内容即可）
+（如果你已經有一個 analysis_options.yaml，直接更新它的內容即可）
 
 ```yaml
 include: package:flutter/analysis_options_user.yaml
@@ -141,7 +141,7 @@ analyzer:
 
 To run these from the command line, use the following command:
 
-从命令行运行下面的内容：
+從命令列執行下面的內容：
 
 ```terminal
 $ flutter analyze
@@ -149,7 +149,7 @@ $ flutter analyze
 
 Sample output for this command might look like:
 
-运行后的输出如下：
+執行後的輸出如下：
 
 ```terminal
 Analyzing ...
@@ -162,7 +162,7 @@ but check back for instructions on how you can make
 this functionality work with your Chrome OS
 targeted Flutter app.
 
-目前该功能仍然处于开发阶段，不过你可以在未来根据本文档的内容
-在 Chrome OS 上开发 Flutter 应用程序。
+目前該功能仍然處於開發階段，不過你可以在未來根據本文件的內容
+在 Chrome OS 上開發 Flutter 應用程式。
 
 [Linux (Beta)]: https://support.google.com/chromebook/answer/9145439

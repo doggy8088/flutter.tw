@@ -1,8 +1,8 @@
 ---
 title: The RenderEditable needs to be laid out before hit testing
-title: 在进行点击测试之前，需要对 RenderEditable 进行布局
+title: 在進行點選測試之前，需要對 RenderEditable 進行佈局
 description: The hit testing of RenderEditable requires additional information that is only available after the layout.
-description: RenderEditable 的命中测试需要一些仅在布局之后可用的其他信息。
+description: RenderEditable 的命中測試需要一些僅在佈局之後可用的其他資訊。
 ---
 
 ## Summary

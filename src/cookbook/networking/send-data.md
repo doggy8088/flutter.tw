@@ -1,17 +1,17 @@
 ---
 title: Send data to the internet
-title: 发送网络数据
+title: 傳送網路資料
 description: How to use the http package to send data over the internet.
-description: 如何通过 http 包发送网络数据。
-tags: cookbook, 实用教程, 网络请求
-keywords: 网络数据
+description: 如何透過 http 包傳送網路資料。
+tags: cookbook, 實用課程, 網路請求
+keywords: 網路資料
 prev:
   title: Parse JSON in the background
-  title: 在后台处理 JSON 数据解析
+  title: 在後台處理 JSON 資料解析
   path: /docs/cookbook/networking/background-parsing
 next:
   title: Update data over the internet
-  title: 通过网络更新数据
+  title: 透過網路更新資料
   path: /docs/cookbook/networking/update-data
 ---
 

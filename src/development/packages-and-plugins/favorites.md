@@ -1,10 +1,10 @@
 ---
 title: Flutter Favorite program
-title: Flutter Favorite 项目
+title: Flutter Favorite 專案
 description: Guidelines for identifying a plugin or package as a Flutter Favorite.
-description: 认定一个插件或 package 为 Flutter Favorite 的准则。
-tags: Packages,插件
-keywords: Flutter优秀插件推荐项目
+description: 認定一個外掛或 package 為 Flutter Favorite 的準則。
+tags: Packages,外掛
+keywords: Flutter優秀外掛推薦專案
 ---
 
 ![The Flutter Favorite program logo]({{site.url}}/assets/images/docs/development/packages-and-plugins/FlutterFavoriteLogo.png){:width="20%"}
@@ -16,10 +16,10 @@ This is not a guarantee of quality or suitability to your
 particular situation&mdash;you should always perform your
 own evaluation of packages and plugins for your project.
 
-**Flutter Favorite** 项目是为了在你构建应用时，
-能够向你提供你应该优先考虑的 package 和插件。
-这并不意味着它能够在你的特定情况下保证你的产品质量和适用性&mdash;
-你应该始终针对你的项目情况对 packages 和插件进行自我评估。
+**Flutter Favorite** 專案是為了在你建構應用時，
+能夠向你提供你應該優先考慮的 package 和外掛。
+這並不意味著它能夠在你的特定情況下保證你的產品品質和適用性&mdash;
+你應該始終針對你的專案情況對 packages 和外掛進行自我評估。
 
 You can see the complete list of
 [Flutter Favorite packages][] on pub.dev.
@@ -34,10 +34,10 @@ You can see the complete list of
   plugins and packages that can take your app
   to the next level.
 
-  正在为自己的应用准备加入更多新功能吗？
-  [Happy path 项目][Happy paths project] 了解一下？
-  我们为有「选择困难症」的开发者们提供了一些「精选」的插件和 package，
-  帮助你的应用更上一层楼。
+  正在為自己的應用準備加入更多新功能嗎？
+  [Happy path 專案][Happy paths project] 瞭解一下？
+  我們為有「選擇困難症」的開發者們提供了一些「精選」的外掛和 package，
+  幫助你的應用更上一層樓。
 
 {{site.alert.end}}
 
@@ -45,58 +45,58 @@ You can see the complete list of
 
 ## Metrics
 
-## 指标
+## 指標
 
 Flutter Favorite packages have passed high quality standards
 using the following metrics:
 
-Flutter Favorite packages 通过以下指标来确认是否达到高质量标准：
+Flutter Favorite packages 透過以下指標來確認是否達到高品質標準：
 
 * [Overall package score][]
 
-  Package 的 [整体分数][Overall package score]
+  Package 的 [整體分數][Overall package score]
   
 * **Permissive license**,
   including (but not limited to)
   Apache, Artistic, BSD, CC BY, MIT, MS-PL and W3C
   
-  **宽松许可证**,
-  包括但不限于
+  **寬鬆許可證**,
+  包括但不限於
   Apache、Artistic、BSD、CC BY、MIT、MS-PL 和 W3C
   
 * GitHub **version tag** matches the current version from
   pub.dev, so you can see exactly what source is in the package
   
-  GitHub **版本标签**与从 pub.dev 获取的当前版本匹配，
-  以便你可以准确地看到 packages 的源码
+  GitHub **版本標籤**與從 pub.dev 獲取的當前版本匹配，
+  以便你可以準確地看到 packages 的原始碼
   
 * Feature **completeness**&mdash;and not marked as incomplete
   (for example, with labels like “beta” or “under construction”)
   
-  特性 **完整** ——并且没有被标记为不完整
-  （例如带着 「beta」 或 「under construction」 标签)
+  特性 **完整** ——並且沒有被標記為不完整
+  （例如帶著 「beta」 或 「under construction」 標籤)
   
 * [Verified publisher][]
 
-  成为 [已验证发布者][Verified publisher]
+  成為 [已驗證釋出者][Verified publisher]
   
 * General **usability** when it comes to the overview,
   docs, sample/example code, and API quality
   
-  当其涉及到概述、文档、样本/示例代码和 API 质量时，
-  具备一般 **可用性**
+  當其涉及到概述、文件、樣本/範例程式碼和 API 品質時，
+  具備一般 **可用性**
   
 * Good **runtime behavior** in terms of CPU and memory usage
 
-  在 CPU 和内存占用方面，具有优异的 **运行时行为**
+  在 CPU 和記憶體佔用方面，具有優異的 **執行時行為**
   
 * High quality **dependencies**
 
-  高质量 **依赖项**
+  高品質 **依賴項**
 
 ## Flutter Ecosystem  Committee
 
-## Flutter 生态系统委员会
+## Flutter 生態系統委員會
 
 The Flutter Ecosystem Committee is comprised of Flutter
 team members and Flutter community members spread
@@ -104,14 +104,14 @@ across its ecosystem.
 One of their jobs is to decide when a package
 has met the quality bar to become a Flutter Favorite.
 
-Flutter 生态系统委员会由 Flutter 团队成员和社区成员组成并贯穿其生态系统。
-他们的工作之一就是确定一个 package 是否满足成为 Flutter Favorite 的质量要求。
+Flutter 生態系統委員會由 Flutter 團隊成員和社群成員組成並貫穿其生態系統。
+他們的工作之一就是確定一個 package 是否滿足成為 Flutter Favorite 的品質要求。
 
 The current committee members
 (ordered alphabetically by last name)
 are as follows:
 
-当前的委员会成员（按姓氏字母排序）如下所示：
+當前的委員會成員（按姓氏字母排序）如下所示：
 
 * Pooja Bhaumik
 * Hillel Coren
@@ -126,9 +126,9 @@ potential future Flutter Favorite, or would like
 to bring any other issues to the attention of the committee,
 [send the committee][] an email.
 
-如果你想提名一个 package 或插件成为潜在的 Flutter Favorite，
-亦或是想提请其他需要引起注意的问题至委员会，
-请发送邮件至 [委员会主席][send the committee]。
+如果你想提名一個 package 或外掛成為潛在的 Flutter Favorite，
+亦或是想提請其他需要引起注意的問題至委員會，
+請傳送郵件至 [委員會主席][send the committee]。
 
 ## Flutter Favorite usage guidelines
 
@@ -139,28 +139,28 @@ by the Flutter team.
 If you own a package that has been designated as a Flutter Favorite,
 you must adhere to the following guidelines:
 
-Flutter Favorite packages 会由 Flutter 团队在 pub.dev 上标注。
-如果你拥有一个 package 被标注未 Flutter Favorite，那么你必须遵守以下准则：
+Flutter Favorite packages 會由 Flutter 團隊在 pub.dev 上標註。
+如果你擁有一個 package 被標註未 Flutter Favorite，那麼你必須遵守以下準則：
 
 * Flutter Favorite package authors may place the Flutter Favorite
   logo in the package’s GitHub README, on the package’s
   pub.dev **Overview** tab,
   and on social media as related to posts about that package.
   
-  Flutter Favorite package 的作者可以将 Flutter Favorite 徽标放置在 package 的 GitHub README 中，
-  pub.dev 上 package 主页的 **Overview** 处，以及社交媒体上与该 package 相关的帖子中。
+  Flutter Favorite package 的作者可以將 Flutter Favorite 徽標放置在 package 的 GitHub README 中，
+  pub.dev 上 package 主頁的 **Overview** 處，以及社交媒體上與該 package 相關的帖子中。
   
 * We encourage you to use the **#FlutterFavorite**
   hashtag in social media.
 
-  我们鼓励你在社交媒体上使用 **#FlutterFavorite** 标签。
+  我們鼓勵你在社交媒體上使用 **#FlutterFavorite** 標籤。
   
 * When using the Flutter Favorite logo,
   the author must link to (this) Flutter Favorite landing page,
   to provide context for the designation.
   
-  当使用 Flutter Favorite 的标志时，
-  作者必须提供跳转至此 Flutter Favorite 着陆页的链接，以说明该徽标的来龙去脉。
+  當使用 Flutter Favorite 的標誌時，
+  作者必須提供跳轉至此 Flutter Favorite 著陸頁的連結，以說明該徽標的來龍去脈。
   
 * If a Flutter Favorite package loses its Flutter Favorite status,
   the author will be notified,
@@ -168,23 +168,23 @@ Flutter Favorite packages 会由 Flutter 团队在 pub.dev 上标注。
   of “Flutter Favorite” and the Flutter Favorite logo from
   the affected package.
   
-  假定一个 Flutter Favorite package 失去了它的 Flutter Favorite 标记，作者将收到通知。
-  届时，作者必须立即删除所有受影响的 packages 所使用「Flutter Favorite」和「Flutter Favorite 徽标」。
+  假定一個 Flutter Favorite package 失去了它的 Flutter Favorite 標記，作者將收到通知。
+  屆時，作者必須立即刪除所有受影響的 packages 所使用「Flutter Favorite」和「Flutter Favorite 徽標」。
   
 * Don’t alter, distort,
   or modify the Flutter Favorite logo in any way,
   including displaying the logo with color variations
   or unapproved visual elements.
   
-  不得以任何方式改变、歪曲或修改 Flutter Favorite 的徽标，
-  包括通过颜色变换或未经批准的视觉元素来展示该徽标。
+  不得以任何方式改變、歪曲或修改 Flutter Favorite 的徽標，
+  包括透過顏色變換或未經批准的視覺元素來展示該徽標。
   
 * Don’t display the Flutter Favorite logo in a manner that
   is misleading, unfair, defamatory, infringing, libelous,
   disparaging, obscene, or otherwise objectionable to Google.
 
-  不得以误导的方式展示 Flutter Favorite 的徽标，
-  即以误导、不平等、诽谤、侵权、中伤、贬低、淫秽或其他令谷歌反感的方式展示来 Flutter Favorite 徽标。
+  不得以誤導的方式展示 Flutter Favorite 的徽標，
+  即以誤導、不平等、誹謗、侵權、中傷、貶低、淫穢或其他令谷歌反感的方式展示來 Flutter Favorite 徽標。
 
 ## What's next
 
@@ -197,38 +197,38 @@ to increase quality, as well as consider other areas of the
 ecosystem that could benefit from the Flutter Favorite program,
 such as tools, consulting firms, and prolific Flutter contributors.
 
-随着生态系统的不断发展，您应该期待 Flutter Favorite packages 名单会不断壮大和更新
-委员会将持续与 packages 作者合作以提高质量，并思考让生态系统的其他领域，
-如工具、咨询公司和高产的 Flutter 贡献者，也可以从 Flutter Favorite 计划中获益。
+隨著生態系統的不斷髮展，您應該期待 Flutter Favorite packages 名單會不斷壯大和更新
+委員會將持續與 packages 作者合作以提高品質，並思考讓生態系統的其他領域，
+如工具、諮詢公司和高產的 Flutter 貢獻者，也可以從 Flutter Favorite 計劃中獲益。
 
 As the Flutter ecosystem grows,
 we’ll be looking at expanding the set of metrics,
 which might include the following:
 
-随着 Flutter 生态系统的发展。我们将着眼于扩大指标设置，
-其中可能包括以下内容。
+隨著 Flutter 生態系統的發展。我們將著眼於擴大指標設定，
+其中可能包括以下內容。
 
 * Use of the new [pubspec.yaml format][] that clearly
   indicates which platforms are supported.
 
-  使用全新的 [pubspec.yaml 格式][pubspec.yaml format]来明确指出其支持哪些平台。
+  使用全新的 [pubspec.yaml 格式][pubspec.yaml format]來明確指出其支援哪些平台。
   
 * Support for the latest stable version of Flutter.
 
-  支持 Flutter 的最新稳定版本。
+  支援 Flutter 的最新穩定版本。
   
 * Support for AndroidX.
 
-  对 AndroidX 的支持。
+  對 AndroidX 的支援。
   
 * Support for multiple platforms, such as web, macOS,
   Windows, Linux, etc.
   
-  支持多种平台，如 Web、macOS、Windows 和 Linux 等。
+  支援多種平台，如 Web、macOS、Windows 和 Linux 等。
 
 * Integration as well as unit test coverage.
 
-  集成以及单元测试覆盖。
+  整合以及單元測試覆蓋。
 
 ## Flutter Favorites
 

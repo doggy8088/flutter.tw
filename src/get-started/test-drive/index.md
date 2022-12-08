@@ -1,17 +1,17 @@
 ---
 title: Test drive
-title: 开发体验初探
+title: 開發體驗初探
 description: How to create a templated Flutter app and use hot reload.
-description: 如何使用 hot reload 创建一个 Flutter 应用模版。
-tags: Flutter安装,Flutter环境搭建
-keywords: Flutter IDE,Flutter编辑器,Android Studio,VS Code,Flutter插件
+description: 如何使用 hot reload 建立一個 Flutter 應用模版。
+tags: Flutter安裝,Flutter環境搭建
+keywords: Flutter IDE,Flutter編輯器,Android Studio,VS Code,Flutter外掛
 prev:
   title: Set up an editor
-  title: 编辑工具设定
+  title: 編輯工具設定
   path: /docs/get-started/editor
 next:
   title: Write your first Flutter app
-  title: 编写第一个 Flutter 应用
+  title: 編寫第一個 Flutter 應用
   path: /docs/get-started/codelab
 toc: false
 ---
@@ -19,12 +19,12 @@ toc: false
 This page describes how to create a new Flutter app from templates, run it,
 and experience "hot reload" after you make changes to the app.
 
-本页面讲解如何通过模板实现一个 Flutter 应用，
-执行并且在修改程序之后触发“热重载 (hot reload)”功能。
+本頁面講解如何透過範本實現一個 Flutter 應用，
+執行並且在修改程式之後觸發“熱重載 (hot reload)”功能。
 
 Select your development tool of choice for writing, building, and running Flutter apps.
 
-选择你用于编写、编译、执行 Flutter 应用的开发环境吧。
+選擇你用於編寫、編譯、執行 Flutter 應用的開發環境吧。
 
 {% comment %} Nav tabs {% endcomment -%}
 <ul class="nav nav-tabs" id="editor-setup" role="tablist">
@@ -35,7 +35,7 @@ Select your development tool of choice for writing, building, and running Flutte
     <a class="nav-link" id="androidstudio-tab" href="#androidstudio" role="tab" aria-controls="androidstudio" aria-selected="false">Android Studio and IntelliJ</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="terminal-tab" href="#terminal" role="tab" aria-controls="terminal" aria-selected="false">终端 & 文本编辑器</a>
+    <a class="nav-link" id="terminal-tab" href="#terminal" role="tab" aria-controls="terminal" aria-selected="false">終端 & 文字編輯器</a>
   </li>
 </ul>
 

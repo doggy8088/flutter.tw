@@ -1,10 +1,10 @@
 ---
 title: Introduction to widgets
-title: Widgets 介绍
+title: Widgets 介紹
 description: Learn about Flutter's widgets.
-description: 了解 Flutter widget 相关的内容。
-tags: 用户界面,Flutter UI,布局
-keywords: Flutter widget,矩形,边框
+description: 瞭解 Flutter widget 相關的內容。
+tags: 使用者介面,Flutter UI,佈局
+keywords: Flutter widget,矩形,邊框
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -23,12 +23,12 @@ which the framework diffs against the previous description in order
 to determine the minimal changes needed in the underlying render
 tree to transition from one state to the next.
 
-Flutter 从 [React][] 中吸取灵感，通过现代化框架创建出精美的组件。
-它的核心思想是用 widget 来构建你的 UI 界面。
-Widget 描述了在当前的配置和状态下视图所应该呈现的样子。
-当 widget 的状态改变时，它会重新构建其描述（展示的 UI），
-框架则会对比前后变化的不同，
-以确定底层渲染树从一个状态转换到下一个状态所需的最小更改。
+Flutter 從 [React][] 中吸取靈感，透過現代化框架創建出精美的元件。
+它的核心思想是用 widget 來建構你的 UI 介面。
+Widget 描述了在當前的配置和狀態下檢視所應該呈現的樣子。
+當 widget 的狀態改變時，它會重新建構其描述（展示的 UI），
+框架則會對比前後變化的不同，
+以確定底層渲染樹從一個狀態轉換到下一個狀態所需的最小更改。
 
 {{site.alert.note}}
 
@@ -37,11 +37,11 @@ Widget 描述了在当前的配置和状态下视图所应该呈现的样子。
   [building layouts][],
   and [adding interactivity to your Flutter app][].
 
-  如果你想通过深入了解一些代码来更好地掌握 Flutter，
-  请查阅 [Codelab: Flutter 布局基础教程][basic layout codelab]、
-  [Flutter 中的布局][building layouts] 和 
-  [为你的 Flutter 应用加入交互体验][adding interactivity to your Flutter app]
-  这三篇文章。
+  如果你想透過深入瞭解一些程式碼來更好地掌握 Flutter，
+  請查閱 [Codelab: Flutter 佈局基礎課程][basic layout codelab]、
+  [Flutter 中的佈局][building layouts] 和 
+  [為你的 Flutter 應用加入互動體驗][adding interactivity to your Flutter app]
+  這三篇文章。
 
 {{site.alert.end}}
 
@@ -50,7 +50,7 @@ Widget 描述了在当前的配置和状态下视图所应该呈现的样子。
 The minimal Flutter app simply calls the [`runApp()`][]
 function with a widget:
 
-创建一个最小的 Flutter 应用简单到仅需调用 [`runApp()`][] 方法并传入一个 widget 即可：
+建立一個最小的 Flutter 應用簡單到僅需呼叫 [`runApp()`][] 方法並傳入一個 widget 即可：
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-310px:split-60:ga_id-starting_code
@@ -78,16 +78,16 @@ The text direction needs to be specified in this instance;
 when the `MaterialApp` widget is used,
 this is taken care of for you, as demonstrated later.
 
-`runApp()` 函数会持有传入的 [`Widget`][]，
-并且使它成为 widget 树中的根节点。
-在这个例子中，Widget 树有两个 widgets，
+`runApp()` 函式會持有傳入的 [`Widget`][]，
+並且使它成為 widget 樹中的根節點。
+在這個例子中，Widget 樹有兩個 widgets，
 [`Center`][] widget 及其子
 widget —— [`Text`][] widget。
-框架会强制让根 widget 铺满整个屏幕，
-也就是说“Hello World”会在屏幕上居中显示。
-在这个例子我们需要指定文字的方向
-，当使用 `MaterialApp` widget 时，
-你就无需考虑这一点，之后我们会进一步的描述。
+框架會強制讓根 widget 鋪滿整個螢幕，
+也就是說“Hello World”會在螢幕上居中顯示。
+在這個例子我們需要指定文字的方向
+，當使用 `MaterialApp` widget 時，
+你就無需考慮這一點，之後我們會進一步的描述。
 
 When writing an app, you'll commonly author new widgets that
 are subclasses of either [`StatelessWidget`][] or [`StatefulWidget`][],
@@ -98,30 +98,30 @@ The framework builds those widgets in turn until the process
 bottoms out in widgets that represent the underlying [`RenderObject`][],
 which computes and describes the geometry of the widget.
 
-在写应用的过程中，取决于是否需要管理状态，
-你通常会创建一个新的组件继承
+在寫應用的過程中，取決於是否需要管理狀態，
+你通常會建立一個新的元件繼承
 [`StatelessWidget`][] 或 [`StatefulWidget`][]。
-Widget 的主要工作是实现 [`build()`][] 方法，
-该方法根据其它较低级别的 widget 来描述这个 widget。
-框架会逐一构建这些 widget，
-直到最底层的描述 widget 几何形状的
+Widget 的主要工作是實現 [`build()`][] 方法，
+該方法根據其它較低級別的 widget 來描述這個 widget。
+框架會逐一建構這些 widget，
+直到最底層的描述 widget 幾何形狀的
 [`RenderObject`][]。
 
 ## Basic widgets
 
-## 基础 widgets
+## 基礎 widgets
 
 Flutter comes with a suite of powerful basic widgets,
 of which the following are commonly used:
 
-Flutter 自带了一套强大的基础 widgets，下面列出了一些常用的：
+Flutter 自帶了一套強大的基礎 widgets，下面列出了一些常用的：
 
 **[`Text`][]**
 <br> The `Text` widget lets you create a run of styled text
   within your application.
 
 **[`Text`][]** 
-<br>`Text` widget 可以用来在应用内创建带样式的文本。
+<br>`Text` widget 可以用來在應用內建立帶樣式的文字。
 
 **[`Row`][], [`Column`][]**
 <br> These flex widgets let you create flexible layouts in
@@ -130,8 +130,8 @@ Flutter 自带了一套强大的基础 widgets，下面列出了一些常用的�
   flexbox layout model.
   
 **[`Row`][], [`Column`][]**
-<br> 这两个 flex widgets 可以让你在水平 (`Row`) 和垂直(`Column`) 
-方向创建灵活的布局。它是基于 web 的 flexbox 布局模型设计的。
+<br> 這兩個 flex widgets 可以讓你在水平 (`Row`) 和垂直(`Column`) 
+方向建立靈活的佈局。它是基於 web 的 flexbox 佈局模型設計的。
 
 **[`Stack`][]**
 <br> Instead of being linearly oriented (either horizontally or vertically),
@@ -142,10 +142,10 @@ Flutter 自带了一套强大的基础 widgets，下面列出了一些常用的�
   absolute positioning layout model.
   
 **[`Stack`][]**
-<br> `Stack` widget 不是线性（水平或垂直）定位的，而是按照绘制顺序将 widget 堆叠在一起。
-  你可以用 [`Positioned`][] widget 作为`Stack` 的子 widget，
-  以相对于 `Stack` 的上，右，下，左来定位它们。
-  Stack 是基于 Web 中的绝对位置布局模型设计的。
+<br> `Stack` widget 不是線性（水平或垂直）定位的，而是按照繪製順序將 widget 堆疊在一起。
+  你可以用 [`Positioned`][] widget 作為`Stack` 的子 widget，
+  以相對於 `Stack` 的上，右，下，左來定位它們。
+  Stack 是基於 Web 中的絕對位置佈局模型設計的。
 
 **[`Container`][]**
 <br> The `Container` widget lets you create a rectangular visual element.
@@ -155,14 +155,14 @@ Flutter 自带了一套强大的基础 widgets，下面列出了一些常用的�
   `Container` can be transformed in three dimensional space using a matrix.
   
 **[`Container`][]**
-<br> `Container` widget 可以用来创建一个可见的矩形元素。
-   Container 可以使用 [`BoxDecoration`][] 来进行装饰，如背景，边框，或阴影等。
-   `Container` 还可以设置外边距、内边距和尺寸的约束条件等。
-   另外，`Container`可以使用矩阵在三维空间进行转换。
+<br> `Container` widget 可以用來建立一個可見的矩形元素。
+   Container 可以使用 [`BoxDecoration`][] 來進行裝飾，如背景，邊框，或陰影等。
+   `Container` 還可以設定外邊距、內邊距和尺寸的約束條件等。
+   另外，`Container`可以使用矩陣在三維空間進行轉換。
 
 Below are some simple widgets that combine these and other widgets:
 
-下面是一些简单的 widget，它们结合了上面提到的 widget 和一些其他的 widget：
+下面是一些簡單的 widget，它們結合了上面提到的 widget 和一些其他的 widget：
 
 <?code-excerpt "lib/main_myappbar.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -252,8 +252,8 @@ section of your `pubspec.yaml` file. It allows you to use the predefined
 set of [Material icons][]. It's generally a good idea to include this line
 if you are using the Materials library.
 
-请确认在 `pubspec.yaml` 文件中 `flutter` 部分有
-`uses-material-design: true` 这条，它能让你使用预置的 [Material icons][]。
+請確認在 `pubspec.yaml` 檔案中 `flutter` 部分有
+`uses-material-design: true` 這條，它能讓你使用預置的 [Material icons][]。
 
 ```yaml
 name: my_app
@@ -265,9 +265,9 @@ Many Material Design widgets need to be inside of a [`MaterialApp`][]
 to display properly, in order to inherit theme data.
 Therefore, run the application with a `MaterialApp`.
 
-为了获得(`MaterialApp`)主题的数据，
-许多 Material Design 的 widget 需要在 [`MaterialApp`][] 中才能显现正常。
-因此，请使用 `MaterialApp` 运行应用。
+為了獲得(`MaterialApp`)主題的資料，
+許多 Material Design 的 widget 需要在 [`MaterialApp`][] 中才能顯現正常。
+因此，請使用 `MaterialApp` 執行應用。
 
 The `MyAppBar` widget creates a [`Container`][] with a height of 56
 device-independent pixels with an internal padding of 8 pixels,
@@ -280,12 +280,12 @@ You can have multiple `Expanded` children and determine the
 ratio in which they consume the available space using the
 [`flex`][] argument to `Expanded`.
 
-`MyAppBar` widget 创建了一个高 56 独立像素，左右内边距 8 像素的 [`Container`][]。
-在容器内，`MyAppBar` 以 [`Row`][] 布局来组织它的子元素。
-中间的子 widget（`title` widget），被标记为  [`Expanded`][]，
-这意味着它会扩展以填充其它子 widget 未使用的可用空间。
-你可以定义多个`Expanded` 子 widget，
-并使用 [`flex`][] 参数确定它们占用可用空间的比例。
+`MyAppBar` widget 建立了一個高 56 獨立畫素，左右內邊距 8 畫素的 [`Container`][]。
+在容器內，`MyAppBar` 以 [`Row`][] 佈局來組織它的子元素。
+中間的子 widget（`title` widget），被標記為  [`Expanded`][]，
+這意味著它會擴充以填充其它子 widget 未使用的可用空間。
+你可以定義多個`Expanded` 子 widget，
+並使用 [`flex`][] 引數確定它們佔用可用空間的比例。
 
 The `MyScaffold` widget organizes its children in a vertical column.
 At the top of the column it places an instance of `MyAppBar`,
@@ -296,21 +296,21 @@ variety of ways. Finally, `MyScaffold` uses an
 [`Expanded`][] to fill the remaining space with its body,
 which consists of a centered message.
 
-`MyScaffold` widget 将其子 widget 组织在垂直列中。
-在列的顶部，它放置一个 `MyAppBar` 实例，
-并把 [`Text`][] widget 传给它来作为应用的标题。
-把 widget 作为参数传递给其他 widget 是一个很强大的技术，
-它可以让你以各种方式创建一些可重用的通用组件。
-最后，MyScaffold 使用 [`Expanded`][]
-来填充剩余空间，其中包含一个居中的消息。
+`MyScaffold` widget 將其子 widget 組織在垂直列中。
+在列的頂部，它放置一個 `MyAppBar` 例項，
+並把 [`Text`][] widget 傳給它來作為應用的標題。
+把 widget 作為引數傳遞給其他 widget 是一個很強大的技術，
+它可以讓你以各種方式建立一些可重用的通用元件。
+最後，MyScaffold 使用 [`Expanded`][]
+來填充剩餘空間，其中包含一個居中的訊息。
 
 For more information, see [Layouts][].
 
-有关更多信息，请参阅 [布局][Layouts]。
+有關更多資訊，請參閱 [佈局][Layouts]。
 
 ## Using Material Components
 
-## 使用 Material 组件
+## 使用 Material 元件
 
 Flutter provides a number of widgets that help you build apps
 that follow Material Design. A Material app starts with the
@@ -321,14 +321,14 @@ also known as "routes". The `Navigator` lets you transition smoothly
 between screens of your application. Using the [`MaterialApp`][]
 widget is entirely optional but a good practice.
 
-Flutter 提供了许多 widget，可帮助你构建遵循 Material Design 的应用。
-Material 应用以 [`MaterialApp`][] widget 开始，
-它在你的应用的底层下构建了许多有用的 widget。
-这其中包括 [`Navigator`][]，
-它管理由字符串标识的 widget 栈，也称为“routes”。
-`Navigator` 可以让你在应用的页面中平滑的切换。
-使用 [`MaterialApp`][] widget 不是必须的，
-但这是一个很好的做法。
+Flutter 提供了許多 widget，可幫助你建構遵循 Material Design 的應用。
+Material 應用以 [`MaterialApp`][] widget 開始，
+它在你的應用的底層下建構了許多有用的 widget。
+這其中包括 [`Navigator`][]，
+它管理由字串標識的 widget 棧，也稱為“routes”。
+`Navigator` 可以讓你在應用的頁面中平滑的切換。
+使用 [`MaterialApp`][] widget 不是必須的，
+但這是一個很好的做法。
 
 <?code-excerpt "lib/main_tutorial.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -386,10 +386,10 @@ the app is starting to look a bit more Material.
 For example, the app bar has a shadow and the title text inherits the
 correct styling automatically. A floating action button is also added.
 
-现在我们已经从 `MyAppBar` 和 `MyScaffold` 切换到了 material.dart 中的 
+現在我們已經從 `MyAppBar` 和 `MyScaffold` 切換到了 material.dart 中的 
 [`AppBar`][] 和 [`Scaffold`][] widget，
-我们的应用更“Material”了一些。
-例如，标题栏有了阴影，标题文本会自动继承正确的样式，此外还添加了一个浮动操作按钮。
+我們的應用更“Material”了一些。
+例如，標題欄有了陰影，標題文字會自動繼承正確的樣式，此外還添加了一個浮動操作按鈕。
 
 Notice that widgets are passed as arguments to other widgets.
 The [`Scaffold`][] widget takes a number of different widgets as
@@ -400,16 +400,16 @@ layout in the appropriate place. Similarly, the
 This pattern recurs throughout the framework and is something you
 might consider when designing your own widgets.
 
-注意，widget 作为参数传递给了另外的 widget。
-[`Scaffold`][] widget 将许多不同的 widget 作为命名参数，
-每个 widget 都放在了 Scofford 布局中的合适位置。
-同样的，[`AppBar`][] widget 允许我们给 
-[`leading`][]、[`title`][] widget 的 [`actions`][] 传递 widget。
-这种模式在整个框架会中重复出现，在设计自己的 widget 时可以考虑这种模式。
+注意，widget 作為引數傳遞給了另外的 widget。
+[`Scaffold`][] widget 將許多不同的 widget 作為命名引數，
+每個 widget 都放在了 Scofford 佈局中的合適位置。
+同樣的，[`AppBar`][] widget 允許我們給 
+[`leading`][]、[`title`][] widget 的 [`actions`][] 傳遞 widget。
+這種模式在整個框架會中重複出現，在設計自己的 widget 時可以考慮這種模式。
 
 For more information, see [Material Components widgets][].
 
-有关更多信息，请参阅 [Material 组件][Material Components widgets]。
+有關更多資訊，請參閱 [Material 元件][Material Components widgets]。
 
 {{site.alert.note}}
 
@@ -418,8 +418,8 @@ For more information, see [Material Components widgets][].
   see the [Cupertino components][] package,
   which has its own versions of [`CupertinoApp`][], and [`CupertinoNavigationBar`][].
 
-  Material 是 Flutter 中两个自带的设计之一，
-  如果想要以 iOS 为主的设计，可以参考 [Cupertino components][]，
+  Material 是 Flutter 中兩個自帶的設計之一，
+  如果想要以 iOS 為主的設計，可以參考 [Cupertino components][]，
   它有自己版本的 [`CupertinoApp`][] 和 [`CupertinoNavigationBar`][]。
 
 {{site.alert.end}}
@@ -427,14 +427,14 @@ For more information, see [Material Components widgets][].
 
 ## Handling gestures
 
-## 处理手势
+## 處理手勢
 
 Most applications include some form of user interaction with the system.
 The first step in building an interactive application is to detect
 input gestures. See how that works by creating a simple button:
 
-大多数应用都需要通过系统来处理一些用户交互。
-构建交互式应用程序的第一步是检测输入手势，这里通过创建一个简单的按钮来了解其工作原理：
+大多數應用都需要透過系統來處理一些使用者互動。
+建構互動式應用程式的第一步是檢測輸入手勢，這裡透過建立一個簡單的按鈕來了解其工作原理：
 
 <?code-excerpt "lib/main_mybutton.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -486,10 +486,10 @@ case printing a message to the console. You can use
 `GestureDetector` to detect a variety of input gestures,
 including taps, drags, and scales.
 
-[`GestureDetector`][] widget 没有可视化的展现，但它能识别用户的手势。
-当用户点击 [`Container`][] 时，
-`GestureDetector` 会调用其 [`onTap()`][] 回调，在这里会向控制台打印一条消息。
-你可以使用 `GestureDetector` 检测各种输入的手势，包括点击，拖动和缩放。
+[`GestureDetector`][] widget 沒有視覺化的展現，但它能識別使用者的手勢。
+當用戶點選 [`Container`][] 時，
+`GestureDetector` 會呼叫其 [`onTap()`][] 回呼(Callback)，在這裡會向控制檯列印一條訊息。
+你可以使用 `GestureDetector` 檢測各種輸入的手勢，包括點選，拖動和縮放。
 
 Many widgets use a [`GestureDetector`][] to provide
 optional callbacks for other widgets. For example, the
@@ -497,18 +497,18 @@ optional callbacks for other widgets. For example, the
 [`FloatingActionButton`][] widgets have [`onPressed()`][]
 callbacks that are triggered when the user taps the widget.
 
-许多 widget 使用 [`GestureDetector`][] 为其他 widget 提供可选的回调。
+許多 widget 使用 [`GestureDetector`][] 為其他 widget 提供可選的回呼(Callback)。
 例如，[`IconButton`][]、[`ElevatedButton`][] 和
-[`FloatingActionButton`][] widget 都有 [`onPressed()`][] 回调，
-当用户点击 widget 时就会触发这些回调。
+[`FloatingActionButton`][] widget 都有 [`onPressed()`][] 回呼(Callback)，
+當用戶點選 widget 時就會觸發這些回呼(Callback)。
 
 For more information, see [Gestures in Flutter][].
 
-有关更多信息，请参阅 [Flutter 中的手势][Gestures in Flutter]。
+有關更多資訊，請參閱 [Flutter 中的手勢][Gestures in Flutter]。
 
 ## Changing widgets in response to input
 
-## 根据用户输入改变 widget
+## 根據使用者輸入改變 widget
 
 So far, this page has used only stateless widgets.
 Stateless widgets receive arguments from their parent widget,
@@ -516,11 +516,11 @@ which they store in [`final`][] member variables.
 When a widget is asked to [`build()`][], it uses these stored
 values to derive new arguments for the widgets it creates.
 
-到目前为止，这个页面仅使用了无状态的 widget。
-无状态 widget 接收的参数来自于它的父 widget，
-它们储存在 [`final`][] 成员变量中。
-当 widget 需要被 [`build()`][] 时，
-就是用这些存储的变量为创建的 widget 生成新的参数。
+到目前為止，這個頁面僅使用了無狀態的 widget。
+無狀態 widget 接收的引數來自於它的父 widget，
+它們儲存在 [`final`][] 成員變數中。
+當 widget 需要被 [`build()`][] 時，
+就是用這些儲存的變數為建立的 widget 產生新的引數。
 
 In order to build more complex experiences&mdash;for example,
 to react in more interesting ways to user input&mdash;applications
@@ -529,11 +529,11 @@ this idea. `StatefulWidgets` are special widgets that know how to generate
 `State` objects, which are then used to hold state.
 Consider this basic example, using the [`ElevatedButton`][] mentioned earlier:
 
-为了构建更复杂的体验，例如，
-以更有趣的方式对用户输入做出反应&mdash;应用通常带有一些状态。
-Flutter 使用 StatefulWidgets 来实现这一想法。
-StatefulWidgets 是一种特殊的 widget，
-它会生成 State 对象，用于保存状态。看看这个基本的例子，
+為了建構更復雜的體驗，例如，
+以更有趣的方式對使用者輸入做出反應&mdash;應用通常帶有一些狀態。
+Flutter 使用 StatefulWidgets 來實現這一想法。
+StatefulWidgets 是一種特殊的 widget，
+它會產生 State 物件，用於儲存狀態。看看這個基本的例子，
 它使用了前面提到的 [`ElevatedButton`][]：
 
 <?code-excerpt "lib/main_counter.dart"?>
@@ -611,10 +611,10 @@ the application in its current state. `State` objects, on the other
 hand, are persistent between calls to
 `build()`, allowing them to remember information.
 
-您可能想知道为什么 StatefulWidget 和 State 是独立的对象。
-在 Flutter 中，这两种类型的对象具有不同的生命周期。
-Widget 是临时对象，用于构造应用当前状态的展示。
-而 State 对象在调用 `build()` 之间是持久的，以此来存储信息。
+您可能想知道為什麼 StatefulWidget 和 State 是獨立的物件。
+在 Flutter 中，這兩種型別的物件具有不同的生命週期。
+Widget 是臨時物件，用於構造應用當前狀態的展示。
+而 State 物件在呼叫 `build()` 之間是持久的，以此來儲存資訊。
 
 The example above accepts user input and directly uses
 the result in its `build()` method.  In more complex applications,
@@ -625,10 +625,10 @@ with the goal of gathering specific information,
 such as a date or location, while another widget might
 use that information to change the overall presentation.
 
-上面的示例接受用户输入并直接在其 `build()` 方法中直接使用结果。
-在更复杂的应用中，widget 层次不同的部分可能负责不同的关注点；
-例如，一个 widget 可能呈现复杂的用户界面，
-来收集像日期或位置这样特定的信息，而另一个 widget 可能使用该信息来改变整体的展现。
+上面的範例接受使用者輸入並直接在其 `build()` 方法中直接使用結果。
+在更復雜的應用中，widget 層次不同的部分可能負責不同的關注點；
+例如，一個 widget 可能呈現複雜的使用者介面，
+來收集像日期或位置這樣特定的資訊，而另一個 widget 可能使用該資訊來改變整體的展現。
 
 In Flutter, change notifications flow "up" the widget
 hierarchy by way of callbacks, while current state flows
@@ -637,10 +637,10 @@ The common parent that redirects this flow is the `State`.
 The following slightly more complex example shows how
 this works in practice:
 
-在 Flutter 中，widget 通过回调得到状态改变的通知，
-同时当前状态通知给其他 widget 用于显示。
-重定向这一流程的共同父级是 `State`，
-下面稍微复杂的示例显示了它在实践中的工作原理：
+在 Flutter 中，widget 透過回呼(Callback)得到狀態改變的通知，
+同時當前狀態通知給其他 widget 用於顯示。
+重新導向這一流程的共同父級是 `State`，
+下面稍微複雜的範例顯示了它在實踐中的工作原理：
 
 <?code-excerpt "lib/main_counterdisplay.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -721,23 +721,23 @@ the separation of responsibility allows greater complexity to
 be encapsulated in the individual widgets,
 while maintaining simplicity in the parent.
 
-注意创建两个新的无状态 widget 的方式，
-它清楚地分离了 **显示** 计数器（`CounterDisplay`）和 
-**改变** 计数器（`CounterIncrementor`）。
-尽管最终结果与前面的示例相同，
-但是责任的分离将更大的复杂性封装在各个 widget 中，保证了父级的简单性。
+注意建立兩個新的無狀態 widget 的方式，
+它清楚地分離了 **顯示** 計數器（`CounterDisplay`）和 
+**改變** 計數器（`CounterIncrementor`）。
+儘管最終結果與前面的範例相同，
+但是責任的分離將更大的複雜性封裝在各個 widget 中，保證了父級的簡單性。
 
 For more information, see:
 
-有关更多信息，请参阅：
+有關更多資訊，請參閱：
 
 * [`StatefulWidget`][]
   
-  [API 文档: StatefulWidget][`StatefulWidget`]
+  [API 文件: StatefulWidget][`StatefulWidget`]
 
 * [`setState()`][]
 
-  [API 文档: State.setState][`setState()`]
+  [API 文件: State.setState][`setState()`]
 
 ## Bringing it all together
 
@@ -749,9 +749,9 @@ products offered for sale, and maintains a shopping cart for
 intended purchases. Start by defining the presentation class,
 `ShoppingListItem`:
 
-下面是一个更完整的示例，汇集了上面介绍的概念：
-假定一个购物应用显示各种出售的产品，并在购物车中维护想购买的物品。
-首先定义一个用于展示的类，`ShoppingListItem`：
+下面是一個更完整的範例，彙集了上面介紹的概念：
+假定一個購物應用顯示各種出售的產品，並在購物車中維護想購買的物品。
+首先定義一個用於展示的類，`ShoppingListItem`：
 
 <?code-excerpt "lib/main_shoppingitem.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -836,11 +836,11 @@ For example, the `inCart` boolean toggles between two visual
 appearances: one that uses the primary color from the current
 theme, and another that uses gray.
 
-`ShoppingListItem` widget 遵循无状态 widget 的通用模式。
-它将构造函数中接受到的值存储在 [`final`][] 成员变量中，
-然后在 [`build()`][] 函数中使用它们。
-例如，`inCart` 布尔值使两种样式进行切换：
-一个使用当前主题的主要颜色，另一个使用灰色。
+`ShoppingListItem` widget 遵循無狀態 widget 的通用模式。
+它將建構函式中接受到的值儲存在 [`final`][] 成員變數中，
+然後在 [`build()`][] 函式中使用它們。
+例如，`inCart` 布林值使兩種樣式進行切換：
+一個使用當前主題的主要顏色，另一個使用灰色。
 
 When the user taps the list item, the widget doesn't modify
 its `inCart` value directly. Instead, the widget calls the
@@ -851,11 +851,11 @@ In the extreme, the state stored on the widget passed to
 [`runApp()`][] persists for the lifetime of the
 application.
 
-当用户点击列表中的一项，widget 不会直接改变 `inCart` 的值，
-而是通过调用从父 widget 接收到的 `onCartChanged` 函数。
-这种方式可以在组件的生命周期中存储状态更长久，
-从而使状态持久化。甚至，widget 传给 [`runApp()`][] 
-的状态可以持久到整个应用的生命周期。
+當用戶點選列表中的一項，widget 不會直接改變 `inCart` 的值，
+而是透過呼叫從父 widget 接收到的 `onCartChanged` 函式。
+這種方式可以在元件的生命週期中儲存狀態更長久，
+從而使狀態持久化。甚至，widget 傳給 [`runApp()`][] 
+的狀態可以持久到整個應用的生命週期。
 
 When the parent receives the `onCartChanged` callback,
 the parent updates its internal state, which triggers
@@ -867,15 +867,15 @@ because the framework compares the newly built widgets with the previously
 built widgets and applies only the differences to the underlying
 [`RenderObject`][].
 
-当父级接收到 `onCartChanged` 回调时，父级会更新其内部状态，
-从而触发父级重建并使用新的 `inCart` 值来创建新的 `ShoppingListItem` 实例。
-尽管父级在重建时会创建 `ShoppingListItem` 的新实例，
-但是由于框架会将新构建的 widget 与先前构建的 widget 进行比较，
-仅将差异应用于底层的 [`RenderObject`][]，这种代价是很小的。
+當父級接收到 `onCartChanged` 回呼(Callback)時，父級會更新其內部狀態，
+從而觸發父級重建並使用新的 `inCart` 值來建立新的 `ShoppingListItem` 例項。
+儘管父級在重建時會建立 `ShoppingListItem` 的新例項，
+但是由於框架會將新建構的 widget 與先前建構的 widget 進行比較，
+僅將差異應用於底層的 [`RenderObject`][]，這種代價是很小的。
 
 Here's an example parent widget that stores mutable state:
 
-这里有一个示例展示父组件是如何存储可变状态：
+這裡有一個範例展示父元件是如何儲存可變狀態：
 
 <?code-excerpt "lib/main_shoppinglist.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-false:width-100%:height-600px:split-60:ga_id-starting_code
@@ -1019,17 +1019,17 @@ of `ShoppingList`, but the framework reuses the `_ShoppingListState`
 instance that is already in the tree rather than calling
 `createState` again.
 
-`ShoppingList` 类继承自 [`StatefulWidget`][]，
-这意味着这个 widget 存储着可变状态。
-当 `ShoppingList` 首次插入到 widget 树中时，
-框架调用 [`createState()`][] 函数来创建 `_ShoppingListState`
-的新实例，以与树中的该位置相关联。
-（注意，[`State`][] 的子类通常以下划线开头进行命名，
-表示它们的实现细节是私有的）
-当该 widget 的父 widget 重建时，
-父 widget 首先会创建一个 `ShoppingList` 的实例，
-但是框架会复用之前创建的 `_ShoppingListState`，
-而不会重新调用 `createState`。
+`ShoppingList` 類繼承自 [`StatefulWidget`][]，
+這意味著這個 widget 儲存著可變狀態。
+當 `ShoppingList` 首次插入到 widget 樹中時，
+框架呼叫 [`createState()`][] 函式來建立 `_ShoppingListState`
+的新例項，以與樹中的該位置相關聯。
+（注意，[`State`][] 的子類別通常以下劃線開頭進行命名，
+表示它們的實現細節是私有的）
+當該 widget 的父 widget 重建時，
+父 widget 首先會建立一個 `ShoppingList` 的例項，
+但是框架會複用之前建立的 `_ShoppingListState`，
+而不會重新呼叫 `createState`。
 
 To access properties of the current `ShoppingList`,
 the `_ShoppingListState` can use its [`widget`][] property.
@@ -1040,14 +1040,14 @@ override the [`didUpdateWidget()`][] function, which is passed
 an `oldWidget` to let you compare the old widget with
 the current widget.
 
-为了访问当前 `ShoppingList` 的属性，
-`_ShoppingListState` 可以使用它的 [`widget`][] 属性。
-当父组件重建一个新的 `ShoppingList` 时，
-`_ShoppingListState` 会使用新的 [`widget`][] 值来创建。
-如果希望在 [`widget`][] 属性更改时收到通知，
-则可以重写 [`didUpdateWidget()`][] 函数，
-该函数将 `oldWidget` 作为参数传递，
-以便将 `oldWidget` 与当前 widget 进行比较。
+為了訪問當前 `ShoppingList` 的屬性，
+`_ShoppingListState` 可以使用它的 [`widget`][] 屬性。
+當父元件重建一個新的 `ShoppingList` 時，
+`_ShoppingListState` 會使用新的 [`widget`][] 值來建立。
+如果希望在 [`widget`][] 屬性更改時收到通知，
+則可以重寫 [`didUpdateWidget()`][] 函式，
+該函式將 `oldWidget` 作為引數傳遞，
+以便將 `oldWidget` 與當前 widget 進行比較。
 
 When handling the `onCartChanged` callback, the `_ShoppingListState`
 mutates its internal state by either adding or removing a product from
@@ -1064,21 +1064,21 @@ you don't need to write separate code for creating and
 updating child widgets. Instead, you simply implement the `build`
 function, which handles both situations.
 
-当处理 `onCartChanged` 回调时，`_ShoppingListState` 
-通过增加或删除 `_shoppingCart` 中的产品来改变其内部状态。
-为了通知框架它改变了它的内部状态，
-需要调用 [`setState()`][]，将该 widget 标记为「dirty」（脏标记），
-并且计划在下次应用需要更新屏幕时重新构建它。
-如果在修改 widget 的内部状态后忘记调用 setState，
-框架将不知道这个 widget 是「dirty」（脏标记），
-并且可能不会调用 widget 的 [`build()`][] 方法，
-这意味着用户界面可能不会更新以展示新的状态。
-通过以这种方式管理状态，你不需要编写用于创建和更新子 widget 的单独代码。
-相反，你只需实现 build 函数，它可以处理这两种情况。
+當處理 `onCartChanged` 回呼(Callback)時，`_ShoppingListState` 
+透過增加或刪除 `_shoppingCart` 中的產品來改變其內部狀態。
+為了通知框架它改變了它的內部狀態，
+需要呼叫 [`setState()`][]，將該 widget 標記為「dirty」（髒標記），
+並且計劃在下次應用需要更新螢幕時重新建構它。
+如果在修改 widget 的內部狀態後忘記呼叫 setState，
+框架將不知道這個 widget 是「dirty」（髒標記），
+並且可能不會呼叫 widget 的 [`build()`][] 方法，
+這意味著使用者介面可能不會更新以展示新的狀態。
+透過以這種方式管理狀態，你不需要編寫用於建立和更新子 widget 的單獨程式碼。
+相反，你只需實現 build 函式，它可以處理這兩種情況。
 
 ## Responding to widget lifecycle events
 
-## 响应 widget 的生命周期事件
+## 響應 widget 的生命週期事件
 
 After calling [`createState()`][] on the `StatefulWidget`,
 the framework inserts the new state object into the tree and
@@ -1089,12 +1089,12 @@ to configure animations or to subscribe to platform services.
 Implementations of `initState` are required to start
 by calling `super.initState`.
 
-在 StatefulWidget 上调用 [`createState()`][] 之后，
-框架将新的状态对象插入到树中，
-然后在状态对象上调用 [`initState()`][]。
-[`State`][] 的子类可以重写 `initState` 来完成只需要发生一次的工作。
-例如，重写 `initState` 来配置动画或订阅平台服务。
-实现 `initState` 需要调用父类的 `super.initState` 方法来开始。
+在 StatefulWidget 上呼叫 [`createState()`][] 之後，
+框架將新的狀態物件插入到樹中，
+然後在狀態物件上呼叫 [`initState()`][]。
+[`State`][] 的子類別可以重寫 `initState` 來完成只需要發生一次的工作。
+例如，重寫 `initState` 來配置動畫或訂閱平台服務。
+實現 `initState` 需要呼叫父類別的 `super.initState` 方法來開始。
 
 When a state object is no longer needed,
 the framework calls [`dispose()`][] on the state object.
@@ -1103,14 +1103,14 @@ For example, override `dispose` to cancel timers or to
 unsubscribe from platform services. Implementations of
 `dispose` typically end by calling `super.dispose`.
 
-当不再需要状态对象时，框架会调用状态对象上的 [`dispose()`][] 方法。
-可以重写`dispose` 方法来清理状态。
-例如，重写 `dispose` 以取消计时器或取消订阅平台服务。
-实现 `dispose` 时通常通过调用 `super.dispose` 来结束。
+當不再需要狀態物件時，框架會呼叫狀態物件上的 [`dispose()`][] 方法。
+可以重寫`dispose` 方法來清理狀態。
+例如，重寫 `dispose` 以取消計時器或取消訂閱平台服務。
+實現 `dispose` 時通常透過呼叫 `super.dispose` 來結束。
 
 For more information, see [`State`][].
 
-有关更多信息，请参阅 [`State`][]。
+有關更多資訊，請參閱 [`State`][]。
 
 ## Keys
 
@@ -1121,26 +1121,26 @@ according to their [`runtimeType`][] and the order in which they appear.
 With keys, the framework requires that the two widgets have
 the same [`key`][] as well as the same `runtimeType`.
 
-使用 key 可以控制框架在 widget 重建时与哪些其他 widget 进行匹配。
-默认情况下，框架根据它们的 [`runtimeType`][]
-以及它们的显示顺序来匹配。使用 key 时，
-框架要求两个 widget 具有相同的 [`key`][] 和 `runtimeType`。
+使用 key 可以控制框架在 widget 重建時與哪些其他 widget 進行匹配。
+預設情況下，框架根據它們的 [`runtimeType`][]
+以及它們的顯示順序來匹配。使用 key 時，
+框架要求兩個 widget 具有相同的 [`key`][] 和 `runtimeType`。
 
 Keys are most useful in widgets that build many instances of
 the same type of widget. For example, the `ShoppingList` widget,
 which builds just enough `ShoppingListItem` instances to
 fill its visible region:
 
-Key 在构建相同类型 widget 的多个实例时很有用。
-例如，`ShoppingList` widget，它只构建刚刚好足够的 `ShoppingListItem` 实例来填充其可见区域：
+Key 在建構相同型別 widget 的多個例項時很有用。
+例如，`ShoppingList` widget，它只建構剛剛好足夠的 `ShoppingListItem` 例項來填充其可見區域：
 
  * Without keys, the first entry in the current build
    would always sync with the first entry in the previous build,
    even if, semantically, the first entry in the list just
    scrolled off screen and is no longer visible in the viewport.
 
-   如果没有 key，当前构建中的第一个条目将始终与前一个构建中的第一个条目同步，
-   在语义上，列表中的第一个条目如果滚动出屏幕，那么它应该不会再在窗口中可见。
+   如果沒有 key，當前建構中的第一個條目將始終與前一個建構中的第一個條目同步，
+   在語義上，列表中的第一個條目如果滾動出螢幕，那麼它應該不會再在視窗中可見。
 
  * By assigning each entry in the list a "semantic" key,
    the infinite list can be more efficient because the
@@ -1151,19 +1151,19 @@ Key 在构建相同类型 widget 的多个实例时很有用。
    to the same semantic entry rather than the entry in the
    same numerical position in the viewport.
 
-   通过给列表中的每个条目分配为“语义” key，无限列表可以更高效，
-   因为框架将通过相匹配的语义 key 来同步条目，
-   并因此具有相似（或相同）的可视外观。
-   此外，语义上同步条目意味着在有状态子 widget 中，
-   保留的状态将附加到相同的语义条目上，而不是附加到相同数字位置上的条目。
+   透過給列表中的每個條目分配為“語義” key，無限列表可以更高效，
+   因為框架將透過相匹配的語義 key 來同步條目，
+   並因此具有相似（或相同）的可視外觀。
+   此外，語義上同步條目意味著在有狀態子 widget 中，
+   保留的狀態將附加到相同的語義條目上，而不是附加到相同數字位置上的條目。
 
 For more information, see the [`Key`][] API.
 
-有关更多信息，请参阅 [`Key`][] API。
+有關更多資訊，請參閱 [`Key`][] API。
 
 ## Global keys
 
-## 全局 key
+## 全域 key
 
 Use global keys to uniquely identify child widgets.
 Global keys must be globally unique across the entire
@@ -1172,14 +1172,14 @@ only be unique among siblings. Because they are
 globally unique, a global key can be used to
 retrieve the state associated with a widget.
 
-全局 key 可以用来标识唯一子 widget。
-全局 key 在整个 widget 结构中必须是全局唯一的，
+全域 key 可以用來標識唯一子 widget。
+全域 key 在整個 widget 結構中必須是全域唯一的，
 而不像本地 key 只需要在兄弟 widget 中唯一。
-由于它们是全局唯一的，因此可以使用全局 key 来检索与 widget 关联的状态。
+由於它們是全域唯一的，因此可以使用全域 key 來檢索與 widget 關聯的狀態。
 
 For more information, see the [`GlobalKey`][] API.
 
-有关更多信息，请参阅 [`GlobalKey`][] API。
+有關更多資訊，請參閱 [`GlobalKey`][] API。
 
 [`actions`]: {{api}}/material/AppBar-class.html#actions
 [adding interactivity to your Flutter app]: {{site.url}}/development/ui/interactive

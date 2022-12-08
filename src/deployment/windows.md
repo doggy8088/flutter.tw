@@ -1,8 +1,8 @@
 ---
 title: Build and release a Windows desktop app
-title: 构建和发布为 Windows 应用
+title: 建構和釋出為 Windows 應用
 description: How to release a Flutter app to the Microsoft Store.
-description: 如何发布一个 Flutter 应用到 Microsoft Store。
+description: 如何釋出一個 Flutter 應用到 Microsoft Store。
 short-title: windows
 ---
 
@@ -11,9 +11,9 @@ is the [Microsoft Store][microsoftstore].
 This guide provides a step-by-step walkthrough
 of packaging and deploying a Flutter app in this way.
 
-发布 Windows 桌面应用程序的便捷方法是将其发布至
-[微软应用商店][microsoftstore]，本指南提供了
-将 Flutter 应用发布到 [微软应用商店][microsoftstore]
+釋出 Windows 桌面應用程式的便捷方法是將其釋出至
+[微軟應用商店][microsoftstore]，本指南提供了
+將 Flutter 應用釋出到 [微軟應用商店][microsoftstore]
 的分步操作指南。
 
 {{site.alert.note}}
@@ -25,39 +25,39 @@ of packaging and deploying a Flutter app in this way.
   includes more information about traditional installation
   approaches, including [Windows Installer][msidocs].
 
-  通过微软应用商店发布 Windows 桌面应用程序并非必选项，
-  尤其是当你希望掌握更多对发布体验方面的控制权，
-  亦或是你不想处理认证过程。
-  微软提供的文档包括了关于使用 [Windows Installer][msidocs]
-  进行传统安装的更多内容。
+  透過微軟應用商店釋出 Windows 桌面應用程式並非必選項，
+  尤其是當你希望掌握更多對釋出體驗方面的控制權，
+  亦或是你不想處理認證過程。
+  微軟提供的文件包括了關於使用 [Windows Installer][msidocs]
+  進行傳統安裝的更多內容。
   
 {{site.alert.end}}
 
 
 ## Preliminaries
 
-## 预先准备
+## 預先準備
 
 Before beginning the process of releasing
 a Flutter Windows desktop app to the Microsoft Store,
 first confirm that it satisfies [Microsoft Store Policies][storepolicies].
 
-在开始发布 Flutter Windows 桌面应用程序之前，
-有必要确认你的应用满足 [微软应用商店政策][storepolicies]。
+在開始釋出 Flutter Windows 桌面應用程式之前，
+有必要確認你的應用滿足 [微軟應用商店政策][storepolicies]。
 
 Also, you must join the
 [Microsoft Partner Network][microsoftpartner] to be able to submit apps.
 
-提交应用前加入 [微软合作伙伴网络][microsoftpartner] 也是必要的。
+提交應用前加入 [微軟合作伙伴網路][microsoftpartner] 也是必要的。
 
 ## Set up your application in the Partner Center
 
-## 在合作伙伴中心申请应用
+## 在合作伙伴中心申請應用
 
 Manage an application's life cycle in the
 [Microsoft Partner Center][microsoftpartner].
 
-在 [微软合作伙伴中心][microsoftpartner] 中管理一个应用程序的生命周期。
+在 [微軟合作伙伴中心][microsoftpartner] 中管理一個應用程式的生命週期。
 
 First, reserve the application name and
 ensure that the required rights to the name exist.
@@ -65,8 +65,8 @@ Once the name is reserved, the application
 will be provisioned for services (such as
 push notifications), and you can start adding add-ons.
 
-首先，有必要预约应用名称，并且确定有使用这个名称的权利。
-一旦名称确定可用，则该应用程序将可以提供推送通知等服务，并且可以开始添加扩展功能。
+首先，有必要預約應用名稱，並且確定有使用這個名稱的權利。
+一旦名稱確定可用，則該應用程式將可以提供推送通知等服務，並且可以開始新增擴充功能。
 
 Options such as pricing, availability,
 age ratings, and category have to be
@@ -74,12 +74,12 @@ configured together with the first submission
 and are automatically retained
 for the subsequent submissions.
 
-类似于价格、可用性、年龄等级和类别等选项必须在第一次提交时一并配置，
-这些选项在后续提交时将自动保留。
+類似於價格、可用性、年齡等級和類別等選項必須在第一次提交時一併配置，
+這些選項在後續提交時將自動保留。
 
 ## Packaging and deployment
 
-## 打包并部署
+## 打包並部署
 
 In order to publish an application to Microsoft Store,
 you must first package it.
@@ -87,74 +87,74 @@ The valid formats are **.msix**, **.msixbundle**,
 **.msixupload**, **.appx**, **.appxbundle**,
 **.appxupload**, and **.xap**.
 
-应用程序发布到微软商店前必须要打包。
+應用程式釋出到微軟商店前必須要打套件。
 有效的格式是 **.msix**、**.msixbundle**、**.msixupload**、**.appx**、
 **.appxbundle**、**.appxupload** 和 **.xap**。
 
 ### Manual packaging and deployment
 
-### 手动打包和部署
+### 手動打套件和部署
 
 Check out [MSIX packaging][msix packaging] to learn about packaging 
 Flutter Windows Desktop applications.
 
-查看 [MSIX 打包][msix packaging]，学习如何打包 Flutter Windows 桌面应用程序。
+檢視 [MSIX 打包][msix packaging]，學習如何打包 Flutter Windows 桌面應用程式。
 
 Note that each product has a unique identity, which the Store assigns.
 
-请注意，每个产品都有一个唯一的 ID，这是应用商店分配的。
+請注意，每個產品都有一個唯一的 ID，這是應用商店分配的。
 
 If the package is being built manually, it is necessary to include its 
 identity details manually during the packaging. The essential information
 can be retrieved from the Partner Center:
 
-如果应用包是手动构建的，在打包过程中必须手动添加 ID 详情。
-这些基本信息可以从合作伙伴中心检索到。
+如果應用包是手動建構的，在打包過程中必須手動新增 ID 詳情。
+這些基本資訊可以從合作伙伴中心檢索到。
 
 1. In the Partner Center, navigate to the application.
 
-   在合作伙伴中心中，导航到应用程序。
+   在合作伙伴中心中，導航到應用程式。
 
 2. Select **Product management**.
 
-   选择 **Product management**。
+   選擇 **Product management**。
 
 3. Retrieve the package identity name, publisher, 
 and publisher display name by clicking on **Product identity**.
 
-   点击 **Product identity**，检查应用包的 ID，发布者，发布者的显示名称。
+   點選 **Product identity**，檢查應用套件的 ID，釋出者，釋出者的顯示名稱。
 
 After manually packaging the application, it will also have to be 
 manually submitted to the [Microsoft Partner Center][microsoftpartner].
 This can be done by creating a new submission, navigating to **Packages**, 
 and uploading the created application package.
 
-在手动打包应用程序后，还需要手动提交应用程序包到 [微软合作伙伴中心][microsoftpartner]。
-这个步骤可以通过创建新的提交来完成，导航到 **Packages**，并上传创建的应用程序包。
+在手動打包應用程式後，還需要手動提交應用程式包到 [微軟合作伙伴中心][microsoftpartner]。
+這個步驟可以透過建立新的提交來完成，導航到 **Packages**，並上傳建立的應用程式套件。
 
 ### Continuous deployment
 
-### 持续部署
+### 持續部署
 
 In addition to manually creating and deploying the package,
 you can automate the build, package, versioning,
 and deployment process using CI/CD tooling after having submitted
 the application to the Microsoft Store for the first time.
 
-除了手动创建和部署软件包外，在第一次提交应用程序到微软商店后，
-还可以使用持续集成/持续部署 (CI/CD) 工具自动化构建、打包、版本管理、和部署应用程序。
+除了手動建立和部署軟體包外，在第一次提交應用程式到微軟商店後，
+還可以使用持續整合/持續部署 (CI/CD) 工具自動化建構、打包、版本管理、和部署應用程式。
 
 #### Codemagic CI/CD
 
-#### Codemagic 持续集成/持续部署 (CI/CD)
+#### Codemagic 持續整合/持續部署 (CI/CD)
 
 [Codemagic CI/CD][codemagic] uses the
 [`msix` pub package][msix package] to package 
 Flutter Windows Desktop applications. 
 
-[Codemagic 持续集成/持续部署 (CI/CD)][codemagic]
+[Codemagic 持續整合/持續部署 (CI/CD)][codemagic]
 使用 [Pub 上的 `msix` package][msix package]
-来打包 Flutter Windows 桌面应用程序。
+來打包 Flutter Windows 桌面應用程式。
 
 For Flutter applications, use either the
 [Codemagic Workflow Editor][cmworkfloweditor]
@@ -166,9 +166,9 @@ capabilites and language resources
 contained in the package)
 can be configured using this package.
 
-对于 Flutter 应用程序，无论是 [Codemagic Workflow Editor][cmworkfloweditor] 还是 [codemagic.yaml][cmyaml]
-都可以用来打包应用程序并部署到微软合作伙伴中心。
-其他选项（如软件包中包含的功能列表和语言资源）可以使用上述的软件包进行配置。
+對於 Flutter 應用程式，無論是 [Codemagic Workflow Editor][cmworkfloweditor] 還是 [codemagic.yaml][cmyaml]
+都可以用來打包應用程式並部署到微軟合作伙伴中心。
+其他選項（如軟體套件中包含的功能列表和語言資源）可以使用上述的軟體套件進行配置。
 
 For publishing, Codemagic uses the
 [Partner Center submission API][partnercenterapi];
@@ -176,24 +176,24 @@ so, Codemagic requires
 [associating the Azure Active Directory
 and Partner Center accounts][azureadassociation].
 
-对于发布应用来说，Codemagic 使用 [合作伙伴中心提交 API][partnercenterapi]；
-因此，Codemagic 需要 [关联 Azure Active Directory 和合作伙伴中心账户][azureadassociation]。
+對於釋出應用來說，Codemagic 使用 [合作伙伴中心提交 API][partnercenterapi]；
+因此，Codemagic 需要 [關聯 Azure Active Directory 和合作夥伴中心賬戶][azureadassociation]。
 
 ## Updating the app's version number
 
-## 更新应用程序的版本号
+## 更新應用程式的版本號
 
 For apps published to the Microsoft Store,
 the version number must be set during the
 packaging process.
 
-对于发布到 Microsoft Store 的 Flutter 桌面版应用，
-版本号必须在打包过程中设置，而不能通过
-`pubspec.yaml` 或命令行参数设置。
+對於釋出到 Microsoft Store 的 Flutter 桌面版應用，
+版本號必須在打包過程中設定，而不能透過
+`pubspec.yaml` 或命令列引數設定。
 
 The default version number of the app is `1.0.0.0`.
 
-默认的应用版本号为 `1.0.0.0`。
+預設的應用版本號為 `1.0.0.0`。
 
 {{site.alert.note}}
 
@@ -204,10 +204,10 @@ The default version number of the app is `1.0.0.0`.
   Ensure that you follow Microsoft's
   [versioning guidelines][windowspackageversioning].
 
-  请注意，Microsoft Store 的应用程序不允许出现
-  有一个修订版本号（第四段）不为零的版本。
-  因此，在所有的版本中，版本的最后一个数字必须保持为零。
-  请注意遵循微软的 [版本指南][windowspackageversioning]。 
+  請注意，Microsoft Store 的應用程式不允許出現
+  有一個修訂版本號（第四段）不為零的版本。
+  因此，在所有的版本中，版本的最後一個數字必須保持為零。
+  請注意遵循微軟的 [版本指南][windowspackageversioning]。 
 
 {{site.alert.end}}
 
@@ -244,35 +244,35 @@ Both the build name and number can be overridden in
 
 ## Add app icons
 
-## 添加应用图标
+## 新增應用圖示
 
 To update the icon of a Flutter Windows
 desktop application before packaging use the
 following instructions:
 
-在打包前更新 Flutter Windows 桌面应用程序的图标：
+在打包前更新 Flutter Windows 桌面應用程式的圖示：
 
 1. In the Flutter project, navigate to
    **windows\runner\resources**.
 
-   导航到 Flutter 项目中的 **windows\runner\resources** 目录。
+   導航到 Flutter 專案中的 **windows\runner\resources** 目錄。
 
 2. Replace the **app_icon.ico** with the wanted icon.
 
-   替换 **app_icon.ico** 为想要的图标。
+   替換 **app_icon.ico** 為想要的圖示。
 
 3. If the name of the icon is other than **app_icon.ico**, proceed to
 change the **IDI_APP_ICON** value in the **windows\runner\Runner.rc** file to
 point to the new path.
 
-   如果图标文件的名称不是 **app_icon.ico**，
-   请将 **windows\runner\Runner.rc** 文件中的 **IDI_APP_ICON** 值指向新的路径。
+   如果圖示檔案的名稱不是 **app_icon.ico**，
+   請將 **windows\runner\Runner.rc** 檔案中的 **IDI_APP_ICON** 值指向新的路徑。
 
 When packaging with the [`msix` pub package][msix package], the logo path can
 also be configured inside the `pubspec.yaml` file.
 
-在使用 [`msix` pub package][msix package] 打包时，
-可以在 `pubspec.yaml` 文件中配置 logo 路径。
+在使用 [`msix` pub package][msix package] 打套件時，
+可以在 `pubspec.yaml` 檔案中配置 logo 路徑。
 
 To update the application image in the Store listing,
 navigate to the Store listing step of the submission
@@ -280,47 +280,47 @@ and select Store logos.
 From there, you can upload the logo with
 the size of 300 x 300 pixels.
 
-要更新商店列表中的应用程序图标，请导航到提交的商店列表并选择商店 logo。
-在那里可以上传尺寸为 300 x 300 像素的图片。
+要更新商店列表中的應用程式圖示，請導航到提交的商店列表並選擇商店 logo。
+在那裡可以上傳尺寸為 300 x 300 畫素的圖片。
 
 All uploaded images are retained for subsequent submissions.
 
-所有上传的图片将被保留，以便于以后提交使用。
+所有上傳的圖片將被保留，以便於以後提交使用。
 
 ## Validating the application package
 
-## 验证应用程序包
+## 驗證應用程式包
 
 Before publication to the Microsoft Store,
 first validate the application package locally.
 
-在发布到微软商店之前，建议先在本地验证应用程序包。
+在釋出到微軟商店之前，建議先在本地驗證應用程式套件。
 
 [Windows App Certification Kit][windowsappcertification] is a tool that is 
 included in the Windows Software Development Kit (SDK).
 
-[Windows 应用认证工具包][windowsappcertification] 是一个包含在 Windows 软件开发工具包（SDK）中的工具。
+[Windows 應用認證工具套件][windowsappcertification] 是一個包含在 Windows 軟體開發工具套件（SDK）中的工具。
 
 To validate the application:
 
-验证应用程序：
+驗證應用程式：
 
 1. Launch Windows App Cert Kit.
 
-   启动 Windows 应用认证工具包。
+   啟動 Windows 應用認證工具套件。
 
 2. Select the Flutter Windows Desktop package (**.msix**, **.msixbundle** etc).
 
-   选择 Flutter Windows 桌面应用程序包（**.msix**、**.msixbundle** 等）。
+   選擇 Flutter Windows 桌面應用程式套件（**.msix**、**.msixbundle** 等）。
 
 3. Choose a destination for the test report.
 
-   选择测试报告的输出目录。
+   選擇測試報告的輸出目錄。
 
 The report may contain important warnings and information, 
 even if the certification passes. 
 
-即使认证通过，报告也可能包含重要警告和信息。
+即使認證透過，報告也可能包含重要警告和資訊。
 
 [azureadassociation]: https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center
 [cmworkfloweditor]: https://docs.codemagic.io/flutter-publishing/publishing-to-microsoft-store/

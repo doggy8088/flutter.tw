@@ -1,11 +1,11 @@
 ---
 title: Understanding constraints
-title: 深入理解 Flutter 布局约束
+title: 深入理解 Flutter 佈局約束
 description: Flutter's model for widget constraints, sizing, positioning, and how they interact.
-description: 理解 Flutter widget 约束模型，了解它是如何确定自身的大小，位置以及影响彼此的。
+description: 理解 Flutter widget 約束模型，瞭解它是如何確定自身的大小，位置以及影響彼此的。
 toc: false
-tags: 用户界面,Flutter UI,布局
-keywords: 布局约束,必读,布局示例
+tags: 使用者介面,Flutter UI,佈局
+keywords: 佈局約束,必讀,佈局範例
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -20,139 +20,139 @@ with `width:100` isn't 100 pixels wide,
 the default answer is to tell them to put that widget
 inside of a `Center`, right?
 
-我们会经常听到一些开发者在学习 Flutter 时的疑惑：为什么我设置了 `width:100`，
-但是看上去却不是 100 像素宽呢。（注意，本文中的“像素”均指的是逻辑像素）
-通常你会回答，将这个 Widget 放进 `Center` 中，对吧？
+我們會經常聽到一些開發者在學習 Flutter 時的疑惑：為什麼我設定了 `width:100`，
+但是看上去卻不是 100 畫素寬呢。（注意，本文中的“畫素”均指的是邏輯畫素）
+通常你會回答，將這個 Widget 放進 `Center` 中，對吧？
 
 **Don't do that.**
 
-**别这么干。**
+**別這麼幹。**
 
 If you do, they'll come back again and again,
 asking why some `FittedBox` isn't working,
 why that `Column` is overflowing, or what
 `IntrinsicWidth` is supposed to be doing.
 
-如果你这样做了，他们会不断找你询问这样的问题：为什么 `FittedBox` 又不起作用了？
-为什么 `Column` 又溢出边界，亦或是 `IntrinsicWidth` 应该做什么。
+如果你這樣做了，他們會不斷找你詢問這樣的問題：為什麼 `FittedBox` 又不起作用了？
+為什麼 `Column` 又溢位邊界，亦或是 `IntrinsicWidth` 應該做什麼。
 
 Instead, first tell them that Flutter layout is very different
 from HTML layout (which is probably where they’re coming from),
 and then make them memorize the following rule:
 
-其实我们首先应该做的，是告诉他们 Flutter 的布局方式与 HTML 的布局差异相当大
-（这些开发者很可能是 Web 开发），然后要让他们熟记这条规则：
+其實我們首先應該做的，是告訴他們 Flutter 的佈局方式與 HTML 的佈局差異相當大
+（這些開發者很可能是 Web 開發），然後要讓他們熟記這條規則：
 
 <center><font size="+2">
   <t><b>Constraints go down. Sizes go up. Parent sets position.</b></t>
-  <t>首先，上层 widget 向下层 widget 传递约束条件；<br/>
-    然后，下层 widget 向上层 widget 传递大小信息。<br/>
-    最后，上层 widget 决定下层 widget 的位置。<br/>
+  <t>首先，上層 widget 向下層 widget 傳遞約束條件；<br/>
+    然後，下層 widget 向上層 widget 傳遞大小資訊。<br/>
+    最後，上層 widget 決定下層 widget 的位置。<br/>
   </t>
 </font></center>
 
 Flutter layout can’t really be understood without knowing
 this rule, so Flutter developers should learn it early on.
 
-如果我们在开发时无法熟练运用这条规则，在布局时就不能完全理解其原理，
-所以越早掌握这条规则越好！
+如果我們在開發時無法熟練運用這條規則，在佈局時就不能完全理解其原理，
+所以越早掌握這條規則越好！
 
 In more detail:
 
-更多细节：
+更多細節：
 
 * A widget gets its own **constraints** from its **parent**.
   A _constraint_ is just a set of 4 doubles:
   a minimum and maximum width, and a minimum and maximum height.
 
-  Widget 会通过它的 **父级** 获得自身的约束。
-  约束实际上就是 4 个浮点类型的集合：
-  最大/最小宽度，以及最大/最小高度。
+  Widget 會透過它的 **父級** 獲得自身的約束。
+  約束實際上就是 4 個浮點型別的集合：
+  最大/最小寬度，以及最大/最小高度。
 
 * Then the widget goes through its own list of **children**.
   One by one, the widget tells its children what their
   **constraints** are (which can be different for each child),
   and then asks each child what size it wants to be.
 
-  然后，这个 widget 将会逐个遍历它的 **children** 列表。向子级传递
-  **约束**（子级之间的约束可能会有所不同），然后询问它的每一个子级需要用于布局的大小。
+  然後，這個 widget 將會逐個遍歷它的 **children** 列表。向子級傳遞
+  **約束**（子級之間的約束可能會有所不同），然後詢問它的每一個子級需要用於佈局的大小。
 
 * Then, the widget positions its **children**
   (horizontally in the `x` axis, and vertically in the `y` axis),
   one by one.
 
-  然后，这个 widget 就会对它子级的 **children** 逐个进行布局。
-  （水平方向是 `x` 轴，竖直是 `y` 轴）
+  然後，這個 widget 就會對它子級的 **children** 逐個進行佈局。
+  （水平方向是 `x` 軸，豎直是 `y` 軸）
 
 * And, finally, the widget tells its parent about its own **size**
   (within the original constraints, of course).
 
-  最后，widget 将会把它的大小信息向上传递至父 widget（包括其原始约束条件）。
+  最後，widget 將會把它的大小資訊向上傳遞至父 widget（包括其原始約束條件）。
 
 For example, if a composed widget contains a column
 with some padding, and wants to lay out its two children
 as follows:
 
-例如，如果一个 widget 中包含了一个具有 padding 的 Column，
-并且要对 Column 的子 widget 进行如下的布局：
+例如，如果一個 widget 中包含了一個具有 padding 的 Column，
+並且要對 Column 的子 widget 進行如下的佈局：
 
 <img src='/assets/images/docs/ui/layout/children.png' class="mw-100" alt="Visual layout">
 
 The negotiation goes something like this:
 
-那么谈判将会像这样：
+那麼談判將會像這樣：
 
 **Widget**: "Hey parent, what are my constraints?"
 
-**Widget**: "嘿！我的父级。我的约束是多少？"
+**Widget**: "嘿！我的父級。我的約束是多少？"
 
 **Parent**: "You must be from `80` to `300` pixels wide,
    and `30` to `85` tall."
 
-**Parent**: "你的宽度必须在 `80` 到 `300` 像素之间，高度必须在 `30` 到 `85` 之间。"
+**Parent**: "你的寬度必須在 `80` 到 `300` 畫素之間，高度必須在 `30` 到 `85` 之間。"
 
 **Widget**: "Hmmm, since I want to have `5` pixels of padding,
    then my children can have at most `290` pixels of width
    and `75` pixels of height."
 
-**Widget**: "嗯...我想要 `5` 个像素的内边距，这样我的子级能最多拥有 `290` 个像素宽度和 `75` 个像素高度。"
+**Widget**: "嗯...我想要 `5` 個畫素的內邊距，這樣我的子級能最多擁有 `290` 個畫素寬度和 `75` 個畫素高度。"
 
 **Widget**: "Hey first child, You must be from `0` to `290`
    pixels wide, and `0` to `75` tall."
 
-**Widget**: "嘿，我的第一个子级，你的宽度必须要在 `0` 到 `290`，长度在 `0` 到 `75` 之间。"
+**Widget**: "嘿，我的第一個子級，你的寬度必須要在 `0` 到 `290`，長度在 `0` 到 `75` 之間。"
 
 **First child**: "OK, then I wish to be `290` pixels wide,
    and `20` pixels tall."
 
-**First child**: "OK，那我想要 `290` 像素的宽度，`20` 个像素的长度。"
+**First child**: "OK，那我想要 `290` 畫素的寬度，`20` 個畫素的長度。"
 
 **Widget**: "Hmmm, since I want to put my second child below the
    first one, this leaves only `55` pixels of height for
    my second child."
 
-**Widget**: "嗯...由于我想要将我的第二个子级放在第一个子级下面，所以我们仅剩 `55` 个像素的高度给第二个子级了。"
+**Widget**: "嗯...由於我想要將我的第二個子級放在第一個子級下面，所以我們僅剩 `55` 個畫素的高度給第二個子級了。"
 
 **Widget**: "Hey second child, You must be from `0` to `290` wide,
    and `0` to `55` tall."
 
-**Widget**: "嘿，我的第二个子级，你的宽度必须要在 `0` 到 `290`，长度在 `0` 到 `55` 之间。"
+**Widget**: "嘿，我的第二個子級，你的寬度必須要在 `0` 到 `290`，長度在 `0` 到 `55` 之間。"
 
 **Second child**: "OK, I wish to be `140` pixels wide,
    and `30` pixels tall."
 
-**Second child**: "OK，那我想要 `140` 像素的宽度，`30` 个像素的长度。"
+**Second child**: "OK，那我想要 `140` 畫素的寬度，`30` 個畫素的長度。"
 
 **Widget**: "Very well. My first child has position `x: 5` and `y: 5`,
    and my second child has `x: 80` and `y: 25`."
 
-**Widget**: "很好。我的第一个子级将被放在 `x: 5` & `y: 5` 的位置，
-   而我的第二个子级将在 `x: 80` & `y: 25` 的位置。"
+**Widget**: "很好。我的第一個子級將被放在 `x: 5` & `y: 5` 的位置，
+   而我的第二個子級將在 `x: 80` & `y: 25` 的位置。"
 
 **Widget**: "Hey parent, I’ve decided that my size is going to be `300`
    pixels wide, and `60` pixels tall."
 
-**Widget**: "嘿，我的父级，我决定我的大小为 `300` 像素宽度，`60` 像素高度。"
+**Widget**: "嘿，我的父級，我決定我的大小為 `300` 畫素寬度，`60` 畫素高度。"
 
 ## Limitations
 
@@ -161,51 +161,51 @@ The negotiation goes something like this:
 As a result of the layout rule mentioned above,
 Flutter’s layout engine has a few important limitations:
 
-正如上述所介绍的布局规则中所说的那样，
-Flutter 的布局引擎有一些重要限制：
+正如上述所介紹的佈局規則中所說的那樣，
+Flutter 的佈局引擎有一些重要限制：
 
 * A widget can decide its own size only within the
   constraints given to it by its parent.
   This means a widget usually **can't have any
   size it wants**.
 
-  一个 widget 仅在其父级给其约束的情况下才能决定自身的大小。
-  这意味着 widget 通常情况下 **不能任意获得其想要的大小**。
+  一個 widget 僅在其父級給其約束的情況下才能決定自身的大小。
+  這意味著 widget 通常情況下 **不能任意獲得其想要的大小**。
 
 * A widget **can’t know and doesn’t decide its own position
   in the screen**, since it’s the widget’s parent who decides
   the position of the widget.
 
-  一个 widget **无法知道，也不需要决定其在屏幕中的位置**。
-  因为它的位置是由其父级决定的。
+  一個 widget **無法知道，也不需要決定其在螢幕中的位置**。
+  因為它的位置是由其父級決定的。
 
 * Since the parent’s size and position, in its turn,
   also depends on its own parent, it’s impossible to
   precisely define the size and position of any widget
   without taking into consideration the tree as a whole.
 
-  当轮到父级决定其大小和位置的时候，同样的也取决于它自身的父级。
-  所以，在不考虑整棵树的情况下，几乎不可能精确定义任何 widget 的大小和位置。
+  當輪到父級決定其大小和位置的時候，同樣的也取決於它自身的父級。
+  所以，在不考慮整棵樹的情況下，幾乎不可能精確定義任何 widget 的大小和位置。
 
 * If a child wants a different size from its parent and 
   the parent doesn't have enough information to align it,
   then the child's size might be ignored.
   **Be specific when defining alignment.**
 
-  如果子级想要拥有和父级不同的大小，然而父级没有足够的空间对其进行布局的话，
-  子级的设置的大小可能会不生效。
-  **这时请明确指定它的对齐方式**
+  如果子級想要擁有和父級不同的大小，然而父級沒有足夠的空間對其進行佈局的話，
+  子級的設定的大小可能會不生效。
+  **這時請明確指定它的對齊方式**
   
 ## Examples
 
-## 样例
+## 範例
 
 For an interactive experience, use the following DartPad.
 Use the numbered horizontal scrolling bar to switch between
 29 different examples.
 
-下面的示例由 DartPad 提供，具有良好的交互体验。
-使用下面水平滚动条的编号切换 29 个不同的示例。
+下面的範例由 DartPad 提供，具有良好的互動體驗。
+使用下面水平捲軸的編號切換 29 個不同的範例。
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-starting_code
@@ -1337,16 +1337,16 @@ class Example29 extends Example {
 If you prefer, you can grab the code from
 [this GitHub repo][].
 
-如果你愿意的话，你还可以在
-[这个 Github 仓库中][this GitHub repo] 获取其代码。
+如果你願意的話，你還可以在
+[這個 Github 儲存庫中][this GitHub repo] 獲取其程式碼。
 
 The examples are explained in the following sections.
 
-以下各节将介绍这些示例。
+以下各節將介紹這些範例。
 
 ### Example 1
 
-### 样例 1
+### 範例 1
 
 <img src='/assets/images/docs/ui/layout/layout-1.png' class="mw-100" alt="Example 1 layout">
 
@@ -1358,15 +1358,15 @@ Container(color: red)
 The screen is the parent of the `Container`, and it
 forces the `Container` to be exactly the same size as the screen.
 
-整个屏幕作为 `Container` 的父级，并且强制 `Container` 变成和屏幕一样的大小。
+整個螢幕作為 `Container` 的父級，並且強制 `Container` 變成和螢幕一樣的大小。
 
 So the `Container` fills the screen and paints it red.
 
-所以这个 `Container` 充满了整个屏幕，并绘制成红色。
+所以這個 `Container` 充滿了整個螢幕，並繪製成紅色。
 
 ### Example 2
 
-### 样例 2
+### 範例 2
 
 <img src='/assets/images/docs/ui/layout/layout-2.png' class="mw-100" alt="Example 2 layout">
 
@@ -1379,16 +1379,16 @@ The red `Container` wants to be 100 × 100,
 but it can’t, because the screen forces it to be
 exactly the same size as the screen.
 
-红色的 `Container` 想要变成 100 x 100 的大小，
-但是它无法变成，因为屏幕强制它变成和屏幕一样的大小。
+紅色的 `Container` 想要變成 100 x 100 的大小，
+但是它無法變成，因為螢幕強制它變成和螢幕一樣的大小。
 
 So the `Container` fills the screen.
 
-所以 `Container` 充满了整个屏幕。
+所以 `Container` 充滿了整個螢幕。
 
 ### Example 3
 
-### 样例 3
+### 範例 3
 
 <img src='/assets/images/docs/ui/layout/layout-3.png' class="mw-100" alt="Example 3 layout">
 
@@ -1402,18 +1402,18 @@ Center(
 The screen forces the `Center` to be exactly the same size
 as the screen, so the `Center` fills the screen.
 
-屏幕强制 `Center` 变得和屏幕一样大，所以 `Center` 充满了屏幕。
+螢幕強制 `Center` 變得和螢幕一樣大，所以 `Center` 充滿了螢幕。
 
 The `Center` tells the `Container` that it can be any size it
 wants, but not bigger than the screen. Now the `Container`
 can indeed be 100 × 100.
 
-然后 `Center` 告诉 `Container` 可以变成任意大小，但是不能超出屏幕。
-现在，`Container` 可以真正变成 100 × 100 大小了。
+然後 `Center` 告訴 `Container` 可以變成任意大小，但是不能超出螢幕。
+現在，`Container` 可以真正變成 100 × 100 大小了。
 
 ### Example 4
 
-### 样例 4
+### 範例 4
 
 <img src='/assets/images/docs/ui/layout/layout-4.png' class="mw-100" alt="Example 4 layout">
 
@@ -1428,20 +1428,20 @@ Align(
 This is different from the previous example in that it uses
 `Align` instead of `Center`.
 
-与上一个样例不同的是，我们使用了 `Align` 而不是 `Center`。
+與上一個範例不同的是，我們使用了 `Align` 而不是 `Center`。
 
 `Align` also tells the `Container` that it can be any size it
 wants, but if there is empty space it won't center the `Container`.
 Instead, it aligns the container to the bottom-right of the
 available space.
 
-`Align` 同样也告诉 `Container`，你可以变成任意大小。
-但是，如果还留有空白空间的话，它不会居中 `Container`。
-相反，它将会在允许的空间内，把 `Container` 放在右下角（bottomRight）。
+`Align` 同樣也告訴 `Container`，你可以變成任意大小。
+但是，如果還留有空白空間的話，它不會居中 `Container`。
+相反，它將會在允許的空間內，把 `Container` 放在右下角（bottomRight）。
 
 ### Example 5
 
-### 样例 5
+### 範例 5
 
 <img src='/assets/images/docs/ui/layout/layout-5.png' class="mw-100" alt="Example 5 layout">
 
@@ -1456,20 +1456,20 @@ Center(
 The screen forces the `Center` to be exactly the
 same size as the screen, so the `Center` fills the screen.
 
-屏幕强制 `Center` 变得和屏幕一样大，所以 `Center` 充满屏幕。
+螢幕強制 `Center` 變得和螢幕一樣大，所以 `Center` 充滿螢幕。
 
 The `Center` tells the `Container` that it can be any size it wants,
 but not bigger than the screen. The `Container` wants to be
 of infinite size, but since it can’t be bigger than the screen,
 it just fills the screen.
 
-然后 `Center` 告诉 `Container` 可以变成任意大小，但是不能超出屏幕。
-现在，`Container` 想要无限的大小，但是由于它不能比屏幕更大，
-所以就仅充满屏幕。
+然後 `Center` 告訴 `Container` 可以變成任意大小，但是不能超出螢幕。
+現在，`Container` 想要無限的大小，但是由於它不能比螢幕更大，
+所以就僅充滿螢幕。
 
 ### Example 6
 
-### 样例 6
+### 範例 6
 
 <img src='/assets/images/docs/ui/layout/layout-6.png' class="mw-100" alt="Example 6 layout">
 
@@ -1483,7 +1483,7 @@ Center(
 The screen forces the `Center` to be exactly the
 same size as the screen, so the `Center` fills the screen.
 
-屏幕强制 `Center` 变得和屏幕一样大，所以 `Center` 充满屏幕。
+螢幕強制 `Center` 變得和螢幕一樣大，所以 `Center` 充滿螢幕。
 
 The `Center` tells the `Container` that it can be any
 size it wants, but not bigger than the screen.
@@ -1491,9 +1491,9 @@ Since the `Container` has no child and no fixed size,
 it decides it wants to be as big as possible,
 so it fills the whole screen.
 
-然后 `Center` 告诉 `Container` 可以变成任意大小，但是不能超出屏幕。
-由于 `Container` 没有子级而且没有固定大小，所以它决定能有多大就有多大，
-所以它充满了整个屏幕。
+然後 `Center` 告訴 `Container` 可以變成任意大小，但是不能超出螢幕。
+由於 `Container` 沒有子級而且沒有固定大小，所以它決定能有多大就有多大，
+所以它充滿了整個螢幕。
 
 But why does the `Container` decide that?
 Simply because that’s a design decision by those who
@@ -1502,15 +1502,15 @@ created differently, and you have to read the
 [`Container` documentation][] to understand how it
 behaves, depending on the circumstances.
 
-但是，为什么 `Container` 做出了这个决定？
-非常简单，因为这个决定是由 `Container` widget 的创建者决定的。
-可能会因创造者而异，而且你还得阅读 
-[`Container` 文档][`Container` documentation]
-来理解不同场景下它的行为。
+但是，為什麼 `Container` 做出了這個決定？
+非常簡單，因為這個決定是由 `Container` widget 的建立者決定的。
+可能會因創造者而異，而且你還得閱讀 
+[`Container` 文件][`Container` documentation]
+來理解不同場景下它的行為。
 
 ### Example 7
 
-### 样例 7
+### 範例 7
 
 <img src='/assets/images/docs/ui/layout/layout-7.png' class="mw-100" alt="Example 7 layout">
 
@@ -1527,20 +1527,20 @@ Center(
 The screen forces the `Center` to be exactly the same
 size as the screen, so the `Center` fills the screen.
 
-屏幕强制 `Center` 变得和屏幕一样大，所以 `Center` 充满屏幕。
+螢幕強制 `Center` 變得和螢幕一樣大，所以 `Center` 充滿螢幕。
 
 The `Center` tells the red `Container` that it can be any size
 it wants, but not bigger than the screen. Since the red
 `Container` has no size but has a child,
 it decides it wants to be the same size as its child.
 
-然后 `Center` 告诉红色的 `Container` 可以变成任意大小，但是不能超出屏幕。
-由于 `Container` 没有固定大小但是有子级，所以它决定变成它 child 的大小。
+然後 `Center` 告訴紅色的 `Container` 可以變成任意大小，但是不能超出螢幕。
+由於 `Container` 沒有固定大小但是有子級，所以它決定變成它 child 的大小。
 
 The red `Container` tells its child that it can be any size
 it wants, but not bigger than the screen.
 
-然后红色的 `Container` 告诉它的 child 可以变成任意大小，但是不能超出屏幕。
+然後紅色的 `Container` 告訴它的 child 可以變成任意大小，但是不能超出螢幕。
 
 The child is a green `Container` that wants to
 be 30 × 30. Given that the red `Container` sizes itself to
@@ -1548,13 +1548,13 @@ the size of its child, it is also 30 × 30.
 The red color isn't visible because the green `Container`
 entirely covers the red `Container`.
 
-而它的 child 是一个想要 30 × 30 大小绿色的 `Container`。由于红色的 `Container`
-和其子级一样大，所以也变为 30 × 30。由于绿色的 `Container` 完全覆盖了红色 `Container`，
-所以你看不见它了。
+而它的 child 是一個想要 30 × 30 大小綠色的 `Container`。由於紅色的 `Container`
+和其子級一樣大，所以也變為 30 × 30。由於綠色的 `Container` 完全覆蓋了紅色 `Container`，
+所以你看不見它了。
 
 ### Example 8
 
-### 样例 8
+### 範例 8
 
 <img src='/assets/images/docs/ui/layout/layout-8.png' class="mw-100" alt="Example 8 layout">
 
@@ -1576,13 +1576,13 @@ The red color is visible because of the padding,
 and the green `Container` has the same size as
 in the previous example.
 
-红色 `Container` 变为其子级的大小，但是它将其 padding 带入了约束的计算中。
-所以它有一个 30 x 30 的外边距。由于这个外边距，所以现在你能看见红色了。
-而绿色的 `Container` 则还是和之前一样。
+紅色 `Container` 變為其子級的大小，但是它將其 padding 帶入了約束的計算中。
+所以它有一個 30 x 30 的外邊距。由於這個外邊距，所以現在你能看見紅色了。
+而綠色的 `Container` 則還是和之前一樣。
 
 ### Example 9
 
-### 样例 9
+### 範例 9
 
 <img src='/assets/images/docs/ui/layout/layout-9.png' class="mw-100" alt="Example 9 layout">
 
@@ -1604,21 +1604,21 @@ between 70 and 150 pixels, but you would be wrong.
 The `ConstrainedBox` only imposes **additional** constraints
 from those it receives from its parent.
 
-你可能会猜想 `Container` 的尺寸会在 70 到 150 像素之间，但并不是这样。
-`ConstrainedBox` 仅对其从其父级接收到的约束下施加其他约束。
+你可能會猜想 `Container` 的尺寸會在 70 到 150 畫素之間，但並不是這樣。
+`ConstrainedBox` 僅對其從其父級接收到的約束下施加其他約束。
 
 Here, the screen forces the `ConstrainedBox` to be exactly
 the same size as the screen, so it tells its child `Container`
 to also assume the size of the screen, thus ignoring its
 `constraints` parameter.
 
-在这里，屏幕迫使 `ConstrainedBox` 与屏幕大小完全相同，
-因此它告诉其子 `Widget` 也以屏幕大小作为约束，
-从而忽略了其 `constraints` 参数带来的影响。
+在這裡，螢幕迫使 `ConstrainedBox` 與螢幕大小完全相同，
+因此它告訴其子 `Widget` 也以螢幕大小作為約束，
+從而忽略了其 `constraints` 引數帶來的影響。
 
 ### Example 10
 
-### 样例 10
+### 範例 10
 
 <img src='/assets/images/docs/ui/layout/layout-10.png' class="mw-100" alt="Example 10 layout">
 
@@ -1641,19 +1641,19 @@ Now, `Center` allows `ConstrainedBox` to be any size up to
 the screen size. The `ConstrainedBox` imposes **additional**
 constraints from its `constraints` parameter onto its child.
 
-现在，`Center` 允许 `ConstrainedBox` 达到屏幕可允许的任意大小。
-`ConstrainedBox` 将 `constraints` 参数带来的约束附加到其子对象上。
+現在，`Center` 允許 `ConstrainedBox` 達到螢幕可允許的任意大小。
+`ConstrainedBox` 將 `constraints` 引數帶來的約束附加到其子物件上。
 
 The Container must be between 70 and 150 pixels.
 It wants to have 10 pixels,
 so it ends up having 70 (the minimum).
 
-Container 必须介于 70 到 150 像素之间。虽然它希望自己有 10 个像素大小，
-但最终获得了 70 个像素（最小为 70）。
+Container 必須介於 70 到 150 畫素之間。雖然它希望自己有 10 個畫素大小，
+但最終獲得了 70 個畫素（最小為 70）。
 
 ### Example 11
 
-### 样例 11
+### 範例 11
 
 <img src='/assets/images/docs/ui/layout/layout-11.png' class="mw-100" alt="Example 11 layout">
 
@@ -1676,20 +1676,20 @@ Center(
 screen size. The `ConstrainedBox` imposes **additional**
 constraints from its `constraints` parameter onto its child.
 
-现在，`Center` 允许 `ConstrainedBox` 达到屏幕可允许的任意大小。
-`ConstrainedBox` 将 `constraints` 参数带来的约束附加到其子对象上。
+現在，`Center` 允許 `ConstrainedBox` 達到螢幕可允許的任意大小。
+`ConstrainedBox` 將 `constraints` 引數帶來的約束附加到其子物件上。
 
 The `Container` must be between 70 and 150 pixels.
 It wants to have 1000 pixels,
 so it ends up having 150 (the maximum).
 
-`Container` 必须介于 70 到 150 像素之间。
-虽然它希望自己有 1000 个像素大小，
-但最终获得了 150 个像素（最大为 150）。
+`Container` 必須介於 70 到 150 畫素之間。
+雖然它希望自己有 1000 個畫素大小，
+但最終獲得了 150 個畫素（最大為 150）。
 
 ### Example 12
 
-### 样例 12
+### 範例 12
 
 <img src='/assets/images/docs/ui/layout/layout-12.png' class="mw-100" alt="Example 12 layout">
 
@@ -1712,20 +1712,20 @@ Center(
 screen size. The `ConstrainedBox` imposes **additional**
 constraints from its `constraints` parameter onto its child.
 
-现在，`Center` 允许 `ConstrainedBox` 达到屏幕可允许的任意大小。
-`ConstrainedBox` 将 `constraints` 参数带来的约束附加到其子对象上。
+現在，`Center` 允許 `ConstrainedBox` 達到螢幕可允許的任意大小。
+`ConstrainedBox` 將 `constraints` 引數帶來的約束附加到其子物件上。
 
 The `Container` must be between 70 and 150 pixels.
 It wants to have 100 pixels, and that’s the size it has,
 since that’s between 70 and 150.
 
-`Container` 必须介于 70 到 150 像素之间。
-虽然它希望自己有 100 个像素大小，
-因为 100 介于 70 至 150 的范围内，所以最终获得了 100 个像素。
+`Container` 必須介於 70 到 150 畫素之間。
+雖然它希望自己有 100 個畫素大小，
+因為 100 介於 70 至 150 的範圍內，所以最終獲得了 100 個畫素。
 
 ### Example 13
 
-### 样例 13
+### 範例 13
 
 <img src='/assets/images/docs/ui/layout/layout-13.png' class="mw-100" alt="Example 13 layout">
 
@@ -1740,11 +1740,11 @@ The screen forces the `UnconstrainedBox` to be exactly
 the same size as the screen. However, the `UnconstrainedBox`
 lets its child `Container` be any size it wants.
 
-屏幕强制 `UnconstrainedBox` 变得和屏幕一样大，而 `UnconstrainedBox` 允许其子级的 `Container` 可以变为任意大小。
+螢幕強制 `UnconstrainedBox` 變得和螢幕一樣大，而 `UnconstrainedBox` 允許其子級的 `Container` 可以變為任意大小。
 
 ### Example 14
 
-### 样例 14
+### 範例 14
 
 <img src='/assets/images/docs/ui/layout/layout-14.png' class="mw-100" alt="Example 14 layout">
 
@@ -1759,21 +1759,21 @@ The screen forces the `UnconstrainedBox` to be exactly
 the same size as the screen, and `UnconstrainedBox`
 lets its child `Container` be any size it wants.
 
-屏幕强制 `UnconstrainedBox` 变得和屏幕一样大，
-而 `UnconstrainedBox` 允许其子级的 `Container` 可以变为任意大小。
+螢幕強制 `UnconstrainedBox` 變得和螢幕一樣大，
+而 `UnconstrainedBox` 允許其子級的 `Container` 可以變為任意大小。
 
 Unfortunately, in this case the `Container` is
 4000 pixels wide and is too big to fit in
 the `UnconstrainedBox`, so the `UnconstrainedBox` displays
 the much dreaded "overflow warning".
 
-不幸的是，在这种情况下，容器的宽度为 4000 像素，
-这实在是太大，以至于无法容纳在 `UnconstrainedBox` 中，
-因此 `UnconstrainedBox` 将显示溢出警告（overflow warning）。
+不幸的是，在這種情況下，容器的寬度為 4000 畫素，
+這實在是太大，以至於無法容納在 `UnconstrainedBox` 中，
+因此 `UnconstrainedBox` 將顯示溢位警告（overflow warning）。
 
 ### Example 15
 
-### 样例 15
+### 範例 15
 
 <img src='/assets/images/docs/ui/layout/layout-15.png' class="mw-100" alt="Example 15 layout">
 
@@ -1792,27 +1792,27 @@ The screen forces the `OverflowBox` to be exactly the same
 size as the screen, and `OverflowBox` lets its child `Container`
 be any size it wants.
 
-屏幕强制 `OverflowBox` 变得和屏幕一样大，
-并且 `OverflowBox` 允许其子容器设置为任意大小。
+螢幕強制 `OverflowBox` 變得和螢幕一樣大，
+並且 `OverflowBox` 允許其子容器設定為任意大小。
 
 `OverflowBox` is similar to `UnconstrainedBox`;
 the difference is that it won’t display any warnings
 if the child doesn’t fit the space.
 
-`OverflowBox` 与 `UnconstrainedBox` 类似，但不同的是，
-如果其子级超出该空间，它将不会显示任何警告。
+`OverflowBox` 與 `UnconstrainedBox` 類似，但不同的是，
+如果其子級超出該空間，它將不會顯示任何警告。
 
 In this case, the `Container` has 4000 pixels of width,
 and is too big to fit in the `OverflowBox`,
 but the `OverflowBox` simply shows as much as it can,
 with no warnings given.
 
-在这种情况下，容器的宽度为 4000 像素，并且太大而无法容纳在 `OverflowBox` 中，
-但是 `OverflowBox` 会全部显示，而不会发出警告。
+在這種情況下，容器的寬度為 4000 畫素，並且太大而無法容納在 `OverflowBox` 中，
+但是 `OverflowBox` 會全部顯示，而不會發出警告。
 
 ### Example 16
 
-### 样例 16
+### 範例 16
 
 <img src='/assets/images/docs/ui/layout/layout-16.png' class="mw-100" alt="Example 16 layout">
 
@@ -1825,23 +1825,23 @@ UnconstrainedBox(
 
 This won’t render anything, and you'll see an error in the console.
 
-这将不会渲染任何东西，而且你能在控制台看到错误信息。
+這將不會渲染任何東西，而且你能在控制檯看到錯誤資訊。
 
 The `UnconstrainedBox` lets its child be any size it wants,
 however its child is a `Container` with infinite size.
 
-`UnconstrainedBox` 让它的子级决定成为任何大小，
-但是其子级是一个具有无限大小的 `Container`。
+`UnconstrainedBox` 讓它的子級決定成為任何大小，
+但是其子級是一個具有無限大小的 `Container`。
 
 Flutter can’t render infinite sizes, so it throws an error with
 the following message: `BoxConstraints forces an infinite width.`
 
-Flutter 无法渲染无限大的东西，所以它抛出以下错误：
-`BoxConstraints forces an infinite width.`（盒子约束强制使用了无限的宽度）
+Flutter 無法渲染無限大的東西，所以它丟擲以下錯誤：
+`BoxConstraints forces an infinite width.`（盒子約束強制使用了無限的寬度）
 
 ### Example 17
 
-### 样例 17
+### 範例 17
 
 <img src='/assets/images/docs/ui/layout/layout-17.png' class="mw-100" alt="Example 17 layout">
 
@@ -1864,9 +1864,9 @@ because when the `LimitedBox` is given an
 infinite size by the `UnconstrainedBox`;
 it passes a maximum width of 100 down to its child.
 
-这次你就不会遇到报错了。
-`UnconstrainedBox` 给 `LimitedBox` 一个无限的大小；
-但它向其子级传递了最大为 100 的约束。
+這次你就不會遇到報錯了。
+`UnconstrainedBox` 給 `LimitedBox` 一個無限的大小；
+但它向其子級傳遞了最大為 100 的約束。
 
 If you swap the `UnconstrainedBox` for a `Center` widget,
 the `LimitedBox` won't apply its limit anymore
@@ -1874,18 +1874,18 @@ the `LimitedBox` won't apply its limit anymore
 constraints), and the width of the `Container`
 is allowed to grow past 100.
 
-如果你将 `UnconstrainedBox` 替换为 `Center`，
-则`LimitedBox` 将不再应用其限制（因为其限制仅在获得无限约束时才适用），
-并且容器的宽度允许超过 100。
+如果你將 `UnconstrainedBox` 替換為 `Center`，
+則`LimitedBox` 將不再應用其限制（因為其限制僅在獲得無限約束時才適用），
+並且容器的寬度允許超過 100。
 
 This explains the difference between a `LimitedBox`
 and a `ConstrainedBox`.
 
-上面的样例解释了 `LimitedBox` 和 `ConstrainedBox` 之间的区别。
+上面的範例解釋了 `LimitedBox` 和 `ConstrainedBox` 之間的區別。
 
 ### Example 18
 
-### 样例 18
+### 範例 18
 
 <img src='/assets/images/docs/ui/layout/layout-18.png' class="mw-100" alt="Example 18 layout">
 
@@ -1901,22 +1901,22 @@ size as the screen. The `Text` has some natural width
 (also called its intrinsic width) that depends on the
 amount of text, its font size, and so on.
 
-屏幕强制 `FittedBox` 变得和屏幕一样大，
-而 `Text` 则是有一个自然宽度（也被称作 intrinsic 宽度），
-它取决于文本数量，字体大小等因素。
+螢幕強制 `FittedBox` 變得和螢幕一樣大，
+而 `Text` 則是有一個自然寬度（也被稱作 intrinsic 寬度），
+它取決於文字數量，字型大小等因素。
 
 The `FittedBox` lets the `Text` be any size it wants,
 but after the `Text` tells its size to the `FittedBox`,
 the `FittedBox` scales the Text until it fills all of
 the available width.
 
-`FittedBox` 让 `Text` 可以变为任意大小。
-但是在 `Text` 告诉 `FittedBox` 其大小后，
-`FittedBox` 缩放文本直到填满所有可用宽度。
+`FittedBox` 讓 `Text` 可以變為任意大小。
+但是在 `Text` 告訴 `FittedBox` 其大小後，
+`FittedBox` 縮放文字直到填滿所有可用寬度。
 
 ### Example 19
 
-### 样例 19
+### 範例 19
 
 <img src='/assets/images/docs/ui/layout/layout-19.png' class="mw-100" alt="Example 19 layout">
 
@@ -1933,22 +1933,22 @@ But what happens if you put the `FittedBox` inside of a
 `Center` widget? The `Center` lets the `FittedBox`
 be any size it wants, up to the screen size.
 
-但如果你将 `FittedBox` 放进 `Center` widget 中会发生什么？
-`Center` 将会让 `FittedBox` 能够变为任意大小，
-取决于屏幕大小。
+但如果你將 `FittedBox` 放進 `Center` widget 中會發生什麼？
+`Center` 將會讓 `FittedBox` 能夠變為任意大小，
+取決於螢幕大小。
 
 The `FittedBox` then sizes itself to the `Text`,
 and lets the `Text` be any size it wants.
 Since both `FittedBox` and the `Text` have the same size,
 no scaling happens.
 
-`FittedBox` 然后会根据 `Text` 调整自己的大小，
-然后让 `Text` 可以变为所需的任意大小，
-由于二者具有同一大小，因此不会发生缩放。
+`FittedBox` 然後會根據 `Text` 調整自己的大小，
+然後讓 `Text` 可以變為所需的任意大小，
+由於二者具有同一大小，因此不會發生縮放。
 
 ### Example 20
 
-### 样例 20
+### 範例 20
 
 <img src='/assets/images/docs/ui/layout/layout-20.png' class="mw-100" alt="Example 20 layout">
 
@@ -1965,21 +1965,21 @@ const Center(
 However, what happens if `FittedBox` is inside of a `Center`
 widget, but the `Text` is too large to fit the screen?
 
-然而，如果 `FittedBox` 位于 `Center` 中，
-但 `Text` 太大而超出屏幕，会发生什么？
+然而，如果 `FittedBox` 位於 `Center` 中，
+但 `Text` 太大而超出螢幕，會發生什麼？
 
 `FittedBox` tries to size itself to the `Text`,
 but it can't be bigger than the screen.
 It then assumes the screen size,
 and resizes `Text` so that it fits the screen, too.
 
-FittedBox 会尝试根据 `Text` 大小调整大小，
-但不能大于屏幕大小。然后假定屏幕大小，
-并调整 `Text` 的大小以使其也适合屏幕。
+FittedBox 會嘗試根據 `Text` 大小調整大小，
+但不能大於螢幕大小。然後假定螢幕大小，
+並調整 `Text` 的大小以使其也適合螢幕。
 
 ### Example 21
 
-### 样例 21
+### 範例 21
 
 <img src='/assets/images/docs/ui/layout/layout-21.png' class="mw-100" alt="Example 21 layout">
 
@@ -1995,13 +1995,13 @@ If, however, you remove the `FittedBox`, the `Text`
 gets its maximum width from the screen,
 and breaks the line so that it fits the screen.
 
-然而，如果你删除了 `FittedBox`，
-`Text` 则会从屏幕上获取其最大宽度，
-并在合适的地方换行。
+然而，如果你刪除了 `FittedBox`，
+`Text` 則會從螢幕上獲取其最大寬度，
+並在合適的地方換行。
 
 ### Example 22
 
-### 样例 22
+### 範例 22
 
 <img src='/assets/images/docs/ui/layout/layout-22.png' class="mw-100" alt="Example 22 layout">
 
@@ -2021,13 +2021,13 @@ FittedBox(
 it won’t render anything,
 and you'll see an error in the console.
 
-`FittedBox` 只能在有限制的宽高中
-对子 widget 进行缩放（宽度和高度不会变得无限大）。
-否则，它将无法渲染任何内容，并且你会在控制台中看到错误。
+`FittedBox` 只能在有限制的寬高中
+對子 widget 進行縮放（寬度和高度不會變得無限大）。
+否則，它將無法渲染任何內容，並且你會在控制檯中看到錯誤。
 
 ### Example 23
 
-### 样例 23
+### 範例 23
 
 <img src='/assets/images/docs/ui/layout/layout-23.png' class="mw-100" alt="Example 23 layout">
 
@@ -2044,7 +2044,7 @@ Row(
 The screen forces the `Row` to be exactly the same size
 as the screen.
 
-屏幕强制 `Row` 变得和屏幕一样大，所以 `Row` 充满屏幕。
+螢幕強制 `Row` 變得和螢幕一樣大，所以 `Row` 充滿螢幕。
 
 Just like an `UnconstrainedBox`, the `Row` won’t
 impose any constraints onto its children,
@@ -2052,15 +2052,15 @@ and instead lets them be any size they want.
 The `Row` then puts them side-by-side,
 and any extra space remains empty.
 
-和 `UnconstrainedBox` 一样，
-`Row` 也不会对其子代施加任何约束，
-而是让它们成为所需的任意大小。
-`Row` 然后将它们并排放置，
-任何多余的空间都将保持空白。
+和 `UnconstrainedBox` 一樣，
+`Row` 也不會對其子代施加任何約束，
+而是讓它們成為所需的任意大小。
+`Row` 然後將它們並排放置，
+任何多餘的空間都將保持空白。
 
 ### Example 24
 
-### 样例 24
+### 範例 24
 
 <img src='/assets/images/docs/ui/layout/layout-24.png' class="mw-100" alt="Example 24 layout">
 
@@ -2086,14 +2086,14 @@ it’s quite possible that the children might be too big to fit
 the available width of the `Row`. In this case, just like an
 `UnconstrainedBox`, the `Row` displays the "overflow warning".
 
-由于 `Row` 不会对其子级施加任何约束，
+由於 `Row` 不會對其子級施加任何約束，
 因此它的 children 很有可能太大
-而超出 `Row` 的可用宽度。在这种情况下，
-`Row` 会和 `UnconstrainedBox` 一样显示溢出警告。
+而超出 `Row` 的可用寬度。在這種情況下，
+`Row` 會和 `UnconstrainedBox` 一樣顯示溢位警告。
 
 ### Example 25
 
-### 样例 25
+### 範例 25
 
 <img src='/assets/images/docs/ui/layout/layout-25.png' class="mw-100" alt="Example 25 layout">
 
@@ -2120,25 +2120,25 @@ Row(
 When a `Row`'s child is wrapped in an `Expanded` widget,
 the `Row` won't let this child define its own width anymore.
 
-当 `Row` 的子级被包裹在了 `Expanded` widget 之后，
-`Row` 将不会再让其决定自身的宽度了。
+當 `Row` 的子級被包裹在了 `Expanded` widget 之後，
+`Row` 將不會再讓其決定自身的寬度了。
 
 Instead, it defines the `Expanded` width according to the
 other children, and only then the `Expanded` widget forces
 the original child to have the `Expanded`'s width.
 
-取而代之的是，`Row` 会根据所有 `Expanded` 的子级
-来计算其该有的宽度。
+取而代之的是，`Row` 會根據所有 `Expanded` 的子級
+來計算其該有的寬度。
 
 In other words, once you use `Expanded`,
 the original child’s width becomes irrelevant, and is ignored.
 
-换句话说，一旦你使用 `Expanded`，
-子级自身的宽度就变得无关紧要，直接会被忽略掉。
+換句話說，一旦你使用 `Expanded`，
+子級自身的寬度就變得無關緊要，直接會被忽略掉。
 
 ### Example 26
 
-### 样例 26
+### 範例 26
 
 <img src='/assets/images/docs/ui/layout/layout-26.png' class="mw-100" alt="Example 26 layout">
 
@@ -2173,18 +2173,18 @@ each `Expanded` has a size proportional to its flex parameter,
 and only then each `Expanded` widget forces its child to have
 the `Expanded`'s width.
 
-如果所有 `Row` 的子级都被包裹了 `Expanded` widget，
-每一个 `Expanded` 大小都会与其 flex 因子成比例，
-并且 `Expanded` widget 将会强制其子级具有与 `Expanded` 相同的宽度。
+如果所有 `Row` 的子級都被包裹了 `Expanded` widget，
+每一個 `Expanded` 大小都會與其 flex 因子成比例，
+並且 `Expanded` widget 將會強制其子級具有與 `Expanded` 相同的寬度。
 
 In other words, `Expanded` ignores the preferred width of
 its children.
 
-换句话说，`Expanded` 忽略了其子 `Widget` 想要的宽度。
+換句話說，`Expanded` 忽略了其子 `Widget` 想要的寬度。
 
 ### Example 27
 
-### 样例 27
+### 範例 27
 
 <img src='/assets/images/docs/ui/layout/layout-27.png' class="mw-100" alt="Example 27 layout">
 
@@ -2221,13 +2221,13 @@ its child to have the exact same width of the `Expanded`.
 But both `Expanded` and `Flexible` ignore their children's width
 when sizing themselves.
 
-如果你使用 `Flexible` 而不是 `Expanded` 的话，
-唯一的区别是，`Flexible` 会让其子级具有与
-`Flexible` 相同或者更小的宽度。
-而 `Expanded` 将会强制其子级具有和
-`Expanded` 相同的宽度。
-但无论是 `Expanded` 还是 `Flexible`
-在它们决定子级大小时都会忽略其宽度。
+如果你使用 `Flexible` 而不是 `Expanded` 的話，
+唯一的區別是，`Flexible` 會讓其子級具有與
+`Flexible` 相同或者更小的寬度。
+而 `Expanded` 將會強制其子級具有和
+`Expanded` 相同的寬度。
+但無論是 `Expanded` 還是 `Flexible`
+在它們決定子級大小時都會忽略其寬度。
 
 {{site.alert.note}}
 
@@ -2236,14 +2236,14 @@ when sizing themselves.
   the exact child’s width, or ignores it completely
   when you use `Expanded` or `Flexible`.
 
-  这意味着，`Row` 要么使用子级的宽度，
-  要么使用`Expanded` 和 `Flexible` 从而忽略子级的宽度。
+  這意味著，`Row` 要麼使用子級的寬度，
+  要麼使用`Expanded` 和 `Flexible` 從而忽略子級的寬度。
 
 {{site.alert.end}}
 
 ### Example 28
 
-### 样例 28
+### 範例 28
 
 <img src='/assets/images/docs/ui/layout/layout-28.png' class="mw-100" alt="Example 28 layout">
 
@@ -2267,10 +2267,10 @@ as the screen, so the `Scaffold` fills the screen.
 The `Scaffold` tells the `Container` that it can be any size it wants,
 but not bigger than the screen.
 
-屏幕强制 `Scaffold` 变得和屏幕一样大，
-所以 `Scaffold` 充满屏幕。
-然后 `Scaffold` 告诉 `Container` 可以变为任意大小，
-但不能超出屏幕。
+螢幕強制 `Scaffold` 變得和螢幕一樣大，
+所以 `Scaffold` 充滿螢幕。
+然後 `Scaffold` 告訴 `Container` 可以變為任意大小，
+但不能超出螢幕。
 
 {{site.alert.note}}
 
@@ -2278,14 +2278,14 @@ but not bigger than the screen.
   certain size, we say the widget supplies _loose_ constraints
   to its child. More on that later.
 
-  当一个 widget 告诉其子级可以比自身更小的话，
-  我们通常称这个 widget 对其子级使用 **宽松约束（loose）**。
+  當一個 widget 告訴其子級可以比自身更小的話，
+  我們通常稱這個 widget 對其子級使用 **寬鬆約束（loose）**。
 
 {{site.alert.end}}
 
 ### Example 29
 
-### 样例 29
+### 範例 29
 
 <img src='/assets/images/docs/ui/layout/layout-29.png' class="mw-100" alt="Example 29 layout">
 
@@ -2310,8 +2310,8 @@ If you want the `Scaffold`'s child to be exactly the same size
 as the `Scaffold` itself, you can wrap its child with
 `SizedBox.expand`.
 
-如果你想要 `Scaffold` 的子级变得和 `Scaffold` 本身一样大的话，
-你可以将这个子级外包裹一个 `SizedBox.expand`。
+如果你想要 `Scaffold` 的子級變得和 `Scaffold` 本身一樣大的話，
+你可以將這個子級外包裹一個 `SizedBox.expand`。
 
 {{site.alert.note}}
 
@@ -2319,36 +2319,36 @@ as the `Scaffold` itself, you can wrap its child with
   a certain size, we say the widget supplies _tight_
   constraints to its child.
 
-  当一个 widget 告诉它的子级必须变成某个大小的时候，
-  我们通常称这个 widget 对其子级使用 **严格约束（tight）**。
+  當一個 widget 告訴它的子級必須變成某個大小的時候，
+  我們通常稱這個 widget 對其子級使用 **嚴格約束（tight）**。
 
 {{site.alert.end}}
 
 
 ## Tight vs. loose constraints
 
-## 严格约束（Tight） vs 宽松约束（loose）
+## 嚴格約束（Tight） vs 寬鬆約束（loose）
 
 It’s very common to hear that some constraint is
 "tight" or "loose", so it’s worth knowing what that means.
 
-以后你经常会听到一些约束为严格约束或宽松约束，
-你花点时间来弄明白它们是值得的。
+以後你經常會聽到一些約束為嚴格約束或寬鬆約束，
+你花點時間來弄明白它們是值得的。
 
 A _tight_ constraint offers a single possibility,
 an exact size. In other words, a tight constraint
 has its maximum width equal to its minimum width;
 and has its maximum height equal to its minimum height.
 
-严格约束给你了一种获得确切大小的选择。
-换句话来说就是，它的最大/最小宽度是一致的，高度也一样。
+嚴格約束給你了一種獲得確切大小的選擇。
+換句話來說就是，它的最大/最小寬度是一致的，高度也一樣。
 
 If you go to Flutter’s `box.dart` file and search for
 the `BoxConstraints` constructors, you'll find the
 following:
 
-如果你到 Flutter 的 `box.dart` 文件中搜索
-`BoxConstraints` 构造器，你会发现以下内容：
+如果你到 Flutter 的 `box.dart` 檔案中搜索
+`BoxConstraints` 構造器，你會發現以下內容：
 
 <!-- skip -->
 ```dart
@@ -2365,10 +2365,10 @@ it tells us that the screen forces the red
 The screen does that, of course, by passing tight
 constraints to the `Container`.
 
-如果你重新阅读 [样例 2](#example-2)，
-它告诉我们屏幕强制 `Container` 变得和屏幕一样大。
-为何屏幕能够做到这一点，
-原因就是给 `Container` 传递了严格约束。
+如果你重新閱讀 [範例 2](#example-2)，
+它告訴我們螢幕強制 `Container` 變得和螢幕一樣大。
+為何螢幕能夠做到這一點，
+原因就是給 `Container` 傳遞了嚴格約束。
 
 A _loose_ constraint, on the other hand,
 sets the **maximum** width and height, but lets the widget
@@ -2376,9 +2376,9 @@ be as small as it wants. In other words,
 a loose constraint has a **minimum** width and height
 both equal to **zero**:
 
-一个 **宽松** 约束，换句话来说就是设置了最大宽度/高度，
-但是让允许其子 widget 获得比它更小的任意大小。
-换句话来说，宽松约束的最小宽度/高度为 **0**。
+一個 **寬鬆** 約束，換句話來說就是設定了最大寬度/高度，
+但是讓允許其子 widget 獲得比它更小的任意大小。
+換句話來說，寬鬆約束的最小寬度/高度為 **0**。
 
 <!-- skip -->
 ```dart
@@ -2398,35 +2398,35 @@ the tight constraints it got from its parent
 (the screen) to loose constraints for its child
 (the `Container`).
 
-如果你访问 [样例 3](#example-3)，
-它将会告诉我们 `Center` 让红色的 `Container` 变得更小，
-但是不能超出屏幕。`Center` 能够做到这一点的原因就在于
-给 `Container` 的是一个宽松约束。
-总的来说，`Center` 起的作用就是从其父级（屏幕）那里获得的严格约束，
-为其子级（`Container`）转换为宽松约束。
+如果你存取 [範例 3](#example-3)，
+它將會告訴我們 `Center` 讓紅色的 `Container` 變得更小，
+但是不能超出螢幕。`Center` 能夠做到這一點的原因就在於
+給 `Container` 的是一個寬鬆約束。
+總的來說，`Center` 起的作用就是從其父級（螢幕）那裡獲得的嚴格約束，
+為其子級（`Container`）轉換為寬鬆約束。
 
 ## Learning the layout rules for specific widgets
 
-## 了解如何为特定 widget 制定布局规则
+## 瞭解如何為特定 widget 制定佈局規則
 
 Knowing the general layout rule is necessary, but it’s not enough.
 
-掌握通用布局是非常重要的，但这还不够。
+掌握通用佈局是非常重要的，但這還不夠。
 
 Each widget has a lot of freedom when applying the general rule,
 so there is no way of knowing what it will do by just reading
 the widget’s name.
 
-应用一般规则时，每个 widget 都具有很大的自由度，
-所以没有办法只看 widget 的名称就知道可能它长什么样。
+應用一般規則時，每個 widget 都具有很大的自由度，
+所以沒有辦法只看 widget 的名稱就知道可能它長什麼樣。
 
 If you try to guess, you’ll probably guess wrong.
 You can’t know exactly how a widget behaves unless
 you’ve read its documentation, or studied its source-code.
 
-如果你尝试推测，可能就会猜错。
-除非你已阅读 widget 的文档或研究了其源代码，
-否则你无法确切知道 widget 的行为。
+如果你嘗試推測，可能就會猜錯。
+除非你已閱讀 widget 的文件或研究了其原始碼，
+否則你無法確切知道 widget 的行為。
 
 The layout source-code is usually complex,
 so it’s probably better to just read the documentation.
@@ -2434,12 +2434,12 @@ However, if you decide to study the layout source-code,
 you can easily find it by using the navigating capabilities
 of your IDE.
 
-布局源代码通常很复杂，因此阅读文档是更好的选择。
-但是当你在研究布局源代码时，可以使用 IDE 的导航功能轻松找到它。
+佈局原始碼通常很複雜，因此閱讀文件是更好的選擇。
+但是當你在研究佈局原始碼時，可以使用 IDE 的導航功能輕鬆找到它。
 
 Here is an example:
 
-下面是一个例子：
+下面是一個例子：
 
 * Find a `Column` in your code and navigate to its
   source code. To do this, use `command+B` (macOS)
@@ -2448,11 +2448,11 @@ Here is an example:
   Since `Column` extends `Flex`, navigate to the `Flex`
   source code (also in `basic.dart`).
 
-  在你的代码中找到一个 `Column` 并跟进到它的源代码。
-  为此，请在 (Android Studio/IntelliJ) 中使用
+  在你的程式碼中找到一個 `Column` 並跟進到它的原始碼。
+  為此，請在 (Android Studio/IntelliJ) 中使用
   `command+B`（macOS）或 `control+B`（Windows/Linux）。
-  你将跳到 `basic.dart` 文件中。由于 `Column` 扩展了 `Flex`，
-  请导航至 `Flex` 源代码（也位于 `basic.dart` 中）。
+  你將跳到 `basic.dart` 檔案中。由於 `Column` 擴充了 `Flex`，
+  請導航至 `Flex` 原始碼（也位於 `basic.dart` 中）。
 
 * Scroll down until you find a method called
   `createRenderObject()`. As you can see,
@@ -2461,17 +2461,17 @@ Here is an example:
   Now navigate to the source-code of `RenderFlex`,
   which takes you to the `flex.dart` file.
 
-  向下滚动直到找到一个名为 `createRenderObject()` 的方法。
-  如你所见，此方法返回一个 `RenderFlex`。
-  它是 `Column` 的渲染对象，
-  现在导航到 `flex.dart` 文件中的 `RenderFlex` 的源代码。
+  向下滾動直到找到一個名為 `createRenderObject()` 的方法。
+  如你所見，此方法返回一個 `RenderFlex`。
+  它是 `Column` 的渲染物件，
+  現在導航到 `flex.dart` 檔案中的 `RenderFlex` 的原始碼。
 
 * Scroll down until you find a method called
   `performLayout()`. This is the method that does
   the layout for the `Column`.
 
-  向下滚动，直到找到 `performLayout()` 方法，
-  由该方法执行列布局。
+  向下滾動，直到找到 `performLayout()` 方法，
+  由該方法執行列布局。
 
 <img src='/assets/images/docs/ui/layout/layout-final.png' class="mw-100" alt="A goodbye layout">
 
@@ -2488,14 +2488,14 @@ on Medium. We loved it and asked that he allow us to publish
 in on docs.flutter.dev, to which he graciously agreed. Thanks, Marcelo!
 You can find Marcelo on [GitHub][] and [pub.dev][].
 
-Marcelo Glasberg 最初在 Medium 发表 [Flutter: The Advanced Layout Rule Even Beginners Must Know][] 本文。
-我们十分喜欢这篇文章，在征得他的允许后发布在 flutter.dev。再次感谢你，Marcelo!
+Marcelo Glasberg 最初在 Medium 發表 [Flutter: The Advanced Layout Rule Even Beginners Must Know][] 本文。
+我們十分喜歡這篇文章，在徵得他的允許後釋出在 flutter.dev。再次感謝你，Marcelo!
 你可以找到 [GitHub][] 以及 [pub.dev][] 找到 Marcelo。
 
 Also, thanks to [Simon Lightfoot][] for creating the
 header image at the top of the article.
 
-同时，还要感谢 [Simon Lightfoot][] 创造了本文的标题图片。
+同時，還要感謝 [Simon Lightfoot][] 創造了本文的標題圖片。
 
 [`Container` documentation]: {{site.api}}/flutter/widgets/Container-class.html
 [DartPad instance]: {{site.dartpad}}/60174a95879612e500203084a0588f94

@@ -1,8 +1,8 @@
 ---
 title: Container with color optimization
-title: Container 颜色优化
+title: Container 顏色最佳化
 description: A container with a color and no other background decoration no longer builds the same child widgets.
-description: 一个带有颜色且没有背景装饰的 Container 将不再重复创建 child widget。
+description: 一個帶有顏色且沒有背景裝飾的 Container 將不再重複建立 child widget。
 ---
 
 ## Summary

@@ -1,21 +1,21 @@
-# 翻译指南
+# 翻譯指南
 
-## 参见样本
+## 參見樣本
 
 `src/docs/resources/faq.md`
 
-## 翻译语法
+## 翻譯語法
 
-### 页面元数据
+### 頁面元資料
 
 直接把中文放在原文下方即可：
 
 ```
 title: Flutter - Beautiful native apps in record time
-title: Flutter - 绝妙原生应用
+title: Flutter - 絕妙原生應用
 ```
 
-### markdown 标题、段落等
+### markdown 標題、段落等
 
 直接把中文放在原文下方即可：
 
@@ -31,7 +31,7 @@ english
 
 ### markdown 列表（`-`、`*`、`1. ` 等）
 
-中文要换行并且缩进要与文字部分对齐
+中文要換行並且縮排要與文字部分對齊
 
 ```
 - one
@@ -48,11 +48,11 @@ english
 
 ```
 
-注意：不要省略中间和末尾的空行。
+注意：不要省略中間和末尾的空行。
 
 ### markdown 表格
 
-在下一行书写中文（可任意添加空格进行对齐），但是表头的翻译要放在表头分割线的下方，如：
+在下一行書寫中文（可任意新增空格進行對齊），但是表頭的翻譯要放在表頭分割線的下方，如：
 
 ```
 one | two | three
@@ -63,9 +63,9 @@ four | five | six
 
 ```
 
-## HTML 内容 - 容器型块元素
+## HTML 內容 - 容器型塊元素
 
-对于内嵌在 md 中的 html 内容，需要特殊处理
+對於內嵌在 md 中的 html 內容，需要特殊處理
 
 ### `h\d|p|header`
 
@@ -82,28 +82,28 @@ english
 
 ```
 
-内容不限
+內容不限
 
 ### `span|a`
 
-可以直接在紧后方放中文，如：
+可以直接在緊後方放中文，如：
 
 ```
 <span>english</span><span>中文</span>
 ```
-中间换行也可以。但尽量不要用这种方式，而是优先使用整段翻译的方式。
+中間換行也可以。但儘量不要用這種方式，而是優先使用整段翻譯的方式。
 
-## 发布
+## 釋出
 
-翻译完内容之后：
+翻譯完內容之後：
 
-1. 先按照 <https://github.com/flutter/website> 中的指示建立起原文编译环境
-1. （有权限的账号，且仅限于 CI 环境）运行 `tool/translator/deploy-cn.sh` 将其推送到 github pages 进行发布
+1. 先按照 <https://github.com/flutter/website> 中的指示建立起原文編譯環境
+1. （有許可權的帳號，且僅限於 CI 環境）執行 `tool/translator/deploy-cn.sh` 將其推送到 github pages 進行釋出
 
-## 额外注意
+## 額外注意
 
-因为构架脚本使用了 Bundle ，需要确保在在本机上安装了 Ruby 与 Bundle，推荐使用 [RVM](https://ruby-china.org/wiki/rvm-guide) 新建一个虚拟环境做隔离
+因為構架指令碼使用了 Bundle ，需要確保在在本機上安裝了 Ruby 與 Bundle，推薦使用 [RVM](https://ruby-china.org/wiki/rvm-guide) 新建一個虛擬環境做隔離
 
 ## 同步更新
 
-用 WebStorm/IntelliJ 的 git 合并功能合并远程更新并处理合并冲突即可。
+用 WebStorm/IntelliJ 的 git 合併功能合併遠端更新並處理合並衝突即可。

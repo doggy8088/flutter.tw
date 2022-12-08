@@ -1,58 +1,58 @@
 ---
-title: Dart 2.14 版现已发布
+title: Dart 2.14 版現已釋出
 toc: true
 ---
 
-*支持 Apple Silicon，增加了默认的 lint、更好的工具和新的语言功能提高生产力。*
+*支援 Apple Silicon，增加了預設的 lint、更好的工具和新的語言功能提高生產力。*
 
-本月，我们发布了 Dart SDK 2.14 的正式版，新的版本旨在通过独特的可移植性、生产力和稳健性组合来打造构建应用程序的最佳平台。这一次，我们对 Apple Silicon 提供了更好的支持，并提供了许多增强生产力的功能，例如用于通过代码样式分析在你编写代码时捕获错误的标准 lint 代码规则、更快的发布工具、更好的级联代码格式以及一些小的语言特性更新。
+本月，我們釋出了 Dart SDK 2.14 的正式版，新的版本旨在透過獨特的可移植性、生產力和穩健性組合來打造建構應用程式的最佳平台。這一次，我們對 Apple Silicon 提供了更好的支援，並提供了許多增強生產力的功能，例如用於透過程式碼樣式分析在你編寫程式碼時捕獲錯誤的標準 lint 程式碼規則、更快的釋出工具、更好的級聯程式碼格式以及一些小的語言特性更新。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2021/announcing-dart-2-14/announcing-dart-2-14.png){:width="85%"}
 
-自 Apple 在 2020 年末发布新的 [Apple 芯片](https://support.apple.com/zh-cn/HT211814 "Apple 芯片") 处理器芯片以来，我们一直致力于更新 Dart SDK 以增加对新处理器上的原生运行支持。所需的更新已经在 dev 渠道中提供了一段时间，过去一个月，beta 渠道也提供了支持，从 Dart 2.14.1 开始，可以在 Dart stable 渠道中使用啦。当你 [下载](https://dart.cn/get-dart "下载") 一个 macOS 的 SDK 时，确保要选择 ARM64 选项。请注意，与 Flutter SDK 中捆绑的 Dart SDK 还没有支持这些改进。
+自 Apple 在 2020 年末釋出新的 [Apple 晶片](https://support.apple.com/zh-cn/HT211814 "Apple 晶片") 處理器晶片以來，我們一直致力於更新 Dart SDK 以增加對新處理器上的原生執行支援。所需的更新已經在 dev 渠道中提供了一段時間，過去一個月，beta 渠道也提供了支援，從 Dart 2.14.1 開始，可以在 Dart stable 渠道中使用啦。當你 [下載](https://dart.cn/get-dart "下載") 一個 macOS 的 SDK 時，確保要選擇 ARM64 選項。請注意，與 Flutter SDK 中捆綁的 Dart SDK 還沒有支援這些改進。
 
-这些支持包括了在 Apple 芯片上运行 SDK 和 Dart 虚拟机，也支持了在 Apple 芯片上编译运行的可执行文件 (使用 [dart compile](https://dart.cn/tools/dart-compile "dart compile") 命令)。由于 Dart 命令行工具使用原生 Apple 芯片支持，因此它们的启动速度要快得多。
+這些支援包括了在 Apple 晶片上執行 SDK 和 Dart 虛擬機器，也支援了在 Apple 晶片上編譯執行的可執行檔案 (使用 [dart compile](https://dart.cn/tools/dart-compile "dart compile") 命令)。由於 Dart 命令列工具使用原生 Apple 晶片支援，因此它們的啟動速度要快得多。
 
-开发者们通常会更偏向让代码遵循某种风格。这些规则中有许多并不只是风格上的偏好 (比如众所周知的 tab 与空格的讨论)，而且涵盖了可能导致错误或引入错误的编码风格。例如，Dart 风格指南要求对所有控制流结构使用花括号，如 if-else 语句。这可以防止经典的「悬空 else」问题，即在有多个嵌套的 if-else 语句时存在歧义。另一个例子则是类型推断，虽然在声明具有初始值的变量时，使用类型推断没有问题，但在 [声明未初始化的变量](https://dart-lang.github.io/linter/lints/prefer_typing_uninitialized_variables.html "声明未初始化的变量") 时手动指定类型就相当重要，这样可以确保类型安全。
+開發者們通常會更偏向讓程式碼遵循某種風格。這些規則中有許多並不只是風格上的偏好 (比如眾所周知的 tab 與空格的討論)，而且涵蓋了可能導致錯誤或引入錯誤的編碼風格。例如，Dart 風格指南要求對所有控制流結構使用花括號，如 if-else 陳述式。這可以防止經典的「懸空 else」問題，即在有多個巢狀(Nesting)的 if-else 陳述式時存在歧義。另一個例子則是型別推斷，雖然在宣告具有初始值的變數時，使用型別推斷沒有問題，但在 [宣告未初始化的變數](https://dart-lang.github.io/linter/lints/prefer_typing_uninitialized_variables.html "宣告未初始化的變數") 時手動指定型別就相當重要，這樣可以確保型別安全。
 
-保持良好代码风格当然也可以选择某种人工审查的形式，也就是我们熟悉的 code review。但是，在编写代码时运行静态分析来强制要求执行规则，通常要更为有效。
+保持良好程式碼風格當然也可以選擇某種人工審查的形式，也就是我們熟悉的 code review。但是，在編寫程式碼時執行靜態分析來強制要求執行規則，通常要更為有效。
 
-在 Dart 中，这种静态分析是高度 [可配置的](https://dart.cn/guides/language/analysis-options "可配置的")，我们有 [数百条样式规则](https://dart.cn/tools/linter-rules "数百条样式规则") (也称为 lints)。有了这么丰富的选项，可能会导致我们不知道选择要启用哪个规则。Dart 团队维护了一个 [Dart 风格指南](https://dart.cn/guides/language/effective-dart/style "Dart 风格指南")，它描述了我们认为编写和设计 Dart 代码的最佳实践，在此之前我们还没有提供正式的官方风格指南的 linter 规则。
+在 Dart 中，這種靜態分析是高度 [可配置的](https://dart.cn/guides/language/analysis-options "可配置的")，我們有 [數百條樣式規則](https://dart.cn/tools/linter-rules "數百條樣式規則") (也稱為 lints)。有了這麼豐富的選項，可能會導致我們不知道選擇要啟用哪個規則。Dart 團隊維護了一個 [Dart 風格指南](https://dart.cn/guides/language/effective-dart/style "Dart 風格指南")，它描述了我們認為編寫和設計 Dart 程式碼的最佳實踐，在此之前我們還沒有提供正式的官方風格指南的 linter 規則。
 
-许多开发者，也包括 pub.dev 网站的 [评分](https://pub.flutter-io.cn/help/scoring "评分") 引擎都在使用一个名为 [pedantic](https://github.com/google/pedantic "pedantic") 的 lint 规则。然而，pedantic 起源于谷歌内部的 Dart 风格指南，由于历史原因，它与一般的 Dart 风格指南并不相同。因此，Flutter 框架从未使用过 pedantic 规则集，而是有自己的一套规范性规则。
+許多開發者，也包括 pub.dev 網站的 [評分](https://pub.flutter-io.cn/help/scoring "評分") 引擎都在使用一個名為 [pedantic](https://github.com/google/pedantic "pedantic") 的 lint 規則。然而，pedantic 起源於谷歌內部的 Dart 風格指南，由於歷史原因，它與一般的 Dart 風格指南並不相同。因此，Flutter 框架從未使用過 pedantic 規則集，而是有自己的一套規範性規則。
 
-这听起来可能有点乱，不过确实如此。但是在这次的版本发布中，我们很高兴地宣布，我们现在拥有了一套全新的 lint 集合来实现样式指南，并且 Dart 和 Flutter SDK 已更新为默认情况下将这些规则集用于新项目。这些规则集包括：
+這聽起來可能有點亂，不過確實如此。但是在這次的版本釋出中，我們很高興地宣佈，我們現在擁有了一套全新的 lint 集合來實現樣式指南，並且 Dart 和 Flutter SDK 已更新為預設情況下將這些規則集用於新專案。這些規則集包括：
 
-- [package:lints/core.yaml](https://github.com/dart-lang/lints/blob/main/lib/core.yaml "package:lints/core.yaml"): Dart 风格指南中的主要规则，我们认为所有 Dart 代码都应该遵循该规则。pub.dev 评分引擎已更新，使用这些规则代替 pedantic。
-- [package:lints/recommended.yaml](https://github.com/dart-lang/lints/blob/main/lib/recommended.yaml "package:lints/recommended.yaml"): 核心规则，加上额外的推荐规则。这套规则被推荐用于所有一般的 Dart 代码。
-- [package:flutter_lints/flutter.yaml](https://github.com/flutter/packages/blob/master/packages/flutter_lints/lib/flutter.yaml "package:flutter_lints/flutter.yaml"): 核心和推荐规则，加上额外的 Flutter 专用推荐规则。这套规则被推荐用于所有 Flutter 代码。
+- [package:lints/core.yaml](https://github.com/dart-lang/lints/blob/main/lib/core.yaml "package:lints/core.yaml"): Dart 風格指南中的主要規則，我們認為所有 Dart 程式碼都應該遵循該規則。pub.dev 評分引擎已更新，使用這些規則代替 pedantic。
+- [package:lints/recommended.yaml](https://github.com/dart-lang/lints/blob/main/lib/recommended.yaml "package:lints/recommended.yaml"): 核心規則，加上額外的推薦規則。這套規則被推薦用於所有一般的 Dart 程式碼。
+- [package:flutter_lints/flutter.yaml](https://github.com/flutter/packages/blob/master/packages/flutter_lints/lib/flutter.yaml "package:flutter_lints/flutter.yaml"): 核心和推薦規則，加上額外的 Flutter 專用推薦規則。這套規則被推薦用於所有 Flutter 程式碼。
 
-如果你现有的项目中使用了 pedantic，我们强烈建议你升级到这些新规则集。从 pedantic 升级 [只需几步](https://github.com/dart-lang/lints#migrating-from-packagepedantic "只需几步")。
+如果你現有的專案中使用了 pedantic，我們強烈建議你升級到這些新規則集。從 pedantic 升級 [只需幾步](https://github.com/dart-lang/lints#migrating-from-packagepedantic "只需幾步")。
 
-我们对 Dart 格式化器格式化 [级联](https://dart.cn/guides/language/language-tour#cascade-notation "级联") 代码的方式进行了一些优化。以前，格式化器在某些情况下会产生混乱的格式化。例如，在这个例子中，`doIt()` 是怎么被调用的？
+我們對 Dart 格式化器格式化 [級聯](https://dart.cn/guides/language/language-tour#cascade-notation "級聯") 程式碼的方式進行了一些最佳化。以前，格式化器在某些情況下會產生混亂的格式化。例如，在這個例子中，`doIt()` 是怎麼被呼叫的？
 
 ```dart
 var result = errorState ? foo : bad..doIt();
 ```
 
-看上去它总会被 `bad` 调用，但实际上级联适用于整个 ? 表达式，所以级联是在该表达式的结果上调用的，而不仅仅是在 `false` 子句上，新的格式化器会清晰地表明这一点：
+看上去它總會被 `bad` 呼叫，但實際上級聯適用於整個 ? 表示式，所以級聯是在該表示式的結果上呼叫的，而不僅僅是在 `false` 子句上，新的格式化器會清晰地表明這一點：
 
 ```dart
 var result = errorState ? foo : bad
  ..doIt();
 ```
 
-其他的变化还涉及如何对有多个级联的行进行格式化，以及级联一般缩进多远。我们还大大提高了包含级联的代码的格式化速度；在为 [协议缓冲区](https://developers.google.cn/protocol-buffers/docs/reference/dart-generated "协议缓冲区") 生成的 Dart 代码中，我们看到格式化速度 <highlight>提高了 10 倍</highlight>。
+其他的變化還涉及如何對有多個級聯的行進行格式化，以及級聯一般縮排多遠。我們還大大提高了包含級聯的程式碼的格式化速度；在為 [協議緩衝區](https://developers.google.cn/protocol-buffers/docs/reference/dart-generated "協議緩衝區") 產生的 Dart 程式碼中，我們看到格式化速度 <highlight>提高了 10 倍</highlight>。
 
-有关该问题的所有详细信息，请参阅和跟踪这个 [Pull Request](https://github.com/dart-lang/dart_style/pull/1033 "Pull Request")。
+有關該問題的所有詳細資訊，請參閱和追蹤這個 [Pull Request](https://github.com/dart-lang/dart_style/pull/1033 "Pull Request")。
 
-目前，当你 [发布](https://dart.cn/tools/pub/publishing "发布") 一个 package 到 [pub.dev](https://pub.flutter-io.cn/ "pub.dev 社区仓库") 社区仓库时，`pub` 便会捕获该文件夹中的所有文件，但是会跳过隐藏的文件 (那些以点 `.` 开头的文件) 和 `.gitignore` 中列出的文件。一些开发者需要能够控制哪些文件在 `.gitignore` 的列表之外被忽略。例如，你可能在一个 `tool/` 文件夹里有一些内部开发工具，你用来维护你的 package，但这些工具与使用你 package 的人没有关系。
+目前，當你 [釋出](https://dart.cn/tools/pub/publishing "釋出") 一個 package 到 [pub.dev](https://pub.flutter-io.cn/ "pub.dev 社群儲存庫") 社群儲存庫時，`pub` 便會捕獲該資料夾中的所有檔案，但是會跳過隱藏的檔案 (那些以點 `.` 開頭的檔案) 和 `.gitignore` 中列出的檔案。一些開發者需要能夠控制哪些檔案在 `.gitignore` 的列表之外被忽略。例如，你可能在一個 `tool/` 資料夾裡有一些內部開發工具，你用來維護你的 package，但這些工具與使用你 package 的人沒有關係。
 
-Dart 2.14 中更新的 `pub` 命令支持新的 `.pubignore` 文件，你可以在其中列出不想上传到 pub.dev 的文件。此文件使用与 `.gitignore` 文件相同的格式。详细信息，请参阅 [package 发布文档](https://dart.cn/tools/pub/publishing#what-files-are-published "package 发布文档")。
+Dart 2.14 中更新的 `pub` 命令支援新的 `.pubignore` 檔案，你可以在其中列出不想上傳到 pub.dev 的檔案。此檔案使用與 `.gitignore` 檔案相同的格式。詳細資訊，請參閱 [package 釋出文件](https://dart.cn/tools/pub/publishing#what-files-are-published "package 釋出文件")。
 
-虽然 `pub` 可能最常用于管理代码的依赖性，但它也有第二个重要用途：提供强大的工具支持。其中一个例子就是 Dart 测试工具，通过 `dart test` 命令使用。这个命令实际上只是 `pub run test:test` 命令的一个包装，它运行 [package:test](https://github.com/dart-lang/test/blob/master/pkgs/test/bin/test.dart "package:test") 中的测试入口。在调用该入口之前，`pub` 首先将其编译为可以更快地运行的本地代码。
+雖然 `pub` 可能最常用於管理程式碼的依賴性，但它也有第二個重要用途：提供強大的工具支援。其中一個例子就是 Dart 測試工具，透過 `dart test` 命令使用。這個命令實際上只是 `pub run test:test` 命令的一個包裝，它執行 [package:test](https://github.com/dart-lang/test/blob/master/pkgs/test/bin/test.dart "package:test") 中的測試入口。在呼叫該入口之前，`pub` 首先將其編譯為可以更快地執行的原生代碼。
 
-在 Dart 2.14 之前，对 `pubspec` 的任何更改 (包括与 `package:test` 无关的更改 ) 都会使此测试构建无效，并且你会看到一堆这样的输出，其中包含「预编译可执行文件」：
+在 Dart 2.14 之前，對 `pubspec` 的任何更改 (包括與 `package:test` 無關的更改 ) 都會使此測試建構無效，並且你會看到一堆這樣的輸出，其中包含「預編譯可執行檔案」：
 
 ```console
 $ dart test
@@ -61,13 +61,13 @@ Precompiled test:test.
 00:01 +1: All tests passed!
 ```
 
-在 Dart 2.14 中，`pub` 对何时取消构建步骤变得更加智能，因此只有当版本改变时才会进行构建。此外，我们改进了使用并行化来执行构建步骤的方式，因此该步骤本身会完成得更快。在我们测试的一些 package 上，我们看到它只用了一半的时间。
+在 Dart 2.14 中，`pub` 對何時取消建構步驟變得更加智慧，因此只有當版本改變時才會進行建構。此外，我們改進了使用並行化來執行建構步驟的方式，因此該步驟本身會完成得更快。在我們測試的一些 package 上，我們看到它只用了一半的時間。
 
-Dart 2.14 还包含了一些小的语言特性。这一次，我们把重点放在更具体的改进上，这些改进可能只是一些细小的功能，但却能实现以前不支持的更专业的用例。
+Dart 2.14 還包含了一些小的語言特性。這一次，我們把重點放在更具體的改進上，這些改進可能只是一些細小的功能，但卻能實現以前不支援的更專業的使用案例。
 
-首先，我们添加了一个新的 [三重移位](https://github.com/dart-lang/language/issues/120 "三重移位") 运算符 (`>>>`)。这类似于现有的移位运算符 (`>>`)，但其中 `>>` 执行算术移位，`>>>` 执行逻辑或无符号移位，其中无论被移位的数字是正数还是负数，零位都会被移入最高有效位。
+首先，我們添加了一個新的 [三重移位](https://github.com/dart-lang/language/issues/120 "三重移位") 運算子 (`>>>`)。這類似於現有的移位運算子 (`>>`)，但其中 `>>` 執行算術移位，`>>>` 執行邏輯或無符號移位，其中無論被移位的數字是正數還是負數，零位都會被移入最高有效位。
 
-我们还删除了对类型参数的旧限制，该限制不允许使用泛型函数类型作为类型参数。以下所有内容在 2.14 之前都是无效的，但现在是允许的：
+我們還刪除了對型別引數的舊限制，該限制不允許使用泛型函式型別作為型別引數。以下所有內容在 2.14 之前都是無效的，但現在是允許的：
 
 ```dart
 late List<T Function<T>(T)> idFunctions;
@@ -75,37 +75,37 @@ var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
 ```
 
-最后，我们对注解类型做了一个小小的调整 (像 [@Deprecated](https://api.dart.cn/stable/2.13.4/dart-core/Deprecated-class.html "@Deprecated") 这样注解在 Dart 代码中通常用来捕获元数据)。以前注解不能传递类型参数，所以像 `@TypeHelper<int>(42, "The meaning")` 这样的代码是不允许的。现在这个限制已经被移除。
+最後，我們對註解型別做了一個小小的調整 (像 [@Deprecated](https://api.dart.cn/stable/2.13.4/dart-core/Deprecated-class.html "@Deprecated") 這樣註解在 Dart 程式碼中通常用來捕獲元資料)。以前註解不能傳遞型別引數，所以像 `@TypeHelper<int>(42, "The meaning")` 這樣的程式碼是不允許的。現在這個限制已經被移除。
 
-我们对核心 Dart package 和代码库进行了许多增强，包括：
+我們對核心 Dart package 和程式碼庫進行了許多增強，包括：
 
-- `dart:core`: 向 Object 类添加了静态方法 `hash` 、`hashAll` 和 `hashAllUnordered`。这些可用于以一致的方式组合多个对象的哈希码 ([hashAll 示例](https://api.dart.cn/stable/2.14.0/dart-core/Object/hashAll.html "hashAll 示例"))；
-- `dart:core`: 本机 DateTime 类现在可以更好地处理本地时间，而不是精确到一小时的夏令时更改——例如澳大利亚豪勋爵岛，它有 30 分钟的时差偏移；
-- [package:ffi](https://pub.flutter-io.cn/packages/ffi "package:ffi"): 添加了对使用 [arena](https://pub.flutter-io.cn/documentation/ffi/latest/ffi/Arena-class.html "arena") 分配器管理内存的支持 ([示例](https://github.com/dart-lang/sdk/blob/master/samples/ffi/resource_management/arena_sample.dart "使用 arena 分配器管理内存的示例"))。Arenas 是一种 [基于区域的内存管理](https://en.wikipedia.org/wiki/Region-based_memory_management "基于区域的内存管理") 形式，一旦退出 arena/region 就会自动释放资源；
-- [package:ffigen](https://pub.flutter-io.cn/packages/ffigen "package:ffigen"): 现在支持从 C 类型定义生成 Dart 类型定义。
+- `dart:core`: 向 Object 類添加了靜態方法 `hash` 、`hashAll` 和 `hashAllUnordered`。這些可用於以一致的方式組合多個物件的雜湊碼 ([hashAll 範例](https://api.dart.cn/stable/2.14.0/dart-core/Object/hashAll.html "hashAll 範例"))；
+- `dart:core`: 本機 DateTime 類現在可以更好地處理本地時間，而不是精確到一小時的夏令時更改——例如澳大利亞豪勳爵島，它有 30 分鐘的時差偏移；
+- [package:ffi](https://pub.flutter-io.cn/packages/ffi "package:ffi"): 添加了對使用 [arena](https://pub.flutter-io.cn/documentation/ffi/latest/ffi/Arena-class.html "arena") 分配器管理記憶體的支援 ([範例](https://github.com/dart-lang/sdk/blob/master/samples/ffi/resource_management/arena_sample.dart "使用 arena 分配器管理記憶體的範例"))。Arenas 是一種 [基於區域的記憶體管理](https://en.wikipedia.org/wiki/Region-based_memory_management "基於區域的記憶體管理") 形式，一旦退出 arena/region 就會自動釋放資源；
+- [package:ffigen](https://pub.flutter-io.cn/packages/ffigen "package:ffigen"): 現在支援從 C 型別定義產生 Dart 型別定義。
 
-Dart 2.14 还包含一些较小的、已经 [提前宣布过的](https://github.com/dart-lang/sdk/blob/master/docs/process/breaking-changes.md "提前宣布过的破坏性更新") 破坏性更新 (breaking changes)。预计这些变化只会影响一些特别的用例，这些破坏性更新如下：
+Dart 2.14 還包含一些較小的、已經 [提前宣佈過的](https://github.com/dart-lang/sdk/blob/master/docs/process/breaking-changes.md "提前宣佈過的破壞性更新") 破壞性更新 (breaking changes)。預計這些變化只會影響一些特別的使用案例，這些破壞性更新如下：
 
-## [#46545](https://github.com/dart-lang/sdk/issues/46545 "#46545"): 取消对 ECMAScript5 的支持
+## [#46545](https://github.com/dart-lang/sdk/issues/46545 "#46545"): 取消對 ECMAScript5 的支援
 
-[所有的现代浏览器](https://caniuse.com/es6 "所有的现代浏览器") 都已支持最新的 ECMAScript 版本，所以两年前我们 [宣布了](https://groups.google.com/a/dartlang.org/g/announce/c/x7eDinVT6fM/m/ZSFl2a9tEAAJ "宣布不再支持 ES5") 一项计划，不再支持 ECMAScript 5 (ES5)。这使我们能够利用最新的 ECMAScript 的改进，生成更小的输出。在 Dart 2.14 中，这项工作已经完成，Dart Web 编译器不再支持 ES5 了，因此，较旧的浏览器 (例如 IE11 ) 将不再支持。
+[所有的現代瀏覽器](https://caniuse.com/es6 "所有的現代瀏覽器") 都已支援最新的 ECMAScript 版本，所以兩年前我們 [宣佈了](https://groups.google.com/a/dartlang.org/g/announce/c/x7eDinVT6fM/m/ZSFl2a9tEAAJ "宣佈不再支援 ES5") 一項計劃，不再支援 ECMAScript 5 (ES5)。這使我們能夠利用最新的 ECMAScript 的改進，產生更小的輸出。在 Dart 2.14 中，這項工作已經完成，Dart Web 編譯器不再支援 ES5 了，因此，較舊的瀏覽器 (例如 IE11 ) 將不再支援。
 
-## [#46100](https://github.com/dart-lang/sdk/issues/46100 "#46100"): 弃用 stagehand、dartfmt 和 dart2native
+## [#46100](https://github.com/dart-lang/sdk/issues/46100 "#46100"): 棄用 stagehand、dartfmt 和 dart2native
 
-在 2020 年 10 月的 [Dart 2.10 博客文章中](https://medium.com/dartlang/announcing-dart-2-10-350823952bd5 "Dart 2.10 博客文章中")，我们宣布了将所有 Dart CLI 开发人员工具组合成一个单一的组 `dart` 命令工具 (类似于 flutter 命令工具) 的工作。作为这一演变的一部分，Dart 2.14 弃用了以前 `dartfmt` 和 `dart2native` 命令，并停止了 `stagehand`。这些工具在 [统一的 dart 命令工具中](https://dart.cn/tools/dart-tool "统一的 dart 命令工具中") 都有等价的替代品。
+在 2020 年 10 月的 [Dart 2.10 部落格文章中](https://medium.com/dartlang/announcing-dart-2-10-350823952bd5 "Dart 2.10 部落格文章中")，我們宣佈了將所有 Dart CLI 開發人員工具組合成一個單一的組 `dart` 命令工具 (類似於 flutter 命令工具) 的工作。作為這一演變的一部分，Dart 2.14 棄用了以前 `dartfmt` 和 `dart2native` 命令，並停止了 `stagehand`。這些工具在 [統一的 dart 命令工具中](https://dart.cn/tools/dart-tool "統一的 dart 命令工具中") 都有等價的替代品。
 
-## [#45451](https://github.com/dart-lang/sdk/issues/45451 "#45451"): 弃用 VM 原生扩展
+## [#45451](https://github.com/dart-lang/sdk/issues/45451 "#45451"): 棄用 VM 原生擴充
 
-我们已经弃用了 Dart VM 的原生扩展，这是我们从 Dart 代码调用原生代码的旧机制。Dart [FFI](https://dart.cn/guides/libraries/c-interop "FFI") (外部功能接口) 是我们当前用于这个用例的机制，我们正在积极 [发展](https://mp.weixin.qq.com/s/pmfJ3Q8wJ_fM0VTNWeaSqg) 它以使其功能更加强大且易于使用。
+我們已經棄用了 Dart VM 的原生擴充，這是我們從 Dart 程式碼呼叫原生程式碼的舊機制。Dart [FFI](https://dart.cn/guides/libraries/c-interop "FFI") (外部功能介面) 是我們當前用於這個使用案例的機制，我們正在積極 [發展](https://mp.weixin.qq.com/s/pmfJ3Q8wJ_fM0VTNWeaSqg) 它以使其功能更加強大且易於使用。
 
-我们在 3 月份的 [Dart 2.12]({{site.url}}/posts/announcing-dart-2-12) 版本中推出了健全的空安全。空安全是 Dart 最新的主要生产力特性，旨在帮助你避免空值错误，这是一类通常难以发现的错误。
+我們在 3 月份的 [Dart 2.12]({{site.url}}/posts/announcing-dart-2-12) 版本中推出了健全的空安全。空安全是 Dart 最新的主要生產力特性，旨在幫助你避免空值錯誤，這是一類通常難以發現的錯誤。
 
-自从我们上次更新以来，我们看到现有 package 和应用程序的迁移取得了巨大的进展，以实现空安全 的健全检查优势。对于 pub.dev 上的 package，前 250 名的 package 中 100% 都已支持了空安全，前 1000 名中有 94% 都支持。这意味着更多的开发者可以用完全 [健全的空安全](https://dart.cn/null-safety/unsound-null-safety#sound-and-unsound-null-safety "健全的空安全") 来运行他们的应用。分析显示，56% 的 `flutter run` 命令以完全健全的方式执行。感谢生态系统中的所有开发者，感谢你们的迁移工作!
+自從我們上次更新以來，我們看到現有 package 和應用程式的遷移取得了巨大的進展，以實現空安全 的健全檢查優勢。對於 pub.dev 上的 package，前 250 名的 package 中 100% 都已支援了空安全，前 1000 名中有 94% 都支援。這意味著更多的開發者可以用完全 [健全的空安全](https://dart.cn/null-safety/unsound-null-safety#sound-and-unsound-null-safety "健全的空安全") 來執行他們的應用。分析顯示，56% 的 `flutter run` 命令以完全健全的方式執行。感謝生態系統中的所有開發者，感謝你們的遷移工作!
 
-包含上述变化的增强型 Dart SDK 已经可以在 Dart 2.14.1 和 [Flutter 2.5]({{site.url}}/posts/whats-new-in-flutter-2-5) SDK 中使用。我们希望你会喜欢这些新的改进和功能。
+包含上述變化的增強型 Dart SDK 已經可以在 Dart 2.14.1 和 [Flutter 2.5]({{site.url}}/posts/whats-new-in-flutter-2-5) SDK 中使用。我們希望你會喜歡這些新的改進和功能。
 
-## 感谢 Dart 社区
+## 感謝 Dart 社群
 
-另外，我们想借此机会向 Dart 社区表示感谢。通过最近对编程语言调查的一些更新，可以看到 Dart 的势头很强劲。备受尊敬的 [RedMonk 排名中](https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21/ "RedMonk 排名中") 提到了 "Dart 的显著上升"，并首次将 Dart 列入前 20 名。StackOverflow 的 [2021 年开发者综合调查](https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted "2021 年开发者综合调查") 同样让人欣喜。据报道，Dart 是开发人员最喜爱的第七种编程语言。我们真的很高兴看到 Dart 平台有持续的增长和发展势头。
+另外，我們想借此機會向 Dart 社群表示感謝。透過最近對程式語言調查的一些更新，可以看到 Dart 的勢頭很強勁。備受尊敬的 [RedMonk 排名中](https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21/ "RedMonk 排名中") 提到了 "Dart 的顯著上升"，並首次將 Dart 列入前 20 名。StackOverflow 的 [2021 年開發者綜合調查](https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted "2021 年開發者綜合調查") 同樣讓人欣喜。據報道，Dart 是開發人員最喜愛的第七種程式語言。我們真的很高興看到 Dart 平台有持續的增長和發展勢頭。
 
-*感谢 flutter.cn 社区成员 (@AlexV525、@Vadaski、@MeandNi) 以及 Lynn 对本文的审校和贡献。*
+*感謝 flutter.cn 社群成員 (@AlexV525、@Vadaski、@MeandNi) 以及 Lynn 對本文的審校和貢獻。*

@@ -1,17 +1,17 @@
 ---
 title: Update data over the internet
-title: 更新网络数据
+title: 更新網路資料
 description: How to use the http package to update data over the internet.
-description: 如何使用 http 这个 package 来更新远程服务器的数据。
-tags: cookbook, 实用教程, 网络请求
+description: 如何使用 http 這個 package 來更新遠端伺服器的資料。
+tags: cookbook, 實用課程, 網路請求
 keywords: 
 prev:
   title: Send data to the internet
-  title: 发送网络数据
+  title: 傳送網路資料
   path: /docs/cookbook/networking/send-data
 next:
   title: Work with WebSockets
-  title: 发起 WebSockets 请求
+  title: 發起 WebSockets 請求
   path: /docs/cookbook/networking/web-sockets
 ---
 

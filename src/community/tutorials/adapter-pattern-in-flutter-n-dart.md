@@ -1,33 +1,33 @@
 ---
-title: 灵动的适配器模式
+title: 靈動的介面卡模式
 toc: true
 ---
 
-文/ 杨加康，CFUG 社区成员，《Flutter 开发之旅从南到北》作者，小米工程师
+文/ 楊加康，CFUG 社群成員，《Flutter 開發之旅從南到北》作者，小米工程師
 
-设计模式系列的前两篇，分别向大家介绍了一种
-[创建性型模式（单例模式）]({{site.main_url}}/community/tutorials/singleton-pattern-in-flutter-n-dart)
-和一种 [行为型设计模式（观察者模式）]({{site.main_url}}/community/tutorials/observer-pattern-in-flutter-n-dart)，
-今天我们再来介绍一种结构型设计模式 —— 适配器模式。
+設計模式系列的前兩篇，分別向大家介紹了一種
+[建立性型模式（單例模式）]({{site.main_url}}/community/tutorials/singleton-pattern-in-flutter-n-dart)
+和一種 [行為型設計模式（觀察者模式）]({{site.main_url}}/community/tutorials/observer-pattern-in-flutter-n-dart)，
+今天我們再來介紹一種結構型設計模式 —— 介面卡模式。
 
-**适配器模式** (Adapter Design Pattern)，顾名思义，这个模式就是用来做适配的，像一个「粘合剂」一样。
+**介面卡模式** (Adapter Design Pattern)，顧名思義，這個模式就是用來做適配的，像一個「粘合劑」一樣。
 
-> 适配器模式可以将不兼容的接口转换为可兼容的接口，让原本由于接口不兼容而不能一起工作的类黏合在一起，最终使他们可以一起工作。
+> 介面卡模式可以將不相容的介面轉換為可相容的介面，讓原本由於介面不相容而不能一起工作的類黏合在一起，最終使他們可以一起工作。
 
-和 [观察者模式]({{site.url}}/community/tutorials/observer-pattern-in-flutter-n-dart) 中的观察者与被观察者类似，适配器模式中担任主要角色是 **适配器 (Adapter)** 和 **被适配者 (Adaptee)**。一个比较典型的例子是，插座转接头可以被认为是一种适配器，可以把本身不兼容的接口，通过转接变得可以一起工作。
+和 [觀察者模式]({{site.url}}/community/tutorials/observer-pattern-in-flutter-n-dart) 中的觀察者與被觀察者類似，介面卡模式中擔任主要角色是 **介面卡 (Adapter)** 和 **被適配者 (Adaptee)**。一個比較典型的例子是，插座轉接頭可以被認為是一種介面卡，可以把本身不相容的介面，透過轉接變得可以一起工作。
 
-![适配器模式示意图，图源网络](https://files.flutter-io.cn/posts/community/tutorial/images/2021-09-05-002.jpeg)
+![介面卡模式示意圖，圖源網路](https://files.flutter-io.cn/posts/community/tutorial/images/2021-09-05-002.jpeg)
 
-在代码世界中，也有很多接口不适配的场景，如我们引入了一个第三方库后，发现它其中的类实现与我们现有代码并不兼容，需要一个 Adapter 类做一层转换才行。另外，相较于直接接触原始的代码实现，这种模式下，客户端仅仅依赖适配器类，对于代码复用和维护性也多了一层保障。
+在程式碼世界中，也有很多介面不適配的場景，如我們引入了一個第三方庫後，發現它其中的類實現與我們現有程式碼並不相容，需要一個 Adapter 類做一層轉換才行。另外，相較於直接接觸原始的程式碼實現，這種模式下，客戶端僅僅依賴介面卡類，對於程式碼複用和維護性也多了一層保障。
 
-## 类适配器与对象适配器
+## 類介面卡與物件介面卡
 
-![适配器模式 UML 图](https://files.flutter-io.cn/posts/community/tutorial/images/2021-09-05-1_2oBi8WnJT31i2E-KaW0rhw.png)
+![介面卡模式 UML 圖](https://files.flutter-io.cn/posts/community/tutorial/images/2021-09-05-1_2oBi8WnJT31i2E-KaW0rhw.png)
 
-适配器模式有两种实现方式：**类适配器** 和 **对象适配器**。其中，类适配器使用继承关系来实现，而对象适配器使用组合关系来实现。具体的代码实现如下所示。
+介面卡模式有兩種實現方式：**類介面卡** 和 **物件介面卡**。其中，類介面卡使用繼承關係來實現，而物件介面卡使用組合關係來實現。具體的程式碼實現如下所示。
 
 ```dart
-/// 被适配者
+/// 被適配者
 class Adaptee {
   String concreteOperator() {
     return 'Adaptee';
@@ -38,7 +38,7 @@ abstract class ITarget {
   String operator();
 }
 
-/// 对象适配器
+/// 物件介面卡
 class ObjectAdapter implements ITarget {
   var adaptee = Adaptee();
 
@@ -47,7 +47,7 @@ class ObjectAdapter implements ITarget {
   }
 }
 
-/// 类适配器
+/// 類介面卡
 class ClassAdapter extends Adaptee {
   String operator() {
     return super.concreteOperator();
@@ -55,10 +55,10 @@ class ClassAdapter extends Adaptee {
 }
 ```
 
-`ITarget` 表示要转化成的接口，是一个规范化的接口定义。
-Dart 本身不支持关键词 `interface`，因此我们可以创建一个没有默认实现的抽象类代替。
+`ITarget` 表示要轉化成的介面，是一個規範化的介面定義。
+Dart 本身不支援關鍵詞 `interface`，因此我們可以建立一個沒有預設實現的抽象類別代替。
 
-需要被适配的 `Adaptee` 表示一组不兼容 `ITarget` 接口定义的类或接口，`ObjectAdapter` 和 `ClassAdapter` 两种适配器分别用不同的方式将 `Adaptee` 转化成了符合 `ITarget` 接口定义的接口。而在客户端使用时只需要依赖 `ITarget` 即可完成对 `Adaptee` 的适配。
+需要被適配的 `Adaptee` 表示一組不相容 `ITarget` 介面定義的類或介面，`ObjectAdapter` 和 `ClassAdapter` 兩種介面卡分別用不同的方式將 `Adaptee` 轉化成了符合 `ITarget` 介面定義的介面。而在客戶端使用時只需要依賴 `ITarget` 即可完成對 `Adaptee` 的適配。
 
 ```dart
 class Client {
@@ -73,19 +73,19 @@ class Client {
 }
 ```
 
-关于类适配器与对象适配器：
+關於類介面卡與物件介面卡：
 
-- 如果希望你一个适配器可以同时适配多个不同的类，则单继承机制的 Dart 语言无法使用 **类适配器** 实现这种一对多的适配器。
-- 如果 `Adaptee` 接口很多，而且 `Adaptee` 和 `ITarget` 接口定义大部分都相同，那我们推荐使用类适配器，因为 可以充分将继承的代码复用作用利用起来。
-- 大部分场景下，我们推荐使用 **对象适配器** 的方式实现适配器模式，因为 **继承** 在很多情况下容易被 **滥用** 并造成 **层级过多** 的现象，而 **组合** 更加灵活。
+- 如果希望你一個介面卡可以同時適配多個不同的類，則單繼承機制的 Dart 語言無法使用 **類介面卡** 實現這種一對多的介面卡。
+- 如果 `Adaptee` 介面很多，而且 `Adaptee` 和 `ITarget` 介面定義大部分都相同，那我們推薦使用類介面卡，因為 可以充分將繼承的程式碼複用作用利用起來。
+- 大部分場景下，我們推薦使用 **物件介面卡** 的方式實現介面卡模式，因為 **繼承** 在很多情況下容易被 **濫用** 並造成 **層級過多** 的現象，而 **組合** 更加靈活。
 
-## 实现
+## 實現
 
-在代码应用中，适配器模式典型的例子是 Android 中的 ListView，在 Android 中，ListView 作为一个展示列表的 UI 组件，它的主要作用是将用户交给它的 Item View 以列表形式展示出来，然而描述 View 的形式却多种多样，可以是 Android 中 XML 布局，也可以是以 Java 代码中自定义 View 的形式提供，甚至可以是自定义的一套规则，实现自己的 UI 描述语言。
+在程式碼應用中，介面卡模式典型的例子是 Android 中的 ListView，在 Android 中，ListView 作為一個展示列表的 UI 元件，它的主要作用是將使用者交給它的 Item View 以列表形式展示出來，然而描述 View 的形式卻多種多樣，可以是 Android 中 XML 佈局，也可以是以 Java 程式碼中自訂 View 的形式提供，甚至可以是自訂的一套規則，實現自己的 UI 描述語言。
 
-本身，XML 或者其他描述语言对于 ListView 是不可知的，所以，在 ListView 和它们之前介入一个适配器就可以有效的解决这个问题，适配器的作用就是将这些形式转换成 Item View 以适应 Listview。
+本身，XML 或者其他描述語言對於 ListView 是不可知的，所以，在 ListView 和它們之前介入一個介面卡就可以有效的解決這個問題，介面卡的作用就是將這些形式轉換成 Item View 以適應 Listview。
 
-在 Flutter 中，这种形式的模式很容易实现，例如，我们想自定义一个可以展示蔬果列表的组件 `VeggieList`：
+在 Flutter 中，這種形式的模式很容易實現，例如，我們想自訂一個可以展示蔬果列表的元件 `VeggieList`：
 
 ```dart
 class VeggieList extends StatefulWidget {
@@ -100,7 +100,7 @@ class _VeggieListState extends State<VeggieList> {
   @override
   Widget build(BuildContext context) {
     return veggies.isEmpty
-        ? Text('无水果')
+        ? Text('無水果')
         : Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -112,12 +112,12 @@ class _VeggieListState extends State<VeggieList> {
 }
 ```
 
-这个组件主要关心的是 `veggies`，一个提供一组 `Veggie` 对象的数组。
+這個元件主要關心的是 `veggies`，一個提供一組 `Veggie` 物件的陣列。
 
-`veggies` 数据源并不统一，可能来自多个不同的接口，可能在云端，也可能是本地的假数据，并且不同的接口提供的数据格式也可能不相同，可能是 xml 或者是 json。
+`veggies` 資料源並不統一，可能來自多個不同的介面，可能在雲端，也可能是本地的假資料，並且不同的介面提供的資料格式也可能不相同，可能是 xml 或者是 json。
 
 ```dart
-/// 返回 json 数据格式的接口
+/// 返回 json 資料格式的介面
 class JsonVeggiesApi {
   final String _veggiesJson = '''
   {
@@ -137,7 +137,7 @@ class JsonVeggiesApi {
   }
 }
 
-/// 返回 xml 数据格式的接口
+/// 返回 xml 資料格式的介面
 class XmlVeggiesApi {
   final String _contactsXml = '''
   <?xml version="1.0"?>
@@ -157,7 +157,7 @@ class XmlVeggiesApi {
 }
 ```
 
-这些接口显然不能直接应用在 `VeggieList` 中展示，因此，需要做一些适配工作，适配的目的就是将这些数据转换成 `Veggie` 对象的数组，因此我们可以定义如下这个接口：
+這些介面顯然不能直接應用在 `VeggieList` 中展示，因此，需要做一些適配工作，適配的目的就是將這些資料轉換成 `Veggie` 物件的陣列，因此我們可以定義如下這個介面：
 
 ```dart
 abstract class IVeggiesAdapter {
@@ -165,9 +165,9 @@ abstract class IVeggiesAdapter {
 }
 ```
 
-其中的 `getVeggies` 方法返回的就是 `VeggieList` 组件需要的 `Veggie` 对象数组。
+其中的 `getVeggies` 方法返回的就是 `VeggieList` 元件需要的 `Veggie` 物件陣列。
 
-创建适配器时，只需要实现这个接口，然后组合目标需要被适配的类做接口转换即可，例如下面的 `JsonnVeggiesAdapter`，专门负责将 `JsonVeggiesApi` 转换为兼容 `VeggieList` 的适配器：
+建立介面卡時，只需要實現這個介面，然後組合目標需要被適配的類做介面轉換即可，例如下面的 `JsonnVeggiesAdapter`，專門負責將 `JsonVeggiesApi` 轉換為相容 `VeggieList` 的介面卡：
 
 ```dart
 class JsonnVeggiesAdapter implements IVeggiesAdapter {
@@ -197,7 +197,7 @@ class JsonnVeggiesAdapter implements IVeggiesAdapter {
 }
 ```
 
-最终，在使用到 `VeggieList` 时，注入 `JsonnVeggiesAdapter` 这个适配器就可以将原本不兼容的 `JsonVeggiesApi` 中的数据展示出来了：
+最終，在使用到 `VeggieList` 時，注入 `JsonnVeggiesAdapter` 這個介面卡就可以將原本不相容的 `JsonVeggiesApi` 中的資料展示出來了：
 
 ```dart
 class AdapterExample extends StatelessWidget {
@@ -217,7 +217,7 @@ class AdapterExample extends StatelessWidget {
 }
 
 
-/// 最终的 VeggieList
+/// 最終的 VeggieList
 class VeggieList extends StatefulWidget {
   final IVeggiesAdapter adapter;
 
@@ -242,7 +242,7 @@ class _VeggieListState extends State<VeggieList> {
   @override
   Widget build(BuildContext context) {
     return veggies.isEmpty
-        ? Text('无水果',)
+        ? Text('無水果',)
         : Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -254,11 +254,11 @@ class _VeggieListState extends State<VeggieList> {
 }
 ```
 
-同理，不同接口来源的数据都可以通过适配器实现 `IVeggiesAdapter` 接口与 `VeggieList` 做兼容。
+同理，不同介面來源的資料都可以透過介面卡實現 `IVeggiesAdapter` 介面與 `VeggieList` 做相容。
 
 ## Flutter
 
-在应用中，我们经常会使用到 **`CustomScrollView`** 创建拥有自定义滚动效果的组件，而 `CustomScrollView` 只允许包含 `sliver` 系列组件 (`SliverAppBar`、`SliverList`、`SliverPersistentHeader` 等) ，如果想包含普通的组件，必然需要使用 `SliverToBoxAdapter`：
+在應用中，我們經常會使用到 **`CustomScrollView`** 建立擁有自訂滾動效果的元件，而 `CustomScrollView` 只允許包含 `sliver` 系列元件 (`SliverAppBar`、`SliverList`、`SliverPersistentHeader` 等) ，如果想包含普通的元件，必然需要使用 `SliverToBoxAdapter`：
 
 ```dart
 
@@ -277,9 +277,9 @@ return MaterialApp(
 );
 ```
 
-这里，将 `Container` 放入 `SliverToBoxAdapter` 中便可以在 `CustomScrollView` 展示出来了。
+這裡，將 `Container` 放入 `SliverToBoxAdapter` 中便可以在 `CustomScrollView` 展示出來了。
 
-我们认为普通的 widget 是不兼容 `CustomScrollView` 的，`SliverToBoxAdapter` 在其中就扮演了适配器的角色。它使用 **类适配器** 的方式，将 `SingleChildRenderObjectWidget` 中 `createRenderObject` 接口重写转换成可以包含 `RenderBox` (对应一般 widget 的 `RenderObject`) 的 `RenderSliver` (对应 sliver 系列 widget 的 `RenderObject`)，即这里的 `RenderSliverToBoxAdapter`：
+我們認為普通的 widget 是不相容 `CustomScrollView` 的，`SliverToBoxAdapter` 在其中就扮演了介面卡的角色。它使用 **類介面卡** 的方式，將 `SingleChildRenderObjectWidget` 中 `createRenderObject` 介面重寫轉換成可以包含 `RenderBox` (對應一般 widget 的 `RenderObject`) 的 `RenderSliver` (對應 sliver 系列 widget 的 `RenderObject`)，即這裡的 `RenderSliverToBoxAdapter`：
 
 ```dart
 class SliverToBoxAdapter extends SingleChildRenderObjectWidget {
@@ -294,14 +294,14 @@ class SliverToBoxAdapter extends SingleChildRenderObjectWidget {
 }
 ```
 
-## 拓展阅读
+## 拓展閱讀
 
-- 适配器模式：https://refactoringguru.cn/design-patterns/adapter
-- 组合优于继承：https://time.geekbang.org/column/article/169593
+- 介面卡模式：https://refactoringguru.cn/design-patterns/adapter
+- 組合優於繼承：https://time.geekbang.org/column/article/169593
 - Flutter Sliver：https://juejin.cn/post/6844903901720739848
 
-## 关于本系列文章
+## 關於本系列文章
 
-Flutter / Dart 设计模式从南到北 (简称 Flutter 设计模式) 系列内容由 CFUG 社区成员、《Flutter 开发之旅从南到北》作者、小米工程师杨加康撰写并发布在 Flutter 社区公众号和 flutter.cn 网站的社区教程栏目。
+Flutter / Dart 設計模式從南到北 (簡稱 Flutter 設計模式) 系列內容由 CFUG 社群成員、《Flutter 開發之旅從南到北》作者、小米工程師楊加康撰寫併發布在 Flutter 社群公眾號和 flutter.cn 網站的社群課程節目。
 
-本系列内容旨在推进 Flutter / Dart 语言特性的普及，帮助开发者更高效地开发出高质量、可维护的 Flutter 应用。如果你对本文还有任何疑问或者文章的建议，欢迎向中文社区官方 GitHub 仓库 (cfug/flutter.cn) 提交 Issue 或者直接与我联系 (yangjiakay@gmail.com)。
+本系列內容旨在推進 Flutter / Dart 語言特性的普及，幫助開發者更高效地開發出高品質、可維護的 Flutter 應用。如果你對本文還有任何疑問或者文章的建議，歡迎向中文社群官方 GitHub 儲存庫 (cfug/flutter.cn) 提交 Issue 或者直接與我聯絡 (yangjiakay@gmail.com)。

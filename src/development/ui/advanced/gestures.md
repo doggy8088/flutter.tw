@@ -1,18 +1,18 @@
 ---
 title: Taps, drags, and other gestures
-title: 点击、拖动和其他手势
+title: 點選、拖動和其他手勢
 description: How gestures, such as taps and drags, work in Flutter.
-description: Flutter 是如何实现点击和拖动这样类似的手势识别的。
-tags: 用户界面,Flutter UI
-keywords: 进阶,手势,人机交互
+description: Flutter 是如何實現點選和拖動這樣類似的手勢識別的。
+tags: 使用者介面,Flutter UI
+keywords: 進階,手勢,人機互動
 ---
 
 This document explains how to listen for, and respond to,
 _gestures_ in Flutter. Examples of gestures include
 taps, drags, and scaling.
 
-这个章节将会讲解如何监听和响应 Flutter 的手势操作 **gestures**。 
-典型的手势操作包括点击、拖动和缩放。
+這個章節將會講解如何監聽和響應 Flutter 的手勢操作 **gestures**。 
+典型的手勢操作包括點選、拖動和縮放。
 
 The gesture system in Flutter has two separate layers.
 The first layer has raw pointer events that describe
@@ -21,45 +21,45 @@ touches, mice, and styli) across the screen.
 The second layer has _gestures_ that describe semantic
 actions that consist of one or more pointer movements.
 
-Flutter 中的手势有两个不同的层次：第一层是原始的指针指向事件，
-描述了屏幕上由触摸板、鼠标、指示笔等触发的指针的位置和移动。
-第二层包含 **gestures**，描述了由上述一个或多个指针移动组成的具有特殊语义的操作。
+Flutter 中的手勢有兩個不同的層次：第一層是原始的指針指向事件，
+描述了螢幕上由觸控板、滑鼠、指示筆等觸發的指標的位置和移動。
+第二層包含 **gestures**，描述了由上述一個或多個指標移動組成的具有特殊語義的操作。
 
 
 ## Pointers
 
-## 指针
+## 指標
 
 Pointers represent raw data about the user's interaction
 with the device's screen.
 There are four types of pointer events:
 
-Pointer 代表的是人机界面交互的原始数据。
-一共有四种指针事件：
+Pointer 代表的是人機介面互動的原始資料。
+一共有四種指標事件：
 
 [`PointerDownEvent`][]
 <br> The pointer has contacted the screen at a particular location.
 
 [`PointerDownEvent`][]
-<br>指针在特定位置与屏幕接触
+<br>指標在特定位置與螢幕接觸
 
 [`PointerMoveEvent`][]
 <br>The pointer has moved from one location on the screen to another.
  
 [`PointerMoveEvent`][]
-<br>指针从屏幕的一个位置移动到另外一个位置 
+<br>指標從螢幕的一個位置移動到另外一個位置 
 
 [`PointerUpEvent`][]
 <br>The pointer has stopped contacting the screen.
 
 [`PointerUpEvent`][]
-<br>指针与屏幕停止接触
+<br>指標與螢幕停止接觸
 
 [`PointerCancelEvent`][]
 <br>Input from this pointer is no longer directed towards this app.
 
 [`PointerCancelEvent`][]
-<br>指针的输入已经不再指向此应用
+<br>指標的輸入已經不再指向此應用
 
 On pointer down, the framework does a _hit test_ on your app
 to determine which widget exists at the location where the
@@ -71,21 +71,21 @@ to all the widgets on the path from the innermost
 widget to the root of the tree. There is no mechanism for
 canceling or stopping pointer events from being dispatched further.
 
-在指针下落事件中，框架做了一个 **hit test** 
-的操作确定与屏幕发生接触的位置上有哪些组件以及分发给最内部的组件去响应。
-事件会沿着组件树从这个最内部的组件向组件树的根部冒泡分发。
-并且不存在用于取消或停止指针事件进行进一步分发的机制。
+在指標下落事件中，框架做了一個 **hit test** 
+的操作確定與螢幕發生接觸的位置上有哪些元件以及分發給最內部的元件去響應。
+事件會沿著元件樹從這個最內部的元件向元件樹的根部冒泡分發。
+並且不存在用於取消或停止指標事件進行進一步分發的機制。
 
 To listen to pointer events directly from the widgets layer, use a
 [`Listener`][] widget. However, generally,
 consider using gestures (as discussed below) instead.
 
 使用 [`Listener`]({{site.api}}/flutter/widgets/Listener-class.html) 
-可以在组件层直接监听指针事件。然而，一般情况下，请考虑使用下面的 gestures 替代。
+可以在元件層直接監聽指標事件。然而，一般情況下，請考慮使用下面的 gestures 替代。
 
 ## Gestures
 
-## 手势
+## 手勢
 
 Gestures represent semantic actions (for example, tap, drag,
 and scale) that are recognized from multiple individual pointer
@@ -94,81 +94,81 @@ Gestures can dispatch multiple events, corresponding to the
 lifecycle of the gesture (for example, drag start,
 drag update, and drag end):
 
-Gesture 代表的是语义操作（比如点击、拖动、缩放）。
-通常由一系列单独的指针事件组成，甚至是一系列单独的指针组成。
-Gesture 可以分发多种事件，
-对应着手势的生命周期（比如开始拖动、拖动更新、结束拖动）。
+Gesture 代表的是語義操作（比如點選、拖動、縮放）。
+通常由一系列單獨的指標事件組成，甚至是一系列單獨的指標組成。
+Gesture 可以分發多種事件，
+對應著手勢的生命週期（比如開始拖動、拖動更新、結束拖動）。
 
 **Tap**
 
-**点击**
+**點選**
 
 `onTapDown` <br>
  A pointer that might cause a tap has contacted the screen at a
     particular location.
 
 `onTapDown` <br>
-  指针在发生接触的屏幕的特定位置可能引发点击事件。
+  指標在發生接觸的螢幕的特定位置可能引發點選事件。
 
 `onTapUp` <br>
   A pointer that will trigger a tap has stopped contacting the screen
     at a particular location.
 
 `onTapUp` <br>
-  指针使在屏幕的特定位置触发的点击事件停止。
+  指標使在螢幕的特定位置觸發的點選事件停止。
 
 `onTap` <br>
   A tap has occurred.
 
 `onTap` <br>
-  点击事件已经发生。
+  點選事件已經發生。
 
 `onTapCancel` <br>
   The pointer that previously triggered the `onTapDown` will not
     end up causing a tap.
 
 `onTapCancel` <br>
-  指针已经触发了 `onTapDown`，但是最终不会形成一个点击事件。
+  指標已經觸發了 `onTapDown`，但是最終不會形成一個點選事件。
 
 **Double tap**
 
-**双击** 
+**雙擊** 
 
 `onDoubleTap` <br>
   The user has tapped the screen at the same location twice in
     quick succession.
 
 `onDoubleTap` <br>
-  用户在屏幕的相同位置上快速点击了两次。
+  使用者在螢幕的相同位置上快速點選了兩次。
 
 **Long press**
 
-**长按**
+**長按**
 
 `onLongPress` <br>
   A pointer has remained in contact with the screen at the same
     location for a long period of time.
 
 `onLongPress` <br>
-  指针在屏幕的相同位置上保持接触持续一长段时间。
+  指標在螢幕的相同位置上保持接觸持續一長段時間。
 
 **Vertical drag**
 
-**纵向拖动**
+**縱向拖動**
 
 `onVerticalDragStart` <br>
   A pointer has contacted the screen and might begin to
     move vertically.
 
 `onVerticalDragStart` <br>
-  指针和屏幕产生接触并可能开始纵向移动。
+  指標和螢幕產生接觸並可能開始縱向移動。
 
 `onVerticalDragUpdate` <br>
   A pointer that is in contact with the screen and
     moving vertically has moved in the vertical direction.
 
 `onVerticalDragUpdate` <br>
-  指针和屏幕产生接触，在纵向上发生移动并保持移动。
+  指標和螢幕產生接觸，在縱向上發生移動並保持移動。
 
 `onVerticalDragEnd` <br>
   A pointer that was previously in contact with the screen
@@ -176,25 +176,25 @@ Gesture 可以分发多种事件，
     at a specific velocity when it stopped contacting the screen.
 
 `onVerticalDragEnd` <br>
-  指针先前和屏幕产生了接触，以特定速度纵向移动，并且此后不会在屏幕接触上发生纵向移动。
+  指標先前和螢幕產生了接觸，以特定速度縱向移動，並且此後不會在螢幕接觸上發生縱向移動。
 
 **Horizontal drag**
 
-**横向拖动**
+**橫向拖動**
 
 `onHorizontalDragStart` <br>
   A pointer has contacted the screen and might begin to
     move horizontally.
 
 `onHorizontalDragStart` <br>
-  指针和屏幕产生接触并可能开始横向移动。
+  指標和螢幕產生接觸並可能開始橫向移動。
 
 `onHorizontalDragUpdate` <br>
   A pointer that is in contact with the screen and
     moving horizontally has moved in the horizontal direction.
 
 `onHorizontalDragUpdate` <br>
-  指针和屏幕产生接触，在横向上发生移动并保持移动。
+  指標和螢幕產生接觸，在橫向上發生移動並保持移動。
 
 `onHorizontalDragEnd` <br>
   A pointer that was previously in contact with the
@@ -202,11 +202,11 @@ Gesture 可以分发多种事件，
     was moving at a specific velocity when it stopped contacting the screen.
 
 `onHorizontalDragEnd` <br>
-  指针先前和屏幕产生了接触，以特定速度横向移动，并且此后不会在屏幕接触上发生横向移动。
+  指標先前和螢幕產生了接觸，以特定速度橫向移動，並且此後不會在螢幕接觸上發生橫向移動。
 
 **Pan**
 
-**移动**
+**移動**
 
 `onPanStart` <br>
   A pointer has contacted the screen and might begin to move
@@ -214,9 +214,9 @@ Gesture 可以分发多种事件，
   `onHorizontalDragStart` or `onVerticalDragStart` is set.
 
 `onPanStart` <br>
-  指针和屏幕产生接触并可能开始横向移动或者纵向移动。
-  如果设置了 `onHorizontalDragStart` 或者 `onVerticalDragStart`，
-  该回调方法会引发崩溃。
+  指標和螢幕產生接觸並可能開始橫向移動或者縱向移動。
+  如果設定了 `onHorizontalDragStart` 或者 `onVerticalDragStart`，
+  該回調方法會引發崩潰。
 
 `onPanUpdate` <br>
   A pointer that is in contact with the screen and is moving
@@ -225,9 +225,9 @@ Gesture 可以分发多种事件，
   is set.
 
 `onPanUpdate` <br>
-  指针和屏幕产生接触，在横向或者纵向上发生移动并保持移动。
-  如果设置了 `onHorizontalDragUpdate` 或者 `onVerticalDragUpdate`，
-  该回调方法会引发崩溃。
+  指標和螢幕產生接觸，在橫向或者縱向上發生移動並保持移動。
+  如果設定了 `onHorizontalDragUpdate` 或者 `onVerticalDragUpdate`，
+  該回調方法會引發崩潰。
 
 `onPanEnd` <br>
   A pointer that was previously in contact with screen
@@ -237,25 +237,25 @@ Gesture 可以分发多种事件，
   `onVerticalDragEnd` is set.
 
 `onPanEnd` <br>
-  指针先前和屏幕产生了接触，并且以特定速度移动，
-  此后不再在屏幕接触上发生移动。
-  如果设置了 `onHorizontalDragEnd` 或者 `onVerticalDragEnd`，
-  该回调方法会引发崩溃。
+  指標先前和螢幕產生了接觸，並且以特定速度移動，
+  此後不再在螢幕接觸上發生移動。
+  如果設定了 `onHorizontalDragEnd` 或者 `onVerticalDragEnd`，
+  該回調方法會引發崩潰。
 
 ### Adding gesture detection to widgets
 
-### 为 widgets 添加手势检测
+### 為 widgets 新增手勢檢測
 
 To listen to gestures from the widgets layer, use a
 [`GestureDetector`][].
 
-从组件层监听手势，需要用到 [`GestureDetector`][]。
+從元件層監聽手勢，需要用到 [`GestureDetector`][]。
 
 {{site.alert.note}}
 
   To learn more, watch this short Widget of the Week video on the GestureDetector widget:
 
-  了解更多，请参考下方「每周 Widget」的里关于 GestureDetector 的短视频：
+  瞭解更多，請參考下方「每週 Widget」的裡關於 GestureDetector 的短影片：
 
   <iframe class="full-width" src="{{site.youtube-site}}/embed/WhVXkCFPmK4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -269,14 +269,14 @@ responds to swipes to trigger scrolling.
 If you are not using those widgets, but you want the
 "ink splash" effect on a tap, you can use [`InkWell`][].
 
-如果使用 Material 风格的组件，其中的许多组件都能够支持响应点击或者手势事件。
-比如 [`IconButton`][] 和 [`TextButton`][] 响应了按压事件（点击事件），
-[`ListView`][] 响应了滚动事件。如果使用了上述组件，
-你也可以使用 [`InkWell`][] 来实现点击的“水波纹”效果。
+如果使用 Material 風格的元件，其中的許多元件都能夠支援響應點選或者手勢事件。
+比如 [`IconButton`][] 和 [`TextButton`][] 響應了按壓事件（點選事件），
+[`ListView`][] 響應了滾動事件。如果使用了上述元件，
+你也可以使用 [`InkWell`][] 來實現點選的“水波紋”效果。
 
 ### Gesture disambiguation
 
-### 手势消歧处理
+### 手勢消歧處理
 
 At a given location on screen, there might be multiple gesture
 detectors. All of these gesture detectors listen to the stream
@@ -285,10 +285,10 @@ specific gestures. The [`GestureDetector`] widget decides
 which gestures to attempt to recognize based on which of its
 callbacks are non-null.
 
-在屏幕的指定位置上，可能有多个手势捕捉器。
-所有的手势捕捉器监听了指针输入流事件并判断出特定手势。
+在螢幕的指定位置上，可能有多個手勢捕捉器。
+所有的手勢捕捉器監聽了指標輸入流事件並判斷出特定手勢。
 [`GestureDetector`][] widget 
-能够基于手势的回调是否非空决定是否应该尝试去识别该手势。
+能夠基於手勢的回呼(Callback)是否非空決定是否應該嘗試去識別該手勢。
 
 When there is more than one gesture recognizer for a given
 pointer on the screen, the framework disambiguates which
@@ -296,22 +296,22 @@ gesture the user intends by having each recognizer join
 the _gesture arena_. The gesture arena determines which
 gesture wins using the following rules:
 
-当屏幕上的指定指针有多个手势识别器时，
-框架会通过给每个手势识别器加入 **gesture arena** 来处理手势消歧。
-gesture arena，也称作手势竞技场，会利用下述规则确定哪个手势在竞争中胜出：
+當螢幕上的指定指標有多個手勢識別器時，
+框架會透過給每個手勢識別器加入 **gesture arena** 來處理手勢消歧。
+gesture arena，也稱作手勢競技場，會利用下述規則確定哪個手勢在競爭中勝出：
 
 * At any time, a recognizer can declare defeat and leave the
   arena.  If there's only one recognizer left in the arena,
   that recognizer is the winner.
 
-  在任何时候，识别器都可以宣告失败并离开竞技场。
-  如果竞技场中只有一个识别器，那么这个识别器就是胜者。
+  在任何時候，識別器都可以宣告失敗並離開競技場。
+  如果競技場中只有一個識別器，那麼這個識別器就是勝者。
 
 * At any time, a recognizer can declare victory, which causes
   it to win and all the remaining recognizers to lose.
 
-  在任何时候，任何识别器都可以宣告胜利，
-  这将导致这个识别器胜出，其他识别器失败。
+  在任何時候，任何識別器都可以宣告勝利，
+  這將導致這個識別器勝出，其他識別器失敗。
 
 For example, when disambiguating horizontal and vertical dragging,
 both recognizers enter the arena when they receive the pointer
@@ -322,11 +322,11 @@ declares victory and the gesture is interpreted as a horizontal
 drag.  Similarly, if the user moves more than a certain number
 of logical pixels vertically, the vertical recognizer declares victory.
 
-比如，当纵向拖动和横向拖动需要处理消歧，
-当指针下落事件发生时，纵向和横向识别器都会进入竞技场，
-观测指针移动事件。如果用户在横向上移动超过了特定像素，
-横向识别器会宣告胜利，手势也会被当作横向拖动处理。
-同样的，如果用户在纵向上移动超过了特定的像素，纵向识别器会宣告胜利。
+比如，當縱向拖動和橫向拖動需要處理消歧，
+當指標下落事件發生時，縱向和橫向識別器都會進入競技場，
+觀測指標移動事件。如果使用者在橫向上移動超過了特定畫素，
+橫向識別器會宣告勝利，手勢也會被當作橫向拖動處理。
+同樣的，如果使用者在縱向上移動超過了特定的畫素，縱向識別器會宣告勝利。
 
 The gesture arena is beneficial when there is only a horizontal
 (or vertical) drag recognizer.  In that case, there is only one
@@ -335,10 +335,10 @@ immediately, which means the first pixel of horizontal movement
 can be treated as a drag and the user won't need to wait for
 further gesture disambiguation.
 
-手势竞技场在仅有一个横向（或者纵向）拖动识别器的时候是非常高效的。
-在此示例中，竞技场中只有一个横向识别器，横向拖动就能够被立即识别到，
-这意味着横向移动从第一个像素开始就能够被立即处理成横向拖动手势，
-而并不需要等待进一步的手势消歧处理。
+手勢競技場在僅有一個橫向（或者縱向）拖動識別器的時候是非常高效的。
+在此範例中，競技場中只有一個橫向識別器，橫向拖動就能夠被立即識別到，
+這意味著橫向移動從第一個畫素開始就能夠被立即處理成橫向拖動手勢，
+而並不需要等待進一步的手勢消歧處理。
 
 [`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html

@@ -1,20 +1,20 @@
 ---
 title: Install
-title: 安装和环境配置
+title: 安裝和環境配置
 description: Install Flutter and get started. Downloads available for Windows, macOS, Linux, and Chrome OS operating systems.
-description: Flutter安装和上手起步教程, 下载 Windows、macOS、Linux 和 Chrome OS 系统的 Flutter SDK。
-tags: Flutter安装,Flutter环境搭建
-keywords: Flutter Windows,Flutter Linux,Flutter macOS,Flutter镜像,Flutter使用教程
+description: Flutter安裝和上手起步課程, 下載 Windows、macOS、Linux 和 Chrome OS 系統的 Flutter SDK。
+tags: Flutter安裝,Flutter環境搭建
+keywords: Flutter Windows,Flutter Linux,Flutter macOS,Flutter映象,Flutter使用課程
 next:
   title: Set up an editor
-  title: 编辑工具设定
+  title: 編輯工具設定
   path: /docs/get-started/editor
 os-list: [Windows, macOS, Linux, "Chrome OS"]
 ---
 
 Select the operating system on which you are installing Flutter:
 
-你想把 Flutter 安装在哪个操作系统呢？
+你想把 Flutter 安裝在哪個作業系統呢？
 
 <div class="card-deck mb-8">
 {% for os in page.os-list %}
@@ -40,8 +40,8 @@ Select the operating system on which you are installing Flutter:
 
   If you're in China, first read [Using Flutter in China][].
   
-  如果你在中国的网络环境下使用 Flutter，请先看一下
-  [这篇文章][Using Flutter in China]，查看是否需要对网络环境进行特别设置。
+  如果你在中國的網路環境下使用 Flutter，請先看一下
+  [這篇文章][Using Flutter in China]，檢視是否需要對網路環境進行特別設定。
 
 {{site.alert.end}}
 

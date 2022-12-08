@@ -1,11 +1,11 @@
 ---
 title: Build and release an Android app
-title: 构建和发布为 Android 应用
+title: 建構和釋出為 Android 應用
 short-title: Android
 description: How to prepare for and release an Android app to the Play store.
-description: 如何打包把 App 发布到 Play 商店。
-tags: 发布, Android
-keywords: 上传Google商店,发布Flutter应用
+description: 如何打包把 App 釋出到 Play 商店。
+tags: 釋出, Android
+keywords: 上傳Google商店,釋出Flutter應用
 ---
 
 During a typical development cycle,
@@ -14,9 +14,9 @@ or by using the **Run** and **Debug**
 options in your IDE. By default,
 Flutter builds a _debug_ version of your app.
 
-在一般的开发过程中，我们可以使用 `flutter run` 命令，
-或者 IntelliJ 工具栏中的 **Run** 和 **Debug** 来测试 app。
-这时候，Flutter 默认会为我们构建 app 的**调试**版本。
+在一般的開發過程中，我們可以使用 `flutter run` 命令，
+或者 IntelliJ 工具欄中的 **Run** 和 **Debug** 來測試 app。
+這時候，Flutter 預設會為我們建構 app 的**除錯**版本。
 
 When you're ready to prepare a _release_ version of your app,
 for example to [publish to the Google Play Store][play],
@@ -24,53 +24,53 @@ this page can help. Before publishing,
 you might want to put some finishing touches on your app.
 This page covers the following topics:
 
-当想要发布 app 时，比如 [发布到 Google Play Store][play]，
-可以按照以下步骤来准备 Android 平台的 **发布** 版本。
-本页面的内容包含如下主题：
+當想要釋出 app 時，比如 [釋出到 Google Play Store][play]，
+可以按照以下步驟來準備 Android 平台的 **釋出** 版本。
+本頁面的內容包含如下主題：
 
 * [Adding a launcher icon](#adding-a-launcher-icon)
 
-  [添加启动图标](#adding-a-launcher-icon)
+  [新增啟動畫標](#adding-a-launcher-icon)
 
 * [Enabling Material Components](#enabling-material-components)
 
-  [启用 Material 组件](#enabling-material-components)
+  [啟用 Material 元件](#enabling-material-components)
 
 * [Signing the app](#signing-the-app)
 
-  [创建一个密钥库](#signing-the-app)
+  [建立一個金鑰庫](#signing-the-app)
 
 * [Shrinking your code with R8](#shrinking-your-code-with-r8)
 
-  [使用 R8 缩小你的代码体积](#shrinking-your-code-with-r8)
+  [使用 R8 縮小你的程式碼體積](#shrinking-your-code-with-r8)
 
 * [Enabling multidex support](#enabling-multidex-support)
 
-  [启用 MultiDex](#enabling-multidex-support)
+  [啟用 MultiDex](#enabling-multidex-support)
 
 * [Reviewing the app manifest](#reviewing-the-app-manifest)
 
-  [检查 app manifest 文件](#reviewing-the-app-manifest)
+  [檢查 app manifest 檔案](#reviewing-the-app-manifest)
 
 * [Reviewing the build configuration](#reviewing-the-build-configuration)
 
-  [检查构建配置](#reviewing-the-build-configuration)
+  [檢查建構配置](#reviewing-the-build-configuration)
 
 * [Building the app for release](#building-the-app-for-release)
 
-  [为发布构建应用](#building-the-app-for-release)
+  [為釋出建構應用](#building-the-app-for-release)
 
 * [Publishing to the Google Play Store](#publishing-to-the-google-play-store)
 
-  [发布到 Google Play Store](#publishing-to-the-google-play-store)
+  [釋出到 Google Play Store](#publishing-to-the-google-play-store)
 
 * [Updating the app's version number](#updating-the-apps-version-number)
 
-  [更新应用版本号](#updating-the-apps-version-number)
+  [更新應用版本號](#updating-the-apps-version-number)
 
 * [Android release FAQ](#android-release-faq)
 
-  [Android 发布常见问题](#android-release-faq)
+  [Android 釋出常見問題](#android-release-faq)
 
 {{site.alert.note}}
 
@@ -79,32 +79,32 @@ This page covers the following topics:
    these instructions, substitute `[project]` with 
    your app's directory.
 
-   在整个页面中，`[project]` 是指
-   您的应用所处的目录。同时关注
-   这些说明，替换 `[project]` 为
-   您的应用的目录。
+   在整個頁面中，`[project]` 是指
+   您的應用所處的目錄。同時關注
+   這些說明，替換 `[project]` 為
+   您的應用的目錄。
 
 {{site.alert.end}}
 
 ## Adding a launcher icon
 
-## 添加启动图标
+## 新增啟動畫標
 
 When a new Flutter app is created, it has a default launcher icon.
 To customize this icon, you might want to check out the
 [flutter_launcher_icons][] package.
 
-当我们创建一个新的 Flutter app 的时候，它会有一个默认的启动图标。
-要自定义这个图标，可以参考使用 [flutter_launcher_icons][] 这个 package。
+當我們建立一個新的 Flutter app 的時候，它會有一個預設的啟動畫標。
+要自訂這個圖示，可以參考使用 [flutter_launcher_icons][] 這個 package。
 
 Alternatively, you can do it manually using the following steps:
 
-或者，如果我们想手动操作，可以参考以下方法：
+或者，如果我們想手動操作，可以參考以下方法：
 
 1. Review the [Material Design product
    icons][launchericons] guidelines for icon design.
 
-   查看 [Material Design Product Icons][launchericons] 指南中图标设计部分。
+   檢視 [Material Design Product Icons][launchericons] 指南中圖示設計部分。
 
 1. In the `[project]/android/app/src/main/res/` directory,
    place your icon files in folders named using
@@ -112,9 +112,9 @@ Alternatively, you can do it manually using the following steps:
    The default `mipmap-` folders demonstrate the correct
    naming convention.
 
-   在 `<app dir>/android/app/src/main/res/` 目录下，
-   把我们的图标文件放在以 [配置限定符][configuration qualifiers] 命名的文件夹中。
-   类似默认的 `mipmap-` 文件夹这样的命名方式。
+   在 `<app dir>/android/app/src/main/res/` 目錄下，
+   把我們的圖示檔案放在以 [配置限定符][configuration qualifiers] 命名的資料夾中。
+   類似預設的 `mipmap-` 資料夾這樣的命名方式。
 
 1. In `AndroidManifest.xml`, update the
    [`application`][applicationtag] tag's `android:icon`
@@ -122,36 +122,36 @@ Alternatively, you can do it manually using the following steps:
    step (for example,
    `<application android:icon="@mipmap/ic_launcher" ...`).
 
-   在 `AndroidManifest.xml` 中，更新 [`application`][applicationtag] 标签中的
-   `android:icon` 属性来引用上一步骤中我们自己的图标文件
+   在 `AndroidManifest.xml` 中，更新 [`application`][applicationtag] 標籤中的
+   `android:icon` 屬性來參考上一步驟中我們自己的圖示檔案
    (例如，`<application android:icon="@mipmap/ic_launcher" ...`)。
 
 1. To verify that the icon has been replaced,
    run your app and inspect the app icon in the Launcher.
 
-   用 `flutter run` 运行 app，检查启动程序中的 app 图标
-   是否已经替换成我们自己的图标文件。
+   用 `flutter run` 執行 app，檢查啟動程式中的 app 圖示
+   是否已經替換成我們自己的圖示檔案。
 
 ## Enabling Material Components
 
-## 启用 Material 组件
+## 啟用 Material 元件
 
 If your app uses [Platform Views][], you may want to enable
 Material Components by following the steps described in the
 [Getting Started guide for Android][].
 
-如果你的应用使用了 [平台视图 (Platform Views)][Platform Views]，
-你可能要通过 [Android 平台的入门指南文档][Getting Started guide for Android]
-中的步骤使用 Material 组件：
+如果你的應用使用了 [平臺視圖 (Platform Views)][Platform Views]，
+你可能要透過 [Android 平台的入門指南文件][Getting Started guide for Android]
+中的步驟使用 Material 元件：
 
 For example:
 
-举个例子：
+舉個例子：
 
 1. Add the dependency on Android's Material in `<my-app>/android/app/build.gradle`:
 
-   在 `<my-app>/android/app/build.gradle` 文件中添加
-   Android Material 组件依赖：
+   在 `<my-app>/android/app/build.gradle` 檔案中新增
+   Android Material 元件依賴：
 
 ```groovy
 dependencies {
@@ -163,11 +163,11 @@ dependencies {
 
 To find out the latest version, visit [Google Maven][].
 
-查看最新的版本，请访问 [Google Maven 仓库][Google Maven]。
+檢視最新的版本，請存取 [Google Maven 儲存庫][Google Maven]。
 
 2. Set the light theme in `<my-app>/android/app/src/main/res/values/styles.xml`:
 
-   在 `<my-app>/android/app/src/main/res/values/styles.xml` 文件中设置亮色主题：
+   在 `<my-app>/android/app/src/main/res/values/styles.xml` 檔案中設定亮色主題：
 
 ```diff
 -<style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
@@ -183,51 +183,51 @@ To find out the latest version, visit [Google Maven][].
 
 ## Signing the app
 
-## 为 app 签名
+## 為 app 簽名
 
 To publish on the Play Store, you need to give your app a digital
 signature. Use the following instructions to sign your app.
 
-要想把 app 发布到 Play store，还需要给 app 一个数字签名。
-我们可以采用以下步骤来为 app 签名：
+要想把 app 釋出到 Play store，還需要給 app 一個數字簽名。
+我們可以採用以下步驟來為 app 簽名：
 
 On Android, there are two signing keys: deployment and upload. The end-users
 download the .apk signed with the 'deployment key'. An 'upload key' is used to 
 authenticate the .aab / .apk uploaded by developers onto the Play Store and is 
 re-signed with the deployment key once in the Play Store.
 
-Android 中有两种签名密钥: 部署和上传。
-终端用户下载到的 .apk 文件是被部署密钥签名过的文件，
-上传密钥用于验证开发者上载到 Play 商店的 .aab 或 .apk 文件。
-上传密钥是给予部署密钥重新签名的密钥，上载 Play 商店时候需要用到。
+Android 中有兩種簽名金鑰: 部署和上傳。
+終端使用者下載到的 .apk 檔案是被部署金鑰簽名過的檔案，
+上傳金鑰用於驗證開發者上載到 Play 商店的 .aab 或 .apk 檔案。
+上傳金鑰是給予部署金鑰重新簽名的金鑰，上載 Play 商店時候需要用到。
 
 * It's highly recommended to use the automatic cloud managed signing for
   the deployment key. For more information, see the [official Play Store documentation][].
 
-  严重推荐你选择云托管的方式来管理部署密钥，更多相关信息，
-  请参阅官方文档 [使用 Play 应用签名功能][official Play Store documentation Zh Lang]。
+  嚴重推薦你選擇雲託管的方式來管理部署金鑰，更多相關資訊，
+  請參閱官方文件 [使用 Play 應用簽名功能][official Play Store documentation Zh Lang]。
 
 ### Create an upload keystore
 
-### 创建一个用于上传的密钥库
+### 建立一個用於上傳的金鑰庫
 
 If you have an existing keystore, skip to the next step.
 If not, create one by either:
 
-如果你已经有一个密钥库了，可以直接跳到下一步，
-如果还没有，需要参考下面的方式创建一个：
+如果你已經有一個金鑰庫了，可以直接跳到下一步，
+如果還沒有，需要參考下面的方式建立一個：
 
 * Following the [Android Studio key generation steps]({{site.android-dev}}/studio/publish/app-signing#sign-apk)
 
-  参考文档 [在 Android Studio 上为你的应用签名]({{site.android-dev}}/studio/publish/app-signing#sign-apk)。
+  參考文件 [在 Android Studio 上為你的應用簽名]({{site.android-dev}}/studio/publish/app-signing#sign-apk)。
 
 * Running the following at the command line:
 
-  在命令行窗口运行如下的命令：
+  在命令列視窗執行如下的命令：
 
     On Mac/Linux, use the following command:
 
-    在 macOS 或者 Linux 系统上，执行下面的代码：
+    在 macOS 或者 Linux 系統上，執行下面的程式碼：
 
     ```terminal
     keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
@@ -235,7 +235,7 @@ If not, create one by either:
 
     On Windows, use the following command:
 
-    在 Windows 系统上，执行下述代码：
+    在 Windows 系統上，執行下述程式碼：
 
     ```terminal
     keytool -genkey -v -keystore %userprofile%\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
@@ -247,9 +247,9 @@ If not, create one by either:
     **However, keep the `keystore` file private;
     don't check it into public source control!**
     
-    该命令将会把 `upload-keystore.jks` 文件储存在你的主文件夹中。
-    如果你想要储存在其他地方，请通过指定 `-keystore` 传入参数。
-    **注意，请保证这个文件的私有性，不要将它提交到公共的代码管理空间**。
+    該命令將會把 `upload-keystore.jks` 檔案儲存在你的主資料夾中。
+    如果你想要儲存在其他地方，請透過指定 `-keystore` 傳入引數。
+    **注意，請保證這個檔案的私有性，不要將它提交到公共的程式碼管理空間**。
 
     {{site.alert.note}}
 
@@ -265,11 +265,11 @@ If not, create one by either:
       use `Program\ Files`, and on Windows use
       `"Program Files"`.
 
-      `keytool` 可能不在我们的系统路径中。
-      它是 Java 的一部分，在安装 Android Studio 的时候会被一起安装。
-      运行 `flutter doctor -v`，'Java binary at:' 之后打印出来的就是它的路径，
-      然后用 `java` 来替换以上命令中的 `keytool`，并加上 `keytool` 的完整路径即可。
-      如果文件路径包含空格，类似 `Program Files` 这样的，请使用平台允许的命名规则。
+      `keytool` 可能不在我們的系統路徑中。
+      它是 Java 的一部分，在安裝 Android Studio 的時候會被一起安裝。
+      執行 `flutter doctor -v`，'Java binary at:' 之後打印出來的就是它的路徑，
+      然後用 `java` 來替換以上命令中的 `keytool`，並加上 `keytool` 的完整路徑即可。
+      如果檔案路徑包含空格，類似 `Program Files` 這樣的，請使用平台允許的命名規則。
       例如，在 Mac/Linux 上使用 `Program\ Files`，而在 Windows 上可以使用
       `"Program Files"`。
 
@@ -277,26 +277,26 @@ If not, create one by either:
       or newer. As of the Java 9 release,
       the keystore type defaults to PKS12.
 
-      只有 Java 9 或更高版本才需要 `-storetype JKS` 标签。
-      从 Java 9 版本开始，keystore 类型默认为 PKS12。
+      只有 Java 9 或更高版本才需要 `-storetype JKS` 標籤。
+      從 Java 9 版本開始，keystore 型別預設為 PKS12。
 
     {{site.alert.end}}
 
 ### Reference the keystore from the app
 
-### 从 app 中引用密钥库
+### 從 app 中參考金鑰庫
 
 Create a file named `[project]/android/key.properties`
 that contains a reference to your keystore:
 
-创建一个名为 `[project]/android/key.properties` 的文件，
-它包含了密钥库位置的定义：
+建立一個名為 `[project]/android/key.properties` 的檔案，
+它包含了金鑰庫位置的定義：
 
 ```
-storePassword=<上一步骤中的密码>
-keyPassword=<上一步骤中的密码>
+storePassword=<上一步驟中的密碼>
+keyPassword=<上一步驟中的密碼>
 keyAlias=upload
-storeFile=<密钥库的位置，e.g. /Users/<用户名>/upload-keystore.jks>
+storeFile=<金鑰庫的位置，e.g. /Users/<使用者名稱>/upload-keystore.jks>
 ```
 
 {{site.alert.note}}
@@ -304,25 +304,25 @@ storeFile=<密钥库的位置，e.g. /Users/<用户名>/upload-keystore.jks>
   Keep the `key.properties` file private;
   don't check it into public source control.
 
-  （再次）请保证这个文件的私有性，不要将它提交到公共的代码管理空间。
+  （再次）請保證這個檔案的私有性，不要將它提交到公共的程式碼管理空間。
 
 {{site.alert.end}}
 
 ### Configure signing in gradle
 
-### 在 gradle 中配置签名
+### 在 gradle 中配置簽名
 
 Configure gradle to use your upload key when building your app in release mode
 by editing the `[project]/android/app/build.gradle` file.
 
-在以 release 模式下构建你的应用时，修改 `[project]/android/app/build.gradle`
-文件，以通过 gradle 配置你的上传密钥。
+在以 release 模式下建構你的應用時，修改 `[project]/android/app/build.gradle`
+檔案，以透過 gradle 配置你的上傳金鑰。
 
 
 <ol markdown="1">
 <li markdown="1"> Add the keystore information from your properties file before the `android` block:
 
- 在 `android` 代码块之前将你 properties 文件的密钥库信息添加进去：
+ 在 `android` 程式碼塊之前將你 properties 檔案的金鑰庫資訊新增進去：
 
 ```
    def keystoreProperties = new Properties()
@@ -338,13 +338,13 @@ by editing the `[project]/android/app/build.gradle` file.
    
    Load the `key.properties` file into the `keystoreProperties` object.
 
-   将 `key.properties` 文件加载到 `keystoreProperties` 对象中。
+   將 `key.properties` 檔案載入到 `keystoreProperties` 物件中。
 
 </li>
 
 <li markdown="1"> Find the `buildTypes` block:
 
- 找到 `buildTypes` 代码块：
+ 找到 `buildTypes` 程式碼塊：
 
 ```
    buildTypes {
@@ -359,7 +359,7 @@ by editing the `[project]/android/app/build.gradle` file.
 
    And replace it with the following signing configuration info:
 
-   将其替换为我们的配置内容：
+   將其替換為我們的配置內容：
 
 ```
    signingConfigs {
@@ -382,56 +382,56 @@ by editing the `[project]/android/app/build.gradle` file.
 
 Release builds of your app will now be signed automatically.
 
-现在我们 app 的发布版本就会被自动签名了。
+現在我們 app 的釋出版本就會被自動簽名了。
 
 {{site.alert.note}}
 
   You may need to run `flutter clean` after changing the gradle file.
   This prevents cached builds from affecting the signing process.
 
-  当你更改 gradle 文件后，也许需要运行一下 `flutter clean`。
-  这将防止缓存的版本影响签名过程。
+  當你更改 gradle 檔案後，也許需要執行一下 `flutter clean`。
+  這將防止快取的版本影響簽名過程。
 
 {{site.alert.end}}
 
 For more information on signing your app, see
 [Sign your app][] on developer.android.com.
 
-有关应用签名的更多信息，请查看 developer.android.com 的
-[为您的应用设置签名][Sign your app]。
+有關應用簽名的更多資訊，請檢視 developer.android.com 的
+[為您的應用設定簽名][Sign your app]。
 
 {% comment %}
-下面这部分内容已经在新的文档更新中被删除，待确认，
-以及需要确认为什么木有 diff 出来这部分文档。
+下面這部分內容已經在新的文件更新中被刪除，待確認，
+以及需要確認為什麼木有 diff 出來這部分文件。
 
 ## Enabling Proguard
 
-## 启用混淆器
+## 啟用混淆器
 
 By default, Flutter does not obfuscate or minify the Android host.
 If you intend to use third-party Java, Kotlin, or Android libraries,
 you might want to reduce the size of the APK or protect that code from
 reverse engineering.
 
-默认情况下，Flutter 不会做混淆或者压缩 Android host 的工作。
-如果 app 使用了第三方的 Java 或者 Android 库，
-我们会希望减小 APK 的大小，或者保护代码不被反编译出来。
+預設情況下，Flutter 不會做混淆或者壓縮 Android host 的工作。
+如果 app 使用了第三方的 Java 或者 Android 庫，
+我們會希望減小 APK 的大小，或者保護程式碼不被反編譯出來。
 
 For information on obfuscating Dart code, see [Obfuscating Dart
 Code]({{site.github}}/flutter/flutter/wiki/Obfuscating-Dart-Code)
 in the [Flutter wiki]({{site.github}}/flutter/flutter/wiki).
 
-要了解混淆 Dart 代码的相关信息，可以参考 [Flutter wiki]({{site.github}}/flutter/flutter/wiki)
+要了解混淆 Dart 程式碼的相關資訊，可以參考 [Flutter wiki]({{site.github}}/flutter/flutter/wiki)
 上的 [Obfuscating Dart Code]({{site.github}}/flutter/flutter/wiki/Obfuscating-Dart-Code)。
 
 ### Step 1 - Configure Proguard
 
-### 步骤　1 - 配置 Proguard
+### 步驟　1 - 配置 Proguard
 
 Create a `/android/app/proguard-rules.pro` file and
 add the rules listed below.
 
-创建 `/android/app/proguard-rules.pro` 文件并添加下面的规则：
+建立 `/android/app/proguard-rules.pro` 檔案並新增下面的規則：
 
 ```
 ## Flutter wrapper
@@ -448,22 +448,22 @@ This configuration only protects Flutter engine libraries.
 Any additional libraries (for example, Firebase) require adding
 their own rules.
 
-以上这样的配置只是对 Flutter 引擎库做保护。
-如果想要保护其他的库（例如，Firebase），需要为它们添加自己的规则。
+以上這樣的配置只是對 Flutter 引擎庫做保護。
+如果想要保護其他的函式庫（例如，Firebase），需要為它們新增自己的規則。
 
 
 ### Step 2 - Enable obfuscation and/or minification
 
-### 步骤　2 - 启用混淆以及/或压缩
+### 步驟　2 - 啟用混淆以及/或壓縮
 
 Open the `/android/app/build.gradle` file and locate the `buildTypes`
 definition. Inside the `release` configuration section,
 set the `minifiyEnabled` and `useProguard` flags to true.
 You must also point Proguard to the file you created in step 1:
 
-在 `/android/app/build.gradle` 文件找到 `buildTypes` 的定义。
-在 `release` 配置中设置 `minifiyEnabled` 和 `useProguard` 为 true。
-另外我们必须再设置 Proguard 指向步骤 1 中我们创建的文件。
+在 `/android/app/build.gradle` 檔案找到 `buildTypes` 的定義。
+在 `release` 配置中設定 `minifiyEnabled` 和 `useProguard` 為 true。
+另外我們必須再設定 Proguard 指向步驟 1 中我們建立的檔案。
 
 
 ```
@@ -492,54 +492,54 @@ android {
   You may need to run `flutter clean` after changing the gradle file.
   This prevents cached builds from affecting the signing process.
 
-  当你更改 gradle 文件后也许需要运行一下 `flutter clean`。
-  这将防止缓存的版本影响签名过程。
+  當你更改 gradle 檔案後也許需要執行一下 `flutter clean`。
+  這將防止快取的版本影響簽名過程。
 
 {{site.alert.end}}
 
 For more information on signing your app, see
 [Sign your app][] on developer.android.com.
 
-有关应用签名的更多信息，请查看 developer.android.com 的[为您的应用设置签名][Sign your app]。
+有關應用簽名的更多資訊，請檢視 developer.android.com 的[為您的應用設定簽名][Sign your app]。
 
 {% endcomment %}
 
 ## Shrinking your code with R8
 
-## 使用 R8 压缩你的代码
+## 使用 R8 壓縮你的程式碼
 
 [R8][] is the new code shrinker from Google, and it's enabled by default
 when you build a release APK or AAB. To disable R8, pass the `--no-shrink`
 flag to `flutter build apk` or `flutter build appbundle`.
 
-[R8][] 是谷歌推出的最新代码压缩器，
-当你打包 release 版本的 APK 或者 AAB 时会默认开启。
-要关闭 R8，请运行 `flutter build apk` 或
-`flutter build appbundle` 时加上 `--no-shrink` 参数。
+[R8][] 是谷歌推出的最新程式碼壓縮器，
+當你打包 release 版本的 APK 或者 AAB 時會預設開啟。
+要關閉 R8，請執行 `flutter build apk` 或
+`flutter build appbundle` 時加上 `--no-shrink` 引數。
 
 {{site.alert.note}}
 
   Obfuscation and minification can considerably extend compile time
   of the Android application.
 
-  混淆和压缩会大大地延长 Android 应用的编译时间。
+  混淆和壓縮會大大地延長 Android 應用的編譯時間。
 
 {{site.alert.end}}
 
 ## Enabling multidex support
 
-## 启用 multidex 支持
+## 啟用 multidex 支援
 
 When writing large apps or making use of large plugins, you may encounter
 Android's dex limit of 64k methods when targeting a minimum API of 20 or
 below. This may also be encountered when running debug versions of your app
 via `flutter run` that does not have shrinking enabled.
 
-当你在编写较大的应用或使用体量较大的插件时，
-你可能会在最低的 API 目标版本低于 20 时，
-遇到 Android 的 dex 的 64k 方法数限制问题。
-当 `flutter run` 以调试模式运行应用时，
-由于缩减机制没有运行，该问题也有可能发生。
+當你在編寫較大的應用或使用體量較大的外掛時，
+你可能會在最低的 API 目標版本低於 20 時，
+遇到 Android 的 dex 的 64k 方法數限制問題。
+當 `flutter run` 以除錯模式執行應用時，
+由於縮減機制沒有執行，該問題也有可能發生。
 
 Flutter tool supports easily enabling multidex. The simplest way is to
 opt into multidex support when prompted. The tool detects multidex build errors
@@ -547,11 +547,11 @@ and will ask before making changes to your Android project. Opting in allows
 Flutter to automatically depend on `androidx.multidex:multidex` and use a
 generated `FlutterMultiDexApplication` as the project's application.
 
-Flutter 工具支持以便捷的方式启用 multidex 支持。
-当工具提示你需要支持时，跟随工具的指示进行调整，是最快的方式。
-Flutter 工具会检测 multidex 的构建错误，并提示你是否要更改 Android 项目。
-在同意的情况下，项目会自动依赖 `androidx.multidex:multidex`，
-并且让项目的 `Application` 继承于 `FlutterMultiDexApplication`。
+Flutter 工具支援以便捷的方式啟用 multidex 支援。
+當工具提示你需要支援時，跟隨工具的指示進行調整，是最快的方式。
+Flutter 工具會檢測 multidex 的建構錯誤，並提示你是否要更改 Android 專案。
+在同意的情況下，專案會自動依賴 `androidx.multidex:multidex`，
+並且讓專案的 `Application` 繼承於 `FlutterMultiDexApplication`。
 
 {{site.alert.note}}
 
@@ -559,9 +559,9 @@ Flutter 工具会检测 multidex 的构建错误，并提示你是否要更改 A
   However, it isn't recommended to target API 21+ purely to resolve the multidex issue
   as this might inadvertently exclude users running older devices.
 
-  在设定了目标 Android SDK 版本为 21 和以上时，其已经包含了 Multidex 的原生支持。
-  不过，我们不建议为了解决对 Multidex 的支持而将目标 SDK 设定为 21+，
-  这可能会无意中忽略掉那些运行着旧设备的用户。
+  在設定了目標 Android SDK 版本為 21 和以上時，其已經包含了 Multidex 的原生支援。
+  不過，我們不建議為了解決對 Multidex 的支援而將目標 SDK 設定為 21+，
+  這可能會無意中忽略掉那些執行著舊裝置的使用者。
 
 {{site.alert.end}}
 
@@ -569,8 +569,8 @@ You might also choose to manually support multidex by following Android's guides
 and modifying your project's Android directory configuration. A
 [multidex keep file][multidex-keep] must be specified to include:
 
-你也可以根据 Android 的指南，手动配置你的 Android 项目以支持 multidex。
-请务必指定 [multidex keep 文件][multidex-keep] 以包含以下内容：
+你也可以根據 Android 的指南，手動配置你的 Android 專案以支援 multidex。
+請務必指定 [multidex keep 檔案][multidex-keep] 以包含以下內容：
 
 ```
 io/flutter/embedding/engine/loader/FlutterLoader.class
@@ -580,21 +580,21 @@ Also, include any other classes used in app startup.
 See the official [Android documentation][multidex-docs] for more detailed
 guidance on adding multidex support manually.
 
-同时也要包含所有在应用启动时加载的其他类。
-参考 [multidex 文档][multidex-docs]
-了解更详细的手动适配指南。
+同時也要包含所有在應用啟動時載入的其他類別。
+參考 [multidex 文件][multidex-docs]
+瞭解更詳細的手動適配指南。
 
 ## Reviewing the app manifest
 
-## 检查 app manifest 文件
+## 檢查 app manifest 檔案
 
 Review the default [App Manifest][manifest] file,
 `AndroidManifest.xml`,
 located in `[project]/android/app/src/main` and verify that the values
 are correct, especially the following:
 
-检查位于 `<app dir>/android/app/src/main` 的默认 [App Manifest][manifest]
-文件 `AndroidManifest.xml`，并确认各个值都设置正确，特别是：
+檢查位於 `<app dir>/android/app/src/main` 的預設 [App Manifest][manifest]
+檔案 `AndroidManifest.xml`，並確認各個值都設定正確，特別是：
 
 `application`
 <br> Edit the `android:label` in the
@@ -602,8 +602,8 @@ are correct, especially the following:
      the final name of the app.
 
 `application`
-<br> 编辑 [`application`][applicationtag]
-     标签中的 `android:label` 来设置 app 的最终名字。
+<br> 編輯 [`application`][applicationtag]
+     標籤中的 `android:label` 來設定 app 的最終名字。
 
 `uses-permission`
 <br> Add the `android.permission.INTERNET`
@@ -613,21 +613,21 @@ are correct, especially the following:
      Flutter tools and a running app.
 
 `uses-permission`：
-<br> 如果你的代码需要互联网交互，请加入 `android.permission.INTERNET`
-     [权限标签][permissiontag]。
-     标准开发模版里并未加入这个权限（但是 Flutter debug 模版加入了这个权限），
-     加入这个权限是为了允许 Flutter 工具和正在运行的 app 之间的通信。
+<br> 如果你的程式碼需要網際網路互動，請加入 `android.permission.INTERNET`
+     [許可權標籤][permissiontag]。
+     標準開發模版裡並未加入這個許可權（但是 Flutter debug 模版加入了這個許可權），
+     加入這個許可權是為了允許 Flutter 工具和正在執行的 app 之間的通訊。
 
 ## Reviewing the Gradle build configuration
 
-## 检查 Gradle 构建配置
+## 檢查 Gradle 建構配置
 
 Review the default [Gradle build file][gradlebuild] (`build.gradle`) located in 
 `[project]/android/app` to verify the values are correct:
 
-检查位于 `[project]/android/app` 的
-默认 [Gradle 构建文件][gradlebuild] (`build.gradle`)
-并确认各个值都设置正确：
+檢查位於 `[project]/android/app` 的
+預設 [Gradle 建構檔案][gradlebuild] (`build.gradle`)
+並確認各個值都設定正確：
 
 #### Under the `defaultConfig` block
 
@@ -637,23 +637,23 @@ Review the default [Gradle build file][gradlebuild] (`build.gradle`) located in
 <br> Specify the final, unique [application ID][]
 
 `applicationId`
-<br> 指定唯一的 [应用 ID][application ID]。
+<br> 指定唯一的 [應用 ID][application ID]。
 
 `minSdkVersion`
 <br> Specify the minimum API level on which the app is designed to run.
      Defaults to `flutter.minSdkVersion`.
 
 `minSdkVersion`
-<br> 指定应用适配的最低 SDK 版本。
-     默认为 `flutter.minSdkVersion`。
+<br> 指定應用適配的最低 SDK 版本。
+     預設為 `flutter.minSdkVersion`。
 
 `targetSdkVersion`
 <br> Specify the target API level on which the app is designed to run.
      Defaults to `flutter.targetSdkVersion`.
 
 `targetSdkVersion`
-<br> 指定应用适配的目标 SDK 版本。
-     默认为 `flutter.targetSdkVersion`。
+<br> 指定應用適配的目標 SDK 版本。
+     預設為 `flutter.targetSdkVersion`。
 
 `versionCode`
 <br> A positive integer used as an internal version number. This number
@@ -662,17 +662,17 @@ Review the default [Gradle build file][gradlebuild] (`build.gradle`) located in
      This version isn't shown to users.
 
 `versionCode`
-<br> 用于内部版本号的正整数。
-     该数字仅用于比较两个版本间数字较大的为更新版本。
-     该版本不会对用户展示。
+<br> 用於內部版本號的正整數。
+     該數字僅用於比較兩個版本間數字較大的為更新版本。
+     該版本不會對使用者展示。
 
 `versionName`
 <br> A string used as the version number shown to users. This setting
      be specified as a raw string or as a reference to a string resource.
 
 `versionName`
-<br> 向用户展示的版本号。
-     该字段必须设置为原始字符串或字符串资源的引用。
+<br> 向用戶展示的版本號。
+     該欄位必須設定為原始字串或字串資源的參考。
 
 `buildToolsVersion`
 <br> If you're using Android plugin for Gradle 3.0.0 or higher, your project
@@ -685,9 +685,9 @@ Review the default [Gradle build file][gradlebuild] (`build.gradle`) located in
   plugin specifies. Alternatively, you can specify a version of the build tools.
 
 `buildToolsVersion`
-<br> 如果你正在使用高于 3.0.0 版本的 Android Gradle Plugin，
-     你的项目会自动使用 AGP 默认指定的构建工具版本。
-     你也可以手动指定构建工具的版本。
+<br> 如果你正在使用高於 3.0.0 版本的 Android Gradle Plugin，
+     你的專案會自動使用 AGP 預設指定的建構工具版本。
+     你也可以手動指定建構工具的版本。
 
 #### Under the `android` block
 
@@ -698,26 +698,26 @@ Review the default [Gradle build file][gradlebuild] (`build.gradle`) located in
      Defaults to `flutter.compileSdkVersion`.
 
 `compileSdkVersion`
-<br> 指定 Gradle 用于编译应用的 API 版本。
-     默认为 `flutter.compileSdkVersion`。
+<br> 指定 Gradle 用於編譯應用的 API 版本。
+     預設為 `flutter.compileSdkVersion`。
 
 For more information, see the module-level build section in the [Gradle build file][gradlebuild].
 
-更多信息可以参考 [Gradle 构建文件][gradlebuild]
-文档中模块级构建的部分。
+更多資訊可以參考 [Gradle 建構檔案][gradlebuild]
+文件中模組級建構的部分。
 
 ## Building the app for release
 
-## 构建生产版本应用
+## 建構生產版本應用
 
 You have two possible release formats when publishing to
 the Play Store.
 
-当要发布到 Play Store 时，你有两种发布方式的选择：
+當要釋出到 Play Store 時，你有兩種釋出方式的選擇：
 
 * App bundle (preferred)
 
-  App bundle (推荐）
+  App bundle (推薦）
 
 * APK
 
@@ -727,8 +727,8 @@ the Play Store.
   For more information, see [Android App Bundle][bundle] and
   [About Android App Bundles][bundle2].
 
-  Google Play Store 更推荐 app bundle 方式.
-  更多信息可以参考 [Android App Bundle][bundle] and
+  Google Play Store 更推薦 app bundle 方式.
+  更多資訊可以參考 [Android App Bundle][bundle] and
   [About Android App Bundles][bundle2].
 
 {{site.alert.end}}
@@ -740,34 +740,34 @@ the Play Store.
   crashes on certain devices on Android 6.0. If you are targeting
   Android 6.0, use the following steps:
 
-  最近，Flutter 团队收到了很多开发者的 [报告][crash-issue]，
-  表示他们在 Android 6.0 的某些设备上遇到了应用崩溃的情况。
-  如果你的目标 API 等级是 Android 6.0，请参考以下步骤：
+  最近，Flutter 團隊收到了很多開發者的 [報告][crash-issue]，
+  表示他們在 Android 6.0 的某些裝置上遇到了應用崩潰的情況。
+  如果你的目標 API 等級是 Android 6.0，請參考以下步驟：
 
   * If you build an App Bundle
     Edit `android/gradle.properties` and add the flag:
     `android.bundle.enableUncompressedNativeLibs=false`.
 
-    如果以 App Bundle 构建发布，编辑 `android/gradle.properties` 文件，
-    添加一行属性 `android.bundle.enableUncompressedNativeLibs=false`；
+    如果以 App Bundle 建構釋出，編輯 `android/gradle.properties` 檔案，
+    新增一行屬性 `android.bundle.enableUncompressedNativeLibs=false`；
 
   * If you build an APK
     Make sure `android/app/src/AndroidManifest.xml`
     doesn't set `android:extractNativeLibs=false`
     in the `<application>` tag.
 
-    如果以 APK 构建发布，需要确保清单文件 `android/app/src/AndroidManifest.xml`
-    的 `<application>` 标签里不包含 `android:extractNativeLibs=false`。
+    如果以 APK 建構釋出，需要確保清單檔案 `android/app/src/AndroidManifest.xml`
+    的 `<application>` 標籤裡不包含 `android:extractNativeLibs=false`。
 
   For more information, see the [public issue][crash-issue].
 
-  更多内容，请参考这个 [错误报告][crash-issue]。
+  更多內容，請參考這個 [錯誤報告][crash-issue]。
 
 {{site.alert.end}}
 
 ### Build an app bundle
 
-### 构建一个 app bundle
+### 建構一個 app bundle
 
 This section describes how to build a release app bundle.
 If you completed the signing steps,
@@ -777,10 +777,10 @@ to make it more difficult to reverse engineer. Obfuscating
 your code involves adding a couple flags to your build command,
 and maintaining additional files to de-obfuscate stack traces.
 
-这个部分描述了如何构建一个发布的 app bundle。
-如果在前面的部分已经完成了签名步骤，发布的 bundle 会被签名。
-这时你也许想要 [混淆你的 Dart 代码][obfuscating your Dart code] 以加大反编译难度。
-混淆你的代码需要在 build 的时候添加一些标志，并维护其他文件以消除反编译的堆栈跟踪。
+這個部分描述瞭如何建構一個釋出的 app bundle。
+如果在前面的部分已經完成了簽名步驟，釋出的 bundle 會被簽名。
+這時你也許想要 [混淆你的 Dart 程式碼][obfuscating your Dart code] 以加大反編譯難度。
+混淆你的程式碼需要在 build 的時候新增一些標誌，並維護其他檔案以消除反編譯的堆疊追蹤。
 
 From the command line:
 
@@ -788,83 +788,83 @@ From the command line:
 
 1. Enter `cd [project]`<br>
 
-   运行 `cd [project]`。
+   執行 `cd [project]`。
 
 1. Run `flutter build appbundle`<br>
    (Running `flutter build` defaults to a release build.)
 
-   运行 `flutter build appbundle`。
-   (运行 `flutter build` 默认构建一个发布版本。)
+   執行 `flutter build appbundle`。
+   (執行 `flutter build` 預設建構一個釋出版本。)
 
 The release bundle for your app is created at
 `[project]/build/app/outputs/bundle/release/app.aab`.
 
-你的应用的 release bundle 会被创建到
+你的應用的 release bundle 會被建立到
 `<app dir>/build/app/outputs/bundle/release/app.aab`.
 
 By default, the app bundle contains your Dart code and the Flutter
 runtime compiled for [armeabi-v7a][] (ARM 32-bit), [arm64-v8a][]
 (ARM 64-bit), and [x86-64][] (x86 64-bit).
 
-此 app bundle 会默认地包含为
+此 app bundle 會預設地包含為
 [armeabi-v7a][] (ARM 32-bit)、[arm64-v8a][] (ARM 64-bit)
-以及 [x86-64][] (x86 64-bit) 编译的 Dart 和 Fluter 运行时代码。
+以及 [x86-64][] (x86 64-bit) 編譯的 Dart 和 Fluter 執行時程式碼。
 
 ### Test the app bundle
 
-### 测试 app bundle
+### 測試 app bundle
 
 An app bundle can be tested in multiple ways&mdash;this section
 describes two.
 
-一个 app bundle 可以用多种方法测试，这里介绍两种。
+一個 app bundle 可以用多種方法測試，這裡介紹兩種。
 
 #### Offline using the bundle tool
 
-#### 离线使用 bundle tool
+#### 離線使用 bundle tool
 
 1. If you haven't done so already, download `bundletool` from the
    [GitHub repository][].
 
-   如果你还没准备好，可以从 [GitHub 仓库][GitHub repository] 下载 `bundletool`。
+   如果你還沒準備好，可以從 [GitHub 儲存庫][GitHub repository] 下載 `bundletool`。
 
 2. [Generate a set of APKs][apk-set] from your app bundle.
 
-   从你的 app bundle [生成 APKs][apk-set]。
+   從你的 app bundle [產生 APKs][apk-set]。
 
 3. [Deploy the APKs][apk-deploy] to connected devices.
 
-   [将这 APKs 部署到][apk-deploy] 已连接的设备。
+   [將這 APKs 部署到][apk-deploy] 已連線的裝置。
 
 #### Online using Google Play
 
-#### 在线使用 Google Play
+#### 線上使用 Google Play
 
 1. Upload your bundle to Google Play to test it.
    You can use the internal test track,
    or the alpha or beta channels to test the bundle before
    releasing it in production.
 
-   上传你的 bundle 到 Google Play 去测试它。
-   或者在正式发布之前用 alpha 或 beta 频道去测试。
+   上傳你的 bundle 到 Google Play 去測試它。
+   或者在正式釋出之前用 alpha 或 beta 頻道去測試。
 
 2. Follow [these steps to upload your bundle][upload-bundle]
    to the Play Store.
 
-   按照 [这些步骤把你的 bundle][upload-bundle] 上传到 Play Store。
+   按照 [這些步驟把你的 bundle][upload-bundle] 上傳到 Play Store。
 
 ### Build an APK
 
-### 构建一个 APK
+### 建構一個 APK
 
 Although app bundles are preferred over APKs, there are stores
 that don't yet support app bundles. In this case, build a release
 APK for each target ABI (Application Binary Interface).
 
-虽然 app bundle 比 APKs 更被推荐使用，
-但是有一些 Store 目前还不支持 app bundle方式。
-这种情况下，要为各种目标
-ABI (Application Binary Interface) 分别构建发布的 APK 文件。
+雖然 app bundle 比 APKs 更被推薦使用，
+但是有一些 Store 目前還不支援 app bundle方式。
+這種情況下，要為各種目標
+ABI (Application Binary Interface) 分別建構釋出的 APK 檔案。
 
 If you completed the signing steps,
 the APK will be signed.
@@ -872,9 +872,9 @@ At this point, you might consider [obfuscating your Dart code][]
 to make it more difficult to reverse engineer. Obfuscating
 your code involves adding a couple flags to your build command.
 
-如果你完成签名步骤，APK 就被签名了。
-这时你也许想要 [混淆你的 Dart 代码][obfuscating your Dart code] 以加大反编译难度。
-混淆你的代码需要在构建时添加一些参数。
+如果你完成簽名步驟，APK 就被簽名了。
+這時你也許想要 [混淆你的 Dart 程式碼][obfuscating your Dart code] 以加大反編譯難度。
+混淆你的程式碼需要在建構時新增一些引數。
 
 From the command line:
 
@@ -882,17 +882,17 @@ From the command line:
 
 1. Enter `cd [project]`<br>
 
-   输入命令 `cd [project]`<br>
+   輸入命令 `cd [project]`<br>
 
 1. Run `flutter build apk --split-per-abi`<br>
    (The `flutter build` command defaults to `--release`.)
 
-   运行 `flutter build apk --split-per-abi`<br>
-   （`flutter build` 默认带有 `--release` 参数。）
+   執行 `flutter build apk --split-per-abi`<br>
+   （`flutter build` 預設帶有 `--release` 引數。）
 
 This command results in three APK files:
 
-这个命令会生成如下三个 APK 文件
+這個命令會產生如下三個 APK 檔案
 
 * `[project]/build/app/outputs/apk/release/app-armeabi-v7a-release.apk`
 * `[project]/build/app/outputs/apk/release/app-arm64-v8a-release.apk`
@@ -903,17 +903,17 @@ your code compiled for _all_ the target ABIs. Such APKs are larger in
 size than their split counterparts, causing the user to download
 native binaries that are not applicable to their device's architecture.
 
-如果移除 `--split-per-abi` 将会生成一个包含 **所有** 目标 ABI 的 fat APK 文件。
-这种 APK 文件将会在比单独构建的 APK 文件尺寸要大，
-会导致用户下载一些不适用于其设备架构的二进制文件。
+如果移除 `--split-per-abi` 將會產生一個包含 **所有** 目標 ABI 的 fat APK 檔案。
+這種 APK 檔案將會在比單獨建構的 APK 檔案尺寸要大，
+會導致使用者下載一些不適用於其裝置架構的二進位制檔案。
 
 ### Install an APK on a device
 
-### 在设备上安装 APK 文件
+### 在裝置上安裝 APK 檔案
 
 Follow these steps to install the APK on a connected Android device.
 
-按照如下这些步骤，将前一步中构建出来的 APK 安装到 Android 设备上。
+按照如下這些步驟，將前一步中構建出來的 APK 安裝到 Android 裝置上。
 
 From the command line:
 
@@ -921,36 +921,36 @@ From the command line:
 
 1. Connect your Android device to your computer with a USB cable.
 
-   用 USB 线将 Android 设备连接到电脑上；
+   用 USB 線將 Android 裝置連線到電腦上；
 
 1. Enter `cd [project]`.
 
-   输入命令 `cd [project]`；
+   輸入命令 `cd [project]`；
 
 1. Run `flutter install`.
 
-   运行 `flutter install`。
+   執行 `flutter install`。
 
 ## Publishing to the Google Play Store
 
-## 发布到 Google Play Store
+## 釋出到 Google Play Store
 
 For detailed instructions on publishing your app to the Google Play Store,
 see the [Google Play launch][play] documentation.
 
-要了解如何发布一个 app 到 Google Play Store，
-可以参考 [Google Play 发布文档][play]。
+要了解如何釋出一個 app 到 Google Play Store，
+可以參考 [Google Play 釋出文件][play]。
 
 ## Updating the app's version number
 
-## 更新应用版本号
+## 更新應用版本號
 
 The default version number of the app is `1.0.0`.
 To update it, navigate to the `pubspec.yaml` file
 and update the following line:
 
-每个应用默认的初始版本号是 `1.0.0`。若要更新它，
-请转到 `pubspec.yaml` 文件并更新以下内容：
+每個應用預設的初始版本號是 `1.0.0`。若要更新它，
+請轉到 `pubspec.yaml` 檔案並更新以下內容：
 
 `version: 1.0.0+1`
 
@@ -958,13 +958,13 @@ The version number is three numbers separated by dots,
 such as `1.0.0` in the example above, followed by an optional
 build number such as `1` in the example above, separated by a `+`.
 
-版本号由三个点分隔的数字组成，例如上面样例中的 `1.0.0`。然后是可选的
-构建号，例如上面样例中的 `1`，以 `+` 分隔。
+版本號由三個點分隔的數字組成，例如上面範例中的 `1.0.0`。然後是可選的
+建構號，例如上面範例中的 `1`，以 `+` 分隔。
 
 Both the version and the build number may be overridden in Flutter's
 build by specifying `--build-name` and `--build-number`, respectively.
 
-版本号与构建号都可以在 Flutter 打包时分别使用
+版本號與建構號都可以在 Flutter 打包時分別使用
 `--build-name` 和 `--build-number` 重新指定。
 
 In Android, `build-name` is used as `versionName` while
@@ -972,29 +972,29 @@ In Android, `build-name` is used as `versionName` while
 see [Version your app][] in the Android documentation.
 
 在 Android 中，`build-number` 被用作 `versionCode`，
-`build-name` 将作为 `versionName` 使用。
-更多信息请参考 Android 文档中的 [为你的应用添加版本][Version your app]。
+`build-name` 將作為 `versionName` 使用。
+更多資訊請參考 Android 文件中的 [為你的應用新增版本][Version your app]。
 
 When you rebuild the app for Android, any updates in the version number
 from the pubspec file will update the `versionName` and `versionCode` 
 in the `local.properties` file.
 
-当重新构建 Android 应用后，任何在 pubspec 文件所做的版本号更新，
-都将会更新 `local.properties` 文件中的
+當重新建構 Android 應用後，任何在 pubspec 檔案所做的版本號更新，
+都將會更新 `local.properties` 檔案中的
 `versionName` 和 `versionCode`。
 
 ## Android release FAQ
 
-## Android 发布常见问题
+## Android 釋出常見問題
 
 Here are some commonly asked questions about deployment for
 Android apps.
 
-这里是一些关于 Android 应用发布的常见问题。
+這裡是一些關於 Android 應用釋出的常見問題。
 
 ### When should I build app bundles versus APKs?
 
-### 我应该什么时候构建 app bundles 而不是 APKs?
+### 我應該什麼時候建構 app bundles 而不是 APKs?
 
 The Google Play Store recommends that you deploy app bundles
 over APKs because they allow a more efficient delivery of the
@@ -1002,13 +1002,13 @@ application to your users. However, if you’re distributing
 your application by means other than the Play Store,
 an APK may be your only option.
 
-Google Play Store 相对于 APKs 更建议你发布 app bundles，
-因为那样应用会更有效率地交付给你的用户。
-但是，如果你想将应用发布到其他的应用商店，APK可能是唯一选项。
+Google Play Store 相對於 APKs 更建議你釋出 app bundles，
+因為那樣應用會更有效率地交付給你的使用者。
+但是，如果你想將應用釋出到其他的應用商店，APK可能是唯一選項。
 
 ### What is a fat APK?
 
-### 什么是 fat APK?
+### 什麼是 fat APK?
 
 A [fat APK][] is a single APK that contains binaries for multiple
 ABIs embedded within it. This has the benefit that the single APK
@@ -1020,17 +1020,17 @@ it is strongly recommended to build split APKs,
 as described in [build an APK](#build-an-apk) using the
 `--split-per-abi` .
 
-一个 [fat APK][] 是一个包含了支持多个 ABI 架构的 APK 文件。
-这样做的好处是单个 APK 可以运行在多个架构上，因此
-具有更广泛的兼容性。但同时缺点就是文件体积会比较大，
-导致用户在安装你的应用时会下载和储存更多的字节。
-当构建 APK 而不是 app bundles 时强烈建议分开构建 APK，
-如 [build an APK](#build-an-apk) 所描述的那样，
+一個 [fat APK][] 是一個包含了支援多個 ABI 架構的 APK 檔案。
+這樣做的好處是單個 APK 可以執行在多個架構上，因此
+具有更廣泛的相容性。但同時缺點就是檔案體積會比較大，
+導致使用者在安裝你的應用時會下載和儲存更多的位元組。
+當建構 APK 而不是 app bundles 時強烈建議分開建構 APK，
+如 [build an APK](#build-an-apk) 所描述的那樣，
 使用 `--split-per-abi` 指令。
 
 ### What are the supported target architectures?
 
-### 哪些目标架构是被支持的?
+### 哪些目標架構是被支援的?
 
 When building your application in release mode,
 Flutter apps can be compiled for [armeabi-v7a][] (ARM 32-bit),
@@ -1038,27 +1038,27 @@ Flutter apps can be compiled for [armeabi-v7a][] (ARM 32-bit),
 Flutter does not currently support building for x86 Android
 (See [Issue 9253][]).
 
-当使用 release 模式构建你的应用时,
-Flutter app 可以基于 [armeabi-v7a][] (ARM 32 位)、
-[arm64-v8a][] (ARM 64 位) 以及 [x86-64][] (x86 64 位) 被编译。
-Flutter 目前不支持 x86 Android (参考 [Issue 9253][]).
+當使用 release 模式建構你的應用時,
+Flutter app 可以基於 [armeabi-v7a][] (ARM 32 位)、
+[arm64-v8a][] (ARM 64 位) 以及 [x86-64][] (x86 64 位) 被編譯。
+Flutter 目前不支援 x86 Android (參考 [Issue 9253][]).
 
 ### How do I sign the app bundle created by `flutter build appbundle`?
 
-### 如何为一个使用 `flutter build appbundle` 创建的 app bundle 签名？
+### 如何為一個使用 `flutter build appbundle` 建立的 app bundle 簽名？
 
 See [Signing the app](#signing-the-app).
 
 ### How do I build a release from within Android Studio?
 
-### 如何使用 Android Studio 构建一个发布？
+### 如何使用 Android Studio 建構一個釋出？
 
 In Android Studio, open the existing `android/`
 folder under your app’s folder. Then,
 select **build.gradle (Module: app)** in the project panel:
 
-在Android Studio中, 打开你的 app 文件夹下的 `android/`
-文件夹. 然后在项目面板中选择 **build.gradle (Module: app)** :
+在Android Studio中, 開啟你的 app 資料夾下的 `android/`
+資料夾. 然後在專案面板中選擇 **build.gradle (Module: app)** :
 
 <img src='/assets/images/docs/deployment/android/gradle-script-menu.png' width="100%" alt='screenshot of gradle build script menu'>
 
@@ -1066,21 +1066,21 @@ Next, select the build variant. Click **Build > Select Build Variant**
 in the main menu. Select any of the variants in the **Build Variants**
 panel (debug is the default):
 
-接下来，选择构建变体。在主菜单中点击 **Build > Select Build Variant**。
-从 **Build Variants** 面板中选择任意一个变体（默认是 debug）。
+接下來，選擇建構變體。在主選單中點選 **Build > Select Build Variant**。
+從 **Build Variants** 面板中選擇任意一個變體（預設是 debug）。
 
 <img src='/assets/images/docs/deployment/android/build-variant-menu.png' width="100%" alt='screenshot of build variant menu'>
 
 The resulting app bundle or APK files are located in
 `build/app/outputs` within your app's folder.
 
-生成的 app bundle 或 APK 文件会在你的 app 所在文件夹下的 `build/app/outputs` 文件夹下。
+產生的 app bundle 或 APK 檔案會在你的 app 所在資料夾下的 `build/app/outputs` 資料夾下。
 
 {% comment %}
 
 ### Are there any special considerations with add-to-app?
 
-### 在混合应用中是否有特殊考虑之处？
+### 在混合應用中是否有特殊考慮之處？
 
 {% endcomment %}
 

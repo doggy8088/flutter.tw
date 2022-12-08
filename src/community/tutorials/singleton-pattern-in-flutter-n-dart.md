@@ -1,35 +1,35 @@
 ---
-title: Flutter(able) 的单例模式
+title: Flutter(able) 的單例模式
 toc: true
 ---
 
-文/ 杨加康，CFUG 社区成员，《Flutter 开发之旅从南到北》作者，小米工程师
+文/ 楊加康，CFUG 社群成員，《Flutter 開發之旅從南到北》作者，小米工程師
 
-**单例设计模式**（Singleton Design Pattern）理解起来非常简单。
+**單例設計模式**（Singleton Design Pattern）理解起來非常簡單。
 
-> 一个类只允许创建一个实例，那这个类就是一个单例类，这种设计模式就叫作单例设计模式，简称单例模式。
+> 一個類別只允許建立一個例項，那這個類就是一個單例類，這種設計模式就叫作單例設計模式，簡稱單例模式。
 
-作为最简单的一种设计模式之一，对于单例本身的概念，大家一看就能明白，但在某些情况下也很容易使用不恰当。相比其他语言，Dart 和 Flutter 中的单例模式也不尽相同，本篇文章我们就一起探究看看它在 Dart 和 Flutter 中的应用。
+作為最簡單的一種設計模式之一，對於單例本身的概念，大家一看就能明白，但在某些情況下也很容易使用不恰當。相比其他語言，Dart 和 Flutter 中的單例模式也不盡相同，本篇文章我們就一起探究看看它在 Dart 和 Flutter 中的應用。
 
 ![](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.png)
 
-## Flutter(able) 的单例模式
+## Flutter(able) 的單例模式
 
-一般来说，要在代码中使用单例模式，结构上会有下面这些约定俗成的要求：
+一般來說，要在程式碼中使用單例模式，結構上會有下面這些約定俗成的要求：
 
-- 单例类（Singleton）中包含一个引用自身类的静态属性实例（instance），且能自行创建这个实例。
-- 该实例只能通过静态方法 `getInstance()` 访问。
-- 类构造函数通常没有参数，且被标记为私有，确保不能从类外部实例化该类。
+- 單例類（Singleton）中包含一個參考自身類別的靜態屬性例項（instance），且能自行建立這個例項。
+- 該例項只能透過靜態方法 `getInstance()` 存取。
+- 類建構函式通常沒有引數，且被標記為私有，確保不能從類外部例項化該類別。
 
-![单例设计模式 UML 图，图源：https://www.uml-diagrams.org/class-reference.html](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-1_CqdIf_w0sOciElKyfam3fQ.png)
+![單例設計模式 UML 圖，圖源：https://www.uml-diagrams.org/class-reference.html](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-1_CqdIf_w0sOciElKyfam3fQ.png)
 
-遵循以上这些要求，我们就不难能用 Dart 写出一个普通的单例模式：
+遵循以上這些要求，我們就不難能用 Dart 寫出一個普通的單例模式：
 
 ```dart
 class Singleton {
   static Singleton _instance;
   
-  // 私有的命名构造函数
+  // 私有的命名建構函式
   Singleton._internal();
   
   static Singleton getInstance() {
@@ -42,24 +42,24 @@ class Singleton {
 }
 ```
 
-同时，在实现单例模式时，也需要考虑如下几点，以防在使用过程中出现问题：
+同時，在實現單例模式時，也需要考慮如下幾點，以防在使用過程中出現問題：
 
-- 是否需要懒加载，即类实例只在第一次需要时创建。
-- 是否线程安全，在 Java、C++ 等多线程语言中需要考虑到多线程的并发问题。由于 Dart 是单线程模型的语言，所有的代码通常都运行在同一个 isolate 中，因此不需要考虑线程安全的问题。
-- 在某些情况下，单例模式会被认为是一种 **反模式**，因为它违反了 SOLID 原则中的单一责任原则，单例类自己控制了自己的创建和生命周期，且单例模式一般没有接口，扩展困难。
-- 单例模式的使用会影响到代码的可测试性。如果单例类依赖比较重的外部资源，比如 DB，我们在写单元测试的时候，希望能通过 mock 的方式将它替换掉。而单例类这种硬编码式的使用方式，导致无法实现 mock 替换。
+- 是否需要延遲載入，即類例項只在第一次需要時建立。
+- 是否執行緒安全，在 Java、C++ 等多執行緒語言中需要考慮到多執行緒的併發問題。由於 Dart 是單執行緒模型的語言，所有的程式碼通常都執行在同一個 isolate 中，因此不需要考慮執行緒安全的問題。
+- 在某些情況下，單例模式會被認為是一種 **反模式**，因為它違反了 SOLID 原則中的單一責任原則，單例類自己控制了自己的建立和生命週期，且單例模式一般沒有介面，擴充困難。
+- 單例模式的使用會影響到程式碼的可測試性。如果單例類依賴比較重的外部資源，比如 DB，我們在寫單元測試的時候，希望能透過 mock 的方式將它替換掉。而單例類這種硬編碼式的使用方式，導致無法實現 mock 替換。
 
-在实际编码过程中，单例模式常见应用有：
+在實際編碼過程中，單例模式常見應用有：
 
-- 全局日志的 Logger 类、应用全局的配置数据对象类，单业务管理类。
-- 创建实例时占用资源较多，或实例化耗时较长的类。
+- 全域日誌的 Logger 類、應用全域的配置資料物件類，單業務管理類別。
+- 建立例項時佔用資源較多，或例項化耗時較長的類別。
 - 等等...
 
 ## Dart 化
 
-如上文所说的，Dart 语言作为单线程模型的语言，实现单例模式时，我们本身已经可以不用再去考虑 **线程安全** 的问题了。Dart 的很多其他特性也依然可以帮助到我们实现更加 Dart 化的单例。
+如上文所說的，Dart 語言作為單執行緒模型的語言，實現單例模式時，我們本身已經可以不用再去考慮 **執行緒安全** 的問題了。Dart 的很多其他特性也依然可以幫助到我們實現更加 Dart 化的單例。
 
-使用 **getter** 操作符，可以打破单例模式中既定的，一定要写一个 `getInstance()` 静态方法的规则，简化我们必须要写的模版化代码，如下的 `get instance`:
+使用 **getter** 運運算元，可以打破單例模式中既定的，一定要寫一個 `getInstance()` 靜態方法的規則，簡化我們必須要寫的模版化程式碼，如下的 `get instance`:
 
 ```dart
 class Singleton {
@@ -76,13 +76,13 @@ class Singleton {
 }
 ```
 
-Dart 的 getter 的使用方式与普通方法大致相同，只是调用者不再需要使用括号，这样，我们在使用时就可以直接使用如下方式拿到这个单例对象：
+Dart 的 getter 的使用方式與普通方法大致相同，只是呼叫者不再需要使用括號，這樣，我們在使用時就可以直接使用如下方式拿到這個單例物件：
 
 ```dart
 final singleton = Singleton.instance;
 ```
 
-而 Dart 中特有的 **工厂构造函数**（factory constructor）也原生具备了 **不必每次都去创建新的类实例** 的特性，将这个特性利用起来，我们就可以写出更优雅的 Dart(able) 单例模式了，如下：
+而 Dart 中特有的 **工廠建構函式**（factory constructor）也原生具備了 **不必每次都去建立新的類例項** 的特性，將這個特性利用起來，我們就可以寫出更優雅的 Dart(able) 單例模式了，如下：
 
 ```dart
 class Singleton {
@@ -90,7 +90,7 @@ class Singleton {
   
   Singleton._internal();
   
-  // 工厂构造函数
+  // 工廠建構函式
   factory Singleton() {
     if (_instance == null) {
       _instance = Singleton._internal();
@@ -101,13 +101,13 @@ class Singleton {
 }
 ```
 
-这里我们不再使用 **getter** 操作符额外提供一个函数，而是将单例对象的生成交给工厂构造函数，此时，工厂构造函数仅在第一次需要时创建 `_instance`，并之后每次返回相同的实例。这时，我们就可以像下面这样使用普通构造函数的方式获取到单例了：
+這裡我們不再使用 **getter** 運運算元額外提供一個函式，而是將單例物件的產生交給工廠建構函式，此時，工廠建構函式僅在第一次需要時建立 `_instance`，並之後每次返回相同的例項。這時，我們就可以像下面這樣使用普通建構函式的方式獲取到單例了：
 
 ```dart
 final singleton = Singleton();
 ```
 
-如果你还掌握了 Dart 空安全及箭头函数等特性，那么还可以使用另一种方式进一步精简代码，写出像下面这样 Dart 风味十足的代码：
+如果你還掌握了 Dart 空安全及箭頭函式等特性，那麼還可以使用另一種方式進一步精簡程式碼，寫出像下面這樣 Dart 風味十足的程式碼：
 
 ```dart
 class Singleton {
@@ -121,9 +121,9 @@ class Singleton {
 }
 ```
 
-这里，使用 `??` 作为 `_instance` 实例的判空操作符，如果为空则调用构造函数实例化否则直接返回，也可以达到单例的效果。
+這裡，使用 `??` 作為 `_instance` 例項的判空運運算元，如果為空則呼叫建構函式例項化否則直接返回，也可以達到單例的效果。
 
-以上，Dart 单例中懒加载的无不是使用判空来实现的（`if (_instance == null)` 或 `??`），但是在 Dart 空安全特性里还有一个非常重要的操作符 `late ` ，它在语言层面就实现了实例的懒加载，如下面这个例子：
+以上，Dart 單例中延遲載入的無不是使用判空來實現的（`if (_instance == null)` 或 `??`），但是在 Dart 空安全特性裡還有一個非常重要的運運算元 `late ` ，它在語言層面就實現了例項的延遲載入，如下面這個例子：
 
 ```dart
 class Singleton {
@@ -135,25 +135,25 @@ class Singleton {
 }
 ```
 
-被标记为 `late ` 的变量 `_instance` 的初始化操作将会延迟到字段首次被访问时执行，而不是在类加载时就初始化。这样，Dart 语言特有的单例模式的实现方式就这么产生了。
+被標記為 `late ` 的變數 `_instance` 的初始化操作將會延遲到欄位首次被存取時執行，而不是在類載入時就初始化。這樣，Dart 語言特有的單例模式的實現方式就這麼產生了。
 
 ## Flutter 化
 
-说到工厂构造函数/空安全操作符等 Dart 语法上的特性，Flutter 应用中的例子已经屡见不鲜了， 但光看单例模式的定义，我们还必须联想到 Flutter 中另一个非常重要的 widget，那就是 InheritedWidget。
+說到工廠建構函式/空安全運運算元等 Dart 語法上的特性，Flutter 應用中的例子已經屢見不鮮了， 但光看單例模式的定義，我們還必須聯想到 Flutter 中另一個非常重要的 widget，那就是 InheritedWidget。
 
-如果你已经是一个 Flutter 小能手，或者已经看过《Flutter 开发之旅从南到北》和之前的文章的话，一定已经对他的作用有了清晰的认识了。
+如果你已經是一個 Flutter 小能手，或者已經看過《Flutter 開發之旅從南到北》和之前的文章的話，一定已經對他的作用有了清晰的認識了。
 
-InheritedWidget 状态可遗传的特性可以帮助我们很方便的实现父子组件之间的数据传递，同时，它也可以作为状态管理中的 **数据仓库**，作为整个应用的数据状态统一保存的地方。
+InheritedWidget 狀態可遺傳的特性可以幫助我們很方便的實現父子元件之間的資料傳遞，同時，它也可以作為狀態管理中的 **資料儲存庫**，作為整個應用的資料狀態統一儲存的地方。
 
-![图源《Flutter 开发之旅从南到北》—— 第九章 图 9.4](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93-3243985.svg)
+![圖源《Flutter 開發之旅從南到北》—— 第九章 圖 9.4](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93-3243985.svg)
 
-上面代码中，我们通过继承 InheritedWidget 就实现了自己的可遗传组件 `_InheritedStateContainer`，其中的 `data` 变量表示全局状态数据，**在这里就可以被认为是整个应用的一个单例对象**。
+上面程式碼中，我們透過繼承 InheritedWidget 就實現了自己的可遺傳元件 `_InheritedStateContainer`，其中的 `data` 變量表示全域狀態資料，**在這裡就可以被認為是整個應用的一個單例物件**。
 
-`_InheritedStateContainer` 还接受 `child` 参数作为它的子组件，`child` 表示的所以子组件们就都能够以某种方式得到 `data` 这个单一的全局数据了。
+`_InheritedStateContainer` 還接受 `child` 引數作為它的子元件，`child` 表示的所以子元件們就都能夠以某種方式得到 `data` 這個單一的全域資料了。
 
-约定俗成地，Flutter 源码经常会提供一些 `of` 方法（类比 `getInstance()`）作为帮助我们拿到全局数据的辅助函数。
+約定俗成地，Flutter 原始碼經常會提供一些 `of` 方法（類比 `getInstance()`）作為幫助我們拿到全域資料的輔助函式。
 
-以 Flutter 中典型的 Theme 对象为例。我们通常会在应用的根组件 `MaterialApp` 中创建 `ThemeData` 对象作为应用统一的主题样式对象：
+以 Flutter 中典型的 Theme 物件為例。我們通常會在應用的根元件 `MaterialApp` 中建立 `ThemeData` 物件作為應用統一的主題樣式物件：
 
 ```dart
 MaterialApp(
@@ -166,31 +166,31 @@ MaterialApp(
 );
 ```
 
-在其他任意的组件中，我们可以使用 `Theme.of(context)` 拿到该对象了，且这个对象全局唯一。如下所示，我们可以将该 `ThemeData` 对象中的 `primaryColor` 应用在 `Text` 中：
+在其他任意的元件中，我們可以使用 `Theme.of(context)` 拿到該物件了，且這個物件全域唯一。如下所示，我們可以將該 `ThemeData` 物件中的 `primaryColor` 應用在 `Text` 中：
 
 ```dart
-// 使用全局文本样式
+// 使用全域文字樣式
 Text(
   'Flutter',
   style: TextStyle(color: Theme.of(context).primaryColor),
 )
 ```
 
-这个角度来看，InheritedWidget 完全可以被我们看作是最原生、最 Flutter 的单例应用了。
+這個角度來看，InheritedWidget 完全可以被我們看作是最原生、最 Flutter 的單例應用了。
 
-## 本文小结
+## 本文小結
 
-本篇文章，我们经历了从实现普通单例到应用 **getter 操作符** 的 Dart 单例，到使用 **工厂构造函数** Dart 单例，再到使用了 **工厂构造函数 + 空安全语法 + 箭头函数** 的 Dart 单例，最后结合对 InheritedWidget 概念的理解，看到了 Flutter 中特有的单例模式，算是每一步都走了一遍。但学习设计模式的重点还是在于实际应用，希望大家今后在实际工程中能将这些概念用起来，如果你想更进一步理解 Dart 中的单例模式，可以参阅「**拓展阅读**」学习更多，希望对你有帮助。
+本篇文章，我們經歷了從實現普通單例到應用 **getter 運運算元** 的 Dart 單例，到使用 **工廠建構函式** Dart 單例，再到使用了 **工廠建構函式 + 空安全語法 + 箭頭函式** 的 Dart 單例，最後結合對 InheritedWidget 概念的理解，看到了 Flutter 中特有的單例模式，算是每一步都走了一遍。但學習設計模式的重點還是在於實際應用，希望大家今後在實際工程中能將這些概念用起來，如果你想更進一步理解 Dart 中的單例模式，可以參閱「**拓展閱讀**」學習更多，希望對你有幫助。
 
-![单例模式从南到北](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.svg)
+![單例模式從南到北](https://files.flutter-io.cn/posts/community/tutorial/images/2021-07-29-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.svg)
 
-## 拓展阅读
+## 拓展閱讀
 
-- 图书 [《Flutter 开发之旅从南到北》](https://item.jd.com/12757223.html)—— 第 2 章、第 9 章
-- [单例模式](https://c.biancheng.net/view/1338.html)
+- 圖書 [《Flutter 開發之旅從南到北》](https://item.jd.com/12757223.html)—— 第 2 章、第 9 章
+- [單例模式](https://c.biancheng.net/view/1338.html)
 - [Dart 空安全](https://dart.cn/null-safety)
-- [延迟初始化](https://dart.cn/null-safety/understanding-null-safety#lazy-initialization)
+- [延遲初始化](https://dart.cn/null-safety/understanding-null-safety#lazy-initialization)
 
-## 关于本系列文章
+## 關於本系列文章
 
-Flutter / Dart 设计模式从南到北（简称 Flutter 设计模式）系列内容预计两周发布一篇，着重向开发者介绍 Flutter 应用开发中常见的设计模式以及开发方式，旨在推进 Flutter / Dart 语言特性的普及，以及帮助开发者更高效地开发出高质量、可维护的 Flutter 应用。
+Flutter / Dart 設計模式從南到北（簡稱 Flutter 設計模式）系列內容預計兩週釋出一篇，著重向開發者介紹 Flutter 應用開發中常見的設計模式以及開發方式，旨在推進 Flutter / Dart 語言特性的普及，以及幫助開發者更高效地開發出高品質、可維護的 Flutter 應用。

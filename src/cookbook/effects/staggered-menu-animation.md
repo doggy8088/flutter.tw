@@ -1,15 +1,15 @@
 ---
 title: Create a staggered menu animation
-title: 创建一个交错效果的侧边栏菜单
+title: 建立一個交錯效果的側邊欄選單
 description: How to implement a staggered menu animation.
-description: 如何实现一个交错效果的侧边栏菜单
+description: 如何實現一個交錯效果的側邊欄選單
 prev:
   title: Create a shimmer loading effect
-  title: 创建一个微光加载效果
+  title: 建立一個微光載入效果
   path: /docs/cookbook/effects/shimmer-loading
 next:
   title: Create a typing indicator
-  title: 创建一个「正在输入」指示器效果
+  title: 建立一個「正在輸入」指示器效果
   path: /docs/cookbook/effects/typing-indicator
 js:
   - defer: true

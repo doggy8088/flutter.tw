@@ -1,15 +1,15 @@
 ---
 title: Create a typing indicator
-title: 创建一个「正在输入」指示器效果
+title: 建立一個「正在輸入」指示器效果
 description: How to implement a typing indicator.
-description: 如何实现一个「正在输入」的指示器效果
+description: 如何實現一個「正在輸入」的指示器效果
 prev:
   title: Create a staggered menu animation
-  title: 创建一个交错效果的侧边栏菜单
+  title: 建立一個交錯效果的側邊欄選單
   path: /docs/cookbook/effects/staggered-menu-animation
 next:
   title: Create an expandable FAB
-  title: 创建一个点击展开的 FAB
+  title: 建立一個點選展開的 FAB
   path: /docs/cookbook/effects/expandable-fab
 js:
   - defer: true

@@ -1,7 +1,7 @@
 ---
 layout: toc
 title: Accessibility & internationalization
-title: 应用的无障碍和国际化
+title: 應用的無障礙和國際化
 short-title: a11y & i18n
-short-title: 无障碍和国际化
+short-title: 無障礙和國際化
 ---

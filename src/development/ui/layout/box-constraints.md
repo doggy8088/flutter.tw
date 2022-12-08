@@ -1,12 +1,12 @@
 ---
 title: Dealing with box constraints
-title: 处理边界约束 (Box constraints) 的问题
+title: 處理邊界約束 (Box constraints) 的問題
 description: How box constraints might go wrong.
-description: 为何框约束可能会出错。
+description: 為何框約束可能會出錯。
 short-title: Box constraints
-short-title: 边界约束 (Box constraints)
-tags: 用户界面,Flutter UI,布局
-keywords: 边界约束问题,渲染
+short-title: 邊界約束 (Box constraints)
+tags: 使用者介面,Flutter UI,佈局
+keywords: 邊界約束問題,渲染
 ---
 
 {{site.alert.note}}
@@ -14,8 +14,8 @@ keywords: 边界约束问题,渲染
   You might be directed to this page if the
   framework detects a problem involving box constraints.
 
-  如果你被引导至本页面，
-  是因为 Flutter 框架检测到你可能遇到涉及边界约束的问题。 
+  如果你被引導至本頁面，
+  是因為 Flutter 框架檢測到你可能遇到涉及邊界約束的問題。 
 
 {{site.alert.end}}
 
@@ -31,28 +31,28 @@ constraints by their parent, and size themselves within those
 constraints. Constraints consist of minimum and maximum widths
 and heights; sizes consist of a specific width and height.
 
-Flutter 中的 widget 由在其底层的 [`RenderBox`][] 对象渲染而成。
-渲染框由其父级 widget 给出约束，
-并根据这些约束调整自身尺寸大小。
-约束是由最小宽度、最大宽度、最小高度、最大高度四个方面构成；
-尺寸大小则由特定的宽度和高度两个方面构成 。
+Flutter 中的 widget 由在其底層的 [`RenderBox`][] 物件渲染而成。
+渲染框由其父級 widget 給出約束，
+並根據這些約束調整自身尺寸大小。
+約束是由最小寬度、最大寬度、最小高度、最大高度四個方面構成；
+尺寸大小則由特定的寬度和高度兩個方面構成 。
 
 Generally, there are three kinds of boxes,
 in terms of how they handle their constraints:
 
-一般来说，从如何处理约束的角度来看，有以下三种类型的渲染框：
+一般來說，從如何處理約束的角度來看，有以下三種類型的渲染框：
 
 * Those that try to be as big as possible.
   For example, the boxes used by [`Center`][] and
   [`ListView`][].
 
-  尽可能大。比如 [`Center`][] 和 [`ListView`][] 的渲染框。
+  儘可能大。比如 [`Center`][] 和 [`ListView`][] 的渲染框。
 
 * Those that try to be the same size as their children.
   For example, the boxes used by [`Transform`][] and
   [`Opacity`][].
 
-  与子 widget 一样大，比如 [`Transform`][] 和 [`Opacity`][] 的渲染框。
+  與子 widget 一樣大，比如 [`Transform`][] 和 [`Opacity`][] 的渲染框。
 
 * Those that try to be a particular size.
   For example, the boxes used by [`Image`][] and
@@ -66,18 +66,18 @@ In the case of [`Container`][], it defaults
 to trying to be as big as possible, but if you give it a `width`,
 for instance, it tries to honor that and be that particular size.
 
-对于一些诸如 [`Container`][] 的 widget，
-其尺寸会因构造方法的参数而异，
-就 [`Container`][] 来说，它默认是尽可能大的，
-而一旦给它一个特定的宽度，
-那么它就会遵照这个特定的宽度来调整自身尺寸。
+對於一些諸如 [`Container`][] 的 widget，
+其尺寸會因構造方法的引數而異，
+就 [`Container`][] 來說，它預設是儘可能大的，
+而一旦給它一個特定的寬度，
+那麼它就會遵照這個特定的寬度來調整自身尺寸。
 
 Others, for example [`Row`][] and  (flex boxes)
 vary based on the constraints they are given,
 as described below in the "Flex" section.
 
-其它一些像 [`Row`][] and [`Column`][] (flex boxes)这样的 widget ，
-其尺寸会因给定的约束而异，具体细节见后文 "Flex" 部分；
+其它一些像 [`Row`][] and [`Column`][] (flex boxes)這樣的 widget ，
+其尺寸會因給定的約束而異，具體細節見後文 "Flex" 部分；
 
 The constraints are sometimes "tight",
 meaning that they leave no room for the render box to decide on
@@ -94,43 +94,43 @@ This means that if you nest a bunch of boxes inside each other
 at the root of your application's render tree,
 they'll all exactly fit in each other, forced by these tight constraints.
 
-约束有时是"紧密的"，这意味着这些约束严格地限定了
-渲染框在定夺自身尺寸方面的空间（例如：当约束的最小宽度和最大宽度相同时，
-这种情况下，我们称这个约束有紧密宽度），
-这方面的主要例子是 App Widget，
-它是 [`RenderView`][] 类里面的一个 widget: 
-由应用程序的 [`build`][] 函数返回的子 widget 渲染框被指定了一个约束，
-该约束强制 App Widget 精确填充应用程序的内容区域(通常是整个屏幕)。
-Flutter 中的许多渲染框，特别是那些只包含单个 widget 的渲染框，
-都会将自身的约束传递给他们的子级 widget。
-这意味着如果你在应用程序渲染树的根部嵌套了一些渲染框，
-这些框将会在受到约束的影响下相互适应彼此。
+約束有時是"緊密的"，這意味著這些約束嚴格地限定了
+渲染框在定奪自身尺寸方面的空間（例如：當約束的最小寬度和最大寬度相同時，
+這種情況下，我們稱這個約束有緊密寬度），
+這方面的主要例子是 App Widget，
+它是 [`RenderView`][] 類裡面的一個 widget: 
+由應用程式的 [`build`][] 函式返回的子 widget 渲染框被指定了一個約束，
+該約束強制 App Widget 精確填充應用程式的內容區域(通常是整個螢幕)。
+Flutter 中的許多渲染框，特別是那些只包含單個 widget 的渲染框，
+都會將自身的約束傳遞給他們的子級 widget。
+這意味著如果你在應用程式渲染樹的根部嵌套了一些渲染框，
+這些框將會在受到約束的影響下相互適應彼此。
 
 Some boxes _loosen_ the constraints,
 meaning the maximum is maintained but the
 minimum is removed. For example, [`Center`][].
 
-有些渲染框**放松**了约束，即：约束中只有最大宽度，
-最大高度，但没有最小宽度，最小高度，
+有些渲染框**放鬆**了約束，即：約束中只有最大寬度，
+最大高度，但沒有最小寬度，最小高度，
 例如 [`Center`][]。
 
 
 ## Unbounded constraints
 
-无边界约束
+無邊界約束
 ---------------------
 
 In certain situations, the constraint that is given to a box is
 _unbounded_, or infinite. This means that either the maximum width or
 the maximum height is set to [`double.infinity`][].
 
-在某些情况下，传递给框的约束是 **无边界** 的或无限的。这意味着约束的最大宽度或最大高度为 [`double.infinity`][]。
+在某些情況下，傳遞給框的約束是 **無邊界** 的或無限的。這意味著約束的最大寬度或最大高度為 [`double.infinity`][]。
 
 A box that tries to be as big as possible won't function usefully when
 given an unbounded constraint and, in debug mode, such a combination
 throws an exception that points to this file.
 
-当传递无边界约束给类型为尽可能大的框时会失效，在 debug 模式下，则会抛出异常，该异常信息会把你引导到本页面。
+當傳遞無邊界約束給型別為儘可能大的框時會失效，在 debug 模式下，則會丟擲例外，該例外資訊會把你引導到本頁面。
 
 The most common cases where a render box finds itself with unbounded
 constraints are within flex boxes
@@ -138,9 +138,9 @@ constraints are within flex boxes
 and **within scrollable regions**
 ([`ListView`][] and other [`ScrollView`][] subclasses).
 
-渲染框具有无边界约束的最常见情况是：
-当其被置于 flex boxes ([`Row`][] 和 [`Column`][])内以及
-**可滚动区域**([`ListView`][] 和其它 [`ScrollView`][] 的子类)内时。
+渲染框具有無邊界約束的最常見情況是：
+當其被置於 flex boxes ([`Row`][] 和 [`Column`][])內以及
+**可滾動區域**([`ListView`][] 和其它 [`ScrollView`][] 的子類別)內時。
 
 
 In particular, [`ListView`][]
@@ -154,15 +154,15 @@ the inner one tries to be as wide as possible,
 which is infinitely wide,
 since the outer one is scrollable in that direction.
 
-特别是 [`ListView`][] 会试图扩展以适应其交叉方向可用空间
-(比如说，如果它是一个垂直滚动块，
-它将试图扩充到与其父 widget 一样宽)。
-如果让垂直滚动的 [`ListView`][] 
-嵌套在水平滚动的 [`ListView`][]
-内，那么被嵌套在里面的垂直滚动的 [`ListView`][]
-将会试图尽可能宽，直到无限宽，
-因为将其嵌套的是一个水平滚动的[`ListView`][]，
-它可以在水平方向上一直滚动。
+特別是 [`ListView`][] 會試圖擴充以適應其交叉方向可用空間
+(比如說，如果它是一個垂直滾動塊，
+它將試圖擴充到與其父 widget 一樣寬)。
+如果讓垂直滾動的 [`ListView`][] 
+巢狀(Nesting)在水平滾動的 [`ListView`][]
+內，那麼被巢狀(Nesting)在裡面的垂直滾動的 [`ListView`][]
+將會試圖儘可能寬，直到無限寬，
+因為將其巢狀(Nesting)的是一個水平滾動的[`ListView`][]，
+它可以在水平方向上一直滾動。
 
 ## Flex
 
@@ -171,13 +171,13 @@ behave differently based on whether they are in
 bounded constraints or unbounded constraints in
 their given direction.
 
-Flex 框本身([`Row`][] 和 [`Column`][])的行为会有所不同，
-这取决于其在给定方向上是处于有边界约束还是无边界约束。
+Flex 框本身([`Row`][] 和 [`Column`][])的行為會有所不同，
+這取決於其在給定方向上是處於有邊界約束還是無邊界約束。
 
 In bounded constraints,
 they try to be as big as possible in that direction.
 
-在有边界约束条件下，它们在给定方向上会尽可能大。
+在有邊界約束條件下，它們在給定方向上會盡可能大。
 
 In unbounded constraints,
 they try to fit their children in that direction.
@@ -188,21 +188,21 @@ In the widget library, this means that you cannot use
 another flex box or inside a scrollable. If you do,
 you'll get an exception message pointing you at this document.
 
-在无边界约束条件下，它们试图让其子 widget 自适应这个给定的方向。
-在这种情况下，不能将子 widget 的`flex`属性设置为 0（默认值）以外的任何值。
-这意味着在 widget 库中，
-当一个 flex 框嵌套在另外一个 flex 框或者嵌套在可滚动区域内时，
+在無邊界約束條件下，它們試圖讓其子 widget 自適應這個給定的方向。
+在這種情況下，不能將子 widget 的`flex`屬性設定為 0（預設值）以外的任何值。
+這意味著在 widget 庫中，
+當一個 flex 框巢狀(Nesting)在另外一個 flex 框或者巢狀(Nesting)在可滾動區域內時，
 不能使用 [`Expanded`][]。
-如果这样做了，就会收到异常，该异常信息会把你引导到本页面。
+如果這樣做了，就會收到例外，該例外資訊會把你引導到本頁面。
 
 In the _cross_ direction, for example, in the width for
 [`Column`][] (vertical flex) or in the height for
 [`Row`][] (horizontal flex), they must never be unbounded,
 otherwise they would not be able to reasonably align their children.
 
-在 **交叉** 方向上，如 [`Column`][]（垂直的 flex）的宽度和 
-[`Row`][]（水平的 flex）的高度，它们必将不能是无界的，
-否则它们将无法合理地对齐它们的子 widget。
+在 **交叉** 方向上，如 [`Column`][]（垂直的 flex）的寬度和 
+[`Row`][]（水平的 flex）的高度，它們必將不能是無界的，
+否則它們將無法合理地對齊它們的子 widget。
 
 
 [`build`]: {{site.api}}/flutter/widgets/State/build.html

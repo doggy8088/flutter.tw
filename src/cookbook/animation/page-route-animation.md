@@ -1,13 +1,13 @@
 ---
 title: Animate a page route transition
-title: 为页面切换加入动画效果
+title: 為頁面切換加入動畫效果
 description: How to animate from one page to another.
-description: 如何在页面过渡之间使用动画。
-tags: cookbook, 实用教程, 动画效果
-keywords: 页面切换效果,自定义路由
+description: 如何在頁面過渡之間使用動畫。
+tags: cookbook, 實用課程, 動畫效果
+keywords: 頁面切換效果,自訂路由
 next:
   title: Animate a widget using a physics simulation
-  title: 在物理模拟器上构建动画
+  title: 在物理模擬器上建構動畫
   path: /docs/cookbook/animation/physics-simulation
 js:
   - defer: true
@@ -26,29 +26,29 @@ This recipe shows how to transition between
 routes by animating the new route into view from
 the bottom of the screen.
 
-在不同路由（或界面）之间进行切换的时候，许多设计语言，
-例如 Material 设计，都定义了一些标准行为。
-但有时自定义路由会让 app 看上去更加的独特。
-为了更好的完成这一点，[`PageRouteBuilder`][] 提供了一个 [`Animation`][] 对象。
-这个 `Animation` 能够通过结合
-[`Tween`][] 以及 [`Curve`][] 对象来自定义路由转换动画。
-这篇指南将会展示如何在两个路由之间切换时使用从屏幕底部动画出来的路由。
+在不同路由（或介面）之間進行切換的時候，許多設計語言，
+例如 Material 設計，都定義了一些標準行為。
+但有時自訂路由會讓 app 看上去更加的獨特。
+為了更好的完成這一點，[`PageRouteBuilder`][] 提供了一個 [`Animation`][] 物件。
+這個 `Animation` 能夠透過結合
+[`Tween`][] 以及 [`Curve`][] 物件來自訂路由轉換動畫。
+這篇指南將會展示如何在兩個路由之間切換時使用從螢幕底部動畫出來的路由。
 
 To create a custom page route transition, this recipe uses the following steps:
 
-要创建这个自定义路由动画，这篇指南使用了以下步骤：
+要建立這個自訂路由動畫，這篇指南使用了以下步驟：
 
 1. Set up a PageRouteBuilder
 
-   搭建一个 PageRouteBuilder
+   搭建一個 PageRouteBuilder
 
 2. Create a `Tween`
 
-   创建一个 `Tween`
+   建立一個 `Tween`
 
 3. Add an `AnimatedWidget`
 
-   添加一个 `AnimatedWidget`
+   新增一個 `AnimatedWidget`
 
 4. Use a `CurveTween`
 
@@ -56,19 +56,19 @@ To create a custom page route transition, this recipe uses the following steps:
 
 5. Combine the two `Tween`s
 
-   组合这两个 `Tween`
+   組合這兩個 `Tween`
 
 ## 1. Set up a PageRouteBuilder
 
-## 1. 搭建一个 PageRouteBuilder
+## 1. 搭建一個 PageRouteBuilder
 
 To start, use a [`PageRouteBuilder`][] to create a [`Route`][].
 `PageRouteBuilder` has two callbacks, one to build the content of the route
 (`pageBuilder`), and one to build the route's transition (`transitionsBuilder`).
 
-我们从使用一个 [`PageRouteBuilder`][] 来创建一个 [`Route`][]。
-`PageRouteBuilder` 有两个回调，第一个是创建这个路由的内容（`pageBuilder`），
-另一个则是创建一个路由的转换器（`transitionsBuilder`）。
+我們從使用一個 [`PageRouteBuilder`][] 來建立一個 [`Route`][]。
+`PageRouteBuilder` 有兩個回呼(Callback)，第一個是建立這個路由的內容（`pageBuilder`），
+另一個則是建立一個路由的轉換器（`transitionsBuilder`）。
 
 {{site.alert.note}}
   
@@ -77,18 +77,18 @@ To start, use a [`PageRouteBuilder`][] to create a [`Route`][].
   route is built. The framework can avoid extra work because `child` stays the
   same throughout the transition.
   
-  transitionsBuilder 的 `child` 参数是通过 `pageBuilder` 方法
-  来返回一个 transitionsBuilder widget，这个 `pageBuilder` 方法仅会在
-  第一次构建路由的时候被调用。框架能够自动避免做额外的工作，因为
-  整个过渡期间 `child` 保存了同一个实例。
+  transitionsBuilder 的 `child` 引數是透過 `pageBuilder` 方法
+  來返回一個 transitionsBuilder widget，這個 `pageBuilder` 方法僅會在
+  第一次建構路由的時候被呼叫。框架能夠自動避免做額外的工作，因為
+  整個過渡期間 `child` 儲存了同一個例項。
   
 {{site.alert.end}}
 
 The following example creates two routes: a home route with a "Go!" button, and
 a second route titled "Page 2".
 
-下面的样例将会创建两个路由：一个主页路由，
-包含了 "Go!" 按钮，还有第二个路由，包含了一个显示 "Page 2 的标题。
+下面的範例將會建立兩個路由：一個主頁路由，
+包含了 "Go!" 按鈕，還有第二個路由，包含了一個顯示 "Page 2 的標題。
 
 <?code-excerpt "lib/starter.dart (Starter)"?>
 ```dart
@@ -147,7 +147,7 @@ class Page2 extends StatelessWidget {
 
 ## 2. Create a Tween
 
-## 2. 创建一个 Tween
+## 2. 建立一個 Tween
 
 To make the new page animate in from the bottom, it should animate from
 `Offset(0,1)` to `Offset(0, 0)` (usually defined using the `Offset.zero`
@@ -156,18 +156,18 @@ constructor). In this case, the Offset is a 2D vector for the
 Setting the `dy` argument to 1 represents a vertical translation one
 full height of the page.
 
-为了使新页面从底部动画出来，它应该从 `Offset(0,1)` 到 `Offset(0, 0)` 进行动画。
-（通常我们会使用 `Offset.zero` 构造器。）在这个情况下，
-对于 ['FractionalTranslation'][] widget 来说偏移量是一个 2D 矢量值。
-将 `dy` 参数设为 1，这代表在竖直方向上切换整个页面的高度。
+為了使新頁面從底部動畫出來，它應該從 `Offset(0,1)` 到 `Offset(0, 0)` 進行動畫。
+（通常我們會使用 `Offset.zero` 構造器。）在這個情況下，
+對於 ['FractionalTranslation'][] widget 來說偏移量是一個 2D 向量值。
+將 `dy` 引數設為 1，這代表在豎直方向上切換整個頁面的高度。
 
 The `transitionsBuilder` callback has an `animation` parameter. It's an
 `Animation<double>` that produces values between 0 and 1. Convert the
 Animation<double> into an Animation<Offset> using a Tween:
   
-`transitionsBuilder` 的回调有一个 `animation` 参数。
-它其实是一个 `Animation<double>`，提供 0 到 1 的值。
-使用 Tween 来将 Animation<double> 转为 Animation<Offset>。
+`transitionsBuilder` 的回呼(Callback)有一個 `animation` 引數。
+它其實是一個 `Animation<double>`，提供 0 到 1 的值。
+使用 Tween 來將 Animation<double> 轉為 Animation<Offset>。
 
 <?code-excerpt "lib/starter.dart (step1)"?>
 ```dart
@@ -189,15 +189,15 @@ that rebuild themselves when the value of the animation changes. For instance,
 SlideTransition takes an `Animation<Offset>` and translates its child (using a
 FractionalTranslation widget) whenever the value of the animation changes.
 
-Flutter 有一堆继承自 [`AnimatedWidget`][] 的 widget，
-它们能够在动画的值发生改变时自动重建自己。
-举个例子，SlideTransition 拿到一个 `Animation<Offset>`
-并在动画改变时使用 FractionalTranslation widget 转换其子级。
+Flutter 有一堆繼承自 [`AnimatedWidget`][] 的 widget，
+它們能夠在動畫的值發生改變時自動重建自己。
+舉個例子，SlideTransition 拿到一個 `Animation<Offset>`
+並在動畫改變時使用 FractionalTranslation widget 轉換其子級。
 
 AnimatedWidget Return a [`SlideTransition`][]
 with the `Animation<Offset>` and the child widget:
 
-AnimatedWidget 返回了一个 带有 `Animation<Offset>` 
+AnimatedWidget 返回了一個 帶有 `Animation<Offset>` 
 的 [`SlideTransition`][]，以及 child widget：
 
 <?code-excerpt "lib/starter.dart (step2)"?>
@@ -226,15 +226,15 @@ provides a predefined set of commonly used curves.
 For example, `Curves.easeOut`
 makes the animation start quickly and end slowly.
 
-Flutter 提供了一系列缓和曲线，可以调整一段时间内的动画速率。
-[`Curves`][] 类提供了一个提前定义的用法相似的 curves。
-例如，`Curves.easeOut` 将会让动画开始很快结束很慢。
+Flutter 提供了一系列緩和曲線，可以調整一段時間內的動畫速率。
+[`Curves`][] 類提供了一個提前定義的用法相似的 curves。
+例如，`Curves.easeOut` 將會讓動畫開始很快結束很慢。
 
 To use a Curve, create a new [`CurveTween`][]
 and pass it a Curve:
 
-要使用 Curve，创建一个 [`CurveTween`][]
-并传一个 Curve：
+要使用 Curve，建立一個 [`CurveTween`][]
+並傳一個 Curve：
 
 <?code-excerpt "lib/starter.dart (step3)"?>
 ```dart
@@ -245,17 +245,17 @@ var curveTween = CurveTween(curve: curve);
 This new Tween still produces values from 0 to 1. In the next step, it will be
 combined the `Tween<Offset>` from step 2.
 
-新的 Tween 依然提供 0 到 1 之间的值。
-在下一步中，它将会结合第二步中提到的 `Tween<Offset>`。
+新的 Tween 依然提供 0 到 1 之間的值。
+在下一步中，它將會結合第二步中提到的 `Tween<Offset>`。
 
 ## 5. Combine the two Tweens
 
-## 5. 结合两个 Tween
+## 5. 結合兩個 Tween
 
 To combine the tweens,
 use [`chain()`][]:
 
-为了结合两个 tween，请使用 [`chain()`][]:
+為了結合兩個 tween，請使用 [`chain()`][]:
 
 <?code-excerpt "lib/main.dart (Tween)"?>
 ```dart
@@ -269,9 +269,9 @@ var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 Then use this tween by passing it to `animation.drive()`. This creates a new
 `Animation<Offset>` that can be given to the `SlideTransition` widget:
 
-它们通过把这个 tween 传递给 `animation.drive()` 
-来创建一个新的 `Animation<Offset>`，
-然后你就能把它传给 `SlideTransition` widget：
+它們透過把這個 tween 傳遞給 `animation.drive()` 
+來建立一個新的 `Animation<Offset>`，
+然後你就能把它傳給 `SlideTransition` widget：
 
 <?code-excerpt "lib/main.dart (SlideTransition)"?>
 ```dart
@@ -285,28 +285,28 @@ This new Tween (or Animatable) produces `Offset` values by first evaluating the
 `CurveTween`, then evaluating the `Tween<Offset>.` When the animation runs, the
 values are computed in this order:
 
-这个新的 Tween（或者是能够动画的东西）通过评估 `CurveTween` 来提供 `Offset`，
-然后评估 `Tween<Offset>`。当动画运行时，值都被这条命令计算出：
+這個新的 Tween（或者是能夠動畫的東西）透過評估 `CurveTween` 來提供 `Offset`，
+然後評估 `Tween<Offset>`。當動畫執行時，值都被這條命令計算出：
 
 1. The animation (provided to the transitionsBuilder callback) produces values
    from 0 to 1.
    
-   这个动画提供了从 0 到 1 的值。（通过 transitionsBuilder 的值提供）
+   這個動畫提供了從 0 到 1 的值。（透過 transitionsBuilder 的值提供）
    
 2. The CurveTween maps those values to new values between 0 and 1 based on its
    curve.
    
-   这个 CurveTween 根据其将这些值映射到介于 0 和 1 之间的新曲线值。
+   這個 CurveTween 根據其將這些值對映到介於 0 和 1 之間的新曲線值。
    
 3. The `Tween<Offset>` maps the `double` values to `Offset` values.
 
-   `Tween<Offset>` 将 `double` 值映射为 `Offset` 值。
+   `Tween<Offset>` 將 `double` 值對映為 `Offset` 值。
 
 Another way to create an `Animation<Offset>` with an easing curve is to use a
 `CurvedAnimation`:
 
-使用缓动曲线创建 `Animation<Offset>`
-的另一种方法是使用 `CurvedAnimation`：
+使用緩動曲線建立 `Animation<Offset>`
+的另一種方法是使用 `CurvedAnimation`：
 
 <?code-excerpt "lib/starter.dart (step4)" replace="/,$//g"?>
 ```dart
@@ -330,7 +330,7 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example
@@ -396,7 +396,7 @@ class Page2 extends StatelessWidget {
 }
 ```
 <noscript>
-  <img src="/assets/images/docs/cookbook/page-route-animation.gif" alt="样例展示了一个自底向上的路由转换动画" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/page-route-animation.gif" alt="範例展示了一個自底向上的路由轉換動畫" class="site-mobile-screenshot" />
 </noscript>
 
 

@@ -1,19 +1,19 @@
 ---
 title: Using Themes to share colors and font styles
-title: 使用 Themes 统一颜色和字体风格
+title: 使用 Themes 統一顏色和字型風格
 short-title: Themes
 short-title: Themes
 description: How to share colors and font styles throughout an app using Themes.
-description: 学习如何使用 Themes 统一颜色和字体风格。
-tags: cookbook, 实用教程, 设计
-keywords: Material Design 效果, Theme, 主题, 全局主题, 自定义
+description: 學習如何使用 Themes 統一顏色和字型風格。
+tags: cookbook, 實用課程, 設計
+keywords: Material Design 效果, Theme, 主題, 全域主題, 自訂
 prev:
   title: Update the UI based on orientation
-  title: 根据屏幕方向更新界面
+  title: 根據螢幕方向更新介面
   path: /docs/cookbook/design/orientation
 next:
   title: Use custom fonts
-  title: 使用自定义字体
+  title: 使用自訂字型
   path: /docs/cookbook/design/fonts
 next:
   title: Work with tabs
@@ -33,34 +33,34 @@ of the application. In fact,
 app-wide themes are just `Theme` widgets created at
 the root of an app by the `MaterialApp`.
 
-通过定义 `Theme`，我们可以更好地复用颜色和字体样式，
-从而让整个 app 的设计看起来更一致。
-全局 Theme 会在整个 app 范围内生效，而局部 Theme 只作用于特定元素。
-其实所谓的全局 Theme 和局部 Theme 的区别只在于，
-全局 Theme 定义在了 app 的 root 处而已。
-而 `MaterialApp` 已经事先为你预设了一个全局的 `Theme` Widget。
+透過定義 `Theme`，我們可以更好地複用顏色和字型樣式，
+從而讓整個 app 的設計看起來更一致。
+全域 Theme 會在整個 app 範圍內生效，而區域性 Theme 只作用於特定元素。
+其實所謂的全域 Theme 和區域性 Theme 的區別只在於，
+全域 Theme 定義在了 app 的 root 處而已。
+而 `MaterialApp` 已經事先為你預設了一個全域的 `Theme` Widget。
 
 After defining a Theme, use it within your own widgets. Flutter's
 Material widgets also use your Theme to set the background
 colors and font styles for AppBars, Buttons, Checkboxes, and more.
 
-在定义一个 `Theme` 之后，我们可以让它在指定的 widgets
-（包括 Flutter 自带的 Material widgets，
+在定義一個 `Theme` 之後，我們可以讓它在指定的 widgets
+（包括 Flutter 自帶的 Material widgets，
 例如 AppBars、Buttons、Checkboxes 等等）中生效。
 
 ## Creating an app theme
 
-## 定义一个全局 theme
+## 定義一個全域 theme
 
 To share a Theme across an entire app, provide a
 [`ThemeData`][] to the `MaterialApp` constructor.
 
-全局 Theme 会影响整个 app 的颜色和字体样式。
-只需要向 `MaterialApp` 构造器传入 [`ThemeData`][] 即可。
+全域 Theme 會影響整個 app 的顏色和字型樣式。
+只需要向 `MaterialApp` 構造器傳入 [`ThemeData`][] 即可。
 
 If no `theme` is provided, Flutter creates a default theme for you.
 
-如果没有放置 `Theme`，Flutter 将会使用预设的样式。
+如果沒有放置 `Theme`，Flutter 將會使用預設的樣式。
 
 <?code-excerpt "lib/main.dart (MaterialApp)" replace="/return //g"?>
 ```dart
@@ -91,28 +91,28 @@ MaterialApp(
 See the [`ThemeData`][] documentation to see all of
 the colors and fonts you can define.
 
-在 [ThemeData]({{site.api}}/flutter/material/ThemeData-class.html) 查看所有可自定义的颜色和字体样式。
+在 [ThemeData]({{site.api}}/flutter/material/ThemeData-class.html) 檢視所有可自訂的顏色和字型樣式。
 
 ## Themes for part of an application
 
-## 定义一个局部 Theme
+## 定義一個區域性 Theme
 
 To override the app-wide theme in part of an application,
 wrap a section of the app in a `Theme` widget.
 
-如果我们只想对局部进行样式修改，可以创建一个 `Theme` Widget。
+如果我們只想對區域性進行樣式修改，可以建立一個 `Theme` Widget。
 
 There are two ways to approach this: creating a unique `ThemeData`,
 or extending the parent theme.
 
-有以下两种方式：定义一个独立的 `ThemeData`，或者从父级 Theme 扩展。
-下面为你分别介绍。
+有以下兩種方式：定義一個獨立的 `ThemeData`，或者從父級 Theme 擴充。
+下面為你分別介紹。
 
 {{site.alert.note}}
 
   To learn more, watch this short Widget of the Week video on the Theme widget:
 
-  了解更多，请参考下方「每周 Widget」的里关于 Theme 的短视频：
+  瞭解更多，請參考下方「每週 Widget」的裡關於 Theme 的短影片：
 
   <iframe class="full-width" src="{{site.youtube-site}}/embed/oTvQDJOBXmM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -120,13 +120,13 @@ or extending the parent theme.
 
 ### Creating unique `ThemeData`
 
-### 定义一个独立的 `ThemeData`
+### 定義一個獨立的 `ThemeData`
 
 If you don't want to inherit any application colors or font styles,
 create a `ThemeData()` instance and pass that to the `Theme` widget.
 
-如果不想从任何全局 Theme 继承样式，
-我们可以创建一个 `ThemeData()` 实例，然后把它传给 `Theme` widget：
+如果不想從任何全域 Theme 繼承樣式，
+我們可以建立一個 `ThemeData()` 例項，然後把它傳給 `Theme` widget：
 
 <?code-excerpt "lib/theme.dart (Theme)"?>
 ```dart
@@ -144,12 +144,12 @@ Theme(
 
 ### Extending the parent theme
 
-### 从父级 Theme 扩展
+### 從父級 Theme 擴充
 
 Rather than overriding everything, it often makes sense to extend the parent
 theme. You can handle this by using the [`copyWith()`][] method.
 
-相比从头开始定义一套样式，从父级 Theme 扩展可能更常规一些，使用 
+相比從頭開始定義一套樣式，從父級 Theme 擴充可能更常規一些，使用 
 [`copyWith()`][] 方法即可。
 
 <?code-excerpt "lib/theme.dart (ThemeCopyWith)"?>
@@ -167,28 +167,28 @@ Theme(
 
 ## Using a Theme
 
-## 使用定义好的 Theme
+## 使用定義好的 Theme
 
 Now that you've defined a theme, use it within the widgets' `build()`
 methods by using the `Theme.of(context)` method.
 
-现在我们定义好了一个 theme，接下来我们该使用它了！
-在我们 widget 的 `build` 方法中调用 `Theme.of(context)` 函数，
-可以让这些主题样式生效。
+現在我們定義好了一個 theme，接下來我們該使用它了！
+在我們 widget 的 `build` 方法中呼叫 `Theme.of(context)` 函式，
+可以讓這些主題樣式生效。
 
 The `Theme.of(context)` method looks up the widget tree and returns
 the nearest `Theme` in the tree. If you have a standalone
 `Theme` defined above your widget, that's returned.
 If not, the app's theme is returned.
 
-`Theme.of(context)` 会查询 widget 树，并返回其中最近的 `Theme`。
-所以他会优先返回我们之前定义过的一个独立的 `Theme`，
-如果找不到，它会返回全局 theme。
+`Theme.of(context)` 會查詢 widget 樹，並返回其中最近的 `Theme`。
+所以他會優先返回我們之前定義過的一個獨立的 `Theme`，
+如果找不到，它會返回全域 theme。
 
 In fact, the `FloatingActionButton` uses this technique to find the
 `accentColor`.
 
-实际上，`FloatingActionButton` 就是使用这种方式来定义自己的 `accentColor` 的。
+實際上，`FloatingActionButton` 就是使用這種方式來定義自己的 `accentColor` 的。
 
 <?code-excerpt "lib/main.dart (Container)" replace="/^child: //g"?>
 ```dart
@@ -203,7 +203,7 @@ Container(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

@@ -1,61 +1,61 @@
 ---
-title: 欢迎体验 Beta 版 Flutter web 支持
+title: 歡迎體驗 Beta 版 Flutter web 支援
 toc: true
 ---
 
-*作者 / Mariam Hasnany, 产品经理, Flutter*
+*作者 / Mariam Hasnany, 產品經理, Flutter*
 
-我们很高兴宣布 Flutter web 支持已顺利迭代至 Beta 版本！
+我們很高興宣佈 Flutter web 支援已順利迭代至 Beta 版本！
 
-## **为什么我们要把 Flutter 带向 web 平台？**
+## **為什麼我們要把 Flutter 帶向 web 平台？**
 
-开发者经常需要构建可以在移动和 web 两个平台上运行的应用。我们想要帮助您设计和构建出自己想要的效果，将心中的奇思妙想变为现实，让您知道 Flutter 能够让您的应用在任何地方流畅运行！开发者们都希望学习一套可在多个平台上灵活使用的技术。Flutter web 支持允许您使用同一套代码，更快地发布功能，并且在不同设备上实现一致的用户体验。此外，强大的 web 端 Dart 编译器和便携性出众的 Flutter 框架可大大简化您的开发工作，让您使用 Flutter 轻松打造出精美的交互式 web 体验。
+開發者經常需要建構可以在移動和 web 兩個平臺上執行的應用。我們想要幫助您設計和構建出自己想要的效果，將心中的奇思妙想變為現實，讓您知道 Flutter 能夠讓您的應用在任何地方流暢執行！開發者們都希望學習一套可在多個平臺上靈活使用的技術。Flutter web 支援允許您使用同一套程式碼，更快地釋出功能，並且在不同裝置上實現一致的使用者體驗。此外，強大的 web 端 Dart 編譯器和便攜性出眾的 Flutter 框架可大大簡化您的開發工作，讓您使用 Flutter 輕鬆打造出精美的互動式 web 體驗。
 
-## **比预览版更出色**
+## **比預覽版更出色**
 
-我们在今年的 I/O 大会上发布了 web 支持的 [技术预览版](https://mp.weixin.qq.com/s/trNhd1CI1gBBDtmVGdeI6g)，并在 7 月推出了 [早期使用者计划](https://medium.com/flutter/flutter-for-web-early-adopter-program-now-open-9f1fb146e4c4)，这段时间以来，我们一直在努力改进 web 支持，力求更好地满足来自 Google 内部团队和外部开发者的需求。
+我們在今年的 I/O 大會上釋出了 web 支援的 [技術預覽版](https://mp.weixin.qq.com/s/trNhd1CI1gBBDtmVGdeI6g)，並在 7 月推出了 [早期使用者計劃](https://medium.com/flutter/flutter-for-web-early-adopter-program-now-open-9f1fb146e4c4)，這段時間以來，我們一直在努力改進 web 支援，力求更好地滿足來自 Google 內部團隊和外部開發者的需求。
 
-**Beta 版能为您带来什么？**
+**Beta 版能為您帶來什麼？**
 
-随着 Flutter 1.12 的发布，Flutter web 支持也从技术预览版顺利迭代至 beta 版。当您在 beta 渠道内启用 web 支持后，新创建的 Flutter 项目不仅包含了 Android 和 iOS 应用，其中新增的 web / directory 还提供了丰富的工具，帮助您在浏览器中编译和运行同一个项目。
+隨著 Flutter 1.12 的釋出，Flutter web 支援也從技術預覽版順利迭代至 beta 版。當您在 beta 渠道內啟用 web 支援後，新建立的 Flutter 專案不僅包含了 Android 和 iOS 應用，其中新增的 web / directory 還提供了豐富的工具，幫助您在瀏覽器中編譯和運行同一個專案。
 
-随着 Flutter web 支持逐渐稳定，它已经准备好迎接新的挑战，欢迎更具探索精神的开发者们前来开启更多的使用场景。目前，团队的开发工作已进入下一个阶段，我们将继续引入变更，并从无障碍支持、测试覆盖等多个方面进一步优化 web 支持。
+隨著 Flutter web 支援逐漸穩定，它已經準備好迎接新的挑戰，歡迎更具探索精神的開發者們前來開啟更多的使用場景。目前，團隊的開發工作已進入下一個階段，我們將繼續引入變更，並從無障礙支援、測試覆蓋等多個方面進一步最佳化 web 支援。
 
-## **探索使用场景**
+## **探索使用場景**
 
-在 Flutter web 支持的开发过程中，我们尤为关注部分使用场景。我们认为这些场景特别能够体现 Flutter 的优势所在。我们相信现有的功能已足够帮助开发者构建丰富的交互式 web 体验。在与早期使用者合作的过程中，我们还针对下列使用场景验证与优化了 web 支持。
+在 Flutter web 支援的開發過程中，我們尤為關注部分使用場景。我們認為這些場景特別能夠體現 Flutter 的優勢所在。我們相信現有的功能已足夠幫助開發者建構豐富的互動式 web 體驗。在與早期使用者合作的過程中，我們還針對下列使用場景驗證與優化了 web 支援。
 
-**多平台互连的独立应用**
+**多平臺互連的獨立應用**
 
-Flutter 允许开发者使用同一套代码实现移动和 web 的跨平台体验。我们的一位早期使用者 [Journey](https://startyourjourney.io/) 就利用 Flutter 开发了一个多平台应用。
+Flutter 允許開發者使用同一套程式碼實現移動和 web 的跨平臺體驗。我們的一位早期使用者 [Journey](https://startyourjourney.io/) 就利用 Flutter 開發了一個多平臺應用。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/vMoskP.png)
 
-> △ 社交应用 Journey 最近刚发布了一个使用 Flutter 开发的跨平台应用
+> △ 社交應用 Journey 最近剛釋出了一個使用 Flutter 開發的跨平臺應用
 
-Journey 的创始人 Luke O’Brien 给予了 Flutter 很高的评价: "我大概从 4 个月前开始开发 Journey，起初我只想做一个 Android 版本的最简可行产品。没想到后来竟然发现了 Flutter，当时我就觉得它特别棒，于是我就决定试着用一下。这绝对是我做过最正确的决定。Flutter 为我们缩短了至少一半的开发时间，现在我们已经发布了 Android、iOS 和 web 三个版本的应用，用户增长量多了整整一倍。从萌生想法到产品落地，Flutter 在这个过程中起到了十分关键的作用。"
+Journey 的創始人 Luke O’Brien 給予了 Flutter 很高的評價: "我大概從 4 個月前開始開發 Journey，起初我只想做一個 Android 版本的最簡可行產品。沒想到後來竟然發現了 Flutter，當時我就覺得它特別棒，於是我就決定試著用一下。這絕對是我做過最正確的決定。Flutter 為我們縮短了至少一半的開發時間，現在我們已經發布了 Android、iOS 和 web 三個版本的應用，使用者增長量多了整整一倍。從萌生想法到產品落地，Flutter 在這個過程中起到了十分關鍵的作用。"
 
-**内嵌式交互内容**
+**內嵌式互動內容**
 
-第二个使用场景在网站中内嵌一个小程序。这类程序通常功能丰富且以数据为中心，但是它们并不需要提供导航服务或者其它应用级别的复杂功能，比如说，您可以为现有网站添加一个新的汽车配置器、填字游戏或者交互式的可视化数据，这些都是该场景下比较典型的用例。我们的另一位早期使用者 [AEI Studio](https://studio.aei.dev/showcase/) 就开发了一系列聊天机器人并在 web 版的聊天对话框中内嵌了 Flutter，从而实现了动画，键盘文本输入等多项交互功能。
+第二個使用場景在網站中內嵌一個小程式。這類程式通常功能豐富且以資料為中心，但是它們並不需要提供導航服務或者其它應用級別的複雜功能，比如說，您可以為現有網站新增一個新的汽車配置器、填字遊戲或者互動式的視覺化資料，這些都是該場景下比較典型的使用案例。我們的另一位早期使用者 [AEI Studio](https://studio.aei.dev/showcase/) 就開發了一系列聊天機器人並在 web 版的聊天對話方塊中內嵌了 Flutter，從而實現了動畫，鍵盤文字輸入等多項互動功能。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/2bGkk6.png)
 
-> △ Weatherbot 是 AEI Studio 旗下的一款聊天机器人，
+> △ Weatherbot 是 AEI Studio 旗下的一款聊天機器人，
 
-它的网页版对话框就内嵌了 Flutter
+它的網頁版對話方塊就內嵌了 Flutter
 
-**精简版 Lite 应用**
+**精簡版 Lite 應用**
 
-尽管 Flutter 本身的移动端运行时 (mobile runtime) 现可提供更为流畅的体验，但有时候用户依旧会觉得安装步骤太繁琐，因而放弃尝试新应用。如果为现有的 Flutter 应用配备一个轻量级 web 体验，岂不两全其美？大部分用户依旧集中在移动版上，精简版 web 应用则通过相同的工具、框架、UI 组件和业务逻辑提供相关功能，只不过会在丰富程度上进行适当缩减。
+儘管 Flutter 本身的移動端執行時 (mobile runtime) 現可提供更為流暢的體驗，但有時候使用者依舊會覺得安裝步驟太繁瑣，因而放棄嘗試新應用。如果為現有的 Flutter 應用配備一個輕量級 web 體驗，豈不兩全其美？大部分使用者依舊集中在移動版上，精簡版 web 應用則透過相同的工具、框架、UI 元件和業務邏輯提供相關功能，只不過會在豐富程度上進行適當縮減。
 
-**辅助应用**
+**輔助應用**
 
-辅助应用是指用 Flutter 构建的，且为主要的移动版应用提供支持的 web 体验。比如说，您可以使用 Flutter 构建一个 web 应用，管理员或内部用户可以通过这个应用为现有的 Flutter 移动版应用进行内容创作或后台管理。尽管此类 web 应用相对较为独立，但它依旧可以复用移动应用的大量代码。
+輔助應用是指用 Flutter 建構的，且為主要的移動版應用提供支援的 web 體驗。比如說，您可以使用 Flutter 建構一個 web 應用，管理員或內部使用者可以透過這個應用為現有的 Flutter 移動版應用進行內容創作或後臺管理。儘管此類 web 應用相對較為獨立，但它依舊可以複用移動應用的大量程式碼。
 
-## **找到适合您的插件！**
+## **找到適合您的外掛！**
 
-插件是 Flutter 一个比较独特的优势，开发者可以通过插件访问运行平台的原生库。当您在 web 平台上运行 Flutter 应用时，您可以调用现有 JS 库中的所有内容。我们在后台完成了所有 JS 互操作代码，确保这些插件在移动和 web 平台上均能正常工作。我们已成功实现了请求最多的几个插件，让它们能够在 web 应用和原生应用中提供一致的使用体验。从现在开始，您也可以像 [Ben Hagan](https://github.com/cbenhagen) 和 [Hadrien Lejard](https://github.com/lejard-h) 一样 [编写自己的插件](https://medium.com/flutter/how-to-write-a-flutter-web-plugin-5e26c689ea1)，他们曾分别为 video_player 和 sentry 包开发过插件。下列几个包均有更新:
+外掛是 Flutter 一個比較獨特的優勢，開發者可以透過外掛存取執行平台的原生庫。當您在 web 平臺上執行 Flutter 應用時，您可以呼叫現有 JS 庫中的所有內容。我們在後台完成了所有 JS 互操作程式碼，確保這些外掛在移動和 web 平臺上均能正常工作。我們已成功實現了請求最多的幾個外掛，讓它們能夠在 web 應用和原生應用中提供一致的使用體驗。從現在開始，您也可以像 [Ben Hagan](https://github.com/cbenhagen) 和 [Hadrien Lejard](https://github.com/lejard-h) 一樣 [編寫自己的外掛](https://medium.com/flutter/how-to-write-a-flutter-web-plugin-5e26c689ea1)，他們曾分別為 video_player 和 sentry 包開發過外掛。下列幾個包均有更新:
 
 * [shared_preferences](https://pub.dev/packages/shared_preferences)
 * [firebase_core](https://pub.dev/packages/firebase_core)
@@ -65,44 +65,44 @@ Journey 的创始人 Luke O’Brien 给予了 Flutter 很高的评价: "我大�
 * [video_player](https://pub.dev/packages/video_player)
 * [sentry](https://pub.dev/packages/sentry)
 
-此外，我们还为 pub.dev 包库添加了新平台的标签管理和过滤功能。
+此外，我們還為 pub.dev 包庫添加了新平台的標籤管理和過濾功能。
 
-首先，我们在每个包的详情页面中列明了它所支持的平台，让开发者可以更轻松地判别这个包是否提供 web 支持。
+首先，我們在每個套件的詳情頁面中列明瞭它所支援的平台，讓開發者可以更輕鬆地判別這個包是否提供 web 支援。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/taG3uH.png)
 
-> △ pub.dev 包的详情页面显示了关于 SDK 和平台兼容性的标签
+> △ pub.dev 套件的詳情頁面顯示了關於 SDK 和平台相容性的標籤
 
-搜索 UI 也新增了若干过滤器，方便开发者找到提供 web 支持的包。我们基于新的 [平台清单标签](https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms) 开发了该功能，您可通过 Flutter 1.12 获取这些标签。
+搜尋 UI 也新增了若干過濾器，方便開發者找到提供 web 支援的套件。我們基於新的 [平台清單標籤](https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms) 開發了該功能，您可透過 Flutter 1.12 獲取這些標籤。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/UxFyg9.png)
 
-> △ pub.dev 的搜索 UI 添加了对 SDK 和平台的过滤器支持
+> △ pub.dev 的搜尋 UI 添加了對 SDK 和平台的過濾器支援
 
-## **向稳定版迈进**
+## **向穩定版邁進**
 
-我们在 Beta 版中取得了一定的进展，但仍有许多工作亟待完成。除了进一步提高 web 支持的性能表现之外，我们也在积极推进无障碍体验、浏览器兼容性等方面的工作。
+我們在 Beta 版中取得了一定的進展，但仍有許多工作亟待完成。除了進一步提高 web 支援的效能表現之外，我們也在積極推進無障礙體驗、瀏覽器相容性等方面的工作。
 
-**无障碍**
+**無障礙**
 
-Flutter 通过 Android TalkBack 和 iOS VoiceOver 为移动浏览器提供无障碍支持。目前，我们已经为多个平台的辅助技术实现了多项特性，其中包括: UI 遍历、遍历顺序以及丰富的 UI 交互提示，例如可点击区域、标签、可编辑区域、渐增操作、图片、活动区域和可检查项目。此外，我们还在研究如何为桌面端浏览器添加读屏支持。
+Flutter 透過 Android TalkBack 和 iOS VoiceOver 為移動瀏覽器提供無障礙支援。目前，我們已經為多個平台的輔助技術實現了多項特性，其中包括: UI 遍歷、遍歷順序以及豐富的 UI 互動提示，例如可點選區域、標籤、可編輯區域、漸增操作、圖片、活動區域和可檢查專案。此外，我們還在研究如何為桌面端瀏覽器新增讀屏支援。
 
-**浏览器支持**
+**瀏覽器支援**
 
-Flutter 的支持范围已从一开始的移动平台扩展至桌面平台，使得桌面应用的 UX 设计风格也可通过 Flutter 框架实现。Flutter 将继续优化对桌面浏览器的支持，并为用户提供更加流畅的无缝体验。接下来，我们计划为 Chrome、Edge、Firefox 和 Safari 四款浏览器 (移动版和桌面版) 提供支持和测试。
+Flutter 的支援範圍已從一開始的行動平台擴充至桌面平台，使得桌面應用的 UX 設計風格也可透過 Flutter 框架實現。Flutter 將繼續最佳化對桌面瀏覽器的支援，併為使用者提供更加流暢的無縫體驗。接下來，我們計劃為 Chrome、Edge、Firefox 和 Safari 四款瀏覽器 (移動版和桌面版) 提供支援和測試。
 
-**测试覆盖**
+**測試覆蓋**
 
-从技术预览版开始，我们就一直在扩大框架和 Flutter web 引擎的测试覆盖范围。Chrome 目前已支持运行自动测试，Safari 仍需手动进行测试。我们还有许多测试工作需要完成，未经测试的场景可能会出现回归错误。
+從技術預覽版開始，我們就一直在擴大框架和 Flutter web 引擎的測試覆蓋範圍。Chrome 目前已支援執行自動測試，Safari 仍需手動進行測試。我們還有許多測試工作需要完成，未經測試的場景可能會出現迴歸錯誤。
 
-**体验、贡献与分享**
+**體驗、貢獻與分享**
 
-欢迎各位开发者立即上手体验 Flutter web 支持！请前往 [flutter.dev/web](https://flutter.dev/web) 开启您的 web 之旅，尽情探索示例、文档等精彩内容。如果您之前已经使用过 web 支持，不妨尝试一下我们的 [beta 渠道](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels)。
+歡迎各位開發者立即上手體驗 Flutter web 支援！請前往 [flutter.dev/web](https://flutter.dev/web) 開啟您的 web 之旅，盡情探索範例、文件等精彩內容。如果您之前已經使用過 web 支援，不妨嘗試一下我們的 [beta 渠道](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels)。
 
-Flutter 插件的数量已突破 1,800 个，但是其中大部分仅提供 iOS 或 Android 支持。如果您想为 web 支持贡献自己的一份力量，帮助我们缩小 web 与移动平台之间的距离，欢迎您为现有插件添加 web 支持或开发新的插件。请阅读 [《Flutter web 插件开发指南》](https://medium.com/flutter/how-to-write-a-flutter-web-plugin-5e26c689ea1) 进一步了解技术细节与开发方法。
+Flutter 外掛的數量已突破 1,800 個，但是其中大部分僅提供 iOS 或 Android 支援。如果您想為 web 支援貢獻自己的一份力量，幫助我們縮小 web 與行動平台之間的距離，歡迎您為現有外掛新增 web 支援或開發新的外掛。請閱讀 [《Flutter web 外掛開發指南》](https://medium.com/flutter/how-to-write-a-flutter-web-plugin-5e26c689ea1) 進一步瞭解技術細節與開發方法。
 
-## **结语**
+## **結語**
 
-我们已通过 beta 渠道开放了最新的 Flutter web 支持，与此同时，我们离最终稳定版的发布也越来越近，希望您能喜欢这个 beta 版本，同时感受到我们对 Flutter 的热情与付出。
+我們已透過 beta 渠道開放了最新的 Flutter web 支援，與此同時，我們離最終穩定版的釋出也越來越近，希望您能喜歡這個 beta 版本，同時感受到我們對 Flutter 的熱情與付出。
 
-欢迎大家向我们 [提交反馈](https://flutter.dev/community) 并参与 #Flutter 话题讨论，与我们分享您在 Flutter 方面的项目进展。期待您通过 Flutter 打造出精美的交互式 web 体验！
+歡迎大家向我們 [提交反饋](https://flutter.dev/community) 並參與 #Flutter 話題討論，與我們分享您在 Flutter 方面的專案進展。期待您透過 Flutter 打造出精美的互動式 web 體驗！

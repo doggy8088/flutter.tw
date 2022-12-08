@@ -1,19 +1,19 @@
 ---
 title: Display a snackbars
-title: 显示 snackbars
+title: 顯示 snackbars
 short-title: SnackBars
 short-title: SnackBars
 description: How to implement a SnackBar to display messages.
-description: 学习使用 SnackBar 展示消息。
-tags: cookbook, 实用教程, 设计
-keywords: Material Design 效果, SnackBar, 滑动删除
+description: 學習使用 SnackBar 展示訊息。
+tags: cookbook, 實用課程, 設計
+keywords: Material Design 效果, SnackBar, 滑動刪除
 prev:
   title: Add a drawer to a screen
-  title: 在屏幕上添加一个 Drawer
+  title: 在螢幕上新增一個 Drawer
   path: /docs/cookbook/design/drawer
 next:
   title: Export fonts from a package
-  title: 以 package 的方式使用字体
+  title: 以 package 的方式使用字型
   path: /docs/cookbook/design/package-fonts
 js:
   - defer: true
@@ -27,37 +27,37 @@ take place. For example, when a user swipes away a message in a list,
 you might want to inform them that the message has been deleted.
 You might even want to give them an option to undo the action.
 
-在某些情况下，我们需要用方便且友好的方式告诉用户发生了什么。
-例如，当用户滑动删除列表中的一条消息时，
-我们或许想提醒用户消息已经被删除了，或者除了提醒之外，
-我们还可以提供一个撤销的操作。
+在某些情況下，我們需要用方便且友好的方式告訴使用者發生了什麼。
+例如，當用戶滑動刪除列表中的一條訊息時，
+我們或許想提醒使用者訊息已經被刪除了，或者除了提醒之外，
+我們還可以提供一個撤銷的操作。
 
 In Material Design, this is the job of a [`SnackBar`][].
 This recipe implements a snackbar using the following steps:
 
-在 Material Design 中，用一个 [`SnackBar`][] 就可以实现这个需求。
-请参见以下步骤：
+在 Material Design 中，用一個 [`SnackBar`][] 就可以實現這個需求。
+請參見以下步驟：
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Create a `Scaffold`.
 
-     创建一个  `Scaffold`
+     建立一個  `Scaffold`
      
   2. Display a `SnackBar`.
 
-     显示一个  `Scaffold`
+     顯示一個  `Scaffold`
   
   3. Provide an optional action.
   
-     提供一个附加的操作
+     提供一個附加的操作
   
 
 ## 1. Create a `Scaffold`
 
-## 1. 创建一个 `Scaffold`
+## 1. 建立一個 `Scaffold`
 
 When creating apps that follow the Material Design guidelines,
 give your apps a consistent visual structure.
@@ -65,18 +65,18 @@ In this example, display the `SnackBar` at the bottom of the screen,
 without overlapping other important
 widgets, such as the `FloatingActionButton`.
 
-在创建遵循 Material Design 设计规范的应用时，
-我们希望应用可以有一个一致的视觉层次结构。
-当我们在屏幕的底部显示一个 `SnackBar` 时，
-不能覆盖其他重要的 widgets，比如 `FloatingActionButton`。
+在建立遵循 Material Design 設計規範的應用時，
+我們希望應用可以有一個一致的視覺層次結構。
+當我們在螢幕的底部顯示一個 `SnackBar` 時，
+不能覆蓋其他重要的 widgets，比如 `FloatingActionButton`。
 
 The [`Scaffold`][] widget, from the [material library][],
 creates this visual structure and ensures that important
 widgets don't overlap.
 
 用 [material library][] 中的 [`Scaffold`][] widget
-就可以创建一个一致的视觉层次结构，
-并且可以确保其他重要的 widgets 不会被覆盖。
+就可以建立一個一致的視覺層次結構，
+並且可以確保其他重要的 widgets 不會被覆蓋。
 
 <?code-excerpt "lib/partial.dart (Scaffold)"?>
 ```dart
@@ -93,13 +93,13 @@ return MaterialApp(
 
 ## 2. Display a `SnackBar`
 
-## 2. 显示一个 `SnackBar`
+## 2. 顯示一個 `SnackBar`
 
 With the `Scaffold` in place, display a `SnackBar`.
 First, create a `SnackBar`, then display it using `ScaffoldMessenger`.
 
-有了 `Scaffold`，我们就可以显示一个 `SnackBar` 了。
-首先，我们需要先创建一个 `SnackBar` ，然后使用 `ScaffoldMessenger` 来显示它。
+有了 `Scaffold`，我們就可以顯示一個 `SnackBar` 了。
+首先，我們需要先建立一個 `SnackBar` ，然後使用 `ScaffoldMessenger` 來顯示它。
 
 <?code-excerpt "lib/partial.dart (DisplaySnackBar)"?>
 ```dart
@@ -119,7 +119,7 @@ ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
 ## 3. Provide an optional action
 
-## 3. 提供一个附加的操作
+## 3. 提供一個附加的操作
 
 You might want to provide an action to the user when
 the SnackBar is displayed.
@@ -127,15 +127,15 @@ For example, if the user accidentally deletes a message,
 they might use an optional action in the SnackBar to recover
 the message.
 
-在某些情况下，我们可能想在显示 SnackBar 的时候给用户提供一个附加的操作。
-比如，当他们意外的删除了一个消息，我们可以提供一个撤销更改的操作。
+在某些情況下，我們可能想在顯示 SnackBar 的時候給使用者提供一個附加的操作。
+比如，當他們意外的刪除了一個訊息，我們可以提供一個撤銷更改的操作。
 
 To achieve this, we can provide an additional `action` to the `SnackBar` widget.
 
 Here's an example of providing
 an additional `action` to the `SnackBar` widget:
 
-这个例子里，我们在创建 `SnackBar` widget 的时候提供一个附加的 `action ` 参数。
+這個例子裡，我們在建立 `SnackBar` widget 的時候提供一個附加的 `action ` 引數。
 
 <?code-excerpt "lib/main.dart (SnackBarAction)"?>
 ```dart
@@ -152,7 +152,7 @@ final snackBar = SnackBar(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 {{site.alert.note}}
 
@@ -160,8 +160,8 @@ final snackBar = SnackBar(
   For more information on working with user input,
   see the [Gestures][] section of the cookbook.
   
-  注意: 这个例子是当用户点击一个按钮的时候显示一个 SnackBar。
-  更多有关处理用户输入的信息，请查阅实用教程 (Cookbook) 的
+  注意: 這個例子是當用戶點選一個按鈕的時候顯示一個 SnackBar。
+  更多有關處理使用者輸入的資訊，請查閱實用課程 (Cookbook) 的
   [Gestures][] 部分。
   
 {{site.alert.end}}
