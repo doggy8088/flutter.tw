@@ -27,11 +27,11 @@ Flutter 3 是我們正式為全平台提供支援的一個重量級里程碑，�
 
 只需使用 `SelectionArea` 包裹住路由顯示的內容 \(例如 `Scaffold`\)，Flutter 會替你處理好一切，你便可以享受到這項強力的新特性。
 
-想要更全面深入地瞭解這個絕妙的新功能，請存取 [SelectionArea API 頁面](https://api.flutter-io.cn/flutter/material/SelectionArea-class.html)。
+想要更全面深入地瞭解這個絕妙的新功能，請存取 [SelectionArea API 頁面](https://api.flutter.dev/flutter/material/SelectionArea-class.html)。
 
 ### 觸控板操作
 
-Flutter 3.3 優化了針對觸控板的支援。Flutter 不僅提供了更豐富且順滑的控制，同時也減少了幾種特定情況的誤觸。若你想了解誤觸的範例，你可以檢視 [Flutter 實用課程](https://flutter.cn/docs/cookbook) 頁面。將頁面滾動到底部的 DartPad，並跟隨以下步驟進行操作：
+Flutter 3.3 優化了針對觸控板的支援。Flutter 不僅提供了更豐富且順滑的控制，同時也減少了幾種特定情況的誤觸。若你想了解誤觸的範例，你可以檢視 [Flutter 實用課程](https://flutter.tw/cookbook) 頁面。將頁面滾動到底部的 DartPad，並跟隨以下步驟進行操作：
 
 1.  縮小視窗讓上半部分出現捲軸
 2.  將指標懸停在上半部分
@@ -86,17 +86,17 @@ Flutter 團隊持續地在整合更多 Material Design 3 的元件到 Flutter �
 
 現在 Windows 桌面應用的版本可以透過 `pubspec.yaml` 和建構引數進行設定。它有助於當你的應用推送了更新時，在應用中為你的使用者提供應用更新功能。
 
-想要了解更多關於設定 Windows 桌面應用版本的內容，請檢視 [文件](https://flutter.cn/docs/deployment/windows%23updating-the-apps-version-number)。Flutter 3.3 前建立的專案需要手動進行調整才能使用這項功能。
+想要了解更多關於設定 Windows 桌面應用版本的內容，請檢視 [文件](https://flutter.tw/deployment/windows%23updating-the-apps-version-number)。Flutter 3.3 前建立的專案需要手動進行調整才能使用這項功能。
 
 ## Packages 更新
 
 ### go\_router 釋出
 
-當你的應用包含複雜的導航需求時，它可能會讓你暈頭轉向。為了擴充 Flutter 的導航 API，團隊釋出了新版本的 [go\_router package](https://pub.flutter-io.cn/packages/go_router)，讓你在所有平台的路由邏輯設計變得更加簡潔。
+當你的應用包含複雜的導航需求時，它可能會讓你暈頭轉向。為了擴充 Flutter 的導航 API，團隊釋出了新版本的 [go\_router package](https://pub.dev/packages/go_router)，讓你在所有平台的路由邏輯設計變得更加簡潔。
 
 go\_router package 由 Flutter 團隊進行維護，透過宣告式和基於 URL 的 API 讓導航和 deep links 的處理變得更加輕鬆。最新的 5.0 版本讓應用可以透過非同步程式碼進行重新導向，其中還包含了一些 [破壞性改動](https://files.flutter-io.cn/flutter-design-docs/[Draft]Go_Router%205.0%20migration%20guide%20(PUBLICLY%20SHARED).docx)。
 
-更多內容請檢視官方文件：[路由和導航](http://flutter.cn/docs/development/ui/navigation)。
+更多內容請檢視官方文件：[路由和導航](http://flutter.tw/development/ui/navigation)。
 
 ## VS Code 外掛增強
 
@@ -116,9 +116,9 @@ VS Code 的 Flutter 擴充也帶來了新增依賴的更新。你可以使用 `
 
 以下是自 Flutter 3.0 以來 DevTools 各個版本更新的公告內容：
 
-* [Flutter DevTools 2.16.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.16.0)
-* [Flutter DevTools 2.15.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.15.0)
-* [Flutter DevTools 2.14.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.14.0)
+* [Flutter DevTools 2.16.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.16.0)
+* [Flutter DevTools 2.15.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.15.0)
+* [Flutter DevTools 2.14.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.14.0)
 
 ## 效能改進
 
@@ -130,7 +130,7 @@ VS Code 的 Flutter 擴充也帶來了新增依賴的更新。你可以使用 `
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2022/whats-new-in-flutter-3-3/image2.png)
 
-更多相關資訊，請檢視官方文件：[新增 ImageProvider.loadBuffer](https://flutter.cn/docs/release/breaking-changes/image-provider-load-buffer)。
+更多相關資訊，請檢視官方文件：[新增 ImageProvider.loadBuffer](https://flutter.tw/release/breaking-changes/image-provider-load-buffer)。
 
 ## 框架穩定性
 
@@ -146,7 +146,7 @@ VS Code 的 Flutter 擴充也帶來了新增依賴的更新。你可以使用 `
 
 ### PlatformDispatcher.onError
 
-在先前的版本中，你需要手動配置一個自訂的 Zone 來捕獲應用的所有例外和錯誤。然而，自訂的 Zone 並不適用於 Dart 核心函式庫中的一些最佳化，會減慢應用的啟動時間。在本次更新中，你可以透過設定 PlatformDispatcher.onError 回呼(Callback)來捕獲所有的錯誤和例外，代替自訂的 Zone。更多內容請檢視已經更新的官方文件：[在 Flutter 裡處理錯誤](https://flutter.cn/docs/testing/errors)。
+在先前的版本中，你需要手動配置一個自訂的 Zone 來捕獲應用的所有例外和錯誤。然而，自訂的 Zone 並不適用於 Dart 核心函式庫中的一些最佳化，會減慢應用的啟動時間。在本次更新中，你可以透過設定 PlatformDispatcher.onError 回呼(Callback)來捕獲所有的錯誤和例外，代替自訂的 Zone。更多內容請檢視已經更新的官方文件：[在 Flutter 裡處理錯誤](https://flutter.tw/testing/errors)。
 
 ### FragmentProgram 更新
 

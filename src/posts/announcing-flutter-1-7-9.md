@@ -87,7 +87,7 @@ RangeSlider widget 支援連續或者分散的效果
 > 透過結合 Dart 和 Flutter，我們實現了第一個真正跨平臺的移動工具套件；我們認為它打破了原有的遊戲規則，可以平衡數字互動和物聯網的功能特性。
 > 透過使用主流的工具鏈、自動化工具和現代化的程式設計模式，我們可以最佳化迴圈時延、安全性、商業應用特性的推送成本。
 
-除了應用程式，整個開源社群所涉及的眾多 [資源](https://flutterx.com/)，[外掛](https://pub.flutter-io.cn/flutter)， [Flutter 社群活動](https://flutterevents.com/) 和 [Meetup](https://www.meetup.com/topics/flutter/) 也使得 Flutter 變得格外生機勃勃。
+除了應用程式，整個開源社群所涉及的眾多 [資源](https://flutterx.com/)，[外掛](https://pub.dev/flutter)， [Flutter 社群活動](https://flutterevents.com/) 和 [Meetup](https://www.meetup.com/topics/flutter/) 也使得 Flutter 變得格外生機勃勃。
 我們會持續關注大家基於 Flutter 所實現的各種有趣的應用，同時也非常榮幸和大家一起分享其中的樂趣。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot7-release/flutter-bag.jpeg){:width="95%"}

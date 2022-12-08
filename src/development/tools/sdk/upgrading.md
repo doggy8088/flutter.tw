@@ -124,7 +124,7 @@ the Dart [`pub outdated` documentation]({{site.dart-site}}/tools/pub/cmd/pub-out
 
 如果需要自動判斷那些過時了的 package 依賴以及獲取更新建議，
 現在你可以使用 `outdated` 命令。更多相關的資訊，
-請參考 Dart 文件中關於 [`pub outdated`](https://dart.cn/tools/pub/cmd/pub-outdated) 的說明。
+請參考 Dart 文件中關於 [`pub outdated`](https://dart.tw.gh.miniasp.com/tools/pub/cmd/pub-outdated) 的說明。
 
 ```terminal
 $ flutter pub outdated

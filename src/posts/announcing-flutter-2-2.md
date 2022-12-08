@@ -3,7 +3,7 @@ title: Flutter 2.2 現已釋出！
 toc: true
 ---
 
-在本次 [Google I/O 2021 大會](https://mp.weixin.qq.com/s/S1GZdQdwcdZKIbBY_FlzJQ)上，我們正式釋出了 [Flutter 2.2](https://flutter.cn/docs/whats-new)。Flutter 2.2 是我們最新版的開源工具套件，可讓開發者立足單個平台建構適合任何裝置的精美應用。Flutter 2.2 是迄今為止最出色的 Flutter 版本。藉助更新後的功能，開發者能更便利地透過應用內購買、支付方式和廣告將其應用變現，還能連線到雲服務和 API 來擴充應用的功能；而藉助工具和語言功能，開發者能夠消除一整類別的錯誤，增強應用效能並縮減軟體包大小。
+在本次 [Google I/O 2021 大會](https://mp.weixin.qq.com/s/S1GZdQdwcdZKIbBY_FlzJQ)上，我們正式釋出了 [Flutter 2.2](https://flutter.tw/whats-new)。Flutter 2.2 是我們最新版的開源工具套件，可讓開發者立足單個平台建構適合任何裝置的精美應用。Flutter 2.2 是迄今為止最出色的 Flutter 版本。藉助更新後的功能，開發者能更便利地透過應用內購買、支付方式和廣告將其應用變現，還能連線到雲服務和 API 來擴充應用的功能；而藉助工具和語言功能，開發者能夠消除一整類別的錯誤，增強應用效能並縮減軟體包大小。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/zC30Hx.png)
 
@@ -27,9 +27,9 @@ Flutter 2.2 側重於改進開發體驗，目的是讓您能夠向客戶提供�
 
 此外，我們還在一些重要的領域進行了最佳化，例如提高網路目標的可及性。
 
-我們的工作已不再侷限於 Flutter 的核心。我們還與 Google 其他團隊合作，將 Flutter 與更多技術棧的開發者進行聯動。特別指出的是，我們仍會繼續打造可信賴的服務來幫助開發者負責任地將其應用變現。在此版本中，我們 [新的廣告 SDK](https://developers.google.cn/admob/flutter/quick-start) 也已更新，現在具有空安全設定，並支援自適應橫幅廣告格式。我們還引入了一個新的支付外掛，這款外掛是我們與 Google Pay 團隊合力開發，可用於在 iOS 和 Android 平台處理實物商品的支付事宜。此外，我們也更新了我們的 [應用內購買外掛](https://pub.flutter-io.cn/packages/in_app_purchase)，以及配套的 [codelab](https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0)。
+我們的工作已不再侷限於 Flutter 的核心。我們還與 Google 其他團隊合作，將 Flutter 與更多技術棧的開發者進行聯動。特別指出的是，我們仍會繼續打造可信賴的服務來幫助開發者負責任地將其應用變現。在此版本中，我們 [新的廣告 SDK](https://developers.google.cn/admob/flutter/quick-start) 也已更新，現在具有空安全設定，並支援自適應橫幅廣告格式。我們還引入了一個新的支付外掛，這款外掛是我們與 Google Pay 團隊合力開發，可用於在 iOS 和 Android 平台處理實物商品的支付事宜。此外，我們也更新了我們的 [應用內購買外掛](https://pub.dev/packages/in_app_purchase)，以及配套的 [codelab](https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0)。
 
-在此版本中，作為成就 Flutter 的 "秘密武器"，[Dart](https://dart.cn/) 也有了更新。Dart 2.13 擴充了對原生互操作性的支援，現在支援在 FFI 中使用陣列和封裝結構體。新的 Dart 版本還支援類型別名，如此一來，不但能提高程式碼可讀性，也讓部分重構工作更為輕鬆。我們將繼續為更廣泛的生態系統增加整合方案，包括 [GitHub Actions](https://github.com/marketplace/actions/setup-dart-sdk) 和針對基於雲的業務邏輯部署最佳化過的官方 [Docker 映像](https://hub.docker.com/_/dart)。
+在此版本中，作為成就 Flutter 的 "秘密武器"，[Dart](https://dart.tw.gh.miniasp.com/) 也有了更新。Dart 2.13 擴充了對原生互操作性的支援，現在支援在 FFI 中使用陣列和封裝結構體。新的 Dart 版本還支援類型別名，如此一來，不但能提高程式碼可讀性，也讓部分重構工作更為輕鬆。我們將繼續為更廣泛的生態系統增加整合方案，包括 [GitHub Actions](https://github.com/marketplace/actions/setup-dart-sdk) 和針對基於雲的業務邏輯部署最佳化過的官方 [Docker 映像](https://hub.docker.com/_/dart)。
 
 ## **不止是 Google 專案**
 

@@ -53,7 +53,7 @@ Flutter 支援 Windows、macOS 和 Linux 平台的無障礙服務，包括螢幕
 
 Flutter 3 支援可摺疊移動裝置。透過由 Microsoft 牽頭的合作，讓大家可以使用新的功能和 widget 在可摺疊裝置上建立動感、愉悅的體驗。
 
-作為合作的一部分，[MediaQuery](https://api.flutter-io.cn/flutter/widgets/MediaQuery-class.html) 現在包含一個 [DisplayFeature](https://api.flutter-io.cn/flutter/dart-ui/DisplayFeature-class.html) 列表，用以描述裝置元件狀態，包括鉸鏈、摺疊狀態和螢幕劉海等。此外，[DisplayFeatureSubScreen](https://api.flutter-io.cn/flutter/widgets/DisplayFeatureSubScreen-class.html) widget 包含的子 widget 的位置現在不會與 `DisplayFeature` 的邊界重疊，並且已經用於框架的預設對話方塊和彈出視窗，使 Flutter 預設即可動態適應這些元素的位置。
+作為合作的一部分，[MediaQuery](https://api.flutter.dev/flutter/widgets/MediaQuery-class.html) 現在包含一個 [DisplayFeature](https://api.flutter.dev/flutter/dart-ui/DisplayFeature-class.html) 列表，用以描述裝置元件狀態，包括鉸鏈、摺疊狀態和螢幕劉海等。此外，[DisplayFeatureSubScreen](https://api.flutter.dev/flutter/widgets/DisplayFeatureSubScreen-class.html) widget 包含的子 widget 的位置現在不會與 `DisplayFeature` 的邊界重疊，並且已經用於框架的預設對話方塊和彈出視窗，使 Flutter 預設即可動態適應這些元素的位置。
 
 ![](https://devrel.andfun.cn/devrel/posts/2022/05/Nqhj5g.png)
 
@@ -67,7 +67,7 @@ Flutter 現已在使用 ProMotion 顯示屏的 iOS 裝置上支援可變重新�
 
 ### **簡化 iOS 釋出**
 
-我們為 `flutter build ipa` 命令添加了 [新選項](https://github.com/flutter/flutter/pull/97672)，使得 iOS 應用釋出更加簡便。在您準備好分發至 TestFlight 或 App Store 時，請執行 flutter build ipa 建構 Xcode 歸檔 (.xcarchive 檔案) 和應用軟體包 (.ipa 檔案)。您可選擇新增 --export-method ad-hoc、--export-method development 或 --export-method enterprise 選項。應用軟體包建構完成後，即可透過 [Apple Transport macOS 應用](https://apps.apple.com/us/app/transporter/id1450874784) 將其上傳至 Apple，或使用 xcrun altool 在命令列中完成上傳 (執行 man altool 獲取 App Store Connect API 金鑰驗證說明)。上傳完成後，您的應用即可釋出至 [TestFlight 或 App Store](https://flutter.cn/docs/deployment/ios#release-your-app-to-the-app-store)。在完成應用顯示名稱、應用圖示等初始 [Xcode 專案設定](https://flutter-io.cn/docs/deployment/ios#review-xcode-project-settings) 後，您在釋出應用時就無需再開啟 Xcode 了。
+我們為 `flutter build ipa` 命令添加了 [新選項](https://github.com/flutter/flutter/pull/97672)，使得 iOS 應用釋出更加簡便。在您準備好分發至 TestFlight 或 App Store 時，請執行 flutter build ipa 建構 Xcode 歸檔 (.xcarchive 檔案) 和應用軟體包 (.ipa 檔案)。您可選擇新增 --export-method ad-hoc、--export-method development 或 --export-method enterprise 選項。應用軟體包建構完成後，即可透過 [Apple Transport macOS 應用](https://apps.apple.com/us/app/transporter/id1450874784) 將其上傳至 Apple，或使用 xcrun altool 在命令列中完成上傳 (執行 man altool 獲取 App Store Connect API 金鑰驗證說明)。上傳完成後，您的應用即可釋出至 [TestFlight 或 App Store](https://flutter.tw/deployment/ios#release-your-app-to-the-app-store)。在完成應用顯示名稱、應用圖示等初始 [Xcode 專案設定](https://flutter-io.cn/docs/deployment/ios#review-xcode-project-settings) 後，您在釋出應用時就無需再開啟 Xcode 了。
 
 ### **Gradle 版本更新**
 
@@ -108,8 +108,8 @@ Flutter web 應用的新生命週期 API 提升了靈活性，可實現從託管
 
 Lint package 2.0 版現已釋出:
 
-* [Flutter](https://pub.flutter-io.cn/packages/flutter_lints/versions/2.0.0)
-* [Dart](https://pub.flutter-io.cn/packages/lints/versions/2.0.0)
+* [Flutter](https://pub.dev/packages/flutter_lints/versions/2.0.0)
+* [Dart](https://pub.dev/packages/lints/versions/2.0.0)
 
 使用 `flutter create` 產生的 Flutter 3 應用將自動啟用 2.0 版 Lint 套件。我們建議大家執行 `flutter pub upgrade --major-versions flutter_lints`，將現有應用、package 和外掛遷移到 2.0 版，以遵循 Flutter 最新、最優的最佳實踐。
 
@@ -135,7 +135,7 @@ Impeller 可以帶標記在 iOS 上使用。如果您要試用 Impeller，可以
 
 ### **Android 上的內聯廣** **告**
 
-使用 [google_mobile_ads](https://pub.flutter-io.cn/packages/google_mobile_ads) package 時，您應該可以感受到使用者關鍵互動 (如頁面之間的滾動和切換) 的效能有所提升。在新興市場廣為流行的裝置上，這種效能提升尤其明顯。最棒的是，您無需更改任何程式碼！
+使用 [google_mobile_ads](https://pub.dev/packages/google_mobile_ads) package 時，您應該可以感受到使用者關鍵互動 (如頁面之間的滾動和切換) 的效能有所提升。在新興市場廣為流行的裝置上，這種效能提升尤其明顯。最棒的是，您無需更改任何程式碼！
 
 在具體實現方面，Flutter 現在是非同步組合 Android 檢視 (即通常所說的 [平臺視圖](https://flutter-io.cn/docs/development/platform-integration/platform-views))。這意味著 Flutter 的光柵執行緒無需等待 Android 檢視渲染。現在，Flutter 引擎使用它管理的 OpenGL 紋理將檢視顯示在螢幕上。
 
@@ -145,7 +145,7 @@ Impeller 可以帶標記在 iOS 上使用。如果您要試用 Impeller，可以
 
 ### **Material 3**
 
-Flutter 3 支援新一代 Material Design，即 [Material Design 3](https://m3.material.io/)。Flutter 3 提供 Material 3 的可選支援，包括動態顏色、最新顏色系統和字型等 Material You 功能，還包含許多元件的更新，以及在 Android 12 中引入的新觸控波紋設計和拉伸滾動等全新視覺效果。我們歡迎大家透過全新的 "[將枯燥無味的 Flutter 應用變得生動有趣](https://codelabs.developers.google.com/codelabs/flutter-boring-to-beautiful)" 的 Codelab 來嘗試 Material 3 的功能特性。請參閱 [API 文件](https://api.flutter-io.cn/flutter/material/ThemeData/useMaterial3.html)，詳細瞭解如何選用上述新功能特性，以及哪些元件支援 Material 3。另請關注 [Material 3 Umbrella issue](https://github.com/flutter/flutter/issues/91605) 瞭解最新開發進展。
+Flutter 3 支援新一代 Material Design，即 [Material Design 3](https://m3.material.io/)。Flutter 3 提供 Material 3 的可選支援，包括動態顏色、最新顏色系統和字型等 Material You 功能，還包含許多元件的更新，以及在 Android 12 中引入的新觸控波紋設計和拉伸滾動等全新視覺效果。我們歡迎大家透過全新的 "[將枯燥無味的 Flutter 應用變得生動有趣](https://codelabs.developers.google.com/codelabs/flutter-boring-to-beautiful)" 的 Codelab 來嘗試 Material 3 的功能特性。請參閱 [API 文件](https://api.flutter.dev/flutter/material/ThemeData/useMaterial3.html)，詳細瞭解如何選用上述新功能特性，以及哪些元件支援 Material 3。另請關注 [Material 3 Umbrella issue](https://github.com/flutter/flutter/issues/91605) 瞭解最新開發進展。
 
 ### **主題擴充**
 
@@ -155,7 +155,7 @@ Flutter 3 支援新一代 Material Design，即 [Material Design 3](https://m3.m
 
 我們知道對於釋出商來說，徵求使用者同意對個性化廣告，以及應對 Apple 的 "應用追蹤透明度 (App Tracking Transparency, ATT)" 要求非常重要。
 
-為了支援這些需求，Google 提供了 "使用者訊息平台 (User Messaging Platform, UMP)" SDK，取代了之前的開源 [Consent SDK](https://github.com/googleads/googleads-consent-sdk-ios)。在即將釋出的 Google 移動廣告 SDK (Flutter) 中，我們會增加對 UMP (使用者訊息平台) SDK 的支援，讓釋出商能夠徵求使用者同意。如需瞭解詳情，請在 pub.dev 上檢視 [google_mobile_ads](https://pub.flutter-io.cn/packages/google_mobile_ads) package 頁面。
+為了支援這些需求，Google 提供了 "使用者訊息平台 (User Messaging Platform, UMP)" SDK，取代了之前的開源 [Consent SDK](https://github.com/googleads/googleads-consent-sdk-ios)。在即將釋出的 Google 移動廣告 SDK (Flutter) 中，我們會增加對 UMP (使用者訊息平台) SDK 的支援，讓釋出商能夠徵求使用者同意。如需瞭解詳情，請在 pub.dev 上檢視 [google_mobile_ads](https://pub.dev/packages/google_mobile_ads) package 頁面。
 
 ## **重大變更**
 

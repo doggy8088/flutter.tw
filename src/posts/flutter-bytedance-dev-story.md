@@ -32,9 +32,9 @@ image:
 
 ## **開發更高效，釋放團隊創意**
 
-[熱重載 (Hot reload)](https://flutter.cn/docs/development/tools/hot-reload) 一直是 Flutter 最令開發者們稱道的開發特性之一，讓工程師不再需要一遍遍地等待漫長的編譯，從而高效除錯程式碼，快速將 UI 設計師的想法變為現實。
+[熱重載 (Hot reload)](https://flutter.tw/development/tools/hot-reload) 一直是 Flutter 最令開發者們稱道的開發特性之一，讓工程師不再需要一遍遍地等待漫長的編譯，從而高效除錯程式碼，快速將 UI 設計師的想法變為現實。
 
-為了讓開發者們能最大限度利用各個平台的原生底層功能，Flutter 還提供了外部功能介面 [FFI](https://flutter.cn/docs/development/platform-integration/c-interop)。這使得 Flutter 應用可以直接呼叫 C++ 層程式碼，提高與硬體互動的效率，同時實現端上深度學習模型的部署。
+為了讓開發者們能最大限度利用各個平台的原生底層功能，Flutter 還提供了外部功能介面 [FFI](https://flutter.tw/development/platform-integration/c-interop)。這使得 Flutter 應用可以直接呼叫 C++ 層程式碼，提高與硬體互動的效率，同時實現端上深度學習模型的部署。
 
 "極課錯題印表機" 和 "極課閱卷大師" 兩款智慧裝置上搭載的應用都使用 Flutter 開發，前者用於放置在校園內供學生們自助列印錯題，後者則可以幫助老師智慧識別學生的答卷以及統計分數。藉助 Flutter，團隊得以為超過 200 所學校的師生快速完成裝置軟體的開發以及迭代。
 

@@ -30,15 +30,15 @@ toc: true
 
 綜上所述，要使您的 Flutter 應用適配 iOS 14，我們強烈建議您立即使用 Flutter 1.22 重新建構應用，然後將其釋出至 App Store，以確保您的 iOS 14 使用者獲得最佳體驗。
 
-有關 Flutter 適配 iOS 14 的更多詳細資訊，包括一些 Add-to-App (將 Flutter 整合至現有應用)、深連結和通知考量因素，請參閱 [Flutter 的 iOS 14 文件](https://flutter.cn/docs/development/ios-14)。
+有關 Flutter 適配 iOS 14 的更多詳細資訊，包括一些 Add-to-App (將 Flutter 整合至現有應用)、深連結和通知考量因素，請參閱 [Flutter 的 iOS 14 文件](https://flutter.tw/development/ios-14)。
 
 希望我們在工具和 SDK 支援方面所做的工作能夠幫助您專注於最關鍵的任務: 充分利用 iOS 14 的新特性。
 
-其中一項特性就是更新了對 iOS 新版 SF Symbols 字型的支援，為此，我們也相應地更新了 [cupertino_icon package](https://pub.flutter-io.cn/packages/cupertino_icons)。將 cupertino_icons 依賴項更新到新的 1.0 主版本後，現有的 CupertinoIcons 呼叫將自動對映為新樣式。如果將 cupertino_icons 1.0 與 Flutter 1.22 結合使用，那麼透過 [CupertinoIcons API](https://api.flutter.cn/flutter/cupertino/CupertinoIcons-class.html)，您將能夠獲得約 900 個新圖示。
+其中一項特性就是更新了對 iOS 新版 SF Symbols 字型的支援，為此，我們也相應地更新了 [cupertino_icon package](https://pub.dev/packages/cupertino_icons)。將 cupertino_icons 依賴項更新到新的 1.0 主版本後，現有的 CupertinoIcons 呼叫將自動對映為新樣式。如果將 cupertino_icons 1.0 與 Flutter 1.22 結合使用，那麼透過 [CupertinoIcons API](https://api.flutter.dev/flutter/cupertino/CupertinoIcons-class.html)，您將能夠獲得約 900 個新圖示。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/xYace4.png)
 
-您可以在 [cupertino_icons](https://flutter.github.io/cupertino_icons/) 預覽頁面中檢視完整的圖示列表，也可以參閱 flutter.dev 上的 [遷移詳情頁](https://flutter.cn/docs/release/breaking-changes/cupertino-icons-1.0.0)。
+您可以在 [cupertino_icons](https://flutter.github.io/cupertino_icons/) 預覽頁面中檢視完整的圖示列表，也可以參閱 flutter.dev 上的 [遷移詳情頁](https://flutter.tw/release/breaking-changes/cupertino-icons-1.0.0)。
 
 針對 iOS 14，您可以使用 Flutter 嘗試的另一項功能是 [App Clips](https://developer.apple.com/app-clips/)，它是 iOS 14 的一項新增功能，支援以快速、免安裝的方式執行 10MB 以下的輕量版本應用。在 Flutter 1.22 版中，我們提供了使用 Flutter 建構輕 App 的功能預覽。
 
@@ -46,7 +46,7 @@ toc: true
 
 > △ 使用 Flutter 建構的輕 App 體驗
 
-有關如何使用 Flutter 建構輕 App 的更多詳細資訊，請參閱技 [術文件](https://flutter.cn/docs/development/platform-integration/ios-app-clip)。您也可以參考這一簡單的 [範例專案](https://github.com/flutter/samples/tree/master/ios_app_clip)。
+有關如何使用 Flutter 建構輕 App 的更多詳細資訊，請參閱技 [術文件](https://flutter.tw/development/platform-integration/ios-app-clip)。您也可以參考這一簡單的 [範例專案](https://github.com/flutter/samples/tree/master/ios_app_clip)。
 
 ## **Android 11**
 
@@ -56,7 +56,7 @@ toc: true
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/opMphv.png)
 
-透過使用 [MediaQuery](https://api.flutter.cn/flutter/widgets/MediaQuery-class.html) 和 [SafeArea](https://api.flutter.cn/flutter/widgets/SafeArea-class.html) API，您可以確保將活動的介面和互動元素放置在裝置顯示屏的無遮擋區域內。另外，您需要避免在瀑布屏邊緣區域內設定手勢檢測，從而避免誤觸問題。
+透過使用 [MediaQuery](https://api.flutter.dev/flutter/widgets/MediaQuery-class.html) 和 [SafeArea](https://api.flutter.dev/flutter/widgets/SafeArea-class.html) API，您可以確保將活動的介面和互動元素放置在裝置顯示屏的無遮擋區域內。另外，您需要避免在瀑布屏邊緣區域內設定手勢檢測，從而避免誤觸問題。
 
 第二，Flutter 應用內顯示軟體鍵盤時的動畫已經可以與 Android 11 實現同步。
 
@@ -72,13 +72,13 @@ Issue [#19279](https://github.com/flutter/flutter/issues/19279) 由來己久，�
 
 * 新建立的外掛將不再適配 v1 API
 * Flutter 工具的 —no-enable-android-embedding-v2 配置標記已移除，現已作為預設行為
-* 仍在使用 v1 API 的舊版應用在建構時會顯示棄用警告，並提供 [支援新版 Android 外掛 API 的文件](https://flutter.cn/docs/development/packages-and-plugins/plugin-api-migration) 入口。
+* 仍在使用 v1 API 的舊版應用在建構時會顯示棄用警告，並提供 [支援新版 Android 外掛 API 的文件](https://flutter.tw/development/packages-and-plugins/plugin-api-migration) 入口。
 
-同時，如果您仍有基於 v1 Android API 的 Flutter 應用，該應用仍然可以執行。但是，您可能會逐漸遇到僅適用於 v2 API 的新版外掛，v1 Android API 則無法使用。有關更多詳細資訊，請參閱 [重大變更文件](https://flutter.cn/docs/release/breaking-changes/android-v1-embedding-create-deprecation)。
+同時，如果您仍有基於 v1 Android API 的 Flutter 應用，該應用仍然可以執行。但是，您可能會逐漸遇到僅適用於 v2 API 的新版外掛，v1 Android API 則無法使用。有關更多詳細資訊，請參閱 [重大變更文件](https://flutter.tw/release/breaking-changes/android-v1-embedding-create-deprecation)。
 
 ## **更加豐富的按鈕樣式**
 
-![](https://flutter.cn/docs/release/breaking-changes/android-v1-embedding-create-deprecation)
+![](https://flutter.tw/release/breaking-changes/android-v1-embedding-create-deprecation)
 
 > △ 一整套新的 Material Design 按鈕
 
@@ -100,13 +100,13 @@ Issue [#19279](https://github.com/flutter/flutter/issues/19279) 由來己久，�
 
 如果您想了解有關 Flutter 本地化支援的更多詳細資訊，包括本地化的訊息，以及含引數、日期、數字和貨幣的訊息，請閱讀 Flutter [國際化使用者指南](https://files.flutter-io.cn/flutter-design-docs/i18n-user-guide.pdf)。
 
-此外，如果您對國際化和本地化感興趣，那麼您可能同樣有興趣瞭解舊的純文字 ASCII 無法支援的字串，例如 Unicode 和表情符號 (emoji)。最近，Dart 團隊釋出了 characters package，可以幫助開發者處理 Unicode (擴充) 字形集。這個 package 可解決諸如如何將類似於 "A 🇬🇧 text in English" 的字串正確地縮短至前 15 個字元一類別的問題。使用 String 類時，縮短的結果是 "A 🇬🇧 text in"，僅含 12 個使用者可感知字元。而使用 [characters package](https://pub.flutter-io.cn/packages/characters) 則會得到正確的結果: "A 🇬🇧 text in Eng"。
+此外，如果您對國際化和本地化感興趣，那麼您可能同樣有興趣瞭解舊的純文字 ASCII 無法支援的字串，例如 Unicode 和表情符號 (emoji)。最近，Dart 團隊釋出了 characters package，可以幫助開發者處理 Unicode (擴充) 字形集。這個 package 可解決諸如如何將類似於 "A 🇬🇧 text in English" 的字串正確地縮短至前 15 個字元一類別的問題。使用 String 類時，縮短的結果是 "A 🇬🇧 text in"，僅含 12 個使用者可感知字元。而使用 [characters package](https://pub.dev/packages/characters) 則會得到正確的結果: "A 🇬🇧 text in Eng"。
 
 基於 [PR59267](https://github.com/flutter/flutter/pull/59267)，Flutter 將使用 characters package 來正確處理這些複雜字元。例如，當使用具有 maxLength 限制的 TextField 時，諸如 👨‍👩‍👦 ‍‍ 的字元現在可以正確地計為單個字元。另外，基於 [PR59620](https://github.com/flutter/flutter/pull/59620)，characters package 在 Flutter 所在的專案中均自動可用，無需手動新增。希望這種方案可以使處理來自所有語言區域的各種字串變得更加容易。有關 characters package 的更多詳細資訊，請參閱《[如何正確處理 Dart 字串](https://medium.com/dartlang/dart-string-manipulation-done-right-5abd0668ba3e)》。
 
 ## **可正式使用的 Google Maps 和 WebView 外掛**
 
-Flutter 團隊在將某項功能標記為 "生產就緒" 前會非常謹慎，並親自完成全面的測試。對於 [google_maps_flutter](https://pub.flutter-io.cn/packages/google_maps_flutter) 和 [webview_flutter](https://pub.flutter-io.cn/packages/webview_flutter) 外掛而言，決斷因素一直是底層的 [Platform Views](http://flutter.cn/docs/development/platform-integration/platform-views) 實現，該實現支援將 Android 和 iOS 系統的原生介面元件託管在 Flutter 應用中。我們很高興地宣佈，我們在此版本的 Flutter 中對框架的基礎進行了充分強化，足以將這兩個外掛標記為 "生產就緒"。
+Flutter 團隊在將某項功能標記為 "生產就緒" 前會非常謹慎，並親自完成全面的測試。對於 [google_maps_flutter](https://pub.dev/packages/google_maps_flutter) 和 [webview_flutter](https://pub.dev/packages/webview_flutter) 外掛而言，決斷因素一直是底層的 [Platform Views](http://flutter.tw/development/platform-integration/platform-views) 實現，該實現支援將 Android 和 iOS 系統的原生介面元件託管在 Flutter 應用中。我們很高興地宣佈，我們在此版本的 Flutter 中對框架的基礎進行了充分強化，足以將這兩個外掛標記為 "生產就緒"。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/8kusLr.gif)
 
@@ -114,13 +114,13 @@ Flutter 團隊在將某項功能標記為 "生產就緒" 前會非常謹慎，�
 
 在 Flutter 1.22 中，我們新增了備選的 Platform Views 實現，修復了 [Android 檢視所有已知的鍵盤和無障礙問題](https://github.com/flutter/flutter/issues/61133)。此外，該版本還支援 Android API 19 及更高級別 (此前曾要求 API 級別 20)。我們還在 iOS 上進行了執行緒改進，使 Platform Views 更為高效可靠 (並且您不再需要將 `io.flutter.embedded_views_preview` 標記新增到 iOS Info.plist 中)。
 
-[webview_flutter](https://pub.flutter-io.cn/packages/webview_flutter) 外掛支援新的 Android Platform Views 模式，但目前需要 [手動啟用](https://github.com/flutter/plugins/blob/master/packages/webview_flutter/README.md#android)。當該功能在更廣泛的社群中得到更多使用後，我們會在未來版本中預設啟用它。
+[webview_flutter](https://pub.dev/packages/webview_flutter) 外掛支援新的 Android Platform Views 模式，但目前需要 [手動啟用](https://github.com/flutter/plugins/blob/master/packages/webview_flutter/README.md#android)。當該功能在更廣泛的社群中得到更多使用後，我們會在未來版本中預設啟用它。
 
-Google Maps 和 WebView 外掛已經從 Platform Views 的改進中受益。如果您想使用 Platform Views 來託管 iOS 或 Android 中的原生介面元件，可以前往 [這裡](https://flutter.cn/docs/development/platform-integration/platform-views) 瞭解相關方法。
+Google Maps 和 WebView 外掛已經從 Platform Views 的改進中受益。如果您想使用 Platform Views 來託管 iOS 或 Android 中的原生介面元件，可以前往 [這裡](https://flutter.tw/development/platform-integration/platform-views) 瞭解相關方法。
 
 ## **Navigator 2.0**
 
-如果您曾在 Flutter 應用中使用過 [導航](https://flutter.cn/docs/development/ui/navigation)，那麼您可能已經注意到核心資料結構 (即使用者所瀏覽的頁面堆疊) 是對您隱藏的。要對其進行管理，您需呼叫 Navigator.pop() 或 Navigator.push()。舉例來說，假設您想在首頁上顯示一系列 widget，使用者點按一個 widget 後轉到呈現該顏色的詳細資訊頁面 (如下圖所示)。
+如果您曾在 Flutter 應用中使用過 [導航](https://flutter.tw/development/ui/navigation)，那麼您可能已經注意到核心資料結構 (即使用者所瀏覽的頁面堆疊) 是對您隱藏的。要對其進行管理，您需呼叫 Navigator.pop() 或 Navigator.push()。舉例來說，假設您想在首頁上顯示一系列 widget，使用者點按一個 widget 後轉到呈現該顏色的詳細資訊頁面 (如下圖所示)。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/XmAMxs.png)
 
@@ -232,7 +232,7 @@ Navigator 2.0 看起來與 Flutter 的其餘部分相似，這種設計是有意
 
 對於不熟悉狀態恢復需求的使用者: 移動作業系統可能會終止後臺應用以回收資源供前臺應用使用。發生這種情況時，作業系統會通知該應用即將被終止以便其快速儲存介面狀態，從而在使用者切換回該應用時能夠恢復。正確實現該操作後，既能為使用者提供無縫體驗，也可以更好地利用裝置資源。Flutter 此前尚不支援狀態恢復，因為在不具備框架支援的情況下很難正確地實現狀態恢復。正因如此，我們很高興能夠在 Android 平臺中提供此功能的基礎實現。
 
-下面是一個恢復 Flutter Counter 應用狀態的非常簡單的 [範例](https://api.flutter.cn/flutter/widgets/RestorationMixin-mixin.html#widgets.RestorationMixin.1):
+下面是一個恢復 Flutter Counter 應用狀態的非常簡單的 [範例](https://api.flutter.dev/flutter/widgets/RestorationMixin-mixin.html#widgets.RestorationMixin.1):
 
 ```
 class CounterState extends State<RestorableCounter> with RestorationMixin {
@@ -254,11 +254,11 @@ class CounterState extends State<RestorableCounter> with RestorationMixin {
 }
 ```
 
-簡而言之，每個 widget 都有一個儲存分割槽，該儲存分割槽使用唯一 ID 註冊到 [RestorationMixin](https://api.flutter.cn/flutter/widgets/RestorationMixin-mixin.html)。透過使用 [RestorableProperty](https://master-api.flutter-io.cn/flutter/widgets/RestorableProperty-class.html) 型別 (如此例使用的 RestorableInt) 儲存特定於介面的資料，並向狀態恢復功能註冊該資料，即可在 Android 終止應用前自動儲存資料，並在應用恢復執行時恢復資料，就是這麼簡單。所有以 Restoration* 型別儲存的資料 (如 RestorableInt、RestorableString 和 RestorableTextEditingController，不勝列舉) 都能被恢復。而且，如果我們未能覆蓋您想要恢復的型別，您也可以透過擴充 [RestorableProperty<T>](https://api.flutter.cn/flutter/widgets/RestorableProperty-class.html) 來建立自己的型別。
+簡而言之，每個 widget 都有一個儲存分割槽，該儲存分割槽使用唯一 ID 註冊到 [RestorationMixin](https://api.flutter.dev/flutter/widgets/RestorationMixin-mixin.html)。透過使用 [RestorableProperty](https://master-api.flutter.dev/flutter/widgets/RestorableProperty-class.html) 型別 (如此例使用的 RestorableInt) 儲存特定於介面的資料，並向狀態恢復功能註冊該資料，即可在 Android 終止應用前自動儲存資料，並在應用恢復執行時恢復資料，就是這麼簡單。所有以 Restoration* 型別儲存的資料 (如 RestorableInt、RestorableString 和 RestorableTextEditingController，不勝列舉) 都能被恢復。而且，如果我們未能覆蓋您想要恢復的型別，您也可以透過擴充 [RestorableProperty<T>](https://api.flutter.dev/flutter/widgets/RestorableProperty-class.html) 來建立自己的型別。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/ZUSUID.png)
 
-為了自動測試狀態恢復，我們 [為 WidgetTester 添加了一個新的 restartAndRestore API](https://api.flutter.cn/flutter/flutter_test/WidgetTester/restartAndRestore.html)。要進行手動測試，最簡單的方法是在 Android 裝置上啟動已啟用狀態恢復功能的 Flutter 應用，在 Android 的開發者設定中開啟 "Don’t keep activities"，執行 Flutter 應用並將其置於後臺，然後再切換回該應用。此時，Android 已終止並恢復您的應用，屆時您可以檢查是否一切正常。
+為了自動測試狀態恢復，我們 [為 WidgetTester 添加了一個新的 restartAndRestore API](https://api.flutter.dev/flutter/flutter_test/WidgetTester/restartAndRestore.html)。要進行手動測試，最簡單的方法是在 Android 裝置上啟動已啟用狀態恢復功能的 Flutter 應用，在 Android 的開發者設定中開啟 "Don’t keep activities"，執行 Flutter 應用並將其置於後臺，然後再切換回該應用。此時，Android 已終止並恢復您的應用，屆時您可以檢查是否一切正常。
 
 雖然我們很高興為您提供狀態恢復的預覽版本，但還有更多工作待完成。例如，狀態恢復不僅適用於 Android，iOS 應用也將從中受益。此外，我們也在致力於更新 Flutter widget，以在恢復時保持其狀態。我們已經在 Scrollable 類中提供了支援，例如 ListView 和 SingleChildScrollView (用於記住使用者的滾動位置) 和 TextFields (用於恢復使用者輸入的文字)，並且我們計劃將這些支援擴充至其他 widget。
 
@@ -311,13 +311,13 @@ Flutter 1.22 還帶來了新的輸出應用體積分析的實用工具。此工�
 
 > △ Flutter Gallery 釋出版本 APK 的細分範例
 
-此摘要有助於快速識別應用軟體套件中的尺寸熱點。此外，收集到的資料還可作為 JSON 檔案用於 Dart DevTools，您可以按照 [Flutter 文件上的說明](https://flutter.cn/docs/development/tools/devtools/app-size) 進一步瀏覽應用的內容、查明大小問題以及比較兩個不同 JSON 檔案之間的差異。載入 JSON 檔案後會出現一個介面，其中提供了應用尺寸情況的樹狀圖。
+此摘要有助於快速識別應用軟體套件中的尺寸熱點。此外，收集到的資料還可作為 JSON 檔案用於 Dart DevTools，您可以按照 [Flutter 文件上的說明](https://flutter.tw/development/tools/devtools/app-size) 進一步瀏覽應用的內容、查明大小問題以及比較兩個不同 JSON 檔案之間的差異。載入 JSON 檔案後會出現一個介面，其中提供了應用尺寸情況的樹狀圖。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/GedErZ.png)
 
 > △ Dart DevTools 中的 APK 細分範例
 
-更多有關您可以使用應用尺寸工具執行的操作，請參閱文件: [使用應用尺寸工具](https://flutter.cn/docs/development/tools/devtools/app-size)。
+更多有關您可以使用應用尺寸工具執行的操作，請參閱文件: [使用應用尺寸工具](https://flutter.tw/development/tools/devtools/app-size)。
 
 ## **預覽: 在 DevTools 中更新了 Network 頁面**
 
@@ -331,7 +331,7 @@ Flutter 1.22 還帶來了新的輸出應用體積分析的實用工具。此工�
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/10HBMU.png)
 
-有關 **Network** 標籤的文件，請參閱 [使用網路檢視  (Network View)](https://flutter.cn/docs/development/tools/devtools/network) 的說明。
+有關 **Network** 標籤的文件，請參閱 [使用網路檢視  (Network View)](https://flutter.tw/development/tools/devtools/network) 的說明。
 
 ## **IntelliJ 中託管的 DevTools Inspector 標籤**
 

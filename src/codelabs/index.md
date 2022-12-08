@@ -132,7 +132,7 @@ one of these codelabs:
   on the dart.dev site.
 
   [Dart 空安全實戰][Dart null safety in Action] (workshop)<br>
-  基於 dart.cn 站點上的 [空安全 codelab][Null safety codelab] 的講師指導版 workshop。
+  基於 dart.tw.gh.miniasp.com 站點上的 [空安全 codelab][Null safety codelab] 的講師指導版 workshop。
 
 * [How to manage application states using inherited widgets][inherited-widget-ws] (workshop)<br>
   Learn how to manage the state of your app's data by

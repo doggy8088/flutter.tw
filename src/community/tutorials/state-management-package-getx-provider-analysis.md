@@ -6,7 +6,7 @@ toc: true
 文/ Nayuta，CFUG 社群
 
 狀態管理一直是 Flutter 開發中一個火熱的話題。談到狀態管理框架，社群也有諸如有以
-[Get](https://pub.flutter-io.cn/packages/get)、[Provider](https://pub.flutter-io.cn/packages/provider)
+[Get](https://pub.dev/packages/get)、[Provider](https://pub.dev/packages/provider)
 為代表的多種方案，它們有各自的優缺點。
 面對這麼多的選擇，你可能會想：「我需要使用狀態管理麼？哪種框架更適合我？」
 本文將從作者的實際開發經驗出發，分析狀態管理解決的問題以及思路，希望能幫助你做出選擇。
@@ -15,7 +15,7 @@ toc: true
 
 首先，為什麼需要狀態管理？
 根據筆者的經驗，這是因為 Flutter 基於
-[**宣告式**](https://flutter.cn/docs/resources/architectural-overview#reactive-user-interfaces) 建構 UI ，
+[**宣告式**](https://flutter.tw/resources/architectural-overview#reactive-user-interfaces) 建構 UI ，
 使用狀態管理的目的之一就是解決「宣告式」開發帶來的問題。
 
 「宣告式」開發是一種區別於傳原生的方式，所以我們沒有在原生開發中聽到過狀態管理，那如何理解「宣告式」開發呢？

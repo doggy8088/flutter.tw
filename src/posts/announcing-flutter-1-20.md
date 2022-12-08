@@ -31,7 +31,7 @@ Flutter 團隊一直在尋找縮減應用大小和延遲的新方法。對於大
 △ 使用和不使用 SkSL 預熱的動畫
 
 如果 Flutter 應用在首次執行時的動畫出現卡頓，那麼 Skia Shading Language 著色器將在應用建構中提供預編譯，將速度提高 2 倍以上。
-如果您想使用此高階功能，請參見 flutter 文件中的 [SkSL 預熱頁面](https://flutter.cn/docs/perf/shader)。
+如果您想使用此高階功能，請參見 flutter 文件中的 [SkSL 預熱頁面](https://flutter.tw/perf/shader)。
 
 最後，在針對桌面環境的最佳化中，我們進一步完善了對滑鼠的支援。在此版本，我們 [重構了滑鼠點選測試系統](https://github.com/flutter/flutter/pull/59883)，帶來了許多曾因效能問題受阻的架構優勢。在基於 web 的微型基準測試中，重構使效能提高了多達 15 倍！這意味著，您可以在保證效能的前提下，獲得更好、更一致、更準確的點選測試結果：實現雙贏！
 
@@ -61,7 +61,7 @@ Flutter 團隊一直在尋找縮減應用大小和延遲的新方法。對於大
 
 △　InteractiveViewer 的縮放、平移、調整大小與拖放
 
-請檢視 [API 文件](https://api.flutter.cn/flutter/widgets/InteractiveViewer-class.html)，瞭解如何將 InteractiveViewer 整合到您自己的應用中，您也可以在 DartPad 中快速進行體驗。另外，如果您想了解 InteractiveViewer 的設計和開發經歷，可以觀看 ChicagoFlutter 釋出的[演講影片](https://www.youtube.com/watch?v=ChFa0A72Uto)。
+請檢視 [API 文件](https://api.flutter.dev/flutter/widgets/InteractiveViewer-class.html)，瞭解如何將 InteractiveViewer 整合到您自己的應用中，您也可以在 DartPad 中快速進行體驗。另外，如果您想了解 InteractiveViewer 的設計和開發經歷，可以觀看 ChicagoFlutter 釋出的[演講影片](https://www.youtube.com/watch?v=ChFa0A72Uto)。
 
 有興趣在 Flutter 應用中加入更多類似 InteractiveViewer 的互動？歡迎瞭解一下我們在這一版本 [對拖放功能所做的增強](https://github.com/monkeyswarm/DragTargetDetailsExample)。具體來說，如果您想知道拖拽的“放置”操作發生在目標 widget（始終對 Draggable 物件可用）上的精確位置，現在您可以透過 DragTarget 的 onAcceptDetails 方法獲得該資訊。
 
@@ -117,7 +117,7 @@ Flutter 團隊一直在尋找縮減應用大小和延遲的新方法。對於大
 
 △ 外掛釋出時使用舊 pubspec 格式後收到的錯誤訊息
 
-舊格式不能指定外掛支援的平台，自 Flutter 1.12 起已棄用。現在，釋出新的外掛或更新外掛時需要使用 [新的 pubspec.yaml 格式](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#plugin-platforms)。
+舊格式不能指定外掛支援的平台，自 Flutter 1.12 起已棄用。現在，釋出新的外掛或更新外掛時需要使用 [新的 pubspec.yaml 格式](https://flutter.tw/development/packages-and-plugins/developing-packages#plugin-platforms)。
 
 對於外掛的使用者，開發工具在當下和可預見的將來仍然能理解舊 pubspec 格式。在可預見的將來，pub.dev 上所有使用舊 pubspec.yaml 格式的既有外掛可繼續在 Flutter 應用中使用。
 
@@ -179,11 +179,11 @@ Visual Studio Code 的另一個新功能是當檔案被移動或重新命名時�
 
 ## 平台互操作的型別安全平台通道
 
-為了回應外掛作者在使用者調研中的普遍需求，最近，我們一直以 [外掛](https://flutter.cn/docs/development/packages-and-plugins/developing-packages) 和 [Add-to-App](https://flutter.cn/docs/development/add-to-app) （部分使用了 Flutter 的應用）為物件，探求如何才能讓 Flutter 與宿主平台之間的通訊更安全、更輕鬆。為了滿足這一需求，我們建立了命令列工具 [Pigeon](https://pub.flutter-io.cn/packages/pigeon)，使用 Dart 語法在平台通道上產生型別安全的訊息程式碼，無需新增其他執行時依賴項。您無需在平台通道上手動匹配方法字串和序列化引數，就可以呼叫 Java/Objective-C/Kotlin/Swift 類方法，並透過直接呼叫 Dart 方法傳遞非原始型別資料物件（反之亦然）。
+為了回應外掛作者在使用者調研中的普遍需求，最近，我們一直以 [外掛](https://flutter.tw/development/packages-and-plugins/developing-packages) 和 [Add-to-App](https://flutter.tw/development/add-to-app) （部分使用了 Flutter 的應用）為物件，探求如何才能讓 Flutter 與宿主平台之間的通訊更安全、更輕鬆。為了滿足這一需求，我們建立了命令列工具 [Pigeon](https://pub.dev/packages/pigeon)，使用 Dart 語法在平台通道上產生型別安全的訊息程式碼，無需新增其他執行時依賴項。您無需在平台通道上手動匹配方法字串和序列化引數，就可以呼叫 Java/Objective-C/Kotlin/Swift 類方法，並透過直接呼叫 Dart 方法傳遞非原始型別資料物件（反之亦然）。
 
 ![](https://devrel.andfun.cn/devrel/posts/2020/08/607007baf455d.png)
 
-Pigeon 雖然處於預釋出階段，但已經足夠成熟，我們已經將其用於 [video_player](https://pub.flutter-io.cn/packages/video_player) 外掛。如果您有興趣測試 Pigeon 供自己使用，請參見更新的 [平台通道文件](https://flutter.cn/docs/development/platform-integration/platform-channels#pigeon) 以及此 [範例專案](https://github.com/flutter/samples/tree/master/add_to_app/flutter_module_books)。
+Pigeon 雖然處於預釋出階段，但已經足夠成熟，我們已經將其用於 [video_player](https://pub.dev/packages/video_player) 外掛。如果您有興趣測試 Pigeon 供自己使用，請參見更新的 [平台通道文件](https://flutter.tw/development/platform-integration/platform-channels#pigeon) 以及此 [範例專案](https://github.com/flutter/samples/tree/master/add_to_app/flutter_module_books)。
 
 ## 還有眾多工具更新，不勝列舉
 
@@ -201,15 +201,15 @@ Pigeon 雖然處於預釋出階段，但已經足夠成熟，我們已經將其�
 
 與往常一樣，我們盡力將重要改動（breaking changes）的數量維持在較低水平。以下是 Flutter 1.20 版本中的重要改動列表。
 
-* [55336](https://github.com/flutter/flutter/pull/55336)：將 tabSemanticsLabel 新增到 CupertinoLocalizations - 遷移 [指南 PR](https://flutter.cn/docs/release/breaking-changes/cupertino-tab-bar-localizations)
+* [55336](https://github.com/flutter/flutter/pull/55336)：將 tabSemanticsLabel 新增到 CupertinoLocalizations - 遷移 [指南 PR](https://flutter.tw/release/breaking-changes/cupertino-tab-bar-localizations)
 * [55977](https://github.com/flutter/flutter/pull/55977)：[將 clipBehavior 新增至具有 clipRect 的 widget](https://files.flutter-io.cn/flutter-design-docs/Clip_Behavior.docx)
 * [55998](https://github.com/flutter/flutter/pull/55998)：[為 Navigator 的 TransitionDelegate 新加入了 isWaitingForExitingDecision 判斷。](https://groups.google.com/forum/#!searchin/flutter-announce/55998%7Csort:date/flutter-announce/yoq2VGi94q8/8pTsRL28AQAJ)	
-* [56582](https://github.com/flutter/flutter/pull/56582)：[更新 Cupertino 中的 Tab 語義，使其與 Material 相同](https://flutter.cn/docs/release/breaking-changes/cupertino-tab-bar-localizations#migration-guide)
+* [56582](https://github.com/flutter/flutter/pull/56582)：[更新 Cupertino 中的 Tab 語義，使其與 Material 相同](https://flutter.tw/release/breaking-changes/cupertino-tab-bar-localizations#migration-guide)
 * [57065](https://github.com/flutter/flutter/pull/57065)：移除 NestedScrollView 重疊管理條中被棄用的子引數	
 * [58392](https://github.com/flutter/flutter/pull/58392)：確保在 iOS 裡的系統行為一致性，為 CupertinoActivityIndicator 加入 progress 引數
 
 ## 總結
 
-希望您和我們一樣喜愛這一版本。從很多角度來看，這都是 Flutter 迄今為止規模最大的版本釋出。其中包含效能的顯著提升、新增並更新了許多 widget，以及對工具做出的諸多改進，考慮到文章篇幅我們只能著重介紹部分亮點。我們要向大家致謝，感謝不斷壯大的社群貢獻者群體，讓每一個 Flutter 版本都比先前功能更豐富、執行更流暢、效能更強大。敬請期待更多內容，包括 [空安全](http://dart.cn/null-safety)支援、新版本的 Ads、Maps 和 WebView 外掛，以及正在建構的更多工具支援。（也歡迎大家閱讀 Bob Nystrom 的文章以深入 [瞭解空安全](https://dart.cn/null-safety/understanding-null-safety)）
+希望您和我們一樣喜愛這一版本。從很多角度來看，這都是 Flutter 迄今為止規模最大的版本釋出。其中包含效能的顯著提升、新增並更新了許多 widget，以及對工具做出的諸多改進，考慮到文章篇幅我們只能著重介紹部分亮點。我們要向大家致謝，感謝不斷壯大的社群貢獻者群體，讓每一個 Flutter 版本都比先前功能更豐富、執行更流暢、效能更強大。敬請期待更多內容，包括 [空安全](http://dart.tw.gh.miniasp.com/null-safety)支援、新版本的 Ads、Maps 和 WebView 外掛，以及正在建構的更多工具支援。（也歡迎大家閱讀 Bob Nystrom 的文章以深入 [瞭解空安全](https://dart.tw.gh.miniasp.com/null-safety/understanding-null-safety)）
 
 Flutter 和工具已經全新升級，您會打造出怎樣精彩的 Flutter 作品呢？

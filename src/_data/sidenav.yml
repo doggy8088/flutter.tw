@@ -27,7 +27,7 @@
         - title: 宣告式 UI 介紹
           permalink: /docs/get-started/flutter-for/declarative
     - title: Dart 語言概覽
-      permalink: https://dart.cn/overview
+      permalink: https://dart.tw.gh.miniasp.com/overview
     - title: 建構一個 Web 應用
       permalink: /docs/get-started/web
 
@@ -231,7 +231,7 @@
         - title: 使用 Packages
           permalink: /docs/development/packages-and-plugins/using-packages
         - title: Package 和外掛網站
-          permalink: https://pub.flutter-io.cn/flutter
+          permalink: https://pub.dev/flutter
     - title: 將 Flutter 新增到現有應用
       permalink: /docs/development/add-to-app
       children:
@@ -430,11 +430,11 @@
     - title: 休閒遊戲工具套件 [新增]
       permalink: /docs/resources/games-toolkit
     - title: 使用 Google 字型庫
-      permalink: https://pub.flutter-io.cn/packages/google_fonts
+      permalink: https://pub.dev/packages/google_fonts
     - title: Flutter 工作原理
       permalink: /docs/resources/inside-flutter
     - title: 官方品牌資源
-      permalink: https://flutter.cn/brand
+      permalink: https://flutter.tw/brand
     - title: 平台行為差異和適配
       permalink: /docs/resources/platform-adaptations
     - title: 技術影片和線上資源
@@ -448,8 +448,8 @@
     - title: Flutter Widget 目錄
       permalink: /docs/reference/widgets
     - title: Flutter API 文件
-      permalink: https://api.flutter-io.cn
+      permalink: https://api.flutter.dev
     - title: flutter 命令列文件
       permalink: /docs/reference/flutter-cli
     - title: Package 網站
-      permalink: https://pub.flutter-io.cn/flutter
+      permalink: https://pub.dev/flutter

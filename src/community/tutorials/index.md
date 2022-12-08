@@ -46,24 +46,24 @@ Flutter 中文社群課程由社群的開發者投稿，投稿稽核透過之後
 
 ### 效能相關
 
-- [Flutter 上的記憶體洩漏監控](tutorials/memory-leak-monitoring-on-flutter)
+- [Flutter 上的記憶體洩漏監控](/community/tutorials/memory-leak-monitoring-on-flutter)
 
 ### 路由和狀態管理
 
-- [Flutter Navigator 2.0 指南與原理解析](tutorials/understanding-navigator-v2)
-- [Flutter 狀態管理：使用 MobX](tutorials/flutter-state-management-with-mobx)
-- [Flutter 狀態管理框架 Provider 和 Get 分析](tutorials/state-management-package-getx-provider-analysis)
+- [Flutter Navigator 2.0 指南與原理解析](/community/tutorials/understanding-navigator-v2)
+- [Flutter 狀態管理：使用 MobX](/community/tutorials/flutter-state-management-with-mobx)
+- [Flutter 狀態管理框架 Provider 和 Get 分析](/community/tutorials/state-management-package-getx-provider-analysis)
 
 ### 設計模式 (專欄)
 
-- [Flutter(able) 的單例模式](tutorials/singleton-pattern-in-flutter-n-dart)
-- [流動的觀察者模式](tutorials/observer-pattern-in-flutter-n-dart)
-- [靈動的介面卡模式](tutorials/adapter-pattern-in-flutter-n-dart)
-- [工廠模式家族](tutorials/factory-pattern-in-flutter-n-dart)
+- [Flutter(able) 的單例模式](/community/tutorials/singleton-pattern-in-flutter-n-dart)
+- [流動的觀察者模式](/community/tutorials/observer-pattern-in-flutter-n-dart)
+- [靈動的介面卡模式](/community/tutorials/adapter-pattern-in-flutter-n-dart)
+- [工廠模式家族](/community/tutorials/factory-pattern-in-flutter-n-dart)
 
 ### 工程實踐
 
-- [如何實現一個精準滑動埋點](tutorials/flutter-accurate-rolling-exposure-practice)
+- [如何實現一個精準滑動埋點](/community/tutorials/flutter-accurate-rolling-exposure-practice)
 
 ### 開源生態產品釋出
 
@@ -72,14 +72,14 @@ Flutter 中文社群課程由社群的開發者投稿，投稿稽核透過之後
 
 ### Flutter x TensorFlow
 
-- [在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類](tutorials/text-classification-using-tensorflow-lite-plugin-for-flutter)
+- [在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類](/community/tutorials/text-classification-using-tensorflow-lite-plugin-for-flutter)
 
 ## Dart 技術分享
 
 ### Dart 語言
 
-- [深入理解 Function & Closure](tutorials/deep-dive-into-dart-s-function-closure)
+- [深入理解 Function & Closure](/community/tutorials/deep-dive-into-dart-s-function-closure)
 
 ### DartPad
 
-- [使用 DartPad 製作程式碼實踐課程](tutorials/how-to-use-dartpad-workshop)
+- [使用 DartPad 製作程式碼實踐課程](/community/tutorials/how-to-use-dartpad-workshop)

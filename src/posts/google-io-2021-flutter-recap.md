@@ -21,7 +21,7 @@ Flutter 在今年的 Google I/O 上釋出了許多重磅更新，歡迎大家和
 
 ## 預設啟用空安全
 
-自 Flutter 2.2 起，所有新專案會預設啟用空安全。請閱讀 [中文文件](https://dart.cn/null-safety/migration-guide)，瞭解遷移至空安全的詳細步驟。
+自 Flutter 2.2 起，所有新專案會預設啟用空安全。請閱讀 [中文文件](https://dart.tw.gh.miniasp.com/null-safety/migration-guide)，瞭解遷移至空安全的詳細步驟。
 
 ## 桌面版更新
 

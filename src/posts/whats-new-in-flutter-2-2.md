@@ -5,7 +5,7 @@ toc: true
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/fHLvPr.jpg)
 
-[Flutter 2.2 版](https://flutter.cn/posts/announcing-flutter-2-2?t=1)已正式釋出！要獲取新版本，您只需切換到 stable 渠道並更新目前安裝的 Flutter，或前往 [flutter.cn/docs/get-started](https://flutter.cn/docs/get-started) 從頭開始安裝。
+[Flutter 2.2 版](https://flutter.cn/posts/announcing-flutter-2-2?t=1)已正式釋出！要獲取新版本，您只需切換到 stable 渠道並更新目前安裝的 Flutter，或前往 [flutter.cn/docs/get-started](https://flutter.tw/get-started) 從頭開始安裝。
 
 雖然與 2.0 版只相隔數月，2.2 版還是滿載大量改進。此版本共計納入了框架、引擎和外掛庫等方面的 2,456 個 PR 並解決了 3,105 個問題。我們要特此鳴謝為此版本貢獻了大量 PR 和 PR review 的整個 Flutter 社群，包括 PR 貢獻最多 (17) 的 [Abhishek01039](https://github.com/Abhishek01039) 和 PR review 貢獻最多 (9) 的 [xu-baolin](https://github.com/xu-baolin)。衷心感謝所有開發者對 Flutter 2.2 順利釋出穩定版做出的貢獻。沒有大家的支援，我們將無法做到。
 
@@ -41,7 +41,7 @@ typedef OldClassName<T> = NewClassName<T>;
 
 要啟用此項變更，您需要重新產生您的 Flutter 應用的 `index.html`。具體來說，請儲存您的修改、刪除 `index.html` 檔案，然後在專案目錄中執行 `flutter create` . 以重新產生該檔案。
 
-我們還對兩個 web 渲染器都做了改進。在 HTML 渲染器上，我們添加了對 [字型特性](https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings) 的支援，以啟用 [`FontFeature`](https://api.flutter-io.cn/flutter/dart-ui/FontFeature-class.html) 設定並使用 canvas API 渲染文字，從而使滑鼠懸停處的文字能夠顯示在適當的位置。在 HTML 和 CanvasKit 渲染器上，我們新增了對著色器遮罩 (shader masks) 和 [`computeLineMetrics`](https://api.flutter-io.cn/flutter/painting/TextPainter/computeLineMetrics.html) 的支援，以解決 Flutter web 應用和移動應用兩者不一致的問題。例如，開發者現在可以透過 [不透明度遮罩](https://api.flutter-io.cn/flutter/widgets/Opacity-class.html) 使用著色器遮罩實現淡出轉場，並像在移動應用中一樣使用 `computeLineMetrics`。
+我們還對兩個 web 渲染器都做了改進。在 HTML 渲染器上，我們添加了對 [字型特性](https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings) 的支援，以啟用 [`FontFeature`](https://api.flutter.dev/flutter/dart-ui/FontFeature-class.html) 設定並使用 canvas API 渲染文字，從而使滑鼠懸停處的文字能夠顯示在適當的位置。在 HTML 和 CanvasKit 渲染器上，我們新增了對著色器遮罩 (shader masks) 和 [`computeLineMetrics`](https://api.flutter.dev/flutter/painting/TextPainter/computeLineMetrics.html) 的支援，以解決 Flutter web 應用和移動應用兩者不一致的問題。例如，開發者現在可以透過 [不透明度遮罩](https://api.flutter.dev/flutter/widgets/Opacity-class.html) 使用著色器遮罩實現淡出轉場，並像在移動應用中一樣使用 `computeLineMetrics`。
 
 無障礙功能不但是 Flutter web 的一大重點，也是整個 Flutter 的一個重心所在。按照設計，是透過建構 `SemanticsNode` 樹來實現無障礙功能。Flutter web 應用的使用者啟用無障礙功能後，我們會產生一個與 `RenderObject` DOM 樹並行的 DOM 樹，並將語義屬性轉換為 Aira。在此版本中，我們改進了語義節點位置，消除了移動應用和 web 應用在使用轉換 (transform) 時的不一致，這意味著在使用轉換對 widget 進行樣式設定時，焦點框會正確地顯示在元素上方。如需直觀瞭解其實際效果，您可以觀看 Material Design 無障礙專案負責人 Victor Tsaran 的影片，瞭解他如何對 [Flutter Gallery App 使用 VoiceOver](https://devrel.andfun.cn/devrel/posts/2021/05/yFhscX.mp4)。
 
@@ -76,7 +76,7 @@ $ flutter run -d chrome --profile \
 
 隨著 Flutter 穩定版逐步支援更多平臺，您在設計應用時不僅需要考慮相容不同的裝置型別 (如手機、平板電腦和桌面電腦)，還需要考慮支援不同的輸入方式 (觸控與鍵鼠)，以及適配各個平臺上的不同使用習慣 (例如在導航時是使用抽屜式導航欄還是系統選單)。如果應用能夠根據不同目標平台的細節差異做出相應調整，我們就稱之為平台自適應應用。
 
-如果您想初步瞭解在建構平台自適應應用時要考慮哪些因素，請觀看 Kevin Moore 關於 "[建構平台自適應應用](https://events.google.com/io/session/868dfd56-7f8c-49ee-84ad-ac69a23ba19d?lng=en)" 的影片。如需詳細瞭解，您可以閱讀 [Flutter 文件中關於平台自適應應用的指南](https://flutter.cn/docs/development/ui/layout/building-adaptive-apps)。
+如果您想初步瞭解在建構平台自適應應用時要考慮哪些因素，請觀看 Kevin Moore 關於 "[建構平台自適應應用](https://events.google.com/io/session/868dfd56-7f8c-49ee-84ad-ac69a23ba19d?lng=en)" 的影片。如需詳細瞭解，您可以閱讀 [Flutter 文件中關於平台自適應應用的指南](https://flutter.tw/development/ui/layout/building-adaptive-apps)。
 
 最後，如需參考遵循這些指南編寫出的多平臺應用範例。我們建議您看看 gSkinner 打造的 [Flokk](https://flutter.gskinner.com/flokk) 和 [Flutter Folio](https://flutter.gskinner.com/folio) 應用。您既可以下載 [Flokk](https://github.com/gskinnerTeam/flokk) 和 [Folio](https://github.com/gskinnerTeam/flutter-folio) 的原始碼，也可以從各個應用商店下載 [Flokk](https://flutter.gskinner.com/flokk/#g-download) 和 [Folio](https://flutter.gskinner.com/folio/#g-download) 應用，還可以直接在瀏覽器中執行它們。另一個優秀範例是 [用於建立指南本身的應用](https://www.youtube.com/watch?v=8YUIrIGGc3Y)。
 
@@ -257,7 +257,7 @@ class HomePage extends StatelessWidget {
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/t8U8U6.png)
 
-如果您不喜歡捲軸的外觀或不想讓捲軸一直顯示，可以設定 [`ScrollBarTheme`](https://api.flutter-io.cn/flutter/material/ThemeData/scrollbarTheme.html)。如果您不喜歡該預設行為，可以在應用層級或具體例項層級透過設定 [`ScrollBehavior`](https://api.flutter-io.cn/flutter/widgets/ScrollBehavior-class.html) 來對其進行更改。如需詳細瞭解新的預設捲軸行為以及如何遷移程式碼以遵循新的最佳實踐，請參閱 [Flutter 官方文件](https://flutter.cn/docs/release/breaking-changes/default-desktop-scrollbars)。
+如果您不喜歡捲軸的外觀或不想讓捲軸一直顯示，可以設定 [`ScrollBarTheme`](https://api.flutter.dev/flutter/material/ThemeData/scrollbarTheme.html)。如果您不喜歡該預設行為，可以在應用層級或具體例項層級透過設定 [`ScrollBehavior`](https://api.flutter.dev/flutter/widgets/ScrollBehavior-class.html) 來對其進行更改。如需詳細瞭解新的預設捲軸行為以及如何遷移程式碼以遵循新的最佳實踐，請參閱 [Flutter 官方文件](https://flutter.tw/release/breaking-changes/default-desktop-scrollbars)。
 
 **TextSpan 上的滑鼠指標**
 
@@ -341,7 +341,7 @@ class HomePage extends StatelessWidget {
 * 最終產生的機器碼會在應用首次執行後得到快取，直到裝置被重新啟動。
 
 如果您希望在自己的應用中使用此新功能，可以參考
-[Flutter 官方文件](https://flutter.cn/docs/perf/shader#how-to-use-sksl-warmup) 上的說明進行操作。
+[Flutter 官方文件](https://flutter.tw/perf/shader#how-to-use-sksl-warmup) 上的說明進行操作。
 
 我們將持續改進此實現方案。在 Android 和 iOS 上，它目前有幾個缺點:
 
@@ -363,7 +363,7 @@ class HomePage extends StatelessWidget {
 
 如果在建構應用時啟用延遲載入元件，Dart 會將那些單獨用 `deferred` 關鍵字匯入的程式碼編譯到獨立的共享庫中，並將這些庫與相關資源一起打包為延遲載入元件。
 
-該功能還處於早期預覽階段，目前只支援 Android。您可以在 Flutter 官方文件上新的 [延遲載入元件](https://flutter.cn/docs/perf/deferred-components) 頁面中瞭解如何實現此類元件。此頁面還連結到了 Flutter wiki 上的一個頁面，後者詳細介紹了此功能的工作原理。如果發現問題，請透過 [Flutter 問題追蹤器](http://github.com/flutter/flutter/issues) 告知我們。
+該功能還處於早期預覽階段，目前只支援 Android。您可以在 Flutter 官方文件上新的 [延遲載入元件](https://flutter.tw/perf/deferred-components) 頁面中瞭解如何實現此類元件。此頁面還連結到了 Flutter wiki 上的一個頁面，後者詳細介紹了此功能的工作原理。如果發現問題，請透過 [Flutter 問題追蹤器](http://github.com/flutter/flutter/issues) 告知我們。
 
 **Flutter Windows UWP alpha 版**
 
@@ -422,19 +422,19 @@ Flutter 引擎和框架只是整體體驗的一部分，package 生態系統和�
 
 * [**FlutterFire package**](http://firebase.flutter.dev) **(正式版)** : `cloud_firestore`、`cloud_functions`、`firebase_auth`、`firebase_core`、`firebase_crashlytics`、`firebase_messaging` 和 `firebase_storage` 
 * [**Flutter Community "plus"**](http://plus.fluttercommunity.dev) package: `android_alarm_manager_plus`、`android_intent_plus`、`battery_plus`、`connectivity_plus`、`device_info_plus`、`network_info_plus`、`package_info_plus`、`sensors_plus` 和 `share_plus`
-* [**googleapis**](https://pub.flutter-io.cn/packages/googleapis) **package**
-* [**win32** **package**](https://pub.flutter-io.cn/packages/win32)
-* [**Intl**](https://pub.flutter-io.cn/packages/intl) 和 [**characters**](https://pub.flutter-io.cn/packages/characters) **package**
-* [**Sentry**](https://pub.flutter-io.cn/packages/sentry_flutter) **package**: sentry 和 sentry_flutter 
-* [**infinite_scroll_pagination**](https://pub.flutter-io.cn/packages/infinite_scroll_pagination) 和 [**flutter_native_splash**](https://pub.flutter-io.cn/packages/flutter_native_splash) **package**
+* [**googleapis**](https://pub.dev/packages/googleapis) **package**
+* [**win32** **package**](https://pub.dev/packages/win32)
+* [**Intl**](https://pub.dev/packages/intl) 和 [**characters**](https://pub.dev/packages/characters) **package**
+* [**Sentry**](https://pub.dev/packages/sentry_flutter) **package**: sentry 和 sentry_flutter 
+* [**infinite_scroll_pagination**](https://pub.dev/packages/infinite_scroll_pagination) 和 [**flutter_native_splash**](https://pub.dev/packages/flutter_native_splash) **package**
 
 所有這些 package 都已支援空 (null) 安全特性，並儘可能支援 Android、iOS 和 web 平台。其中有一些例外，例如 `firebase_crashlytics` 沒有適用於 web 平台的底層 SDK，而 `android_alarm_manager_plus` 則是專為 Android 平台設計。
 
-Flutter Community "plus" package 在 Flutter 團隊官方 package 的基礎上提供了更多特性。例如，Google 的 Flutter 團隊提供的 [battery package](https://pub.flutter-io.cn/packages/battery) 可以追溯到初版 Flutter 釋出之前，它現在具備空安全特性，但只支援 Android 和 iOS 平台。與此相對，[Flutter Community battery_plus package](https://pub.flutter-io.cn/packages/battery_plus) 則支援全部 6 個 Flutter 平台，包括 web、Windows、macOS 和 Linux。該套件內建的全部 9 個 "plus" package 都獲得了 Flutter Favorite 認可，這是標誌著整個 Flutter 社群邁向成熟的重大一步。Flutter 專案已經遠遠不止是 Google 工程團隊獨力奮戰。您應儘快將您的程式碼遷移至 "plus" package。在未來幾週中，Google 的相關 package 將會更新，建議您進行遷移。
+Flutter Community "plus" package 在 Flutter 團隊官方 package 的基礎上提供了更多特性。例如，Google 的 Flutter 團隊提供的 [battery package](https://pub.dev/packages/battery) 可以追溯到初版 Flutter 釋出之前，它現在具備空安全特性，但只支援 Android 和 iOS 平台。與此相對，[Flutter Community battery_plus package](https://pub.dev/packages/battery_plus) 則支援全部 6 個 Flutter 平台，包括 web、Windows、macOS 和 Linux。該套件內建的全部 9 個 "plus" package 都獲得了 Flutter Favorite 認可，這是標誌著整個 Flutter 社群邁向成熟的重大一步。Flutter 專案已經遠遠不止是 Google 工程團隊獨力奮戰。您應儘快將您的程式碼遷移至 "plus" package。在未來幾週中，Google 的相關 package 將會更新，建議您進行遷移。
 
 googleapis 外掛為 185 個 [Google API](https://developers.google.cn/api-client-library) 提供了自動產生的 Dart 封裝，供您在客戶端或伺服器端的 Dart 應用 (包括您的 Flutter 應用) 中使用。如需進一步瞭解此 package，您可以觀看其作者關於使用 Google API 為您的 Flutter 應用賦能的 [I/O 大會演講](https://events.google.com/io/session/7f706716-0de0-4a9e-bad3-581afe8ef360)。
 
-win32 package 堪稱一件工程傑作，它使用 [Dart FFI](https://dart.cn/guides/libraries/c-interop) 封裝了大部分常用 Win32 API 介面，讓 Dart 程式碼無需依賴 C 編譯器或 Windows SDK 即可使用這些 API。隨著 Flutter 在 Windows 平臺上越來越受關注，win32 package 成為了許多熱門外掛的關鍵依賴項，其中包括最熱門 Flutter package 之一的 [path_provider](https://pub.flutter-io.cn/packages/path_provider)。為了挑戰極限，其作者 [timsneath](https://github.com/timsneath) 創下了一些驚人壯舉，例如使用純 Win32 和純 Dart 來實現 [notepad](https://github.com/timsneath/win32/tree/main/example/notepad) (記事本)、[snake](https://github.com/timsneath/win32/blob/main/example/snake.dart) (貪吃蛇) 和 [tetris](https://github.com/timsneath/win32/tree/main/example/tetris) (俄羅斯方塊)。
+win32 package 堪稱一件工程傑作，它使用 [Dart FFI](https://dart.tw.gh.miniasp.com/guides/libraries/c-interop) 封裝了大部分常用 Win32 API 介面，讓 Dart 程式碼無需依賴 C 編譯器或 Windows SDK 即可使用這些 API。隨著 Flutter 在 Windows 平臺上越來越受關注，win32 package 成為了許多熱門外掛的關鍵依賴項，其中包括最熱門 Flutter package 之一的 [path_provider](https://pub.dev/packages/path_provider)。為了挑戰極限，其作者 [timsneath](https://github.com/timsneath) 創下了一些驚人壯舉，例如使用純 Win32 和純 Dart 來實現 [notepad](https://github.com/timsneath/win32/tree/main/example/notepad) (記事本)、[snake](https://github.com/timsneath/win32/blob/main/example/snake.dart) (貪吃蛇) 和 [tetris](https://github.com/timsneath/win32/tree/main/example/tetris) (俄羅斯方塊)。
 
 ![僅使用 Dart FFI 和 Win32 介面實現的在 Windows 平台執行的俄羅斯方塊遊戲](https://devrel.andfun.cn/devrel/posts/2021/05/86UACo.png)
 
@@ -472,7 +472,7 @@ Flutter DevTools 時間軸標籤頁自訂記憶體事件
 
 隨著 Flutter 應用的體積逐步增長，我們將繼續努力為 Flutter 開發者提供所需的工具，助其追蹤和修復記憶體洩漏和其他各種執行時問題。
 
-您需要排查的問題並不僅僅是那些與 Flutter 框架相關的執行時問題，有時還有與所依賴 package 相關的問題。隨著 pub.dev 上的 Flutter 相容 package 數量突破 15,000 大關，您的應用使用的 package 數量也很可能隨之增長。有鑑於此，Flutter DevTools 中新加入了一個實驗性的 **Provider** 標籤頁，由 [provider package](http://pub.flutter-io.cn/packages/provider) 本身及其他很多出色軟體的開發者 [Remi Roussel](https://github.com/rrousselGit) 傾力打造。如果您執行的是最新版 Flutter，在您對一個包含 provider 外掛的 Flutter 應用進行除錯時，**Provider** 標籤頁就會自動顯示。
+您需要排查的問題並不僅僅是那些與 Flutter 框架相關的執行時問題，有時還有與所依賴 package 相關的問題。隨著 pub.dev 上的 Flutter 相容 package 數量突破 15,000 大關，您的應用使用的 package 數量也很可能隨之增長。有鑑於此，Flutter DevTools 中新加入了一個實驗性的 **Provider** 標籤頁，由 [provider package](http://pub.dev/packages/provider) 本身及其他很多出色軟體的開發者 [Remi Roussel](https://github.com/rrousselGit) 傾力打造。如果您執行的是最新版 Flutter，在您對一個包含 provider 外掛的 Flutter 應用進行除錯時，**Provider** 標籤頁就會自動顯示。
 
 ![實戰示範: Flutter DevTools Provider 標籤頁](https://devrel.andfun.cn/devrel/posts/2021/05/Q04qlm.gif)
 
@@ -536,7 +536,7 @@ FlutterFlow 是一個 "低程式碼" (low code) 應用設計和開發工具，�
 * [73750](https://github.com/flutter/flutter/pull/73750) 移除已廢棄的 BinaryMessages
 * [73751](https://github.com/flutter/flutter/pull/73751) 移除已廢棄的 TypeMatcher 類
 
-您可以 [在 flutter.cn 上找到這些變更對應的遷移指南](https://flutter.cn/docs/release/breaking-changes/1-22-deprecations).
+您可以 [在 flutter.cn 上找到這些變更對應的遷移指南](https://flutter.tw/release/breaking-changes/1-22-deprecations).
 
 ## **結語**
 

@@ -65,7 +65,7 @@ Web 的 [早期基礎以文件為中心](https://tools.ietf.org/html/rfc1866)。
 
 ## 持續發展的 Flutter 生態系統
 
-目前，Flutter 和 Dart 有超過 15,000 個 package: 包括 [Amazon](https://pub.flutter-io.cn/publishers/aws-amplify.com/packages)、[Microsoft](https://pub.flutter-io.cn/publishers/microsoft.com/packages)、[Adobe](https://pub.flutter-io.cn/publishers/adobe.com/packages)、[Alibaba](https://pub.flutter-io.cn/publishers/community.opensource.alibaba.com/packages)、[eBay](https://pub.flutter-io.cn/publishers/ebay.com/packages) 和 [Square](https://pub.flutter-io.cn/packages/square_in_app_payments) 等企業 package，[Lottie](https://pub.flutter-io.cn/packages/lottie)、[Sentry](https://pub.flutter-io.cn/packages/sentry_flutter) 和 [SVG](https://pub.flutter-io.cn/packages/flutter_svg) 等關鍵 package，以及 [sign_in_with_apple](https://pub.flutter-io.cn/packages/sign_in_with_apple)、[google_fonts](https://pub.flutter-io.cn/packages/google_fonts)、[geolocator](https://pub.flutter-io.cn/packages/geolocator) 和 [sqflite](https://pub.flutter-io.cn/packages/sqflite) 等 [Flutter Favorite](https://flutter.cn/docs/development/packages-and-plugins/favorites) package。
+目前，Flutter 和 Dart 有超過 15,000 個 package: 包括 [Amazon](https://pub.dev/publishers/aws-amplify.com/packages)、[Microsoft](https://pub.dev/publishers/microsoft.com/packages)、[Adobe](https://pub.dev/publishers/adobe.com/packages)、[Alibaba](https://pub.dev/publishers/community.opensource.alibaba.com/packages)、[eBay](https://pub.dev/publishers/ebay.com/packages) 和 [Square](https://pub.dev/packages/square_in_app_payments) 等企業 package，[Lottie](https://pub.dev/packages/lottie)、[Sentry](https://pub.dev/packages/sentry_flutter) 和 [SVG](https://pub.dev/packages/flutter_svg) 等關鍵 package，以及 [sign_in_with_apple](https://pub.dev/packages/sign_in_with_apple)、[google_fonts](https://pub.dev/packages/google_fonts)、[geolocator](https://pub.dev/packages/geolocator) 和 [sqflite](https://pub.dev/packages/sqflite) 等 [Flutter Favorite](https://flutter.tw/development/packages-and-plugins/favorites) package。
 
 我們也為 Flutter 帶來了 [Google Mobile Ads ](https://pub.dev/packages/google_mobile_ads) Beta 版，這款全新 SDK 透過 AdMob 和 AdManager 提供多種廣告格式，包括橫幅式、插頁式、原生和激勵影片廣告。我們之前已經邀請了一些主要客戶 (比如拉丁美洲最大的獨立藝術家音樂平台 [Sua Música](https://www.suamusica.com.br/)) 先行體驗此 SDK，現在計劃開放 Google Mobile Ads 供更多的 Flutter 開發者採用。
 
@@ -75,7 +75,7 @@ Web 的 [早期基礎以文件為中心](https://tools.ietf.org/html/rfc1866)。
 
 ## Dart: Flutter 背後的秘訣
 
-如前所述，Flutter 2 可以移植到許多不同的平臺和裝置上。之所以能輕鬆過渡到支援 web、桌面和嵌入式裝置，這在很大程度上要歸功於 [Dart](https://dart.cn)，它是 Google 為多平臺開發最佳化的程式語言。
+如前所述，Flutter 2 可以移植到許多不同的平臺和裝置上。之所以能輕鬆過渡到支援 web、桌面和嵌入式裝置，這在很大程度上要歸功於 [Dart](https://dart.tw.gh.miniasp.com)，它是 Google 為多平臺開發最佳化的程式語言。
 
 Dart 為建構應用提供了一套獨特的功能:
 
@@ -87,7 +87,7 @@ Dart 為建構應用提供了一套獨特的功能:
 
 我們同期釋出的 Dart 2.12 是自 2.0 以來最重大的版本更新，支援**健全的空安全**。健全的空安全能掃除令人頭疼的空參考例外，除非開發者明確允許，否則型別在開發時和執行時不可能包含空值。最重要的是，此功能並非重要改動 (breaking change): 您可以按照自己的節奏將空安全逐步新增到程式碼中，我們也準備好了遷移工具，您可以在準備好之後使用它完成遷移。
 
-這一版本的更新還包括: [FFI 的穩定版本](https://dart.cn/guides/libraries/c-interop)，讓您可以編寫出高效能的程式碼與基於 C 語言的 API 進行互操作；使用 Flutter 編寫的 [新的整合開發者和效能剖析器工具](https://flutter.cn/docs/development/tools/devtools/overview)；以及許多效能改進和尺寸最佳化，只需重新編譯即可讓程式碼得到長足的改進。如需瞭解詳細資訊，請檢視 [Dart 2.12 釋出文章](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)。
+這一版本的更新還包括: [FFI 的穩定版本](https://dart.tw.gh.miniasp.com/guides/libraries/c-interop)，讓您可以編寫出高效能的程式碼與基於 C 語言的 API 進行互操作；使用 Flutter 編寫的 [新的整合開發者和效能剖析器工具](https://flutter.tw/development/tools/devtools/overview)；以及許多效能改進和尺寸最佳化，只需重新編譯即可讓程式碼得到長足的改進。如需瞭解詳細資訊，請檢視 [Dart 2.12 釋出文章](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)。
 
 ## 即刻體驗 Flutter 2
 

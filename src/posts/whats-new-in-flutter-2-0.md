@@ -17,7 +17,7 @@ Flutter 2 的釋出也帶來了許多振奮人心的內容。您可以閱讀圖�
 
 > 作為一家致力於透過數字化實現卓越營運的現代移動虛擬網路營運商，[Moi Mobiili](https://www.moi.fi/) 選擇使用 Flutter 建構其 Mun Moi 客戶經理應用，並在近期釋出了其 web 版應用。
 
-藉助 web 平台的諸多優勢，Flutter 為建構豐富的互動式 web 應用奠定了基礎。我們的首要重點是提升效能並最佳化渲染。除了 HTML 渲染引擎外，我們還新增了一個基於 CanvasKit 的渲染引擎，以及一些如 [Link Widget](https://pub.flutter-io.cn/documentation/url_launcher/latest/link/Link-class.html) 等特定於 web 的功能，以確保您的應用能夠像 web 應用一樣在瀏覽器中穩定執行。
+藉助 web 平台的諸多優勢，Flutter 為建構豐富的互動式 web 應用奠定了基礎。我們的首要重點是提升效能並最佳化渲染。除了 HTML 渲染引擎外，我們還新增了一個基於 CanvasKit 的渲染引擎，以及一些如 [Link Widget](https://pub.dev/documentation/url_launcher/latest/link/Link-class.html) 等特定於 web 的功能，以確保您的應用能夠像 web 應用一樣在瀏覽器中穩定執行。
 
 有關此 [Flutter web 穩定版](https://medium.com/flutter/web-post-d6b84e83b425) 的更多詳情，請參閱 Flutter web 釋出文章:
 
@@ -25,7 +25,7 @@ Flutter 2 的釋出也帶來了許多振奮人心的內容。您可以閱讀圖�
 
 健全的空安全是對 Dart 語言的重要補充，它透過區分可空型別和不可空型別來進一步加強型別系統。這使開發者能夠防止 null error 崩潰，這也是導致應用崩潰的常見原因。透過將空檢查合併到型別系統中，可以在開發期間捕獲這些錯誤，從而防止生產環境中的崩潰。在包含 Dart 2.12 的 Flutter 2 中，健全的空安全得到了充分的支援。要了解更多細節，請參閱 [Dart 2.12 釋出文章](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87):
 
-pub.dev 已經發布了 [超過 1,000 個空安全 package](https://pub.flutter-io.cn/packages?q=&null-safe=1)，包括來自 [Dart](https://pub.flutter-io.cn/packages?q=publisher%3Adart.dev&sort=popularity&null-safe=1)、[Flutter](https://pub.flutter-io.cn/packages?q=publisher%3Aflutter.dev&sort=popularity&null-safe=1)、[Firebase](https://pub.flutter-io.cn/packages?q=publisher%3Afirebase.google.com&sort=popularity&null-safe=1) 和 [Material](https://pub.flutter-io.cn/packages?q=publisher%3Amaterial.io&sort=popularity&null-safe=1) 團隊釋出的數百個 package。如果您也是 package 的作者，請參閱 [遷移指南](https://dart.cn/null-safety/migration-guide) 並著手遷移事項。
+pub.dev 已經發布了 [超過 1,000 個空安全 package](https://pub.dev/packages?q=&null-safe=1)，包括來自 [Dart](https://pub.dev/packages?q=publisher%3Adart.dev&sort=popularity&null-safe=1)、[Flutter](https://pub.dev/packages?q=publisher%3Aflutter.dev&sort=popularity&null-safe=1)、[Firebase](https://pub.dev/packages?q=publisher%3Afirebase.google.com&sort=popularity&null-safe=1) 和 [Material](https://pub.dev/packages?q=publisher%3Amaterial.io&sort=popularity&null-safe=1) 團隊釋出的數百個 package。如果您也是 package 的作者，請參閱 [遷移指南](https://dart.tw.gh.miniasp.com/null-safety/migration-guide) 並著手遷移事項。
 
 ## 桌面裝置
 
@@ -75,17 +75,17 @@ Flutter 桌面版經過一系列大大小小的最佳化，才達到現在的品
 
 在公開發布 Beta 之前，我們邀請了一些客戶參與試用這款外掛。許多客戶都使用了這些新增的廣告格式成功地釋出了應用。例如，Sua Musica (拉丁美洲最大的獨立藝術家音樂平台，擁有超過 15,000 位認證音樂人和一千萬活躍使用者) 使用了 Google Mobile Ads SDK for Flutter 外掛釋出了新的應用。其廣告展示量增加了 350%，點選率增加了 43%，千次展示收益上漲了 13%。
 
-您此刻就可使用該 [外掛]([https://pub.flutter-io.cn/packages/google_mobile_ads](https://pub.flutter-io.cn/packages/google_mobile_ads)) 了。在剛結束的 [Flutter Engage](https://zhuanlan.zhihu.com/p/355036482) 上，Andrew 和 Zoey 圍繞《[如何透過 Flutter 應用獲利](https://v.qq.com/x/page/a323184ybj7.html)》介紹了一些 Flutter 應用創收策略，以及如何在 Flutter 應用中載入廣告，您可以檢視下方影片瞭解詳細內容。此外，我們在 flutter.dev 上建立了一個新的 [Ads 頁面](https://flutter.cn/ads)，方便您查詢所需資源，如 [外掛使用指南](https://developers.google.cn/admob/flutter)，[內聯橫幅和原生廣告](https://codelabs.developers.google.com/codelabs/admob-inline-ads-in-flutter) codelab，以及[疊加橫幅，插頁和激勵影片廣告](https://codelabs.developers.google.com/codelabs/admob-ads-in-flutter#0) codelab，歡迎您隨時檢視。更多資訊請檢視 [如何透過 Flutter 應用獲利](https://v.qq.com/x/page/a323184ybj7.html) 影片。
+您此刻就可使用該 [外掛]([https://pub.dev/packages/google_mobile_ads](https://pub.dev/packages/google_mobile_ads)) 了。在剛結束的 [Flutter Engage](https://zhuanlan.zhihu.com/p/355036482) 上，Andrew 和 Zoey 圍繞《[如何透過 Flutter 應用獲利](https://v.qq.com/x/page/a323184ybj7.html)》介紹了一些 Flutter 應用創收策略，以及如何在 Flutter 應用中載入廣告，您可以檢視下方影片瞭解詳細內容。此外，我們在 flutter.dev 上建立了一個新的 [Ads 頁面](https://flutter.cn/ads)，方便您查詢所需資源，如 [外掛使用指南](https://developers.google.cn/admob/flutter)，[內聯橫幅和原生廣告](https://codelabs.developers.google.com/codelabs/admob-inline-ads-in-flutter) codelab，以及[疊加橫幅，插頁和激勵影片廣告](https://codelabs.developers.google.com/codelabs/admob-ads-in-flutter#0) codelab，歡迎您隨時檢視。更多資訊請檢視 [如何透過 Flutter 應用獲利](https://v.qq.com/x/page/a323184ybj7.html) 影片。
 
 ## 新增 iOS 功能
 
 在不斷提高對其他平台支援的同時，我們並沒有將 iOS 拋諸腦後。事實上，新版本提供了 178 個與 iOS 相關的合併 PR，其中包括將狀態恢復 (State Restoration) 引入 iOS 的 [23495](https://github.com/flutter/engine/pull/23495)，應開發者需求——不用開啟 Xcode 就可以直接從命令列建立 IPA 的 [67781](https://github.com/flutter/flutter/pull/67781)，以及更新 CocoaPods 版本以配合最新工具的 [69809](https://github.com/flutter/flutter/pull/69809)。此外，我們還在 Cupertino 設計語言實現中添加了一些 iOS 小部件。
 
-新增的 [CupertinoSearchTextField](https://api.flutter.cn/flutter/cupertino/CupertinoSearchTextField-class.html) 為 iOS 提供了搜尋欄 UI。
+新增的 [CupertinoSearchTextField](https://api.flutter.dev/flutter/cupertino/CupertinoSearchTextField-class.html) 為 iOS 提供了搜尋欄 UI。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/a62ac8b91dd58.jpg)
 
-[CupertinoFormSection](https://api.flutter.cn/flutter/cupertino/CupertinoFormSection-class.html)、[CupertinoFormRow](https://api.flutter.cn/flutter/cupertino/CupertinoFormRow-class.html) 和 [CupertinoTextFormFieldRow](https://api.flutter.cn/flutter/cupertino/CupertinoTextFormFieldRow-class.html) 等 widgets 則利用 iOS 的視覺美學簡化了驗證表單欄位的產生。
+[CupertinoFormSection](https://api.flutter.dev/flutter/cupertino/CupertinoFormSection-class.html)、[CupertinoFormRow](https://api.flutter.dev/flutter/cupertino/CupertinoFormRow-class.html) 和 [CupertinoTextFormFieldRow](https://api.flutter.dev/flutter/cupertino/CupertinoTextFormFieldRow-class.html) 等 widgets 則利用 iOS 的視覺美學簡化了驗證表單欄位的產生。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/2c7bc09f2c6c5.png)
 
@@ -114,19 +114,19 @@ messenger.showSnackBar(SnackBar(content: Text(‘I can fly.’)));
 
 ## 透過 "新增到應用" 功能建立多個 Flutter
 
-在和許多 Flutter 開發者聊天的過程中，我們得知大多數人並非是從零開發一個全新應用，而是會透過將 Flutter 新增到現有的 iOS 和 Android 應用中來進行使用。我們將此功能稱為 [混合程式設計 (Add-to-App)](https://flutter.cn/docs/development/add-to-app)，您可以透過這種方法，在保留現有原生程式碼庫的同時，在兩個行動平台間重複使用 Flutter 程式碼。然而，我們有時聽到採用此方法的開發者們表示，他們不知如何擺脫只能將第一個畫面整合到 Flutter 的限制。Flutter 和原生頁面交織導致導航狀態難以維護，而且在檢視級別整合多個 Flutter 會佔用大量記憶體。
+在和許多 Flutter 開發者聊天的過程中，我們得知大多數人並非是從零開發一個全新應用，而是會透過將 Flutter 新增到現有的 iOS 和 Android 應用中來進行使用。我們將此功能稱為 [混合程式設計 (Add-to-App)](https://flutter.tw/development/add-to-app)，您可以透過這種方法，在保留現有原生程式碼庫的同時，在兩個行動平台間重複使用 Flutter 程式碼。然而，我們有時聽到採用此方法的開發者們表示，他們不知如何擺脫只能將第一個畫面整合到 Flutter 的限制。Flutter 和原生頁面交織導致導航狀態難以維護，而且在檢視級別整合多個 Flutter 會佔用大量記憶體。
 
 過去，額外 Flutter 例項的記憶體佔用量與第一個 Flutter 例項相同。在 Flutter 2 中，我們將建立額外 Flutter 引擎的靜態記憶體佔用量降低了約 99%，使每個例項的佔用量大約為 180kB。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/81b71e6e83d2d.gif)
 
-提供該支援的新增 API 目前尚處於預覽狀態，在 [我們的文件裡](https://flutter.cn/docs/development/add-to-app/multiple-flutters)，您可以找到透過使用這種新模式的說明和 [範例專案](https://github.com/flutter/samples/tree/master/add_to_app/multiple_flutters)。隨著這一變化的出現，我們強烈建議您在原生應用中建立多個 Flutter 引擎例項。
+提供該支援的新增 API 目前尚處於預覽狀態，在 [我們的文件裡](https://flutter.tw/development/add-to-app/multiple-flutters)，您可以找到透過使用這種新模式的說明和 [範例專案](https://github.com/flutter/samples/tree/master/add_to_app/multiple_flutters)。隨著這一變化的出現，我們強烈建議您在原生應用中建立多個 Flutter 引擎例項。
 
 ## Flutter Fix
 
 當任何成熟的框架聚集了擁有龐大程式碼庫的使用者時，我們往往需要避免對框架 API 進行任何更改，以避免破壞日益增多的程式碼。隨著超過 50 萬的 Flutter 開發者分佈在越來越多的平台，Flutter 2 很快就會踏入這一行列。然而，隨著時間的推移，為了持續改進 Flutter，我們希望能夠對 API 進行重大更改。現在的問題是，如何在不影響開發者的前提下繼續改進 Flutter API。
 
-我們為此推出了 [Flutter Fix](https://flutter.cn/docs/development/tools/flutter-fix)。
+我們為此推出了 [Flutter Fix](https://flutter.tw/development/tools/flutter-fix)。
 
 Flutter Fix 是一系列功能的組合。首先，我們為 dart 命令列工具新增了一個名為 "dart fix" 的命令列選項，您可藉此尋找棄用 API 列表的所在位置，並瞭解如何更新呼叫這些 API 的程式碼。其次，Flutter Fix 本身就是個列表，自版本 2 開始便與 Flutter SDK 繫結。另外，Flutter Fix 也是一組針對 Visual Studio Code、IntelliJ 和 Android Studio IDE 的新 Flutter 擴充程式，您可藉此找到已棄用 API 的相同列表，單擊滑鼠，輕點旁邊的小燈泡圖示即可更改程式碼，完成快速修復。
 
@@ -304,7 +304,7 @@ Flutter 開發體驗不僅包括框架和工具；還包括為 Flutter 應用提
 * Sensors+
 * Share+
 
-目前，與 Flutter 相容的 package 和外掛數量超過 15,000 個，這會讓人很難找到那些值得優先考慮的軟體套件和外掛。因此，我們釋出了 Pub 分值 (靜態分析評分)、人氣排名、喜愛度，若軟體包質量出眾，我們會為其打上 "[Flutter Favorite](https://flutter.cn/docs/development/packages-and-plugins/favorites)" 的特殊標記。為與 Flutter 2 適配，我們已在 Favorite 列表中添加了幾個新軟體包:
+目前，與 Flutter 相容的 package 和外掛數量超過 15,000 個，這會讓人很難找到那些值得優先考慮的軟體套件和外掛。因此，我們釋出了 Pub 分值 (靜態分析評分)、人氣排名、喜愛度，若軟體包質量出眾，我們會為其打上 "[Flutter Favorite](https://flutter.tw/development/packages-and-plugins/favorites)" 的特殊標記。為與 Flutter 2 適配，我們已在 Favorite 列表中添加了幾個新軟體包:
 
 * animated_text_kit
 * bottom_navy_bar
@@ -313,7 +313,7 @@ Flutter 開發體驗不僅包括框架和工具；還包括為 Flutter 應用提
 * flutter_local_notifications
 * just_audio
 
-祝賀這些軟體套件的作者！如果您尚未了解這些軟體包或 [列表中的其它軟體包](https://pub.flutter-io.cn/flutter/favorites)，建議您著手開始瞭解。
+祝賀這些軟體套件的作者！如果您尚未了解這些軟體包或 [列表中的其它軟體包](https://pub.dev/flutter/favorites)，建議您著手開始瞭解。
 
 最後同樣也是很重要的一點，如果軟體包作者或使用者有興趣瞭解最新版本的軟體包是否適用於最新版本的 Flutter，可以檢視 Codemagic 的新 pub.green 網站以瞭解詳情。
 

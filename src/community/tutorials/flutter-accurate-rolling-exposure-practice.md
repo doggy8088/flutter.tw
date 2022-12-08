@@ -257,7 +257,7 @@ void _updateInheritance() {
 
 > 直接拿來吧你
 
-所以為了各位寶貴的 (滑水/嘮嗑/帶娃/...) 時間，這款滑動埋點方案已經登陸了 [Pub 儲存庫](https://pub.flutter-io.cn/packages/flutter_exposure)，各位可以放心食用了。
+所以為了各位寶貴的 (滑水/嘮嗑/帶娃/...) 時間，這款滑動埋點方案已經登陸了 [Pub 儲存庫](https://pub.dev/packages/flutter_exposure)，各位可以放心食用了。
 
 目前已經支援的有：
 
@@ -271,7 +271,7 @@ void _updateInheritance() {
 可以關注該專案的 [GitHub](https://github.com/Vadaski/flutter_exposure)，
 或者有需要增加的功能需求，也歡迎透過 [郵箱](mailto:xinlei966@gmail.com) 與我聯絡～
 
-Pub 地址：https://pub.flutter-io.cn/packages/flutter_exposure
+Pub 地址：https://pub.dev/packages/flutter_exposure
 
 Github 地址：https://github.com/Vadaski/flutter_exposure
 

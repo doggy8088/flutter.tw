@@ -9,7 +9,7 @@ body:
     id: page-url
     attributes:
       label: 問題映象 URL
-      placeholder: '例如：https://pub.flutter-io.cn/packages/args'
+      placeholder: '例如：https://pub.dev/packages/args'
     validations:
       required: true
   - type: textarea

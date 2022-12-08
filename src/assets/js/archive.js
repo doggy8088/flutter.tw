@@ -8,7 +8,7 @@ var fetchFlutterReleases = function (os, callback, errorCallback) {
   // OS: windows, macos, linux
   // var url = "https://storage.googleapis.com/flutter_infra_release/releases/releases_" + os + ".json";
   // TODO: CN Mirror is ready
-  var url = "https://storage.flutter-io.cn/flutter_infra_release/releases/releases_" + os + ".json";
+  var url = "https://storage.googleapis.com/flutter_infra_release/releases/releases_" + os + ".json";
   $.ajax({
     type: "GET",
     url: url,

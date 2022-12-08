@@ -48,7 +48,7 @@ I/O 期間我們迎來 [Flutter 框架](https://flutter.dev/) 的一個重要里
 
 我們還會升級核心 Flutter 框架，並會在**穩定版 channel 立即提供 Flutter 1.5**。根據開發者的反饋，我們對 [Flutter 1.5](https://medium.com/flutter-io/announcing-flutter-1-5-6e5d7e35b75f) 進行了數百處更改，包括對全新應用商店 iOS SDK 要求、iOS 和材料微件的更新，新增對新裝置型別的引擎支援，以及對具有最新 [UI-as-code](https://medium.com/dartlang/making-dart-a-better-language-for-ui-f1ccaf9f546c) 語言特徵的 Dart 2.3 作出改進。 
 
-隨著框架本身逐漸成熟，我們正在設法建構支援生態系統。Flutter 的架構模型一貫優先考慮小型核心框架，並輔以豐富的軟體包社群。在過去的幾個月，Google 為網頁檢視、Google 地圖和 Firebase ML Vision 提供了產品級品質的軟體套件。我們還將新增對 [應用內支付](https://pub.flutter-io.cn/packages/in_app_purchase) 的初步支援。得益於 2,000 多個適用於 Flutter 的開放原始碼軟體套件，大多數場景均有合適的選擇。 
+隨著框架本身逐漸成熟，我們正在設法建構支援生態系統。Flutter 的架構模型一貫優先考慮小型核心框架，並輔以豐富的軟體包社群。在過去的幾個月，Google 為網頁檢視、Google 地圖和 Firebase ML Vision 提供了產品級品質的軟體套件。我們還將新增對 [應用內支付](https://pub.dev/packages/in_app_purchase) 的初步支援。得益於 2,000 多個適用於 Flutter 的開放原始碼軟體套件，大多數場景均有合適的選擇。 
 
 在今年的 I/O 上，我們宣佈推出一個尤其令人振奮的專案，即 [ML Kit 自訂影象分類器](http://github.com/firebase/mlkit-custom-image-classifier)。該工具利用 Flutter 和 Firebase 建構，可為建立自訂影象分類模型提供基於應用的簡易工作流。您可以使用手機的攝影頭收集訓練資料、邀請他人為您的資料集貢獻素材、觸發模型訓練以及使用訓練過的模型，這些操作都可以在同一個應用中實現。
 

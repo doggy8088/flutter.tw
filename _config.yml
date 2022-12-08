@@ -1,5 +1,5 @@
 title: Flutter 中文文件 - Flutter 中文開發者網站 - Flutter
-url: https://flutter.cn/docs
+url: https://flutter.tw
 main-url: https://flutter.cn
 email: flutter-dev@googlegroups.com
 
@@ -20,7 +20,7 @@ repo:
   gallery: https://github.com/flutter/gallery
   engine: https://github.com/flutter/engine
 dart:
-  api: https://api.dart.cn
+  api: https://api.dart.tw.gh.miniasp.com
   sdk:
     channel: stable
 sdk:
@@ -28,13 +28,13 @@ sdk:
 social:
   twitter: https://twitter.com/FlutterDev
   youtube: https://www.youtube.com/flutterdev
-dart-site: https://dart.cn
+dart-site: https://dart.tw.gh.miniasp.com
 news: https://news.dartlang.org
-api: https://api.flutter-io.cn
-master-api: https://master-api.flutter-io.cn
-pub: https://pub.flutter-io.cn
-pub-api: https://pub.flutter-io.cn/documentation
-pub-pkg: https://pub.flutter-io.cn/packages
+api: https://api.flutter.dev
+master-api: https://master-api.flutter.dev
+pub: https://pub.dev
+pub-api: https://pub.dev/documentation
+pub-pkg: https://pub.dev/packages
 flutter-medium: https://medium.com/flutter
 medium: https://medium.com
 dartpad: https://dartpad.cn

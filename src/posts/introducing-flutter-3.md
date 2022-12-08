@@ -59,7 +59,7 @@ Flutter 由 Dart 程式語言提供強有力的支援，這是一種用於多平
 
 當然，建構應用不僅僅是建構使用者介面框架。應用釋出者需要一套全面的工具，來幫助他們建構、釋出和營運自己的應用，包括認證、資料儲存、雲端功能和裝置測試等服務。目前已有多種服務支援 Flutter，包括 [Sentry](https://docs.sentry.io/platforms/flutter/ "Sentry 文件: Flutter 平台整合")、[AppWrite](https://appwrite.io/docs/getting-started-for-flutter "AppWrite 文件: 在 Appwrite 平臺中使用 Flutter") 和 [AWS Amplify](https://docs.amplify.aws/start/q/integration/flutter/ "AWS Amplify 文件: Flutter 整合")。
 
-Firebase 是由 Google 提供的應用服務平台。[SlashData 的開發者基準研究](https://www.slashdata.co/developer-program-benchmarking/ "SlashData 的開發者基準研究") 顯示，62\% 的 Flutter 開發者在其應用中使用 Firebase。因此，在過去的幾個版本中，我們一直在與 Firebase 合作對兩者的整合進行擴充和改良，並將其打造成 Flutter 的首選整合服務。這包括將 Flutter 的 Firebase 外掛升級到 1.0，增加更好的文件和工具，以及提供像 [FlutterFire UI](https://pub.flutter-io.cn/packages/flutterfire_ui "FlutterFire UI package 頁面") 這樣的新 widget，為開發者提供可重用的認證和使用者資料介面。
+Firebase 是由 Google 提供的應用服務平台。[SlashData 的開發者基準研究](https://www.slashdata.co/developer-program-benchmarking/ "SlashData 的開發者基準研究") 顯示，62\% 的 Flutter 開發者在其應用中使用 Firebase。因此，在過去的幾個版本中，我們一直在與 Firebase 合作對兩者的整合進行擴充和改良，並將其打造成 Flutter 的首選整合服務。這包括將 Flutter 的 Firebase 外掛升級到 1.0，增加更好的文件和工具，以及提供像 [FlutterFire UI](https://pub.dev/packages/flutterfire_ui "FlutterFire UI package 頁面") 這樣的新 widget，為開發者提供可重用的認證和使用者資料介面。
 
 今天，我們宣佈 Flutter 和 Firebase 的整合已成為 Firebase 產品核心的一部分並得到完全的支援。我們已將原始碼和文件轉移到 Firebase 的主 repo 和網站中。Firebase 對 Flutter 的支援將和 Android 和 iOS 端的支援同步發展。
 

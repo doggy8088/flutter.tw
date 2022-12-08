@@ -6,9 +6,9 @@ title: 在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類
 
 文/ Amish Garg，Google Summer of Code(GSoC) 實習生，譯/ Yuan，谷創字幕組，審校/ Xinlei、Lynn Wang，CFUG 社群。
 
-如果您希望能有一種簡單、高效且靈活的方式把 TensorFlow 模型整合到 Flutter 應用裡，那請您一定不要錯過我們今天介紹的這個全新外掛 [tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter)。這個外掛的開發者是 Google Summer of Code(GSoC) 的一名實習生 Amish Garg，本文來自他在 Medium 上的一篇文章[《在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類》](https://medium.com/@am15hg/text-classification-using-tensorflow-lite-plugin-for-flutter-3b92f6655982)。
+如果您希望能有一種簡單、高效且靈活的方式把 TensorFlow 模型整合到 Flutter 應用裡，那請您一定不要錯過我們今天介紹的這個全新外掛 [tflite_flutter](https://pub.dev/packages/tflite_flutter)。這個外掛的開發者是 Google Summer of Code(GSoC) 的一名實習生 Amish Garg，本文來自他在 Medium 上的一篇文章[《在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類》](https://medium.com/@am15hg/text-classification-using-tensorflow-lite-plugin-for-flutter-3b92f6655982)。
 
-[tflite_flutter](https://pub.flutter-io.cn/packages/tflite_flutter) 外掛的核心特性：
+[tflite_flutter](https://pub.dev/packages/tflite_flutter) 外掛的核心特性：
 
 * 它提供了與 TFLite Java 和 Swift API 相似的 Dart API，所以其靈活性和在這些平臺上的效果是完全一樣的
 * 透過 dart:ffi 直接與 TensorFlow Lite C API 相繫結，所以它比其它平台整合方式更加高效。
@@ -34,7 +34,7 @@ title: 在 Flutter 中使用 TensorFlow Lite 外掛實現文字分類
 
 ### 獲取外掛
 
-在 `pubspec.yaml` 新增 `tflite_flutter: ^<latest_version>` （[詳情](https://pub.flutter-io.cn/packages/tflite_flutter#-installing-tab-)）。
+在 `pubspec.yaml` 新增 `tflite_flutter: ^<latest_version>` （[詳情](https://pub.dev/packages/tflite_flutter#-installing-tab-)）。
 
 ### 下載模型
 
@@ -409,7 +409,7 @@ _classifier.classify("I didn't liked the movie");
 
 ### 答疑
 
-##### 問：[`tflite_flutter`](https://pub.flutter-io.cn/packages/tflite_flutter) 和 [`tflite v1.0.5`](https://pub.flutter-io.cn/packages/tflite) 有哪些區別？
+##### 問：[`tflite_flutter`](https://pub.dev/packages/tflite_flutter) 和 [`tflite v1.0.5`](https://pub.dev/packages/tflite) 有哪些區別？
 
 `tflite v1.0.5` 側重於為特定用途的應用場景提供高階特性，比如圖片分類、物體檢測等等。而新的 tflite_flutter 則提供了與 Java API 相同的特性和靈活性，而且可以用於任何 tflite 模型中，它還支援 delegate。
 

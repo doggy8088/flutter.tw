@@ -85,7 +85,7 @@ final ballSprite = parent.descendants().whereType<SpriteComponent>();
 ## Forge 2D 的物理引擎
 
 Flutter 彈球遊戲很大程度依賴了 Flame 團隊維護的
-[forge2d](https://pub.flutter-io.cn/packages/forge2d "Flame 團隊維護的 package: forge2d") package。
+[forge2d](https://pub.dev/packages/forge2d "Flame 團隊維護的 package: forge2d") package。
 這個 package 將開源的 [Box2D 物理引擎](https://box2d.org/ "Box2D 物理引擎官網") 移植到 Dart 中，以便可以輕鬆整合到 Flutter。
 我們使用 `forge2d` 增強遊戲中的物理特性，例如物體（夾板）在遊戲場上的之間的碰撞檢測。
 使用 `forge2D` 能夠我們監聽夾板發生碰撞的時機。
@@ -227,7 +227,7 @@ abstract class CharacterTheme extends Equatable {
 ```
 
 Flutter 彈球的遊戲狀態是用
-[flam_bloc](https://pub.flutter-io.cn/packages/flame_bloc "Flutter package: flam_bloc 頁面") 這個 package 處理的，
+[flam_bloc](https://pub.dev/packages/flame_bloc "Flutter package: flam_bloc 頁面") 這個 package 處理的，
 這是一個組合了 bloc 和 Flame 元件的 package。
 例如，我們使用 `flame_bloc` 來記錄剩餘的遊戲回合數、遊戲中獲得的獎勵以及當前的遊戲分數。
 另外，在 wdget 樹最上層有一個 widget，它包含載入頁面的邏輯以及玩遊戲的說明。
@@ -249,7 +249,7 @@ class BumperNoiseBehavior extends ContactBehavior {
 因為一個元件可能具有多個職責，使得它們很難單獨地進行測試。
 最終我們定義了更好的隔離和測試元件的模式，
 並將其改進整合到
-[flame_test](https://pub.flutter-io.cn/packages/flame_test "Flutter package: flame_test 頁面") 這個 package 中。
+[flame_test](https://pub.dev/packages/flame_test "Flutter package: flame_test 頁面") 這個 package 中。
 
 ## 元件沙盒
 

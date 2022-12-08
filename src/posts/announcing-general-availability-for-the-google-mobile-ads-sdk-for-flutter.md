@@ -7,7 +7,7 @@ toc: true
 
 *作者 / Zoey Fan，Flutter 產品經理*
 
-應用變現有多種方法: 透過實體企業的店面接受付款、提供訂閱或應用內購買，或者直接在應用中投放廣告。經過六個月的 beta 測試期，我們很高興能夠推出 [Google 移動廣告 SDK (Flutter)](https://pub.flutter-io.cn/packages/google_mobile_ads) 正式版。這對需要應用內廣告的 Flutter 應用來說是個好訊息！
+應用變現有多種方法: 透過實體企業的店面接受付款、提供訂閱或應用內購買，或者直接在應用中投放廣告。經過六個月的 beta 測試期，我們很高興能夠推出 [Google 移動廣告 SDK (Flutter)](https://pub.dev/packages/google_mobile_ads) 正式版。這對需要應用內廣告的 Flutter 應用來說是個好訊息！
 
 ## **支援的廣告格式**
 
@@ -31,7 +31,7 @@ toc: true
 
 如果您不熟悉 Google 的廣告服務，您可能不知道 [AdMob](https://admob.google.cn/intl/zh-CN_cn/home/) 和 [Ad Manager](https://admanager.google.com/intl/zh-CN_cn/home/) 是兩種不同的產品，具有不同的變現功能。AdMob 平台專為想要透過廣告獲利並獲得切實可行的洞察以發展應用業務的行動開發者設計。Ad Manager 平台專為擁有大量直銷或多種庫存型別的釋出商設計。
 
-[Flutter GMA SDK](https://pub.flutter-io.cn/packages/google_mobile_ads) 統一了這些產品，透過在 iOS 和 Android 平台共享程式碼來滿足您的變現需求，且無需在需求增長時重寫程式碼。
+[Flutter GMA SDK](https://pub.dev/packages/google_mobile_ads) 統一了這些產品，透過在 iOS 和 Android 平台共享程式碼來滿足您的變現需求，且無需在需求增長時重寫程式碼。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/12/VGvTlQ.png)
 
@@ -53,8 +53,8 @@ Flutter GMA SDK 為 iOS 和 Android 應用提供相同的廣告功能。您可�
 
 ## **其他變現功能**
 
-除了廣告，Flutter 也提供了應用變現的其他方法。例如，[應用內購買](https://pub.flutter-io.cn/packages/in_app_purchase) (In-App Purchase) 外掛可以讓您在應用中提供額外內容，包括高階服務、數字商品和訂閱。Flutter 的 [Pay](https://pub.flutter-io.cn/packages/pay) 外掛可以讓您的應用在 Android 裝置上整合 Google Pay 以及在 iOS 上整合 Apple Pay，從而讓您快速輕鬆地支援這兩個平台，為您的使用者打造順暢的付款體驗，來購買日用品、零售商品和食品外賣等。
+除了廣告，Flutter 也提供了應用變現的其他方法。例如，[應用內購買](https://pub.dev/packages/in_app_purchase) (In-App Purchase) 外掛可以讓您在應用中提供額外內容，包括高階服務、數字商品和訂閱。Flutter 的 [Pay](https://pub.dev/packages/pay) 外掛可以讓您的應用在 Android 裝置上整合 Google Pay 以及在 iOS 上整合 Apple Pay，從而讓您快速輕鬆地支援這兩個平台，為您的使用者打造順暢的付款體驗，來購買日用品、零售商品和食品外賣等。
 
-要了解 Ads 的詳情或其他變現功能，請前往我們 [最近更新的網站](https://flutter.cn/monetization) 檢視範例、Codelab 和文件。
+要了解 Ads 的詳情或其他變現功能，請前往我們 [最近更新的網站](https://flutter.dev/monetization) 檢視範例、Codelab 和文件。
 
 建構 Flutter 應用僅僅只是開始。我們希望您能善加利用這一系列變現功能，透過 Flutter 打造成功的業務！
