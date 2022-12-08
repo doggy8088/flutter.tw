@@ -1,9 +1,9 @@
 - name: 開始使用
   description: 配置 Flutter 開發環境，開啟 Flutter 應用之旅。
-  url: /docs/get-started/install
+  url: /get-started/install
 - name: Widget 目錄
   description: 檢視和了解 Flutter SDK 內建的 Widgets 合集。
-  url: /docs/development/ui/widgets
+  url: /development/ui/widgets
 - name: API 文件
   description: Flutter 框架的 API 文件。
   url: https://api.flutter.dev
