@@ -1,8 +1,8 @@
 ---
 title: Create a shimmer loading effect
-title: 创建一个微光加载效果
+title: 建立一個微光載入效果
 description: How to implement a shimmer loading effect.
-description: 如何实现一个微光加载效果
+description: 如何實現一個微光載入效果
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

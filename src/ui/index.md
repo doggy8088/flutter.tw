@@ -1,9 +1,9 @@
 ---
 title: Building user interfaces with Flutter
-title: 使用 Flutter 构建界面
+title: 使用 Flutter 建構介面
 short-title: UI
 description: Introduction to user interface development in Flutter.
-description: 介绍如何用 Flutter 构建界面
+description: 介紹如何用 Flutter 建構介面
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

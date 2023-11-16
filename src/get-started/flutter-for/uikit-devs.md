@@ -1,10 +1,10 @@
 ---
 title: Flutter for UIKit developers
-title: 给 UIKit 开发者的 Flutter 指南
+title: 給 UIKit 開發者的 Flutter 指南
 description: Learn how to apply iOS and UIKit developer knowledge when building Flutter apps.
-description: 学习如何将 iOS 和 UIKit 开发经验应用到 Flutter 应用开发中。
-tags: Flutter教程,Flutter起步,Flutter入门
-keywords: Flutter iOS,iOS,用Flutter开发iOS,Cupertino
+description: 學習如何將 iOS 和 UIKit 開發經驗應用到 Flutter 應用開發中。
+tags: Flutter課程,Flutter起步,Flutter入門
+keywords: Flutter iOS,iOS,用Flutter開發iOS,Cupertino
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/ios_devs"?>

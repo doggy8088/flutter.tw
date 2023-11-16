@@ -1,8 +1,8 @@
 ---
 title: Create a photo filter carousel
-title: 创建一个照片滤镜选择器
+title: 建立一個照片濾鏡選擇器
 description: How to implement a photo filter carousel in Flutter.
-description: 学习如何通过 Flutter 实现一个照片滤镜的轮播选择器
+description: 學習如何透過 Flutter 實現一個照片濾鏡的輪播選擇器
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

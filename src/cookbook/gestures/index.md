@@ -1,8 +1,8 @@
 ---
 title: Gestures
-title: 手势操作 (Gestures)
+title: 手勢操作 (Gestures)
 description: A catalog of Flutter recipes for supporting gestures.
-description: 手势支持的文章目录
+description: 手勢支援的文章目錄
 ---
 
 {% include docs/cookbook-group-index.md %}

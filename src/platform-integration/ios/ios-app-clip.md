@@ -1,8 +1,8 @@
 ---
 title: Adding an iOS App Clip target
-title: 添加 iOS App Clip target
+title: 新增 iOS App Clip target
 description: How to add an iOS 14 App Clip target to your Flutter project.
-description: 如何为您的 Flutter 工程加入 iOS 14 的 App Clip。
+description: 如何為您的 Flutter 工程加入 iOS 14 的 App Clip。
 ---
 
 {{site.alert.important}}
@@ -11,8 +11,8 @@ description: 如何为您的 Flutter 工程加入 iOS 14 的 App Clip。
   uncompressed IPA payload size limit and cannot be
   used in production ([#71098][]).
 
-  目前该实验测试版本会突破 10MB 的未压缩 IPA 有效负载的大小限制，
-  请勿在生产环境中使用([#71098][])。
+  目前該實驗測試版本會突破 10MB 的未壓縮 IPA 有效負載的大小限制，
+  請勿在生產環境中使用([#71098][])。
   
 {{site.alert.end}}
 
@@ -20,8 +20,8 @@ This guide describes how to manually add another
 Flutter-rendering iOS App Clip target to your
 existing Flutter project or [add-to-app][] project.
 
-这个指南介绍了如何手动添加另一个使用 Flutter 来渲染的 iOS App Clip target, 
-并将它集成到您现有的 Flutter 项目或 [add-to-app][] 项目。
+這個指南介紹瞭如何手動新增另一個使用 Flutter 來渲染的 iOS App Clip target, 
+並將它整合到您現有的 Flutter 專案或 [add-to-app][] 專案。
 
 [#71098]: {{site.repo.flutter}}/issues/71098
 [add-to-app]: {{site.url}}/add-to-app
@@ -31,39 +31,39 @@ existing Flutter project or [add-to-app][] project.
   This is an advanced guide and is best intended
   for audience with a working knowledge of iOS development.
 
-  这是一个高级指南，适合具有 iOS 开发工作经验的读者。
+  這是一個高階指南，適合具有 iOS 開發工作經驗的讀者。
 
 {{site.alert.end}}
 
 To see a working sample, see the [App Clip sample][] on GitHub.
 
-要查看完整可用的示例，请参阅 GitHub 上的 [App Clip 示例][App Clip sample]。
+要檢視完整可用的範例，請參閱 GitHub 上的 [App Clip 範例][App Clip sample]。
 
 [App Clip sample]: {{site.github}}/flutter/samples/tree/master/ios_app_clip
 
 ## Step 1 - Open project
 
-## 步骤 1 - 打开项目
+## 步驟 1 - 開啟專案
 
 Open your iOS Xcode project, such as
 `ios/Runner.xcworkspace` for full-Flutter apps.
 
-打开您的 iOS Xcode 工程，例如您的纯 Flutter 项目中的 `ios/Runner.xcworkspace`。
+開啟您的 iOS Xcode 工程，例如您的純 Flutter 專案中的 `ios/Runner.xcworkspace`。
 
 ## Step 2 - Add an App Clip target
 
-## 步骤 2 - 添加一个 App Clip 的 target
+## 步驟 2 - 新增一個 App Clip 的 target
 
 **2.1**
 
 Click on your project in the Project Navigator to show
 the project settings.
 
-点击您项目的 Project Navigator 来显示工程设置。
+點選您專案的 Project Navigator 來顯示工程設定。
 
 Press **+** at the bottom of the target list to add a new target.
 
-点击 target 列表底部的 **+** 来添加一个新的 target。
+點選 target 列表底部的 **+** 來新增一個新的 target。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/add-target.png" %}
@@ -72,7 +72,7 @@ image="development/platform-integration/ios-app-clip/add-target.png" %}
 
 Select the **App Clip** type for your new target.
 
-为您的新 target 选择 `App Clip` 类型。
+為您的新 target 選擇 `App Clip` 型別。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/add-app-clip.png" %}
@@ -81,26 +81,26 @@ image="development/platform-integration/ios-app-clip/add-app-clip.png" %}
 
 Enter your new target detail in the dialog.
 
-在对话框为您的新 target 输入详情。
+在對話方塊為您的新 target 輸入詳情。
 
 Select `Storyboard` for Interface.
 
-选择 `Storyboard` 作为界面。
+選擇 `Storyboard` 作為介面。
 
 Select `UIKit App Delegate` for Life Cycle.
 
-选择 `UIKit App Delegate` 作为生命周期。
+選擇 `UIKit App Delegate` 作為生命週期。
 
 Select the same language as your original target for **Language**.
 
-选择与您原来的 target 相同的**编程语言**。
+選擇與您原來的 target 相同的**程式語言**。
 
 (In other words, to simplify the setup,
 don't create a Swift App Clip target for
 an Objective-C main target, and vice versa.)
 
-(换句话说，请勿为 Objective-C target 创建 Swift 类型的 App Clip target，
-反之亦然，以简化设置。)
+(換句話說，請勿為 Objective-C target 建立 Swift 型別的 App Clip target，
+反之亦然，以簡化設定。)
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/app-clip-details.png" %}
@@ -110,8 +110,8 @@ image="development/platform-integration/ios-app-clip/app-clip-details.png" %}
 In the following dialog,
 activate the new scheme for the new target.
 
-在接下来的对话框中，
-为新的 target 激活 (activate) 一个新的 scheme。
+在接下來的對話方塊中，
+為新的 target 啟用 (activate) 一個新的 scheme。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/activate-scheme.png" %}
@@ -119,7 +119,7 @@ image="development/platform-integration/ios-app-clip/activate-scheme.png" %}
 <a id="step-3"></a>
 ## Step 3 - Remove unneeded files
 
-## 步骤 3 - 移除不需要的文件
+## 步驟 3 - 移除不需要的檔案
 
 **3.1**
 
@@ -127,8 +127,8 @@ In the Project Navigator, in the newly created App Clip group,
 delete everything except `Info.plist` and
 `<app clip target>.entitlements`.
 
-在项目 Project Navigator 的新创建的 App Clip 组中，
-将除了 `Info.plist` 和 `App Clip target.entitlements` 以外的所有内容删除。
+在專案 Project Navigator 的新建立的 App Clip 組中，
+將除了 `Info.plist` 和 `App Clip target.entitlements` 以外的所有內容刪除。
 
 {{site.alert.tip}}
 
@@ -137,8 +137,8 @@ delete everything except `Info.plist` and
   `FlutterViewController` or `FlutterEngine` APIs
   from this code later.
 
-  对于 add-to-app 的用户，
-  由读者决定以后保留多少模板来从此代码中调用 
+  對於 add-to-app 的使用者，
+  由讀者決定以後保留多少範本來從此程式碼中呼叫 
   `FlutterViewController` 或 `FlutterEngine` API。
 
 {{site.alert.end}}
@@ -148,61 +148,61 @@ image="development/platform-integration/ios-app-clip/clean-files.png" %}
 
 Move files to trash.
 
-移动文件到废纸篓。
+移動檔案到廢紙簍。
 
 **3.2**
 
 If you don't use the `SceneDelegate.swift` file,
 remove the reference to it in the `Info.plist`.
 
-如果您不使用 `SceneDelegate.swift` 文件，移除在 `Info.plist` 中对应的引用。
+如果您不使用 `SceneDelegate.swift` 檔案，移除在 `Info.plist` 中對應的參考。
 
 Open the `Info.plist` file in the App Clip group.
 Delete the entire dictionary entry for
 **Application Scene Manifest**.
 
-打开 App Clip 组中的 `Info.plist`。
-删除 `Application Scene Manifest` 字典条目。
+開啟 App Clip 組中的 `Info.plist`。
+刪除 `Application Scene Manifest` 字典條目。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/scene-manifest.png" %}
 
 ## Step 4 - Share build configurations
 
-## 步骤 4 -  共享构建配置
+## 步驟 4 -  共享建構配置
 
 This step isn't necessary for add-to-app projects
 since add-to-app projects have their custom build
 configurations and versions.
 
-对于 add-to-app 项目，此步骤不是必需的，
-因为 add-to-app 有自己的自定义构建配置和版本。
+對於 add-to-app 專案，此步驟不是必需的，
+因為 add-to-app 有自己的自訂建構配置和版本。
 
 **4.1**
 
 Back in the project settings,
 select the project entry now rather than any targets.
 
-返回项目设置，现在选择 Project 条目，
-而不是 Targets 里的任何 target。
+返回專案設定，現在選擇 Project 條目，
+而不是 Targets 裡的任何 target。
 
 In the **Info** tab, under the **Configurations**
 expandable group, expand the
 **Debug**, **Profile**, and **Release** entries.
 
-在 **Info** 选项卡页中的 **Configurations** 可扩展组下，
-展开 **Debug**、**Profile** 和 **Release** 条目。
+在 **Info** 選項卡頁中的 **Configurations** 可擴充組下，
+展開 **Debug**、**Profile** 和 **Release** 條目。
 
 For each, select the same value from the drop-down menu
 for the App Clip target as the entry selected for the
 normal app target.
 
-每一个 App Clip target 的下拉菜单的值都应该与常规应用 target 中的值相同。
+每一個 App Clip target 的下拉選單的值都應該與常規應用 target 中的值相同。
 
 This gives your App Clip target access to Flutter's
 required build settings.
 
-这使您的 App Clip target 可以访问 Flutter 的必需构建设置。
+這使您的 App Clip target 可以存取 Flutter 的必需建構設定。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/configuration.png" %}
@@ -211,25 +211,25 @@ image="development/platform-integration/ios-app-clip/configuration.png" %}
 
 In the App Clip group's `Info.plist` file, set:
 
-在 App Clip 组的 `Info.plist` 文件中，设置：
+在 App Clip 組的 `Info.plist` 檔案中，設定：
 
 * `Build version string (short)` to `$(FLUTTER_BUILD_NAME)`
 * `Bundle version` to `$(FLUTTER_BUILD_NUMBER)`
 
 ## Step 5 - Share code and assets
 
-## 步骤 5 - 共享代码和资源
+## 步驟 5 - 共享程式碼和資源
 
 ### Option 1 - Share everything
 
-### 选项 1 - 共享所有东西
+### 選項 1 - 共享所有東西
 
 Assuming the intent is to show the same Flutter UI
 in the standard app as in the App Clip,
 share the same code and assets.
 
-假设您的目标是在 App Clip 中显示与普通应用相同的 Flutter UI，
-并共享相同的代码和资源。
+假設您的目標是在 App Clip 中顯示與普通應用相同的 Flutter UI，
+並共享相同的程式碼和資源。
 
 For each of the following: `Main.storyboard`, `Assets.xcassets`,
 `LaunchScreen.storyboard`, `GeneratedPluginRegistrant.m`, and
@@ -238,12 +238,12 @@ select the file, then in the first tab of the inspector,
 also include the App Clip target in the `Target Membership`
 checkbox group.
 
-对于以下每一个文件： `Main.storyboard`、 `Assets.xcassets`、
+對於以下每一個檔案： `Main.storyboard`、 `Assets.xcassets`、
 `LaunchScreen.storyboard`、`GeneratedPluginRegistrant.m` 和 
 `AppDelegate.swift`，
-（如果您是 Objective-C 还应该包括 `Supporting Files/main.m`）
-选择文件并且在检查器中选择第一个选项卡，
-并且在 `Target Membership` 选中 `App Clip`。
+（如果您是 Objective-C 還應該包括 `Supporting Files/main.m`）
+選擇檔案並且在檢查器中選擇第一個選項卡，
+並且在 `Target Membership` 選中 `App Clip`。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/add-target-membership.png"
@@ -251,29 +251,29 @@ image="development/platform-integration/ios-app-clip/add-target-membership.png"
 
 ### Option 2 - Customize Flutter launch for App Clip
 
-### 选项 2 - 为 App Clip 自定义 Flutter 的启动器
+### 選項 2 - 為 App Clip 自訂 Flutter 的啟動器
 
 In this case, do not delete everything listed in [Step 3](#step-3).
 Instead, use the scaffolding and the [iOS add-to-app APIs][]
 to perform a custom launch of Flutter.
 For example to show a [custom Flutter route][].
 
-在这个例子中，不需要删除在 [步骤 3](#step-3) 中的任何东西。
-相对的，使用 [iOS add-to-app APIs][] 的模板来自定义 Flutter 启动器。
-可以参考示例 [自定义 Flutter 路由][custom Flutter route]。
+在這個例子中，不需要刪除在 [步驟 3](#step-3) 中的任何東西。
+相對的，使用 [iOS add-to-app APIs][] 的範本來自訂 Flutter 啟動器。
+可以參考範例 [自訂 Flutter 路由][custom Flutter route]。
 
 [custom Flutter route]: {{site.url}}/add-to-app/ios/add-flutter-screen#route
 [iOS add-to-app APIs]: {{site.url}}/add-to-app/ios/add-flutter-screen
 
 ## Step 6 - Add App Clip associated domains
 
-## 步骤 6 - 添加 App Clip 的关联域名
+## 步驟 6 - 新增 App Clip 的關聯域名
 
 This is a standard step for App Clip development.
 See the [official Apple documentation][].
 
-这是一个 App Clip 开发的标准步骤。
-请查看 [苹果官方文档][official Apple documentation]。
+這是一個 App Clip 開發的標準步驟。
+請檢視 [蘋果官方文件][official Apple documentation]。
 
 [official Apple documentation]: {{site.apple-dev}}/documentation/app_clips/creating_an_app_clip_with_xcode#3604097
 
@@ -283,9 +283,9 @@ Open the `<app clip target>.entitlements` file.
 Add an `Associated Domains` Array type.
 Add a row to the array with `appclips:<your bundle id>`.
 
-打开 `<app clip target>.entitlements` 文件。
-添加 `Associated Domains` 数组。
-添加一行 `appclips:<your bundle id>` 到数组中。
+開啟 `<app clip target>.entitlements` 檔案。
+新增 `Associated Domains` 陣列。
+新增一行 `appclips:<your bundle id>` 到陣列中。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/app-clip-entitlements.png"
@@ -296,24 +296,24 @@ image="development/platform-integration/ios-app-clip/app-clip-entitlements.png"
 The same associated domains entitlement needs to be added
 to your main app, as well.
 
-同样的相关域名权利也需要添加到您的主应用程序中。
+同樣的相關域名權利也需要新增到您的主應用程式中。
 
 Copy the `<app clip target>.entitlements` file from your
 App Clip group to your main app group and rename it to
 the same name as your main target
 such as `Runner.entitlements`.
 
-将 `<app clip target>.entitlements` 
-文件从 App Clip 组复制到主应用程序组，
-并将其重命名为与主目标相同的名称，
+將 `<app clip target>.entitlements` 
+檔案從 App Clip 組複製到主應用程式組，
+並將其重新命名為與主目標相同的名稱，
 例如 `Runner.entitlements`。
 
 Open the file and delete the `Parent Application Identifiers`
 entry for the main app's entitlement file
 (leave that entry for the App Clip's entitlement file).
 
-打开文件并删除主应用程序授权文件的 `Parent Application Identifiers` 
-条目（将该条目保留为 App Clip 的授权文件）。
+開啟檔案並刪除主應用程式授權檔案的 `Parent Application Identifiers` 
+條目（將該條目保留為 App Clip 的授權檔案）。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/main-app-entitlements.png"
@@ -327,10 +327,10 @@ Set the **Code Signing Entitlements** setting to the
 relative path of the second entitlements file
 created for the main app.
 
-返回项目设置，选择主应用 target，
-打开 `Build Settings` 选项卡。
-设置 `Code Signing Entitlements` 的值为
-主应用创建的第二个授权文件的相对路径。
+返回專案設定，選擇主應用 target，
+開啟 `Build Settings` 選項卡。
+設定 `Code Signing Entitlements` 的值為
+主應用建立的第二個授權檔案的相對路徑。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/main-app-entitlements-setting.png"
@@ -338,29 +338,29 @@ image="development/platform-integration/ios-app-clip/main-app-entitlements-setti
 
 ## Step 7 - Integrate Flutter
 
-## 步骤 7 - 整合 Flutter
+## 步驟 7 - 整合 Flutter
 
 These steps are not necessary for add-to-app.
 
-add-to-app 不需要这些步骤。
+add-to-app 不需要這些步驟。
 
 **7.1**
 
 In your App Clip's target's project settings,
 open the **Build Settings** tab.
 
-在您的 App Clip 的 target 的项目设置，打开 `Build Settings` 选项卡。
+在您的 App Clip 的 target 的專案設定，開啟 `Build Settings` 選項卡。
 
 For setting `Framework Search Paths`, add 2 entries:
 
-为 `Framework Search Paths` 添加两个内容：
+為 `Framework Search Paths` 新增兩個內容：
 
 - `$(inherited)`
 - `$(PROJECT_DIR)/Flutter`
 
 In other words, the same as the main app target's build settings.
 
-换句话说，与主应用程序 target 的构建设置相同。
+換句話說，與主應用程式 target 的建構設定相同。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/app-clip-framework-search.png"
@@ -372,12 +372,12 @@ For the Swift target,
 set the `Objective-C Bridging Header`
 build setting to `Runner/Runner-Bridging-Header.h`
 
-如果是 Swift target，设置 `Objective-C Bridging Header` 构建配置
-为 `Runner/Runner-Bridging-Header.h`。
+如果是 Swift target，設定 `Objective-C Bridging Header` 建構配置
+為 `Runner/Runner-Bridging-Header.h`。
 
 In other words, the same as the main app target's build settings.
 
-换句话说，与主应用程序 target 的构建设置相同。
+換句話說，與主應用程式 target 的建構設定相同。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/bridge-header.png"
@@ -388,7 +388,7 @@ image="development/platform-integration/ios-app-clip/bridge-header.png"
 Now open the **Build Phases** tab. Press the **+** sign
 and select **New Run Script Phase**.
 
-现在打开 `Build Phases` 选项卡。点击 `+` 并且选择 `New Run Script Phase`。
+現在開啟 `Build Phases` 選項卡。點選 `+` 並且選擇 `New Run Script Phase`。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/new-build-phase.png"
@@ -396,11 +396,11 @@ image="development/platform-integration/ios-app-clip/new-build-phase.png"
 
 Drag that new phase to below the **Dependencies** phase.
 
-拖动新的 phase 到 `Dependencies` phase。
+拖動新的 phase 到 `Dependencies` phase。
 
 Expand the new phase and add this line to the script content:
 
-展开新 phase 并将以下内容添加到脚本：
+展開新 phase 並將以下內容新增到指令碼：
 
 ```bash
 /bin/sh "$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" build
@@ -409,7 +409,7 @@ Expand the new phase and add this line to the script content:
 In other words,
 the same as the main app target's build phases.
 
-简单来说，与主应用程序 target 的构建设置相同。
+簡單來說，與主應用程式 target 的建構設定相同。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/xcode-backend-build.png"
@@ -418,19 +418,19 @@ image="development/platform-integration/ios-app-clip/xcode-backend-build.png"
 This ensures that your Flutter Dart code is compiled
 when running the App Clip target.
 
-这可以确保在运行 App Clip target 时编译 Flutter 的 Dart 代码。
+這可以確保在執行 App Clip target 時編譯 Flutter 的 Dart 程式碼。
 
 **7.4**
 
 Press the **+** sign and select **New Run Script Phase** again.
 Leave it as the last phase.
 
-再次点击 `+` 并且选择 `New Run Script Phase`。
-这是最后一个 phase。
+再次點選 `+` 並且選擇 `New Run Script Phase`。
+這是最後一個 phase。
 
 This time, add:
 
-这次添加如下内容：
+這次新增如下內容：
 
 ```bash
 /bin/sh "$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" embed_and_thin
@@ -439,7 +439,7 @@ This time, add:
 In other words,
 the same as the main app target's build phases.
 
-简单来说，与主应用程序 target 的构建设置相同。
+簡單來說，與主應用程式 target 的建構設定相同。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/xcode-backend-embed.png"
@@ -448,18 +448,18 @@ image="development/platform-integration/ios-app-clip/xcode-backend-embed.png"
 This ensures that your Flutter app and engine are embedded
 into the App Clip bundle.
 
-这将确保您的 Flutter 应用程序和引擎嵌入到 App Clip bundle 中。
+這將確保您的 Flutter 應用程式和引擎嵌入到 App Clip bundle 中。
 
 ## Step 8 - Integrate plugins
 
-## Step 8 - 整合插件
+## Step 8 - 整合外掛
 
 {{site.alert.warning}}
 
   CocoaPods version 1.10.0.beta.1 or higher is required
   to run Flutter apps with plugins.
 
-  运行带有插件的 Flutter 应用程序需要 CocoaPods 1.10.0.beta.1 或更高版本。
+  執行帶有外掛的 Flutter 應用程式需要 CocoaPods 1.10.0.beta.1 或更高版本。
   
 {{site.alert.end}}
 
@@ -468,12 +468,12 @@ into the App Clip bundle.
 Open the `Podfile` for your Flutter project
 or add-to-app host project.
 
-在您的 Flutter 项目
-或是 add-to-app 的宿主项目中打开 `Podfile` 文件。
+在您的 Flutter 專案
+或是 add-to-app 的宿主專案中開啟 `Podfile` 檔案。
 
 For full-Flutter apps, replace the following section:
 
-如果是完整的 Flutter 项目，替换下面这段代码：
+如果是完整的 Flutter 專案，替換下面這段程式碼：
 
 ```ruby
 target 'Runner' do
@@ -486,7 +486,7 @@ end
 
 with:
 
-为：
+為：
 
 ```ruby
 use_frameworks!
@@ -502,12 +502,12 @@ also uncomment `platform :ios, '11.0'` and set the
 version to the lowest of the two target's iOS
 Deployment Target.
 
-在文件的开始，需要把 `platform :ios, '9.0'` 的注释解除，
-并且为您的 2 个 target 设置最低可运行的 iOS 系统版本。
+在檔案的開始，需要把 `platform :ios, '9.0'` 的註釋解除，
+並且為您的 2 個 target 設定最低可執行的 iOS 系統版本。
 
 For add-to-app, add to:
 
-如果是 add-to-app，紧跟下面的代码：
+如果是 add-to-app，緊跟下面的程式碼：
 
 ```ruby
 target 'MyApp' do
@@ -517,7 +517,7 @@ end
 
 with:
 
-添加：
+新增：
 
 ```ruby
 target 'MyApp' do
@@ -535,7 +535,7 @@ From the command line,
 enter your Flutter project directory
 and then install the pod:
 
-在命令行中，目前工作目录需要是您的 Flutter 项目目录，然后安装 pod：
+在命令列中，目前工作目錄需要是您的 Flutter 專案目錄，然後安裝 pod：
 
 ```terminal
 cd ios
@@ -544,14 +544,14 @@ pod install
 
 ## Run
 
-## 运行
+## 執行
 
 You can now run your App Clip target from Xcode by
 selecting your App Clip target from the scheme drop-down,
 selecting an iOS 14 device and pressing run.
 
-您现在可以在 Xcode 的 scheme 下拉中选择并运行您的 App Clip target 了，
-选择一个 iOS 14 的设备并点击运行。
+您現在可以在 Xcode 的 scheme 下拉中選擇並執行您的 App Clip target 了，
+選擇一個 iOS 14 的裝置並點選執行。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/run-select.png"
@@ -561,28 +561,28 @@ To test launching an App Clip from the beginning,
 also consult Apple's doc on
 [Testing Your App Clip's Launch Experience][testing].
 
-要从头测试 App Clip 的启动，您也可以查看苹果公司的文档
-[测试您的 App Clip 的启动体验][testing]。
+要從頭測試 App Clip 的啟動，您也可以檢視蘋果公司的文件
+[測試您的 App Clip 的啟動體驗][testing]。
 
 [testing]: {{site.apple-dev}}/documentation/app_clips/testing_your_app_clip_s_launch_experience
 
 ## Debugging, hot reload
 
-## 调试和热重载
+## 除錯和熱重載
 
 Unfortunately `flutter attach` cannot auto-discover the Flutter session
 in an App Clip due to networking permission restrictions.
 
-不幸的是，由于网络权限的原因，`flutter attach` 
-无法在 App clip 中自动发现 Flutter 会话。
+不幸的是，由於網路許可權的原因，`flutter attach` 
+無法在 App clip 中自動發現 Flutter 會話。
 
 In order to debug your App Clip and use functionalities
 like hot reload, you must look for the Observatory URI
 from the console output in Xcode after running.
 [PENDING: Is this still true?]
 
-为了调试 App clip 并使用诸如热重新加载之类的功能，
-必须在运行应用后从 Xcode 中的控制台输出中查找 Observatory URI。
+為了除錯 App clip 並使用諸如熱重新載入之類別的功能，
+必須在執行應用後從 Xcode 中的控制檯輸出中查詢 Observatory URI。
 
 {% include docs/app-figure.md
 image="development/platform-integration/ios-app-clip/observatory-uri.png"
@@ -591,7 +591,7 @@ image="development/platform-integration/ios-app-clip/observatory-uri.png"
 You must then copy paste it back into the
 `flutter attach` command to connect.
 
-您需要复制粘贴它们到 `flutter attach` 来连接。
+您需要複製貼上它們到 `flutter attach` 來連線。
 
 For example:
 

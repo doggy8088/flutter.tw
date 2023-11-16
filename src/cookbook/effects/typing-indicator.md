@@ -1,8 +1,8 @@
 ---
 title: Create a typing indicator
-title: 创建一个「正在输入」指示器效果
+title: 建立一個「正在輸入」指示器效果
 description: How to implement a typing indicator.
-description: 如何实现一个「正在输入」的指示器效果
+description: 如何實現一個「正在輸入」的指示器效果
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

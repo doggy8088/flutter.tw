@@ -1,28 +1,28 @@
 ---
-title: Flutter 状态管理：使用 MobX
+title: Flutter 狀態管理：使用 MobX
 toc: true
 ---
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/04/2fbde82783576.jpg)
 
-_文 / Paul Halliday, developer.school 创始人_
+_文 / Paul Halliday, developer.school 創始人_
 
-众所周知，状态管理是每个软件项目都需要持续迭代更新的方向。它并不是一个「一次性」的工作，
-而需要不断确保你遵循的最佳实践能够让你的工程保持良好的可维护性。
+眾所周知，狀態管理是每個軟體專案都需要持續迭代更新的方向。它並不是一個「一次性」的工作，
+而需要不斷確保你遵循的最佳實踐能夠讓你的工程保持良好的可維護性。
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=62886932&bvid=BV1Gt411K7JD&cid=327927635&page=1&autoplay=false" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-要在 Flutter 中高效地使用 MobX ，需要遵循以下原则：
+要在 Flutter 中高效地使用 MobX ，需要遵循以下原則：
 
-1. 我们能访问任意状态中的可观察对象（即在我们应用运行过程中发生变化的变量）。
-1. 我们可以在 View 中展示这些状态，并响应 Action 意图。
-1. 我们可以修改状态，从而更新可观察对象以及相应的 View。
+1. 我們能存取任意狀態中的可觀察物件（即在我們應用執行過程中發生變化的變數）。
+1. 我們可以在 View 中展示這些狀態，並響應 Action 意圖。
+1. 我們可以修改狀態，從而更新可觀察物件以及相應的 View。
 
-那么它的优势在哪呢？答案是，通过 MobX 完成这一切将会变得超级简单！codegen 工具可以帮我们完成绝大部分模版化的工作。
+那麼它的優勢在哪呢？答案是，透過 MobX 完成這一切將會變得超級簡單！codegen 工具可以幫我們完成絕大部分模版化的工作。
 
-## 初始化项目
+## 初始化專案
 
-让我们从创建一个全新的 Flutter 工程开始吧：
+讓我們從建立一個全新的 Flutter 工程開始吧：
 
 <!--skip-->
 ```shell
@@ -33,7 +33,7 @@ $ flutter create f_mobx && cd f_mobx
 $ code .
 ```
 
-下一步，我们得在 `pubspec.yaml` 中拉取一些依赖 (`dependencies` 与 `dev_dependencies`):
+下一步，我們得在 `pubspec.yaml` 中拉取一些依賴 (`dependencies` 與 `dev_dependencies`):
 
 <!--skip-->
 ```yaml
@@ -52,7 +52,7 @@ dev_dependencies:
   mobx_codegen:
 ```
 
-之后我们可以在 `main.dart` 中创建一个全新的 `MaterialApp` 以放置我们的 `CounterPage`。
+之後我們可以在 `main.dart` 中建立一個全新的 `MaterialApp` 以放置我們的 `CounterPage`。
 
 <!--skip-->
 ```dart
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-下一步，我们需要在 `lib/pages/counter_page.dart` 中创建 `CounterPage`，并完成用户界面的构建。其中包括了一个增加按钮和一个减少按钮。
+下一步，我們需要在 `lib/pages/counter_page.dart` 中建立 `CounterPage`，並完成使用者介面的建構。其中包括了一個增加按鈕和一個減少按鈕。
 
 <!--skip-->
 ```dart
@@ -120,9 +120,9 @@ class CounterPage extends StatelessWidget {
 }
 ```
 
-## 创建计数器的状态
+## 建立計數器的狀態
 
-太棒了！我们现在已经在 `lib/store/counter/counter.dart` 创建好了我们的计数器。现在，让我们来看看代码，逐行进行解释:
+太棒了！我們現在已經在 `lib/store/counter/counter.dart` 建立好了我們的計數器。現在，讓我們來看看程式碼，逐行進行解釋:
 
 <!--skip-->
 ```dart
@@ -151,21 +151,21 @@ abstract class _Counter with Store {
 }
 ```
 
-1. 我们导入了 `mobx.dart`，这样就可以访问 Store 以及其他功能了。
-1. 接下来，我们使用了 `part` 语法组合此类的自动生成的部分。我们暂时还没使用到生成器，但是别担心，我们将会在下一个部分进行这个操作。
-1. 接下来，我们将暴露 `Counter` 类，该类将与生成的与 MobX 绑定的 `_$Counter` 类一起使用。
-1. 最后，我们使用 Store 类创建一个 `_Counter`，并定一个 `@observable` 属性和 `@actions` 以确定 Store 可以与之交互的区域。
+1. 我們匯入了 `mobx.dart`，這樣就可以存取 Store 以及其他功能了。
+1. 接下來，我們使用了 `part` 語法組合此類別的自動產生的部分。我們暫時還沒使用到產生器，但是別擔心，我們將會在下一個部分進行這個操作。
+1. 接下來，我們將暴露 `Counter` 類，該類將與產生的與 MobX 繫結的 `_$Counter` 類一起使用。
+1. 最後，我們使用 Store 類建立一個 `_Counter`，並定一個 `@observable` 屬性和 `@actions` 以確定 Store 可以與之互動的區域。
  
-MobX 已经帮我们做了绝大部分繁琐的事情，所以我们不需要关心底层是如何实现的。
+MobX 已經幫我們做了絕大部分繁瑣的事情，所以我們不需要關心底層是如何實現的。
 
-现在我们已经有了 `Counter` 类，让我们在终端的该工程目录下通过下面的命令运行 `build_runner` 和 `mobx_codegen`：
+現在我們已經有了 `Counter` 類，讓我們在終端的該工程目錄下透過下面的命令執行 `build_runner` 和 `mobx_codegen`：
 
 <!--skip-->
 ```shell
 $ flutter packages pub run build_runner watch
 ```
  
-我们现在应该可以看到生成的 `counter.g.dart` 文件。它看上去类似下面这样：
+我們現在應該可以看到產生的 `counter.g.dart` 檔案。它看上去類似下面這樣：
 
 <!--skip-->
 ```dart
@@ -210,11 +210,11 @@ mixin _$Counter on _Counter, Store {
 }
 ```
 
-这些东西，我们都不需要自己来实现！是不是很棒呀？
+這些東西，我們都不需要自己來實現！是不是很棒呀？
 
-## 与 Store 进行绑定
+## 與 Store 進行繫結
 
-接下来，我们需要让 `counter_page.dart` 绑定到 Counter store。让我们再次看看它长什么样，然后进行深入探索：
+接下來，我們需要讓 `counter_page.dart` 繫結到 Counter store。讓我們再次看看它長什麼樣，然後進行深入探索：
 
 <!--skip-->
 ```dart
@@ -265,24 +265,24 @@ class CounterPage extends StatelessWidget {
 }
 ```
 
-让我们深入研究一下：
+讓我們深入研究一下：
 
-1. 我们导入了 `flutter_mobx` 以及我们的 Counter store，所以之后我们可以用到他们。
-1. 接下来，我们初始化了 `Counter`，并将其命名为 `counter`，之后我们就可以轻松监听这个可观察对象的值，或是发出 `actions：final Counter counter = Counter()`;
-1. 我们使用 Observer 监听 `counter.value` 的值。
-1. 我们将 onPressed 事件绑定到 `counter.increment` 和 `counter.decrement`，它们会将 `action` 发送到 Store。
+1. 我們匯入了 `flutter_mobx` 以及我們的 Counter store，所以之後我們可以用到他們。
+1. 接下來，我們初始化了 `Counter`，並將其命名為 `counter`，之後我們就可以輕鬆監聽這個可觀察物件的值，或是發出 `actions：final Counter counter = Counter()`;
+1. 我們使用 Observer 監聽 `counter.value` 的值。
+1. 我們將 onPressed 事件繫結到 `counter.increment` 和 `counter.decrement`，它們會將 `action` 傳送到 Store。
  
-上面这些代码结合起来就完成了我们小型的计数器应用！
+上面這些程式碼結合起來就完成了我們小型的計數器應用！
  
-## 总结
+## 總結
 
-希望这篇 MobX 的介绍能够帮到你。我目前仍在持续探索 Flutter 状态管理的最佳实践，所以我也非常期待将来能对该系列进一步的更新。
+希望這篇 MobX 的介紹能夠幫到你。我目前仍在持續探索 Flutter 狀態管理的最佳實踐，所以我也非常期待將來能對該系列進一步的更新。
  
-原文：[developer.school](https://developer.school/flutter-state-management-with-mobx/)，文章 & 视频本地化和发布已获得作者本人授权
+原文：[developer.school](https://developer.school/flutter-state-management-with-mobx/)，文章 & 影片本地化和釋出已獲得作者本人授權
 
-## 致谢
+## 致謝
 
 - 本文作者：Paul Halliday
-- 中文字幕翻译: Alex、鑫磊
-- 文章翻译：加康、鑫磊
-- 头图：Lynn
+- 中文字幕翻譯: Alex、鑫磊
+- 文章翻譯：加康、鑫磊
+- 頭圖：Lynn

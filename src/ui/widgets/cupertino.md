@@ -1,6 +1,6 @@
 ---
 title: Cupertino (iOS-style) widgets
-title: iOS 风格 widgets 列表
+title: iOS 風格 widgets 列表
 short-title: Cupertino
 description: >
   A catalog of Flutter's widgets implementing the Cupertino design language.

@@ -2,9 +2,9 @@
 title: Work with tabs
 title: 使用 tabs
 description: How to implement tabs in a layout.
-description: 如何实现 tab 布局。
-tags: cookbook, 实用教程, 设计
-keywords: Material Design 效果, 标签页布局, tabs
+description: 如何實現 tab 佈局。
+tags: cookbook, 實用課程, 設計
+keywords: Material Design 效果, 標籤頁佈局, tabs
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -17,63 +17,63 @@ Material Design guidelines.
 Flutter includes a convenient way to create tab layouts as part of
 the [material library][].
 
-在 Material Design 设计准则里，tabs 是一种常用的布局模型。
-Flutter 自带的 [Material 库][material library] 
-可以帮助开发者们非常便捷的创建 tab 布局。
+在 Material Design 設計準則裡，tabs 是一種常用的佈局模型。
+Flutter 自帶的 [Material 庫][material library] 
+可以幫助開發者們非常便捷的建立 tab 佈局。
 
 {{site.alert.note}}
 
   To create tabs in a Cupertino app, see the
   [Building a Cupertino app with Flutter][] codelab.
   
-  创建一个使用 tabs 布局、Cupertino 风格的 iOS 应用，
-  请参见这个 codelab:
-  [使用 Flutter 构建 iOS 风格的应用][Building a Cupertino app with Flutter]。
+  建立一個使用 tabs 佈局、Cupertino 風格的 iOS 應用，
+  請參見這個 codelab:
+  [使用 Flutter 建構 iOS 風格的應用][Building a Cupertino app with Flutter]。
   
 {{site.alert.end}}
 
 This recipe creates a tabbed example using the following steps;
 
-这份教程将帮助你创建一个 tabs 布局样例，请参见如下步骤：
+這份課程將幫助你建立一個 tabs 佈局範例，請參見如下步驟：
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Create a `TabController`.
      
-     创建 `TabController`
+     建立 `TabController`
   
   2. Create the tabs.
     
-     创建 tabs
+     建立 tabs
      
   3. Create content for each tab.
     
-     为每个 tab 创建内容
+     為每個 tab 建立內容
 
 ## 1. Create a `TabController`
 
-## 1. 创建 `TabController`
+## 1. 建立 `TabController`
 
 For tabs to work, you need to keep the selected tab and content
 sections in sync.
 This is the job of the [`TabController`][].
 
-为了使所选的 tab 与它所对应的内容能够同步变化，
-需要用 [`TabController`][] 进行控制。
+為了使所選的 tab 與它所對應的內容能夠同步變化，
+需要用 [`TabController`][] 進行控制。
 
 Either create a `TabController` manually,
 or automatically by using a [`DefaultTabController`][] widget.
 
-我们既可以手动创建一个 `TabController` ，也能够直接使用
+我們既可以手動建立一個 `TabController` ，也能夠直接使用
 [`DefaultTabController`][] widget。
 
 Using `DefaultTabController` is the simplest option, since it
 creates a `TabController` and makes it available to all descendant widgets.
 
-最简单的选择是使用 `DefaultTabController` widget，
-因为它能够创建出一个可供所有子 widgets 使用的 `TabController`。
+最簡單的選擇是使用 `DefaultTabController` widget，
+因為它能夠創建出一個可供所有子 widgets 使用的 `TabController`。
 
 <?code-excerpt "lib/partials.dart (TabController)"?>
 ```dart
@@ -87,18 +87,18 @@ return MaterialApp(
 
 ## 2. Create the tabs
 
-## 2. 创建 tabs 
+## 2. 建立 tabs 
 
 When a tab is selected, it needs to display content.
 You can create tabs using the [`TabBar`][] widget.
 In this example, create a `TabBar` with three
 [`Tab`][] widgets and place it within an [`AppBar`][].
 
-现在我们已经成功创建了 `TabController`，
-接下来就可以用 [`TabBar`][] widget
-来创建 tabs。下面这个示例创建了包含三组
-[`Tab`][] widget 的 `TabBar`（一个），
-并把它放置于 [`AppBar`][] widget 中。
+現在我們已經成功建立了 `TabController`，
+接下來就可以用 [`TabBar`][] widget
+來建立 tabs。下面這個範例建立了包含三組
+[`Tab`][] widget 的 `TabBar`（一個），
+並把它放置於 [`AppBar`][] widget 中。
 
 <?code-excerpt "lib/partials.dart (Tabs)"?>
 ```dart
@@ -124,21 +124,21 @@ By default, the `TabBar` looks up the widget tree for the nearest
 `DefaultTabController`. If you're manually creating a `TabController`,
 pass it to the `TabBar`.
 
-`TabBar` 默认将会在 Widget 树中向上寻找离它最近的一个
-`DefaultTabController` 节点作为自己的 `TabController`。
-如果您想手动创建 `TabController`，
-那么您必须将它作为参数传给 `TabBar`。
+`TabBar` 預設將會在 Widget 樹中向上尋找離它最近的一個
+`DefaultTabController` 節點作為自己的 `TabController`。
+如果您想手動建立 `TabController`，
+那麼您必須將它作為引數傳給 `TabBar`。
 
 ## 3. Create content for each tab
 
-## 3. 为每个 tab 创建内容
+## 3. 為每個 tab 建立內容
 
 Now that you have tabs, display content when a tab is selected.
 For this purpose, use the [`TabBarView`][] widget.
 
-现在我们已经成功创建了一些 tabs，
-接下来要实现的是 tab 被选中时显示其对应的内容。
-为了实现这个效果，我们将使用
+現在我們已經成功建立了一些 tabs，
+接下來要實現的是 tab 被選中時顯示其對應的內容。
+為了實現這個效果，我們將使用
 [`TabBarView`][] widget。
 
 {{site.alert.note}}
@@ -146,7 +146,7 @@ For this purpose, use the [`TabBarView`][] widget.
   Order is important and must correspond to the order of the tabs in the
   `TabBar`.
   
-  `TabBarView` 中内容的顺序很重要，它必须与 `TabBar` 中 tab 的顺序相对应！
+  `TabBarView` 中內容的順序很重要，它必須與 `TabBar` 中 tab 的順序相對應！
 
 {{site.alert.end}}
 
@@ -163,7 +163,7 @@ body: const TabBarView(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

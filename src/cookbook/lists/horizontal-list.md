@@ -1,10 +1,10 @@
 ---
 title: Create a horizontal list
-title: 创建一个水平滑动的列表
+title: 建立一個水平滑動的列表
 description: How to implement a horizontal list.
-description: 如何实现一个水平列表。
-tags: cookbook, 实用教程, 列表相关
-keywords: 列表定制,水平滑动列表
+description: 如何實現一個水平列表。
+tags: cookbook, 實用課程, 列表相關
+keywords: 列表客製,水平滑動列表
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -16,15 +16,15 @@ You might want to create a list that scrolls
 horizontally rather than vertically.
 The [`ListView`][] widget supports horizontal lists.
 
-有时，你可能想要创建一个水平滑动（而不是竖直滑动）的列表。
-[`ListView`][] widget 本身就支持水平列表的创建。
+有時，你可能想要建立一個水平滑動（而不是豎直滑動）的列表。
+[`ListView`][] widget 本身就支援水平列表的建立。
 
 Use the standard `ListView` constructor, passing in a horizontal
 `scrollDirection`, which overrides the default vertical direction.
 
-我们将会使用标准的 `ListView` 构造方法，
-通过指定 `scrollDirection` 的值为水平方向，
-来覆盖默认的竖直方向。
+我們將會使用標準的 `ListView` 構造方法，
+透過指定 `scrollDirection` 的值為水平方向，
+來覆蓋預設的豎直方向。
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^child\: //g"?>
 ```dart
@@ -58,7 +58,7 @@ ListView(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

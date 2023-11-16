@@ -1,8 +1,8 @@
 ---
 title: Migrate a Windows project to set version information
-title: 迁移 Windows 项目以支持设置版本信息
+title: 遷移 Windows 專案以支援設定版本資訊
 description: How to update a Windows project to set version information
-description: 如何迁移 Windows 项目以支持设置版本信息
+description: 如何遷移 Windows 專案以支援設定版本資訊
 ---
 
 Flutter 3.3 added support for setting the Windows app's version from
@@ -10,63 +10,63 @@ the `pubspec.yaml` file or through the `--build-name` and `--build-number`
 build arguments. For more information, refer to the
 [Build and release a Windows app][] documentation.
 
-Flutter 3.3 新增了一项功能支持，
-你可以通过 `pubspec.yaml` 文件或者
-使用 `--build-name` 和 `--build-number` 指令构建参数
-来设置 Windows 应用程序的版本。
-更多信息，请参阅 [构建和发布为 Windows 应用][Build and release a Windows app] 文档。
+Flutter 3.3 新增了一項功能支援，
+你可以透過 `pubspec.yaml` 檔案或者
+使用 `--build-name` 和 `--build-number` 指令建構引數
+來設定 Windows 應用程式的版本。
+更多資訊，請參閱 [建構和釋出為 Windows 應用][Build and release a Windows app] 文件。
 
 Projects created before Flutter version 3.3 need to be migrated
 to support versioning.
 
-在 Flutter 3.3 版本之前创建的项目需要通过迁移来支持版本管理。
+在 Flutter 3.3 版本之前建立的專案需要透過遷移來支援版本管理。
 
 ## Migration steps
 
-## 迁移步骤
+## 遷移步驟
 
 Your project can be updated using these steps:
 
-你的项目可以通过这些步骤进行迁移：
+你的專案可以透過這些步驟進行遷移：
 
 1. Verify you are on Flutter version 3.3 or newer using `flutter --version`
 
-   使用 `flutter --version` 指令，确认你的 Flutter 是 3.3 或更高的版本
+   使用 `flutter --version` 指令，確認你的 Flutter 是 3.3 或更高的版本
 
 2. If needed, use `flutter upgrade` to update to the latest version of the
    Flutter SDK
 
-   如果可以的话，请使用 `flutter upgrade` 指令，更新 Flutter SDK 到最新版本
+   如果可以的話，請使用 `flutter upgrade` 指令，更新 Flutter SDK 到最新版本
 
 3. Backup your project, possibly using git or some other version control system
 
-   备份你的项目，请尽量使用 git 或一些其他的版本控制系统
+   備份你的專案，請儘量使用 git 或一些其他的版本控制系統
 
 4. Delete the `windows/runner/CMakeLists.txt` and `windows/runner/Runner.rc`
    files
 
-   确保备份完成后，删除 `windows/runner/CMakeLists.txt` 和 `windows/runner/Runner.rc` 文件
+   確保備份完成後，刪除 `windows/runner/CMakeLists.txt` 和 `windows/runner/Runner.rc` 檔案
 
 5. Run `flutter create --platforms=windows .`
 
-   运行 `flutter create --platforms=windows .` 指令
+   執行 `flutter create --platforms=windows .` 指令
 
 6. Review the changes to your `windows/runner/CMakeLists.txt` and
    `windows/runner/Runner.rc` files
 
-   检查 `windows/runner/CMakeLists.txt` 和 `windows/runner/Runner.rc` 文件的改动
+   檢查 `windows/runner/CMakeLists.txt` 和 `windows/runner/Runner.rc` 檔案的改動
 
 7. Verify your app builds using `flutter build windows`
 
-   运行 `flutter build windows` 指令，验证应用程序的构建情况
+   執行 `flutter build windows` 指令，驗證應用程式的建構情況
 
 {{site.alert.note}}
 
   Follow the [run loop migration guide][] if the build fails
   with the following error message:
 
-  如果构建失败并显示以下报错信息，
-  请遵循 [Windows 事件循环迁移指南][run loop migration guide] 来解决问题：
+  如果建構失敗並顯示以下報錯資訊，
+  請遵循 [Windows 事件迴圈遷移指南][run loop migration guide] 來解決問題：
 
   ```
   flutter_window.obj : error LNK2019: unresolved external symbol "public: void __cdecl RunLoop::RegisterFlutterInstance(class flutter::FlutterEngine *)" (?RegisterFlutterInstance@RunLoop@@QEAAXPEAVFlutterEngine@flutter@@@Z) referenced in function "protected: virtual bool __cdecl FlutterWindow::OnCreate(void)" (?OnCreate@FlutterWindow@@MEAA_NXZ)
@@ -76,12 +76,12 @@ Your project can be updated using these steps:
 
 ## Example
 
-## 示例
+## 範例
 
 [PR 721][] shows the migration work for the
 [Flutter Gallery][] app.
 
-[PR 721][] 展示了 [Flutter Gallery][] 应用程序的迁移工作。
+[PR 721][] 展示了 [Flutter Gallery][] 應用程式的遷移工作。
 
 [Build and release a Windows app]: {{site.url}}/deployment/windows#updating-the-apps-version-number
 [run loop migration guide]: {{site.url}}/release/breaking-changes/windows-run-loop

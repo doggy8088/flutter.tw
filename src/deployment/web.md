@@ -1,11 +1,11 @@
 ---
 title: Build and release a web app
-title: 构建和发布为 Web 应用
+title: 建構和釋出為 Web 應用
 description: How to prepare for and release a web app.
-description: 如何打包并发布到 Web 平台。
+description: 如何打包併發布到 Web 平台。
 short-title: Web
-tags: 发布, Web
-keywords: 发布Flutter应用为Web应用
+tags: 釋出, Web
+keywords: 釋出Flutter應用為Web應用
 ---
 
 During a typical development cycle,
@@ -13,42 +13,42 @@ you test an app using `flutter run -d chrome`
 (for example) at the command line.
 This builds a _debug_ version of your app.
 
-（例如）在典型的开发过程中，
-你可以在命令行使用 `flutter run -d chrome` 命令测试应用程序。
-这会构建出 **debug** 版本的应用。
+（例如）在典型的開發過程中，
+你可以在命令列使用 `flutter run -d chrome` 命令測試應用程式。
+這會構建出 **debug** 版本的應用。
 
 This page helps you prepare a _release_ version
 of your app and covers the following topics:
 
-本页面会帮助你构建 **release** 版本的应用，其囊括了如下主题：
+本頁面會幫助你建構 **release** 版本的應用，其囊括瞭如下主題：
 
 * [Building the app for release](#building-the-app-for-release)
 
-  [构建正式版本的应用](#building-the-app-for-release)
+  [建構正式版本的應用](#building-the-app-for-release)
 
 * [Deploying to the web](#deploying-to-the-web)
 
-  [部署应用到 Web](#deploying-to-the-web)
+  [部署應用到 Web](#deploying-to-the-web)
 
 * [Deploying to Firebase Hosting](#deploying-to-firebase-hosting)
 
-  [部署到 Firebase 主机](#deploying-to-firebase-hosting)
+  [部署到 Firebase 主機](#deploying-to-firebase-hosting)
 
 * [Handling images on the web](#handling-images-on-the-web)
 
-  [处理 Web 中的图片](#handling-images-on-the-web)
+  [處理 Web 中的圖片](#handling-images-on-the-web)
 
 * [Choosing a web renderer](#choosing-a-web-renderer)
 
-  [选择 Web 渲染器](#choosing-a-web-renderer)
+  [選擇 Web 渲染器](#choosing-a-web-renderer)
 
 * [Minification](#minification)
 
-  [压缩](#minification)
+  [壓縮](#minification)
 
 ## Building the app for release
 
-## 构建用于发布的应用
+## 建構用於釋出的應用
 
 Build the app for deployment using the
 `flutter build web` command.
@@ -58,14 +58,14 @@ This generates the app, including the assets,
 and places the files into the `/build/web`
 directory of the project.
 
-使用 `flutter build web` 命令构建应用程序以进行部署。
-你也可以通过使用 `--web-renderer` 自行选择渲染方式。（请查看 [网页渲染器][Web renderers]）
-这将生成包括资源的应用程序，并将文件放入项目的 `/build/web` 目录中。
+使用 `flutter build web` 命令建構應用程式以進行部署。
+你也可以透過使用 `--web-renderer` 自行選擇渲染方式。（請檢視 [網頁渲染器][Web renderers]）
+這將產生包括資源的應用程式，並將檔案放入專案的 `/build/web` 目錄中。
 
 The release build of a simple app has the
 following structure:
 
-一般的应用程序的 release 版本具有以下结构：
+一般的應用程式的 release 版本具有以下結構：
 
 ```none
 /build/web
@@ -111,10 +111,10 @@ and open the /build/web directory. Navigate to
 (given the python SimpleHTTPServer example)
 to view the release version of your app.
 
-启动 Web 服务器（例如，`python -m SimpleHTTPServer 8000`，或使用
-[dhttpd][] package），然后打开 /build/web 目录。
-在浏览器中访问 `localhost:8000`（前文用 Python 启动的服务器）
-以查看应用程序的 release 版本。
+啟動 Web 伺服器（例如，`python -m SimpleHTTPServer 8000`，或使用
+[dhttpd][] package），然後開啟 /build/web 目錄。
+在瀏覽器中存取 `localhost:8000`（前文用 Python 啟動的伺服器）
+以檢視應用程式的 release 版本。
 
 ## Deploying to the web
 
@@ -208,7 +208,7 @@ create a release build.
 
 ## Embedding a Flutter app into an HTML page
 
-## 将 Flutter 应用内嵌到一个 HTML 页面里
+## 將 Flutter 應用內嵌到一個 HTML 頁面裡
 
 ### `hostElement`
 
@@ -220,14 +220,14 @@ any HTML element of your web page, with `flutter.js` and the `hostElement`
 engine initialization parameter.
 
 ** 在 Flutter 3.10 中新增** <br>
-你可以使用 `flutter.js` 和 `hostElement` 引擎初始化参数将 
-Flutter Web 应用嵌入到 Web 页面的任何 HTML 元素中。
+你可以使用 `flutter.js` 和 `hostElement` 引擎初始化引數將 
+Flutter Web 應用嵌入到 Web 頁面的任何 HTML 元素中。
 
 To tell Flutter web in which element to render, use the `hostElement` parameter of the `initializeEngine`
 function:
 
-要告诉 Flutter Web 在哪个元素中呈现，
-请使用 `initializeEngine` 函数的 `hostElement` 参数：
+要告訴 Flutter Web 在哪個元素中呈現，
+請使用 `initializeEngine` 函式的 `hostElement` 引數：
 
 ```html
 <html>
@@ -259,7 +259,7 @@ function:
 
 To learn more, check out [Customizing web app initialization][customizing-web-init].
 
-要了解更多，请查看 [自定义 Web 应用的初始化][customizing-web-init]。
+要了解更多，請檢視 [自訂 Web 應用的初始化][customizing-web-init]。
 
 ### Iframe
 
@@ -269,9 +269,9 @@ in an [`iframe`][] tag of an HTML file.
 In the following example, replace "URL"
 with the location of your HTML page:
 
-你可以使用 [`iframe`][] 标签将 Flutter web 应用
-内嵌到一个网页里。
-请参照下面的例子，将 URL 替换成实际的地址：
+你可以使用 [`iframe`][] 標籤將 Flutter web 應用
+內嵌到一個網頁裡。
+請參照下面的例子，將 URL 替換成實際的地址：
 
 ```html
 <iframe src="URL"></iframe>
@@ -286,17 +286,17 @@ Flutter-based PWAs can be installed in the same way as any other web-based
 PWA; the settings signaling that your Flutter app is a PWA are provided by
 `manifest.json`, which is produced by `flutter create` in the `web` directory.
 
-从 1.20 版开始，用于 Web 应用程序的 Flutter 模板包括了对可安装且
-具有离线功能的 PWA 应用程序所需的核心功能的支持。 
-基于 Flutter 的 PWA 的安装方式与其他基于 Web 的 PWA 基本相同；
-由 `manifest.json` 提供的配置信息可以声明您的 Flutter 应用程序是 PWA，
-该文件可以在 `web` 目录中使用 `Flutter create` 命令生成。
+從 1.20 版開始，用於 Web 應用程式的 Flutter 範本包括了對可安裝且
+具有離線功能的 PWA 應用程式所需的核心功能的支援。 
+基於 Flutter 的 PWA 的安裝方式與其他基於 Web 的 PWA 基本相同；
+由 `manifest.json` 提供的配置資訊可以宣告您的 Flutter 應用程式是 PWA，
+該檔案可以在 `web` 目錄中使用 `Flutter create` 命令產生。
 
 PWA support remains a work in progress,
 so please [give us feedback][] if you see something that doesn't look right.
 
-对 PWA 的支持仍在进行中，因此，如果您发现不正确的地方，
-欢迎 [给予我们反馈][give us feedback]。
+對 PWA 的支援仍在進行中，因此，如果您發現不正確的地方，
+歡迎 [給予我們反饋][give us feedback]。
 
 [dhttpd]: {{site.pub}}/packages/dhttpd
 [Displaying images on the web]: {{site.url}}/platform-integration/web/web-images

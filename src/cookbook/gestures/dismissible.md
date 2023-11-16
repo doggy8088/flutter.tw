@@ -1,10 +1,10 @@
 ---
 title: Implement swipe to dismiss
-title: 实现「滑动清除」效果
+title: 實現「滑動清除」效果
 description: How to implement swiping to dismiss or delete.
-description: 如何实现滑动取消或清除效果。
-tags: cookbook, 实用教程, 手势
-keywords: 滑动清除
+description: 如何實現滑動取消或清除效果。
+tags: cookbook, 實用課程, 手勢
+keywords: 滑動清除
 diff2html: true
 js:
   - defer: true
@@ -18,55 +18,55 @@ For example, when writing an email app,
 you might want to allow a user to swipe away
 email messages to delete them from a list.
 
-“滑动清除”在许多移动应用中都很常见。
-比如，我们在写一个邮件应用，我们会想让用户能够滑动删除列表中的邮件消息。
-用户操作时，我们可能需要把这封邮件从收件箱移动到垃圾箱。
+“滑動清除”在許多移動應用中都很常見。
+比如，我們在寫一個郵件應用，我們會想讓使用者能夠滑動刪除列表中的郵件訊息。
+使用者操作時，我們可能需要把這封郵件從收件箱移動到垃圾箱。
 
 Flutter makes this task easy by providing the
 [`Dismissible`][] widget.
 Learn how to implement swipe to dismiss with the following steps:
 
-Flutter 提供了 [`Dismissible`][] Widget 来轻松地实现这个需求。
-我们一起看一下如下的步骤：
+Flutter 提供了 [`Dismissible`][] Widget 來輕鬆地實現這個需求。
+我們一起看一下如下的步驟：
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Create a list of items.
 
-     创建项目列表
+     建立專案列表
 
   2. Wrap each item in a `Dismissible` widget.
 
-     把每一项打包成一个 `Dismissible` Widget
+     把每一項打包成一個 `Dismissible` Widget
 
   3. Provide "leave behind" indicators.
 
-     提供“滞留”提示
+     提供“滯留”提示
 
 ## 1. Create a list of items
 
-## 1. 创建项目列表
+## 1. 建立專案列表
 
 First, create a list of items. For detailed
 instructions on how to create a list,
 follow the [Working with long lists][] recipe.
 
-首先，我们创建一个列表，列表项是能够滑动清除的。
-至于如何创建列表的更多细节，请参考
-[长列表的处理][Working with long lists] 文档。
+首先，我們建立一個列表，列表項是能夠滑動清除的。
+至於如何建立列表的更多細節，請參考
+[長列表的處理][Working with long lists] 文件。
 
 ### Create a data source
 
-### 创建一个数据源
+### 建立一個數據源
 
 In this example,
 you want 20 sample items to work with.
 To keep it simple, generate a list of strings.
 
-在我们的例子中，我们需要 20 个样本项来实现列表。
-为简单起见，我们会生成一个字符串列表。
+在我們的例子中，我們需要 20 個樣本項來實現列表。
+為簡單起見，我們會產生一個字串列表。
 
 <?code-excerpt "lib/main.dart (Items)"?>
 ```dart
@@ -75,13 +75,13 @@ final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
 
 ### Convert the data source into a list
 
-### 将数据源转换成一个 List
+### 將資料源轉換成一個 List
 
 Display each item in the list on screen. Users won't
 be able to swipe these items away just yet.
 
-首先，我们简单地在屏幕上展示列表中的每一项，
-用户现在还无法滑动清除它们。
+首先，我們簡單地在螢幕上展示列表中的每一項，
+使用者現在還無法滑動清除它們。
 
 <?code-excerpt "lib/step1.dart (ListView)" replace="/^body: //g;/,$//g"?>
 ```dart
@@ -97,25 +97,25 @@ ListView.builder(
 
 ## 2. Wrap each item in a Dismissible widget
 
-## 2. 把每一项打包一个 Dismissible Widget
+## 2. 把每一項打包一個 Dismissible Widget
 
 In this step,
 give users the ability to swipe an item off the list by using the
 [`Dismissible`][] widget.
 
-在这个步骤中，用户可以通过使用 [`Dismissible`][] 来删除列表中的某项。
+在這個步驟中，使用者可以透過使用 [`Dismissible`][] 來刪除列表中的某項。
 
 After the user has swiped away the item,
 remove the item from the list and display a snackbar.
 In a real app, you might need to perform more complex logic,
 such as removing the item from a web service or database.
 
-在用户将某一项滑出屏幕后，我们需要将那一项从列表中删除并显示一个 Snackbar。
-在真实的应用中，你可能需要执行更复杂的逻辑，比如从网页服务或数据库中删除此项。
+在使用者將某一項滑出屏幕後，我們需要將那一項從列表中刪除並顯示一個 Snackbar。
+在真實的應用中，你可能需要執行更復雜的邏輯，比如從網頁服務或資料庫中刪除此項。
 
 Update the `itemBuilder()` function to return a `Dismissible` widget:
 
-我们可以通过更新 `itemBuilder()` 函数来返回一个 `Dismissible` widget:
+我們可以透過更新 `itemBuilder()` 函式來返回一個 `Dismissible` widget:
 
 <?code-excerpt "lib/step2.dart (Dismissible)"?>
 ```dart
@@ -146,7 +146,7 @@ itemBuilder: (context, index) {
 
 ## 3. Provide "leave behind" indicators
 
-## 3. 提供“滞留”提示
+## 3. 提供“滯留”提示
 
 As it stands,
 the app allows users to swipe items off the list, but it doesn't
@@ -156,16 +156,16 @@ display a "leave behind" indicator as they
 swipe the item off the screen. In this case,
 the indicator is a red background.
 
-顾名思义，我们的应用允许用户将列表项滑出列表，
-但是应用可能没有向用户给出视觉提示，告诉他们操作时发生了什么。
-要给出提示，表明我们正在删除列表项，就需要在他们将列表项
-滑出屏幕的时候，展示一个“滞留”提示。这个例子中，我们使用了一个红色背景。
+顧名思義，我們的應用允許使用者將列表項滑出列表，
+但是應用可能沒有向用戶給出視覺提示，告訴他們操作時發生了什麼。
+要給出提示，表明我們正在刪除列表項，就需要在他們將列表項
+滑出螢幕的時候，展示一個“滯留”提示。這個例子中，我們使用了一個紅色背景。
 
 To add the indicator,
 provide a `background` parameter to the `Dismissible`.
 
-出于这个目的，我们为 `Dismissible`
-设置了一个 `background` 参数。
+出於這個目的，我們為 `Dismissible`
+設定了一個 `background` 引數。
 
 <?code-excerpt "lib/{step2,main}.dart (Dismissible)"?>
 ```diff
@@ -184,7 +184,7 @@ provide a `background` parameter to the `Dismissible`.
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

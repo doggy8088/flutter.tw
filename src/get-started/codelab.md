@@ -1,19 +1,19 @@
 ---
 title: Write your first Flutter app
-title: 编写第一个 Flutter 应用
+title: 編寫第一個 Flutter 應用
 description: How to write an app in Flutter.
-description: 如何使用 Flutter 编写一个应用。
+description: 如何使用 Flutter 編寫一個應用。
 short-title: Write your first app
-short-title: 编写第一个 Flutter 应用
-tags: Flutter安装,Flutter起步教程
-keywords: Flutter 第一个应用,Flutter Hello World,codelab
+short-title: 編寫第一個 Flutter 應用
+tags: Flutter安裝,Flutter起步課程
+keywords: Flutter 第一個應用,Flutter Hello World,codelab
 prev:
   title: Test drive
-  title: 开发体验初探
+  title: 開發體驗初探
   path: /docs/get-started/test-drive
 next:
   title: Learn more
-  title: 了解更多
+  title: 瞭解更多
   path: /docs/get-started/learn-more
 toc: false
 ---

@@ -1,10 +1,10 @@
 ---
 title: Update the UI based on orientation
-title: 根据屏幕方向更新界面
+title: 根據螢幕方向更新介面
 description: Respond to a change in the screen's orientation.
-description: 根据屏幕方向自适应界面。
-tags: cookbook, 实用教程, 设计
-keywords: 屏幕切换,横屏模式,竖屏模式,自适应
+description: 根據螢幕方向自適應介面。
+tags: cookbook, 實用課程, 設計
+keywords: 螢幕切換,橫屏模式,豎屏模式,自適應
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -18,8 +18,8 @@ rotates the screen from portrait mode to landscape mode. For example,
 the app might show one item after the next in portrait mode,
 yet put those same items side-by-side in landscape mode.
 
-一般情况下，一旦一个应用的屏幕方向发生了改变，比如从横屏变成竖屏，其设计也将跟着更新。
-例如，在纵向模式下，我们可能想要依次显示各个项目，但在横向模式下，我们会把这些相同的项目并排放置。
+一般情況下，一旦一個應用的螢幕方向發生了改變，比如從橫屏變成豎屏，其設計也將跟著更新。
+例如，在縱向模式下，我們可能想要依次顯示各個專案，但在橫向模式下，我們會把這些相同的專案並排放置。
 
 In Flutter, you can build different layouts depending
 on a given [`Orientation`][].
@@ -27,30 +27,30 @@ In this example, build a list that displays two columns in
 portrait mode and three columns in landscape mode using the
 following steps:
 
-在 Flutter 中，我们可以根据给定的 [`Orientation`][]
-构建不同的布局。本示例中，我们将构建一个列表，
-在纵向模式下显示两列，在横向模式下显示三列。
+在 Flutter 中，我們可以根據給定的 [`Orientation`][]
+建構不同的佈局。本範例中，我們將建構一個列表，
+在縱向模式下顯示兩列，在橫向模式下顯示三列。
 
   1. Build a `GridView` with two columns.
      
-     创建一个列的数量为 2 的 `GridView`；
+     建立一個列的數量為 2 的 `GridView`；
      
   2. Use an `OrientationBuilder` to change the number of columns.
   
-     使用 `OrientationBuilder` 更改列数。
+     使用 `OrientationBuilder` 更改列數。
 
 ## 1. Build a `GridView` with two columns
 
-## 1. 创建一个列的数量为 2 的 `GridView`
+## 1. 建立一個列的數量為 2 的 `GridView`
 
 First, create a list of items to work with.
 Rather than using a normal list,
 create a list that displays items in a grid.
 For now, create a grid with two columns.
 
-首先，我们需要一个项目的列表来配合完成。
-我们需要使用一个在网格中显示项目的列表而非一个普通的列表。
-现在，我们将创建一个包含两个列的网格。
+首先，我們需要一個專案的列表來配合完成。
+我們需要使用一個在網格中顯示專案的列表而非一個普通的列表。
+現在，我們將建立一個包含兩個列的網格。
 
 <?code-excerpt "lib/partials.dart (GridViewCount)"?>
 ```dart
@@ -64,12 +64,12 @@ return GridView.count(
 To learn more about working with `GridViews`,
 see the [Creating a grid list][] recipe.
 
-要了解有关使用 `GridViews` 的更多信息，
-请参阅这个教程文档：[创建一个网格列表][Creating a grid list]。
+要了解有關使用 `GridViews` 的更多資訊，
+請參閱這個課程文件：[建立一個網格列表][Creating a grid list]。
 
 ## 2. Use an `OrientationBuilder` to change the number of columns
 
-## 2. 使用 `OrientationBuilder` 更改列数。
+## 2. 使用 `OrientationBuilder` 更改列數。
 
 To determine the app's current `Orientation`, use the
 [`OrientationBuilder`][] widget.
@@ -77,16 +77,16 @@ The `OrientationBuilder` calculates the current `Orientation` by
 comparing the width and height available to the parent widget,
 and rebuilds when the size of the parent changes.
 
-为了确定当前的屏幕方向 `Orientation`，我们可以使用 `OrientationBuilder` widget。
-[`OrientationBuilder`][] 通过比较父 widget 的可用宽度和高度
-来计算当前的 `Orientation`，
-并在父窗口大小更改时重建。
+為了確定當前的螢幕方向 `Orientation`，我們可以使用 `OrientationBuilder` widget。
+[`OrientationBuilder`][] 透過比較父 widget 的可用寬度和高度
+來計算當前的 `Orientation`，
+並在父視窗大小更改時重建。
 
 Using the `Orientation`, build a list that displays two columns in portrait
 mode, or three columns in landscape mode.
 
-使用 `Orientation`，我们可以构建一个列表，
-在纵向模式下显示两列，在横向模式下显示三列。
+使用 `Orientation`，我們可以建構一個列表，
+在縱向模式下顯示兩列，在橫向模式下顯示三列。
 
 <?code-excerpt "lib/partials.dart (OrientationBuilder)"?>
 ```dart
@@ -108,14 +108,14 @@ body: OrientationBuilder(
   use `MediaQuery.of(context).orientation` instead of an
   `OrientationBuilder` widget.
   
-  如果你只想知道屏幕的方向，可以直接使用 `MediaQuery.of(context).orientation`，
+  如果你只想知道螢幕的方向，可以直接使用 `MediaQuery.of(context).orientation`，
   而不是使用 `OrientationBuilder` widget.
 
 {{site.alert.end}}
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-500px:split-60:ga_id-interactive_example
@@ -174,7 +174,7 @@ class OrientationList extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/orientation.gif" alt="屏幕方向适配样例" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/orientation.gif" alt="螢幕方向適配範例" class="site-mobile-screenshot" />
 </noscript>
 
 ## Locking device orientation

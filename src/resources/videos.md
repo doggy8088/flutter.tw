@@ -1,26 +1,26 @@
 ---
 title: Videos
-title: 学习 Flutter 的视频列表
+title: 學習 Flutter 的影片列表
 description: >
   Available videos on various aspects of developing in Flutter.
-description: 开发 Flutter 应用时的技术学习视频。
-tags: Flutter参考资料
-keywords: Flutter视频资料,Flutter学习,Flutter社区视频
+description: 開發 Flutter 應用時的技術學習影片。
+tags: Flutter參考資料
+keywords: Flutter影片資料,Flutter學習,Flutter社群影片
 ---
 
 These Flutter videos, produced both internally
 at Google and by the Flutter community,
 might help if you are a visual learner.
 
-如果你是一个视觉型学习者 (visual learner)，
-那么这些由 Google 或者社区（非 Google 官方）制作的 Flutter 的视频可能会对你有所帮助。
+如果你是一個視覺型學習者 (visual learner)，
+那麼這些由 Google 或者社群（非 Google 官方）製作的 Flutter 的影片可能會對你有所幫助。
 
 Note that many people make Flutter videos.
 This page shows some that we like,
 but there are many others, including
 some in different languages.
 
-这个页面仅列举部分 Flutter 视频，其他 Flutter 相关的视频可能会有很多。
+這個頁面僅列舉部分 Flutter 影片，其他 Flutter 相關的影片可能會有很多。
 
 ---
 
@@ -41,7 +41,7 @@ Flutter Forward livestream<br>
 
 ### Get ready for Flutter Forward
 
-### Flutter Forward 活动的视频
+### Flutter Forward 活動的影片
 
 Flutter Forward is happening on Jan 25th, in Nairobi, Kenya.
 Before the event, the Flutter team provided 17 days of Flutter
@@ -49,7 +49,7 @@ featuring new content and activities leading up to the event.
 This playlist contains these and other pre-event videos relating to
 Flutter Forward.
 
-Flutter Forward 相关的视频请查阅 Flutter 社区的 bilibili 频道
+Flutter Forward 相關的影片請查閱 Flutter 社群的 bilibili 頻道
 [合集](https://space.bilibili.com/344928717/channel/collectiondetail?sid=1052446&ctype=0)。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hpgkrUPRBjc?start=6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -104,12 +104,12 @@ Introducing Decoding Flutter
 
 ### Flutter widget of the week
 
-### 每周 Flutter Widgets
+### 每週 Flutter Widgets
 
 Do you have 60 seconds?
 Each one-minute video highlights a Flutter widget.
 
-每周一分钟，为你种草一个 Flutter widget！
+每週一分鐘，為你種草一個 Flutter widget！
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?bvid=BV15441157cc&page=1&autoplay=false" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Introducing widget of the week<br>
@@ -122,7 +122,7 @@ Introducing widget of the week<br>
 If you have another minute (or two),
 each of these videos highlights a Flutter package.
 
-你是否有几分钟时间，让我们用这些视频为你介绍一些精选 Flutter package。
+你是否有幾分鐘時間，讓我們用這些影片為你介紹一些精選 Flutter package。
 
 <iframe width="560" height="315" src="{{site.youtube-site}}/embed/QFcFEpFmNJ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `flutter_slidable` package
@@ -139,7 +139,7 @@ unscripted and in real time. Mistakes, solutions
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55815727&bvid=BV18441157SS&cid=97573460&page=1&autoplay=false" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Introducing the Boring Flutter show<br>
 
- The Boring Flutter Show 视频播放列表介绍<br>
+ The Boring Flutter Show 影片播放列表介紹<br>
 
 [The Boring Flutter show playlist][]
 
@@ -192,11 +192,11 @@ Introducing Flutter in focus<br>
 
 ## Conference talks
 
-## 会议讲座
+## 會議講座
 
 Here are a some Flutter talks given at various conferences.
 
-以下是各种会议上的一些 Flutter 会谈。
+以下是各種會議上的一些 Flutter 會談。
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55833267&cid=97603337&page=1&autoplay=false" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 [Conference talks playlist][]
@@ -205,14 +205,14 @@ Here are a some Flutter talks given at various conferences.
 
 ## Flutter developer stories
 
-## Flutter 开发者成功故事
+## Flutter 開發者成功故事
 
 Videos showing how various customers, such as Abbey Road Studio, Hamilton,
 and Alibaba, have used Flutter to create beautiful compelling apps with
 millions of downloads.
 
-视频展示了艾比路工作室 (Abbey Road Studio)、汉密尔顿 (Hamilton) 和阿里巴巴 (Alibaba)
-等开发者 / 公司如何使用 Flutter 开发出百万级别下载量，引人注目的应用程序。
+影片展示了艾比路工作室 (Abbey Road Studio)、漢密爾頓 (Hamilton) 和阿里巴巴 (Alibaba)
+等開發者 / 公司如何使用 Flutter 開發出百萬級別下載量，引人注目的應用程式。
 
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=55812033&cid=97567456&page=1&autoplay=false" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 [Flutter developer stories playlist][]

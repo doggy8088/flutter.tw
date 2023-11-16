@@ -1,10 +1,10 @@
 ---
 title: Create lists with different types of items
-title: 创建拥有不同列表项的列表
+title: 建立擁有不同列表項的列表
 description: How to implement a list that contains different types of assets.
-description: 如何实现一个包含不同类型资源的列表。
-tags: cookbook, 实用教程, 列表相关
-keywords: 列表进阶
+description: 如何實現一個包含不同型別資源的列表。
+tags: cookbook, 實用課程, 列表相關
+keywords: 列表進階
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -17,41 +17,41 @@ For example, you might be working on a list that shows a heading
 followed by a few items related to the heading, followed by another heading,
 and so on.
 
-我们经常需要创建展示不同类型内容的列表。
-比方说，我们可能在开发一个列表，它显示一个标题，
-后跟一些与标题相关的项目，然后是另一个标题，依此类推。
+我們經常需要建立展示不同型別內容的列表。
+比方說，我們可能在開發一個列表，它顯示一個標題，
+後跟一些與標題相關的專案，然後是另一個標題，依此類推。
 
 Here's how you can create such a structure with Flutter:
 
-你可以通过以下步骤，用 Flutter 创建这样的结构：
+你可以透過以下步驟，用 Flutter 建立這樣的結構：
 
   1. Create a data source with different types of items.
 
-     创建一个拥有不同类型项目的数据源
+     建立一個擁有不同型別專案的資料源
 
   2. Convert the data source into a list of widgets.
 
-     将数据源的数据转换成列表 widget
+     將資料源的資料轉換成列表 widget
 
 ## 1. Create a data source with different types of items
 
-## 1. 创建一个具有不同类型项目的数据源
+## 1. 建立一個具有不同型別專案的資料源
 
 ### Types of items
 
-### 项目的类型
+### 專案的型別
 
 To represent different types of items in a list, define
 a class for each type of item.
 
-为了表示 List 中不同类型的项，我们需要为每一个类型的项目定义一个类。
+為了表示 List 中不同型別的項，我們需要為每一個類別型的專案定義一個類別。
 
 In this example, create an app that shows a header followed by five
 messages. Therefore, create three classes: `ListItem`, `HeadingItem`,
 and `MessageItem`.
 
-在这个例子中，我们将制作一个展示了标题，后面有五条消息的应用。
-因此，我们将创建三个类：`ListItem`、`HeadingItem` 和 `MessageItem`。
+在這個例子中，我們將製作一個展示了標題，後面有五條訊息的應用。
+因此，我們將建立三個類：`ListItem`、`HeadingItem` 和 `MessageItem`。
 
 <?code-excerpt "lib/main.dart (ListItem)"?>
 ```dart
@@ -99,20 +99,20 @@ class MessageItem implements ListItem {
 
 ### Create a list of items
 
-### 创建项目的 List
+### 建立專案的 List
 
 Most of the time, you would fetch data from the internet or a local
 database and convert that data into a list of items.
 
-大部分时候，我们从网络或本地数据库获取数据，并将数据转换成一个项目列表。
+大部分時候，我們從網路或本地資料庫獲取資料，並將資料轉換成一個專案列表。
 
 For this example, generate a list of items to work with. The list
 contains a header followed by five messages. Each message has one
 of 3 types: `ListItem`, `HeadingItem`, or `MessageItem`.
 
-对于这个例子来说，我们将生成一个要使用的项目列表。
-这个列表将包含一个标题，后跟五条消息。
-每条消息都属于以下三种类型中的一种：
+對於這個例子來說，我們將產生一個要使用的專案列表。
+這個列表將包含一個標題，後跟五條訊息。
+每條訊息都屬於以下三種類型中的一種：
 `ListItem`、`HeadingItem`，或者是 `MessageItem`。
 
 <?code-excerpt "lib/main.dart (Items)" replace="/^items:/final items =/g;/,$/;/g"?>
@@ -127,20 +127,20 @@ final items = List<ListItem>.generate(
 
 ## 2. Convert the data source into a list of widgets
 
-## 2. 将数据源的数据转换成列表 widget
+## 2. 將資料源的資料轉換成列表 widget
 
 To convert each item into a widget,
 use the [`ListView.builder()`][] constructor.
 
-为了把每一个项目转换成 widget，
-我们将采用 [`ListView.builder()`][] 构造方法。
+為了把每一個專案轉換成 widget，
+我們將採用 [`ListView.builder()`][] 構造方法。
 
 In general, provide a builder function that checks for what type
 of item you're dealing with, and returns the appropriate widget
 for that type of item.
 
-通常，我们需要提供一个 builder 函数来确定我们正在处理的项目类型，
-并返回该类型项目的相应 widget。
+通常，我們需要提供一個 builder 函式來確定我們正在處理的專案型別，
+並返回該型別專案的相應 widget。
 
 <?code-excerpt "lib/main.dart (builder)" replace="/^body: //g;/,$//g"?>
 ```dart
@@ -162,7 +162,7 @@ ListView.builder(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

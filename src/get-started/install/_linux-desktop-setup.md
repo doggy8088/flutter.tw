@@ -1,20 +1,20 @@
 ## Linux setup
 
-## Linux 安装
+## Linux 安裝
 
 ### Linux prerequisites
 
-### Linux 准备工作
+### Linux 準備工作
 
 To develop Linux desktop apps with Flutter, you need the following tools:
 
-对于开发 Linux 桌面端应用来说，你需要以下工具：
+對於開發 Linux 桌面端應用來說，你需要以下工具：
 
 {% include docs/linux-requirements-list.md %}
 
 To install each of the tools, run the following command:
 
-请运行以下指令，安装每个工具：
+請執行以下指令，安裝每個工具：
 
 {% include docs/linux-requirements-command.md %}
 

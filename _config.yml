@@ -1,4 +1,4 @@
-title: Flutter 中文文档 - Flutter 中文开发者网站 - Flutter
+title: Flutter 中文文件 - Flutter 中文開發者網站 - Flutter
 url: https://flutter.cn/docs
 main-url: https://flutter.cn
 email: cfug-dev@googlegroups.com
@@ -172,7 +172,7 @@ alert:
     **Bonus questions!**
   important: >-
     <aside class="alert alert-warning" role="alert" markdown="1">
-    <i class="material-icons" aria-hidden="true">error</i> **重点提醒:**
+    <i class="material-icons" aria-hidden="true">error</i> **重點提醒:**
   info: >-
     <aside class="alert alert-info" role="alert" markdown="1">
     <i class="material-icons" aria-hidden="true">info</i>
@@ -189,7 +189,7 @@ alert:
     <i class="material-icons" aria-hidden="true">tips_and_updates</i> **小提示:**
   warning: >-
     <aside class="alert alert-warning" role="alert" markdown="1">
-    <i class="material-icons" aria-hidden="true">report_problem</i> **请注意:**
+    <i class="material-icons" aria-hidden="true">report_problem</i> **請注意:**
   end: </aside>
 
 

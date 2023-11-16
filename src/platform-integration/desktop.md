@@ -1,10 +1,10 @@
 ---
 title: Desktop support for Flutter
-title: Flutter 桌面支持
+title: Flutter 桌面支援
 description: General information about Flutter support for desktop apps.
-description: Flutter 的桌面端支持相关说明和信息。
+description: Flutter 的桌面端支援相關說明和資訊。
 toc: true
-tags: 文档
+tags: 文件
 keywords: Flutter Desktop, Flutter 桌面版
 ---
 
@@ -14,9 +14,9 @@ Flutter's desktop support also extends to plugins&mdash;you
 can install existing plugins that support the Windows,
 macOS, or Linux platforms, or you can create your own.
 
-桌面支持可以让你的 Flutter 代码编译成 Windows、macOS 或 Linux 的原生桌面应用。
-Flutter 的桌面支持也允许插件拓展&mdash;
-你可以使用已经支持了 Windows、macOS 或 Linux 平台的插件，或者创建你自己的插件来实现功能。
+桌面支援可以讓你的 Flutter 程式碼編譯成 Windows、macOS 或 Linux 的原生桌面應用。
+Flutter 的桌面支援也允許外掛拓展&mdash;
+你可以使用已經支援了 Windows、macOS 或 Linux 平台的外掛，或者建立你自己的外掛來實現功能。
 
 {{site.alert.note}}
 
@@ -24,20 +24,20 @@ Flutter 的桌面支持也允许插件拓展&mdash;
   platforms. Once you've read this, you can dive into
   specific platform information at the following links:
 
-  本页面包含了所有桌面平台的应用开发内容。
-  你阅读之后可以在以下链接中深入查看特定平台的内容。
+  本頁面包含了所有桌面平台的應用開發內容。
+  你閱讀之後可以在以下連結中深入檢視特定平台的內容。
 
   * [Building Windows apps with Flutter][]
 
-    [通过 Flutter 开发 Windows 应用][Building Windows apps with Flutter]
+    [透過 Flutter 開發 Windows 應用][Building Windows apps with Flutter]
 
   * [Building macOS apps with Flutter][]
 
-    [通过 Flutter 开发 macOS 应用][Building macOS apps with Flutter]
+    [透過 Flutter 開發 macOS 應用][Building macOS apps with Flutter]
 
   * [Building Linux apps with Flutter][]
 
-    [通过 Flutter 开发 Linux 应用][Building Linux apps with Flutter]
+    [透過 Flutter 開發 Linux 應用][Building Linux apps with Flutter]
 
 {{site.alert.end}}
 
@@ -55,19 +55,19 @@ platform: build a Windows application on Windows,
 a macOS application on macOS,
 and a Linux application on Linux.
 
-要能够编译桌面应用，你必须 **在特定的平台** 上编译应用:
-在 Windows 上构建 Windows 应用，在 macOS 上构建 macOS 应用，
-在 Linux 上构建 Linux 应用。
+要能夠編譯桌面應用，你必須 **在特定的平台** 上編譯應用:
+在 Windows 上建構 Windows 應用，在 macOS 上建構 macOS 應用，
+在 Linux 上建構 Linux 應用。
 
 To create a Flutter application with desktop support,
 you need the following software:
 
-要创建一个支持桌面的 Flutter 应用，你需要以下的软件：
+要建立一個支援桌面的 Flutter 應用，你需要以下的軟體：
 
 * Flutter SDK. See the
   [Flutter SDK][] installation instructions.
 
-  Flutter SDK，查看 [Flutter SDK][] 安装说明。
+  Flutter SDK，檢視 [Flutter SDK][] 安裝說明。
 
 * Optional: An IDE that supports Flutter.
   You can install [Android Studio][], [IntelliJ IDEA][],
@@ -78,11 +78,11 @@ you need the following software:
   within an editor. See [setting up an editor][]
   for more details.
 
-  可选项：一个支持 Flutter 的 IDE。你可以安装 [Android Studio][]、
-  [IntelliJ IDEA][] 或 [Visual Studio Code][]，并且需要
-  [安装 Flutter 和 Dart 插件][install the Flutter and Dart plugins]。
-  这些插件可以使 IDE 支持 Dart 语言，也为你提供了一些工具，
-  如重构、允许、调试和重载桌面应用。详情请查看 [配置一个编辑器][setting up an editor]。
+  可選項：一個支援 Flutter 的 IDE。你可以安裝 [Android Studio][]、
+  [IntelliJ IDEA][] 或 [Visual Studio Code][]，並且需要
+  [安裝 Flutter 和 Dart 外掛][install the Flutter and Dart plugins]。
+  這些外掛可以使 IDE 支援 Dart 語言，也為你提供了一些工具，
+  如重構、允許、除錯和重載桌面應用。詳情請檢視 [配置一個編輯器][setting up an editor]。
 
 [Android Studio]: {{site.android-dev}}/studio/install
 [Flutter SDK]: {{site.url}}/get-started/install
@@ -93,12 +93,12 @@ you need the following software:
 
 ### Additional Windows requirements
 
-### Windows 的额外要求
+### Windows 的額外要求
 
 For Windows desktop development,
 you need the following in addition to the Flutter SDK:
 
-要开发 Windows 桌面程序，除了 Flutter SDK，你还需要做以下准备:
+要開發 Windows 桌面程式，除了 Flutter SDK，你還需要做以下準備:
 
 * [Visual Studio 2022][] or [Visual Studio Build Tools 2022][]
   When installing Visual Studio or only the Build Tools,
@@ -107,16 +107,16 @@ you need the following in addition to the Flutter SDK:
   to install the necessary C++ toolchain and
   Windows SDK header files.
 
-  [Visual Studio 2022][] 或 [Visual Studio 2022 生成工具][Visual Studio Build Tools 2022]
-  在选择安装 Visual Studio 时或只安装生成工具的时候，
-  你需要选择「使用 C++ 的桌面开发」，包括其所有默认组件，
-  以安装必要的 C++ 工具链和 Windows SDK 的头文件。
+  [Visual Studio 2022][] 或 [Visual Studio 2022 產生工具][Visual Studio Build Tools 2022]
+  在選擇安裝 Visual Studio 時或只安裝產生工具的時候，
+  你需要選擇「使用 C++ 的桌面開發」，包括其所有預設元件，
+  以安裝必要的 C++ 工具鏈和 Windows SDK 的標頭檔案。
 
 {{site.alert.note}}
 
   **Visual Studio** is different than Visual Studio _Code_.
 
-  **Visual Studio** 与 Visual Studio **Code** 不同。
+  **Visual Studio** 與 Visual Studio **Code** 不同。
 
 {{site.alert.end}}
 
@@ -125,32 +125,32 @@ you need the following in addition to the Flutter SDK:
 
 ### Additional macOS requirements
 
-### macOS 的额外要求
+### macOS 的額外要求
 
 For macOS desktop development,
 you need the following in addition to the Flutter SDK:
 
-要开发 macOS 桌面程序，除了 Flutter SDK，你还需要做以下准备:
+要開發 macOS 桌面程式，除了 Flutter SDK，你還需要做以下準備:
 
 * [Xcode][] the full version of Xcode is required, not just the commandline tools
 
-  完整安装版本的 [Xcode][]，不能只是安装了命令行工具的那种
+  完整安裝版本的 [Xcode][]，不能只是安裝了命令列工具的那種
 
 * [CocoaPods][] if you use plugins
 
-  如果使用插件，需要安装 [CocoaPods][]
+  如果使用外掛，需要安裝 [CocoaPods][]
 
 [CocoaPods]: https://cocoapods.org/
 [Xcode]: {{site.apple-dev}}/xcode/
 
 ### Additional Linux requirements
 
-### Linux 的额外要求
+### Linux 的額外要求
 
 For Linux desktop development,
 you need the following in addition to the Flutter SDK:
 
-要开发 Linux 桌面程序，除了 Flutter SDK，你还需要做以下准备:
+要開發 Linux 桌面程式，除了 Flutter SDK，你還需要做以下準備:
 
 {% include docs/linux-requirements-list.md %}
 
@@ -158,14 +158,14 @@ One easy way to install the Flutter SDK along with the necessary
 dependencies is by using [snapd][].
 For more information, see [Installing snapd][].
 
-安装 Flutter SDK 和这些依赖，最简单方式的方式是使用 [snapd][]。
-更多详细信息，可以查看 [安装 snapd][Installing snapd]。
+安裝 Flutter SDK 和這些依賴，最簡單方式的方式是使用 [snapd][]。
+更多詳細資訊，可以檢視 [安裝 snapd][Installing snapd]。
 
 Once you have `snapd`, you can install Flutter
 using the [Snap Store][], or at the command line:
 
-安装 `snapd` 后，你就可以使用 [Snap Store][] 安装 Flutter，
-也可以在命令行进行安装:
+安裝 `snapd` 後，你就可以使用 [Snap Store][] 安裝 Flutter，
+也可以在命令列進行安裝:
 
 ```terminal
 $ sudo snap install flutter --classic
@@ -174,7 +174,7 @@ $ sudo snap install flutter --classic
 Alternatively, if you prefer not to use `snapd`,
 you can use the following command:
 
-如果你在使用的 Linux 发行版上无法使用 `snapd`，你可以使用下面的命令行:
+如果你在使用的 Linux 發行版上無法使用 `snapd`，你可以使用下面的命令列:
 
 {% include docs/linux-requirements-command.md %}
 
@@ -184,23 +184,23 @@ you can use the following command:
 
 ## Create a new project
 
-## 创建一个新项目
+## 建立一個新專案
 
 You can use the following steps
 to create a new project with desktop support.
 
-你可以通过下列步骤，来创建一个支持桌面的新项目。
+你可以透過下列步驟，來建立一個支援桌面的新專案。
 
 ### Set up
 
-### 配置步骤
+### 配置步驟
 
 On Windows, desktop support is enabled on
 Flutter 2.10 or higher. On macOS and Linux,
 desktop support is enabled on Flutter 3 or higher.
 
-Flutter 2.10 以及更高版本中加入了对 Windows 操作系统的桌面端支持。
-mac OS 和 Linux 的桌面端支持需要使用 Flutter 3 及更高版本。
+Flutter 2.10 以及更高版本中加入了對 Windows 作業系統的桌面端支援。
+mac OS 和 Linux 的桌面端支援需要使用 Flutter 3 及更高版本。
 
 You might run `flutter doctor` to see if
 there are any unresolved issues.
@@ -209,8 +209,8 @@ configured area. It should look something like
 the following on Windows,
 with an entry for "develop for Windows":
 
-你也可以运行 `flutter doctor` 来查看是否存在未解决的问题。
-每一个成功的配置都有一个对勾，比如在 Windows 上你可能会看到如下内容:
+你也可以執行 `flutter doctor` 來檢視是否存在未解決的問題。
+每一個成功的配置都有一個對勾，比如在 Windows 上你可能會看到如下內容:
 
 ```terminal
 C:\> flutter doctor
@@ -227,7 +227,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 On macOS, look for a line like this:
 
-在 macOS 上，你可能会看到如下内容:
+在 macOS 上，你可能會看到如下內容:
 
 ```terminal
 [✓] Xcode - develop for iOS and macOS
@@ -235,7 +235,7 @@ On macOS, look for a line like this:
 
 On Linux, look for a line like this:
 
-Linux 平台，你可能会看到如下内容：
+Linux 平台，你可能會看到如下內容：
 
 ```terminal
 [✓] Linux toolchain - develop for Linux desktop
@@ -247,8 +247,8 @@ you can ignore those warnings. Or you can disable the
 platform altogether using the `flutter config` command,
 for example:
 
-在执行 `flutter doctor` 命令时如果发现有不需要支持的平台的问题或者组件缺少报错等提示，
-你可以忽略这些警告，或者使用 `flutter config` 命令来禁用这个平台，比如：
+在執行 `flutter doctor` 命令時如果發現有不需要支援的平台的問題或者元件缺少報錯等提示，
+你可以忽略這些警告，或者使用 `flutter config` 命令來禁用這個平台，比如：
 
 ```terminal
 $ flutter config --no-enable-ios
@@ -256,7 +256,7 @@ $ flutter config --no-enable-ios
 
 Other available flags:
 
-其他可用的参数：
+其他可用的引數：
 
 * `--no-enable-windows-desktop`
 * `--no-enable-linux-desktop`
@@ -268,25 +268,25 @@ Other available flags:
 After enabling desktop support,
 restart your IDE so that it can detect the new device.
 
-加入了桌面端支持之后，请重启你的 IDE，然后 IDE 就能检测到新的设备了。
+加入了桌面端支援之後，請重啟你的 IDE，然後 IDE 就能檢測到新的裝置了。
 
 ### Create and run
 
-### 创建和运行
+### 建立和執行
 
 Creating a new project with desktop support is no different
 than [creating a new Flutter project][] for other platforms.
 
-创建一个桌面支持的新项目，与在其他平台
-[创建新的 Flutter 项目][creating a new Flutter project]
-没什么不同的地方。
+建立一個桌面支援的新專案，與在其他平台
+[建立新的 Flutter 專案][creating a new Flutter project]
+沒什麼不同的地方。
 
 Once you've configured your environment for desktop
 support, you can create and run a desktop application
 either in the IDE or from the command line.
 
-一旦配置好了桌面支持的环境，
-你可以通过 IDE 或命令行创建和运行桌面程序。
+一旦配置好了桌面支援的環境，
+你可以透過 IDE 或命令列建立和執行桌面程式。
 
 [creating a new Flutter project]: {{site.url}}/get-started/test-drive
 
@@ -298,7 +298,7 @@ After you've configured your environment to support
 desktop, make sure you restart the IDE if it was
 already running.
 
-在你配置好桌面支持的环境后，记得重启已经在运行的 IDE。
+在你配置好桌面支援的環境後，記得重啟已經在執行的 IDE。
 
 Create a new application in your IDE and it automatically
 creates iOS, Android, web, and desktop versions of your app.
@@ -306,23 +306,23 @@ From the device pulldown, select **windows (desktop)**,
 **macOS (desktop)**, or **linux (desktop)**
 and run your application to see it launch on the desktop.
 
-在你的 IDE 中创建新应用时，它会自动创建 iOS、 Android 和应用的桌面版本。
-从设备的下拉选项中，选择 **windows (desktop)**、
+在你的 IDE 中建立新應用時，它會自動建立 iOS、 Android 和應用的桌面版本。
+從裝置的下拉選項中，選擇 **windows (desktop)**、
 **macOS (desktop)** 或 **linux (desktop)**
-然后运行你的应用，就会看到应用在桌面启动。
+然後執行你的應用，就會看到應用在桌面啟動。
 
 [web support]: {{site.url}}/get-started/web
 
 #### From the command line
 
-#### 使用命令行
+#### 使用命令列
 
 To create a new application that includes desktop support
 (in addition to mobile and web support), run the following commands,
 substituting `my_app` with the name of your project:
 
-想要创建一个包含桌面支持的新应用（除了支持移动和 Web），请运行下面的命令，
-将 `my_app` 替换成你项目的名称：
+想要建立一個包含桌面支援的新應用（除了支援移動和 Web），請執行下面的命令，
+將 `my_app` 替換成你專案的名稱：
 
 ```terminal
 $ flutter create my_app
@@ -333,7 +333,7 @@ To launch your application from the command line,
 enter one of the following commands from the top
 of the package:
 
-想要从命令行启动你的应用，可以在根目录执行以下命令之一：
+想要從命令列啟動你的應用，可以在根目錄執行以下命令之一：
 
 ```terminal
 C:\> flutter run -d windows
@@ -348,12 +348,12 @@ $ flutter run -d linux
 
 ## Build a release app
 
-## 创建 release 版本的应用
+## 建立 release 版本的應用
 
 To generate a release build,
 run one of the following commands:
 
-要生成 release 版本，可以运行以下命令之一：
+要產生 release 版本，可以執行以下命令之一：
 
 ```terminal
 PS C:\> flutter build windows
@@ -363,13 +363,13 @@ $ flutter build linux
 
 ## Add desktop support to an existing Flutter app
 
-## 为已有的应用添加桌面支持
+## 為已有的應用新增桌面支援
 
 To add desktop support to an existing Flutter project,
 run the following command in a terminal from the
 root project directory:
 
-想为已有的 Flutter 项目添加桌面支持，你可以从项目根目录在控制台运行下面命令：
+想為已有的 Flutter 專案新增桌面支援，你可以從專案根目錄在控制檯執行下面命令：
 
 ```terminal
 $ flutter create --platforms=windows,macos,linux .
@@ -381,13 +381,13 @@ To add only specific desktop platforms,
 change the `platforms` list to include only
 the platform(s) you want to add.
 
-这将会在你的 Flutter 桌面项目中添加必要的已有文件和文件夹。
-如果需要只添加特定平台桌面端的支持，修改 `platforms` 的值
-为你想要支持的平台即可。
+這將會在你的 Flutter 桌面專案中新增必要的已有檔案和資料夾。
+如果需要只新增特定平台桌面端的支援，修改 `platforms` 的值
+為你想要支援的平台即可。
 
 ## Plugin support
 
-## 插件支持
+## 外掛支援
 
 Flutter on the desktop supports using and creating plugins.
 To use a plugin that supports desktop,
@@ -395,16 +395,16 @@ follow the steps for plugins in [using packages][].
 Flutter automatically adds the necessary native code
 to your project, as with any other platform.
 
-Flutter 在桌面支持中使用和创建插件。
-使用支持桌面端的插件，可以根据文档
-[在 Flutter 里使用 Packages][using packages]
-中描述的内容进行操作。
-Flutter 会像在其他平台中一样的操作，
-自动将需要的原生平台代码加入到你的工程中。
+Flutter 在桌面支援中使用和建立外掛。
+使用支援桌面端的外掛，可以根據文件
+[在 Flutter 裡使用 Packages][using packages]
+中描述的內容進行操作。
+Flutter 會像在其他平臺中一樣的操作，
+自動將需要的原生平台程式碼加入到你的工程中。
 
 ### Writing a plugin
 
-### 编写一个插件
+### 編寫一個外掛
 
 When you start building your own plugins,
 you'll want to keep federation in mind.
@@ -426,37 +426,37 @@ endorsed federated plugin on pub.dev,
 so long as you coordinate this effort with the
 original plugin author.
 
-当你开始构建自己的插件时，你需要记住联合。联合是定义几个不同包的能力，
-其中每个包都针对不同的平台，将它们合并到一个插件中，这样方便开发人员使用。
-比如，Windows 实现的 `url_launcher`，实际是通过 `url_launcher_windows` 完成的，
-但是 Flutter 开发者可以在 `pubspec.yaml` 中，
-简单地添加 `url_launcher` 包作为依赖，在构建过程中会基于目标平台引入正确的实现。
-联合非常方便，因为具有不同专长的不同团队，可以为不同的平台构建相应的插件实现。
-与原插件作者协调之后，你可以为 pub.dev 上任何联合插件添加新的平台实现。
+當你開始建構自己的外掛時，你需要記住聯合。聯合是定義幾個不同套件的能力，
+其中每個包都針對不同的平台，將它們合併到一個外掛中，這樣方便開發人員使用。
+比如，Windows 實現的 `url_launcher`，實際是透過 `url_launcher_windows` 完成的，
+但是 Flutter 開發者可以在 `pubspec.yaml` 中，
+簡單地新增 `url_launcher` 包作為依賴，在建構過程中會基於目標平台引入正確的實現。
+聯合非常方便，因為具有不同專長的不同團隊，可以為不同的平台建構相應的外掛實現。
+與原外掛作者協調之後，你可以為 pub.dev 上任何聯合外掛新增新的平台實現。
 
 For more information, including information
 about endorsed plugins, see the following resources:
 
-想要了解更多信息，包括关于已支持的插件信息，请参阅以下资源:
+想要了解更多資訊，包括關於已支援的外掛資訊，請參閱以下資源:
 
 * [Developing packages and plugins][], particularly the
   [Federated plugins][] section.
 
-  [开发包和插件][Developing packages and plugins]，特别是 [联合插件][Federated plugins] 部分。
+  [開發套件和外掛][Developing packages and plugins]，特別是 [聯合外掛][Federated plugins] 部分。
 
 * [How to write a Flutter web plugin, part 2][],
   covers the structure of federated plugins and
   contains information applicable to desktop
   plugins.
 
-  [如何写一个 Flutter web 插件，第 2 部分][How to write a Flutter web plugin, part 2]，
-  介绍联合插件的结构，并包含适用于桌面插件的信息。
+  [如何寫一個 Flutter web 外掛，第 2 部分][How to write a Flutter web plugin, part 2]，
+  介紹聯合外掛的結構，幷包含適用於桌面外掛的資訊。
 
 * [Modern Flutter Plugin Development][] covers
   recent enhancements to Flutter's plugin support.
 
-  [现代 Flutter 插件开发][Modern Flutter Plugin Development]
-  介绍了最近对 Flutter 插件支持的增强。
+  [現代 Flutter 外掛開發][Modern Flutter Plugin Development]
+  介紹了最近對 Flutter 外掛支援的增強。
 
 [using packages]: {{site.url}}/packages-and-plugins/using-packages
 [Developing packages and plugins]: {{site.url}}/packages-and-plugins/developing-packages
@@ -466,23 +466,23 @@ about endorsed plugins, see the following resources:
 
 ## Samples and codelabs
 
-## Codelab 和 Flutter 文档
+## Codelab 和 Flutter 文件
 
 [Write a Flutter desktop application][]
 <br> A codelab that walks you through building
 a desktop application that integrates the GitHub
 GraphQL API with your Flutter app.
 
-[构建一个 Flutter 桌面程序][Write a Flutter desktop application]
-<br> 这个 codelab 会引导你通过使用 Flutter，
-来构建一个集成 GitHub GraphQL API 的桌面应用。
+[建構一個 Flutter 桌面程式][Write a Flutter desktop application]
+<br> 這個 codelab 會引導你透過使用 Flutter，
+來建構一個整合 GitHub GraphQL API 的桌面應用。
 
 You can run the following samples as desktop apps,
 as well as download and inspect the source code to
 learn more about Flutter desktop support.
 
-你可以运行下面的桌面应用案例，也可以下载并阅读源代码，
-以了解更多关于 Flutter 桌面支持的信息。
+你可以執行下面的桌面應用案例，也可以下載並閱讀原始碼，
+以瞭解更多關於 Flutter 桌面支援的資訊。
 
 Flutter Gallery [running web app][], [repo][flutter-gallery-repo]
 <br> A samples project hosted on GitHub to help developers
@@ -492,27 +492,27 @@ Flutter Gallery [running web app][], [repo][flutter-gallery-repo]
   You can clone the project and run Gallery as a desktop app
   by following the instructions provided in the [README][].
 
-Flutter Gallery [线上运行的 Web 应用][running web app]，[源代码仓库地址][flutter-gallery-repo]
-<br> 一个托管在 GitHub 上案例项目，可以用来帮助开发人员评估和使用 Flutter。
-  Gallery 的构成部分有：Material design widgets 的集合、
-  behaviors 和用 Flutter 实现的 vignettes。
-  你可以克隆该项目，并按照 [README][] 中的说明，将 Gallery 作为桌面应用程序运行。
+Flutter Gallery [線上執行的 Web 應用][running web app]，[原始碼儲存庫地址][flutter-gallery-repo]
+<br> 一個託管在 GitHub 上案實體目，可以用來幫助開發人員評估和使用 Flutter。
+  Gallery 的構成部分有：Material design widgets 的集合、
+  behaviors 和用 Flutter 實現的 vignettes。
+  你可以複製該專案，並按照 [README][] 中的說明，將 Gallery 作為桌面應用程式執行。
 
 Flokk [announcement blogpost][gskinner-flokk-blogpost], [repo][gskinner-flokk-repo]
 <br> A Google contacts manager that integrates with GitHub and Twitter.
   It syncs with your Google account, imports your contacts,
   and allows you to manage them.
 
-Flokk [官宣文章][gskinner-flokk-blogpost]，[源代码仓库地址][gskinner-flokk-repo]
-<br> 一款集成了 GitHub 和 Twitter 的谷歌联系人管理器应用。
-  可以从你的 Google 账户同步数据，导入联系人信息，并管理它们。
+Flokk [官宣文章][gskinner-flokk-blogpost]，[原始碼儲存庫地址][gskinner-flokk-repo]
+<br> 一款集成了 GitHub 和 Twitter 的谷歌聯絡人管理器應用。
+  可以從你的 Google 賬戶同步資料，匯入聯絡人資訊，並管理它們。
 
 [Photo Search app][]
 <br> A sample application built as a desktop application that
   uses desktop-supported plugins.
 
-[图片搜索应用][Photo Search app]
-<br> 使用支持桌面端的插件构建的一个桌面应用案例。
+[圖片搜尋應用][Photo Search app]
+<br> 使用支援桌面端的外掛建構的一個桌面應用案例。
 
 [Photo Search app]: {{site.repo.organization}}/samples/tree/main/desktop_photo_search
 [running web app]: {{site.gallery}}

@@ -1,30 +1,30 @@
 ---
-title: 实现一个精准滑动埋点
+title: 實現一個精準滑動埋點
 toc: true
 ---
 
-文/ Vadaski，CFUG 社区成员，滴滴国际化研发工程师
+文/ Vadaski，CFUG 社群成員，滴滴國際化研發工程師
 
 ## 前言
 
-今天的这篇文章要介绍的内容，是我们经常会用到的一个场景：**埋点**。
-为了对行为特征的数据进行量化分析，优化产品，
-我们常常需要在特定的时机上报数据埋点，想必大家都对它比较熟悉。
-而曝光埋点则是其中的一个高频使用场景。
+今天的這篇文章要介紹的內容，是我們經常會用到的一個場景：**埋點**。
+為了對行為特徵的資料進行量化分析，最佳化產品，
+我們常常需要在特定的時機上報資料埋點，想必大家都對它比較熟悉。
+而曝光埋點則是其中的一個高頻使用場景。
 
-## 🥲 滑动埋点的痛
+## 🥲 滑動埋點的痛
 
-在 Flutter 中，我们通常会在 `initState` 这个生命周期上报曝光埋点，这在一般的使用场景下当然是没有问题的。然而在滑动场景下这个解决方案就不 work 了，我们来看看。
+在 Flutter 中，我們通常會在 `initState` 這個生命週期上報曝光埋點，這在一般的使用場景下當然是沒有問題的。然而在滑動場景下這個解決方案就不 work 了，我們來看看。
 
 ![listview_track.gif](https://files.flutter-io.cn/posts/community/tutorial/images/listview_track.gif)
 
-很明显，我们把本来没有展示的 widget 也给打印出来了。如果这样做，埋点上报不准确，将会给业务带来不可恢复的损失。
+很明顯，我們把本來沒有展示的 widget 也給打印出來了。如果這樣做，埋點上報不準確，將會給業務帶來不可恢復的損失。
 
-## 🤯 ScrollView 加载机制
+## 🤯 ScrollView 載入機制
 
-为什么会出现这种情况呢？在查阅了源码之后，我们发现所有的 `ScrollView` 都是在一个可视区域 `Viewport` 当中进行绘制，为了让滑动更加流畅，通常 `ScrollView` 都会在可视区域之外加载一部分，也就是 `cacheExtent`。落入该缓存区域的项目即使在屏幕上尚不可见，也会进行布局。这时候 `initState` 就被执行了。 `ListView` 作为 `ScrollView` 的子类同样也使用了这个机制。
+為什麼會出現這種情況呢？在查閱了原始碼之後，我們發現所有的 `ScrollView` 都是在一個可視區域 `Viewport` 當中進行繪製，為了讓滑動更加流暢，通常 `ScrollView` 都會在可視區域之外載入一部分，也就是 `cacheExtent`。落入該快取區域的專案即使在螢幕上尚不可見，也會進行佈局。這時候 `initState` 就被執行了。 `ListView` 作為 `ScrollView` 的子類同樣也使用了這個機制。
 
-那么很自然我们能够想到一个最简单的解决方案：把预加载机制给禁用掉不就可以了嘛。
+那麼很自然我們能夠想到一個最簡單的解決方案：把預載入機制給禁用掉不就可以了嘛。
 
 
 ``` dart
@@ -39,90 +39,90 @@ ListView.builder(
 
 ![no_cache_extent.gif](https://files.flutter-io.cn/posts/community/tutorial/images/no_cache_extent.gif)
 
-好了，本文到此结束，你学会了吗。😏
+好了，本文到此結束，你學會了嗎。😏
 
-## 🤔 新的问题
+## 🤔 新的問題
 
-开个玩笑，相信大家很容易就能够联想到，这样做大概率会产生性能问题。在我们真实业务中，会考虑到支持的最差的设备性能，以及业务的复杂性，肯定不是这样简单的取消掉预加载就能够解决的。
+開個玩笑，相信大家很容易就能夠聯想到，這樣做大機率會產生效能問題。在我們真實業務中，會考慮到支援的最差的裝置效能，以及業務的複雜性，肯定不是這樣簡單的取消掉預載入就能夠解決的。
 
-在做测试的时候，会发现如果去掉缓存机制，平均帧率会下降 5-10 帧左右，
-还是在比较好的一加手机上的测试结果，这当然是不能接受的。
-(更何况本身在 1.x 版本 的 Flutter 下 ListView 性能就有一些问题。)
+在做測試的時候，會發現如果去掉快取機制，平均幀率會下降 5-10 幀左右，
+還是在比較好的一加手機上的測試結果，這當然是不能接受的。
+(更何況本身在 1.x 版本 的 Flutter 下 ListView 效能就有一些問題。)
 
-所以我们想要的是一套 `Flutter` 上的高准确率的用户行为埋点方案，而且不要影响到 `ScrollView` 的性能。
+所以我們想要的是一套 `Flutter` 上的高準確率的使用者行為埋點方案，而且不要影響到 `ScrollView` 的效能。
 
 ## 🤨 破局
 
-想清楚了需求，就有了一半的思路。在我们查阅了业界现有的资料后，发现闲鱼技术已经分享了一个比较好的解题思路：[# 揭秘！一个高准确率的Flutter埋点框架如何设计](https://juejin.cn/post/6844903864479514631#comment)。
-奈何这个方案也没有开源的计划，那就只有自己来写一个吧。这个问题应该如何解呢？
+想清楚了需求，就有了一半的思路。在我們查閱了業界現有的資料後，發現閒魚技術已經分享了一個比較好的解題思路：[# 揭秘！一個高準確率的Flutter埋點框架如何設計](https://juejin.cn/post/6844903864479514631#comment)。
+奈何這個方案也沒有開源的計劃，那就只有自己來寫一個吧。這個問題應該如何解呢？
 
-在前面我们提到过，每一个 `ScrollView` 都会有一个自己的 `ViewPort` 来决定自己的绘制范围，这个 `ViewPort` 最后会生成一个 `RenderObjectElement`，这样就可以单独渲染这个区域，把影响返回控制到最小。那么问题现在就变成了我们想要计算一个 Item 什么时候进入到 ViewPort 中。
+在前面我們提到過，每一個 `ScrollView` 都會有一個自己的 `ViewPort` 來決定自己的繪製範圍，這個 `ViewPort` 最後會產生一個 `RenderObjectElement`，這樣就可以單獨渲染這個區域，把影響返回控制到最小。那麼問題現在就變成了我們想要計算一個 Item 什麼時候進入到 ViewPort 中。
 
-**一个复杂的问题需要把它抽象成更简单的问题然后逐步求解**，我们不妨先把 item 看成一个点，看看要计算一个 Item 是否在 Viewport 内需要哪些信息。
+**一個複雜的問題需要把它抽象成更簡單的問題然後逐步求解**，我們不妨先把 item 看成一個點，看看要計算一個 Item 是否在 Viewport 內需要哪些資訊。
 
-很容易能够想到和滑动的偏移量 (Scroll Offset)，以及 Viewport 在滑动方向上的长度 (Viewport Length)，
-还有 item 自身的信息，也就是当前 item 距离滑动起始点的距离 (Exposure Offset) 相关。
+很容易能夠想到和滑動的偏移量 (Scroll Offset)，以及 Viewport 在滑動方向上的長度 (Viewport Length)，
+還有 item 自身的資訊，也就是當前 item 距離滑動起始點的距離 (Exposure Offset) 相關。
 
-![简易关键变量.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/simple_key_variable.jpg)
+![簡易關鍵變數.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/simple_key_variable.jpg)
 
-想象一下滑动的样子，一个 Item 从 `ViewPort` 的右边滑入，进入 `ViewPort`，被用户看到，然后再从 `ViewPort` 的左边划出，这一系列过程。我们可以把这个过程抽象为下面的四个状态：
-- **Item 在 `ViewPort` 右侧不可视范围内**：(Scroll Offset + ViewPort Length < Exposure Offset)
-- **Item 进入 `ViewPort` 右侧**：(Scroll Offset + ViewPort Length > Exposure Offset)
+想象一下滑動的樣子，一個 Item 從 `ViewPort` 的右邊滑入，進入 `ViewPort`，被使用者看到，然後再從 `ViewPort` 的左邊劃出，這一系列過程。我們可以把這個過程抽象為下面的四個狀態：
+- **Item 在 `ViewPort` 右側不可視範圍內**：(Scroll Offset + ViewPort Length < Exposure Offset)
+- **Item 進入 `ViewPort` 右側**：(Scroll Offset + ViewPort Length > Exposure Offset)
 - **Item 在 ViewPort 中**
-- **Item 在 `ViewPort` 左侧不可视范围内**：(Exposure Offset < Scroll Offset)
+- **Item 在 `ViewPort` 左側不可視範圍內**：(Exposure Offset < Scroll Offset)
 
 
-对于从左边划入右边则是这几个状态：
+對於從左邊劃入右邊則是這幾個狀態：
 
-- **Item 在 `ViewPort` 左侧不可视范围内**：(Exposure Offset < Scroll Offset)
-- **Item 进入 `ViewPort` 左侧**：(Exposure Offset > Scroll Offset)
+- **Item 在 `ViewPort` 左側不可視範圍內**：(Exposure Offset < Scroll Offset)
+- **Item 進入 `ViewPort` 左側**：(Exposure Offset > Scroll Offset)
 - **Item 在 ViewPort 中**
-- **Item 在 `ViewPort` 右侧不可视范围内**：(Scroll Offset + ViewPort Length < Exposure Offset)
+- **Item 在 `ViewPort` 右側不可視範圍內**：(Scroll Offset + ViewPort Length < Exposure Offset)
 
-通过观察可以发现，Item 从左边划入和从右边划入它的判断时机是不一样的，所以我们需要区分两种滑动情况。
+透過觀察可以發現，Item 從左邊劃入和從右邊劃入它的判斷時機是不一樣的，所以我們需要區分兩種滑動情況。
 
-下面我们把 Item 自身的宽度 (Item Width）也带上，再使用上面得出的结论来进行计算。
+下面我們把 Item 自身的寬度 (Item Width）也帶上，再使用上面得出的結論來進行計算。
 
-> 我们这里暂时认为 Item 完全划入 ViewPort 才算一次曝光。
+> 我們這裡暫時認為 Item 完全劃入 ViewPort 才算一次曝光。
 
-![关键变量.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/key_variable.jpg)
+![關鍵變數.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/key_variable.jpg)
 
-- **Item 在 `ViewPort` 右侧不可视范围内**：(Scroll Offset + ViewPort Length < Exposure Offset)
-- **Item 进入 `ViewPort` 右侧**：(Scroll Offset + ViewPort Length > Exposure Offset)
+- **Item 在 `ViewPort` 右側不可視範圍內**：(Scroll Offset + ViewPort Length < Exposure Offset)
+- **Item 進入 `ViewPort` 右側**：(Scroll Offset + ViewPort Length > Exposure Offset)
 - **Item 在 ViewPort 中**
-- **Item 在 `ViewPort` 左侧不可视范围内**：(Exposure Offset + Item Width < Scroll Offset)
+- **Item 在 `ViewPort` 左側不可視範圍內**：(Exposure Offset + Item Width < Scroll Offset)
 
 
-对于从左边划入右边则是这几个状态：
+對於從左邊劃入右邊則是這幾個狀態：
 
-- **Item 在 `ViewPort` 左侧不可视范围内**：(Exposure Offset + Item Width < Scroll Offset)
-- **Item 进入 `ViewPort` 左侧**：(Exposure Offset + Item Width > Scroll Offset)
+- **Item 在 `ViewPort` 左側不可視範圍內**：(Exposure Offset + Item Width < Scroll Offset)
+- **Item 進入 `ViewPort` 左側**：(Exposure Offset + Item Width > Scroll Offset)
 - **Item 在 ViewPort 中**
-- **Item 在 `ViewPort` 右侧不可视范围内**：(Scroll Offset + ViewPort Length < Exposure Offset)
+- **Item 在 `ViewPort` 右側不可視範圍內**：(Scroll Offset + ViewPort Length < Exposure Offset)
 
-## 🧩 如何获取这些信息
+## 🧩 如何獲取這些資訊
 
-知道了解法之后，接下来就只需要寻找这些拼图的碎片就行了。
+知道了解法之後，接下來就只需要尋找這些拼圖的碎片就行了。
 
-### Item 大小信息
+### Item 大小資訊
 
-这块比较简单，我们都知道可以通过 Widget 的 `BuildContext` 拿到它所对应的 `RenderObject`，通过它去拿当前 Item 的长度和宽度。
+這塊比較簡單，我們都知道可以透過 Widget 的 `BuildContext` 拿到它所對應的 `RenderObject`，透過它去拿當前 Item 的長度和寬度。
 
 ``` dart
-// 这里命名为曝光坑位的大小，对于不同滑动方向，我们需要用不同方向的长度。
+// 這裡命名為曝光坑位的大小，對於不同滑動方向，我們需要用不同方向的長度。
 final exposurePitSize = (context.findRenderObject() as RenderBox).size;
 ```
-这里的 context 是我们想要判断是否曝光的 Item 的 context，如果你对这个概念还不太清楚，可以去看看这篇 [深入理解BuildContext](https://juejin.cn/post/6844903777565147150)。
+這裡的 context 是我們想要判斷是否曝光的 Item 的 context，如果你對這個概念還不太清楚，可以去看看這篇 [深入理解BuildContext](https://juejin.cn/post/6844903777565147150)。
 
-> 注意：不是每个 `Widget` 都会创建一个 `RenderObject`，只有 `RenderObjectWidget` 才会创建 `RenderObject`。 `ListView` 会默认帮每一个 Item 添加一个 `RepaintBoundary`，这个 `Widget` 是一个 `SingleChildRenderObjectWidget`，所以每一个 Item 其实都会有一个它所对应的 `RenderObject`。 
+> 注意：不是每個 `Widget` 都會建立一個 `RenderObject`，只有 `RenderObjectWidget` 才會建立 `RenderObject`。 `ListView` 會預設幫每一個 Item 新增一個 `RepaintBoundary`，這個 `Widget` 是一個 `SingleChildRenderObjectWidget`，所以每一個 Item 其實都會有一個它所對應的 `RenderObject`。 
 
 ``` dart
 // SliverChildListDelegate 的 build 方法
 if (addRepaintBoundaries) child = RepaintBoundary(child: child);
 ```
-### ViewPort 大小信息
+### ViewPort 大小資訊
 
-我们在进行曝光判断的时候，肯定是在每一个 Item 中进行的，而 `ViewPort` 则是存在于 `ListView` 这一层级，所以我们需要从祖先的节点中找到它，幸运的是，Flutter 已经为我们提供了这个方法。
+我們在進行曝光判斷的時候，肯定是在每一個 Item 中進行的，而 `ViewPort` 則是存在於 `ListView` 這一層級，所以我們需要從祖先的節點中找到它，幸運的是，Flutter 已經為我們提供了這個方法。
 ``` dart
 static RenderAbstractViewport? of(RenderObject? object) {
   while (object != null) {
@@ -133,7 +133,7 @@ static RenderAbstractViewport? of(RenderObject? object) {
   return null;
 }
 ```
-我们刚刚已经拿到了 Item 对应的渲染对象，`RenderAbstractViewport.of` 可以通过这个 `RenderObject` 向上寻找祖先节点，直到发现离它最近一个节点的 `RenderAbstractViewport` 就能拿到我们想要的 `ViewPort` 信息了。
+我們剛剛已經拿到了 Item 對應的渲染物件，`RenderAbstractViewport.of` 可以透過這個 `RenderObject` 向上尋找祖先節點，直到發現離它最近一個節點的 `RenderAbstractViewport` 就能拿到我們想要的 `ViewPort` 資訊了。
 
 ``` dart
 Size? getViewPortSize(BuildContext context) {
@@ -150,9 +150,9 @@ Size? getViewPortSize(BuildContext context) {
   return size;
 }
 ```
-### Item 相对 ViewPort 的滑动起始点的距离
+### Item 相對 ViewPort 的滑動起始點的距離
 
-在 `RenderAbstractViewport` 的另一个方法 `getOffsetToReveal`，中，我们可以获得当前的 `RenderObject` 相对于这个 ViewPort 滑动的起始位置。
+在 `RenderAbstractViewport` 的另一個方法 `getOffsetToReveal`，中，我們可以獲得當前的 `RenderObject` 相對於這個 ViewPort 滑動的起始位置。
 
 ``` dart
 double getExposureOffset(BuildContext context) {
@@ -163,69 +163,69 @@ double getExposureOffset(BuildContext context) {
     return 0.0;
   }
 
-  // box 为当前 Item 的 RenderObject
-  // alignment 为 0 的时候获得距离起点的相对偏移量
-  // 为 1 的时候获得距离终点的相对偏移量。
+  // box 為當前 Item 的 RenderObject
+  // alignment 為 0 的時候獲得距離起點的相對偏移量
+  // 為 1 的時候獲得距離終點的相對偏移量。
   final RevealedOffset offsetRevealToTop =
       viewport.getOffsetToReveal(box, 0.0, rect: Rect.zero);
   return offsetRevealToTop.offset;
 }
 ```
 
-### 滑动距离
+### 滑動距離
 
-要获得滑动距离通常有两种方式：
-- 通过 `ScrollController` 获得。
-- 利用 Scrollable Widget 的 `Notification` 机制。
+要獲得滑動距離通常有兩種方式：
+- 透過 `ScrollController` 獲得。
+- 利用 Scrollable Widget 的 `Notification` 機制。
 
-每次编写代码的时候都必须得写 `ScrollController` 看上去有些麻烦，所以我们选择了`Notification` 这种方式。(它也更加通用)
+每次編寫程式碼的時候都必須得寫 `ScrollController` 看上去有些麻煩，所以我們選擇了`Notification` 這種方式。(它也更加通用)
 
 #### Scroll Notification
 
-Scrollable Widget 将会向其其祖先通知有关滚动变化信息，而这些信息能够使用 `NotificationListener` 来捕获到。目前有下面几种 `Notification`:
+Scrollable Widget 將會向其其祖先通知有關滾動變化資訊，而這些資訊能夠使用 `NotificationListener` 來捕獲到。目前有下面幾種 `Notification`:
 
-- `ScrollStartNotification`：滚动开始时发起 `Notification`。
-- `ScrollUpdateNotification`：滚动进行时不断发起 `Notification`。(频率很高)
-- `ScrollEndNotification`：滚动结束时发起 `Notification`。
-- `UserScrollNotification`：当用户改变滚动方向时，发起通知。(通常在不同方向的 ScrollView 互相嵌套时会出现)
+- `ScrollStartNotification`：滾動開始時發起 `Notification`。
+- `ScrollUpdateNotification`：滾動進行時不斷髮起 `Notification`。(頻率很高)
+- `ScrollEndNotification`：滾動結束時發起 `Notification`。
+- `UserScrollNotification`：當用戶改變滾動方向時，發起通知。(通常在不同方向的 ScrollView 互相巢狀(Nesting)時會出現)
 
-我们这里使用 `NotificationListener` 来获取 滑动的信息。
+我們這裡使用 `NotificationListener` 來獲取 滑動的資訊。
 
 ``` dart
 Widget buildNotificationWidget(BuildContext context, Widget child) {
   return NotificationListener<ScrollNotification>(
     onNotification: (scrollNotification) {
-      // 这里就能获取到滚动信息
+      // 這裡就能獲取到滾動資訊
     },
     child: ScrollView,
   );
 }
 ```
 
-#### 解决信息共享问题
+#### 解決資訊共享問題
 
-看到这里，似乎我们要的拼图都凑齐了，但是总感觉哪里不对劲？🧐
+看到這裡，似乎我們要的拼圖都湊齊了，但是總感覺哪裡不對勁？🧐
 
-如果你敏锐的话，想必已经发现我们现在这样的设计根本没法在一个地方拿到全部信息。
+如果你敏銳的話，想必已經發現我們現在這樣的設計根本沒法在一個地方拿到全部資訊。
 
-![数据获取位置不一致.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/tree.jpg)
+![資料獲取位置不一致.jpg](https://files.flutter-io.cn/posts/community/tutorial/images/tree.jpg)
 
-Scroll Notification 仅会向祖先节点发起 Notification 通知，也就是说，我们在 Item 层级是拿不到的！
+Scroll Notification 僅會向祖先節點發起 Notification 通知，也就是說，我們在 Item 層級是拿不到的！
 
-如果我们想要在 Item 中进行埋点曝光判定，就必须要获取到更高的祖先节点中的 scrollNotification。
+如果我們想要在 Item 中進行埋點曝光判定，就必須要獲取到更高的祖先節點中的 scrollNotification。
 
-当然解法肯定有很多，共享状态的方法在状态管理中是一个常见的 Case，但是为了滑动埋点曝光就引入一个状态管理库似乎有些得不偿失，所以还不如使用 Flutter 最原始的 Inherit 机制来实现数据的共享。
+當然解法肯定有很多，共享狀態的方法在狀態管理中是一個常見的 Case，但是為了滑動埋點曝光就引入一個狀態管理庫似乎有些得不償失，所以還不如使用 Flutter 最原始的 Inherit 機制來實現資料的共享。
 
-##### 什么是 Inherit 机制
+##### 什麼是 Inherit 機制
 
-要理解 Inherit 机制，首先你需要了解 Flutter 的三棵树，
-这个网上的解释文章已经有很多了，我就不再赘述，
-感兴趣的可以看看 [迷鹿](https://juejin.cn/user/4309694831660711)
-的这篇 [Widget、Element、Render是如何形成树结构？](https://juejin.cn/post/6921493845330886670)。
+要理解 Inherit 機制，首先你需要了解 Flutter 的三棵樹，
+這個網上的解釋文章已經有很多了，我就不再贅述，
+感興趣的可以看看 [迷鹿](https://juejin.cn/user/4309694831660711)
+的這篇 [Widget、Element、Render是如何形成樹結構？](https://juejin.cn/post/6921493845330886670)。
 
-简单来说，Inherit 机制是一种能够在 Flutter 中自顶向下共享数据的方式，我们知道 Flutter 是通过树形结构来构建视图的，而其中的 `InheritedWidget` 则是能够让它的数据能够被所有子节点中的 Widget 访问到。
+簡單來說，Inherit 機制是一種能夠在 Flutter 中自頂向下共享資料的方式，我們知道 Flutter 是透過樹形結構來建構檢視的，而其中的 `InheritedWidget` 則是能夠讓它的資料能夠被所有子節點中的 Widget 存取到。
 
-它的原理也是很简单，每个 Element 都持有了一个叫做 `Map<Type, InheritedElement>? _inheritedWidgets` 的 `Map` 的引用，当我们的 Element 在挂载到 Element Tree 的时候 (执行 `mount` 操作的时候会调用 `_updateInheritance`)，将会把 parent 中保存的 `_InheritedWidget` 引用自己也给留一份。
+它的原理也是很簡單，每個 Element 都持有了一個叫做 `Map<Type, InheritedElement>? _inheritedWidgets` 的 `Map` 的參考，當我們的 Element 在掛載到 Element Tree 的時候 (執行 `mount` 操作的時候會呼叫 `_updateInheritance`)，將會把 parent 中儲存的 `_InheritedWidget` 參考自己也給留一份。
 
 ``` dart
 void _updateInheritance() {
@@ -234,7 +234,7 @@ void _updateInheritance() {
 }
 ```
 
-而 `InheritedWidget` 创建的 Element 则会在 mount 的时候把自己给塞到这个 map 当中，这样就完成了自顶向下的数据共享了。
+而 `InheritedWidget` 建立的 Element 則會在 mount 的時候把自己給塞到這個 map 當中，這樣就完成了自頂向下的資料共享了。
 
 ```
 @override
@@ -249,39 +249,39 @@ void _updateInheritance() {
 }
 ```
 
-基于此，我们就可以完成对于滑动埋点曝光的计算了，可喜可贺。
+基於此，我們就可以完成對於滑動埋點曝光的計算了，可喜可賀。
 
-## 拿来吧你
+## 拿來吧你
 
-像我们这样有经验的开发者，看到这样好的文章，第一时间那一定是想要~~自己实践一下~~
+像我們這樣有經驗的開發者，看到這樣好的文章，第一時間那一定是想要~~自己實踐一下~~
 
-> 直接拿来吧你
+> 直接拿來吧你
 
-所以为了各位宝贵的 (滑水/唠嗑/带娃/...) 时间，这款滑动埋点方案已经登陆了 [Pub 仓库](https://pub.flutter-io.cn/packages/flutter_exposure)，各位可以放心食用了。
+所以為了各位寶貴的 (滑水/嘮嗑/帶娃/...) 時間，這款滑動埋點方案已經登陸了 [Pub 儲存庫](https://pub.flutter-io.cn/packages/flutter_exposure)，各位可以放心食用了。
 
-目前已经支持的有：
+目前已經支援的有：
 
-- 懒曝光模式：仅当滚动结束时再曝光。
-- 曝光比例：可以控制 Item 展现多大的范围算是一次曝光。
-- 追踪 Item 何时离开可视范围：可以获取到曝光时长。
-- 支持所有 ScrollView：包括 `ListView`、`GridView`、`CustomScrollView` 等等。
+- 懶曝光模式：僅當滾動結束時再曝光。
+- 曝光比例：可以控制 Item 展現多大的範圍算是一次曝光。
+- 追蹤 Item 何時離開可視範圍：可以獲取到曝光時長。
+- 支援所有 ScrollView：包括 `ListView`、`GridView`、`CustomScrollView` 等等。
 
-这个项目我会一直维护下去 (毕竟自己也要用)，
-如果你想了解该项目的最新进展，
-可以关注该项目的 [GitHub](https://github.com/Vadaski/flutter_exposure)，
-或者有需要增加的功能需求，也欢迎通过 [邮箱](mailto:xinlei966@gmail.com) 与我联系～
+這個專案我會一直維護下去 (畢竟自己也要用)，
+如果你想了解該專案的最新進展，
+可以關注該專案的 [GitHub](https://github.com/Vadaski/flutter_exposure)，
+或者有需要增加的功能需求，也歡迎透過 [郵箱](mailto:xinlei966@gmail.com) 與我聯絡～
 
 Pub 地址：https://pub.flutter-io.cn/packages/flutter_exposure
 
 Github 地址：https://github.com/Vadaski/flutter_exposure
 
-邮箱：xinlei966@gmail.com
+郵箱：xinlei966@gmail.com
 
-## 写在最后
+## 寫在最後
 
-这个解决方案其实是在去年公司里就用到了，一直没有来得及开源。
-在这里也感谢 [闲鱼技术](https://juejin.cn/post/6955304605190357005) 提供的宝贵思路，
-最近凑了一些零零碎碎的时间把它给完成了，把趁着国庆第一天写完了这篇文章，
-希望大家能通过我的分享有一点点收获～
+這個解決方案其實是在去年公司裡就用到了，一直沒有來得及開源。
+在這裡也感謝 [閒魚技術](https://juejin.cn/post/6955304605190357005) 提供的寶貴思路，
+最近湊了一些零零碎碎的時間把它給完成了，把趁著國慶第一天寫完了這篇文章，
+希望大家能透過我的分享有一點點收穫～
 
-我是鑫磊，和你一起快乐学习 Flutter 的工程师，大家国庆快乐，我们之后再见👋
+我是鑫磊，和你一起快樂學習 Flutter 的工程師，大家國慶快樂，我們之後再見👋

@@ -1,11 +1,11 @@
 ---
 title: Flutter Brand Guidelines
 title: Flutter 品牌指南
-tags: 站点资源
+tags: 站點資源
 keywords: Flutter logo, Dart logo, 官方
 description: >
   The guidelines governing the usage of the Flutter trademarks and assets.
-description: 关于使用 Flutter 标志和资源的规范和要求
+description: 關於使用 Flutter 標誌和資源的規範和要求
 ---
 
 The "Flutter" name and logo are trademarks owned by Google.

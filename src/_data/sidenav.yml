@@ -1,545 +1,545 @@
-- title: 开始使用 Flutter
+- title: 開始使用 Flutter
   children:
-    - title: 1. 安装和环境配置
+    - title: 1. 安裝和環境配置
       permalink: /docs/get-started/install
-    - title: 2. 编辑工具设定
+    - title: 2. 編輯工具設定
       permalink: /docs/get-started/editor
-    - title: 3. 开发体验初探
+    - title: 3. 開發體驗初探
       permalink: /docs/get-started/test-drive
-    - title: 4. 编写第一个 Flutter 应用
+    - title: 4. 編寫第一個 Flutter 應用
       permalink: /docs/get-started/codelab
-    - title: 5. 了解更多
+    - title: 5. 瞭解更多
       permalink: /docs/get-started/learn-more
     - divider
-    - title: 拥有其他平台开发经验？
+    - title: 擁有其他平臺開發經驗？
       children:
-        - title: 给 Android 开发者的 Flutter 指南
+        - title: 給 Android 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/android-devs
-        - title: 给 iOS SwiftUI 开发者的 Flutter 指南
+        - title: 給 iOS SwiftUI 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/swiftui-devs
-        - title: 给 iOS UIKit 开发者的 Flutter 指南
+        - title: 給 iOS UIKit 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/uikit-devs
-        - title: 给 React Native 开发者的 Flutter 指南
+        - title: 給 React Native 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/react-native-devs
-        - title: 给 Web 开发者的 Flutter 指南
+        - title: 給 Web 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/web-devs
-        - title: 给 Xamarin.Forms 开发者的 Flutter 指南
+        - title: 給 Xamarin.Forms 開發者的 Flutter 指南
           permalink: /docs/get-started/flutter-for/xamarin-forms-devs
         - divider
-        - title: 声明式 UI 介绍
+        - title: 宣告式 UI 介紹
           permalink: /docs/get-started/flutter-for/declarative
-        - title: Flutter 对比 Swift 的并发
+        - title: Flutter 對比 Swift 的併發
           permalink: /get-started/flutter-for/dart-swift-concurrency
-    - title: Dart 语言概览
+    - title: Dart 語言概覽
       permalink: https://dart.cn/overview
 
 - title: 保持版本更新
   permalink: /docs/release
   children:
-    - title: 版本升级
+    - title: 版本升級
       permalink: /docs/release/upgrade
     - title: SDK 版本列表
       permalink: /docs/release/archive
     - divider
     - title: 最近更新
       permalink: /docs/release/whats-new
-    - title: 版本发行注记
+    - title: 版本發行註記
       permalink: /docs/release/release-notes
-    - title: 破坏性改动
+    - title: 破壞性改動
       permalink: /docs/release/breaking-changes
-    - title: 兼容性策略
+    - title: 相容性策略
       permalink: /docs/release/compatibility-policy
 
-- title: 教程和样例代码
+- title: 課程和範例程式碼
   children:
-    - title: Flutter Gallery 应用
+    - title: Flutter Gallery 應用
       permalink: https://gallery.flutter.cn
-    - title: GitHub 上的样例应用
+    - title: GitHub 上的範例應用
       permalink: https://flutter.github.io/samples/
-    - title: 实用教程 (Cookbook)
+    - title: 實用課程 (Cookbook)
       permalink: /docs/cookbook
     - title: Codelabs
       permalink: /docs/codelabs
 
 - divider
-- header: 用户界面
-- title: 介绍
+- header: 使用者介面
+- title: 介紹
   permalink: /docs/ui
-- title: Widget 目录
+- title: Widget 目錄
   permalink: /docs/ui/widgets
-- title: 布局构建
+- title: 佈局建構
   permalink: /docs/ui/layout
   children:
-    - title: 介绍
+    - title: 介紹
       permalink: /docs/ui/layout
       match-page-url-exactly: true
-    - title: 布局构建教程
+    - title: 佈局建構課程
       permalink: /docs/ui/layout/tutorial
-    - title: 列表 & 网格
+    - title: 列表 & 網格
       permalink: /docs/ui/layout/lists
       children:
-        - title: 构建与使用列表
+        - title: 建構與使用列表
           permalink: /docs/cookbook/lists/basic-list
-        - title: 构建一个横向列表
+        - title: 建構一個橫向列表
           permalink: /docs/cookbook/lists/horizontal-list
-        - title: 构建一个网格视图
+        - title: 建構一個網格檢視
           permalink: /docs/cookbook/lists/grid-lists
-        - title: 构建包含不同类型元素的列表
+        - title: 建構包含不同型別元素的列表
           permalink: /docs/cookbook/lists/mixed-list
-        - title: 构建元素之间包含间隔的列表
+        - title: 建構元素之間包含間隔的列表
           permalink: /docs/cookbook/lists/spaced-items
-        - title: 处理长列表
+        - title: 處理長列表
           permalink: /docs/cookbook/lists/long-lists
-    - title: 滚动
+    - title: 滾動
       permalink: /docs/ui/layout/scrolling
       children:
-        - title: 概览
+        - title: 概覽
           permalink: /docs/ui/layout/scrolling
-        - title: 使用 Slivers 实现各种滚动需求
+        - title: 使用 Slivers 實現各種滾動需求
           permalink: /docs/ui/layout/scrolling/slivers
-        - title: 在列表开头添加一个浮动的顶栏
+        - title: 在列表開頭新增一個浮動的頂欄
           permalink: /docs/cookbook/lists/floating-app-bar
-        - title: 构建一个平行错位滚动的效果
+        - title: 建構一個平行錯位滾動的效果
           permalink: /docs/cookbook/effects/parallax-scrolling
     # TODO(parlough): Rename this to 'Responsive design'
     # and add 'Adaptive design' under 'Design & theming'.
-    - title: 响应式设计
+    - title: 響應式設計
       permalink: /docs/ui/layout/responsive
       children:
-        - title: 创建响应式和自适应的应用
+        - title: 建立響應式和自適應的應用
           permalink: /docs/ui/layout/responsive/adaptive-responsive
-        - title: 构建自适应应用
+        - title: 建構自適應應用
           permalink: /docs/ui/layout/responsive/building-adaptive-apps
-        - title: 根据旋转角度更新应用的界面元素
+        - title: 根據旋轉角度更新應用的介面元素
           permalink: /docs/cookbook/design/orientation
 
-- title: 设计 & 主题
+- title: 設計 & 主題
   permalink: /docs/ui/design
   children:
-    - title: 共享主题样式
+    - title: 共享主題樣式
       permalink: /docs/cookbook/design/themes
-    - title: Material 设计
+    - title: Material 設計
       permalink: /docs/ui/design/material
     - title: 文字
       permalink: /docs/ui/design/text
       children:
-        - title: 字体 & 版式
+        - title: 字型 & 版式
           permalink: /docs/ui/design/text/typography
-        - title: 使用自定义字体
+        - title: 使用自訂字型
           permalink: /docs/cookbook/design/fonts
-        - title: 将字体从 package 中对外暴露
+        - title: 將字型從 package 中對外暴露
           permalink: /docs/cookbook/design/package-fonts
-        - title: Google 字体 package
+        - title: Google 字型 package
           permalink: https://pub.flutter-io.cn/packages/google_fonts
       # Consider renaming this 'Custom drawing & graphics'
       # once more docs are added
-    - title: 自定义图形
+    - title: 自訂圖形
       permalink: /docs/ui/design/graphics
       children:
-        - title: 使用自定义的着色器
+        - title: 使用自訂的著色器
           permalink: /docs/ui/design/graphics/fragment-shaders
 
-- title: 交互
+- title: 互動
   permalink: /docs/ui/interactivity
   children:
-    - title: 为你的应用添加交互
+    - title: 為你的應用新增互動
       permalink: /docs/ui/interactivity
       match-page-url-exactly: true
-    - title: 手势
+    - title: 手勢
       permalink: /docs/ui/interactivity/gestures
       children:
-        - title: 介绍
+        - title: 介紹
           permalink: /docs/ui/interactivity/gestures
           match-page-url-exactly: true
-        - title: 处理点击
+        - title: 處理點選
           permalink: /docs/cookbook/gestures/handling-taps
-        - title: 拖动界面元素
+        - title: 拖動介面元素
           permalink: /docs/cookbook/effects/drag-a-widget
-        - title: 添加 Material 风格的水波纹
+        - title: 新增 Material 風格的水波紋
           permalink: /docs/cookbook/gestures/ripples
-        - title: 实现滑动取消
+        - title: 實現滑動取消
           permalink: /docs/cookbook/gestures/dismissible
-    - title: 输入 & 表单
+    - title: 輸入 & 表單
       permalink: /docs/ui/interactivity/input
       children:
-        - title: 创建输入框并且调整样式
+        - title: 建立輸入框並且調整樣式
           permalink: /docs/cookbook/forms/text-input
-        - title: 读取输入框的内容
+        - title: 讀取輸入框的內容
           permalink: /docs/cookbook/forms/retrieve-input
-        - title: 处理输入框的内容变动
+        - title: 處理輸入框的內容變動
           permalink: /docs/cookbook/forms/text-field-changes
-        - title: 管理输入框之间的焦点
+        - title: 管理輸入框之間的焦點
           permalink: /docs/cookbook/forms/focus
-        - title: 构建具有校验功能的表单
+        - title: 建構具有校驗功能的表單
           permalink: /docs/cookbook/forms/validation
     - title: 展示 SnackBar
       permalink: /docs/cookbook/design/snackbars
-    - title: 实现快捷方式和捷径
+    - title: 實現快捷方式和捷徑
       permalink: /docs/ui/interactivity/actions-and-shortcuts
-    - title: 管理键盘焦点
+    - title: 管理鍵盤焦點
       permalink: /docs/ui/interactivity/focus
 
-- title: 资源 & 媒体
+- title: 資源 & 媒體
   permalink: /docs/ui/assets
   children:
-    - title: 添加资源和图片
+    - title: 新增資源和圖片
       permalink: /docs/ui/assets/assets-and-images
-    - title: 加载网络图片
+    - title: 載入網路圖片
       permalink: /docs/cookbook/images/network-image
-    - title: 从占位图过渡到图片
+    - title: 從佔位圖過渡到圖片
       permalink: /docs/cookbook/images/fading-in-images
-    - title: 播放及暂停视频
+    - title: 播放及暫停影片
       permalink: /docs/cookbook/plugins/play-video
 
-- title: 导航 & 路由
+- title: 導航 & 路由
   permalink: /docs/ui/navigation
   children:
-    - title: 概览
+    - title: 概覽
       permalink: /docs/ui/navigation
       match-page-url-exactly: true
-    - title: 添加 Tab 到应用中
+    - title: 新增 Tab 到應用中
       permalink: /docs/cookbook/design/tabs
-    - title: 导航至新页面并返回
+    - title: 導航至新頁面並返回
       permalink: /docs/cookbook/navigation/navigation-basics
-    - title: 传递数据到新页面
+    - title: 傳遞資料到新頁面
       permalink: /docs/cookbook/navigation/passing-data
-    - title: 从新页面返回数据
+    - title: 從新頁面返回資料
       permalink: /docs/cookbook/navigation/returning-data
-    - title: 在页面上添加抽屉
+    - title: 在頁面上新增抽屜
       permalink: /docs/cookbook/design/drawer
-    - title: 设置 Deeplink
+    - title: 設定 Deeplink
       permalink: /docs/ui/navigation/deep-linking
-    - title: 设置 Android Deeplink
+    - title: 設定 Android Deeplink
       permalink: /docs/cookbook/navigation/set-up-app-links
-    - title: 设置 iOS Universal Link
+    - title: 設定 iOS Universal Link
       permalink: /docs/cookbook/navigation/set-up-universal-links
-    - title: 设置 Web 的 URL 策略
+    - title: 設定 Web 的 URL 策略
       permalink: /docs/ui/navigation/url-strategies
 
-- title: 动画 & 过渡
+- title: 動畫 & 過渡
   permalink: /docs/ui/animations
   children:
-    - title: 概览
+    - title: 概覽
       permalink: /docs/ui/animations
       match-page-url-exactly: true
-    - title: 教程
+    - title: 課程
       permalink: /docs/ui/animations/tutorial
-    - title: 隐式动画
+    - title: 隱含動畫
       permalink: /docs/ui/animations/implicit-animations
-    - title: 过渡 Container 的属性
+    - title: 過渡 Container 的屬性
       permalink: /docs/cookbook/animation/animated-container
-    - title: 渐入渐出 widget
+    - title: 漸入漸出 widget
       permalink: /docs/cookbook/animation/opacity-animation
-    - title: Hero（跨页面共享元素）动画
+    - title: Hero（跨頁面共享元素）動畫
       permalink: /docs/ui/animations/hero-animations
-    - title: 页面转场动画
+    - title: 頁面轉場動畫
       permalink: /docs/cookbook/animation/page-route-animation
-    - title: 模拟物理特性动画
+    - title: 模擬物理特性動畫
       permalink: /docs/cookbook/animation/physics-simulation
-    - title: 交错动画
+    - title: 交錯動畫
       permalink: /docs/ui/animations/staggered-animations
-    - title: 构建菜单的交错动画
+    - title: 建構選單的交錯動畫
       permalink: /docs/cookbook/effects/staggered-menu-animation
-    - title: API 概览
+    - title: API 概覽
       permalink: /docs/ui/animations/overview
 
-- title: 无障碍 & 国际化
+- title: 無障礙 & 國際化
   permalink: /docs/ui/accessibility-and-internationalization
   children:
-    - title: 无障碍
+    - title: 無障礙
       permalink: /docs/ui/accessibility-and-internationalization/accessibility
-    - title: 国际化
+    - title: 國際化
       permalink: /docs/ui/accessibility-and-internationalization/internationalization
 
 - divider
-- header: 界面以外的开发
+- header: 介面以外的開發
 
-- title: 数据调用和后端
+- title: 資料呼叫和後端
   permalink: /docs/data-and-backend
   children:
-    - title: 状态管理
+    - title: 狀態管理
       permalink: /docs/data-and-backend/state-mgmt
       children:
-        - title: 介绍
+        - title: 介紹
           permalink: /docs/data-and-backend/state-mgmt/intro
-        - title: 从声明式的角度思考
+        - title: 從宣告式的角度思考
           permalink: /docs/data-and-backend/state-mgmt/declarative
-        - title: 短暂状态 & 持久状态
+        - title: 短暫狀態 & 持久狀態
           permalink: /docs/data-and-backend/state-mgmt/ephemeral-vs-app
-        - title: 简单的状态管理
+        - title: 簡單的狀態管理
           permalink: /docs/data-and-backend/state-mgmt/simple
-        - title: 状态管理参考
+        - title: 狀態管理參考
           permalink: /docs/data-and-backend/state-mgmt/options
-    - title: 网络 & http
+    - title: 網路 & http
       permalink: /docs/data-and-backend/networking
       children:
-        - title: 概览
+        - title: 概覽
           permalink: /docs/data-and-backend/networking
           match-page-url-exactly: true
-        - title: 从网络上获取数据
+        - title: 從網路上獲取資料
           permalink: /docs/cookbook/networking/fetch-data
-        - title: 构建需要认证的请求
+        - title: 建構需要認證的請求
           permalink: /docs/cookbook/networking/authenticated-requests
-        - title: 发送数据到服务器
+        - title: 傳送資料到伺服器
           permalink: /docs/cookbook/networking/send-data
-        - title: 更新网络上的数据
+        - title: 更新網路上的資料
           permalink: /docs/cookbook/networking/update-data
-        - title: 删除网络上的数据
+        - title: 刪除網路上的資料
           permalink: /docs/cookbook/networking/delete-data
-        - title: WebSocket 通信
+        - title: WebSocket 通訊
           permalink: /docs/cookbook/networking/web-sockets
     - title: 序列化
       permalink: /docs/data-and-backend/serialization
       children:
         - title: JSON 序列化
           permalink: /docs/data-and-backend/serialization/json
-        - title: 在后台处理 JSON 解析
+        - title: 在後台處理 JSON 解析
           permalink: /docs/cookbook/networking/background-parsing
     - title: 持久化
       permalink: /docs/data-and-backend/persistence
       children:
-        - title: 将 key-value 数据存储在硬盘上
+        - title: 將 key-value 資料儲存在硬碟上
           permalink: /docs/cookbook/persistence/key-value
-        - title: 读写文件
+        - title: 讀寫檔案
           permalink: /docs/cookbook/persistence/reading-writing-files
-        - title: 利用 SQLite 持久化数据
+        - title: 利用 SQLite 持久化資料
           permalink: /docs/cookbook/persistence/sqlite
     - title: Firebase
       permalink: /docs/data-and-backend/firebase
     - title: Google APIs
       permalink: /docs/data-and-backend/google-apis
 
-- title: 平台集成
+- title: 平台整合
   permalink: /docs/platform-integration
   children:
-    - title: 支持的平台
+    - title: 支援的平台
       permalink: /docs/reference/supported-platforms
-    - title: 构建桌面端应用
+    - title: 建構桌面端應用
       permalink: /docs/platform-integration/desktop
-    - title: 撰写平台代码 (插件编写实现)
+    - title: 撰寫平台程式碼 (外掛編寫實現)
       permalink: /docs/platform-integration/platform-channels
-    - title: 自动化平台适配
+    - title: 自動化平台適配
       permalink: /docs/platform-integration/platform-adaptations
     - title: Android 平台
       permalink: /docs/platform-integration/android
       children:
-        - title: 添加闪屏页
+        - title: 新增閃屏頁
           permalink: /docs/platform-integration/android/splash-screen
-        - title: 调用原生代码
+        - title: 呼叫原生程式碼
           permalink: /docs/platform-integration/android/c-interop
-        - title: 托管 Android 原生视图
+        - title: 託管 Android 原生檢視
           permalink: /docs/platform-integration/android/platform-views
-        - title: 在 Android 上恢复状态
+        - title: 在 Android 上恢復狀態
           permalink: /docs/platform-integration/android/restore-state-android
-        - title: 构建适合 Chrome OS 的 Android 应用
+        - title: 建構適合 Chrome OS 的 Android 應用
           permalink: /docs/platform-integration/android/chromeos
     - title: iOS 平台
       permalink: /docs/platform-integration/ios
       children:
-        - title: 使用 Apple 的系统库
+        - title: 使用 Apple 的系統庫
           permalink: /docs/platform-integration/ios/apple-frameworks
-        - title: 添加启动页
+        - title: 新增啟動頁
           permalink: /docs/platform-integration/ios/launch-screen
-        - title: 添加 iOS App Clip 支持
+        - title: 新增 iOS App Clip 支援
           permalink: /docs/platform-integration/ios/ios-app-clip
-        - title: 添加 iOS App 扩展
+        - title: 新增 iOS App 擴充
           permalink: /docs/platform-integration/ios/app-extensions
-        - title: 调用原生代码
+        - title: 呼叫原生程式碼
           permalink: /docs/platform-integration/ios/c-interop
-        - title: 托管 iOS 原生视图
+        - title: 託管 iOS 原生檢視
           permalink: /docs/platform-integration/ios/platform-views
-        - title: iOS 平台调试
+        - title: iOS 平台除錯
           permalink: /docs/platform-integration/ios/ios-debugging
-        - title: 在 iOS 上恢复状态
+        - title: 在 iOS 上恢復狀態
           permalink: /docs/platform-integration/ios/restore-state-ios
-    - title: Linux 操作系统平台
+    - title: Linux 作業系統平台
       permalink: /docs/platform-integration/linux
       children:
-        - title: 构建 Linux 桌面软件
+        - title: 建構 Linux 桌面軟體
           permalink: /docs/platform-integration/linux/building
-    - title: macOS 操作系统平台
+    - title: macOS 作業系統平台
       permalink: /docs/platform-integration/macos
       children:
-        - title: 构建 macOS 应用
+        - title: 建構 macOS 應用
           permalink: /docs/platform-integration/macos/building
-        - title: C 语言代码集成及调用
+        - title: C 語言程式碼整合及呼叫
           permalink: /docs/platform-integration/macos/c-interop
     - title: Web 平台
       permalink: /docs/platform-integration/web
       children:
-        - title: 构建一个 Web 应用
+        - title: 建構一個 Web 應用
           permalink: /docs/platform-integration/web/building
-        - title: Web 平台常见问题
+        - title: Web 平台常見問題
           permalink: /docs/platform-integration/web/faq
         - title: Web 平台渲染器
           permalink: /docs/platform-integration/web/renderers
-        - title: 自定义 Web 应用初始化
+        - title: 自訂 Web 應用初始化
           permalink: /docs/platform-integration/web/initialization
-        - title: 在网页里显示图片
+        - title: 在網頁裡顯示圖片
           permalink: /docs/platform-integration/web/web-images
-    - title: Windows 操作系统平台
+    - title: Windows 作業系統平台
       permalink: /docs/platform-integration/windows
       children:
-        - title: 构建 Windows 桌面软件
+        - title: 建構 Windows 桌面軟體
           permalink: /docs/platform-integration/windows/building
 
-- title: Package 和插件
+- title: Package 和外掛
   permalink: /docs/packages-and-plugins
   children:
-    - title: 使用 package 和插件
+    - title: 使用 package 和外掛
       permalink: /docs/packages-and-plugins/using-packages
-    - title: 开发 Package 和插件
+    - title: 開發 Package 和外掛
       permalink: /docs/packages-and-plugins/developing-packages
     - divider
-    - title: Flutter Favorites 项目
+    - title: Flutter Favorites 專案
       permalink: /docs/packages-and-plugins/favorites
-    - title: Package 仓库
+    - title: Package 儲存庫
       permalink: https://pub.flutter-io.cn/flutter
 
-- title: 测试和调试
+- title: 測試和除錯
   permalink: /docs/testing
   children:
-    - header: 测试
-    - title: 概览
+    - header: 測試
+    - title: 概覽
       permalink: /docs/testing/overview
       match-page-url-exactly: true
-    - title: Widget 测试
+    - title: Widget 測試
       children:
-        - title: 介绍
+        - title: 介紹
           permalink: /docs/cookbook/testing/widget/introduction
-        - title: 寻找 widgets
+        - title: 尋找 widgets
           permalink: /docs/cookbook/testing/widget/finders
-        - title: 模拟滚动
+        - title: 模擬滾動
           permalink: /docs/cookbook/testing/widget/scrolling
-        - title: 模拟用户操作
+        - title: 模擬使用者操作
           permalink: /docs/cookbook/testing/widget/tap-drag
-    - title: 集成测试
+    - title: 整合測試
       children:
-        - title: 介绍
+        - title: 介紹
           permalink: /docs/testing/integration-tests
           match-page-url-exactly: true
-        - title: 编写并运行集成测试
+        - title: 編寫並執行整合測試
           permalink: /docs/cookbook/testing/integration/introduction
-        - title: 衡量集成测试的性能指标
+        - title: 衡量整合測試的效能指標
           permalink: /docs/cookbook/testing/integration/profiling
-    - title: 单元测试
+    - title: 單元測試
       children:
-        - title: 介绍
+        - title: 介紹
           permalink: /docs/cookbook/testing/unit/introduction
-        - title: 模拟依赖
+        - title: 模擬依賴
           permalink: /docs/cookbook/testing/unit/mocking
-    - title: 测试插件
+    - title: 測試外掛
       permalink: /docs/testing/testing-plugins
-    - title: 在测试中处理插件代码
+    - title: 在測試中處理外掛程式碼
       permalink: /docs/testing/plugins-in-tests
-    - header: 调试
-    - title: 调试工具
+    - header: 除錯
+    - title: 除錯工具
       permalink: /docs/testing/debugging
-    - title: 通过代码调试应用
+    - title: 透過程式碼除錯應用
       permalink: /docs/testing/code-debugging
-    - title: 使用原生语言的调试
+    - title: 使用原生語言的除錯
       permalink: /docs/testing/native-debugging
-    - title: Flutter 的构建模式
+    - title: Flutter 的建構模式
       permalink: /docs/testing/build-modes
-    - title: 常见的 Flutter 错误
+    - title: 常見的 Flutter 錯誤
       permalink: /docs/testing/common-errors
-    - title: 处理错误
+    - title: 處理錯誤
       permalink: /docs/testing/errors
       match-page-url-exactly: true
-    - title: 将错误上报到收集服务
+    - title: 將錯誤上報到收集服務
       permalink: /cookbook/maintenance/error-reporting
 
-- title: 性能优化
+- title: 效能最佳化
   permalink: /docs/perf
   children:
-    - title: 概览
+    - title: 概覽
       permalink: /docs/perf
       match-page-url-exactly: true
     - title: 使用 Impeller
       permalink: /docs/perf/impeller
-    - title: 性能最佳实践
+    - title: 效能最佳實踐
       permalink: /docs/perf/best-practices
-    - title: 应用大小
+    - title: 應用大小
       permalink: /docs/perf/app-size
-    - title: 延迟加载组件
+    - title: 延遲載入元件
       permalink: /docs/perf/deferred-components
 #    - title: Memory
 #      permalink: /docs/perf/memory
 #    - title: Power usage
 #      permalink: /docs/perf/power
-    - title: 渲染性能
+    - title: 渲染效能
       permalink: /docs/perf/rendering-performance
-    - title: 性能分析
+    - title: 效能分析
       permalink: /docs/perf/ui-performance
-    - title: Web 性能分析
+    - title: Web 效能分析
       permalink: /docs/perf/web-performance
-    - title: 着色器编译时卡顿
+    - title: 著色器編譯時卡頓
       permalink: /docs/perf/shader
-    - title: 性能指标
+    - title: 效能指標
       permalink: /docs/perf/metrics
-    - title: 性能常见问题和回答
+    - title: 效能常見問題和回答
       permalink: /docs/perf/faq
-    - title: 附录
+    - title: 附錄
       permalink: /docs/perf/appendix
 
 - title: 打包部署
   permalink: /docs/deployment
   children:
-    - title: 混淆 Dart 代码
+    - title: 混淆 Dart 程式碼
       permalink: /docs/deployment/obfuscate
     - title: 配置 flavors
       permalink: /docs/deployment/flavors
-    - title: 构建和发布为 Android 应用
+    - title: 建構和釋出為 Android 應用
       permalink: /docs/deployment/android
-    - title: 构建和发布为 iOS 应用
+    - title: 建構和釋出為 iOS 應用
       permalink: /docs/deployment/ios
-    - title: 构建和发布为 macOS 应用
+    - title: 建構和釋出為 macOS 應用
       permalink: /docs/deployment/macos
-    - title: 构建和发布为 Linux 应用
+    - title: 建構和釋出為 Linux 應用
       permalink: /docs/deployment/linux
-    - title: 构建和发布为 Windows 应用
+    - title: 建構和釋出為 Windows 應用
       permalink: /docs/deployment/windows
-    - title: 构建和发布为 Web 应用
+    - title: 建構和釋出為 Web 應用
       permalink: /docs/deployment/web
-    - title: 持续部署
+    - title: 持續部署
       permalink: /docs/deployment/cd
 
-- title: 将 Flutter 添加到现有应用
+- title: 將 Flutter 新增到現有應用
   permalink: /docs/add-to-app
   children:
-    - title: 介绍
+    - title: 介紹
       permalink: /docs/add-to-app
       match-page-url-exactly: true
-    - title: 将 Flutter 添加到现有 Android 应用
+    - title: 將 Flutter 新增到現有 Android 應用
       permalink: /docs/add-to-app/android
       children:
-        - title: 工程设定
+        - title: 工程設定
           permalink: /docs/add-to-app/android/project-setup
-        - title: 添加单个 Flutter 页面
+        - title: 新增單個 Flutter 頁面
           permalink: /docs/add-to-app/android/add-flutter-screen
-        - title: 添加一个 Flutter Fragment
+        - title: 新增一個 Flutter Fragment
           permalink: /docs/add-to-app/android/add-flutter-fragment
-        - title: 添加 Flutter 视图
+        - title: 新增 Flutter 檢視
           permalink: /docs/add-to-app/android/add-flutter-view
         - title: Plugin 初始化
           permalink: /docs/add-to-app/android/plugin-setup
-    - title: 将 Flutter 添加到现有 iOS 应用
+    - title: 將 Flutter 新增到現有 iOS 應用
       permalink: /docs/add-to-app/ios
       children:
-        - title: 工程设定
+        - title: 工程設定
           permalink: /docs/add-to-app/ios/project-setup
-        - title: 添加单个 Flutter 页面
+        - title: 新增單個 Flutter 頁面
           permalink: /docs/add-to-app/ios/add-flutter-screen
-    - title: 调试及热重载
+    - title: 除錯及熱重載
       permalink: /docs/add-to-app/debugging
-    - title: 多个 Flutter 实例
+    - title: 多個 Flutter 例項
       permalink: /docs/add-to-app/multiple-flutters
-    - title: 加载顺序和性能
+    - title: 載入順序和效能
       permalink: /docs/add-to-app/performance
 
 - divider
 
-- title: 工具 & 代码编辑器
+- title: 工具 & 程式碼編輯器
   permalink: /docs/tools
   children:
     - title: Android Studio & IntelliJ
@@ -549,92 +549,92 @@
     - title: DevTools
       permalink: /docs/tools/devtools
       children:
-        - title: 概览
+        - title: 概覽
           permalink: /docs/tools/devtools/overview
-        - title: 在 Android Studio & IntelliJ 中安装 DevTools
+        - title: 在 Android Studio & IntelliJ 中安裝 DevTools
           permalink: /docs/tools/devtools/android-studio
-        - title: 在 VS Code 中安装 DevTools
+        - title: 在 VS Code 中安裝 DevTools
           permalink: /docs/tools/devtools/vscode
-        - title: 利用终端命令安装 DevTools
+        - title: 利用終端命令安裝 DevTools
           permalink: /docs/tools/devtools/cli
         - title: Flutter inspector
           permalink: /docs/tools/devtools/inspector
-        - title: 性能视图
+        - title: 效能檢視
           permalink: /docs/tools/devtools/performance
-        - title: CPU 性能视图
+        - title: CPU 效能檢視
           permalink: /docs/tools/devtools/cpu-profiler
-        - title: 内存视图
+        - title: 記憶體檢視
           permalink: /docs/tools/devtools/memory
-        - title: 调试控制条视图
+        - title: 除錯控制條檢視
           permalink: /docs/tools/devtools/console
-        - title: 网络视图
+        - title: 網路檢視
           permalink: /docs/tools/devtools/network
-        - title: 调试工具 Debugger
+        - title: 除錯工具 Debugger
           permalink: /docs/tools/devtools/debugger
-        - title: 日志视图
+        - title: 日誌檢視
           permalink: /docs/tools/devtools/logging
-        - title: 应用体积工具
+        - title: 應用體積工具
           permalink: /docs/tools/devtools/app-size
-        - title: 发布日志
+        - title: 釋出日誌
           permalink: /docs/tools/devtools/release-notes
-    - title: SDK 概览
+    - title: SDK 概覽
       permalink: /docs/tools/sdk
-    - title: Flutter pubspec 选项
+    - title: Flutter pubspec 選項
       permalink: /docs/tools/pubspec
-    - title: 自动修复
+    - title: 自動修復
       permalink: /docs/tools/flutter-fix
-    - title: 代码格式化
+    - title: 程式碼格式化
       permalink: /docs/tools/formatting
 
-- title: Flutter 相关概念
+- title: Flutter 相關概念
   children:
-    - title: Flutter 架构概览
+    - title: Flutter 架構概覽
       permalink: /docs/resources/architectural-overview
     - title: Flutter 工作原理
       permalink: /docs/resources/inside-flutter
-    - title: 理解布局约束
+    - title: 理解佈局約束
       permalink: /docs/ui/layout/constraints
-    - title: Flutter 构建模式
+    - title: Flutter 建構模式
       permalink: /docs/testing/build-modes
-    - title: 热重载
+    - title: 熱重載
       permalink: /docs/tools/hot-reload
 
-- title: 开发者资源列表
+- title: 開發者資源列表
   permalink: /docs/resources
   children:
-    - header: 学习
-    - title: 常见问题解答
+    - header: 學習
+    - title: 常見問題解答
       permalink: /docs/resources/faq
-    - title: 相关书籍
+    - title: 相關書籍
       permalink: /docs/resources/books
-    - title: 相关视频
+    - title: 相關影片
       permalink: /docs/resources/videos
-    - title: 相关课程
+    - title: 相關課程
       permalink: /docs/resources/courses
-    - title: 学习 Dart
+    - title: 學習 Dart
       permalink: /docs/resources/bootstrap-into-dart
-    - header: 贡献
+    - header: 貢獻
     - title: 提出 Bug
       permalink: /docs/resources/bug-reports
-    - title: 为 Flutter 做出贡献
+    - title: 為 Flutter 做出貢獻
       permalink: https://github.com/flutter/flutter/blob/master/CONTRIBUTING.md
-    - title: 设计文档
+    - title: 設計文件
       permalink: https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3A%22design+doc%22
-    - header: 工具包
-    - title: 休闲游戏工具包
+    - header: 工具套件
+    - title: 休閒遊戲工具套件
       permalink: /docs/resources/games-toolkit
-    - title: 新闻内容工具包
+    - title: 新聞內容工具套件
       permalink: /docs/resources/news-toolkit
 
-- title: 更多资料
+- title: 更多資料
   permalink: /docs/reference
   expanded: true
   children:
-    - title: 了解 Dash
+    - title: 瞭解 Dash
       permalink: /docs/dash
     - title: Flutter Widget 列表
       permalink: /docs/reference/widgets
-    - title: Flutter API 文档
+    - title: Flutter API 文件
       permalink: https://api.flutter-io.cn
-    - title: Flutter 命令行文档
+    - title: Flutter 命令列文件
       permalink: /docs/reference/flutter-cli

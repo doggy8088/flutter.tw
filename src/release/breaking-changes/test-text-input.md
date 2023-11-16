@@ -1,8 +1,8 @@
 ---
 title: TestTextInput state reset
-title: 重置 TestTextInput 状态
+title: 重置 TestTextInput 狀態
 description: TestTextInput state is now reset between tests.
-description: 测试之间，TestTextInput 的状态将重置。
+description: 測試之間，TestTextInput 的狀態將重置。
 ---
 
 ## Summary
@@ -13,7 +13,7 @@ The state of a `TestTextInput` instance,
 a stub for the system's onscreen keyboard,
 is now reset between tests.
 
-现在 `TestTextInput` 实例（系统屏幕键盘的存根）的状态会在测试之间重置。
+現在 `TestTextInput` 例項（系統螢幕鍵盤的存根）的狀態會在測試之間重置。
 
 ## Context
 
@@ -27,10 +27,10 @@ by setting their own handlers on `SystemChannels.textInput`).
 Subsequent tests might then check the state of
 `WidgetTester.testTextInput` and get unexpected values.
 
-Flutter 测试框架中使用一个名为 `TestTextInput` 的类来跟踪和操作 widgets 测试中的编辑状态。
-个别测试可以通过方法调用来修改此对象的内部状态，
-有时是间接的（例如通过 `SystemChannels.textInput` 设置自己的处理程序）。
-在其之后的的测试可能会检查 `WidgetTester.testTextInput` 的状态，拿到不符合预期的值。
+Flutter 測試框架中使用一個名為 `TestTextInput` 的類來追蹤和操作 widgets 測試中的編輯狀態。
+個別測試可以透過方法呼叫來修改此物件的內部狀態，
+有時是間接的（例如透過 `SystemChannels.textInput` 設定自己的處理程式）。
+在其之後的的測試可能會檢查 `WidgetTester.testTextInput` 的狀態，拿到不符合預期的值。
 
 ## Description of change
 
@@ -39,11 +39,11 @@ Flutter 测试框架中使用一个名为 `TestTextInput` 的类来跟踪和操�
 The state of `WidgetTester.testTextInput`
 is now reset before running a `testWidgets` test.
 
-现在 `WidgetTester.testTextInput` 的状态会在运行 `testWidgets` 测试之前重置。
+現在 `WidgetTester.testTextInput` 的狀態會在執行 `testWidgets` 測試之前重置。
 
 ## Migration guide
 
-## 迁移指南
+## 遷移指南
 
 Tests that relied on dirty state from a previously run
 test must be updated. For example, the following test,
@@ -53,21 +53,21 @@ previously passed because of a combination of dirty state
 from previous tests and a failure to actually set state
 in cases where it should have been set.
 
-之前依赖于 `WidgetTester.testTextInput` 运行时脏状态的测试必须更新。
+之前依賴於 `WidgetTester.testTextInput` 執行時髒狀態的測試必須更新。
 例如 `packages/flutter/test/material/text_field_test.dart`
-文件中的 `'Controller can update server'` 测试。
-在这之前，其它测试使得 `WidgetTester.testTextInput` 处于脏状态，
-并且在应该设置状态的时候设置状态失败，所以它通过了测试。
+檔案中的 `'Controller can update server'` 測試。
+在這之前，其它測試使得 `WidgetTester.testTextInput` 處於髒狀態，
+並且在應該設定狀態的時候設定狀態失敗，所以它通過了測試。
 
 Code before migration:
 
-迁移前的代码：
+遷移前的程式碼：
 
 In a `widgetsTest`, before actually changing text on a
 text editing widget, this call might have succeeded:
 
-`widgetsTest` 里，在实际更改文本编辑 widget 上的文本之前，
-此调用可能已成功：
+`widgetsTest` 裡，在實際更改文字編輯 widget 上的文字之前，
+此呼叫可能已成功：
 
 ```dart
     expect(tester.testTextInput.editingState['text'], isEmpty);
@@ -75,12 +75,12 @@ text editing widget, this call might have succeeded:
 
 Code after migration:
 
-迁移后的代码：
+遷移後的程式碼：
 
 Either remove the call entirely, or consider using the
 following to assert that the state hasn't been modified yet:
 
-要么完全删除该调用，要么考虑使用以下声明来确认状态尚未被修改：
+要麼完全刪除該呼叫，要麼考慮使用以下宣告來確認狀態尚未被修改：
 
 ```dart
     expect(tester.testTextInput.editingState, isNull);
@@ -88,34 +88,34 @@ following to assert that the state hasn't been modified yet:
 
 ## Timeline
 
-## 时间轴
+## 時間軸
 
 Landed in version: 1.16.3<br>
 In stable release: 1.17
 
-发布于版本：1.16.3<br>
-发布于稳定版本：1.17
+釋出於版本：1.16.3<br>
+釋出於穩定版本：1.17
 
 ## References
 
-## 参考文献
+## 參考文獻
 
 API documentation:
 
-API 文档：
+API 文件：
 
 * [`TestTextInput`][]
 * [`WidgetTester`][]
 
 Relevant issue:
 
-相关 issues：
+相關 issues：
 
 * [Randomize test order to avoid global state][]
 
 Relevant PR:
 
-相关 PR：
+相關 PR：
 
 * [Reset state between tests][]
 

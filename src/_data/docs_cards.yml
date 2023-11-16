@@ -1,18 +1,18 @@
-- name: 开始使用
-  description: 配置 Flutter 开发环境，开启 Flutter 应用之旅。
+- name: 開始使用
+  description: 配置 Flutter 開發環境，開啟 Flutter 應用之旅。
   url: /docs/get-started/install
-- name: Widget 目录
-  description: 查看和了解 Flutter SDK 内置的 Widgets 合集。
+- name: Widget 目錄
+  description: 檢視和了解 Flutter SDK 內建的 Widgets 合集。
   url: /docs/ui/widgets
-- name: API 文档
-  description: Flutter 框架的 API 文档。
+- name: API 文件
+  description: Flutter 框架的 API 文件。
   url: https://api.flutter-io.cn/
-- name: 实用教程 (Cookbook)
-  description: 官方实用教程合集，帮助你解决编写 Flutter 应用中的常见问题。
+- name: 實用課程 (Cookbook)
+  description: 官方實用課程合集，幫助你解決編寫 Flutter 應用中的常見問題。
   url: /docs/cookbook
-- name: 样例代码
-  description: 包含官方以及社区发布的样例工程，Demo 应用，范例代码等。
+- name: 範例程式碼
+  description: 包含官方以及社群釋出的範例工程，Demo 應用，範例程式碼等。
   url: https://flutter.github.io/samples
-- name: 视频资源
-  description: 关注 Flutter 社区的 Bilibili 频道
+- name: 影片資源
+  description: 關注 Flutter 社群的 Bilibili 頻道
   url: https://space.bilibili.com/344928717

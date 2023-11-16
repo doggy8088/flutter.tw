@@ -1,10 +1,10 @@
 ---
 title: Work with long lists
-title: 长列表的处理
+title: 長列表的處理
 description: Use ListView.builder to implement a long or infinite list.
-description: 使用 ListView.builder 实现一个长或无限的列表。
-tags: cookbook, 实用教程, 列表相关
-keywords: 长列表,进阶,数据源
+description: 使用 ListView.builder 實現一個長或無限的列表。
+tags: cookbook, 實用課程, 列表相關
+keywords: 長列表,進階,資料源
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -17,32 +17,32 @@ for small lists. To work with lists that contain
 a large number of items, it's best to use the
 [`ListView.builder`][] constructor.
 
-标准的 [`ListView`][] 构造函数适用于短列表，对于具有大量列表项的长列表，
-需要用 [`ListView.builder`][] 构造函数来创建。
+標準的 [`ListView`][] 建構函式適用於短列表，對於具有大量列表項的長列表，
+需要用 [`ListView.builder`][] 建構函式來建立。
 
 In contrast to the default `ListView` constructor, which requires
 creating all items at once, the `ListView.builder()` constructor
 creates items as they're scrolled onto the screen.
 
-与标准的 `ListView` 构造函数需要一次性创建所有列表项不同的是，
-`ListView.builder` 构造函数只在列表项从屏幕外滑入屏幕时才去创建列表项。
+與標準的 `ListView` 建構函式需要一次性建立所有列表項不同的是，
+`ListView.builder` 建構函式只在列表項從螢幕外滑入螢幕時才去建立列表項。
 
 ## 1. Create a data source
 
-## 1. 创建数据源
+## 1. 建立資料源
 
 First, you need a data source. For example, your data source
 might be a list of messages, search results, or products in a store.
 Most of the time, this data comes from the internet or a database.
 
-首先，需要获取列表的数据源。
-例如，数据源可以是消息集、搜索结果集或者商店商品集。
-大部分情况下，这些数据来自于网络请求或者数据库获取。
+首先，需要獲取列表的資料源。
+例如，資料源可以是訊息集、搜尋結果集或者商店商品集。
+大部分情況下，這些資料來自於網路請求或者資料庫獲取。
 
 For this example, generate a list of 10,000 Strings using the
 [`List.generate`][] constructor.
 
-在下面的例子，使用 [`List.generate`][] 构造函数生成包含 10,000 个字符串的集合。
+在下面的例子，使用 [`List.generate`][] 建構函式產生包含 10,000 個字串的集合。
 
 <?code-excerpt "lib/main.dart (Items)" replace="/^items: //g"?>
 ```dart
@@ -51,17 +51,17 @@ List<String>.generate(10000, (i) => 'Item $i'),
 
 ## 2. Convert the data source into widgets
 
-## 2. 将数据源渲染成组件
+## 2. 將資料源渲染成元件
 
 To display the list of strings, render each String as a widget
 using `ListView.builder()`.
 
-为了将字符串集合展示出来，需要通过 `ListView.builder`
-把集合中的每个字符串都渲染成组件。
+為了將字串集合展示出來，需要透過 `ListView.builder`
+把集合中的每個字串都渲染成元件。
 
 In this example, display each String on its own line.
 
-在下面的例子中，将会把每个字符串用单行列表项显示在列表中。
+在下面的例子中，將會把每個字串用單行列表項顯示在列表中。
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^body: //g;/,$//g"?>
 ```dart
@@ -80,7 +80,7 @@ ListView.builder(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

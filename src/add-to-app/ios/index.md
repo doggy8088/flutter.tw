@@ -1,7 +1,7 @@
 ---
 layout: toc
 title: Add Flutter to iOS
-title: 在 iOS 中集成 Flutter
+title: 在 iOS 中整合 Flutter
 description: Content covering adding Flutter to existing iOS apps.
-description: 在 iOS 中集成 Flutter 的系列文章
+description: 在 iOS 中整合 Flutter 的系列文章
 ---

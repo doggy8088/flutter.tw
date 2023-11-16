@@ -1,7 +1,7 @@
 ---
-title: Flutter 1.12.13 更改日志
-short-title: 1.12.13 更改日志
-description: Flutter 1.12.13 的更改日志，其中包含在此版本合并的所有的 PR 列表。
+title: Flutter 1.12.13 更改日誌
+short-title: 1.12.13 更改日誌
+description: Flutter 1.12.13 的更改日誌，其中包含在此版本合併的所有的 PR 列表。
 ---
 
 ## PRs closed in this release of flutter/flutter

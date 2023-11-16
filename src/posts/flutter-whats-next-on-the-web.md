@@ -3,112 +3,112 @@ title: Flutter Web 近期的重要更新
 toc: true
 ---
 
-_我们的发布重点优先关注在性能、开发者体验以及 Web 集成上_
+_我們的釋出重點優先關注在效能、開發者體驗以及 Web 整合上_
 
-2021 年 3 月 [Flutter Web 支持已进入稳定版]({{site.url}}/posts/flutter-web-support-hits-the-stable-milestone)，那么，下一步是什么？
+2021 年 3 月 [Flutter Web 支援已進入穩定版]({{site.url}}/posts/flutter-web-support-hits-the-stable-milestone)，那麼，下一步是什麼？
 
-在我们对用户调研的研究中发现，有超过 10％ 的 Flutter 项目目标是发布到 Web 平台。因此，目前我们会专注于提升第一个 Web 稳定版的质量，并使更多开发者能够将 Flutter Web 应用投入到生产环境。
+在我們對使用者調研的研究中發現，有超過 10％ 的 Flutter 專案目標是釋出到 Web 平台。因此，目前我們會專注於提升第一個 Web 穩定版的品質，並使更多開發者能夠將 Flutter Web 應用投入到生產環境。
 
-根据 Flutter 每个季度的调查结果和我们通过 Issue、开发者面谈、社交媒体渠道中听取到的信息，我们确立了这些优先事项。我们刚刚收到了第三季度的调查结果，大家的反馈与我们的计划不谋而合。
+根據 Flutter 每個季度的調查結果和我們透過 Issue、開發者面談、社交媒體渠道中聽取到的資訊，我們確立了這些優先事項。我們剛剛收到了第三季度的調查結果，大家的反饋與我們的計劃不謀而合。
 
-本文提供了详细的路线图和每个优先事项对应的工作计划。有些特性可能会跨越几个季度的时间来完成，使用放大镜符号 🔍 标识的特性代表它们仍需进一步调查之后才能给出一个解决方案。
+本文提供了詳細的路線圖和每個優先事項對應的工作計劃。有些特性可能會跨越幾個季度的時間來完成，使用放大鏡符號 🔍 標識的特性代表它們仍需進一步調查之後才能給出一個解決方案。
 
-让 Flutter 应用在 Web 上表现得自然是一件很重要的事，这包括诸如滚动行为、文本功能、闪屏、超链接、搜索引擎优化和其他 Web 应用特有的功能。
+讓 Flutter 應用在 Web 上表現得自然是一件很重要的事，這包括諸如滾動行為、文字功能、閃屏、超連結、搜尋引擎最佳化和其他 Web 應用特有的功能。
 
-## RTL 文本
+## RTL 文字
 
-此前，Flutter 没有在 Web 上对从右到左 (RTL) 的语言 (如阿拉伯语和希伯来语) 提供完整的支持。虽然框架本身支持 RTL 文本，但 Web 引擎忽略了 LTR 和 RTL 之间的区别，从而产生了未定义的行为。
+此前，Flutter 沒有在 Web 上對從右到左 (RTL) 的語言 (如阿拉伯語和希伯來語) 提供完整的支援。雖然框架本身支援 RTL 文字，但 Web 引擎忽略了 LTR 和 RTL 之間的區別，從而產生了未定義的行為。
 
-近期发布的 [Flutter 2.5 稳定版]({{site.url}}/posts/whats-new-in-flutter-2-5) 增加了对 RTL 的基础支持，Flutter Web 应用已经支持了 RTL 语言的所有主要场景。大部分与基础支持相关的问题已经得到了解决，并且我们正在计划修复剩余的问题。
+近期釋出的 [Flutter 2.5 穩定版]({{site.url}}/posts/whats-new-in-flutter-2-5) 增加了對 RTL 的基礎支援，Flutter Web 應用已經支援了 RTL 語言的所有主要場景。大部分與基礎支援相關的問題已經得到了解決，並且我們正在計劃修復剩餘的問題。
 
-- [对文本编辑实现 RTL 支持](https://github.com/flutter/flutter/issues/32239) (已修复)
-- [Web 上的 RTL 文本渲染故障](https://github.com/flutter/flutter/issues/69396) (已修复)
-- [带有 TextDirection.rtl 的 TextField 在 Web 上光标错位](https://github.com/flutter/flutter/issues/78550) (计划)
-- [在 RTL 应用程序中，RichText 中的 InlineSpans 重叠了](https://github.com/flutter/flutter/issues/82136) (已修复)
+- [對文字編輯實現 RTL 支援](https://github.com/flutter/flutter/issues/32239) (已修復)
+- [Web 上的 RTL 文字渲染故障](https://github.com/flutter/flutter/issues/69396) (已修復)
+- [帶有 TextDirection.rtl 的 TextField 在 Web 上游標錯位](https://github.com/flutter/flutter/issues/78550) (計劃)
+- [在 RTL 應用程式中，RichText 中的 InlineSpans 重疊了](https://github.com/flutter/flutter/issues/82136) (已修復)
 
-## 滚动行为
+## 滾動行為
 
-虽然 Flutter 2 对滚动做出了 [一些改进](https://github.com/flutter/flutter/pulls?q=is%3Apr+is%3Aclosed+is%3Amerged+label%3A%22f%3A+scrolling%22)，来支持桌面浏览器上的滚动行为 (如滚动条支持)，但在浏览器或运行 Web 应用的操作系统上，滚动行为依然在某些情况下没有达到预期。
+雖然 Flutter 2 對滾動做出了 [一些改進](https://github.com/flutter/flutter/pulls?q=is%3Apr+is%3Aclosed+is%3Amerged+label%3A%22f%3A+scrolling%22)，來支援桌面瀏覽器上的滾動行為 (如捲軸支援)，但在瀏覽器或執行 Web 應用的作業系統上，滾動行為依然在某些情況下沒有達到預期。
 
-虽然其中一些行为依赖于 Flutter 的桌面端支持，但我们计划在这个路线图中，解决一些物理滚动属性和滚动条的问题，问题如下所示。我们还计划展开对触控板支持的研究。
+雖然其中一些行為依賴於 Flutter 的桌面端支援，但我們計劃在這個路線圖中，解決一些物理滾動屬性和捲軸的問題，問題如下所示。我們還計劃展開對觸控板支援的研究。
 
-- [PageScrollPhysics 出现奇怪的行为](https://github.com/flutter/flutter/issues/35687)
-- [在 (无限) 列表 Widget 中没有滚动条](https://github.com/flutter/flutter/issues/41434)
-- [Mac 桌面的滚动物理应该保持范围](https://github.com/flutter/flutter/issues/85579)
-- [让滚动条避免阻塞 Sliver 和媒体查询的内边距](https://github.com/flutter/flutter/issues/13253)
+- [PageScrollPhysics 出現奇怪的行為](https://github.com/flutter/flutter/issues/35687)
+- [在 (無限) 列表 Widget 中沒有捲軸](https://github.com/flutter/flutter/issues/41434)
+- [Mac 桌面的滾動物理應該保持範圍](https://github.com/flutter/flutter/issues/85579)
+- [讓捲軸避免阻塞 Sliver 和媒體查詢的內邊距](https://github.com/flutter/flutter/issues/13253)
 - [MaterialScrollBehavior.buildScrollbar 需要更新](https://github.com/flutter/flutter/issues/87739)
 
-🔍 研究对 [触控板的支持](https://github.com/flutter/flutter/issues/23604)
+🔍 研究對 [觸控板的支援](https://github.com/flutter/flutter/issues/23604)
 
-## 应用加载 API
+## 應用載入 API
 
-有些 Web 应用倾向于在加载或进行一些自定义体验的时候，通过闪屏页、加载指示器或落地页来实现这个体验。目前在 Flutter Web 应用内并没有显示正在加载或实现自定义体验的简单方法，并且当用于渲染的 CanvasKit 体积较大时，这将会变成比较棘手的问题。
+有些 Web 應用傾向於在載入或進行一些自訂體驗的時候，透過閃屏頁、載入指示器或落地頁來實現這個體驗。目前在 Flutter Web 應用內並沒有顯示正在載入或實現自訂體驗的簡單方法，並且當用於渲染的 CanvasKit 體積較大時，這將會變成比較棘手的問題。
 
-我们正专注于为应用启动周期提供一个显式 API，可以用来预装应用，控制应用的加载周期，并创建闪屏页或加载指示器。
+我們正專注於為應用啟動週期提供一個顯式 API，可以用來預裝應用，控制應用的載入週期，並建立閃屏頁或載入指示器。
 
-- [增加在 Web 上对闪屏页的支持](https://github.com/flutter/flutter/issues/48468)
+- [增加在 Web 上對閃屏頁的支援](https://github.com/flutter/flutter/issues/48468)
 
-无障碍是我们的首要任务之一；我们旨在为您提供必需的工具以构建可访问的 Web 应用，且应用在最常见的屏幕阅读器上运行良好。
+無障礙是我們的首要任務之一；我們旨在為您提供必需的工具以建構可存取的 Web 應用，且應用在最常見的螢幕閱讀器上執行良好。
 
-Flutter 2.2 对无障碍支持进行了极大的改进。从那时开始，我们就听到了一些终端用户的担忧，他们试图用屏幕阅读器 (如 [JAWS](https://www.freedomscientific.com/products/software/jaws/)) 来浏览他们的 Web 应用。
+Flutter 2.2 對無障礙支援進行了極大的改進。從那時開始，我們就聽到了一些終端使用者的擔憂，他們試圖用螢幕閱讀器 (如 [JAWS](https://www.freedomscientific.com/products/software/jaws/)) 來瀏覽他們的 Web 應用。
 
-在该路线图中，我们将专注于桌面浏览器 [支持的屏幕阅读器](https://flutter.cn/docs/development/accessibility-and-localization/accessibility#screen-readers) 的问题，同时，我们还将继续研究如何提高我们整体无障碍支持。
+在該路線圖中，我們將專注於桌面瀏覽器 [支援的螢幕閱讀器](https://flutter.cn/docs/development/accessibility-and-localization/accessibility#screen-readers) 的問題，同時，我們還將繼續研究如何提高我們整體無障礙支援。
 
-- [使用回车键时未能触发按钮的点击](https://github.com/flutter/flutter/issues/83812)
-- [方向键和 B 键不更新屏幕阅读器的焦点](https://github.com/flutter/flutter/issues/83809)
+- [使用Enter鍵時未能觸發按鈕的點選](https://github.com/flutter/flutter/issues/83812)
+- [方向鍵和 B 鍵不更新螢幕閱讀器的焦點](https://github.com/flutter/flutter/issues/83809)
 
-我们将始终优先考虑性能，以改善 Flutter Web 应用的用户体验。目前我们的主要目标是改善滚动卡顿，并加快 Web 应用的初始加载速度。
+我們將始終優先考慮效能，以改善 Flutter Web 應用的使用者體驗。目前我們的主要目標是改善滾動卡頓，並加快 Web 應用的初始載入速度。
 
-## 滚动时的卡顿
+## 滾動時的卡頓
 
-我们近期的季度调查数据显示，滚动卡顿是首要的性能问题报告之一。我们的目标是无论在手机上使用手势，还是在桌面上使用鼠标 / 键盘，都确保 Flutter Web 应用能流畅滚动，但这也取决于 Web 应用期望用户滚动内容的类型和数量。
+我們近期的季度調查資料顯示，滾動卡頓是首要的效能問題報告之一。我們的目標是無論在手機上使用手勢，還是在桌面上使用滑鼠 / 鍵盤，都確保 Flutter Web 應用能流暢滾動，但這也取決於 Web 應用期望使用者滾動內容的型別和數量。
 
-在未来几个月里，我们将专注于改善由于图像解码造成的卡顿，也同时将继续研究滚动的性能问题，以找到我们可以改善的其他用例。
+在未來幾個月裡，我們將專注於改善由於圖像解碼造成的卡頓，也同時將繼續研究滾動的效能問題，以找到我們可以改善的其他使用案例。
 
-- [将图像解码转移到 Web Worker](https://github.com/flutter/flutter/issues/63397)
-- 降低 [在 CanvasKit 渲染引擎中使平台视图的成本](https://github.com/flutter/flutter/issues/71884)
+- [將圖像解碼轉移到 Web Worker](https://github.com/flutter/flutter/issues/63397)
+- 降低 [在 CanvasKit 渲染引擎中使平臺視圖的成本](https://github.com/flutter/flutter/issues/71884)
 
-## 捆绑 CanvasKit (离线支持)
+## 捆綁 CanvasKit (離線支援)
 
-目前，用 CanvasKit 渲染的 Flutter Web 应用需要额外的手动步骤，才能作为渐进式 Web 应用 (PWA) 离线工作。为了在离线模式下完全作为 PWA 工作，并确保应用符合严格的内容安全策略，我们需要捆绑 CanvasKit 和备选字体。
+目前，用 CanvasKit 渲染的 Flutter Web 應用需要額外的手動步驟，才能作為漸進式 Web 應用 (PWA) 離線工作。為了在離線模式下完全作為 PWA 工作，並確保應用符合嚴格的內容安全策略，我們需要捆綁 CanvasKit 和備選字型。
 
-我们将首先捆绑 CanvasKit，然后捆绑字体，并添加必要的工具以启用离线模式。
+我們將首先捆綁 CanvasKit，然後捆綁字型，並新增必要的工具以啟用離線模式。
 
-- [CanvasKit 的后端不应该依赖于不稳定的谷歌字体](https://github.com/flutter/flutter/issues/85793)
-- [支持捆绑的 CanvasKit 而不是通过 CDN](https://github.com/flutter/flutter/issues/70101)
+- [CanvasKit 的後端不應該依賴於不穩定的谷歌字型](https://github.com/flutter/flutter/issues/85793)
+- [支援捆綁的 CanvasKit 而不是透過 CDN](https://github.com/flutter/flutter/issues/70101)
 
-## CanvasKit 的下载大小
+## CanvasKit 的下載大小
 
-CanvasKit 的性能优于基于 DOM 的方法，因此它是我们在桌面浏览器上的默认渲染器。然而，下载应用所需的时间会影响初始加载性能 (以及在 Web 上运行的 Flutter 应用的 Lighthouse 得分)。
+CanvasKit 的效能優於基於 DOM 的方法，因此它是我們在桌面瀏覽器上的預設渲染器。然而，下載應用所需的時間會影響初始載入效能 (以及在 Web 上執行的 Flutter 應用的 Lighthouse 得分)。
 
-在该路线图中，我们将研究如何减少 CanvasKit 的下载大小，以努力提高初始加载性能。我们希望确保终端用户的设备或浏览器不会处理大量的有效载荷。
+在該路線圖中，我們將研究如何減少 CanvasKit 的下載大小，以努力提高初始載入效能。我們希望確保終端使用者的裝置或瀏覽器不會處理大量的有效載荷。
 
-- 🔍 [改善 CanvasKit 的下载大小](https://github.com/flutter/flutter/issues/89616)
-- 🔍 [找到一个大小合适的表情符号备选字体](https://github.com/flutter/flutter/issues/76248)
+- 🔍 [改善 CanvasKit 的下載大小](https://github.com/flutter/flutter/issues/89616)
+- 🔍 [找到一個大小合適的表情符號備選字型](https://github.com/flutter/flutter/issues/76248)
 
-提升浏览器代码集成的能力，有利于 Web 平台优势的发挥。Flutter Web 应用有两种方式与 HTML 集成。1) 在 Flutter Web 应用中使用 HTML 平台视图，或 2) 将 Flutter 作为内容集嵌入现有的 Web 应用 (类似于 Web 的附加应用)。目前前者已经可用且需要改进，而后者将是一个新功能，需要进一步设计和开发。
+提升瀏覽器程式碼整合的能力，有利於 Web 平台優勢的發揮。Flutter Web 應用有兩種方式與 HTML 整合。1) 在 Flutter Web 應用中使用 HTML 平臺視圖，或 2) 將 Flutter 作為內容集嵌入現有的 Web 應用 (類似於 Web 的附加應用)。目前前者已經可用且需要改進，而後者將是一個新功能，需要進一步設計和開發。
 
-## 用自定义元素嵌入 (add2app)
+## 用自訂元素嵌入 (add2app)
 
-今天，将 Flutter Web 应用嵌入现有网站 / Web 应用的唯一方法是通过 iframe。虽然这在某些场景下是可行的，但对于那些慢慢将其 Web 应用迁移到 Flutter 的开发者来说，这并不是一个理想解决方案。
+今天，將 Flutter Web 應用嵌入現有網站 / Web 應用的唯一方法是透過 iframe。雖然這在某些場景下是可行的，但對於那些慢慢將其 Web 應用遷移到 Flutter 的開發者來說，這並不是一個理想解決方案。
 
-在该路线图中，我们将研究并设计一款定制的解决方案，使你能够嵌入 Flutter Web 应用，类似于在移动端 add2app 的场景。
+在該路線圖中，我們將研究並設計一款客製的解決方案，使你能夠嵌入 Flutter Web 應用，類似於在移動端 add2app 的場景。
 
-🔍 [渲染自定义元素内的应用](https://github.com/flutter/flutter/issues/32329)
+🔍 [渲染自訂元素內的應用](https://github.com/flutter/flutter/issues/32329)
 
-Flutter 的生态系统包括了用于开发的功能，但目前仍然缺乏 Web 的功能支持，如插件、调试、热重载等。为了让你在 Web 端有一个良好的开发者体验，我们将继续缩减移动端和 Web 端之间的差距。
+Flutter 的生態系統包括了用於開發的功能，但目前仍然缺乏 Web 的功能支援，如外掛、除錯、熱重載等。為了讓你在 Web 端有一個良好的開發者體驗，我們將繼續縮減移動端和 Web 端之間的差距。
 
-## 相机插件
+## 相機外掛
 
-自最初的 Web 稳定版本发布以来，相机插件一直是呼声最高的插件之一；许多人发现，在将 Flutter 移动应用引入 Web 时，同步差距是一个主要的问题。
+自最初的 Web 穩定版本釋出以來，相機外掛一直是呼聲最高的外掛之一；許多人發現，在將 Flutter 移動應用引入 Web 時，同步差距是一個主要的問題。
 
-在 [Flutter 2.5 稳定版]({{site.url}}/posts/whats-new-in-flutter-2-5) ，我们提供了这个[插件](https://pub.dev/packages/camera_web)的早期版本，可以初始化相机，显示相机预览，并拍摄照片。我们收到反馈后将会对这个插件进行改进。
+在 [Flutter 2.5 穩定版]({{site.url}}/posts/whats-new-in-flutter-2-5) ，我們提供了這個[外掛](https://pub.dev/packages/camera_web)的早期版本，可以初始化相機，顯示相機預覽，並拍攝照片。我們收到反饋後將會對這個外掛進行改進。
 
-- 为 [Web 增加相机支持](https://github.com/flutter/flutter/issues/45297) (已修复，一些 PR 待定)。
+- 為 [Web 增加相機支援](https://github.com/flutter/flutter/issues/45297) (已修復，一些 PR 待定)。
 
-以上是对目前我们在 Web 上路线图的概述，[GitHub 问题列表](https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform-web+) 依然是我们正在处理的问题来源。
-我们可能会根据了解到的情况和开发者们的反馈来增加、延长或推迟功能。
+以上是對目前我們在 Web 上路線圖的概述，[GitHub 問題列表](https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform-web+) 依然是我們正在處理的問題來源。
+我們可能會根據瞭解到的情況和開發者們的反饋來增加、延長或推遲功能。
 
-我们非常重视开发者们的反馈，并感谢大家一如既往的支持。
+我們非常重視開發者們的反饋，並感謝大家一如既往的支援。
 
-_感谢 flutter.cn 社区成员 (@AlexV525、@Vadaski、@MeandNi) 以及 Lynn 对本文的审校和贡献。_
+_感謝 flutter.cn 社群成員 (@AlexV525、@Vadaski、@MeandNi) 以及 Lynn 對本文的審校和貢獻。_

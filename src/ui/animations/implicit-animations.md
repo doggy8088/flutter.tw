@@ -1,10 +1,10 @@
 ---
 title: Implicit Animations
-title: 隐式动画
+title: 隱含動畫
 description: Where to find more information on using implicit animations in Flutter.
-description: 在 Flutter 中寻找有关使用隐式动画的更多信息。
-tags: 用户界面,Flutter UI,动画
-keywords: 隐式动画
+description: 在 Flutter 中尋找有關使用隱含動畫的更多資訊。
+tags: 使用者介面,Flutter UI,動畫
+keywords: 隱含動畫
 ---
 
 With Flutter's [animation library][],
@@ -18,16 +18,16 @@ or _implicitly animated widgets_, deriving their name from the
 The following set of resources provide many ways to learn
 about implicit animations in Flutter.
 
-通过 Flutter 的 [动画库][animation library]，
-你可以为 UI 中的 widgets 添加动作并创造视觉效果。
-有些库包含各种各样可以帮你管理动画的 widget。
-这些 widgets 被统称为 **隐式动画** 或 **隐式动画 widget**，
-其名字来源于它们所实现的 [`ImplicitlyAnimatedWidget`][] 类。
-下列资源提供了许多在 Flutter 中学习使用隐式动画的方法。
+透過 Flutter 的 [動畫函式庫][animation library]，
+你可以為 UI 中的 widgets 新增動作並創造視覺效果。
+有些庫包含各種各樣可以幫你管理動畫的 widget。
+這些 widgets 被統稱為 **隱含動畫** 或 **隱含動畫 widget**，
+其名字來源於它們所實現的 [`ImplicitlyAnimatedWidget`][] 類別。
+下列資源提供了許多在 Flutter 中學習使用隱含動畫的方法。
 
 ## Documentation
 
-## 文档
+## 文件
 
 [Implicit animations codelab][]
 <br> Jump right into the code!
@@ -35,27 +35,27 @@ about implicit animations in Flutter.
   and step-by-step instructions to teach you
   how to use implicit animations.
   
-[隐式动画 codelab][Implicit animations codelab]
-<br> 跳转至代码！
-  Codelab 使用交互式示例和分布介绍来教你学会如何使用隐式动画。
+[隱含動畫 codelab][Implicit animations codelab]
+<br> 跳轉至程式碼！
+  Codelab 使用互動式範例和分佈介紹來教你學會如何使用隱含動畫。
 
 [`AnimatedContainer` sample][]
 <br> A step-by-step recipe from the [Flutter cookbook][]
   for using the [`AnimatedContainer`][]
   implicitly animated widget.
 
-[`AnimatedContainer` 示例][`AnimatedContainer` sample]
-<br>[Flutter cookbook][] 中针对如何使用 [`AnimatedContainer`][] 隐式动画 widget 进行了手把手的指导。
+[`AnimatedContainer` 範例][`AnimatedContainer` sample]
+<br>[Flutter cookbook][] 中針對如何使用 [`AnimatedContainer`][] 隱含動畫 widget 進行了手把手的指導。
 
 [`ImplicitlyAnimatedWidget`][] API page
 <br> All implicit animations extend the `ImplicitlyAnimatedWidget` class.
 
-[`ImplicitlyAnimatedWidget`][] API 页面
-<br>所有隐式动画都扩展了 `ImplicitlyAnimatedWidget` 类。
+[`ImplicitlyAnimatedWidget`][] API 頁面
+<br>所有隱含動畫都擴充了 `ImplicitlyAnimatedWidget` 類別。
 
 ## Flutter in Focus videos
 
-## 聚焦 Flutter 视频
+## 聚焦 Flutter 影片
 
 Flutter in Focus videos feature 5-10 minute tutorials
 with real code that cover techniques
@@ -63,8 +63,8 @@ that every Flutter dev needs to know from top to bottom.
 The following videos cover topics
 that are relevant to implicit animations.
 
-聚焦 Flutter 视频以 5 到 10 分钟的实战代码为特点，涵盖了每个 Flutter 开发人员都需要从头到尾了解的技术。
-下列视频涵盖了所有与隐性动画相关的话题。
+聚焦 Flutter 影片以 5 到 10 分鐘的實戰程式碼為特點，涵蓋了每個 Flutter 開發人員都需要從頭到尾瞭解的技術。
+下列影片涵蓋了所有與隱性動畫相關的話題。
 
 {% comment %} Animation Basics with Implicit Animations {% endcomment %}
 
@@ -78,8 +78,8 @@ Watch the Boring Show to follow Google Engineers build apps
 from scratch in Flutter. The following episode covers
 using implicit animations in a news aggregator app.
 
-观看《The Boring Show》，跟随谷歌工程师用 Flutter 从零开始构建应用程序。
-下面这一集涉及在一个新闻聚合器应用中使用隐式动画。
+觀看《The Boring Show》，跟隨谷歌工程師用 Flutter 從零開始建構應用程式。
+下面這一集涉及在一個新聞聚合器應用中使用隱含動畫。
 
 {% comment %} Implicitly animating the Hacker News app {% endcomment %}
 
@@ -87,7 +87,7 @@ using implicit animations in a news aggregator app.
 
 ## Widget of the Week videos
 
-## 每周 Widget 视频
+## 每週 Widget 影片
 
 A weekly series of short animated videos each showing
 the important features of one particular widget.
@@ -96,9 +96,9 @@ widget with a demo about how it works.
 The following Widget of the Week videos cover
 implicitly animated widgets:
 
-每周都有一个系列的动画短片，每个短片都展示了一个特定 widget 的核心功能。
-在大约六十秒的时间里，你将会看到每个 widget 的实战代码，以及关于它是如何工作的演示。
-下列「每周 Widget」视频涉及了隐含动画 widget 有：
+每週都有一個系列的動畫短片，每個短片都展示了一個特定 widget 的核心功能。
+在大約六十秒的時間裡，你將會看到每個 widget 的實戰程式碼，以及關於它是如何工作的示範。
+下列「每週 Widget」影片涉及了隱含動畫 widget 有：
 
 {% comment %} Animated Opacity {% endcomment %}
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=839306372&bvid=BV1W54y1U7ma&cid=225852916&page=1&autoplay=false" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -1,10 +1,10 @@
 ---
 title: Common Flutter errors
-title: Flutter 开发中常见的报错
+title: Flutter 開發中常見的報錯
 description: How to recognize and resolve common Flutter framework errors.
-description: 如何识别并解决一些常见的 Flutter 框架的报错。
-tags: 测试
-keywords: flutter报错,A RenderFlex overflowed,An InputDecorator cannot have an unbounded width
+description: 如何識別並解決一些常見的 Flutter 框架的報錯。
+tags: 測試
+keywords: flutter報錯,A RenderFlex overflowed,An InputDecorator cannot have an unbounded width
 ---
 
 <?code-excerpt path-base="testing/common_errors"?>

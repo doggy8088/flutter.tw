@@ -1,8 +1,8 @@
 ---
 title: Create a staggered menu animation
-title: 创建一个交错效果的侧边栏菜单
+title: 建立一個交錯效果的側邊欄選單
 description: How to implement a staggered menu animation.
-description: 如何实现一个交错效果的侧边栏菜单
+description: 如何實現一個交錯效果的側邊欄選單
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

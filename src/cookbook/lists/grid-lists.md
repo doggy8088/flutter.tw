@@ -1,8 +1,8 @@
 ---
 title: Create a grid list
-title: 创建一个网格列表
+title: 建立一個網格列表
 description: How to implement a grid list.
-description: 如何实现一个网格列表。
+description: 如何實現一個網格列表。
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -14,23 +14,23 @@ In some cases, you might want to display your items as a grid rather than
 a normal list of items that come one after the next.
 For this task, use the [`GridView`][] widget.
 
-有时候，你可能希望用网格来展示内容，而不是一条接着一条的普通列表来展示。
-在本文当中，我们将采用 [`GridView`][] widget。
+有時候，你可能希望用網格來展示內容，而不是一條接著一條的普通列表來展示。
+在本文當中，我們將採用 [`GridView`][] widget。
 
 The simplest way to get started using grids is by using the
 [`GridView.count()`][] constructor,
 because it allows you to specify how many rows or columns you'd like.
 
-用网格展示数据最简单的方式，
-就是通过使用 [`GridView.count()`][] 构造方法，
-因为它允许我们指定有多少行多少列。
+用網格展示資料最簡單的方式，
+就是透過使用 [`GridView.count()`][] 構造方法，
+因為它允許我們指定有多少行多少列。
 
 To visualize how `GridView` works,
 generate a list of 100 widgets that display their index in the list.
 
-为了帮助我们想象 `GridView` 是如何工作的，
-在这个例子中，我们将创建一个包含有 100 个 widget 的 List，
-每个 Widget 将展示它在 List 中的索引。
+為了幫助我們想象 `GridView` 是如何工作的，
+在這個例子中，我們將建立一個包含有 100 個 widget 的 List，
+每個 Widget 將展示它在 List 中的索引。
 
 <?code-excerpt "lib/main.dart (GridView)" replace="/^body\: //g"?>
 ```dart
@@ -52,7 +52,7 @@ GridView.count(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

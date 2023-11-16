@@ -1,10 +1,10 @@
 ---
 title: Debugging Flutter apps programmatically
-title: 添加输出代码的方式调试 Flutter 应用
+title: 新增輸出程式碼的方式除錯 Flutter 應用
 description: How to enable various debugging tools from your code and at the command line.
-description: 如何通过在代码中加入 log 输出。
-tags: Flutter测试
-keywords: Flutter调试,Flutter加log,Flutter输出
+description: 如何透過在程式碼中加入 log 輸出。
+tags: Flutter測試
+keywords: Flutter除錯,Flutter加log,Flutter輸出
 ---
 
 <?code-excerpt path-base="testing/code_debugging"?>
@@ -13,8 +13,8 @@ This doc describes debugging features that you can enable in code.
 For a full list of debugging and profiling tools, see the
 [Debugging][] page.
 
-这篇文章描述了如何在代码中启用调试功能。
-如果想了解整个调试和分析工具，可参见 [Debugging][] 页面.
+這篇文章描述瞭如何在程式碼中啟用除錯功能。
+如果想了解整個除錯和分析工具，可參見 [Debugging][] 頁面.
 
 {{site.alert.note}}
 
@@ -22,8 +22,8 @@ For a full list of debugging and profiling tools, see the
   Flutter engine running within an Android app process,
   check out [`flutter_gdb`][].
 
-  如果你想要使用 GDB 来远程调试运行在 Android 应用进程中的 Flutter 引擎，
-  可以参考文档 [`flutter_gdb`][]。
+  如果你想要使用 GDB 來遠端除錯執行在 Android 應用處理序中的 Flutter 引擎，
+  可以參考文件 [`flutter_gdb`][]。
 
 {{site.alert.end}}
 
@@ -31,7 +31,7 @@ For a full list of debugging and profiling tools, see the
 
 ## Logging
 
-## 日志输出
+## 日誌輸出
 
 {{site.alert.note}}
 
@@ -39,8 +39,8 @@ For a full list of debugging and profiling tools, see the
   or in your system console. This sections
   shows how to set up your logging statements.
 
-  您可以在 DevTools 的 [Logging view][] 或系统控制台查看日志。 
-  本节将展示如何设置日志的相关语句。
+  您可以在 DevTools 的 [Logging view][] 或系統控制檯檢視日誌。 
+  本節將展示如何設定日誌的相關陳述式。
 
 {{site.alert.end}}
 
@@ -50,9 +50,9 @@ Generally, this is done using `print()` statements,
 or by importing `dart:io` and invoking methods on
 `stderr` and `stdout`. For example:
 
-在应用中有两种日志输出方式。第一种方式是使用 `stdout` 和 `stderr`。
-通常，我们使用 `print()` 语句或者通过引入 `dart:io` 
-并且调用 `stderr` 与 `stdout` 中的方法。如下：
+在應用中有兩種日誌輸出方式。第一種方式是使用 `stdout` 和 `stderr`。
+通常，我們使用 `print()` 陳述式或者透過引入 `dart:io` 
+並且呼叫 `stderr` 與 `stdout` 中的方法。如下：
 
 <?code-excerpt "lib/main.dart (stderr)"?>
 ```dart
@@ -65,17 +65,17 @@ from Flutter's `foundation` library. This is a wrapper around `print`
 that throttles the output to a level that avoids being dropped by
 Android's kernel.
 
-如果您一次输出太多，Android 有时可能会丢失一些日志行。
-可以使用 Flutter 的 `foundation` 包中的 [`debugPrint()`][] 方法来避免这个问题。
-它封装了 `print` 方法，通过控制输出的等级，从而避免输出内容被 Android 的内核丢弃。
+如果您一次輸出太多，Android 有時可能會丟失一些日誌行。
+可以使用 Flutter 的 `foundation` 套件中的 [`debugPrint()`][] 方法來避免這個問題。
+它封裝了 `print` 方法，透過控制輸出的等級，從而避免輸出內容被 Android 的核心丟棄。
 
 The other option for application logging is to use the
 `dart:developer` [`log()`][] function. This allows you to include a
 bit more granularity and information in the logging output.
 Here's an example:
 
-另一种应用日志输出的方式是使用 `dart:developer` 中的 [`log()`][] 方法。
-通过这种方式，您可以在输出日志中包含更精细化的信息。如下面这个示例：
+另一種應用日誌輸出的方式是使用 `dart:developer` 中的 [`log()`][] 方法。
+透過這種方式，您可以在輸出日誌中包含更精細化的資訊。如下面這個範例：
 
 <?code-excerpt "lib/main.dart (log)"?>
 ```dart
@@ -95,9 +95,9 @@ parameter on the `log()` call, JSON encode the object
 you want to send, and pass the encoded string to the
 error parameter.
 
-您也可以在打印日志时传入应用数据。
-通常，在调用 `log()` 时也会使用命名参数 `error:`，
-您可以通过 JSON 编码想要传入的对象，并将编码后的字符串传给 error 参数。
+您也可以在列印日誌時傳入應用資料。
+通常，在呼叫 `log()` 時也會使用命名引數 `error:`，
+您可以透過 JSON 編碼想要傳入的物件，並將編碼後的字串傳給 error 引數。
 
 <?code-excerpt "lib/app_data.dart (PassAppData)"?>
 ```dart
@@ -119,12 +119,12 @@ If viewing the logging output in DevTool's logging view,
 the JSON encoded error param is interpreted as a data object
 and rendered in the details view for that log entry.
 
-如果在 DevTool 的 logging 页面中查看日志输出情况，
-JSON 编码的错误参数会被解释为一个数据对象，并呈现在该日志条目的 details 视图中。
+如果在 DevTool 的 logging 頁面中檢視日誌輸出情況，
+JSON 編碼的錯誤引數會被解釋為一個數據物件，並呈現在該日誌條目的 details 檢視中。
 
 ## Setting breakpoints
 
-## 设置断点
+## 設定斷點
 
 {{site.alert.note}}
 
@@ -133,8 +133,8 @@ JSON 编码的错误参数会被解释为一个数据对象，并呈现在该日
   set breakpoints programmatically, use the following
   instructions.
 
-  您可以在 DevTools 的 [Debugger][] 页面或在 IDE 的内置调试器中设置断点。
-  如果您想要以编程方式设置断点，可以使用下面的指令。
+  您可以在 DevTools 的 [Debugger][] 頁面或在 IDE 的內建偵錯程式中設定斷點。
+  如果您想要以程式設計方式設定斷點，可以使用下面的指令。
 
 {{site.alert.end}}
 
@@ -143,15 +143,15 @@ You can insert programmatic breakpoints using the
 import the `dart:developer` package at the top of
 the relevant file.
 
-您可以使用 `debugger()` 语句插入编程式断点。在此之前，
-您需要在相关文件顶部引入 `dart:developer` 包。
+您可以使用 `debugger()` 陳述式插入程式設計式斷點。在此之前，
+您需要在相關檔案頂部引入 `dart:developer` 套件。
 
 The `debugger()` statement takes an optional `when`
 argument that you can specify to only break when a
 certain condition is true, as in the following example:
 
-`debugger()` 语句有一个可选参数 `when`，
-用来指定该断点触发的特定条件，如下这个示例：
+`debugger()` 陳述式有一個可選引數 `when`，
+用來指定該斷點觸發的特定條件，如下這個範例：
 
 <?code-excerpt "lib/debugger.dart"?>
 ```dart
@@ -165,7 +165,7 @@ void someFunction(double offset) {
 
 ## Debug flags: application layers
 
-## Debug 标识： 应用程序层
+## Debug 標識： 應用程式層
 
 {% comment %}  DevTool's doesn't currently print the render tree.
 {{site.alert.note}}
@@ -174,8 +174,8 @@ void someFunction(double offset) {
   view a visual layout of the render tree, you probably won't
   need to use these text-based dump tools.
 
-  如果您使用 [DevTools][] 和它的 [Flutter inspector][] 来查看渲染树的可视布局，
-  可能不需要使用这些基于文本的转储工具。
+  如果您使用 [DevTools][] 和它的 [Flutter inspector][] 來檢視渲染樹的可視佈局，
+  可能不需要使用這些基於文字的轉儲工具。
 
 {{site.alert.end}}
 {% endcomment %}
@@ -183,12 +183,12 @@ void someFunction(double offset) {
 Each layer of the Flutter framework provides a function to dump its
 current state or events to the console (using `debugPrint`).
 
-Flutter 框架的每个 layer 都提供了一个函数，
-用来将其当前状态或事件转储到控制台（使用 `debugPrint`）。
+Flutter 框架的每個 layer 都提供了一個函式，
+用來將其當前狀態或事件轉儲到控制檯（使用 `debugPrint`）。
 
 ### Widget tree
 
-### Widget 树
+### Widget 樹
 
 To dump the state of the Widgets library, call [`debugDumpApp()`][].
 You can call this more or less any time that the application is not in
@@ -196,13 +196,13 @@ the middle of running a build phase (in other words, not anywhere inside a
 `build()` method), if the app has built at least once and is in debug mode
 (in other words, any time after calling `runApp()`).
 
-可以通过调用 [`debugDumpApp()`][] 方法转储 widget 库的状态，
-如果应用已至少构建了一次，并且正处于调试模式时（`runApp()` 调用后的任何时间）。
-只要应用不在运行构建阶段，您可以调用随意该方法（也就是说，不能在 `build()` 方法中使用它）。
+可以透過呼叫 [`debugDumpApp()`][] 方法轉儲 widget 庫的狀態，
+如果應用已至少建構了一次，並且正處於除錯模式時（`runApp()` 呼叫後的任何時間）。
+只要應用不在執行建構階段，您可以呼叫隨意該方法（也就是說，不能在 `build()` 方法中使用它）。
 
 For example, the following application:
 
-如下面这个应用：
+如下面這個應用：
 
 <?code-excerpt "lib/dump_app.dart"?>
 ```dart
@@ -239,7 +239,7 @@ The previous app outputs something like the following
 (the precise details vary by the version of the framework,
 the size of the device, and so forth):
 
-上面应用的输出内容如下（具体细节因框架版本、设备大小等会有所差异）：
+上面應用的輸出內容如下（具體細節因框架版本、裝置大小等會有所差異）：
 
 ```
 I/flutter ( 6559): WidgetsFlutterBinding - CHECKED MODE
@@ -325,11 +325,11 @@ application's source, because they are inserted by the framework's
 widgets' build functions. For example,
 [`InkFeature`][] is an implementation detail of the [`Material`][] widget.
 
-这是一个「被拉平的树」，通过它们的各种 build 函数，显示出所有 widget 信息。
-（如果您调用根 widget 的 `toStringDeep()` 方法，就会得到这棵树。）
-您会看到很多 widget ，虽然它们没出现在应用的源码中，但却出现在这颗树中，
-因为它们是由框架中 widget 的 build 函数插入的。
-比如，[`Material`][] widget 的实现细节中就包括了 [`InkFeature`][]。
+這是一個「被拉平的樹」，透過它們的各種 build 函式，顯示出所有 widget 資訊。
+（如果您呼叫根 widget 的 `toStringDeep()` 方法，就會得到這棵樹。）
+您會看到很多 widget ，雖然它們沒出現在應用的原始碼中，但卻出現在這顆樹中，
+因為它們是由框架中 widget 的 build 函式插入的。
+比如，[`Material`][] widget 的實現細節中就包括了 [`InkFeature`][]。
 
 Since the `debugDumpApp()` call is invoked when the button changes
 from being pressed to being released, it coincides with the
@@ -341,12 +341,12 @@ GestureDetector is listed, and it is listening only to a "tap" gesture
 ("tap" is the output of a `TapGestureDetector`'s `toStringShort`
 function).
 
-当按钮被点击响应时，`debugDumpApp()` 方法被调用，
-由于该方法与 [`TextButton`][] 对象调用 [`setState()`][] 相一致，
-因此 TextButton 对应的元素会被标记为 dirty。
-这就是为什么在查看转储信息时，您会看到被标记为「dirty」的特定对象。
-您也可以看到已经被注册的手势监听器；在这个案例中，列出了一个 GestureDetector，
-它只监听「tap」手势（这里「tap」是 `TapGestureDetector` 的 `toStringShort` 函数输出的）。
+當按鈕被點選響應時，`debugDumpApp()` 方法被呼叫，
+由於該方法與 [`TextButton`][] 物件呼叫 [`setState()`][] 相一致，
+因此 TextButton 對應的元素會被標記為 dirty。
+這就是為什麼在檢視轉儲資訊時，您會看到被標記為「dirty」的特定物件。
+您也可以看到已經被註冊的手勢監聽器；在這個案例中，列出了一個 GestureDetector，
+它只監聽「tap」手勢（這裡「tap」是 `TapGestureDetector` 的 `toStringShort` 函式輸出的）。
 
 If you write your own widgets, you can add information by overriding
 [`debugFillProperties()`][widget-fill]. Add [DiagnosticsProperty][]
@@ -354,13 +354,13 @@ objects to the method's argument, and call the superclass method.
 This function is what the `toString` method uses to fill in the
 widget's description.
 
-对于您自定义的 widget，可以通过重写 [`debugFillProperties()`][widget-fill] 方法添加信息。
-为方法中的参数添加 [DiagnosticsProperty][] 对象，并调用父类方法。
-该方法在 widget 调用 `toString` 方法时会被填充到其描述信息中。
+對於您自訂的 widget，可以透過重寫 [`debugFillProperties()`][widget-fill] 方法新增資訊。
+為方法中的引數新增 [DiagnosticsProperty][] 物件，並呼叫父類方法。
+該方法在 widget 呼叫 `toString` 方法時會被填充到其描述資訊中。
 
 ### Render tree
 
-### Render 树
+### Render 樹
 
 If you are trying to debug a layout issue, then the Widgets layer's
 tree might be insufficiently detailed. In that case, you can dump the
@@ -370,21 +370,21 @@ except during a layout or paint phase. As a general rule,
 calling it from a [frame callback][]
 or an event handler is the best solution.
 
-如果您试图调试一个布局问题，那么 Widget 层的树可能不够详细。
-在这种情况下，您可以通过调用 [`debugDumpRenderTree()`][] 转储 Render 树信息。
-和 `debugDumpApp()` 一样，除了在布局或绘制阶段，可以在任何时候调用它。
-一般来说，最好在 [frame callback][] 或事件处理中调用它。
+如果您試圖除錯一個佈局問題，那麼 Widget 層的樹可能不夠詳細。
+在這種情況下，您可以透過呼叫 [`debugDumpRenderTree()`][] 轉儲 Render 樹資訊。
+和 `debugDumpApp()` 一樣，除了在佈局或繪製階段，可以在任何時候呼叫它。
+一般來說，最好在 [frame callback][] 或事件處理中呼叫它。
 
 To call `debugDumpRenderTree()`, you need to add `import
 'package:flutter/rendering.dart';` to your source file.
 
-想要调用 `debugDumpRenderTree()` 方法，您需要在源码文件中添加 
+想要呼叫 `debugDumpRenderTree()` 方法，您需要在原始碼檔案中新增 
 `import 'package:flutter/rendering.dart';`。
 
 The output for the previous tiny example would look something like
 the following:
 
-前面的小案例输出结构如下所示：
+前面的小案例輸出結構如下所示：
 
 ```
 I/flutter ( 6559): RenderView
@@ -697,14 +697,14 @@ I/flutter ( 6559):            └╌no offstage children
 This is the output of the root `RenderObject` object's
 `toStringDeep()` function.
 
-这是根节点 `RenderObject` 对象的 `toStringDeep()` 方法的输出结果。
+這是根節點 `RenderObject` 物件的 `toStringDeep()` 方法的輸出結果。
 
 When debugging layout issues, the key fields to look at are the
 `size` and `constraints` fields. The constraints flow down the tree,
 and the sizes flow back up.
 
-在调试布局问题时，主要需要关注 `size` 和 `constraints` 两个字段。
-constraint 沿树向下传递，而 size 则向上追溯。
+在除錯佈局問題時，主要需要關注 `size` 和 `constraints` 兩個欄位。
+constraint 沿樹向下傳遞，而 size 則向上追溯。
 
 For example, in the previous dump you can see that the window size,
 `Size(411.4, 683.4)`, is used to force all the boxes down to the
@@ -723,18 +723,18 @@ sets a minimum width of 88 pixels on its contents and a
 specific height of 36.0. (This is the `TextButton` class implementing
 the Material Design guidelines regarding button dimensions.)
 
-比如，从上面转储信息中可以看出窗口尺寸是 `Size(411.4, 683.4)`，
-它用于强制 [`RenderPositionedBox`][] 之前的所有 box 为屏幕尺寸，
-其约束为 `BoxConstraints(w=411.4, h=683.4)`。
-从转储文件可以看出 `RenderPositionedBox` 是由 [`Center`][] widget 创建的
-（可以从 `creator` 字段的描述看出来），并将其 child 的约束条件变得松散：
-约束范围是 `BoxConstraints(0.0<=w<=411.4, 0.0<=h<=683.4)`。
-其后代的 [`RenderPadding`][] 进一步插入这些约束来确保留出空间作为内边距，
-因此 [`RenderConstrainedBox`][] 有一个宽松的约束，该约束为：
+比如，從上面轉儲資訊中可以看出視窗尺寸是 `Size(411.4, 683.4)`，
+它用於強制 [`RenderPositionedBox`][] 之前的所有 box 為螢幕尺寸，
+其約束為 `BoxConstraints(w=411.4, h=683.4)`。
+從轉儲檔案可以看出 `RenderPositionedBox` 是由 [`Center`][] widget 建立的
+（可以從 `creator` 欄位的描述看出來），並將其 child 的約束條件變得鬆散：
+約束範圍是 `BoxConstraints(0.0<=w<=411.4, 0.0<=h<=683.4)`。
+其後代的 [`RenderPadding`][] 進一步插入這些約束來確保留出空間作為內邊距，
+因此 [`RenderConstrainedBox`][] 有一個寬鬆的約束，該約束為：
 `BoxConstraints(0.0<=w<=395.4,0.0<=h<=667.4)`。
-`creator` 字段告诉我们，这个对象很可能是 [`TextButton`][] 定义的一部分，
-它内容的最小宽度为 88 像素，具体高度为 36.0。
-（`TextButton` 是 Material Design 中按钮尺寸标准的实现。）
+`creator` 欄位告訴我們，這個物件很可能是 [`TextButton`][] 定義的一部分，
+它內容的最小寬度為 88 畫素，具體高度為 36.0。
+（`TextButton` 是 Material Design 中按鈕尺寸標準的實現。）
 
 The inner-most `RenderPositionedBox` loosens the constraints again,
 this time to center the text within the button. The
@@ -744,11 +744,11 @@ you'll see how the text's size is what influences the
 width of all the boxes that form the button, as they all take their
 child's dimensions to size themselves.
 
-最内部的 `RenderPositionedBox` 再次放松了约束，这次是把文本放在了按钮的中间。
-[`RenderParagraph`][] 可以根据其内容确定自身大小。
-如果您现在沿着这条链路往回追溯渲染对象的尺寸大小，
-您就会看到在文本的大小是如何影响按钮边框大小的形成过程，
-因为它们都会根据子组件的尺寸自行调整大小。
+最內部的 `RenderPositionedBox` 再次放鬆了約束，這次是把文字放在了按鈕的中間。
+[`RenderParagraph`][] 可以根據其內容確定自身大小。
+如果您現在沿著這條鏈路往回追溯渲染物件的尺寸大小，
+您就會看到在文字的大小是如何影響按鈕邊框大小的形成過程，
+因為它們都會根據子元件的尺寸自行調整大小。
 
 Another way to notice this is by looking at the "relayoutSubtreeRoot"
 part of the descriptions of each box, which essentially tells you how
@@ -758,30 +758,30 @@ meaning that when the `RenderParagraph` is dirtied,
 eight ancestors also have to be dirtied because they might be
 affected by the new dimensions.
 
-注意到这点的另一种方式为：查看每个 box 的「relayoutSubtreeRoot」部分，
-它本质上在告诉您，在某种程度上有多少祖先在依赖于这个元素的尺寸。
+注意到這點的另一種方式為：檢視每個 box 的「relayoutSubtreeRoot」部分，
+它本質上在告訴您，在某種程度上有多少祖先在依賴於這個元素的尺寸。
 因此，`RenderParagraph` 有 `relayoutSubtreeRoot=up8`，
-这意味着当 `RenderParagraph` 被标为 dirty 时，8 个祖先也会被标为 dirty，
-因为它们可能会受到新尺寸的影响。
+這意味著當 `RenderParagraph` 被標為 dirty 時，8 個祖先也會被標為 dirty，
+因為它們可能會受到新尺寸的影響。
 
 If you write your own render objects, you can add information to the
 dump by overriding [`debugFillProperties()`][render-fill].
 Add [DiagnosticsProperty][]
 objects to the method's argument, and call the superclass method.
 
-对于您自己写的 render 对象，可以通过重写 [`debugFillProperties()`][render-fill] 
-方法为转储数据添加信息。在方法中的参数中添加 [DiagnosticsProperty][] 对象，并调用父类方法即可。
+對於您自己寫的 render 物件，可以透過重寫 [`debugFillProperties()`][render-fill] 
+方法為轉儲資料新增資訊。在方法中的引數中新增 [DiagnosticsProperty][] 物件，並呼叫父類方法即可。
 
 ### Layer tree
 
-### Layer 树
+### Layer 樹
 
 If you are trying to debug a compositing issue, you can use
 [`debugDumpLayerTree()`][].
 For the previous example, it would output:
 
-如果您在尝试调试一个合成问题，您可以使用 [`debugDumpLayerTree()`][]。
-在前面案例中调用这个方法，会输出如下结果：
+如果您在嘗試除錯一個合成問題，您可以使用 [`debugDumpLayerTree()`][]。
+在前面案例中呼叫這個方法，會輸出如下結果：
 
 ```
 I/flutter : TransformLayer
@@ -804,29 +804,29 @@ I/flutter :  └─child 2: PictureLayer
 
 This is the output of calling `toStringDeep` on the root `Layer` object.
 
-这是根 `Layer` 对象调用 `toStringDeep` 方法时的输出结果。
+這是根 `Layer` 物件呼叫 `toStringDeep` 方法時的輸出結果。
 
 The transform at the root is the transform that applies the device
 pixel ratio; in this case, a ratio of 3.5 device pixels for every
 logical pixel.
 
-根结点的 transform 是设备像素比率的变换；在该示例中，每个逻辑像素对应 3.5 个设备像素。
+根結點的 transform 是裝置畫素比率的變換；在該範例中，每個邏輯畫素對應 3.5 個裝置畫素。
 
 The `RepaintBoundary` widget, which creates a `RenderRepaintBoundary`
 in the render tree, creates a new layer in the layer tree. This is
 used to reduce how much needs to be repainted.
 
-`RepaintBoundary` widget 在 render 树中创建了一个 `RenderRepaintBoundary`，
-并在 layer 树中创建了一个新的层。这可以用来减少需要重绘的次数。
+`RepaintBoundary` widget 在 render 樹中建立了一個 `RenderRepaintBoundary`，
+並在 layer 樹中建立了一個新的層。這可以用來減少需要重繪的次數。
 
 ### Focus tree
 
-### Focus 树
+### Focus 樹
 
 To debug a focus or shortcut issue, you can dump the focus tree
 using [`debugDumpFocusTree()`][].
 
-要调试焦点或快捷键问题，可以使用 [`debugDumpFocusTree()`][] 方法转储 focus 树。
+要除錯焦點或快捷鍵問題，可以使用 [`debugDumpFocusTree()`][] 方法轉儲 focus 樹。
 
 For example:
 
@@ -900,23 +900,23 @@ I/flutter :                        PRIMARY FOCUS
 The focused node is labeled `PRIMARY FOCUS`. Ancestors of the focus nodes are
 labeled `IN FOCUS PATH`.
 
-聚焦的节点标记为 `PRIMARY FOCUS`。聚焦节点的祖先标记为 `IN FOCUS PATH`。
+聚焦的節點標記為 `PRIMARY FOCUS`。聚焦節點的祖先標記為 `IN FOCUS PATH`。
 
 If your app uses the [`Focus`][] widget, you can use the [`debugLabel`][]
 property to make it easier to find its focus node in the tree.
 
-如果您的应用使用 [`Focus`][] widget，
-可以使用 [`debugLabel`][] 属性来更容易地在树中找到它的 focus 节点。
+如果您的應用使用 [`Focus`][] widget，
+可以使用 [`debugLabel`][] 屬性來更容易地在樹中找到它的 focus 節點。
 
 You can also use the [`debugFocusChanges`][] boolean flag to enable
 extensive logging when the focus changes.
 
-你也可以使用布尔类型标记 [`debugFocusChanges`][]
-在 focus 改变时启用详细的日志记录。
+你也可以使用布林型別標記 [`debugFocusChanges`][]
+在 focus 改變時啟用詳細的日誌記錄。
 
 ### Semantics tree
 
-### Semantics 树
+### Semantics 樹
 
 You can also obtain a dump of the Semantics tree
 (the tree presented to the system accessibility APIs) using
@@ -924,13 +924,13 @@ You can also obtain a dump of the Semantics tree
 you have to have first enable accessibility, for example, by
 enabling a system accessibility tool or the `SemanticsDebugger`.
 
-您也可以使用 [`debugDumpSemanticsTree()`][] 获得 Semantics 树
-（该树提供了系统的 accessibility API）的转储信息。想要使用它，
-首先必须启用 accessibility，例如，通过启用系统 accessibility 工具或 `SemanticsDebugger`。
+您也可以使用 [`debugDumpSemanticsTree()`][] 獲得 Semantics 樹
+（該樹提供了系統的 accessibility API）的轉儲資訊。想要使用它，
+首先必須啟用 accessibility，例如，透過啟用系統 accessibility 工具或 `SemanticsDebugger`。
 
 For the previous example, it would output the following:
 
-在前面案例中调用这个方法，会输出如下结果：
+在前面案例中呼叫這個方法，會輸出如下結果：
 
 ```
 I/flutter : SemanticsNode(0; Rect.fromLTRB(0.0, 0.0, 411.4, 683.4))
@@ -949,8 +949,8 @@ begin/end, you can toggle the [`debugPrintBeginFrameBanner`][]
 and the [`debugPrintEndFrameBanner`][] booleans to print the
 beginning and end of the frames to the console.
 
-如果您想要找到事件触发对应的开始或结束帧，可以将 [`debugPrintBeginFrameBanner`][] 
-和 [`debugPrintEndFrameBanner`][] 这两个布尔值切换为 true，在控制台中打印开始和结束帧的信息。
+如果您想要找到事件觸發對應的開始或結束幀，可以將 [`debugPrintBeginFrameBanner`][] 
+和 [`debugPrintEndFrameBanner`][] 這兩個布林值切換為 true，在控制檯中列印開始和結束幀的資訊。
 
 For example:
 
@@ -966,11 +966,11 @@ I/flutter : ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀�
 The [`debugPrintScheduleFrameStacks`][] flag can also be used
 to print the call stack causing the current frame to be scheduled.
 
-当前帧被调度时，[`debugPrintScheduleFrameStacks`][] 标志也可以用来打印调用堆栈信息。
+當前幀被排程時，[`debugPrintScheduleFrameStacks`][] 標誌也可以用來列印呼叫堆疊資訊。
 
 ## Debug flags: layout
 
-## 调试标志：布局
+## 除錯標誌：佈局
 
 You can also debug a layout problem visually, by setting
 [`debugPaintSizeEnabled`][] to `true`.
@@ -979,10 +979,10 @@ enabled at any time and affects all painting while it is true.
 The easiest way to set it is at the top of your `void main()`
 entry point. See an example in the following code:
 
-通过将 [`debugPaintSizeEnabled`][] 设置为 true，您也可以可视地调试布局问题。
-该布尔值在 `rendering` 库中，可以在任何时候被启用，
-并且当其为 true 时，会影响界面上所有的绘制。
-最简单的方式是在程序顶部入口 `void main()`中设置它，如下案例代码所示：
+透過將 [`debugPaintSizeEnabled`][] 設定為 true，您也可以可視地除錯佈局問題。
+該布林值在 `rendering` 庫中，可以在任何時候被啟用，
+並且當其為 true 時，會影響介面上所有的繪製。
+最簡單的方式是在程式頂部入口 `void main()`中設定它，如下案例程式碼所示：
 
 <?code-excerpt "lib/debug_flags.dart (debugPaintSizeEnabled)"?>
 ```dart
@@ -1002,17 +1002,17 @@ blue with a darker blue box around the child, alignment
 yellow arrows, and spacers (from widgets like
 `Container` when they have no child) are shown in gray.
 
-当它被启用时，所有的 box 都会有明亮的蓝绿色边框，内边距（来自于 widgets，比如 `Padding`）
-显示为淡蓝色，并在 child 周围有一个深蓝色的 box，对齐方式（来自于 widgets，比如 `Center` 和 `Align`）
-显示为黄色箭头，还有间隔（来自于 widgets，比如当 `Container` 没有 child 时）显示灰色。
+當它被啟用時，所有的 box 都會有明亮的藍綠色邊框，內邊距（來自於 widgets，比如 `Padding`）
+顯示為淡藍色，並在 child 周圍有一個深藍色的 box，對齊方式（來自於 widgets，比如 `Center` 和 `Align`）
+顯示為黃色箭頭，還有間隔（來自於 widgets，比如當 `Container` 沒有 child 時）顯示灰色。
 
 The [`debugPaintBaselinesEnabled`][] flag
 does something similar but for objects with baselines.
 The alphabetic baseline is shown in bright green and the
 ideographic baseline in orange.
 
-`debugPaintBaselinesEnabled`][] 标志和它类似，但只针对于带有基线的对象。
-alphabetic 基线用亮绿色显示，ideographic 基线用橙色显示。
+`debugPaintBaselinesEnabled`][] 標誌和它類似，但只針對於帶有基線的物件。
+alphabetic 基線用亮綠色顯示，ideographic 基線用橙色顯示。
 
 The [`debugPaintPointersEnabled`][] flag turns on a
 special mode whereby any objects that are being tapped
@@ -1022,9 +1022,9 @@ test (which might happen if, for instance, it is actually
 outside the bounds of its parent and thus not
 being considered for hit testing in the first place).
 
-[`debugPaintPointersEnabled`][] 标志会打开一个特殊模式，任何被选中的对象都会以蓝绿色高亮显示。
-这可以帮助您确定对象是否会以某种方式未能正确命中测试（这是可能会发生的，例如，
-实际上它在父节点的边界之外，因此一开始就不用考虑进行命中测试）。
+[`debugPaintPointersEnabled`][] 標誌會開啟一個特殊模式，任何被選中的物件都會以藍綠色高亮顯示。
+這可以幫助您確定物件是否會以某種方式未能正確命中測試（這是可能會發生的，例如，
+實際上它在父節點的邊界之外，因此一開始就不用考慮進行命中測試）。
 
 If you're trying to debug compositor layers, for example
 to determine whether and where to add `RepaintBoundary`
@@ -1034,21 +1034,21 @@ or the [`debugRepaintRainbowEnabled`][] flag,
 which causes layers to be overlayed with a rotating set of
 colors whenever they are repainted.
 
-如果您试图调试合成层，比如要确定是否应该在某处添加 `RepaintBoundary` widget，
-您可以使用 [`debugPaintLayerBordersEnabled`][] 标志，来用为每个 layer 的边界显示橙色边框，
-或使用 [`debugRepaintRainbowEnabled`][] 标志，这会使得每当重新绘制图层时，
-边框的颜色就会被一组轮转的颜色覆盖。
+如果您試圖除錯合成層，比如要確定是否應該在某處新增 `RepaintBoundary` widget，
+您可以使用 [`debugPaintLayerBordersEnabled`][] 標誌，來用為每個 layer 的邊界顯示橙色邊框，
+或使用 [`debugRepaintRainbowEnabled`][] 標誌，這會使得每當重新繪製圖層時，
+邊框的顏色就會被一組輪轉的顏色覆蓋。
 
 All of these flags only work in [debug mode][].
 In general, anything in the Flutter framework that starts with
 "`debug...`" only works in debug mode.
 
-上面所有的标志都只在 [调试模式][debug mode] 下生效。一般来说，Flutter 
-框架中以「`debug...`」开头的都只能在调试模式下工作。
+上面所有的標誌都只在 [除錯模式][debug mode] 下生效。一般來說，Flutter 
+框架中以「`debug...`」開頭的都只能在除錯模式下工作。
 
 ## Debugging animations
 
-## 调试动画
+## 除錯動畫
 
 {{site.alert.note}}
 
@@ -1058,9 +1058,9 @@ In general, anything in the Flutter framework that starts with
   animation by 5x. If you want more control over the
   amount of slowness, use the following instructions.
 
-  调试动画最简单的方法是放慢它们的速度。您可以在 DevTools 的 [Inspector view][] 
-  通过 **Slow Animations** 按钮来实现动画慢放，这会使动画速度降低 5 倍。
-  如果您希望控制更多的慢速程度，请参考下面的说明。
+  除錯動畫最簡單的方法是放慢它們的速度。您可以在 DevTools 的 [Inspector view][] 
+  透過 **Slow Animations** 按鈕來實現動畫慢放，這會使動畫速度降低 5 倍。
+  如果您希望控制更多的慢速程度，請參考下面的說明。
 
 {{site.alert.end}}
 
@@ -1072,13 +1072,13 @@ animations are running, it's possible that the framework
 will observe time going backwards, which will probably
 result in asserts and generally interfere with your efforts.
 
-将 [`timeDilation`][] 变量（来自 `scheduler` 库）设置为大于 1.0 的数字，例如，50.0。
-该操作最好在应用启动时只执行一次。如果您动态地改变，尤其是在动画运行时减少它时，
-框架可能会观察到时间倒退，这可能会导致断言失败，通常这会让您徒劳无功。
+將 [`timeDilation`][] 變數（來自 `scheduler` 庫）設定為大於 1.0 的數字，例如，50.0。
+該操作最好在應用啟動時只執行一次。如果您動態地改變，尤其是在動畫執行時減少它時，
+框架可能會觀察到時間倒退，這可能會導致斷言失敗，通常這會讓您徒勞無功。
 
 ## Debug flags: performance
 
-## 调试标志：性能
+## 除錯標誌：效能
 
 {{site.alert.note}}
 
@@ -1088,8 +1088,8 @@ result in asserts and generally interfere with your efforts.
   functionality you would like to see added to [DevTools][],
   please [file an issue][].
 
-  您可以使用 [DevTools][] 实现和这些调试标志类似的结果。有些调试标记不是特别有用。
-  如果您发现一个标志，并想把该功能添加到 [DevTools][]，请 [提出一个 issue][file an issue]。
+  您可以使用 [DevTools][] 實現和這些除錯標誌類似的結果。有些除錯標記不是特別有用。
+  如果您發現一個標誌，並想把該功能新增到 [DevTools][]，請 [提出一個 issue][file an issue]。
 
 {{site.alert.end}}
 
@@ -1100,16 +1100,16 @@ in debug mode.  The following list, while not complete,
 highlights some of flags (and one function) from the
 [rendering library][] for debugging performance issues.
 
-Flutter 提供了各种各样的调试标志和功能，来帮助您在开发周期的不同阶段调试应用。
-想要使用这些特性，必须在调试模式下编译。下面的列表虽然不完整，
-但是突出显示了 [rendering library][] 中用于调试性能问题的一些标志（以及一个函数）。
+Flutter 提供了各種各樣的除錯標誌和功能，來幫助您在開發週期的不同階段除錯應用。
+想要使用這些特性，必須在除錯模式下編譯。下面的列表雖然不完整，
+但是突出顯示了 [rendering library][] 中用於除錯效能問題的一些標誌（以及一個函式）。
 
 You can set these flags either by editing the framework code,
 or by importing the module and setting the value in your
 `main()` method, following by a hot restart.
 
-您可以通过修改框架的代码来设置这些标志，或者将模块导入，
-并在 `main()` 方法中设置标志值，然后热重启。
+您可以透過修改框架的程式碼來設定這些標誌，或者將模組匯入，
+並在 `main()` 方法中設定標誌值，然後熱重啟。
 
 <dl markdown="1">
 <dt markdown="1">[`debugDumpRenderTree()`][]</dt>
@@ -1119,9 +1119,9 @@ or by importing the module and setting the value in your
   (Pressing **t** from `flutter run` calls this command.)
   Search for "RepaintBoundary" to see diagnostics
   on how useful a boundary is.</p>
-<p markdown="1">当不在布局或重新绘制阶段时，调用此函数将 render 树转储到控制台。
-  （可以从 `flutter run`  按下 **t** 调用此命令。）
-  通过搜索其中的「RepaintBoundary」可以查看关于边界的有用诊断信息。</p>
+<p markdown="1">當不在佈局或重新繪製階段時，呼叫此函式將 render 樹轉儲到控制檯。
+  （可以從 `flutter run`  按下 **t** 呼叫此命令。）
+  透過搜尋其中的「RepaintBoundary」可以檢視關於邊界的有用診斷資訊。</p>
 {% comment %} Feature is not yet added to DevTools:
     Rather than using this flag to dump the render tree
     to a file, view the render tree in the Flutter inspector.
@@ -1136,10 +1136,10 @@ or by importing the module and setting the value in your
     If any static widgets are rotating through the colors of the rainbow
     (for example, a static header), those areas are candidates for adding
     repaint boundaries.</p>
-<p markdown="1">您可以通过点击 **Highlight Repaints** 按钮，
-    在 Flutter inspector 中启用此标志。
-    如果任何静态 widget 在彩虹七颜色之间轮转（比如一个静态标题），
-    那么这些区域就可能需要添加重新绘制边界进行优化。</p>
+<p markdown="1">您可以透過點選 **Highlight Repaints** 按鈕，
+    在 Flutter inspector 中啟用此標誌。
+    如果任何靜態 widget 在彩虹七顏色之間輪轉（比如一個靜態標題），
+    那麼這些區域就可能需要新增重新繪製邊界進行最佳化。</p>
 <dt markdown="1">[`debugPrintMarkNeedsLayoutStacks`][]</dt>
 <dd markdown="1">
 <p markdown="1">Enable this flag if you're seeing more layouts
@@ -1150,25 +1150,25 @@ or by importing the module and setting the value in your
     layout. You can use the `debugPrintStack()` method from the
     `services` library to print your own stack traces on demand,
     if this kind of approach is useful to you.</p>
-<p markdown="1">如果您看到的布局比预期的要多
-    （比如，在 timeline 、profile 或者一个布局方法中的 `print` 语句中)，
-    可以启用这个标志。一旦启用，控制台将会充满堆栈跟踪，
-    来显示在布局时每个渲染对象被标记为 dirty 的原因。
-    如果有需要的话，您可以使用 `services` 库中的 `debugPrintStack()` 方法
-    按需打印出堆栈的跟踪信息。</p>
+<p markdown="1">如果您看到的佈局比預期的要多
+    （比如，在 timeline 、profile 或者一個佈局方法中的 `print` 陳述式中)，
+    可以啟用這個標誌。一旦啟用，控制檯將會充滿堆疊追蹤，
+    來顯示在佈局時每個渲染物件被標記為 dirty 的原因。
+    如果有需要的話，您可以使用 `services` 庫中的 `debugPrintStack()` 方法
+    按需打印出堆疊的追蹤資訊。</p>
 <dt markdown="1">[`debugPrintMarkNeedsPaintStacks`][]</dt>
 <dd markdown="1">
 <p markdown="1">Similar to `debugPrintMarkNeedsLayoutStacks`,
     but for excess painting. You can use the `debugPrintStack()`
     method from the `services` library to print your own stack
     traces on demand, if this kind of approach is useful to you.</p>
-<p markdown="1">它和 `debugPrintMarkNeedsLayoutStacks` 类似，
-    但用于多余的绘制。如果有需要的话，您可以使用 `services` 库中的
-    `debugPrintStack()` 方法按需打印出堆栈的跟踪信息。</p>
+<p markdown="1">它和 `debugPrintMarkNeedsLayoutStacks` 類似，
+    但用於多餘的繪製。如果有需要的話，您可以使用 `services` 庫中的
+    `debugPrintStack()` 方法按需打印出堆疊的追蹤資訊。</p>
 
 ### Tracing Dart code performance
 
-### 跟踪 Dart 代码性能
+### 追蹤 Dart 程式碼效能
 
 {{site.alert.note}}
 
@@ -1176,8 +1176,8 @@ or by importing the module and setting the value in your
   You can also import and export trace files into the Timeline view,
   but only files generated by DevTools.
 
-  您可以使用 DevTools 中的 [Timeline 事件图][Timeline events tab] 来执行跟踪。
-  您还可以将跟踪文件导入和导出到 Timeline view 中，但这只支持由 DevTools 生成的文件。
+  您可以使用 DevTools 中的 [Timeline 事件圖][Timeline events tab] 來執行追蹤。
+  您還可以將追蹤檔案匯入和匯出到 Timeline view 中，但這隻支援由 DevTools 產生的檔案。
 
 {{site.alert.end}}
 
@@ -1187,9 +1187,9 @@ similar to what would be done on Android with [systrace][],
 use `dart:developer` [Timeline][] utilities to wrap the
 code you want to measure such as:
 
-想要以编程方式执行自定义性能跟踪和测量任意代码片段的 wall/CPU 时间，
-这类似于在 Android 上使用 [systrace][]，您可以使用 `dart:developer` 包中的 
-[Timeline][] 类提供的一些静态方法包裹您想测量的代码，比如:
+想要以程式設計方式執行自訂效能追蹤和測量任意程式碼片段的 wall/CPU 時間，
+這類似於在 Android 上使用 [systrace][]，您可以使用 `dart:developer` 套件中的 
+[Timeline][] 類提供的一些靜態方法包裹您想測量的程式碼，比如:
 
 <?code-excerpt "lib/perf_trace.dart"?>
 ```dart
@@ -1206,18 +1206,18 @@ Then open DevTools' [Timeline events tab][] while connected to your app,
 verify the **Dart** recording option is checked in the **Performance settings**,
 and perform the function you want to measure.
 
-当链接到你的应用上之后，打开发者工具的 [Timeline 事件图][Timeline events tab]。
-确保在 Performance 设置上勾选了 Dart 记录的选项，并执行您想要测量的方法。
+當連結到你的應用上之後，打開發者工具的 [Timeline 事件圖][Timeline events tab]。
+確保在 Performance 設定上勾選了 Dart 記錄的選項，並執行您想要測量的方法。
 
 Be sure to run your app in [profile mode][] to ensure that the
 runtime performance characteristics closely match that of your
 final product.
 
-确保以 [性能模式][profile mode] 运行您的应用，来确保运行时的性能表现与您的最终产品相近。
+確保以 [效能模式][profile mode] 執行您的應用，來確保執行時的效能表現與您的最終產品相近。
 
 ## Performance overlay
 
-## 性能图层
+## 效能圖層
 
 {{site.alert.note}}
 
@@ -1226,9 +1226,9 @@ final product.
   [Flutter inspector][]. If you prefer to do it in code,
   use the following instructions.
 
-  您可以使用 [Flutter inspector][] 中的 **Performance Overlay** 按钮，
-  来切换显示的应用的性能图层。
-  如果您更喜欢用代码来完成它，请参考下面的说明。
+  您可以使用 [Flutter inspector][] 中的 **Performance Overlay** 按鈕，
+  來切換顯示的應用的效能圖層。
+  如果您更喜歡用程式碼來完成它，請參考下面的說明。
 
 {{site.alert.end}}
 
@@ -1237,9 +1237,9 @@ setting the `showPerformanceOverlay` property to `true` on the
 [`MaterialApp`][], [`CupertinoApp`][], or [`WidgetsApp`][]
 constructor:
 
-您可以通过编程方式启用 PerformanceOverlay widget，
-在 [`MaterialApp`][]、[`CupertinoApp`][]或 [`WidgetsApp`][] 构造函数中，
-将 `showPerformanceOverlay` 属性设置为 `true` 即可。
+您可以透過程式設計方式啟用 PerformanceOverlay widget，
+在 [`MaterialApp`][]、[`CupertinoApp`][]或 [`WidgetsApp`][] 建構函式中，
+將 `showPerformanceOverlay` 屬性設定為 `true` 即可。
 
 <?code-excerpt "lib/performance_overlay.dart (PerfOverlay)" replace="/showPerformanceOverlay: true,/[[highlight]]$&[[\/highlight]]/g"?>
 {% prettify dart %}
@@ -1267,20 +1267,20 @@ or `WidgetsApp`, you can get the same effect by wrapping your
 application in a stack and putting a widget on your stack that was
 created by calling [`PerformanceOverlay.allEnabled()`][].)
 
-（如果您没有使用 `MaterialApp`、`CupertinoApp` 或 `WidgetsApp`，可以通过将应用包装在一个 Stack 中，
-并通过调用 [`PerformanceOverlay.allEnabled()`][] 来创建一个 widget，来获得相同的效果。）
+（如果您沒有使用 `MaterialApp`、`CupertinoApp` 或 `WidgetsApp`，可以透過將應用包裝在一個 Stack 中，
+並透過呼叫 [`PerformanceOverlay.allEnabled()`][] 來建立一個 widget，來獲得相同的效果。）
 
 For information on how to interpret the graphs in the overlay,
 see [The performance overlay][] in
 [Profiling Flutter performance][].
 
-有关如何解释浮层中的图形的信息，可以参见
-[Flutter 性能分析][Profiling Flutter performance]
-中的 [性能图层][The performance overlay]。
+有關如何解釋浮層中的圖形的資訊，可以參見
+[Flutter 效能分析][Profiling Flutter performance]
+中的 [效能圖層][The performance overlay]。
 
 ## Widget alignment grid
 
-## Widget 对齐网格
+## Widget 對齊網格
 
 You can programmatically overlay a
 [Material Design baseline grid][] on top of your app to
@@ -1288,14 +1288,14 @@ help verify alignments by using the
 `debugShowMaterialGrid` argument in the
 [`MaterialApp` constructor][].
 
-您可以通过编程的方式将 [Material Design 基线网格][Material Design baseline grid]
-覆盖在应用的顶层来辅助对齐校验，通过使用 [`MaterialApp` 构造函数][`MaterialApp` constructor]
-中的 `debugShowMaterialGrid` 参数进行设置。
+您可以透過程式設計的方式將 [Material Design 基線網格][Material Design baseline grid]
+覆蓋在應用的最上層來輔助對齊校驗，透過使用 [`MaterialApp` 建構函式][`MaterialApp` constructor]
+中的 `debugShowMaterialGrid` 引數進行設定。
 
 In non-Material applications, you can achieve a similar
 effect by using a [`GridPaper`][] widget directly.
 
-在非 Material 应用中，您可以通过直接使用 [`GridPaper`][] widget 来达到类似的效果。
+在非 Material 應用中，您可以透過直接使用 [`GridPaper`][] widget 來達到類似的效果。
 
 [`GridPaper`]: {{site.api}}/flutter/widgets/GridPaper-class.html
 [Material Design]: {{site.material}}/styles

@@ -4,9 +4,9 @@ title: 如何有效提出 Bug
 description: >
   Where to file bug reports and enhancement requests for 
   flutter and the website.
-description: 在哪里提出 bug 最有效呢？
-tags: Flutter参考资料
-keywords: 提出错误,Flutter调试信息,Flutter反馈指南,Flutter doctor
+description: 在哪裡提出 bug 最有效呢？
+tags: Flutter參考資料
+keywords: 提出錯誤,Flutter除錯資訊,Flutter反饋指南,Flutter doctor
 ---
 
 The instructions in this document detail the current steps
@@ -15,9 +15,9 @@ crashes and other bad behavior. Each step is optional but
 will greatly improve how quickly issues are diagnosed and addressed.
 We appreciate your effort in sending us as much feedback as possible.
 
-本文通过每个详细的步骤，介绍了如何提供最具可操作性的 bug 报告，以更好地解决崩溃和其他不良行为。
-虽然每个步骤都是可选的，但它们能够显著提高诊断及解决问题的速度。
-我们希望你能够尽可能多地反馈错误报告，我们由衷地感谢你对此做出的努力。
+本文透過每個詳細的步驟，介紹瞭如何提供最具可操作性的 bug 報告，以更好地解決崩潰和其他不良行為。
+雖然每個步驟都是可選的，但它們能夠顯著提高診斷及解決問題的速度。
+我們希望你能夠儘可能多地反饋錯誤報告，我們由衷地感謝你對此做出的努力。
 
 ## Create an issue on GitHub
 
@@ -26,56 +26,56 @@ We appreciate your effort in sending us as much feedback as possible.
 * To report a Flutter crash or bug,
   [create an issue in the flutter/flutter project][Flutter issue].
 
-  报告 Flutter 的崩溃或 bug，
-  [请在 flutter/flutter 项目中提出 issue][Flutter issue]。
+  報告 Flutter 的崩潰或 bug，
+  [請在 flutter/flutter 專案中提出 issue][Flutter issue]。
 
 * To report a problem with the website,
   [create an issue in the flutter/website project][Website issue].
 
-  报告文档网站的问题，
-  [请在 flutter/website 项目中提出 issue][Website issue]。
+  報告文件網站的問題，
+  [請在 flutter/website 專案中提出 issue][Website issue]。
 
 ## Provide a minimal reproducible code sample
 
-## 提供最小可复现的代码样本
+## 提供最小可復現的程式碼樣本
 
 Create a minimal Flutter app that shows the problem you are facing,
 and paste it into the GitHub issue.
 
-创建一个最小可运行的 Flutter 应用程序，复现你所面临的问题，
-并且将这些代码粘贴到 GitHub issue 中。
+建立一個最小可執行的 Flutter 應用程式，復現你所面臨的問題，
+並且將這些程式碼貼上到 GitHub issue 中。
 
 To create it you can use `flutter create bug` command and update
 the `main.dart` file.
 
-为了更好地调试完成最小可复现的代码，
-我们建议你可以使用 `flutter create bug` 命令创建新项目，
-并在 `main.dart` 文件中复现问题。
+為了更好地除錯完成最小可復現的程式碼，
+我們建議你可以使用 `flutter create bug` 命令建立新專案，
+並在 `main.dart` 檔案中復現問題。
 
 Alternatively, you can use [DartPad][], which is capable
 of creating and running small Flutter apps.
 
-另外，你还可以使用 [DartPad][]，
-它能够创建和运行小型 Flutter 应用程序。
+另外，你還可以使用 [DartPad][]，
+它能夠建立和執行小型 Flutter 應用程式。
 
 If your problem goes out of what can be placed in a single file, for example
 you have a problem with native channels, you can upload the full code of
 the reproduction into a separate repository and link it.
 
-如果你复现的问题由多个代码文件组成，
-例如，你有一个关于本地通道的问题，
-你可以把这些代码文件完整上传到网络，
-并在 issue 中附上链接地址。
+如果你復現的問題由多個程式碼檔案組成，
+例如，你有一個關於本地通道的問題，
+你可以把這些程式碼檔案完整上傳到網路，
+並在 issue 中附上鍊接地址。
 
 ## Provide some Flutter diagnostics
 
-## 提供一些 Flutter 的诊断
+## 提供一些 Flutter 的診斷
 
 * Run `flutter doctor -v` in your project directory and paste
   the results into the GitHub issue:
 
-  在你的项目目录中运行 `flutter doctor -v`，
-  并将结果粘贴到 GitHub issue 中：
+  在你的專案目錄中執行 `flutter doctor -v`，
+  並將結果貼上到 GitHub issue 中：
 
 ```none
 [✓] Flutter (Channel stable, 1.22.3, on Mac OS X 10.15.7 19H2, locale en-US)
@@ -112,75 +112,75 @@ the reproduction into a separate repository and link it.
 
 ## Run the command in verbose mode
 
-## 在详细模式 (verbose mode) 下运行命令
+## 在詳細模式 (verbose mode) 下執行命令
 
 Follow these steps only if your issue is related to the
 `flutter` tool.
 
-当你遇到的问题与 `flutter` 工具相关时，
-你才需要遵循以下步骤。
+當你遇到的問題與 `flutter` 工具相關時，
+你才需要遵循以下步驟。
 
 * All Flutter commands accept the `--verbose` flag.
   If attached to the issue, the output from this command
   might aid in diagnosing the problem.
 
-  所有 Flutter 命令都接受 `--verbose` 标志。
-  如果将这个命令的输出附在 issue 上，可能有助于诊断问题。
+  所有 Flutter 命令都接受 `--verbose` 標誌。
+  如果將這個命令的輸出附在 issue 上，可能有助於診斷問題。
 
 * Attach the results of the command to the GitHub issue.
 
-  将该命令的结果附在 GitHub issue 上。
+  將該命令的結果附在 GitHub issue 上。
 
 ![flutter verbose]({{site.url}}/assets/images/docs/verbose_flag.png){:width="100%"}
 
 ## Provide the most recent logs
 
-## 提供最新的日志
+## 提供最新的日誌
 
 * Logs for the currently connected device are accessed
   using `flutter logs`.
 
-  使用 `flutter logs` 命令访问当前连接设备的日志。
+  使用 `flutter logs` 命令訪問當前連線裝置的日誌。
 
 * If the crash is reproducible, clear the logs
   (⌘ + k on Mac), reproduce the crash and copy the
   newly generated logs into a file attached to the bug report.
 
-  如果崩溃的情况是可以复现的，
-  请你先清除当前的日志（Mac 上的 ⌘ + k），
-  然后复现崩溃的情况，
-  最后将新生成的日志复制到 bug 报告中。
+  如果崩潰的情況是可以復現的，
+  請你先清除當前的日誌（Mac 上的 ⌘ + k），
+  然後復現崩潰的情況，
+  最後將新產生的日誌複製到 bug 報告中。
 
 * If you are getting exceptions thrown by the framework,
   include all the output between and including the dashed
   lines of the first such exception.
 
-  如果你得到了由底层框架抛出的异常，
-  请你提供从第一个异常开始的所有输出内容（包括虚线之间的内容）。
+  如果你得到了由底層框架丟擲的例外，
+  請你提供從第一個例外開始的所有輸出內容（包括虛線之間的內容）。
 
 ![flutter logs]({{site.url}}/assets/images/docs/logs.png){:width="100%"}
 
 ## Provide the crash report
 
-## 提供崩溃报告
+## 提供崩潰報告
 
 * When the iOS simulator crashes,
   a crash report is generated in `~/Library/Logs/DiagnosticReports/`.
 
-  在 iOS 模拟器中崩溃时，
-  会在 `~/Library/Logs/DiagnosticReports/` 中生成一份崩溃报告。
+  在 iOS 模擬器中崩潰時，
+  會在 `~/Library/Logs/DiagnosticReports/` 中產生一份崩潰報告。
 
 * When an iOS device crashes,
   a crash report is generated in `~/Library/Logs/CrashReporter/MobileDevice`.
 
-  在 iOS 真机中崩溃时，
-  会在 `~/Library/Logs/CrashReporter/MobileDevice` 中生成一份崩溃报告。
+  在 iOS 真機中崩潰時，
+  會在 `~/Library/Logs/CrashReporter/MobileDevice` 中產生一份崩潰報告。
 
 * Find the report corresponding to the crash (usually the latest)
   and attach it to the GitHub issue.
 
-  找到与崩溃相对应的报告（通常是最新的）
-  并将其附加到 GitHub issue 上。
+  找到與崩潰相對應的報告（通常是最新的）
+  並將其附加到 GitHub issue 上。
 
 ![crash report]({{site.url}}/assets/images/docs/crash_reports.png){:width="100%"}
 

@@ -1,11 +1,11 @@
 ---
 title: Security
-title: Flutter 的安全性说明
-tags: 站点资源
-keywords: Flutter安全问题汇报,安全性
+title: Flutter 的安全性說明
+tags: 站點資源
+keywords: Flutter安全問題彙報,安全性
 description: >
   An overview of the Flutter's team philosophy and processes for security.
-description: Flutter 团队关于安全的考量和处理流程的综述
+description: Flutter 團隊關於安全的考量和處理流程的綜述
 ---
 
 The Flutter team takes the security of Flutter and the applications

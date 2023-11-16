@@ -1,10 +1,10 @@
 ---
 title: Books about Flutter
-title: Flutter 相关书籍
+title: Flutter 相關書籍
 description: Extra, extra! Here's a collection of books about Flutter.
-description: 号外，号外！Flutter 的书籍收藏清单都在这里啦。
-tags: Flutter参考资料
-keywords: Flutter出版书籍
+description: 號外，號外！Flutter 的書籍收藏清單都在這裡啦。
+tags: Flutter參考資料
+keywords: Flutter出版書籍
 toc: false
 ---
 
@@ -16,12 +16,12 @@ Also, check the Flutter version that the book
 was written under. See the [what's new][]
 page to view Flutter's latest release.
 
-这里收集了关于 Flutter 的书籍，按照字母顺序排列。
-如果你发现其他我们应该添加的书籍，
+這裡收集了關於 Flutter 的書籍，按照字母順序排列。
+如果你發現其他我們應該新增的書籍，
 你可以 [提出 issue][file an issue]
-并且（可选）[提交 PR][sample]，以便添加书籍。
-同时，你可能需要确认书籍撰写时基于的 Flutter 版本。
-你可以在 Flutter 最新发布页面看到 [版本更新内容][what's new]。
+並且（可選）[提交 PR][sample]，以便新增書籍。
+同時，你可能需要確認書籍撰寫時基於的 Flutter 版本。
+你可以在 Flutter 最新發布頁面看到 [版本更新內容][what's new]。
 
 [file an issue]: {{site.repo.this}}/issues/new
 [sample]: {{site.repo.this}}/pull/6019
@@ -35,7 +35,7 @@ page to view Flutter's latest release.
   The following sections have more information about each book.
 </p>
 <p>
-  以下是每本书籍的介绍
+  以下是每本書籍的介紹
 </p>
 
 {% for book in site.data.books %}

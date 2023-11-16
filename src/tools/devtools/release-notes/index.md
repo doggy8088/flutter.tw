@@ -1,10 +1,10 @@
 ---
 title: DevTools release notes
-title: 开发者工具 (DevTools) 发行注记
+title: 開發者工具 (DevTools) 發行註記
 short-title: DevTools release notes
-short-title: DevTools 发行注记
+short-title: DevTools 發行註記
 description: Learn about the latest changes in Dart and Flutter DevTools.
-description: Flutter 和 Dart DevTools 的最新发布内容
+description: Flutter 和 Dart DevTools 的最新發布內容
 toc: false
 ---
 
@@ -12,16 +12,16 @@ This page summarizes the changes in official stable releases of DevTools.
 To view a complete list of changes, check out the
 [DevTools git log](https://github.com/flutter/devtools/commits/master).
 
-本篇链接的是 Flutter 和 Dart DevTools 的公告和发行注记。
-如果你想查看完整的变更内容，你可以查看
-[DevTools 的 git 记录](https://github.com/flutter/devtools/commits/master)。
+本篇連結的是 Flutter 和 Dart DevTools 的公告和發行註記。
+如果你想檢視完整的變更內容，你可以檢視
+[DevTools 的 git 記錄](https://github.com/flutter/devtools/commits/master)。
 
 The Dart and Flutter SDKs include DevTools.
 To check your current version of DevTools, 
 run the following on your command line:
 
-Dart 和 Flutter 也内置了 DevTools。
-你可以运行以下命令查看其版本：
+Dart 和 Flutter 也內建了 DevTools。
+你可以執行以下命令檢視其版本：
 
 ```terminal
 $ dart devtools --version

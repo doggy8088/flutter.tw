@@ -1,11 +1,11 @@
 ---
 title: Build and release a Linux app to the Snap Store
-title: 构建和发布为 Linux 应用到 Snap Store
+title: 建構和釋出為 Linux 應用到 Snap Store
 description: How to prepare for and release a Linux app to the Snap store.
-description: 如何在 Snap store 发布一个 Linux 应用
+description: 如何在 Snap store 釋出一個 Linux 應用
 short-title: Linux
-tags: 发布, Linux
-keywords: 发布Flutter应用为Linux应用
+tags: 釋出, Linux
+keywords: 釋出Flutter應用為Linux應用
 ---
 
 During a typical development cycle,

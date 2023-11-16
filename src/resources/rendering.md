@@ -1,10 +1,10 @@
 ---
 title: Rendering in Flutter
-title: Flutter 里的渲染
+title: Flutter 裡的渲染
 description: How Flutter's render tree works.
-description: Flutter 中的渲染树是如何工作的。
-tags: Flutter参考资料
-keywords: Flutter原理,Flutter渲染,Flutter架构
+description: Flutter 中的渲染樹是如何工作的。
+tags: Flutter參考資料
+keywords: Flutter原理,Flutter渲染,Flutter架構
 ---
 
 ## Introduction

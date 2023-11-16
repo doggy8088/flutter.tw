@@ -1,10 +1,10 @@
 ---
 title: Background processes
-title: 后台进程
+title: 後臺處理序
 description: Where to find more information on implementing background processes in Flutter.
-description: 可以找到更多关于 Flutter 中后台进程实现的信息的地方
-tags: Packages,插件
-keywords: isolate,多线程,调度器
+description: 可以找到更多關於 Flutter 中後臺處理序實現的資訊的地方
+tags: Packages,外掛
+keywords: isolate,多執行緒,排程器
 ---
 
 Have you ever wanted to execute Dart code in the
@@ -13,8 +13,8 @@ Perhaps you wanted to implement a process that watches the time,
 or that catches camera movement.
 In Flutter, you can execute Dart code in the background.
 
-当你的应用被切换到后台时，是否仍希望它在后台可以执行一些业务逻辑？
-在 Flutter 里，你可以在应用被切换到后台时执行一些代码逻辑。
+當你的應用被切換到後臺時，是否仍希望它在後台可以執行一些業務邏輯？
+在 Flutter 裡，你可以在應用被切換到後臺時執行一些程式碼邏輯。
 
 The mechanism for this feature involves setting up an isolate.
 _Isolates_ are Dart's model for multithreading,
@@ -23,16 +23,16 @@ in that it doesn't share memory with the main program.
 You'll set up your isolate for background execution using
 callbacks and a callback dispatcher.
 
-这个功能的机制主要是设置一个 isolate。**isolate** 是 Dart 中的多线程模型，
-不过其与传统线程的不同之处在于它不与主进程共享内存。
-你可以使用回调和回调调度器来设置 isolate，
-从而使应用被切换进后台时仍能执行一些业务。
+這個功能的機制主要是設定一個 isolate。**isolate** 是 Dart 中的多執行緒模型，
+不過其與傳統執行緒的不同之處在於它不與主處理序共享記憶體。
+你可以使用回呼(Callback)和回呼(Callback)排程器來設定 isolate，
+從而使應用被切換進後臺時仍能執行一些業務。
 
 Additionally, the [WorkManager][] plugin enables persistent background processing 
 that keeps tasks scheduled through app restarts and system reboots. 
 
-此外，[WorkManager][] 插件可以实现持久化的后台进程，
-应用和系统重启之后还可以继续执行计划任务。
+此外，[WorkManager][] 外掛可以實現持久化的後臺處理序，
+應用和系統重啟之後還可以繼續執行計劃任務。
 
 For more information and a geofencing example that uses background
 execution of Dart code, see the Medium article by Ben Konyi,
@@ -41,11 +41,11 @@ Geofencing][background-processes].  At the end of this article,
 you'll find links to example code, and relevant documentation for Dart,
 iOS, and Android.
 
-有关在后台进程中使用 Dart 代码的 geofencing 案例，
-你可以查阅发布在 Flutter on Medium 上的一篇文章：
+有關在後台處理序中使用 Dart 程式碼的 geofencing 案例，
+你可以查閱釋出在 Flutter on Medium 上的一篇文章：
 [Executing Dart in the Background with Flutter Plugins and Geofencing][background-processes]。
-在这篇文章的最后，你可以找到示例代码的链接，
-以及相关的 Dart、iOS 和 Android 文档。
+在這篇文章的最後，你可以找到範例程式碼的連結，
+以及相關的 Dart、iOS 和 Android 文件。
  
 [background-processes]: {{site.flutter-medium}}/executing-dart-in-the-background-with-flutter-plugins-and-geofencing-2b3e40a1a124
 [WorkManager]: {{site.pub-pkg}}/workmanager 

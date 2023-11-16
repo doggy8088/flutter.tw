@@ -1,8 +1,8 @@
 ---
 layout: toc
 title: Platform integration
-title: 平台集成
+title: 平台整合
 description: >
   Content covering integration with different platforms in Flutter apps.
-description: Flutter 应用集成不同平台的系列文章
+description: Flutter 應用整合不同平台的系列文章
 ---

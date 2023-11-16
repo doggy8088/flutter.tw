@@ -1,8 +1,8 @@
 ---
 title: Fetch data from the internet
-title: 获取网络数据
+title: 獲取網路資料
 description: How to fetch data over the internet using the http package.
-description: 如何使用 http 包获取网络数据。
+description: 如何使用 http 包獲取網路資料。
 ---
 
 <?code-excerpt path-base="cookbook/networking/fetch_data/"?>
@@ -11,44 +11,44 @@ Fetching data from the internet is necessary for most apps.
 Luckily, Dart and Flutter provide tools, such as the
 `http` package, for this type of work.
 
-对于大部分应用来说，获取网络数据都是必不可少的一个功能。
-幸运的是，Dart 和 Flutter 就为我们提供了这样的工具。
+對於大部分應用來說，獲取網路資料都是必不可少的一個功能。
+幸運的是，Dart 和 Flutter 就為我們提供了這樣的工具。
 
 This recipe uses the following steps:
 
-这个教程包含以下步骤：
+這個課程包含以下步驟：
 
   1. Add the `http` package.
 
-     添加 `http` 包
+     新增 `http` 包
 
   2. Make a network request using the `http` package.
 
-     使用 `http` 包进行网络请求
+     使用 `http` 套件進行網路請求
 
   3. Convert the response into a custom Dart object.
 
-     将返回的响应转换成一个自定义的 Dart 对象
+     將返回的響應轉換成一個自訂的 Dart 物件
 
   4. Fetch and display the data with Flutter.
 
-     使用 Flutter 对数据进行获取和展示
+     使用 Flutter 對資料進行獲取和展示
 
 ## 1. Add the `http` package
 
-## 1. 添加 `http` 包
+## 1. 新增 `http` 包
 
 The [`http`][] package provides the
 simplest way to fetch data from the internet.
 
-[`http`][] package 为我们提供了
-获取网络数据最简单的方法。
+[`http`][] package 為我們提供了
+獲取網路資料最簡單的方法。
 
 To add the `http` package as a dependency,
 run `flutter pub add`:
 
-要将 `http` 包添加到依赖中，
-运行 `flutter pub add` 命令：
+要將 `http` 包新增到依賴中，
+執行 `flutter pub add` 命令：
 
 ```terminal
 $ flutter pub add http
@@ -71,13 +71,13 @@ add the Internet permission.
 
 ## 2. Make a network request
 
-## 2. 进行网络请求
+## 2. 進行網路請求
 
 This recipe covers how to fetch a sample album from the
 [JSONPlaceholder][] using the [`http.get()`][] method.
 
-在这里，你可以使用 [`http.get()`][] 方法
-从 [JSONPlaceholder][] 上获取到一个样本相册数据。
+在這裡，你可以使用 [`http.get()`][] 方法
+從 [JSONPlaceholder][] 上獲取到一個樣本相簿資料。
 
 <?code-excerpt "lib/main_step1.dart (fetchAlbum)"?>
 ```dart
@@ -88,50 +88,50 @@ Future<http.Response> fetchAlbum() {
 
 The `http.get()` method returns a `Future` that contains a `Response`.
 
-这个 `http.get()` 方法会返回一个包含 `Response` 的 `Future`。
+這個 `http.get()` 方法會返回一個包含 `Response` 的 `Future`。
 
 * [`Future`][] is a core Dart class for working with
   async operations. A Future object represents a potential
   value or error that will be available at some time in the future.
     
-  [`Future`][] 是 Dart 用来处理异步操作的一个核心类，
-  它通常代表一个可能的值或者将来或许会用到的错误。
+  [`Future`][] 是 Dart 用來處理非同步操作的一個核心類，
+  它通常代表一個可能的值或者將來或許會用到的錯誤。
     
 * The `http.Response` class contains the data received from a successful
   http call.
     
-  `http.Response` 类包含成功的 http 请求接收到的数据。
+  `http.Response` 類包含成功的 http 請求接收到的資料。
 
 
 ## 3. Convert the response into a custom Dart object
 
-## 3. 将返回的响应转换成一个自定义的 Dart 对象
+## 3. 將返回的響應轉換成一個自訂的 Dart 物件
 
 While it's easy to make a network request, working with a raw
 `Future<http.Response>` isn't very convenient.
 To make your life easier,
 convert the `http.Response` into a Dart object.
 
-虽然进行网络请求很容易，但是处理 `Future<http.Response>` 却并不简单，
-为了后续处理起来更加方便，我们需要将 `http.Response` 转换成一个 Dart 对象。
+雖然進行網路請求很容易，但是處理 `Future<http.Response>` 卻並不簡單，
+為了後續處理起來更加方便，我們需要將 `http.Response` 轉換成一個 Dart 物件。
 
 ### Create an `Album` class
 
-### 创建一个 `Album` 类
+### 建立一個 `Album` 類
 
 First, create an `Album` class that contains the data from the
 network request. It includes a factory constructor that
 creates an `Album` from JSON.
 
-首先，创建一个包含网络请求返回数据的 `Album` 类，
-而且这个类还需要一个可以利用 json 创建 `Album` 的工厂构造器。
+首先，建立一個包含網路請求返回資料的 `Album` 類，
+而且這個類還需要一個可以利用 json 建立 `Album` 的工廠構造器。
 
 Converting JSON by hand is only one option.
 For more information, see the full article on
 [JSON and serialization][].
 
-手动转换 JSON 是我们目前唯一的选项。想了解更多，
-请查看完整的文档 [JSON 和序列化数据][JSON and serialization]。
+手動轉換 JSON 是我們目前唯一的選項。想了解更多，
+請檢視完整的文件 [JSON 和序列化資料][JSON and serialization]。
 
 <?code-excerpt "lib/main.dart (Album)"?>
 ```dart
@@ -158,25 +158,25 @@ class Album {
 
 ### Convert the `http.Response` to an `Album`
 
-### 将 `http.Response` 转换成 `Album`
+### 將 `http.Response` 轉換成 `Album`
 
 Now, use the following steps to update the `fetchAlbum()`
 function to return a `Future<Album>`:
 
-现在，我们需要更新 `fetchPost()` 函数并返回 `Future<Album>`，
-为了实现这个目标，我们需要做以下几步：
+現在，我們需要更新 `fetchPost()` 函式並返回 `Future<Album>`，
+為了實現這個目標，我們需要做以下幾步：
 
   1. Convert the response body into a JSON `Map` with
      the `dart:convert` package.
 
-     用 `dart:convert` 包将响应体转换成一个 json `Map`。
+     用 `dart:convert` 包將回應內文轉換成一個 json `Map`。
 
   2. If the server does return an OK response with a status code of
      200, then convert the JSON `Map` into an `Album`
      using the `fromJson()` factory method.
 
-     如果服务器返回了一个状态码为 200 的 "OK" 响应，
-     那么就使用 `fromJson` 工厂方法将 json `Map` 转换成 `Album`。
+     如果伺服器返回了一個狀態碼為 200 的 "OK" 響應，
+     那麼就使用 `fromJson` 工廠方法將 json `Map` 轉換成 `Album`。
 
   3. If the server does not return an OK response with a status code of 200,
      then throw an exception.
@@ -185,10 +185,10 @@ function to return a `Future<Album>`:
      This is important when examining
      the data in `snapshot`, as shown below.)
 
-     如果服务器返回的不是我们预期的响应（返回一个OK，Http Header 是 200），
-     那么就抛出异常。服务器如若返回 404 Not Found 错误，也同样要抛出异常，
-     而不是返回一个 `null`，
-     在检查如下所示的 `snapshot` 值的时候，这一点相当重要。
+     如果伺服器返回的不是我們預期的響應（返回一個OK，Http Header 是 200），
+     那麼就丟擲例外。伺服器如若返回 404 Not Found 錯誤，也同樣要丟擲例外，
+     而不是返回一個 `null`，
+     在檢查如下所示的 `snapshot` 值的時候，這一點相當重要。
 
 <?code-excerpt "lib/main.dart (fetchAlbum)"?>
 ```dart
@@ -211,18 +211,18 @@ Future<Album> fetchAlbum() async {
 Hooray!
 Now you've got a function that fetches an album from the internet.
 
-太棒了！现在你就拥有了一个可以获取网络数据的完整函数啦。
+太棒了！現在你就擁有了一個可以獲取網路資料的完整函式啦。
 
 ## 4. Fetch the data
 
-## 4. 获取数据
+## 4. 獲取資料
 
 Call the `fetchAlbum()` method in either the
 [`initState()`][] or [`didChangeDependencies()`][]
 methods.
 
 在 [`initState()`][] 或 [`didChangeDependencies()`][]
-方法中调用获取数据的方法 `fetch()`。
+方法中呼叫獲取資料的方法 `fetch()`。
 
 The `initState()` method is called exactly once and then never again.
 If you want to have the option of reloading the API in response to an
@@ -230,10 +230,10 @@ If you want to have the option of reloading the API in response to an
 `didChangeDependencies()` method.
 See [`State`][] for more details.
 
-`initState()` 方法仅会被调用一次。
-如果你想要响应 [`InheritedWidget`][] 改变以重新加载 API 的话，
-请在 `didChangeDependencies()` 方法中进行调用，
-你可以在 [`State`][] 文档里了解更多。
+`initState()` 方法僅會被呼叫一次。
+如果你想要響應 [`InheritedWidget`][] 改變以重新載入 API 的話，
+請在 `didChangeDependencies()` 方法中進行呼叫，
+你可以在 [`State`][] 文件裡瞭解更多。
 
 <?code-excerpt "lib/main.dart (State)"?>
 ```dart
@@ -251,42 +251,42 @@ class _MyAppState extends State<MyApp> {
 
 This Future is used in the next step.
 
-我们将会在下一步中使用这个 Future。
+我們將會在下一步中使用這個 Future。
 
 ## 5. Display the data
 
-## 5. 显示数据
+## 5. 顯示資料
 
 To display the data on screen, use the
 [`FutureBuilder`][] widget.
 The `FutureBuilder` widget comes with Flutter and
 makes it easy to work with asynchronous data sources.
 
-为了能够获取数据并在屏幕上展示它，你可以使用 [`FutureBuilder`][] widget。
-这个由 Flutter 提供的 `FutureBuilder` 组件可以让处理异步数据源变的非常简单。
+為了能夠獲取資料並在螢幕上展示它，你可以使用 [`FutureBuilder`][] widget。
+這個由 Flutter 提供的 `FutureBuilder` 元件可以讓處理非同步資料源變的非常簡單。
 
 You must provide two parameters:
 
-此时，你必须要提供两个参数：
+此時，你必須要提供兩個引數：
 
   1. The `Future` you want to work with.
      In this case, the future returned from
      the `fetchAlbum()` function.
 
-     你想要处理的 `Future`，在这个例子中就是 `fetchAlbum()` 返回的 future。
+     你想要處理的 `Future`，在這個例子中就是 `fetchAlbum()` 返回的 future。
 
   2. A `builder` function that tells Flutter
      what to render, depending on the
      state of the `Future`: loading, success, or error.
 
-     一个告诉 Flutter 渲染哪些内容的 `builder` 函数，
-     同时这也依赖于 `Future` 的状态：loading、success 或者是 error。
+     一個告訴 Flutter 渲染哪些內容的 `builder` 函式，
+     同時這也依賴於 `Future` 的狀態：loading、success 或者是 error。
      
 Note that `snapshot.hasData` only returns `true`
 when the snapshot contains a non-null data value.
 
-需要注意的是：当快照包含非空数据值，
-`snapshot.hasData` 将只返回 `true`。
+需要注意的是：當快照包含非空資料值，
+`snapshot.hasData` 將只返回 `true`。
 
 Because `fetchAlbum` can only return non-null values,
 the function should throw an exception
@@ -294,14 +294,14 @@ even in the case of a "404 Not Found" server response.
 Throwing an exception sets the `snapshot.hasError` to `true`
 which can be used to display an error message.
 
-因为 `fetchAlbum` 只能返回非空值，在服务器响应
-"404 Not Found" 的时候应该引发异常抛出。
-发生异常的时候会将 `snapshot.hasError` 设定为 `true`，
-用来显示错误消息。
+因為 `fetchAlbum` 只能返回非空值，在伺服器響應
+"404 Not Found" 的時候應該引發例外丟擲。
+發生例外的時候會將 `snapshot.hasError` 設定為 `true`，
+用來顯示錯誤訊息。
 
 Otherwise, the spinner will be displayed.
 
-其他情况下，spinner 就会正常显示。
+其他情況下，spinner 就會正常顯示。
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/^child: //g;/,$//g"?>
 ```dart
@@ -322,12 +322,12 @@ FutureBuilder<Album>(
 
 ## Why is fetchAlbum() called in initState()?
 
-## 为何要在 initState() 中调用 fetchPost()？
+## 為何要在 initState() 中呼叫 fetchPost()？
 
 Although it's convenient,
 it's not recommended to put an API call in a `build()` method.
 
-虽然这样会比较方便，但是我们仍然不推荐将 API 调用置于 `build()` 方法内部。
+雖然這樣會比較方便，但是我們仍然不推薦將 API 呼叫置於 `build()` 方法內部。
 
 Flutter calls the `build()` method every time it needs
 to change anything in the view,
@@ -339,31 +339,31 @@ Storing the `fetchAlbum()` result in a state variable ensures that
 the `Future` is executed only once and then cached for subsequent
 rebuilds.
 
-每当 Flutter 需要改变视图中的一些内容时（这个发生的频率非常高），
-就会调用 `build()` 方法。因此，如果你将数据请求置于 `build()` 内部，
-就会造成大量的无效调用，同时还会拖慢应用程序的速度。
+每當 Flutter 需要改變檢視中的一些內容時（這個發生的頻率非常高），
+就會呼叫 `build()` 方法。因此，如果你將資料請求置於 `build()` 內部，
+就會造成大量的無效呼叫，同時還會拖慢應用程式的速度。
 
 ## Testing
 
-## 测试
+## 測試
 
 For information on how to test this functionality,
 see the following recipes:
 
-关于如何测试这个功能，请查看下面的说明：
+關於如何測試這個功能，請檢視下面的說明：
 
   * [Introduction to unit testing][]
   
-    [单元测试介绍][Introduction to unit testing]
+    [單元測試介紹][Introduction to unit testing]
     
   * [Mock dependencies using Mockito][]
  
-    [使用 Mockito 模拟依赖][Mock dependencies using Mockito]
+    [使用 Mockito 模擬依賴][Mock dependencies using Mockito]
 
 
 ## Complete example
 
-## 完整样例
+## 完整範例
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

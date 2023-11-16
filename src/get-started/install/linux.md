@@ -1,14 +1,14 @@
 ---
 title: Linux Installation Guide
-title: 在 Linux 操作系统上安装和配置 Flutter 开发环境
+title: 在 Linux 作業系統上安裝和配置 Flutter 開發環境
 description: Learn how to install Flutter on Linux.
-description: 学习如何在 Linux 上安装 Flutter。
+description: 學習如何在 Linux 上安裝 Flutter。
 short-title: Linux
-tags: Flutter安装,Flutter环境搭建
-keywords: Flutter Linux,Flutter macOS,Flutter镜像,Linux开发Flutter
+tags: Flutter安裝,Flutter環境搭建
+keywords: Flutter Linux,Flutter macOS,Flutter鏡像,Linux開發Flutter
 next:
   title: Set up an editor
-  title: 编辑工具设定
+  title: 編輯工具設定
   path: /docs/get-started/editor
 ---
 
@@ -16,24 +16,24 @@ next:
 
 ## System requirements
 
-## 系统配置要求
+## 系統配置要求
 
 To install and run Flutter,
 your Linux development environment needs to meet these minimum requirements:
 
-要想安装和运行 Flutter，你的开发环境至少应该满足如下的需求：
+要想安裝和執行 Flutter，你的開發環境至少應該滿足如下的需求：
 
 - **Operating System**: Linux (64-bit)
 
-  **操作系统**: Linux (64 位)
+  **作業系統**: Linux (64 位)
 
 - **Disk Space**: At least 1.6 GB (excluding disk space for IDE/tools).
 
-  **磁盘空间**: 1.6 GB (不包含安装 IDE 和其他工具的空间)
+  **磁碟空間**: 1.6 GB (不包含安裝 IDE 和其他工具的空間)
 
 - **Tools**: Flutter relies on these command-line tools:
 
-  **命令工具**: Flutter 需要以下命令行工具：
+  **命令工具**: Flutter 需要以下命令列工具：
 
   - `bash`
   - `curl`
@@ -51,8 +51,8 @@ your Linux development environment needs to meet these minimum requirements:
   The `mesa` packages provide this library:
   `libglu1-mesa` on Ubuntu/Debian and `mesa-libGLU` on Fedora.
 
-  **公用库**: Flutter 的 `test` 命令需要 `libGLU.so.1` 库。
-  `mesa` 套件已经包含了这个库：
+  **公用庫**: Flutter 的 `test` 命令需要 `libGLU.so.1` 庫。
+  `mesa` 套件已經包含了這個庫：
   在 Ubuntu/Debian 上是 `libglu1-mesa`，在 Fedora 上是 `mesa-libGLU`。
 
 {% include_relative _get-sdk-linux.md %}
@@ -69,5 +69,5 @@ your Linux development environment needs to meet these minimum requirements:
 
 Set up your preferred editor.
 
-编辑器设置。
+編輯器設定。
 

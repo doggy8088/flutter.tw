@@ -1,31 +1,31 @@
 ---
-title: Dart 2.6 正式发布, 新增利器 dart2native：将 Dart 编译为自包含的本地可执行文件
+title: Dart 2.6 正式釋出, 新增利器 dart2native：將 Dart 編譯為自包含的本地可執行檔案
 toc: true
 ---
 
 *作者: Michael Thomsen, Dart & Flutter Product Manager, Google*
 
-Dart 提供了 [丰富多样的编译器](https://dart.dev/platforms)，全方位助力开发者为移动设备和 web 平台优化生产代码。灵活的编译器技术让我们的框架合作伙伴可以针对不同的目标平台，构建各种类型的应用，例如: [Android 和 iOS](https://flutter.dev/docs) 平台上的 Flutter 应用、[Web 端](https://flutter.dev/web) 和 [桌面端](https://github.com/flutter/flutter/wiki/Desktop-shells) Flutter 应用、[Web 端的 AngularDart 应用](https://angulardart.dev) 以及 [嵌入式设备](https://mp.weixin.qq.com/s/xVmilQeiveA8XZNU0g668Q) 上的 Google 助手。
+Dart 提供了 [豐富多樣的編譯器](https://dart.dev/platforms)，全方位助力開發者為移動裝置和 web 平台最佳化生產程式碼。靈活的編譯器技術讓我們的框架合作伙伴可以針對不同的目標平台，建構各種型別的應用，例如: [Android 和 iOS](https://flutter.dev/docs) 平臺上的 Flutter 應用、[Web 端](https://flutter.dev/web) 和 [桌面端](https://github.com/flutter/flutter/wiki/Desktop-shells) Flutter 應用、[Web 端的 AngularDart 應用](https://angulardart.dev) 以及 [嵌入式裝置](https://mp.weixin.qq.com/s/xVmilQeiveA8XZNU0g668Q) 上的 Google 助手。
 
-今天，我们正式推出 **dart2native**。作为现有编译器集合的一个扩展，dart2native 可以将 Dart 程序编译为含有预编译机器码的自包含可执行文件。在它的协助下，您可以使用 Dart 在 **macOS**, **Windows** 或 **Linux** 上创建命令行工具。下方的功能宣传图就是 [使用 dart2native 来实现](https://gist.github.com/mit-mit/faec2bfc1d1cef7cd09df917e531c5c0) 的。
+今天，我們正式推出 **dart2native**。作為現有編譯器集合的一個擴充，dart2native 可以將 Dart 程式編譯為含有預編譯機器碼的自包含可執行檔案。在它的協助下，您可以使用 Dart 在 **macOS**, **Windows** 或 **Linux** 上建立命令列工具。下方的功能宣傳圖就是 [使用 dart2native 來實現](https://gist.github.com/mit-mit/faec2bfc1d1cef7cd09df917e531c5c0) 的。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/H1ZCVn.gif)
 
-## **Dart Native 及 dart2native 编译器**
+## **Dart Native 及 dart2native 編譯器**
 
-Dart 从数年前就开始支持 AOT 运行前编译，通过 AOT 编译器，开发者可以提前将 Dart 代码编译为本地机器码。几年发展下来，[Dart Native](https://dart.dev/platforms) 技术也日趋成熟。不过，此前这项功能的应用范围比较局限，我们仅通过 [Flutter](https://flutter.dev) 向 iOS 和 Android 移动设备投放了该功能。
+Dart 從數年前就開始支援 AOT 執行前編譯，透過 AOT 編譯器，開發者可以提前將 Dart 程式碼編譯為本地機器碼。幾年發展下來，[Dart Native](https://dart.dev/platforms) 技術也日趨成熟。不過，此前這項功能的應用範圍比較侷限，我們僅透過 [Flutter](https://flutter.dev) 向 iOS 和 Android 移動裝置投放了該功能。
 
-引入 dart2native 后，我们将本地编译支持扩展至 macOS、Windows 和 Linux 三款传统桌面操作系统。利用 dart2native 创建的可执行文件属于自包含文件，因此在未安装 Dart SDK 的机器上亦能运行。由于可执行文件之前已经通过 Dart 的 AOT 编译器进行过处理，因此几毫秒后就会开始运行。在编译为本地代码的过程中，dart2native 与其它 Dart 编译器和运行时工具一样，也可以使用丰富且一致的 [Dart 核心库](https://dart.dev/guides/libraries)。
+引入 dart2native 後，我們將本地編譯支援擴充至 macOS、Windows 和 Linux 三款傳統桌面作業系統。利用 dart2native 建立的可執行檔案屬於自包含檔案，因此在未安裝 Dart SDK 的機器上亦能執行。由於可執行檔案之前已經透過 Dart 的 AOT 編譯器進行過處理，因此幾毫秒後就會開始執行。在編譯為原生代碼的過程中，dart2native 與其它 Dart 編譯器和執行時工具一樣，也可以使用豐富且一致的 [Dart 核心函式庫](https://dart.dev/guides/libraries)。
 
-许多客户要求我们为桌面操作系统提供 AOT 预编译支持 (Dart AOT 问题专区 [排名第 6 的功能请求](https://github.com/dart-lang/sdk/issues/36915))，所以，我们很高兴终于将这项功能带到您身边。
+許多客戶要求我們為桌面作業系統提供 AOT 預編譯支援 (Dart AOT 問題專區 [排名第 6 的功能請求](https://github.com/dart-lang/sdk/issues/36915))，所以，我們很高興終於將這項功能帶到您身邊。
 
-> 如果您之前使用过 dart2aot，那么，升级至 Dart SDK 2.6 后，您将开始使用 dart2native，它的功能比 dart2aot 更加强大。
+> 如果您之前使用過 dart2aot，那麼，升級至 Dart SDK 2.6 後，您將開始使用 dart2native，它的功能比 dart2aot 更加強大。
 
-## **使用 dart2native 构建命令行应用**
+## **使用 dart2native 建構命令列應用**
 
-如果您想构建和部署 [基于 Dart 的命令行应用](https://dart.dev/tutorials/server/cmdline)，那么 dart2native 绝对是您的不二选择。此类应用通常会使用到 [dart:io](https://api.dart.dev/stable/2.6.1/dart-io/dart-io-library.html) (基础 I/O), package:[http](https://pub.dev/packages/http) (网络) 以及 package:[args](https://pub.dev/packages/args) (参数解析) 这三个库。下面让我们以 "hello, world" (你好，世界) 应用为例，回顾一下如何把应用编译成可执行文件:
+如果您想建構和部署 [基於 Dart 的命令列應用](https://dart.dev/tutorials/server/cmdline)，那麼 dart2native 絕對是您的不二選擇。此類應用通常會使用到 [dart:io](https://api.dart.dev/stable/2.6.1/dart-io/dart-io-library.html) (基礎 I/O), package:[http](https://pub.dev/packages/http) (網路) 以及 package:[args](https://pub.dev/packages/args) (引數解析) 這三個庫。下面讓我們以 "hello, world" (你好，世界) 應用為例，回顧一下如何把應用編譯成可執行檔案:
 
-源代码 hello.dart
+原始碼 hello.dart
 
 ```
 main() {
@@ -33,14 +33,14 @@ main() {
 }
 ```
 
-编译 hello.dart 至 hello 可执行文件:
+編譯 hello.dart 至 hello 可執行檔案:
 
 ```
 $ dart2native src/hello.dart -o hello
 Generated: /Users/mit/hello
 ```
 
-运行 hello 并测量知执行时间:
+執行 hello 並測量知執行時間:
 
 ```
 $ time ./hello
@@ -50,57 +50,57 @@ user 0m0.018s
 sys 0m0.020s
 ```
 
-**请注意:** 在短短 49 毫秒内，这条命令就完成了开始、打印到标准输入、退出整个流程！
+**請注意:** 在短短 49 毫秒內，這條命令就完成了開始、列印到標準輸入、退出整個流程！
 
-之前，我们已经看到有不少 Dart 开发者小试牛刀，尝试利用 dart2native 开发命令行工具:
+之前，我們已經看到有不少 Dart 開發者小試牛刀，嘗試利用 dart2native 開發命令列工具:
 
-* 来自 [SASS](https://sass-lang.com/) (一款深受开发者喜爱的 CSS 扩展工具) 团队的 Natalie [在 Github 上留言说](https://github.com/dart-lang/sdk/issues/32894#issuecomment-513975562)，自从团队转用 dart2native 来编译基于 Dart 的 SASS 实现后，该实现的性能大幅提高，即使与 LibSass 这款基于 C++ 的实现相比也毫不逊色。
-* 来自 Dart DevRel 团队的 Filip 使用 dart2native 重编译了自己的网站链接检查工具 [linkchecker](https://github.com/filiph/linkcheck/)，二次编译后，小型网站的检查速度 [提升了整整 27 倍](https://github.com/filiph/linkcheck/issues/7#issuecomment-496308288)。
+* 來自 [SASS](https://sass-lang.com/) (一款深受開發者喜愛的 CSS 擴充工具) 團隊的 Natalie [在 Github 上留言說](https://github.com/dart-lang/sdk/issues/32894#issuecomment-513975562)，自從團隊轉用 dart2native 來編譯基於 Dart 的 SASS 實現後，該實現的效能大幅提高，即使與 LibSass 這款基於 C++ 的實現相比也毫不遜色。
+* 來自 Dart DevRel 團隊的 Filip 使用 dart2native 重編譯了自己的網站連結檢查工具 [linkchecker](https://github.com/filiph/linkcheck/)，二次編譯後，小型網站的檢查速度 [提升了整整 27 倍](https://github.com/filiph/linkcheck/issues/7#issuecomment-496308288)。
 
-## **通过 dart:ffi 与 C 代码互操作**
+## **透過 dart:ffi 與 C 程式碼互操作**
 
-原生应用经常会用到由访问由操作系统提供的原生功能。此类系统 API 通常由基于 C 语言的原生库提供，而 Dart 则允许您通过 dart:ffi (外部函数接口) 与这些库实现互操作。dart:ffi 是我们新推出的 C 语言互操作机制，首个技术预览版本已随 [Dart 2.5](https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&mid=2652050716&idx=1&sn=8f417c47868404bf55f9878f69f8c7e4&scene=21#wechat_redirect) 一同发布。dart2native 编译器与 dart:ffi 兼容，因此您可以直接在本地创建和编译需要用到 dart:ffi 的应用。
+原生應用經常會用到由存取由作業系統提供的原生功能。此類系統 API 通常由基於 C 語言的原生庫提供，而 Dart 則允許您透過 dart:ffi (外部函式介面) 與這些庫實現互操作。dart:ffi 是我們新推出的 C 語言互操作機制，首個技術預覽版本已隨 [Dart 2.5](https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&mid=2652050716&idx=1&sn=8f417c47868404bf55f9878f69f8c7e4&scene=21#wechat_redirect) 一同釋出。dart2native 編譯器與 dart:ffi 相容，因此您可以直接在本地建立和編譯需要用到 dart:ffi 的應用。
 
-我们团队的一名成员最近利用 dart:ffi 创建了一个 [dart_console](https://pub.dev/packages/dart_console) 库，专门用于控制台应用的开发工作。该库涵盖多种功能，如获取窗口尺寸、读取和设定光标位置、颜色管理、读取键盘输入和控制序列等。出色的 dart:ffi 使用能力让 Dart 成为一款强大的控制台应用开发语言。
+我們團隊的一名成員最近利用 dart:ffi 建立了一個 [dart_console](https://pub.dev/packages/dart_console) 庫，專門用於控制檯應用的開發工作。該庫涵蓋多種功能，如獲取視窗尺寸、讀取和設定游標位置、顏色管理、讀取鍵盤輸入和控制序列等。出色的 dart:ffi 使用能力讓 Dart 成為一款強大的控制檯應用開發語言。
 
-**不到 500 行 Dart 代码就能写出一个 7MB 大小的代码编辑器: kilo**
+**不到 500 行 Dart 程式碼就能寫出一個 7MB 大小的程式碼編輯器: kilo**
 
-我们利用 Dart 核心库、dart:ffi 以及 dart_console 库开发出了几个十分有趣的控制台应用。我们 [大约用了 500 行 Dart 代码](https://github.com/timsneath/dart_console/blob/master/example/kilo.dart) 编写了一个名为 Kilo 的控制台文本编辑器，并将完整版演示封装至 dart_console 包内。Kilo 的命名源于它的前身 [kilo.c](https://github.com/antirez/kilo/blob/master/kilo.c) —— 一款由不到 1,000 行 C 代码实现的简易文本编辑器。
+我們利用 Dart 核心函式庫、dart:ffi 以及 dart_console 庫開發出了幾個十分有趣的控制檯應用。我們 [大約用了 500 行 Dart 程式碼](https://github.com/timsneath/dart_console/blob/master/example/kilo.dart) 編寫了一個名為 Kilo 的控制檯文字編輯器，並將完整版示範封裝至 dart_console 包內。Kilo 的命名源於它的前身 [kilo.c](https://github.com/antirez/kilo/blob/master/kilo.c) —— 一款由不到 1,000 行 C 程式碼實現的簡易文字編輯器。
 
-新推出的 dart2native 编译器让打包工作变得十分简单，我们最终得到了一个 7MB 大小的自包含代码编辑器。请查看下方演示动图，了解 Kilo 的编译过程，以及编译后的 Kilo 是如何通过编辑自己的源代码来修复错误的。
+新推出的 dart2native 編譯器讓打包工作變得十分簡單，我們最終得到了一個 7MB 大小的自包含程式碼編輯器。請檢視下方示範動畫，瞭解 Kilo 的編譯過程，以及編譯後的 Kilo 是如何透過編輯自己的原始碼來修復錯誤的。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/frVHPl.gif)
 
-正在编辑自己的源代码的 Kilo 编辑器 (该编辑器使用 Dart 编写，并通过 dart2native 编译为可执行文件)
+正在編輯自己的原始碼的 Kilo 編輯器 (該編輯器使用 Dart 編寫，並透過 dart2native 編譯為可執行檔案)
 
-## **使用 dart2native 构建服务**
+## **使用 dart2native 建構服務**
 
-微服务是 dart2native 编译器另一个潜在用途，比如说: 为前端 Flutter 应用提供支持的后台服务。近年来，[无服务器计算](https://en.wikipedia.org/wiki/Serverless_computing) 的应用趋势持续攀升，越来越多的用户开始使用运行在无服务器计算上的服务。这些服务完全交由供应商托管，支持自动扩缩，基础架构可根据流量从零 (停止运行时) 开始扩容，反向缩容亦可。此外，由于无服务器平台仅在代码运行期间收费，因此可以为开发者大幅削减成本。目前，Google Cloud 已通过 [Cloud Run](https://cloud.google.com/run/) 推出无服务器计算解决方案。
+微服務是 dart2native 編譯器另一個潛在用途，比如說: 為前端 Flutter 應用提供支援的後臺服務。近年來，[無伺服器計算](https://en.wikipedia.org/wiki/Serverless_computing) 的應用趨勢持續攀升，越來越多的使用者開始使用執行在無伺服器計算上的服務。這些服務完全交由供應商託管，支援自動擴縮，基礎架構可根據流量從零 (停止執行時) 開始擴容，反向縮容亦可。此外，由於無伺服器平台僅在程式碼執行期間收費，因此可以為開發者大幅削減成本。目前，Google Cloud 已透過 [Cloud Run](https://cloud.google.com/run/) 推出無伺服器計算解決方案。
 
-对于无服务器后台而言，快速的服务启动速度至关重要。过去，我们一般通过 JIT (即时) 编译器来运行基于 Dart 的服务，但是基于 JIT 的执行有一个明显的缺点: 代码必须先完成编译和预热两个步骤才能开始执行，所以延迟现象十分严重。通过把服务代码提前编译为本地代码，您不但可以避免延迟问题，而且还能够立即开始运行代码。此外，使用本地代码创建的 Dart 服务属于自包含应用，所占用的磁盘资源也比较小，因此对运行容器的体积要求也会大幅降低。Dart 开发者 Paul Mundt 在 [《初试 Dart 微服务》](https://itnext.io/experiments-with-dart-microservices-fa117aa408c7) 这篇文章中，谈到了对 dart2native 的一些心得体会: 之前使用 JIT 编译器时，Docker 镜像文件的体积为 220MB，转用本地代码后，文件体积缩减至 20MB，降幅高达 91%！更多技术细节，请查看官方文档 [《服务器端应用》](https://dart.dev/tutorials/server/httpserver) 和 [《包》](https://dart.dev/server/libraries#server-packages)。
+對於無伺服器後臺而言，快速的服務啟動速度至關重要。過去，我們一般透過 JIT (即時) 編譯器來執行基於 Dart 的服務，但是基於 JIT 的執行有一個明顯的缺點: 程式碼必須先完成編譯和預熱兩個步驟才能開始執行，所以延遲現象十分嚴重。透過把服務程式碼提前編譯為原生代碼，您不但可以避免延遲問題，而且還能夠立即開始執行程式碼。此外，使用原生代碼建立的 Dart 服務屬於自包含應用，所佔用的磁碟資源也比較小，因此對執行容器的體積要求也會大幅降低。Dart 開發者 Paul Mundt 在 [《初試 Dart 微服務》](https://itnext.io/experiments-with-dart-microservices-fa117aa408c7) 這篇文章中，談到了對 dart2native 的一些心得體會: 之前使用 JIT 編譯器時，Docker 鏡像檔案的體積為 220MB，轉用原生代碼後，檔案體積縮減至 20MB，降幅高達 91%！更多技術細節，請檢視官方文件 [《伺服器端應用》](https://dart.dev/tutorials/server/httpserver) 和 [《包》](https://dart.dev/server/libraries#server-packages)。
 
-## **如何获取**
+## **如何獲取**
 
-您可从 2.6 及以上版本的 Dart SDK 中获取 dart2native 编译器。请前往 https://dart.dev/get-dart 下载最新版本的 Dart SDK。安装完毕后，您可在 bin/ directory 和 PATH 内找到新的编译器。请前往 Dart.dev 获取 [更多官方文档](https://dart.dev/tools/dart2native)。
+您可從 2.6 及以上版本的 Dart SDK 中獲取 dart2native 編譯器。請前往 https://dart.dev/get-dart 下載最新版本的 Dart SDK。安裝完畢後，您可在 bin/ directory 和 PATH 內找到新的編譯器。請前往 Dart.dev 獲取 [更多官方文件](https://dart.dev/tools/dart2native)。
 
-通过 Flutter 获取 Dart SDK 的开发者请注意: 当前 Flutter 版本对 dart2native 的支持并不完整。在稳定版 Flutter 提供 Dart 2.6 之前，我们建议您前往 [dart.dev/get-dart](https://dart.dev/get-dart) 下载 Dart 2.6 SDK。
+透過 Flutter 獲取 Dart SDK 的開發者請注意: 當前 Flutter 版本對 dart2native 的支援並不完整。在穩定版 Flutter 提供 Dart 2.6 之前，我們建議您前往 [dart.dev/get-dart](https://dart.dev/get-dart) 下載 Dart 2.6 SDK。
 
 ## **已知限制**
 
-初始版本的 dart2native 编译器包含以下已知限制。请前往我们在 Github 上的问题追踪页面，为您关注的问题投票，以便告知我们哪些问题对您最为重要。
+初始版本的 dart2native 編譯器包含以下已知限制。請前往我們在 Github 上的問題追蹤頁面，為您關注的問題投票，以便告知我們哪些問題對您最為重要。
 
-* 不提供交叉编译支持 ([Github 问题 28617](https://github.com/dart-lang/sdk/issues/28617)): dart2native 编译器每次只能为一种运行系统创建机器码，因此，如需同时为 macOS、Windows 和 Linux 创建可执行文件，请您分别运行 3 次编译器。或者，您也可以与支持 3 种操作系统的持续集成 (Continuous Integration) 供应商接洽合作，共同解决这类问题。
-* 不提供签名支持 ([Github 问题 39106](https://github.com/dart-lang/sdk/issues/39106)): 生成的可执行文件的格式与 codesign 和 signtool 等标准签名工具不兼容。
-* 不支持 dart:mirrors 和 dart:developer (请参阅 [Dart 核心库](https://dart.dev/guides/libraries))。
+* 不提供交叉編譯支援 ([Github 問題 28617](https://github.com/dart-lang/sdk/issues/28617)): dart2native 編譯器每次只能為一種執行系統建立機器碼，因此，如需同時為 macOS、Windows 和 Linux 建立可執行檔案，請您分別執行 3 次編譯器。或者，您也可以與支援 3 種作業系統的持續整合 (Continuous Integration) 供應商接洽合作，共同解決這類問題。
+* 不提供簽名支援 ([Github 問題 39106](https://github.com/dart-lang/sdk/issues/39106)): 產生的可執行檔案的格式與 codesign 和 signtool 等標準簽名工具不相容。
+* 不支援 dart:mirrors 和 dart:developer (請參閱 [Dart 核心函式庫](https://dart.dev/guides/libraries))。
 
-## **Dart 2.6 中的其它变更**
+## **Dart 2.6 中的其它變更**
 
-除了 dart2native 编译器之外，Dart SDK 2.6 另外还引入了多项变更。
+除了 dart2native 編譯器之外，Dart SDK 2.6 另外還引入了多項變更。
 
-作为我们新推出的 [C 语言互操作机制](https://dart.dev/guides/libraries/c-interop)，dart:ffi 的首个技术预览版本已随 Dart 2.5 一同发布。Dart 2.6 推出了全新的 dart:ffi，内含多个中断性 (Breaking) API 变更，使得 API 的易用性大幅提升，此外，新版本还提供了更多的类型安全，内存访问也更为便利。请阅读 [《Dart 2.6 变更日志》](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#foreign-function-interface-dartffi)，进一步了解详情。引入这些变更后，dart:ffi 已顺利迭代至 Beta 版本，我们预计今后 API 的变更频率将逐步放缓，整体稳定性也会有所提高。欢迎大家继续通过 [Dart 问题追踪器](https://github.com/dart-lang/sdk/issues)，向我们提交反馈。
+作為我們新推出的 [C 語言互操作機制](https://dart.dev/guides/libraries/c-interop)，dart:ffi 的首個技術預覽版本已隨 Dart 2.5 一同釋出。Dart 2.6 推出了全新的 dart:ffi，內含多箇中斷性 (Breaking) API 變更，使得 API 的易用性大幅提升，此外，新版本還提供了更多的型別安全，記憶體存取也更為便利。請閱讀 [《Dart 2.6 變更日誌》](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#foreign-function-interface-dartffi)，進一步瞭解詳情。引入這些變更後，dart:ffi 已順利迭代至 Beta 版本，我們預計今後 API 的變更頻率將逐步放緩，整體穩定性也會有所提高。歡迎大家繼續透過 [Dart 問題追蹤器](https://github.com/dart-lang/sdk/issues)，向我們提交反饋。
 
-此外，Dart 2.6 还新增了一款超棒的语言特性: 扩展方法 (Extention methods)。此项功能尚处于预览阶段，在性能优化及工具支持方面仍有不足，我们目前正在收尾相关工作，希望能在下个版本的 Dart SDK 中正式推出该功能，届时将为大家带去更为详尽的功能介绍。如果您有兴趣了解它背后的设计理念，请阅读 [《Dart 扩展方法的基础知识》](https://medium.com/dartlang/extension-methods-2d466cd8b308)。
+此外，Dart 2.6 還新增了一款超棒的語言特性: 擴充方法 (Extention methods)。此項功能尚處於預覽階段，在效能最佳化及工具支援方面仍有不足，我們目前正在收尾相關工作，希望能在下個版本的 Dart SDK 中正式推出該功能，屆時將為大家帶去更為詳盡的功能介紹。如果您有興趣瞭解它背後的設計理念，請閱讀 [《Dart 擴充方法的基礎知識》](https://medium.com/dartlang/extension-methods-2d466cd8b308)。
 
 ## **下一步**
 
-即刻下载 Dart 2.6 SDK ([https://dart.dev/get-dart](https://dart.dev/get-dart)), 使用 dart2native 构建精彩应用，并向我们提交使用反馈。
+即刻下載 Dart 2.6 SDK ([https://dart.dev/get-dart](https://dart.dev/get-dart)), 使用 dart2native 建構精彩應用，並向我們提交使用反饋。

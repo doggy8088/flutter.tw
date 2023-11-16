@@ -1,25 +1,25 @@
 ## Performance
 
-## 性能
+## 效能
 
 Platform views in Flutter come with performance trade-offs.
 
-在 Flutter 中使用平台视图时，性能会有所取舍。
+在 Flutter 中使用平臺視圖時，效能會有所取捨。
 
 For example, in a typical Flutter app, the Flutter UI is composed
 on a dedicated raster thread. This allows Flutter apps to be fast,
 as the main platform thread is rarely blocked.
 
-例如，在典型的 Flutter 应用中，Flutter 的 UI 是专门在 raster 线程上合成的。
-由于平台的主线程很少被阻塞，因此 Flutter 应用程序可以快速运行。
+例如，在典型的 Flutter 應用中，Flutter 的 UI 是專門在 raster 執行緒上合成的。
+由於平台的主執行緒很少被阻塞，因此 Flutter 應用程式可以快速執行。
 
 While a platform view is rendered with hybrid composition,
 the Flutter UI is composed from the platform thread,
 which competes with other tasks like handling OS or plugin messages.
 
-使用混合集成模式渲染平台视图时，
-Flutter UI 由平台线程完成，与其他线程一起竞争，
-例如：处理系统或插件消息等任务。
+使用混合整合模式渲染平臺視圖時，
+Flutter UI 由平台執行緒完成，與其他執行緒一起競爭，
+例如：處理系統或外掛訊息等任務。
 
 Prior to Android 10, hybrid composition copied each Flutter frame
 out of the graphic memory into main memory, and then copied it back
@@ -28,23 +28,23 @@ the entire Flutter UI might be impacted. In Android 10 or above, the
 graphics memory is copied only once.
 
 在 Android 10 之前，
-混合集成模式将每个 Flutter 帧从显存中复制到主内存中，
-然后再将其复制回 GPU 纹理中。
-在 Android 10 或更高版本中，显存会被复制两次。
-由于每帧都会进行一次复制，因此可能会影响整个 Flutter UI 的性能。
+混合整合模式將每個 Flutter 幀從視訊記憶體中複製到主記憶體中，
+然後再將其複製回 GPU 紋理中。
+在 Android 10 或更高版本中，視訊記憶體會被複制兩次。
+由於每幀都會進行一次複製，因此可能會影響整個 Flutter UI 的效能。
 
 Virtual display, on the other hand,
 makes each pixel of the native view
 flow through additional intermediate graphic buffers,
 which cost graphic memory and drawing performance.
 
-另一方面，虚拟显示模式使平台视图的每个像素
-流经附加的中间图形缓冲区，这会浪费显存和绘图性能。
+另一方面，虛擬顯示模式使平臺視圖的每個畫素
+流經附加的中間圖形緩衝區，這會浪費視訊記憶體和繪圖效能。
 
 For complex cases, there are some techniques that
 can be used to mitigate these issues.
 
-对于复杂的情况，可以使用一些技巧来缓解这些问题。
+對於複雜的情況，可以使用一些技巧來緩解這些問題。
 
 For example, you could use a placeholder texture
 while an animation is happening in Dart.
@@ -53,13 +53,13 @@ platform view is rendered,
 then consider taking a screenshot of the
 native view and rendering it as a texture.
 
-例如，当 Dart 中发生动画时，您可以使用占位符纹理。
-换句话说，如果在渲染平台视图时动画很慢，
-请考虑对原生视图进行截图，并将其渲染为纹理。
+例如，當 Dart 中發生動畫時，您可以使用佔位符紋理。
+換句話說，如果在渲染平臺視圖時動畫很慢，
+請考慮對原生檢視進行截圖，並將其渲染為紋理。
 
 For more information, see:
 
-更多信息，请查看下面链接：
+更多資訊，請檢視下面連結：
 
 * [`TextureLayer`][]
 * [`TextureRegistry`][]

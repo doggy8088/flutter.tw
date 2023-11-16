@@ -1,10 +1,10 @@
 ---
 title: Pass arguments to a named route
-title: 给特定的 route 传参
+title: 給特定的 route 傳參
 description: How to pass arguments to a named route.
-description: 如何向命名路由传参。
-tags: cookbook, 实用教程, 路由
-keywords: 参数传递,读取参数
+description: 如何向命名路由傳參。
+tags: cookbook, 實用課程, 路由
+keywords: 引數傳遞,讀取引數
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -19,9 +19,9 @@ In some cases, you might also need to pass arguments to a
 named route. For example, you might wish to navigate to the `/user` route and
 pass information about the user to that route.
 
-[`Navigator`][] 组件支持通过使用通用标识符从应用程序的任何地方导航到特定路由。
-在某些情况下，你可能还希望能够传递参数给特定路由。
-例如，你希望导航到 `/user` 路由并携带上用户信息。
+[`Navigator`][] 元件支援透過使用通用識別符號從應用程式的任何地方導航到特定路由。
+在某些情況下，你可能還希望能夠傳遞引數給特定路由。
+例如，你希望導航到 `/user` 路由並攜帶上使用者資訊。
 
 {{site.alert.note}}
 
@@ -29,8 +29,8 @@ pass information about the user to that route.
   applications. For more information, see
   [Limitations][] in the [navigation overview][] page.
 
-  针对大多数的应用情况，我们不再推荐使用命名的路由 (Named routes)，
-  了解更多信息，请参考 [导航概览][navigation overview] 中的 [受限情况][Limitations] 部分。
+  針對大多數的應用情況，我們不再推薦使用命名的路由 (Named routes)，
+  瞭解更多資訊，請參考 [導航概覽][navigation overview] 中的 [受限情況][Limitations] 部分。
 
 {{site.alert.end}}
 
@@ -43,52 +43,52 @@ You can accomplish this task using the `arguments` parameter of the
 function provided to the [`MaterialApp`][] or [`CupertinoApp`][]
 constructor.
 
-在 Flutter 中，你能通过提供额外的 `arguments` 给 
-[`Navigator.pushNamed()`][] 方法方便地完成这个任务。
-通过使用 [`ModalRoute.of()`][] 方法或 
-[`MaterialApp`][] 和 [`CupertinoApp`][] 构造器中的 
-[`onGenerateRoute()`][] 来获取参数。
+在 Flutter 中，你能透過提供額外的 `arguments` 給 
+[`Navigator.pushNamed()`][] 方法方便地完成這個任務。
+透過使用 [`ModalRoute.of()`][] 方法或 
+[`MaterialApp`][] 和 [`CupertinoApp`][] 構造器中的 
+[`onGenerateRoute()`][] 來獲取引數。
 
 This recipe demonstrates how to pass arguments to a named
 route and read the arguments using `ModalRoute.of()`
 and `onGenerateRoute()` using the following steps:
 
-这个章节讲解的是如何给特定路由传递参数并使用
-`ModalRoute.of()` 和 `onGenerateRoute()` 来读取参数。
+這個章節講解的是如何給特定路由傳遞引數並使用
+`ModalRoute.of()` 和 `onGenerateRoute()` 來讀取引數。
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Define the arguments you need to pass.
 
-     定义需要传递的参数
+     定義需要傳遞的引數
 
   2. Create a widget that extracts the arguments.
 
-     创建组件来获取参数
+     建立元件來獲取引數
 
   3. Register the widget in the `routes` table.
 
-     把组件注册到路由表中
+     把元件註冊到路由表中
 
   4. Navigate to the widget.
 
-     导航到组件
+     導航到元件
 
 ## 1. Define the arguments you need to pass
 
-## 1. 定义需要传递的参数
+## 1. 定義需要傳遞的引數
 
 First, define the arguments you need to pass to the new route.
 In this example, pass two pieces of data:
 The `title` of the screen and a `message`.
 
-首先，定义需要传递给新路由的参数。
-在这个示例中我们传递了两个数据：页面的标题 `title` 和内容 `message`。
+首先，定義需要傳遞給新路由的引數。
+在這個範例中我們傳遞了兩個資料：頁面的標題 `title` 和內容 `message`。
 
 To pass both pieces of data, create a class that stores this information.
-创建包含 title 和 message 字段的实体类来同时传递这两个数据。
+建立包含 title 和 message 欄位的實體類來同時傳遞這兩個資料。
 
 <?code-excerpt "lib/main.dart (ScreenArguments)"?>
 ```dart
@@ -105,7 +105,7 @@ class ScreenArguments {
 
 ## 2. Create a widget that extracts the arguments
 
-## 2. 创建组件来获取参数
+## 2. 建立元件來獲取引數
 
 Next, create a widget that extracts and displays the
 `title` and `message` from the `ScreenArguments`.
@@ -113,9 +113,9 @@ To access the `ScreenArguments`,
 use the [`ModalRoute.of()`][] method.
 This method returns the current route with the arguments.
 
-接着，创建组件，从 `ScreenArguments` 提取 `title` 和 `message` 参数并展示。
-为了访问 `ScreenArguments`，可以使用 [`ModalRoute.of()`][] 方法。
-这个方法返回的是当前路由及其携带的参数。
+接著，建立元件，從 `ScreenArguments` 提取 `title` 和 `message` 引數並展示。
+為了存取 `ScreenArguments`，可以使用 [`ModalRoute.of()`][] 方法。
+這個方法返回的是當前路由及其攜帶的引數。
 
 <?code-excerpt "lib/main.dart (ExtractArgumentsScreen)"?>
 ```dart
@@ -146,13 +146,13 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
 ## 3. Register the widget in the `routes` table
 
-## 3. 把组件注册到路由表中
+## 3. 把元件註冊到路由表中
 
 Next, add an entry to the `routes` provided to the `MaterialApp` widget. The
 `routes` define which widget should be created based on the name of the route.
 
-然后，在 `MaterialApp` 的路由表 `routes` 中增加一个入口，
-路由表 `routes` 会根据路由的名称来决定需要创建哪个路由。 
+然後，在 `MaterialApp` 的路由表 `routes` 中增加一個入口，
+路由表 `routes` 會根據路由的名稱來決定需要建立哪個路由。 
 
 {% comment %}
 RegEx removes the return statement and adds the closing parenthesis at the end
@@ -170,7 +170,7 @@ MaterialApp(
 
 ## 4. Navigate to the widget
 
-## 4. 导航到组件
+## 4. 導航到元件
 
 Finally, navigate to the `ExtractArgumentsScreen`
 when a user taps a button using [`Navigator.pushNamed()`][].
@@ -178,9 +178,9 @@ Provide the arguments to the route via the `arguments` property. The
 `ExtractArgumentsScreen` extracts the `title` and `message` from these
 arguments.
 
-最后，在用户点击按钮后导航到 `ExtractArgumentsScreen`。
-在 [`Navigator.pushNamed()`][] 方法的 `arguments` 属性里提供需要传递的参数。
-随后，`ExtractArgumentsScreen` 就可以从参数中提取 `title` 和 `message`。
+最後，在使用者點選按鈕後導航到 `ExtractArgumentsScreen`。
+在 [`Navigator.pushNamed()`][] 方法的 `arguments` 屬性裡提供需要傳遞的引數。
+隨後，`ExtractArgumentsScreen` 就可以從引數中提取 `title` 和 `message`。
 
 <?code-excerpt "lib/main.dart (PushNamed)"?>
 ```dart
@@ -208,19 +208,19 @@ ElevatedButton(
 
 ## Alternatively, extract the arguments using `onGenerateRoute`
 
-## 此外，还可以使用 `onGenerateRoute` 提取参数
+## 此外，還可以使用 `onGenerateRoute` 提取引數
 
 Instead of extracting the arguments directly inside the widget, you can also
 extract the arguments inside an [`onGenerateRoute()`][]
 function and pass them to a widget.
 
-除了直接从组件里提取参数，你也可以通过 [`onGenerateRoute()`][] 函数提取参数，
-然后把参数传递给组件。
+除了直接從元件裡提取引數，你也可以透過 [`onGenerateRoute()`][] 函式提取引數，
+然後把引數傳遞給元件。
 
 The `onGenerateRoute()` function creates the correct route based on the given
 [`RouteSettings`][].
 
-`onGenerateRoute()` 函数会基于给定的 [`RouteSettings`][] 来创建正确的路由。
+`onGenerateRoute()` 函式會基於給定的 [`RouteSettings`][] 來建立正確的路由。
 
 {% comment %}
 RegEx removes the return statement, removed "routes" property and adds the closing parenthesis at the end
@@ -266,7 +266,7 @@ MaterialApp(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

@@ -1,6 +1,6 @@
 ---
 title: Drag a UI element
-title: 创建一个可拖放的 UI 组件
+title: 建立一個可拖放的 UI 元件
 description: How to implement a draggable UI element.
 js:
   - defer: true

@@ -1,10 +1,10 @@
 ---
 title: Build a form with validation
-title: 构建一个有验证判断的表单
+title: 建構一個有驗證判斷的表單
 description: How to build a form that validates input.
-description: 如何创建一个能够验证输入内容的表单。
-tags: cookbook, 实用教程, 表格交互
-keywords: 文本框, 验证
+description: 如何建立一個能夠驗證輸入內容的表單。
+tags: cookbook, 實用課程, 表格互動
+keywords: 文字框, 驗證
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -16,7 +16,7 @@ Apps often require users to enter information into a text field.
 For example, you might require users to log in with an email address
 and password combination.
 
-应用程序通常会要求用户在文本框中输入信息。例如，我们可能正在开发一个应用程序，该应用程序就需要用户输入邮箱和密码登录。
+應用程式通常會要求使用者在文字框中輸入資訊。例如，我們可能正在開發一個應用程式，該應用程式就需要使用者輸入郵箱和密碼登入。
 
 To make apps secure and easy to use, check whether the
 information the user has provided is valid. If the user has correctly filled
@@ -24,44 +24,44 @@ out the form, process the information. If the user submits incorrect
 information, display a friendly error message letting them know what went
 wrong.
 
-为了让应用程序更为安全易用，我们通常都需要验证用户输入的信息是否有效。
-如果用户输入了正确的信息，就可以针对该信息进行后续处理。
-如果用户输入了错误的信息，就需要在相关的输入区域展示一条输入信息出错的提示，以便用户更正输入。
+為了讓應用程式更為安全易用，我們通常都需要驗證使用者輸入的資訊是否有效。
+如果使用者輸入了正確的資訊，就可以針對該資訊進行後續處理。
+如果使用者輸入了錯誤的資訊，就需要在相關的輸入區域展示一條輸入資訊出錯的提示，以便使用者更正輸入。
 
 In this example, learn how to add validation to a form that has
 a single text field using the following steps:
 
-你可以通过以下步骤，在下面的例子中学习如何为表单中的文本输入框加入验证判断的功能：
+你可以透過以下步驟，在下面的例子中學習如何為表單中的文字輸入框加入驗證判斷的功能：
 
   1. Create a `Form` with a `GlobalKey`.
      
-     创建表单 `Form`，并以 `GlobalKey` 作为唯一性标识
+     建立表單 `Form`，並以 `GlobalKey` 作為唯一性標識
 
   2. Add a `TextFormField` with validation logic.
 
-     添加带验证逻辑的 `TextFormField` 到表单中
+     新增帶驗證邏輯的 `TextFormField` 到表單中
 
   3. Create a button to validate and submit the form.
      
-     创建按钮以验证和提交表单
+     建立按鈕以驗證和提交表單
 
 ## 1. Create a `Form` with a `GlobalKey`
 
-## 1. 创建表单 `Form`，并以 `GlobalKey` 作为唯一性标识
+## 1. 建立表單 `Form`，並以 `GlobalKey` 作為唯一性標識
 
 First, create a [`Form`][].
 The `Form` widget acts as a container for grouping
 and validating multiple form fields.
 
-首先，我们需要创建一个表单组件 [`Form`][] 作为容器承载和验证多个表单域。
+首先，我們需要建立一個表單元件 [`Form`][] 作為容器承載和驗證多個表單域。
 
 When creating the form, provide a [`GlobalKey`][].
 This uniquely identifies the `Form`,
 and allows validation of the form in a later step.
 
-当我们创建表单 `Form` 的时候，需要提供一个 [`GlobalKey`][]。
-`GlobalKey` 唯一标识了这个表单 `Form`，
-在后续的表单验证步骤中，也起到了关键的作用。
+當我們建立表單 `Form` 的時候，需要提供一個 [`GlobalKey`][]。
+`GlobalKey` 唯一標識了這個表單 `Form`，
+在後續的表單驗證步驟中，也起到了關鍵的作用。
 
 <?code-excerpt "lib/form.dart"?>
 ```dart
@@ -109,15 +109,15 @@ class MyCustomFormState extends State<MyCustomForm> {
   you can use the [`Form.of()`][] method to
   access the form within nested widgets.
   
-  一般情况下，推荐使用 `GlobalKey` 来访问一个表单。
-  嵌套组件且组件树比较复杂的情况下，
-  可以使用 [`Form.of()`][] 方法访问表单。
+  一般情況下，推薦使用 `GlobalKey` 來存取一個表單。
+  巢狀(Nesting)元件且元件樹比較複雜的情況下，
+  可以使用 [`Form.of()`][] 方法存取表單。
 
 {{site.alert.end}}
 
 ## 2. Add a `TextFormField` with validation logic
 
-## 2. 添加带验证逻辑的 `TextFormField` 到表单中
+## 2. 新增帶驗證邏輯的 `TextFormField` 到表單中
 
 Although the `Form` is in place,
 it doesn't have a way for users to enter text.
@@ -125,10 +125,10 @@ That's the job of a [`TextFormField`][].
 The `TextFormField` widget renders a material design text field
 and can display validation errors when they occur.
 
-尽管在前面步骤中，已经创建出表单 `Form` 了，
-但我们此时还需要提供一个 [`TextFormField`][] 让用户输入文本信息。
-`TextFormField` 是遵循 material 设计风格的文本输入框，
-并且能够在输入验证不通过时显示错误提醒。
+儘管在前面步驟中，已經創建出表單 `Form` 了，
+但我們此時還需要提供一個 [`TextFormField`][] 讓使用者輸入文字資訊。
+`TextFormField` 是遵循 material 設計風格的文字輸入框，
+並且能夠在輸入驗證不透過時顯示錯誤提醒。
 
 Validate the input by providing a `validator()` function to the
 `TextFormField`. If the user's input isn't valid,
@@ -136,18 +136,18 @@ the `validator` function returns a `String` containing
 an error message.
 If there are no errors, the validator must return null.
 
-通过给 `TextFormField` 加入 `validator()` 函数可以验证输入是否正确。
-`validator` 函数会校验用户输入的信息，
-如果信息有误，会返回包含出错原因的字符串 `String`。
-如果信息无误，则不返回。
+透過給 `TextFormField` 加入 `validator()` 函式可以驗證輸入是否正確。
+`validator` 函式會校驗使用者輸入的資訊，
+如果資訊有誤，會返回包含出錯原因的字串 `String`。
+如果資訊無誤，則不返回。
 
 For this example, create a `validator` that ensures the
 `TextFormField` isn't empty. If it is empty,
 return a friendly error message.
 
-在下面的实例中，我们会在 `TextFormField` 中加入一个 `validator` 验证函数，
-它的功能是判断用户输入的文本是否为空，
-如果为空，就返回「请输入文本」的友情提示。
+在下面的例項中，我們會在 `TextFormField` 中加入一個 `validator` 驗證函式，
+它的功能是判斷使用者輸入的文字是否為空，
+如果為空，就返回「請輸入文字」的友情提示。
 
 <?code-excerpt "lib/main.dart (TextFormField)"?>
 ```dart
@@ -164,20 +164,20 @@ TextFormField(
 
 ## 3. Create a button to validate and submit the form
 
-## 3. 创建按钮以验证和提交表单
+## 3. 建立按鈕以驗證和提交表單
 
 Now that you have a form with a text field,
 provide a button that the user can tap to submit the information.
 
-在创建完表单以及文本框后，还需要提供一个按钮让用户提交表单。
+在建立完表單以及文字框後，還需要提供一個按鈕讓使用者提交表單。
 
 When the user attempts to submit the form, check if the form is valid.
 If it is, display a success message.
 If it isn't (the text field has no content) display the error message.
 
-当用户提交表单后，我们会预先检查表单信息是否有效。
-如果文本框有内容，表单有效，则会显示正确信息。
-如果文本框没有输入任何内容，表单无效，会在文本框区域展示错误提示。
+當用戶提交表單後，我們會預先檢查表單資訊是否有效。
+如果文字框有內容，表單有效，則會顯示正確資訊。
+如果文字框沒有輸入任何內容，表單無效，會在文字框區域展示錯誤提示。
 
 <?code-excerpt "lib/main.dart (ElevatedButton)" replace="/^child\: //g"?>
 ```dart
@@ -198,16 +198,16 @@ ElevatedButton(
 
 ### How does this work?
 
-### 实现原理
+### 實現原理
 
 To validate the form, use the `_formKey` created in
 step 1. You can use the `_formKey.currentState()`
 method to access the [`FormState`][],
 which is automatically created by Flutter when building a `Form`.
 
-为了验证表单，我们需要使用到步骤 1 中的 `_formKey`。
-使用 `_formKey.currentState()` 方法去访问 [`FormState`][]，
-而 `FormState` 是在创建表单 `Form` 时 Flutter 自动生成的。
+為了驗證表單，我們需要使用到步驟 1 中的 `_formKey`。
+使用 `_formKey.currentState()` 方法去存取 [`FormState`][]，
+而 `FormState` 是在建立表單 `Form` 時 Flutter 自動產生的。
 
 The `FormState` class contains the `validate()` method.
 When the `validate()` method is called, it runs the `validator()`
@@ -216,15 +216,15 @@ If everything looks good, the `validate()` method returns `true`.
 If any text field contains errors, the `validate()` method
 rebuilds the form to display any error messages and returns `false`.
 
-`FormState` 类包含了 `validate()` 方法。当 `validate()` 方法被调用的时候，
-会遍历运行表单中所有文本框的 `validator()` 函数。
-如果所有 `validator()` 函数验证都通过，`validate()` 方法返回 `true`。
-如果有某个文本框验证不通过，就会在那个文本框区域显示错误提示，
-同时 `validate()` 方法返回 `false`。
+`FormState` 類包含了 `validate()` 方法。當 `validate()` 方法被呼叫的時候，
+會遍歷執行表單中所有文字框的 `validator()` 函式。
+如果所有 `validator()` 函式驗證都透過，`validate()` 方法返回 `true`。
+如果有某個文字框驗證不透過，就會在那個文字框區域顯示錯誤提示，
+同時 `validate()` 方法返回 `false`。
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example
@@ -312,14 +312,14 @@ class MyCustomFormState extends State<MyCustomForm> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/form-validation.gif" alt="表单验证示例" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/form-validation.gif" alt="表單驗證範例" class="site-mobile-screenshot" />
 </noscript>
 
 To learn how to retrieve these values, check out the
 [Retrieve the value of a text field][] recipe.
 
-想要了解更多关于如何获取这些值的内容，你可以参考
-[获取文本输入框的值][Retrieve the value of a text field] 部分。
+想要了解更多關於如何獲取這些值的內容，你可以參考
+[獲取文字輸入框的值][Retrieve the value of a text field] 部分。
 
 [Retrieve the value of a text field]: {{site.url}}/cookbook/forms/retrieve-input
 [`Form`]: {{site.api}}/flutter/widgets/Form-class.html

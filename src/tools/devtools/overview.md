@@ -1,19 +1,19 @@
 ---
 title: DevTools
-title: 开发者工具概览
+title: 開發者工具概覽
 description: How to use the DevTools with Flutter.
-description: 学习如何在 Flutter 里使用开发者工具。
+description: 學習如何在 Flutter 裡使用開發者工具。
 ---
 
 ## What is DevTools?
 
-## 开发工具是什么？
+## 開發工具是什麼？
 
 DevTools is a suite of performance and debugging tools
 for Dart and Flutter.
 
-开发工具是一套 Dart 和 Flutter 的性能调试工具。
-目前已经“行进”到 Beta 版本了，但仍在正在持续开发中。
+開發工具是一套 Dart 和 Flutter 的效能除錯工具。
+目前已經“行進”到 Beta 版本了，但仍在正在持續開發中。
 
 ![Dart DevTools Screens]({{site.url}}/assets/images/docs/tools/devtools/dart-devtools.gif){:width="100%"}
 
@@ -25,116 +25,116 @@ the following deep dive and use case walkthrough:
 
 ## What can I do with DevTools?
 
-## 我可以用开发工具来做什么？
+## 我可以用開發工具來做什麼？
 
 Here are some of the things you can do with DevTools:
 
-下面列出了一些可以用开发工具来实现的操作：
+下面列出了一些可以用開發工具來實現的操作：
 
 * Inspect the UI layout and state of a Flutter app.
 
-  检查 Flutter 应用程序的 UI 组件布局和状态；
+  檢查 Flutter 應用程式的 UI 元件佈局和狀態；
 
 * Diagnose UI jank performance issues in a Flutter app.
 
-  在 Flutter 应用程序中诊断 UI 性能过低的问题；
+  在 Flutter 應用程式中診斷 UI 效能過低的問題；
   
 * CPU profiling for a Flutter or Dart app.
 
-  Flutter 和 Dart 应用的 CPU 性能检测；
+  Flutter 和 Dart 應用的 CPU 效能檢測；
 
 * Network profiling for a Flutter app.
 
-  为 Flutter 应用进行网络性能检测；
+  為 Flutter 應用進行網路效能檢測；
 
 * Source-level debugging of a Flutter or Dart app.
 
-  为 Flutter 或 Dart 应用进行源码级的调试；
+  為 Flutter 或 Dart 應用進行原始碼級的除錯；
 
 * Debug memory issues in a Flutter or Dart
   command-line app.
 
-  在 Flutter 或 Dart 命令行应用中测试内存问题；
+  在 Flutter 或 Dart 命令列應用中測試記憶體問題；
 
 * View general log and diagnostics information
   about a running Flutter or Dart
   command-line app.
 
-  查看正在运行的 Flutter 或 Dart 的命令行应用程序相关的常规日志和诊断信息。
+  檢視正在執行的 Flutter 或 Dart 的命令列應用程式相關的常規日誌和診斷資訊。
 
 * Analyze code and app size.
 
-  分析代码和应用的大小
+  分析程式碼和應用的大小
 
 We expect you to use DevTools in conjunction with
 your existing IDE or command-line based development workflow.
 
-我们希望您将开发工具与现有的 IDE 或基于命令行的开发流程结合起来使用。
+我們希望您將開發工具與現有的 IDE 或基於命令列的開發流程結合起來使用。
 
 <a id="install-devtools"></a>
 ## How do I install DevTools?
 
-## 如何安装开发工具？
+## 如何安裝開發工具？
 
 See the [VS Code][], [Android Studio/IntelliJ][], or
 [command line][] pages for installation instructions.
 
-请参考 [VS Code][], [Android Studio/IntelliJ][], 或者
-[命令行][command line] 页面来安装开发工具。
+請參考 [VS Code][], [Android Studio/IntelliJ][], 或者
+[命令列][command line] 頁面來安裝開發工具。
 
 ## Troubleshooting some standard issues
 
-## 一些常见问题的解决方案
+## 一些常見問題的解決方案
 
 **Question**: My app looks janky or stutters.
   How do I fix it?
 
-**问题**: 我的应用程序看起来很卡顿或者有明显的延迟，
-我该如何解决？
+**問題**: 我的應用程式看起來很卡頓或者有明顯的延遲，
+我該如何解決？
 
 **Answer**: Performance issues can cause [UI frames][]
   to be janky and/or slow down some operations.
 
-**解决方案**: 性能问题可能会导致 [UI frames][] 卡顿，
-或者导致某些操作变慢。
+**解決方案**: 效能問題可能會導致 [UI frames][] 卡頓，
+或者導致某些操作變慢。
 
   1. To detect which code impacts concrete late frames,
      start at [Performance > Timeline][].
 
-     从 [性能 > 时间轴][Performance > Timeline] 开始，
-     检测哪些代码影响了具体的延迟帧。
+     從 [效能 > 時間軸][Performance > Timeline] 開始，
+     檢測哪些程式碼影響了具體的延遲幀。
 
   2. To learn which code takes the most CPU time in
      the background, use the [CPU profiler][].
 
-     使用 [CPU profiler][] 来观察和学习
-     哪些代码在后台占用了大量的 CPU 时间。
+     使用 [CPU profiler][] 來觀察和學習
+     哪些程式碼在後台佔用了大量的 CPU 時間。
 
 For more information, check out the
 [Performance][] page.
 
-更多信息，请查阅 [性能][Performance] 页面。
+更多資訊，請查閱 [效能][Performance] 頁面。
 
 **Question**: I see a lot of garbage collection (GC) events occurring.
   Is this a problem?
 
-**问题**: 我看到了很多垃圾回收 (GC) 事件的发生，
-这是一个问题吗？
+**問題**: 我看到了很多垃圾回收 (GC) 事件的發生，
+這是一個問題嗎？
 
 **Answer**: Frequent GC events might display on
   the DevTools > Memory > Memory chart. In most cases,
   it's not a problem.
 
-**解决方案**: 在开发工具 > 内存 > 内存图表中，
-频繁的 GC 事件可能会显示出来。在大多数情况下，
-这个问题不大。
+**解決方案**: 在開發工具 > 記憶體 > 記憶體圖表中，
+頻繁的 GC 事件可能會顯示出來。在大多數情況下，
+這個問題不大。
 
 If your app has frequent background activity with some idle time,
 Flutter might use that opportunity to collect the created objects
 without performance impact.
 
-如果你的应用有频繁的后台活动和一些空闲时间，
-Flutter 可能会利用这个机会来收集创建的对象，而不会影响性能。
+如果你的應用有頻繁的後臺活動和一些空閒時間，
+Flutter 可能會利用這個機會來收集建立的物件，而不會影響效能。
 
 [CPU profiler]: {{site.url}}/tools/devtools/cpu-profiler
 [Performance]: {{site.url}}/perf
@@ -145,30 +145,30 @@ Flutter 可能会利用这个机会来收集创建的对象，而不会影响性
 
 ## Providing feedback
 
-## 提交反馈
+## 提交反饋
 
 Please give DevTools a try, provide feedback, and file issues
 in the [DevTools issue tracker][]. Thanks!
 
-请在 [开发者工具 issue 追踪器][DevTools issue tracker] 中尝试使用开发工具，并提交反馈和文件 issue。
+請在 [開發者工具 issue 追蹤器][DevTools issue tracker] 中嘗試使用開發工具，並提交反饋和檔案 issue。
 
 ## Other resources
 
-## 其他资源
+## 其他資源
 
 For more information on debugging and profiling
 Flutter apps, see the [Debugging][] page and,
 in particular, its list of [other resources][].
 
-关于调试、分析 Flutter 应用程序的更多详细，
-请查阅 [调试][Debugging] 页面，尤其是
-[其他资源][other resources] 列表。
+關於除錯、分析 Flutter 應用程式的更多詳細，
+請查閱 [除錯][Debugging] 頁面，尤其是
+[其他資源][other resources] 列表。
 
 For more information on using DevTools with Dart command-line apps, see the 
 [DevTools documentation on dart.dev]({{site.dart-site}}/tools/dart-devtools).
 
-果你希望知道更多如何在命令行下使用开发者工具 (DevTools) 的话，
-请参考这个页面 [Dart 开发者工具]({{site.dart-site}}/tools/dart-devtools).
+果你希望知道更多如何在命令列下使用開發者工具 (DevTools) 的話，
+請參考這個頁面 [Dart 開發者工具]({{site.dart-site}}/tools/dart-devtools).
 
 [Android Studio/IntelliJ]: {{site.url}}/tools/devtools/android-studio
 [VS Code]: {{site.url}}/tools/devtools/vscode

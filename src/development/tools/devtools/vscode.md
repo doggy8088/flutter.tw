@@ -1,51 +1,51 @@
 ---
 title: Install and run DevTools from VS Code
-title: 在 VS Code 里安装和使用开发者工具
+title: 在 VS Code 裡安裝和使用開發者工具
 description: Learn how to install and use DevTools from VS Code.
-description: 学习如何在 VS Code 里使用开发者工具。
-tags: Flutter开发工具,DevTools
-keywords: 开发者工具,VSCode,IDE,插件安装,启动
+description: 學習如何在 VS Code 裡使用開發者工具。
+tags: Flutter開發工具,DevTools
+keywords: 開發者工具,VSCode,IDE,外掛安裝,啟動
 ---
 
 ## Install the VS Code extensions
 
-## 安装 VS Code 插件
+## 安裝 VS Code 外掛
 
 To use the DevTools from VS Code, you need the [Dart extension][].
 If you're debugging Flutter applications, you should also install
 the [Flutter extension][].
 
-如果你想在 VS Code 中使用开发工具，你就一定需要安装 [Dart 扩展][Dart extension]。
-如果你还想要调试 Flutter 应用程序，那你还应该安装 [Flutter 扩展][Flutter extension]。
+如果你想在 VS Code 中使用開發工具，你就一定需要安裝 [Dart 擴充][Dart extension]。
+如果你還想要除錯 Flutter 應用程式，那你還應該安裝 [Flutter 擴充][Flutter extension]。
 
 ## Start an application to debug
 
-## 进行调试应用程序
+## 進行除錯應用程式
 
 Start a debug session for your application by opening the root
 folder of your project (the one containing `pubspec.yaml`)
 in VS Code and clicking **Run > Start Debugging** (`F5`).
 
-通过在 VS Code 中打开你的项目的根目录
-（包含 `pubspec.yaml`）并点击 **Run > Debugging** (`F5`)，
-来开启调试会话。
+透過在 VS Code 中開啟你的專案的根目錄
+（包含 `pubspec.yaml`）並點選 **Run > Debugging** (`F5`)，
+來開啟除錯會話。
 
 ## Launch DevTools
 
-## 启动开发工具
+## 啟動開發工具
 
 Once the debug session is active and the application has started,
 the **Dart: Open DevTools** command becomes available in the
 VS Code command palette:
 
-一旦调试会话处于活跃且应用程序已开启，那么 VS Code 命令控制板中将会显示 **Dart: Open DevTools**：
+一旦除錯會話處於活躍且應用程式已開啟，那麼 VS Code 命令控制板中將會顯示 **Dart: Open DevTools**：
 
 ![Screenshot showing Open DevTools command]({{site.url}}/assets/images/docs/tools/vs-code/vscode_command.png){:width="100%"}
 
 The first time you run this (and subsequently when the DevTools package
 is updated), you are prompted to activate or upgrade DevTools.
 
-当你第一次运行时（以及未来更新开发工具包时），系统会提醒你激活或升级开发工具。
+當你第一次執行時（以及未來更新開發工具套件時），系統會提醒你啟用或升級開發工具。
 
 ![Screenshot showing Active DevTools command]({{site.url}}/assets/images/docs/tools/vs-code/vscode_install_prompt.png){:width="100%"}
 
@@ -53,7 +53,7 @@ Clicking the **Open** button uses `pub global activate` to activate
 the DevTools package for you. Next, DevTools launches in your browser and
 automatically connects to your debug session.
 
-接下来，开发工具将会在浏览器中启动，并自动连接至你的调试会话。
+接下來，開發工具將會在瀏覽器中啟動，並自動連線至你的除錯會話。
 
 ![Screenshot showing DevTools in a browser]({{site.url}}/assets/images/docs/tools/vs-code/vscode_show_in_browser.png){:width="100%"}
 
@@ -62,9 +62,9 @@ of VS Code. If you've closed the browser tab,
 you can click the status bar to re-launch your browser, so long
 as there's still a suitable Dart/Flutter debugging session available.
 
-当开发工具激活后，你将可以在 VS Code 的状态栏中看到它们。
-如果你已关闭浏览器选项卡，只要还有可用的 Dart/Flutter 调试会话，
-你也可以通过单击状态栏来重新启动浏览器。
+當開發工具啟用後，你將可以在 VS Code 的狀態列中看到它們。
+如果你已關閉瀏覽器選項卡，只要還有可用的 Dart/Flutter 除錯會話，
+你也可以透過單擊狀態列來重新啟動瀏覽器。
 
 ![Screenshot showing DevTools in the VS Code status bar]({{site.url}}/assets/images/docs/tools/vs-code/vscode_status_bar.png){:width="100%"}
 

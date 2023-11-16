@@ -1,10 +1,10 @@
 ---
 title: Using the Memory view
-title: 使用内存视图 (Memory view)
+title: 使用記憶體檢視 (Memory view)
 description: Learn how to use the DevTools memory view.
-description: 学习如何使用开发者工具的内容视图。
-tags: Flutter开发工具,DevTools
-keywords: 开发者工具,内存视图,Dart
+description: 學習如何使用開發者工具的內容檢視。
+tags: Flutter開發工具,DevTools
+keywords: 開發者工具,記憶體檢視,Dart
 ---
 
 The memory view provides insights into details

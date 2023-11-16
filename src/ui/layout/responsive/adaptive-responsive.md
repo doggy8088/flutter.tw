@@ -1,24 +1,24 @@
 ---
 title: Creating responsive and adaptive apps
-title: 创建响应式和自适应的应用
+title: 建立響應式和自適應的應用
 description: It's important to create apps, whether for mobile or web, so that they are responsive to size and orientation changes.
-description: 创建用于移动端和 Web 的应用非常重要，它们能够响应尺寸和旋转方向的变化。
-short-title: 响应式且自适应
+description: 建立用於移動端和 Web 的應用非常重要，它們能夠響應尺寸和旋轉方向的變化。
+short-title: 響應式且自適應
 ---
 
 One of Flutter's primary goals is to create a framework
 that allows you to develop apps from a single codebase
 that look and feel great on any platform.
 
-Flutter 的首要目标，是构建一个可以使用单一代码来源，
-开发在所有平台上都有着良好的视觉和体验的应用的框架。
+Flutter 的首要目標，是建構一個可以使用單一程式碼來源，
+開發在所有平臺上都有著良好的視覺和體驗的應用的框架。
 
 This means that your app might appear on screens of
 many different sizes, from a watch, to a foldable
 phone with two screens, to a high def monitor.
 
-这意味着你的应用可能会在不同大小的屏幕上使用，
-从智能手表，到可折叠的双屏设备，再到高清显示器。
+這意味著你的應用可能會在不同大小的螢幕上使用，
+從智慧手錶，到可摺疊的雙屏裝置，再到高畫質顯示器。
 
 Two terms that describe concepts for this
 scenario are _adaptive_ and _responsive_. Ideally,
@@ -26,22 +26,22 @@ you'd want your app to be _both_ but what,
 exactly, does this mean?
 These terms are similar, but they are not the same.
 
-通常这样的考量被分为两种概念：**自适应** 和 **响应式**。
-理想条件下，你的应用应该两者兼具，但是它们究竟代表了什么？
-这两种概念有些类似，但并不是同一种含义。
+通常這樣的考量被分為兩種概念：**自適應** 和 **響應式**。
+理想條件下，你的應用應該兩者兼具，但是它們究竟代表了什麼？
+這兩種概念有些類似，但並不是同一種含義。
 
 ## The difference between an adaptive and a responsive app
 
-## 自适应应用和响应式应用的区别
+## 自適應應用和響應式應用的區別
 
 _Adaptive_ and _responsive_ can be viewed as separate
 dimensions of an app: you can have an adaptive app
 that is not responsive, or vice versa. And, of course,
 an app can be both, or neither.
 
-**自适应** 和 **响应式** 可以看作应用里的两种维度：
-你的应用可能是自适应的，但不是响应式的，又或是反行其道。
-当然，你的应用可能既自适应又为响应式，也可能两者均未实现。
+**自適應** 和 **響應式** 可以看作應用裡的兩種維度：
+你的應用可能是自適應的，但不是響應式的，又或是反行其道。
+當然，你的應用可能既自適應又為響應式，也可能兩者均未實現。
 
 **Responsive**
 <br> Typically, a _responsive_ app has had its layout
@@ -53,11 +53,11 @@ an app can be both, or neither.
   from a watch, phone, tablet, to a laptop or
   desktop computer.
 
-**响应式**
-<br> 通常来说，一个 **响应式** 应用的布局会根据可用的屏幕大小而调整。
-  常见的场景是在用户重新调整窗口大小或旋转屏幕时，重新布局 UI。
-  对于需要在多种设备（手表、手机、平板、笔记本或台式机）上运行的应用而言，
-  这是必要的要素。
+**響應式**
+<br> 通常來說，一個 **響應式** 應用的佈局會根據可用的螢幕大小而調整。
+  常見的場景是在使用者重新調整視窗大小或旋轉螢幕時，重新佈局 UI。
+  對於需要在多種裝置（手錶、手機、平板、筆記本或桌上型電腦）上執行的應用而言，
+  這是必要的要素。
 
 **Adaptive**
 <br> _Adapting_ an app to run on different device types,
@@ -70,25 +70,25 @@ an app can be both, or neither.
   using platform-specific features (such as
   top-level windows), and more.
 
-**自适应**
-<br> 应用以 **自适应** 的方式在不同的设备上（移动端和桌面端）运行，
-  需要同时处理鼠标、键盘和触控输入。
-  这也意味着应用的视觉密度、组件的选择（层级菜单或底部抽屉）、
-  平台特定的行为（例如置顶的窗口）等内容将在不同的平台上有一定的差异。
+**自適應**
+<br> 應用以 **自適應** 的方式在不同的裝置上（移動端和桌面端）執行，
+  需要同時處理滑鼠、鍵盤和觸控輸入。
+  這也意味著應用的視覺密度、元件的選擇（層級選單或底部抽屜）、
+  平台特定的行為（例如置頂的視窗）等內容將在不同的平臺上有一定的差異。
 
 ## Creating a responsive Flutter app
 
-## 构建一个响应式的 Flutter 应用
+## 建構一個響應式的 Flutter 應用
 
 Flutter allows you to create apps that self-adapt
 to the device's screen size and orientation.
 
-Flutter 让你能够构建自动适配屏幕大小和旋转方向的应用。
+Flutter 讓你能夠建構自動適配螢幕大小和旋轉方向的應用。
 
 There are two basic approaches to creating Flutter
 apps with responsive design:
 
-构建响应式设计的 Flutter 应用，有以下两种较为基础的方式：
+建構響應式設計的 Flutter 應用，有以下兩種較為基礎的方式：
 
 **Use the [`LayoutBuilder`][] class**
 <br> From its [`builder`][] property, you get a
@@ -104,15 +104,15 @@ apps with responsive design:
   the user rotates the phone, or puts your app into a tile UI
   on Android), the build function runs.
 
-**使用 [`LayoutBuilder`][] 类**
-<br> 通过它的 [`builder`][] 属性，你可以得到一个 [`BoxConstraints`][] 对象。
-  你可以检查约束里的属性，来决定如何进行显示。
-  例如，如果约束里的 [`maxWidth`][] 超过了你的宽度分界点，
-  你可以返回一个 [`Scaffold`][]，它包含一列内容，左侧是一个列表。
-  如果约束更小，则返回一个列表在抽屉里的 [`Scaffold`][]。
-  你也可以根据你的设备高度、屏幕的比例或者其他的属性，来调整你的显示。
-  当约束改变时（例如用户旋转了手机，或是在 Android 上将应用放置到 tile UI 中）
-  构建方法会运行。
+**使用 [`LayoutBuilder`][] 類**
+<br> 透過它的 [`builder`][] 屬性，你可以得到一個 [`BoxConstraints`][] 物件。
+  你可以檢查約束裡的屬性，來決定如何進行顯示。
+  例如，如果約束裡的 [`maxWidth`][] 超過了你的寬度分界點，
+  你可以返回一個 [`Scaffold`][]，它包含一列內容，左側是一個列表。
+  如果約束更小，則返回一個列表在抽屜裡的 [`Scaffold`][]。
+  你也可以根據你的裝置高度、螢幕的比例或者其他的屬性，來調整你的顯示。
+  當約束改變時（例如使用者旋轉了手機，或是在 Android 上將應用放置到 tile UI 中）
+  建構方法會執行。
 
 **Use the [`MediaQuery.of()`][] method in your build functions**
 <br> This gives you the size, orientation, etc, of your current app.
@@ -121,15 +121,15 @@ apps with responsive design:
   widget. Again, if you use this, then your build function automatically
   runs if the user somehow changes the app's size.
 
-**在构建方法中使用 [`MediaQuery.of()`][] 方法**
-<br> 这个方法可以获取到当前应用（基于上下文）的尺寸、旋转方向等信息。
-  如果你需要基于完整的上下文信息进行布局决策，
-  而不是基于特定的 widget，这个方法将非常有用。
-  同样的，如果应用的尺寸发生了改变，构建方法也会自动执行。
+**在建構方法中使用 [`MediaQuery.of()`][] 方法**
+<br> 這個方法可以獲取到當前應用（基於上下文）的尺寸、旋轉方向等資訊。
+  如果你需要基於完整的上下文資訊進行佈局決策，
+  而不是基於特定的 widget，這個方法將非常有用。
+  同樣的，如果應用的尺寸發生了改變，建構方法也會自動執行。
 
 Other useful widgets and classes for creating a responsive UI:
 
-以下是其他有助于构建响应式界面的 widget：
+以下是其他有助於建構響應式介面的 widget：
 
 * [`AspectRatio`][]
 * [`CustomSingleChildLayout`][]
@@ -143,37 +143,37 @@ Other useful widgets and classes for creating a responsive UI:
 
 ### Other resources
 
-### 更多资源
+### 更多資源
 
 For more information, here are a few resources,
 including contributions from the Flutter community:
 
-想了解更多信息，以下是一些来自社区贡献的资源：
+想了解更多資訊，以下是一些來自社群貢獻的資源：
 
 * [Developing for Multiple Screen Sizes and Orientations in
   Flutter][] by Deven Joshi
 
-  [使用 Flutter 开发兼顾多种屏幕尺寸和旋转的应用][Developing
+  [使用 Flutter 開發兼顧多種螢幕尺寸和旋轉的應用][Developing
   for Multiple Screen Sizes and Orientations in Flutter]，
-  由 Deven Joshi 撰写
+  由 Deven Joshi 撰寫
 
 * [Build Responsive UIs in Flutter][] by Raouf Rahiche
 
-  [使用 Flutter 构建响应式界面][Build Responsive UIs in Flutter]，
-  由 Raouf Rahiche 撰写
+  [使用 Flutter 建構響應式介面][Build Responsive UIs in Flutter]，
+  由 Raouf Rahiche 撰寫
 
 * [Making Cross-platform Flutter Landing Page Responsive][]
   by Priyanka Tyagi
 
-  [构建响应式的 Flutter 跨平台的登录页][Making Cross-platform
-  Flutter Landing Page Responsive]，由 Priyanka Tyagi 撰写
+  [建構響應式的 Flutter 跨平臺的登入頁][Making Cross-platform
+  Flutter Landing Page Responsive]，由 Priyanka Tyagi 撰寫
 
 * [How to make flutter app responsive according to different screen
   size?][], a question on StackOverflow
 
-  [如何根据不同的屏幕大小构建响应式的 Flutter 应用？][How to make
+  [如何根據不同的螢幕大小建構響應式的 Flutter 應用？][How to make
   flutter app responsive according to different screen size?]，
-  在 StackOverflow 上的一个问题。
+  在 StackOverflow 上的一個問題。
 
 [`AspectRatio`]: {{site.api}}/flutter/widgets/AspectRatio-class.html
 [`BoxConstraints`]: {{site.api}}/flutter/rendering/BoxConstraints-class.html
@@ -197,18 +197,18 @@ including contributions from the Flutter community:
 
 ## Creating an adaptive Flutter app
 
-## 创建自适应的 Flutter 应用
+## 建立自適應的 Flutter 應用
 
 Learn more about creating an adaptive Flutter app with
 [Building adaptive apps][], written by the gskinner team.
 
-你可以阅读由 gskinner 团队撰写的 [构建自适应的应用][Building adaptive apps]
-了解更多关于构建自适应应用的内容。
+你可以閱讀由 gskinner 團隊撰寫的 [建構自適應的應用][Building adaptive apps]
+瞭解更多關於建構自適應應用的內容。
 
 You might also check out the following episodes
 of The Boring Show:
 
-你也可以观看下面几期关于自适应布局的 The Boring Show：
+你也可以觀看下面幾期關於自適應佈局的 The Boring Show：
 
 <iframe style="max-width: 100%" width="560" height="315" src="{{site.youtube-site}}/embed/n6Awpg1MO6M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 [Adaptive layouts][]
@@ -220,42 +220,42 @@ For an excellent example of an adaptive app,
 check out Flutter Folio, a scrapbooking app created 
 in collaboration with gskinner and the Flutter team:
 
-想要尝试精美的自适应应用，可以下载由 gskinner 和 Flutter
-团队共建的剪贴板应用 Flutter Folio：
+想要嘗試精美的自適應應用，可以下載由 gskinner 和 Flutter
+團隊共建的剪貼簿應用 Flutter Folio：
 
 <iframe style="max-width: 100%" width="560" height="315" src="{{site.youtube-site}}/embed/yytBENOnF0w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 The [Folio source code][] is also available on GitHub.
 Learn more on the [gskinner blog][].
 
-[Folio 应用的源代码][Folio source code] 也可以在 GitHub 找到，
-你可以阅读 [gskinner 的博客][gskinner blog] 了解更多内容。
+[Folio 應用的原始碼][Folio source code] 也可以在 GitHub 找到，
+你可以閱讀 [gskinner 的部落格][gskinner blog] 瞭解更多內容。
 
 ### Other resources
 
-### 更多资源
+### 更多資源
 
 You can learn more about creating platform adaptive apps
 in the following resources:
 
-你可以在以下的资源中了解更多关于如何构建自适应平台应用的内容：
+你可以在以下的資源中瞭解更多關於如何建構自適應平台應用的內容：
 
 * [Platform-specific behaviors and adaptations][], a page on this site.
 
-  [不同平台操作体验的差异和适配][Platform-specific behaviors and adaptations]，
-  站内的另一篇文档。
+  [不同平台操作體驗的差異和適配][Platform-specific behaviors and adaptations]，
+  站內的另一篇文件。
 
 * [Designing truly adaptive user interfaces][] a blog post and video by
   Aloïs Deniel, presented at the Flutter Vikings 2020 conference.
 
-  [设计真正能够自适应的用户交互][Designing truly adaptive user interfaces]，
-  由 Aloïs Deniel 在 2020 年的 FlutterViking 会议上发布的文章和视频。
+  [設計真正能夠自適應的使用者互動][Designing truly adaptive user interfaces]，
+  由 Aloïs Deniel 在 2020 年的 FlutterViking 會議上釋出的文章和影片。
 
 * The [Flutter gallery app][] ([repo][]) has been written as an
   adaptive app.
 
-  以自适应应用为目标编写的
-  [Flutter Gallery 应用][Flutter gallery app]（[源代码仓库][repo]）。
+  以自適應應用為目標編寫的
+  [Flutter Gallery 應用][Flutter gallery app]（[原始碼儲存庫][repo]）。
 
 [Adaptive layouts]: {{site.youtube-site}}/watch?v=n6Awpg1MO6M&t=694s
 [Adaptive layouts, part 2]: {{site.youtube-site}}/watch?v=eikOZzfc0l4&t=11s

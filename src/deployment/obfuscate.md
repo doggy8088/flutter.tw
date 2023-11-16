@@ -1,17 +1,17 @@
 ---
 title: Obfuscating Dart code
-title: 混淆 Dart 代码
+title: 混淆 Dart 程式碼
 description: How to remove function and class names from your Dart binary.
-description: 如何移除你的 Dart 库中的方法名和类名。
-tags: 发布, Dart
-keywords: 代码混淆,保护
+description: 如何移除你的 Dart 庫中的方法名和類別名稱。
+tags: 釋出, Dart
+keywords: 程式碼混淆,保護
 ---
 
 <?code-excerpt path-base="deployment/obfuscate"?>
 
 ## What is code obfuscation?
 
-## 什么是代码混淆？
+## 什麼是程式碼混淆？
 
 [Code obfuscation][] is the process of modifying an
 app's binary to make it harder for humans to understand.
@@ -20,51 +20,51 @@ compiled Dart code, replacing each symbol with
 another symbol, making it difficult for an attacker
 to reverse engineer your proprietary app.
 
-[代码混淆][Code obfuscation] 是一种将应用程序二进制文件转换为功能上等价，
-但人类难于阅读和理解的行为。
-在编译 Dart 代码时，混淆会隐藏函数和类的名称，
-并用其他符号替代每个符号，从而使攻击者难以进行逆向工程。
+[程式碼混淆][Code obfuscation] 是一種將應用程式二進位制檔案轉換為功能上等價，
+但人類難於閱讀和理解的行為。
+在編譯 Dart 程式碼時，混淆會隱藏函式和類別的名稱，
+並用其他符號替代每個符號，從而使攻擊者難以進行逆向工程。
 
 **Flutter's code obfuscation works
 only on a [release build][].**
 
-**Flutter 的代码混淆功能仅在 [生产构建][release build] 上生效。**
+**Flutter 的程式碼混淆功能僅在 [生產建構][release build] 上生效。**
 
 [Code obfuscation]: https://en.wikipedia.org/wiki/Obfuscation_(software)
 [release build]: {{site.url}}/testing/build-modes#release
 
 ## Limitations
 
-## 局限性
+## 侷限性
 
 Note that obfuscating your code does _not_
 encrypt resources nor does it protect against
 reverse engineering.
 It only renames symbols with more obscure names.
 
-请注意，混淆你的代码并 **不会** 加密资源，
+請注意，混淆你的程式碼並 **不會** 加密資源，
 也不能防止逆向工程。
-它只是用更晦涩的名称重命名这些符号。
+它只是用更晦澀的名稱重新命名這些符號。
 
 {{site.alert.info}}
 
   It is a **poor security practice** to
   store secrets in an app.
 
-  在应用程序中存储重要私密的信息（如密码、密钥等）
-  是一种 **非常不安全的做法**。
+  在應用程式中儲存重要私密的資訊（如密碼、金鑰等）
+  是一種 **非常不安全的做法**。
 
 {{site.alert.end}}
 
 ## Supported targets
 
-## 支持的构建目标
+## 支援的建構目標
 
 The following build targets
 support the obfuscation process
 described on this page:
 
-以下构建目标支持本篇介绍的混淆过程：
+以下建構目標支援本篇介紹的混淆過程：
 
 * `aar`
 * `apk`
@@ -85,10 +85,10 @@ described on this page:
   the web compiler minifies the app. To learn more,
   see [Build and release a web app][].
 
-  Web 应用不支持混淆。
-  因为当你构建 Flutter Web 应用发布版本时，
-  Web 应用已经经过了 [压缩][minified] 处理。
-  Web 压缩提供了与混淆相似的效果。
+  Web 應用不支援混淆。
+  因為當你建構 Flutter Web 應用釋出版本時，
+  Web 應用已經經過了 [壓縮][minified] 處理。
+  Web 壓縮提供了與混淆相似的效果。
 
 {{site.alert.end}}
 
@@ -97,7 +97,7 @@ described on this page:
 
 ## Obfuscate your app
 
-## 混淆你的应用程序
+## 混淆你的應用程式
 
 To obfuscate your app, use the `flutter build` command
 in release mode
@@ -107,12 +107,12 @@ where Flutter outputs debug files.
 In the case of obfuscation, it outputs a symbol map.
 For example:
 
-要混淆你的应用程序，
-请在 release 模式下使用 `flutter build` 命令，
-并使用 `--obfuscate` 和 `--split-debug-info` 选项。
-`--split-debug-info` 选项指定了 Flutter 输出调试文件的目录。
-在混淆的情况下，它会输出一个符号表。
-请参考以下命令：
+要混淆你的應用程式，
+請在 release 模式下使用 `flutter build` 命令，
+並使用 `--obfuscate` 和 `--split-debug-info` 選項。
+`--split-debug-info` 選項指定了 Flutter 輸出除錯檔案的目錄。
+在混淆的情況下，它會輸出一個符號表。
+請參考以下命令：
 
 ```terminal
 $ flutter build apk --obfuscate --split-debug-info=/<project-name>/<directory>
@@ -122,10 +122,10 @@ Once you've obfuscated your binary, **save
 the symbols file**. You need this if you later
 want to de-obfuscate a stack trace.
 
-一旦你混淆了二进制文件，
-请务必 **保存符号表文件**。
-如果你将来需要解析混淆后的堆栈跟踪，
-你将需要该文件。
+一旦你混淆了二進位制檔案，
+請務必 **儲存符號表檔案**。
+如果你將來需要解析混淆後的堆疊追蹤，
+你將需要該檔案。
 
 {{site.alert.tip}}
 
@@ -133,10 +133,10 @@ want to de-obfuscate a stack trace.
   to extract Dart program symbols, reducing code size.
   To learn more about app size, see [Measuring your app's size][].
 
-  `--split-debug-info` 选项也可以不使用 `--obfuscate` 来提取 Dart 程序符号，
-  以减少代码体积。
-  想了解更多关于应用体积的信息，
-  请查阅 [测量你的应用体积][Measuring your app's size]。
+  `--split-debug-info` 選項也可以不使用 `--obfuscate` 來提取 Dart 程式符號，
+  以減少程式碼體積。
+  想了解更多關於應用體積的資訊，
+  請查閱 [測量你的應用體積][Measuring your app's size]。
 
 {{site.alert.end}}
 
@@ -145,8 +145,8 @@ want to de-obfuscate a stack trace.
 For detailed information on these flags, run
 the help command for your specific target, for example:
 
-关于这些标志的详细信息，
-请运行特定构建目标类型的帮助命令，
+關於這些標誌的詳細資訊，
+請執行特定建構目標型別的幫助命令，
 例如：
 
 ```terminal
@@ -156,32 +156,32 @@ $ flutter build apk -h
 If these flags are not listed in the output,
 run `flutter --version` to check your version of Flutter.
 
-如果输出中没有列出这些标志，
-请运行 `flutter --version` 命令，检查你的 Flutter 版本。
+如果輸出中沒有列出這些標誌，
+請執行 `flutter --version` 命令，檢查你的 Flutter 版本。
 
 ## Read an obfuscated stack trace
 
-## 读取混淆的堆栈跟踪
+## 讀取混淆的堆疊追蹤
 
 To debug a stack trace created by an obfuscated app,
 use the following steps to make it human readable:
 
-如果你需要调试被混淆的应用程序创建的堆栈跟踪，
-请遵循以下步骤将其解析为人类可读的内容：
+如果你需要除錯被混淆的應用程式建立的堆疊追蹤，
+請遵循以下步驟將其解析為人類可讀的內容：
 
 1. Find the matching symbols file.
    For example, a crash from an Android arm64
    device would need `app.android-arm64.symbols`.
 
-   找到与应用程序匹配的符号文件。
-   例如，在 Android arm64 设备崩溃时，
-   需要 `app.android-arm64.symbols` 文件。
+   找到與應用程式匹配的符號檔案。
+   例如，在 Android arm64 裝置崩潰時，
+   需要 `app.android-arm64.symbols` 檔案。
 
 1. Provide both the stack trace (stored in a file)
    and the symbols file to the `flutter symbolize` command.
    For example:
 
-   向 `flutter symbolize` 命令提供堆栈跟踪（存储在文件中）和符号文件。
+   向 `flutter symbolize` 命令提供堆疊追蹤（儲存在檔案中）和符號檔案。
    例如：
 
    ```terminal
@@ -191,8 +191,8 @@ use the following steps to make it human readable:
    For more information on the `symbolize` command,
    run `flutter symbolize -h`.
 
-   关于 `symbolize` 命令的更多信息，
-   请运行 `flutter symbolize -h` 命令。
+   關於 `symbolize` 命令的更多資訊，
+   請執行 `flutter symbolize -h` 命令。
 
 ## Read an obfuscated name
 
@@ -215,21 +215,21 @@ use the following steps:
 
 ## Caveat
 
-## 注意事项
+## 注意事項
 
 Be aware of the following when coding an app that will
 eventually be an obfuscated binary.
 
-当你打算将二进制的应用程序进行混淆时，
-需要注意以下内容：
+當你打算將二進位制的應用程式進行混淆時，
+需要注意以下內容：
 
 * Code that relies on matching specific class, function,
   or library names will fail.
   For example, the following call to `expect()` won't
   work in an obfuscated binary:
 
-  使用匹配特定的类、函数或库名的代码将会失效。
-  例如，以下在混淆的二进制文件中对 `expect()` 的调用就不会工作：
+  使用匹配特定的類、函式或庫名的程式碼將會失效。
+  例如，以下在混淆的二進位制檔案中對 `expect()` 的呼叫就不會工作：
 
 <?code-excerpt "lib/main.dart (Expect)"?>
 ```dart

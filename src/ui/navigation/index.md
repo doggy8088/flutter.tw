@@ -1,10 +1,10 @@
 ---
 title: Navigation and routing
-title: 路由和导航
+title: 路由和導航
 description: Overview of Flutter's navigation and routing features
-description: Flutter路由和导航的概览。
-tags: 用户界面,Flutter UI,布局
-keywords: 路由和导航
+description: Flutter路由和導航的概覽。
+tags: 使用者介面,Flutter UI,佈局
+keywords: 路由和導航
 ---
 
 Flutter provides a complete system for navigating between screens and handling

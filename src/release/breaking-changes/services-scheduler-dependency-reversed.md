@@ -1,8 +1,8 @@
 ---
 title: Reversing the dependency between the scheduler and services layer
-title: 反转 scheduler 与 services layer 的依赖关系
+title: 反轉 scheduler 與 services layer 的依賴關係
 description: The services layer now depends on the scheduler layer.
-description: services layer 现在依赖于 scheduler layer。
+description: services layer 現在依賴於 scheduler layer。
 ---
 
 ## Summary

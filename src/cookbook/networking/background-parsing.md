@@ -1,10 +1,10 @@
 ---
 title: Parse JSON in the background
-title: 在后台处理 JSON 数据解析
+title: 在後台處理 JSON 資料解析
 description: How to perform a task in the background.
-description: 如何在后台执行任务。
-tags: cookbook, 实用教程, 网络请求
-keywords: json,后台任务,调度,fps,卡顿
+description: 如何在後台執行任務。
+tags: cookbook, 實用課程, 網路請求
+keywords: json,後臺任務,排程,fps,卡頓
 ---
 
 <?code-excerpt path-base="cookbook/networking/background_parsing/"?>
@@ -14,18 +14,18 @@ In many cases, this model simplifies coding and is fast enough
 that it does not result in poor app performance or stuttering animations,
 often called "jank."
 
-Dart 应用通常只会在单线程中处理它们的工作。
-并且在大多数情况中，
-这种模式不但简化了代码而且速度也够快，
-基本不会出现像动画卡顿以及性能不足这种「不靠谱」的问题。
+Dart 應用通常只會在單執行緒中處理它們的工作。
+並且在大多數情況中，
+這種模式不但簡化了程式碼而且速度也夠快，
+基本不會出現像動畫卡頓以及效能不足這種「不靠譜」的問題。
 
 However, you might need to perform an expensive computation,
 such as parsing a very large JSON document.
 If this work takes more than 16 milliseconds,
 your users experience jank.
 
-但是，当你需要进行一个非常复杂的计算时，例如解析一个巨大的 JSON 文档。
-如果这项工作耗时超过了 16 毫秒，那么你的用户就会感受到掉帧。
+但是，當你需要進行一個非常複雜的計算時，例如解析一個巨大的 JSON 文件。
+如果這項工作耗時超過了 16 毫秒，那麼你的使用者就會感受到掉幀。
 
 To avoid jank, you need to perform expensive computations
 like this in the background.
@@ -33,46 +33,46 @@ On Android, this means scheduling work on a different thread.
 In Flutter, you can use a separate [Isolate][].
 This recipe uses the following steps:
 
-为了避免掉帧，像上面那样消耗性能的计算就应该放在后台处理。
-在 Android 平台上，这意味着你需要在不同的线程中进行调度工作。
-而在 Flutter 中，你可以使用一个单独的 [Isolate][]。
+為了避免掉幀，像上面那樣消耗效能的計算就應該放在後台處理。
+在 Android 平臺上，這意味著你需要在不同的執行緒中進行排程工作。
+而在 Flutter 中，你可以使用一個單獨的 [Isolate][]。
 
 ## Directions
 
-## 使用步骤
+## 使用步驟
 
   1. Add the `http` package.
 
-     添加 `http` 这个 package；
+     新增 `http` 這個 package；
 
   2. Make a network request using the `http` package.
 
-     使用 `http` package 发起一个网络请求；
+     使用 `http` package 發起一個網路請求；
 
   3. Convert the response into a list of photos.
 
-     将响应转换成一列照片；
+     將響應轉換成一列照片；
 
   4. Move this work to a separate isolate.
 
-     将这个工作移交给一个单独的 isolate。
+     將這個工作移交給一個單獨的 isolate。
 
 ## 1. Add the `http` package
 
-## 1. 添加 `http` 包
+## 1. 新增 `http` 包
 
 First, add the [`http`][] package to your project.
 The `http` package makes it easier to perform network
 requests, such as fetching data from a JSON endpoint.
 
-首先，在你的项目中添加 [`http`][] 这个 package，
-`http` package 会让网络请求变的像从 JSON 端点获取数据一样简单。
+首先，在你的專案中新增 [`http`][] 這個 package，
+`http` package 會讓網路請求變的像從 JSON 端點獲取資料一樣簡單。
 
 To add the `http` package as a dependency,
 run `flutter pub add`:
 
-要将 `http` package 添加为依赖项，
-请运行 `flutter pub add`：
+要將 `http` package 新增為依賴項，
+請執行 `flutter pub add`：
 
 ```terminal
 $ flutter pub add http
@@ -80,16 +80,16 @@ $ flutter pub add http
 
 ## 2. Make a network request
 
-## 2. 发起一个网络请求
+## 2. 發起一個網路請求
 
 This example covers how to fetch a large JSON document
 that contains a list of 5000 photo objects from the
 [JSONPlaceholder REST API][],
 using the [`http.get()`][] method.
 
-在这个例子中，你将会使用 [`http.get()`][] 方法通过
-[JSONPlaceholder REST API][] 获取到一个包含
-5000 张图片对象的超大 JSON 文档。
+在這個例子中，你將會使用 [`http.get()`][] 方法透過
+[JSONPlaceholder REST API][] 獲取到一個包含
+5000 張圖片物件的超大 JSON 文件。
 
 <?code-excerpt "lib/main_step2.dart (fetchPhotos)"?>
 ```dart
@@ -103,34 +103,34 @@ Future<http.Response> fetchPhotos(http.Client client) async {
   You're providing an `http.Client` to the function in this example.
   This makes the function easier to test and use in different environments.
 
-  在这个例子中你需要给方法添加了一个 `http.Client` 参数。
-  这将使得该方法测试起来更容易同时也可以在不同环境中使用。
+  在這個例子中你需要給方法添加了一個 `http.Client` 引數。
+  這將使得該方法測試起來更容易同時也可以在不同環境中使用。
 {{site.alert.end}}
 
 ## 3. Parse and convert the JSON into a list of photos
 
-## 3. 解析并将 json 转换成一列图片
+## 3. 解析並將 json 轉換成一列圖片
 
 Next, following the guidance from the
 [Fetch data from the internet][] recipe,
 convert the `http.Response` into a list of Dart objects.
 This makes the data easier to work with.
 
-接下来，根据 [获取网络数据][Fetch data from the internet] 的说明，
-为了让接下来的数据处理更简单，
-你需要将 `http.Response` 转换成一列 Dart 对象。
+接下來，根據 [獲取網路資料][Fetch data from the internet] 的說明，
+為了讓接下來的資料處理更簡單，
+你需要將 `http.Response` 轉換成一列 Dart 物件。
 
 ### Create a `Photo` class
 
-### 创建一个 `Photo` 类
+### 建立一個 `Photo` 類
 
 First, create a `Photo` class that contains data about a photo.
 Include a `fromJson()` factory method to make it easy to create a
 `Photo` starting with a JSON object.
 
-首先，创建一个包含图片数据的 `Photo` 类。
-还需要一个 `fromJson` 的工厂方法，
-使得通过 json 创建 `Photo` 变的更加方便。
+首先，建立一個包含圖片資料的 `Photo` 類別。
+還需要一個 `fromJson` 的工廠方法，
+使得透過 json 建立 `Photo` 變的更加方便。
 
 <?code-excerpt "lib/main_step3.dart (Photo)"?>
 ```dart
@@ -163,19 +163,19 @@ class Photo {
 
 ### Convert the response into a list of photos
 
-### 将响应转换成一列图片
+### 將響應轉換成一列圖片
 
 Now, use the following instructions to update the
 `fetchPhotos()` function so that it returns a
 `Future<List<Photo>>`:
 
-现在，为了让 `fetchPhotos()` 方法可以返回一个
-`Future<List<Photo>>`，我们需要以下两点更新：
+現在，為了讓 `fetchPhotos()` 方法可以返回一個
+`Future<List<Photo>>`，我們需要以下兩點更新：
 
   1. Create a `parsePhotos()` function that converts the response
      body into a `List<Photo>`.
 
-     创建一个可以将响应体转换成 `List<Photo>` 的方法：`parsePhotos()` 
+     建立一個可以將回應內文轉換成 `List<Photo>` 的方法：`parsePhotos()` 
   
   2. Use the `parsePhotos()` function in the `fetchPhotos()` function.
 
@@ -202,15 +202,15 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
 
 ## 4. Move this work to a separate isolate
 
-## 4. 将这部分工作移交到单独的 isolate 中
+## 4. 將這部分工作移交到單獨的 isolate 中
 
 If you run the `fetchPhotos()` function on a slower device,
 you might notice the app freezes for a brief moment as it parses and
 converts the JSON. This is jank, and you want to get rid of it.
 
-如果你在一台很慢的手机上运行 `fetchPhotos()` 函数，
-你或许会注意到应用会有点卡顿，因为它需要解析并转换 json。
-显然这并不好，所以你要避免它。
+如果你在一臺很慢的手機上執行 `fetchPhotos()` 函式，
+你或許會注意到應用會有點卡頓，因為它需要解析並轉換 json。
+顯然這並不好，所以你要避免它。
 
 You can remove the jank by moving the parsing and conversion
 to a background isolate using the [`compute()`][]
@@ -218,11 +218,11 @@ function provided by Flutter. The `compute()` function runs expensive
 functions in a background isolate and returns the result. In this case,
 run the `parsePhotos()` function in the background.
 
-那么我们究竟可以做什么呢？
-那就是通过 Flutter 提供的 [`compute()`][] 方法
-将解析和转换的工作移交到一个后台 isolate 中。
-这个 `compute()` 函数可以在后台 isolate 中运行复杂的函数并返回结果。
-在这里，我们就需要将 `parsePhotos()` 方法放入后台。
+那麼我們究竟可以做什麼呢？
+那就是透過 Flutter 提供的 [`compute()`][] 方法
+將解析和轉換的工作移交到一個後臺 isolate 中。
+這個 `compute()` 函式可以在後台 isolate 中運行復雜的函式並返回結果。
+在這裡，我們就需要將 `parsePhotos()` 方法放入後臺。
 
 <?code-excerpt "lib/main.dart (fetchPhotos)"?>
 ```dart
@@ -243,20 +243,20 @@ Isolates communicate by passing messages back and forth. These messages can
 be primitive values, such as `null`, `num`, `bool`, `double`, or `String`, or
 simple objects such as the `List<Photo>` in this example.
 
-Isolates 通过来回传递消息来交流。这些消息可以是任何值，
-它们可以是 `null`、`num`、`bool`、`double` 或者 `String`，
-哪怕是像这个例子中的 `List<Photo>` 这样简单对象都没问题。
+Isolates 透過來回傳遞訊息來交流。這些訊息可以是任何值，
+它們可以是 `null`、`num`、`bool`、`double` 或者 `String`，
+哪怕是像這個例子中的 `List<Photo>` 這樣簡單物件都沒問題。
 
 You might experience errors if you try to pass more complex objects,
 such as a `Future` or `http.Response` between isolates.
 
-当你试图传递更复杂的对象时，你可能会遇到错误，
-例如在 isolates 之间的 `Future` 或者 `http.Response`。
+當你試圖傳遞更復雜的物件時，你可能會遇到錯誤，
+例如在 isolates 之間的 `Future` 或者 `http.Response`。
 
 As an alternate solution, check out the [`worker_manager`][] or
 [`workmanager`][] packages for background processing.
 
-与此同时，后台进程的其他解决方案是使用
+與此同時，後臺處理序的其他解決方案是使用
 [`worker_manager`][] 或 [`workmanager`][] package。
 
 [`worker_manager`]:  {{site.pub}}/packages/worker_manager
@@ -264,7 +264,7 @@ As an alternate solution, check out the [`worker_manager`][] or
 
 ## Complete example
 
-## 完整样例
+## 完整範例
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

@@ -1,10 +1,10 @@
 ---
 title: Return data from a screen
-title: 从一个页面回传数据
+title: 從一個頁面回傳資料
 description: How to return data from a new screen.
-description: 如何从新页面返回数据。
-tags: cookbook, 实用教程, 路由
-keywords: 传参, 回传数据
+description: 如何從新頁面返回資料。
+tags: cookbook, 實用課程, 路由
+keywords: 傳參, 回傳資料
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -17,47 +17,47 @@ For example, say you push a new screen that presents two options to a user.
 When the user taps an option, you want to inform the first screen
 of the user's selection so that it can act on that information.
 
-在某些场景下，我们需要在回退到上一屏时同时返回一些数据。
-比如，我们跳转到新的一屏，有两个选项让用户选择，
-当用户点击某个选项后会返回到第一屏，同时在第一屏可以知道用户选择的信息。
+在某些場景下，我們需要在回退到上一屏時同時返回一些資料。
+比如，我們跳轉到新的一屏，有兩個選項讓使用者選擇，
+當用戶點選某個選項後會返回到第一屏，同時在第一屏可以知道使用者選擇的資訊。
 
 You can do this with the [`Navigator.pop()`][]
 method using the following steps:
 
-你可以使用 [`Navigator.pop()`][] 来进行以下步骤：
+你可以使用 [`Navigator.pop()`][] 來進行以下步驟：
 
 ## Directions
 
-## 步骤
+## 步驟
 
   1. Define the home screen
 
-     创建主屏界面
+     建立主屏介面
 
   2. Add a button that launches the selection screen
 
-     添加按钮，点击时跳转到选择界面
+     新增按鈕，點選時跳轉到選擇介面
 
   3. Show the selection screen with two buttons
 
-     在选择界面显示两个按钮
+     在選擇介面顯示兩個按鈕
 
   4. When a button is tapped, close the selection screen
 
-     当任意一个按钮被点击，关闭选择界面回退到主屏界面
+     當任意一個按鈕被點選，關閉選擇介面回退到主屏介面
 
   5. Show a snackbar on the home screen with the selection
 
-     在主屏界面显示 snackbar ，展示选中的项目
+     在主屏介面顯示 snackbar ，展示選中的專案
 
 ## 1. Define the home screen
 
-## 1. 创建主屏界面
+## 1. 建立主屏介面
 
 The home screen displays a button. When tapped,
 it launches the selection screen.
 
-主屏界面显示一个按钮，当点击按钮时跳转到选择界面。
+主屏介面顯示一個按鈕，當點選按鈕時跳轉到選擇介面。
 
 <?code-excerpt "lib/main_step2.dart (HomeScreen)"?>
 ```dart
@@ -81,19 +81,19 @@ class HomeScreen extends StatelessWidget {
 
 ## 2. Add a button that launches the selection screen
 
-## 2. 添加按钮，点击时跳转到选择界面
+## 2. 新增按鈕，點選時跳轉到選擇介面
 
 Now, create the SelectionButton, which does the following:
 
-接下来，我们创建 SelectionButton 按钮，它有两个功能：
+接下來，我們建立 SelectionButton 按鈕，它有兩個功能：
 
   * Launches the SelectionScreen when it's tapped.
 
-    点击时跳转到选择界面
+    點選時跳轉到選擇介面
 
   * Waits for the SelectionScreen to return a result.
 
-    等待选择界面给它返回结果
+    等待選擇介面給它返回結果
 
 <?code-excerpt "lib/main_step2.dart (SelectionButton)"?>
 ```dart
@@ -129,21 +129,21 @@ class _SelectionButtonState extends State<SelectionButton> {
 
 ## 3. Show the selection screen with two buttons
 
-## 3. 在选择界面显示两个按钮
+## 3. 在選擇介面顯示兩個按鈕
 
 Now, build a selection screen that contains two buttons.
 When a user taps a button,
 that app closes the selection screen and lets the home
 screen know which button was tapped.
 
-现在来构建选择界面，它包含两个按钮，
-当任意一个按钮被点击的时候，关闭选择页面回退到主屏界面，
-并让主屏界面知道哪个按钮被点击了。
+現在來建構選擇介面，它包含兩個按鈕，
+當任意一個按鈕被點選的時候，關閉選擇頁面回退到主屏介面，
+並讓主屏介面知道哪個按鈕被點選了。
 
 This step defines the UI.
 The next step adds code to return data.
 
-这一步我们来定义 UI，在下一步完成数据的返回。
+這一步我們來定義 UI，在下一步完成資料的返回。
 
 <?code-excerpt "lib/main_step2.dart (SelectionScreen)"?>
 ```dart
@@ -188,7 +188,7 @@ class SelectionScreen extends StatelessWidget {
 
 ## 4. When a button is tapped, close the selection screen
 
-## 4. 当任意一个按钮被点击，关闭选择界面回退到主屏界面
+## 4. 當任意一個按鈕被點選，關閉選擇介面回退到主屏介面
 
 Now, update the `onPressed()` callback for both of the buttons.
 To return data to the first screen,
@@ -196,14 +196,14 @@ use the [`Navigator.pop()`][] method,
 which accepts an optional second argument called `result`.
 Any result is returned to the `Future` in the SelectionButton.
 
-接下来我们来更新两个按钮的 `onPressed()` 回调函数，
-使用 [`Navigator.pop()`][] 回退界面并返回数据给主屏界面。
-`Navigator.pop()` 方法可以接受第二个参数 `result`，它是可选的，
-如果传递了 `result`，数据将会通过 `Future` 方法的返回值传递。
+接下來我們來更新兩個按鈕的 `onPressed()` 回呼(Callback)函式，
+使用 [`Navigator.pop()`][] 回退介面並返回資料給主屏介面。
+`Navigator.pop()` 方法可以接受第二個引數 `result`，它是可選的，
+如果傳遞了 `result`，資料將會透過 `Future` 方法的返回值傳遞。
 
 ### Yep button
 
-### Yep 按钮
+### Yep 按鈕
 
 <?code-excerpt "lib/main.dart (Yep)" replace="/^child: //g;/,$//g"?>
 ```dart
@@ -218,7 +218,7 @@ ElevatedButton(
 
 ### Nope button
 
-### Nope 按钮
+### Nope 按鈕
 
 <?code-excerpt "lib/main.dart (Nope)" replace="/^child: //g;/,$//g"?>
 ```dart
@@ -233,18 +233,18 @@ ElevatedButton(
 
 ## 5. Show a snackbar on the home screen with the selection
 
-## 5. 在主屏界面显示一个 snackbar，展示选中的项目
+## 5. 在主屏介面顯示一個 snackbar，展示選中的專案
 
 Now that you're launching a selection screen and awaiting the result,
 you'll want to do something with the information that's returned.
 
-现在，我们跳转到选择界面并等待返回结果，当结果返回时我们可以做些事情。
+現在，我們跳轉到選擇介面並等待返回結果，當結果返回時我們可以做些事情。
 
 In this case, show a snackbar displaying the result by using the
 `_navigateAndDisplaySelection()` method in `SelectionButton`:
 
-在本例中，我们用一个 snackbar 显示结果，
-我们来更新 `SelectionButton` 类中的 `_navigateAndDisplaySelection()` 方法。
+在本例中，我們用一個 snackbar 顯示結果，
+我們來更新 `SelectionButton` 類中的 `_navigateAndDisplaySelection()` 方法。
 
 <?code-excerpt "lib/main.dart (navigateAndDisplay)"?>
 ```dart
@@ -272,7 +272,7 @@ Future<void> _navigateAndDisplaySelection(BuildContext context) async {
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

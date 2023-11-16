@@ -1,6 +1,6 @@
 ---
 title: Using the CPU profiler view
-title: 使用 CPU 探测视图
+title: 使用 CPU 探測檢視
 description: Learn how to use the DevTools CPU profiler view.
 ---
 
@@ -10,8 +10,8 @@ description: Learn how to use the DevTools CPU profiler view.
   Use Chrome DevTools to [analyze performance][]
   of a web app.
 
-  CPU 探测视图仅能在 Dart CLI 以及移动应用中使用。
-  请使用 Chrome DevTools [测量][analyze performance] web 应用的性能。
+  CPU 探測檢視僅能在 Dart CLI 以及移動應用中使用。
+  請使用 Chrome DevTools [測量][analyze performance] web 應用的效能。
 
 {{site.alert.end}}
 
@@ -26,11 +26,11 @@ By aggregating many CPU samples together,
 the profiler can help you understand where the CPU
 spends most of its time.
 
-借助 CPU 探测视图，你可以记录并测量来自 Dart 或 Flutter 应用的会话。
-探测器可以帮助你解决性能问题，或者更好地理解应用的 CPU 活动。
-Dart VM 收集 CPU 样本（在单个时间点上 CPU 调用栈的快照），
-并将数据发送给 DevTools 以进行可视化。
-通过聚合多个 CPU 样本，探测器可以帮助你了解 CPU 的大部分时间都花在了哪里。
+藉助 CPU 探測檢視，你可以記錄並測量來自 Dart 或 Flutter 應用的會話。
+探測器可以幫助你解決效能問題，或者更好地理解應用的 CPU 活動。
+Dart VM 收集 CPU 樣本（在單個時間點上 CPU 呼叫棧的快照），
+並將資料傳送給 DevTools 以進行視覺化。
+透過聚合多個 CPU 樣本，探測器可以幫助你瞭解 CPU 的大部分時間都花在了哪裡。
 
 {{site.alert.note}}
 
@@ -39,8 +39,8 @@ Dart VM 收集 CPU 样本（在单个时间点上 CPU 调用栈的快照），
   CPU profiles are not indicative of release performance
   unless your Flutter application is run in profile mode.
 
-  **如果你正在运行 Flutter 应用，请在 profile 模式下测量性能。**
-  CPU 探测器无法测量 release 模式下的性能，你应该使用 profile 模式构建应用。
+  **如果你正在執行 Flutter 應用，請在 profile 模式下測量效能。**
+  CPU 探測器無法測量 release 模式下的效能，你應該使用 profile 模式建構應用。
 
 {{site.alert.end}}
 
@@ -50,7 +50,7 @@ Dart VM 收集 CPU 样本（在单个时间点上 CPU 调用栈的快照），
   
 ## Other resources
 
-## 其他资源
+## 其他資源
   
 To learn how to use DevTools to analyze
 the CPU usage of a compute-intensive Mandelbrot app,
@@ -58,8 +58,8 @@ check out a guided [CPU Profiler View tutorial][profiler-tutorial].
 Also, learn how to analyze CPU usage when the app
 uses isolates for parallel computing.
 
-要了解如何使用 DevTools 分析计算密集型 Mandelbrot 应用的 CPU 使用情况，
-请查看 [CPU 探测视图教程][profiler-tutorial]。
-此外，还可以了解应用在使用隔离区进行并行计算时的 CPU 使用情况。
+要了解如何使用 DevTools 分析計算密集型 Mandelbrot 應用的 CPU 使用情況，
+請檢視 [CPU 探測檢視課程][profiler-tutorial]。
+此外，還可以瞭解應用在使用隔離區進行平行計算時的 CPU 使用情況。
 
 [profiler-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-cpu-profiler-view-part-6-of-8-31e24eae6bf8

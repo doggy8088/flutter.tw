@@ -1,8 +1,8 @@
 ---
 title: Create an expandable FAB
-title: 创建一个点击展开的 FAB
+title: 建立一個點選展開的 FAB
 description: How to implement a FAB that expands to multiple buttons when tapped.
-description: 如何实现一个可以点击展开为好几个按钮的浮动按钮。
+description: 如何實現一個可以點選展開為好幾個按鈕的浮動按鈕。
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

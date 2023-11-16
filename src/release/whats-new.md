@@ -1,11 +1,11 @@
 ---
 title: What's new
-title: 文档网站更新内容归档
+title: 文件網站更新內容歸檔
 description: >
   A list of what's new on docs.flutter.dev and related documentation sites.
-description: Flutter 和 Dart 文档的相关更新说明页面。
-tags: Flutter文档更新
-keywords: 内容归档
+description: Flutter 和 Dart 文件的相關更新說明頁面。
+tags: Flutter文件更新
+keywords: 內容歸檔
 ---
 
 This page contains current and previous announcements of
@@ -13,21 +13,21 @@ what's new on the Flutter website and blog.
 For details about what's new in the Flutter releases
 see the [release notes][] page.
 
-该归档包含了历史公告，以及网站上的更新内容。
-想要了解每个 Flutter 发布的版本更新内容，
-请查看 [发布说明][release notes] 页面。
+該歸檔包含了歷史公告，以及網站上的更新內容。
+想要了解每個 Flutter 釋出的版本更新內容，
+請檢視 [釋出說明][release notes] 頁面。
 
 To stay on top of Flutter announcements including breaking changes,
 join the [flutter-announce][] Google group.
 
-要及时同步最新 Flutter 公告，包括重大变更 (breaking changes) 等，
-请加入 [flutter-announce][] 邮件组。
+要及時同步最新 Flutter 公告，包括重大變更 (breaking changes) 等，
+請加入 [flutter-announce][] 郵件組。
 
 For Dart, you can join the [Dart Announce][] Google group,
 and review the [Dart changelog][].
 
-你可以加入 [Dart Announce][] 邮件组或查看 [Dart 更新日志][Dart changelog]
-了解 Dart 的更新内容。
+你可以加入 [Dart Announce][] 郵件組或檢視 [Dart 更新日誌][Dart changelog]
+瞭解 Dart 的更新內容。
 
 [release notes]: {{site.url}}/release/release-notes
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
@@ -182,7 +182,7 @@ You might also check out [Introducing Dart 3][].
   You can debug your iOS or Android app on a physical device over Wi-Fi.
 * Updated the [Material Widget Catalog][] to cover Material 3.
 
-  更新了 [Material Widget Catalog][]，以覆盖 Material 3。
+  更新了 [Material Widget Catalog][]，以覆蓋 Material 3。
 
 * Added the new [canvasKitVariant runtime configuration][] setting.
   This web initialization option lets you configure which version of

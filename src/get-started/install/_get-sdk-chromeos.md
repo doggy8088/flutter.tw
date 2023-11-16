@@ -1,12 +1,12 @@
 ## Get the Flutter SDK {#get-sdk}
 
-## 获取 Flutter SDK {#get-sdk}
+## 獲取 Flutter SDK {#get-sdk}
 
 {% include docs/china-notice.md %}
 
  1. Install the core development tools needed for Flutter:
 
-    安装 Flutter 所需的核心开发工具：
+    安裝 Flutter 所需的核心開發工具：
 
     ```terminal
     $ sudo apt install clang cmake ninja-build pkg-config libgtk-3-dev
@@ -15,13 +15,13 @@
     This downloads the compiler toolchain needed
     to compile apps for ChromeOS.
 
-    这会下载用于编译 ChromeOS 应用所需的编译器工具链。
+    這會下載用於編譯 ChromeOS 應用所需的編譯器工具鏈。
 
  1. Download Flutter from the [Flutter repo][]
     on GitHub with the following command in your home directory:
 
-    从 GitHub 的 [Flutter repo][] 下载 Flutter，
-    在你的主目录使用以下命令：
+    從 GitHub 的 [Flutter repo][] 下載 Flutter，
+    在你的主目錄使用以下命令：
 
     ```terminal
     $ git clone https://github.com/flutter/flutter.git -b stable
@@ -29,7 +29,7 @@
 
  1. Add the `flutter` tool to your path:
 
-    将 `flutter` 工具添加到环境变量中：
+    將 `flutter` 工具新增到環境變數中：
 
     ```terminal
     $ echo PATH="$PATH:`pwd`/flutter/bin" >> ~/.profile
@@ -38,17 +38,17 @@
 
 You are now ready to run Flutter commands!
 
-你现在已经准备好运行 Flutter 命令了！
+你現在已經準備好執行 Flutter 命令了！
 
 ### Run flutter doctor
 
-### 运行 flutter doctor
+### 執行 flutter doctor
 
 Run the following command to see if there are any dependencies you need to
 install to complete the setup (for verbose output, add the `-v` flag):
 
-运行以下命令以查看是否还有缺失的依赖需要安装，你需要安装这些依赖以完成设置
-（要看到详细输出，请添加 `-v` 标识）：
+執行以下命令以檢視是否還有缺失的依賴需要安裝，你需要安裝這些依賴以完成設定
+（要看到詳細輸出，請新增 `-v` 標識）：
 
 ```terminal
 $ flutter doctor
@@ -59,9 +59,9 @@ window. The Dart SDK is bundled with Flutter; it is not necessary to install
 Dart separately. Check the output carefully for other software you might
 need to install or further tasks to perform (shown in **bold** text).
 
-该命令将检查你的环境情况并显示汇报在命令行窗口中。
-Dart SDK 已经绑在 Flutter 中了；你无需单独再安装 Dart。
-仔细检查你是否还有需要安装的东西，或者要执行的任务（在该文字中提示的）。
+該命令將檢查你的環境情況並顯示彙報在命令列視窗中。
+Dart SDK 已經綁在 Flutter 中了；你無需單獨再安裝 Dart。
+仔細檢查你是否還有需要安裝的東西，或者要執行的任務（在該文字中提示的）。
 
 For example:
 
@@ -77,13 +77,13 @@ For example:
 The following sections describe how to perform these tasks and finish the setup
 process.
 
-上面的部分描述了如何执行这些任务，并完成设置流程。
+上面的部分描述瞭如何執行這些任務，並完成設定流程。
 
 Once you have installed any missing dependencies, run the `flutter doctor`
 command again to verify that you've set everything up correctly.
 
-当你已经安装了全部缺失的依赖之后，请再次运行 `flutter doctor` 命令，
-以验证你是否是真的全部正确设置完毕了。
+當你已經安裝了全部缺失的依賴之後，請再次執行 `flutter doctor` 命令，
+以驗證你是否是真的全部正確設定完畢了。
 
 {% include_relative _analytics.md %}
 

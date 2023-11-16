@@ -1,9 +1,9 @@
 ---
 title: Flutter architectural overview
-title: Flutter 架构概览
+title: Flutter 架構概覽
 description: A high-level overview of the architecture of Flutter, including the core principles and concepts that form its design.
-tags: Flutter参考资料
-keywords: Flutter原理,Flutter架构指南,Flutter分层设计
+tags: Flutter參考資料
+keywords: Flutter原理,Flutter架構指南,Flutter分層設計
 ---
 
 <?code-excerpt path-base="resources/architectural_overview/"?>
@@ -11,7 +11,7 @@ keywords: Flutter原理,Flutter架构指南,Flutter分层设计
 This article is intended to provide a high-level overview of the architecture of
 Flutter, including the core principles and concepts that form its design.
 
-该文章旨在提供更深入的 Flutter 架构概览，包含其设计层面的核心原则及概念。
+該文章旨在提供更深入的 Flutter 架構概覽，包含其設計層面的核心原則及概念。
 
 Flutter is a cross-platform UI toolkit that is designed to allow code reuse
 across operating systems such as iOS and Android, while also allowing
@@ -20,11 +20,11 @@ is to enable developers to deliver high-performance apps that feel natural on
 different platforms, embracing differences where they exist while sharing as
 much code as possible.
 
-Flutter 是一个跨平台的 UI 工具集，
-它的设计初衷，就是允许在各种操作系统上复用同样的代码，例如 iOS 和 Android，
-同时让应用程序可以直接与底层平台服务进行交互。
-如此设计是为了让开发者能够在不同的平台上，都能交付拥有原生体验的高性能应用，
-尽可能地共享复用代码的同时，包容不同平台的差异。
+Flutter 是一個跨平臺的 UI 工具集，
+它的設計初衷，就是允許在各種作業系統上覆用同樣的程式碼，例如 iOS 和 Android，
+同時讓應用程式可以直接與底層平台服務進行互動。
+如此設計是為了讓開發者能夠在不同的平臺上，都能交付擁有原生體驗的高效能應用，
+儘可能地共享複用程式碼的同時，包容不同平台的差異。
 
 During development, Flutter apps run in a VM that offers stateful hot reload of
 changes without needing a full recompile. For release, Flutter apps are compiled
@@ -33,61 +33,61 @@ JavaScript if targeting the web. The framework is open source, with a permissive
 BSD license, and has a thriving ecosystem of third-party packages that
 supplement the core library functionality.
 
-在开发中，Flutter 应用会在一个 VM（程序虚拟机）中运行，
-从而可以在保留状态且无需重新编译的情况下，热重载相关的更新。
-对于发行版 (release) ，Flutter 应用程序会直接编译为机器代码
-（Intel x64 或 ARM 指令集），或者针对 Web 平台的 JavaScript。
-Flutter 的框架代码是开源的，遵循 BSD 开源协议，并拥有蓬勃发展的第三方库生态来补充核心库功能。
+在開發中，Flutter 應用會在一個 VM（程式虛擬機器）中執行，
+從而可以在保留狀態且無需重新編譯的情況下，熱重載相關的更新。
+對於發行版 (release) ，Flutter 應用程式會直接編譯為機器程式碼
+（Intel x64 或 ARM 指令集），或者針對 Web 平台的 JavaScript。
+Flutter 的框架程式碼是開源的，遵循 BSD 開源協議，並擁有蓬勃發展的第三方庫生態來補充核心函式庫功能。
 
 This overview is divided into a number of sections:
 
-概览分为以下几部分内容：
+概覽分為以下幾部分內容：
 
 1. The **layer model**: The pieces from which Flutter is constructed.
 
-   **分层模型**：Flutter 的构成要素。
+   **分層模型**：Flutter 的構成要素。
 
 1. **Reactive user interfaces**: A core concept for Flutter user interface
    development.
 
-   **响应式用户界面**：Flutter 用户界面开发的核心概念。
+   **響應式使用者介面**：Flutter 使用者介面開發的核心概念。
 
 1. An introduction to **widgets**: The fundamental building blocks of Flutter user
    interfaces.
 
-   **widgets** 介绍：构建 Flutter 用户界面的基石。
+   **widgets** 介紹：建構 Flutter 使用者介面的基石。
 
 1. The **rendering process**: How Flutter turns UI code into pixels.
 
-   **渲染过程**：Flutter 如何将界面布局转化为像素。
+   **渲染過程**：Flutter 如何將介面佈局轉化為畫素。
 
 1. An overview of the **platform embedders**: The code that lets mobile and
    desktop OSes execute Flutter apps.
 
-   **平台嵌入层** 的概览：让 Flutter 应用可以在移动端及桌面端操作系统执行的代码。
+   **平台嵌入層** 的概覽：讓 Flutter 應用可以在移動端及桌面端作業系統執行的程式碼。
 
 1. **Integrating Flutter with other code**: Information about different techniques
    available to Flutter apps.
 
-   **将 Flutter 与其他代码进行集成**：Flutter 应用可用的各项技术的更多信息。
+   **將 Flutter 與其他程式碼進行整合**：Flutter 應用可用的各項技術的更多資訊。
 
 1. **Support for the web**: Concluding remarks about the characteristics of
    Flutter in a browser environment.
 
-   **Web 支持**：Flutter 在浏览器环境中的特性的概述。
+   **Web 支援**：Flutter 在瀏覽器環境中的特性的概述。
 
 ## Architectural layers
 
-## 架构层
+## 架構層
 
 Flutter is designed as an extensible, layered system. It exists as a series of
 independent libraries that each depend on the underlying layer. No layer has
 privileged access to the layer below, and every part of the framework level is
 designed to be optional and replaceable.
 
-Flutter 被设计为一个可扩展的分层系统。
-它可以被看作是各个独立的组件的系列合集，上层组件各自依赖下层组件。
-组件无法越权访问更底层的内容，并且框架层中的各个部分都是可选且可替代的。
+Flutter 被設計為一個可擴充的分層系統。
+它可以被看作是各個獨立的元件的系列合集，上層元件各自依賴下層元件。
+元件無法越權存取更底層的內容，並且框架層中的各個部分都是可選且可替代的。
 
 {% comment %}
 The PNG diagrams in this document were created using draw.io. The draw.io
@@ -119,15 +119,15 @@ be the entire content of the application. Flutter includes a number of embedders
 for common target platforms, but [other embedders also
 exist](https://hover.build/blog/one-year-in/).
 
-对于底层操作系统而言，Flutter 应用程序的包装方式与其他原生应用相同。
-在每一个平台上，会包含一个特定的嵌入层，
-从而提供一个程序入口，程序由此可以与底层操作系统进行协调，
-访问诸如 surface 渲染、辅助功能和输入等服务，并且管理事件循环队列。
-该嵌入层采用了适合当前平台的语言编写，例如 Android 使用的是 Java 和 C++，
+對於底層作業系統而言，Flutter 應用程式的包裝方式與其他原生應用相同。
+在每一個平臺上，會包含一個特定的嵌入層，
+從而提供一個程式入口，程式由此可以與底層作業系統進行協調，
+存取諸如 surface 渲染、輔助功能和輸入等服務，並且管理事件迴圈佇列。
+該嵌入層採用了適合當前平台的語言編寫，例如 Android 使用的是 Java 和 C++，
 iOS 和 macOS 使用的是 Objective-C 和 Objective-C++，Windows 和 Linux 使用的是 C++。
-Flutter 代码可以通过嵌入层，以模块方式集成到现有的应用中，也可以作为应用的主体。
-Flutter 本身包含了各个常见平台的嵌入层，同时也
-[存在一些其他的嵌入层](https://hover.build/blog/one-year-in/)。
+Flutter 程式碼可以透過嵌入層，以模組方式整合到現有的應用中，也可以作為應用的主體。
+Flutter 本身包含了各個常見平台的嵌入層，同時也
+[存在一些其他的嵌入層](https://hover.build/blog/one-year-in/)。
 
 At the core of Flutter is the **Flutter engine**,
 which is mostly written in C++ and supports
@@ -141,12 +141,12 @@ file and network I/O, accessibility support,
 plugin architecture, and a Dart runtime
 and compile toolchain.
 
-**Flutter 引擎** 毫无疑问是 Flutter 的核心，
-它主要使用 C++ 编写，并提供了 Flutter 应用所需的原语。
-当需要绘制新一帧的内容时，引擎将负责对需要合成的场景进行栅格化。
-它提供了 Flutter 核心 API 的底层实现，包括图形
-（在 iOS 和 Android 上通过 [Impeller][]，在其他平台上通过 [Skia][]）、
-文本布局、文件及网络 IO、辅助功能支持、插件架构和 Dart 运行环境及编译环境的工具链。
+**Flutter 引擎** 毫無疑問是 Flutter 的核心，
+它主要使用 C++ 編寫，並提供了 Flutter 應用所需的原語。
+當需要繪製新一幀的內容時，引擎將負責對需要合成的場景進行網格化。
+它提供了 Flutter 核心 API 的底層實現，包括圖形
+（在 iOS 和 Android 上透過 [Impeller][]，在其他平臺上透過 [Skia][]）、
+文字佈局、檔案及網路 IO、輔助功能支援、外掛架構和 Dart 執行環境及編譯環境的工具鏈。
 
 [Skia]: https://skia.org
 [Impeller]: {{site.url}}/perf/impeller
@@ -157,19 +157,19 @@ which wraps the underlying C++ code in Dart classes. This library
 exposes the lowest-level primitives, such as classes for driving input,
 graphics, and text rendering subsystems.
 
-引擎将底层 C++ 代码包装成 Dart 代码，通过
+引擎將底層 C++ 程式碼包裝成 Dart 程式碼，透過
 [`dart:ui`]({{site.github}}/flutter/engine/tree/master/lib/ui)
-暴露给 Flutter 框架层。
-该库暴露了最底层的原语，包括用于驱动输入、图形、和文本渲染的子系统的类。
+暴露給 Flutter 框架層。
+該庫暴露了最底層的原語，包括用於驅動輸入、圖形、和文字渲染的子系統的類別。
 
 Typically, developers interact with Flutter through the **Flutter framework**,
 which provides a modern, reactive framework written in the Dart language. It
 includes a rich set of platform, layout, and foundational libraries, composed of
 a series of layers. Working from the bottom to the top, we have:
 
-通常，开发者可以通过 **Flutter 框架层** 与 Flutter 交互，
-该框架提供了以 Dart 语言编写的现代响应式框架。
-它包括由一系列层组成的一组丰富的平台，布局和基础库。从下层到上层，依次有：
+通常，開發者可以透過 **Flutter 框架層** 與 Flutter 互動，
+該框架提供了以 Dart 語言編寫的現代響應式框架。
+它包括由一系列層組成的一組豐富的平台，佈局和基礎庫。從下層到上層，依次有：
 
 - Basic **[foundational]({{site.api}}/flutter/foundation/foundation-library.html)**
   classes, and building block services such as
@@ -178,11 +178,11 @@ a series of layers. Working from the bottom to the top, we have:
   [gestures]({{site.api}}/flutter/gestures/gestures-library.html)** that offer
   commonly used abstractions over the underlying foundation.
 
-  基础的 **[foundational]({{site.api}}/flutter/foundation/foundation-library.html)**
-  类及一些基层之上的构建块服务，如 **[animation]({{site.api}}/flutter/animation/animation-library.html)、
+  基礎的 **[foundational]({{site.api}}/flutter/foundation/foundation-library.html)**
+  類及一些基層之上的建構塊服務，如 **[animation]({{site.api}}/flutter/animation/animation-library.html)、
   [painting]({{site.api}}/flutter/painting/painting-library.html) 和
   [gestures]({{site.api}}/flutter/gestures/gestures-library.html)**，
- 它们可以提供上层常用的抽象。
+ 它們可以提供上層常用的抽象。
 
 - The **[rendering
   layer]({{site.api}}/flutter/rendering/rendering-library.html)** provides an
@@ -190,9 +190,9 @@ a series of layers. Working from the bottom to the top, we have:
   renderable objects. You can manipulate these objects dynamically, with the
   tree automatically updating the layout to reflect your changes.
 
-  **[渲染层]({{site.api}}/flutter/rendering/rendering-library.html)**
-  用于提供操作布局的抽象。有了渲染层，你可以构建一棵可渲染对象的树。
-  在你动态更新这些对象时，渲染树也会自动根据你的变更来更新布局。
+  **[渲染層]({{site.api}}/flutter/rendering/rendering-library.html)**
+  用於提供操作佈局的抽象。有了渲染層，你可以建構一棵可渲染物件的樹。
+  在你動態更新這些物件時，渲染樹也會自動根據你的變更來更新佈局。
 
 - The **[widgets layer]({{site.api}}/flutter/widgets/widgets-library.html)** is
   a composition abstraction. Each render object in the rendering layer has a
@@ -200,10 +200,10 @@ a series of layers. Working from the bottom to the top, we have:
   allows you to define combinations of classes that you can reuse. This is the
   layer at which the reactive programming model is introduced.
 
-  **[widget 层]({{site.api}}/flutter/widgets/widgets-library.html)**
-  是一种组合的抽象。每一个渲染层中的渲染对象，都在 widgets 层中有一个对应的类。
-  此外，widgets 层让你可以自由组合你需要复用的各种类。
-  响应式编程模型就在该层级中被引入。
+  **[widget 層]({{site.api}}/flutter/widgets/widgets-library.html)**
+  是一種組合的抽象。每一個渲染層中的渲染物件，都在 widgets 層中有一個對應的類別。
+  此外，widgets 層讓你可以自由組合你需要複用的各種類別。
+  響應式程式設計模型就在該層級中被引入。
 
 - The
   **[Material]({{site.api}}/flutter/material/material-library.html)**
@@ -213,8 +213,8 @@ a series of layers. Working from the bottom to the top, we have:
   composition primitives to implement the Material or iOS design languages.
 
   **[Material]({{site.api}}/flutter/material/material-library.html)** 和
-  **[Cupertino]({{site.api}}/flutter/cupertino/cupertino-library.html)** 库
-  提供了全面的 widgets 层的原语组合，这套组合分别实现了 Material 和 iOS 设计规范。
+  **[Cupertino]({{site.api}}/flutter/cupertino/cupertino-library.html)** 庫
+  提供了全面的 widgets 層的原語組合，這套組合分別實現了 Material 和 iOS 設計規範。
 
 The Flutter framework is relatively small; many higher-level features that
 developers might use are implemented as packages, including platform plugins
@@ -229,18 +229,18 @@ payments]({{site.pub}}/packages/square_in_app_payments), [Apple
 authentication]({{site.pub}}/packages/sign_in_with_apple), and
 [animations]({{site.pub}}/packages/lottie).
 
-Flutter 框架相对较小，因为一些开发者可能会使用到的更高层级的功能
-已经被拆分到不同的软件包中，使用 Dart 和 Flutter 的核心库实现，
-其中包括平台插件，例如
+Flutter 框架相對較小，因為一些開發者可能會使用到的更高層級的功能
+已經被拆分到不同的軟體套件中，使用 Dart 和 Flutter 的核心庫實現，
+其中包括平台外掛，例如
 [camera]({{site.pub}}/packages/camera) 和
-[webview]({{site.pub}}/packages/webview_flutter)；与平台无关的功能，例如
+[webview]({{site.pub}}/packages/webview_flutter)；與平台無關的功能，例如
 [characters]({{site.pub}}/packages/characters)、
 [http]({{site.pub}}/packages/http) 和
 [animations]({{site.pub}}/packages/animations)。
-还有一些软件包来自于更为宽泛的生态系统中，例如
-[应用内支付]({{site.pub}}/packages/square_in_app_payments)、
-[Apple 认证]({{site.pub}}/packages/sign_in_with_apple) 和
-[Lottie 动画]({{site.pub}}/packages/lottie)。
+還有一些軟體包來自於更為寬泛的生態系統中，例如
+[應用內支付]({{site.pub}}/packages/square_in_app_payments)、
+[Apple 認證]({{site.pub}}/packages/sign_in_with_apple) 和
+[Lottie 動畫]({{site.pub}}/packages/lottie)。
 
 The rest of this overview broadly navigates down the layers, starting with the
 reactive paradigm of UI development. Then, we describe how widgets are composed
@@ -249,14 +249,14 @@ application. We describe how Flutter interoperates with other code at a platform
 level, before giving a brief summary of how Flutter's web support differs from
 other targets.
 
-该概览的其余部分将从 UI 开发的响应式范例开始，浏览各个构建层。
-而后，我们会讲述 widgets 如何被组织，并转换成应用程序的渲染对象。
-同时我们也会讲述 Flutter 如何在平台层面与其他代码进行交互，
-最终，我们会对目前 Flutter 对于 Web 平台的支持与其他平台的异同做一个总结。
+該概覽的其餘部分將從 UI 開發的響應式範例開始，瀏覽各個建構層。
+而後，我們會講述 widgets 如何被組織，並轉換成應用程式的渲染物件。
+同時我們也會講述 Flutter 如何在平台層面與其他程式碼進行互動，
+最終，我們會對目前 Flutter 對於 Web 平台的支援與其他平台的異同做一個總結。
 
 ## Anatomy of an app
 
-## 应用剖析
+## 應用剖析
 
 The following diagram gives an overview of the pieces
 that make up a regular Flutter app generated by `flutter create`.
@@ -266,99 +266,99 @@ where the individual pieces live. The legend below clarifies
 some of the terminology commonly used to describe the
 pieces of a Flutter app.
 
-下图为你展示了一个通过 `flutter create` 命令创建的应用的结构概览。
-该图展示了引擎在架构中的定位，突出展示了 API 的操作边界，并且标识出了每一个组成部分。
+下圖為你展示了一個透過 `flutter create` 命令建立的應用的結構概覽。
+該圖展示了引擎在架構中的定位，突出展示了 API 的操作邊界，並且標識出了每一個組成部分。
 
 <img src='/assets/images/docs/app-anatomy.svg' alt='The layers of a Flutter app created by "flutter create": Dart app, framework, engine, embedder, runner'>
 
 **Dart App**
 
-**Dart 应用**
+**Dart 應用**
 
 * Composes widgets into the desired UI.
 
-  将 widget 合成预期的 UI。
+  將 widget 合成預期的 UI。
 
 * Implements business logic.
 
-  实现对应的业务。
+  實現對應的業務。
 
 * Owned by app developer.
 
-  由应用开发者进行管理。
+  由應用開發者進行管理。
 
 **Framework** ([source code]({{site.github}}/flutter/flutter/tree/main/packages/flutter/lib))
 
-**框架**（[源代码]({{site.github}}/flutter/flutter/tree/main/packages/flutter/lib)）
+**框架**（[原始碼]({{site.github}}/flutter/flutter/tree/main/packages/flutter/lib)）
 
 * Provides higher-level API to build high-quality apps
   (for example, widgets, hit-testing, gesture detection,
   accessibility, text input).
 
-  提供了上层的 API 封装，用于构建高质量的应用
-  （例如 widget、触摸检测、手势竞技、无障碍和文字输入）。
+  提供了上層的 API 封裝，用於建構高品質的應用
+  （例如 widget、觸控檢測、手勢競技、無障礙和文字輸入）。
 
 * Composites the app's widget tree into a scene.
 
-  将应用的 widget 树构建至一个 Scene 中。
+  將應用的 widget 樹建構至一個 Scene 中。
 
 **Engine** ([source code]({{site.github}}/flutter/engine/tree/main/shell/common))
 
-**引擎**（[源代码]({{site.github}}/flutter/engine/tree/master/shell/common)）
+**引擎**（[原始碼]({{site.github}}/flutter/engine/tree/master/shell/common)）
 
 * Responsible for rasterizing composited scenes.
 
-  将已经合成的 Scene 进行栅格化。
+  將已經合成的 Scene 進行網格化。
 
 * Provides low-level implementation of Flutter's core APIs
   (for example, graphics, text layout, Dart runtime).
 
-  对 Flutter 的核心 API 进行了底层封装
-  （例如图形图像、文本布局和 Dart 的运行时）
+  對 Flutter 的核心 API 進行了底層封裝
+  （例如圖形圖像、文字佈局和 Dart 的執行時）
 
 * Exposes its functionality to the framework using the **dart:ui API**.
 
-  将其功能通过 **dart:ui API** 暴露给框架。
+  將其功能透過 **dart:ui API** 暴露給框架。
 
 * Integrates with a specific platform using the Engine's **Embedder API**.
 
-  使用 **嵌入层 API** 与平台进行整合。
+  使用 **嵌入層 API** 與平台進行整合。
 
 **Embedder** ([source code](https://github.com/flutter/engine/tree/main/shell/platform))
 
-**嵌入层**（[源代码]({{site.github}}/flutter/engine/tree/main/shell/platform)）
+**嵌入層**（[原始碼]({{site.github}}/flutter/engine/tree/main/shell/platform)）
 
 * Coordinates with the underlying operating system
   for access to services like rendering surfaces,
   accessibility, and input.
 
-  协调底层操作系统的服务，例如渲染层、无障碍和输入。
+  協調底層作業系統的服務，例如渲染層、無障礙和輸入。
 
 * Manages the event loop.
 
-  管理事件循环体系。
+  管理事件迴圈體系。
 
 * Exposes **platform-specific API** to integrate the Embedder into apps.
 
-  将 **特定平台的 API** 暴露给应用集成嵌入层。
+  將 **特定平台的 API** 暴露給應用整合嵌入層。
 
 **Runner**
 
-**运行器**
+**執行器**
 
 * Composes the pieces exposed by the platform-specific
   API of the Embedder into an app package runnable on the target platform.
 
-  将嵌入层暴露的平台 API 合成为目标平台可以运行的应用包。
+  將嵌入層暴露的平台 API 合成為目標平台可以執行的應用套件。
 
 * Part of app template generated by `flutter create`,
   owned by app developer.
 
-  部分内容由 `flutter create` 生成，由应用开发者进行管理。
+  部分內容由 `flutter create` 產生，由應用開發者進行管理。
 
 ## Reactive user interfaces
 
-## 响应式用户界面
+## 響應式使用者介面
 
 On the surface, Flutter is [a reactive, declarative UI framework][faq],
 in which the developer provides a mapping from application state to interface
@@ -368,11 +368,11 @@ when the application state changes. This model is inspired by
 which includes a rethinking of many traditional design principles.
 
 粗略一看，Flutter 是
-[一个响应式的且伪声明式的 UI 框架][faq]，
-开发者负责提供应用状态与界面状态之间的映射，框架则在运行时将应用状态的更改更新到界面上。
-这样的模型架构的灵感来自
+[一個響應式的且偽宣告式的 UI 框架][faq]，
+開發者負責提供應用狀態與介面狀態之間的對映，框架則在執行時將應用狀態的更改更新到介面上。
+這樣的模型架構的靈感來自
 [Facebook 自己的 React 框架][fb]
-，其中包含了对传统设计理念的再度解构。
+，其中包含了對傳統設計理念的再度解構。
 
 [faq]: {{site.url}}/resources/faq#what-programming-paradigm-does-flutters-framework-use
 [fb]: {{site.youtube-site}}/watch?time_continue=2&v=x7cQ3mrcKaY&feature=emb_logo
@@ -383,11 +383,11 @@ to events. One challenge of this approach is that, as the application grows in
 complexity, the developer needs to be aware of how state changes cascade
 throughout the entire UI. For example, consider the following UI:
 
-在大部分传统的 UI 框架中，界面的初始状态通常会被一次性定义，
-然后，在运行时根据用户代码分别响应事件进行更新。
-在这里有一项大挑战，即随着应用程序的复杂性日益增长，
-开发者需要对整个 UI 的状态关联有整体的认知。
-让我们来看看如下的 UI：
+在大部分傳統的 UI 框架中，介面的初始狀態通常會被一次性定義，
+然後，在執行時根據使用者程式碼分別響應事件進行更新。
+在這裡有一項大挑戰，即隨著應用程式的複雜性日益增長，
+開發者需要對整個 UI 的狀態關聯有整體的認知。
+讓我們來看看如下的 UI：
 
 ![Color picker dialog]({{site.url}}/assets/images/docs/arch-overview/color-picker.png){:width="66%"}
 
@@ -397,20 +397,20 @@ reflected in every other place. Worse, unless care is taken, a minor change to
 one part of the user interface can cause ripple effects to seemingly unrelated
 pieces of code.
 
-很多地方都可以更改状态：颜色框、色调滑条、单选按钮。
-在用户与 UI 进行交互时，状态的改变可能会影响到每一个位置。
-更糟糕的是，UI 的细微变动很有可能会引发无关代码的连锁反应，尤其是当开发者并未注意其关联的时候。
+很多地方都可以更改狀態：顏色框、色調滑條、單選按鈕。
+在使用者與 UI 進行互動時，狀態的改變可能會影響到每一個位置。
+更糟糕的是，UI 的細微變動很有可能會引發無關程式碼的連鎖反應，尤其是當開發者並未注意其關聯的時候。
 
 One solution to this is an approach like MVC, where you push data changes to the
 model via the controller, and then the model pushes the new state to the view
 via the controller. However, this also is problematic, since creating and
 updating UI elements are two separate steps that can easily get out of sync.
 
-我们可以通过类似 MVC 的方式进行处理，
-开发者将数据的改动通过控制器（Controller）推至模型（Model），
-模型再将新的状态通过控制器推至界面（View）。
-但这样的处理方式仍然存在问题，
-因为创建和更新 UI 元素的操作被分离开了，容易造成它们的不同步。
+我們可以透過類似 MVC 的方式進行處理，
+開發者將資料的改動透過控制器（Controller）推至模型（Model），
+模型再將新的狀態透過控制器推至介面（View）。
+但這樣的處理方式仍然存在問題，
+因為建立和更新 UI 元素的操作被分離開了，容易造成它們的不同步。
 
 Flutter, along with other reactive frameworks, takes an alternative approach to
 this problem, by explicitly decoupling the user interface from its underlying
@@ -418,8 +418,8 @@ state. With React-style APIs, you only create the UI description, and the
 framework takes care of using that one configuration to both create and/or
 update the user interface as appropriate.
 
-Flutter 与其他响应式框架类似，采用了显式剥离基础状态和用户界面的方式，来解决这一问题。
-你可以通过 React 风格的 API，创建 UI 的描述，让框架负责通过配置优雅地创建和更新用户界面。
+Flutter 與其他響應式框架類似，採用了顯式剝離基礎狀態和使用者介面的方式，來解決這一問題。
+你可以透過 React 風格的 API，建立 UI 的描述，讓框架負責透過配置優雅地建立和更新使用者介面。
 
 In Flutter, widgets (akin to components in React) are represented by immutable
 classes that are used to configure a tree of objects. These widgets are used to
@@ -429,15 +429,15 @@ mechanisms for efficiently walking the modified parts of trees, converting trees
 of objects into lower-level trees of objects, and propagating changes across
 these trees.
 
-在 Flutter 里，widgets（类似于 React 中的组件）是用来配置对象树的不可变类。
-这些 widgets 会管理单独的布局对象树，接着参与管理合成的布局对象树。
-Flutter 的核心就是一套高效的遍历树的变动的机制，
-它会将对象树转换为更底层的对象树，并在树与树之间传递更改。
+在 Flutter 裡，widgets（類似於 React 中的元件）是用來配置物件樹的不可變類別。
+這些 widgets 會管理單獨的佈局物件樹，接著參與管理合成的佈局物件樹。
+Flutter 的核心就是一套高效的遍歷樹的變動的機制，
+它會將物件樹轉換為更底層的物件樹，並在樹與樹之間傳遞更改。
 
 A widget declares its user interface by overriding the `build()` method, which
 is a function that converts state to UI:
 
-`build()` 是将状态转化为 UI 的方法，widget 通过重写该方法来声明 UI 的构造：
+`build()` 是將狀態轉化為 UI 的方法，widget 透過重寫該方法來宣告 UI 的構造：
 
 ```none
 UI = f(state)
@@ -447,16 +447,16 @@ The `build()` method is by design fast to execute and should be free of side
 effects, allowing it to be called by the framework whenever needed (potentially
 as often as once per rendered frame).
 
-`build()` 方法在框架需要时都可以被调用（每个渲染帧可能会调用一次），
-从设计角度来看，它应当能够快速执行且没有额外影响的。
+`build()` 方法在框架需要時都可以被呼叫（每個渲染幀可能會呼叫一次），
+從設計角度來看，它應當能夠快速執行且沒有額外影響的。
 
 This approach relies on certain characteristics of a language runtime (in
 particular, fast object instantiation and deletion). Fortunately, [Dart is
 particularly well suited for this
 task]({{site.flutter-medium}}/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
-这样的实现设计依赖于语言的运行时特征（特别是对象的快速实例化和清除）。
-幸运的是，[Dart 非常适合这份工作](https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)。
+這樣的實現設計依賴於語言的執行時特徵（特別是物件的快速例項化和清除）。
+幸運的是，[Dart 非常適合這份工作](https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)。
 
 ## Widgets
 
@@ -464,18 +464,18 @@ As mentioned, Flutter emphasizes widgets as a unit of composition. Widgets are
 the building blocks of a Flutter app's user interface, and each widget is an
 immutable declaration of part of the user interface.
 
-如前所述，Flutter 强调以 widgets 作为组成单位。
-Widgets 是构建 Flutter 应用界面的基础块，每个 widget 都是一部分不可变的 UI 声明。
+如前所述，Flutter 強調以 widgets 作為組成單位。
+Widgets 是建構 Flutter 應用介面的基礎塊，每個 widget 都是一部分不可變的 UI 宣告。
 
 Widgets form a hierarchy based on composition. Each widget nests inside its
 parent and can receive context from the parent. This structure carries all the
 way up to the root widget (the container that hosts the Flutter app, typically
 `MaterialApp` or `CupertinoApp`), as this trivial example shows:
 
-Widgets 通过布局组合形成一种层次结构关系。
-每个 Widget 都嵌套在其父级的内部，并可以通过父级接收上下文。
-从根布局（托管 Flutter 应用的容器，通常是 `MaterialApp` 或 `CupertinoApp`）开始，
-自上而下都是这样的结构，如下面的示例所示：
+Widgets 透過佈局組合形成一種層次結構關係。
+每個 Widget 都巢狀(Nesting)在其父級的內部，並可以透過父級接收上下文。
+從根佈局（託管 Flutter 應用的容器，通常是 `MaterialApp` 或 `CupertinoApp`）開始，
+自上而下都是這樣的結構，如下面的範例所示：
 
 <?code-excerpt "lib/main.dart (Main)"?>
 ```dart
@@ -520,15 +520,15 @@ class MyApp extends StatelessWidget {
 
 In the preceding code, all instantiated classes are widgets.
 
-在上面的代码中，所有实例化的类都是 widgets。
+在上面的程式碼中，所有例項化的類都是 widgets。
 
 Apps update their user interface in response to events (such as a user
 interaction) by telling the framework to replace a widget in the hierarchy with
 another widget. The framework then compares the new and old widgets, and
 efficiently updates the user interface.
 
-应用会根据事件交互（例如用户操作），通知框架替换层级中的旧 widget 为新 widget，
-然后框架会比较新旧 widgets，高效地更新用户界面。
+應用會根據事件互動（例如使用者操作），通知框架替換層級中的舊 widget 為新 widget，
+然後框架會比較新舊 widgets，高效地更新使用者介面。
 
 Flutter has its own implementations of each UI control, rather than deferring to
 those provided by the system: for example, there is a pure [Dart
@@ -538,46 +538,46 @@ control]({{site.apple-dev}}/design/human-interface-guidelines/toggles)
 and the [one for]({{site.api}}/flutter/material/Switch-class.html) the
 [Android equivalent]({{site.material}}/components/switch).
 
-Flutter 拥有其自己的 UI 控制实现，而不是由系统自带的方法进行托管：
+Flutter 擁有其自己的 UI 控制實現，而不是由系統自帶的方法進行託管：
 例如，
-[iOS 的 Toggle 控件]({{site.apple-dev}}/design/human-interface-guidelines/toggles)
-有一个 [对应的 widget]({{site.api}}/flutter/cupertino/CupertinoSwitch-class.html)，
-[Android 的选择控件]({{site.material}}/components/switch)
-有一个 [对应的 widget]({{site.api}}/flutter/material/Switch-class.html)。
+[iOS 的 Toggle 控制項]({{site.apple-dev}}/design/human-interface-guidelines/toggles)
+有一個 [對應的 widget]({{site.api}}/flutter/cupertino/CupertinoSwitch-class.html)，
+[Android 的選擇控制項]({{site.material}}/components/switch)
+有一個 [對應的 widget]({{site.api}}/flutter/material/Switch-class.html)。
 
 This approach provides several benefits:
 
-这样的实现有几个优势：
+這樣的實現有幾個優勢：
 
 - Provides for unlimited extensibility. A developer who wants a variant of the
   Switch control can create one in any arbitrary way, and is not limited to the
   extension points provided by the OS.
 
-  提供了无限的扩展性。当开发者想要一个 Switch 的改装时，他们可以以任意方式创建一个，
-  而不被系统提供的扩展所限制。
+  提供了無限的擴充性。當開發者想要一個 Switch 的改裝時，他們可以以任意方式建立一個，
+  而不被系統提供的擴充所限制。
 
 - Avoids a significant performance bottleneck by allowing Flutter to composite
   the entire scene at once, without transitioning back and forth between Flutter
   code and platform code.
 
-  Flutter 可以直接合成所有的场景，而无需在 Flutter 与原生平台之间来回切换，
-  从而避免了明显的性能瓶颈。
+  Flutter 可以直接合成所有的場景，而無需在 Flutter 與原生平台之間來回切換，
+  從而避免了明顯的效能瓶頸。
 
 - Decouples the application behavior from any operating system dependencies. The
   application looks and feels the same on all versions of the OS, even if the OS
   changed the implementations of its controls.
 
-  将应用的行为与操作系统的依赖解耦。
-  在任意一种系统平台上体验应用，都将是一致的，就算某个系统更改了其控件的实现，也是如此。
+  將應用的行為與作業系統的依賴解耦。
+  在任意一種系統平臺上體驗應用，都將是一致的，就算某個系統更改了其控制項的實現，也是如此。
 
 ### Composition
 
-### 组成
+### 組成
 
 Widgets are typically composed of many other small, single-purpose widgets that
 combine to produce powerful effects.
 
-Widgets 通常由更小的且用途单一的 widgets 组合而成，提供更强大的功能。
+Widgets 通常由更小的且用途單一的 widgets 組合而成，提供更強大的功能。
 
 Where possible, the number of design concepts is kept to a minimum while
 allowing the total vocabulary to be large. For example, in the widgets layer,
@@ -590,14 +590,14 @@ accessibility. In each of these cases, the corresponding vocabulary ends up
 being large: there are hundreds of widgets and render objects, and dozens of
 animation and tween types.
 
-在设计时，相关的设计概念已尽可能地少量存在，而通过大量的内容进行填充。
-（译者注：即以最小的原语加最多的单一实现创造出最大的价值。）
-举个例子，Flutter 在 widgets 层中使用了相同的概念（一个 `Widget`）
-来表示屏幕上的绘制、布局（位置和大小）、用户交互、状态管理、主题、动画及导航。
-在动画层，`Animation` 和 `Tween` 这对概念组合，涵盖了大部分的设计空间。
-在渲染层，`RenderObject` 用来描述布局、绘制、触摸判断及可访问性。
-在这些场景中，最终对应包含的内容都很多：
-有数百个 widgets 和 render objects，以及数十种动画和补间类型。
+在設計時，相關的設計概念已儘可能地少量存在，而透過大量的內容進行填充。
+（譯者注：即以最小的原語加最多的單一實現創造出最大的價值。）
+舉個例子，Flutter 在 widgets 層中使用了相同的概念（一個 `Widget`）
+來表示螢幕上的繪製、佈局（位置和大小）、使用者互動、狀態管理、主題、動畫及導航。
+在動畫層，`Animation` 和 `Tween` 這對概念組合，涵蓋了大部分的設計空間。
+在渲染層，`RenderObject` 用來描述佈局、繪製、觸控判斷及可及性。
+在這些場景中，最終對應包含的內容都很多：
+有數百個 widgets 和 render objects，以及數十種動畫和補間型別。
 
 The class hierarchy is deliberately shallow and broad to maximize the possible
 number of combinations, focusing on small, composable widgets that each do one
@@ -609,23 +609,23 @@ example, to center a widget, rather than adjusting a notional `Align` property,
 you wrap it in a [`Center`]({{site.api}}/flutter/widgets/Center-class.html)
 widget.
 
-类的层次结构是有意的浅而广，以最大限度地增加可能的组合数量，
-重点放在小的、可组合的 widget 上，确保每个 widget 都能很好地完成一件事情。
-核心功能均被抽象，甚至像边距和对齐这样的基础功能，都被实现为单独的组件，而不是内置于核心中。
-（这样的实现也与传统的 API 形成了对比，类似边距这样的功能通常都内置在了每个组件的公共核心内，
-Flutter 中的 widget 则不同。）因此，如果你需要将一个 widget 居中，
-与其调整 `Align` 这样的属性，不如将它包裹在一个
-[`Center`]({{site.api}}/flutter/widgets/Center-class.html) widget 内。
+類別的層次結構是有意的淺而廣，以最大限度地增加可能的組合數量，
+重點放在小的、可組合的 widget 上，確保每個 widget 都能很好地完成一件事情。
+核心功能均被抽象，甚至像邊距和對齊這樣的基礎功能，都被實現為單獨的元件，而不是內置於核心中。
+（這樣的實現也與傳統的 API 形成了對比，類似邊距這樣的功能通常都內建在了每個元件的公共核心內，
+Flutter 中的 widget 則不同。）因此，如果你需要將一個 widget 居中，
+與其調整 `Align` 這樣的屬性，不如將它包裹在一個
+[`Center`]({{site.api}}/flutter/widgets/Center-class.html) widget 內。
 
 There are widgets for padding, alignment, rows, columns, and grids. These layout
 widgets do not have a visual representation of their own. Instead, their sole
 purpose is to control some aspect of another widget's layout. Flutter also
 includes utility widgets that take advantage of this compositional approach.
 
-Flutter 中包含了边距、对齐、行、列和网格系列的 widgets。
-这些布局类型的 widgets 自身没有视觉内容，
-而只用于控制其他 widgets 的部分布局条件。
-Flutter 也包含了以这种组合方法组成的实用型 widgets。
+Flutter 中包含了邊距、對齊、行、列和網格系列的 widgets。
+這些佈局型別的 widgets 自身沒有視覺內容，
+而只用於控制其他 widgets 的部分佈局條件。
+Flutter 也包含了以這種組合方法組成的實用型 widgets。
 
 For example, [`Container`]({{site.api}}/flutter/widgets/Container-class.html), a
 commonly used widget, is made up of several widgets responsible for layout,
@@ -642,24 +642,24 @@ than subclassing `Container` to produce a customized effect, you can compose it
 and other widgets in novel ways, or just create a new widget using
 `Container` as inspiration.
 
-例如，一个常用的 widget
+例如，一個常用的 widget
 [`Container`]({{site.api}}/flutter/widgets/Container-class.html)，
-是由几个 widget 组合而成，包含了布局、绘制、定位和大小的功能。
-更具体地说，Container 是由
+是由幾個 widget 組合而成，包含了佈局、繪製、定位和大小的功能。
+更具體地說，Container 是由
 [`LimitedBox`]({{site.api}}/flutter/widgets/LimitedBox-class.html)、
 [`ConstrainedBox`]({{site.api}}/flutter/widgets/ConstrainedBox-class.html)、
 [`Align`]({{site.api}}/flutter/widgets/Align-class.html)、
 [`Padding`]({{site.api}}/flutter/widgets/Padding-class.html)、
 [`DecoratedBox`]({{site.api}}/flutter/widgets/DecoratedBox-class.html) 和
-[`Transform`]({{site.api}}/flutter/widgets/Transform-class.html) 组成的，
-你也可以通过查看源码看到这些组合。
-Flutter 有一个典型的特征，即你可以深入到任意一个 widget，查看其源码。
-因此，你可以通过同样的方式组合其他的 widgets，也可以参考 `Container` 来创建其他的 widget，
-而不需要继承 `Container` 来实现自定义的效果。
+[`Transform`]({{site.api}}/flutter/widgets/Transform-class.html) 組成的，
+你也可以透過檢視原始碼看到這些組合。
+Flutter 有一個典型的特徵，即你可以深入到任意一個 widget，檢視其原始碼。
+因此，你可以透過同樣的方式組合其他的 widgets，也可以參考 `Container` 來建立其他的 widget，
+而不需要繼承 `Container` 來實現自訂的效果。
 
 ### Building widgets
 
-### 构建 widgets
+### 建構 widgets
 
 As mentioned earlier, you determine the visual representation of a widget by
 overriding the
@@ -677,19 +677,19 @@ objects]({{site.api}}/flutter/widgets/RenderObjectWidget-class.html). The
 framework then stitches together the renderable objects into a renderable object
 tree.
 
-先前提到，你可以通过重写
+先前提到，你可以透過重寫
 [`build()`]({{site.api}}/flutter/widgets/StatelessWidget/build.html)
-方法，返回一个新的元素树，来定义视觉展示。
-这棵树用更为具体的术语表示了 widget 在 UI 中的部分。
-例如，工具栏 widget 的 build 方法可能会返回
-[水平布局]({{site.api}}/flutter/widgets/Row-class.html)，
+方法，返回一個新的元素樹，來定義視覺展示。
+這棵樹用更為具體的術語表示了 widget 在 UI 中的部分。
+例如，工具欄 widget 的 build 方法可能會返回
+[水平佈局]({{site.api}}/flutter/widgets/Row-class.html)，
 其中可能包含一些 [文字]({{site.api}}/flutter/widgets/Text-class.html)，
-[各种各样]({{site.api}}/flutter/material/IconButton-class.html) 的
-[按钮]({{site.api}}/flutter/material/PopupMenuButton-class.html)。
-根据需要，框架会递归请求每个 widget 进行构建，直到整棵树都被
-[具体的可渲染对象]({{site.api}}/flutter/widgets/RenderObjectWidget-class.html)
-描述为止。
-然后，框架会将可渲染的对象缝合在一起，组成可渲染对象树。
+[各種各樣]({{site.api}}/flutter/material/IconButton-class.html) 的
+[按鈕]({{site.api}}/flutter/material/PopupMenuButton-class.html)。
+根據需要，框架會遞迴請求每個 widget 進行建構，直到整棵樹都被
+[具體的可渲染物件]({{site.api}}/flutter/widgets/RenderObjectWidget-class.html)
+描述為止。
+然後，框架會將可渲染的物件縫合在一起，組成可渲染物件樹。
 
 A widget's build function should be free of side effects. Whenever the function
 is asked to build, the widget should return a new tree of widgets<sup><a
@@ -699,13 +699,13 @@ be called based on the render object tree (described in more detail later). More
 information about this process can be found in the [Inside Flutter
 topic]({{site.url}}/resources/inside-flutter#linear-reconciliation).
 
-Widget 的 build 方法应该是没有副作用的。每当一个方法要求构建时，
-widget 都应当能返回一个 widget 的元素树<sup><a href="#a1">1</a></sup>，
-与先前返回的 widget 也没有关联。
-框架会根据渲染对象树（稍后将进一步介绍）来确定哪些构建方法需要被调用，这是一项略显繁重的工作。
-有关这个过程的更多信息，可以在
+Widget 的 build 方法應該是沒有副作用的。每當一個方法要求建構時，
+widget 都應當能返回一個 widget 的元素樹<sup><a href="#a1">1</a></sup>，
+與先前返回的 widget 也沒有關聯。
+框架會根據渲染物件樹（稍後將進一步介紹）來確定哪些建構方法需要被呼叫，這是一項略顯繁重的工作。
+有關這個過程的更多資訊，可以在
 [Flutter 工作原理]({{site.url}}/resources/inside-flutter#linear-reconciliation)
-中进一步了解。
+中進一步瞭解。
 
 On each rendered frame, Flutter can recreate just the parts of the UI where the
 state has changed by calling that widget's `build()` method. Therefore it is
@@ -713,9 +713,9 @@ important that build methods should return quickly, and heavy computational work
 should be done in some asynchronous manner and then stored as part of the state
 to be used by a build method.
 
-每个渲染帧，Flutter 都可以根据变化的状态，调用 `build()` 方法重建部分 UI。
-因此，保证 build 方法轻量且能快速返回 widget 是非常关键的，
-繁重的计算工作应该通过一些异步方法完成，并存储在状态中，在 build 方法中使用。
+每個渲染幀，Flutter 都可以根據變化的狀態，呼叫 `build()` 方法重建部分 UI。
+因此，保證 build 方法輕量且能快速返回 widget 是非常關鍵的，
+繁重的計算工作應該透過一些非同步方法完成，並存儲在狀態中，在 build 方法中使用。
 
 While relatively naïve in approach, this automated comparison is quite
 effective, enabling high-performance, interactive apps. And, the design of the
@@ -723,25 +723,25 @@ build function simplifies your code by focusing on declaring what a widget is
 made of, rather than the complexities of updating the user interface from one
 state to another.
 
-尽管这样的实现看起来不够成熟，但这样的自动对比方法非常有效，可以实现高性能的交互应用。
-同时，以这种方式设计的 build 方法，将着重点放在 widget 组成的声明上，从而简化了你的代码，
-而不是以一种状态去更新另一种状态这样的复杂过程。
+儘管這樣的實現看起來不夠成熟，但這樣的自動對比方法非常有效，可以實現高效能的互動應用。
+同時，以這種方式設計的 build 方法，將著重點放在 widget 組成的宣告上，從而簡化了你的程式碼，
+而不是以一種狀態去更新另一種狀態這樣的複雜過程。
 
 ### Widget state
 
-### Widget 的状态
+### Widget 的狀態
 
 The framework introduces two major classes of widget: _stateful_ and _stateless_
 widgets.
 
-框架包含两种核心的 widget 类：**有状态的** 和 **无状态的** widget。
+框架包含兩種核心的 widget 類：**有狀態的** 和 **無狀態的** widget。
 
 Many widgets have no mutable state: they don't have any properties that change
 over time (for example, an icon or a label). These widgets subclass
 [`StatelessWidget`]({{site.api}}/flutter/widgets/StatelessWidget-class.html).
 
-大部分 widget 都没有需要变更的状态：它们并不包含随时变化的属性（例如图标或者标签）。
-这些 widget 会继承
+大部分 widget 都沒有需要變更的狀態：它們並不包含隨時變化的屬性（例如圖示或者標籤）。
+這些 widget 會繼承
 [`StatelessWidget`]({{site.api}}/flutter/widgets/StatelessWidget-class.html)。
 
 However, if the unique characteristics of a widget need to change based on user
@@ -755,24 +755,24 @@ class that subclasses [`State`]({{site.api}}/flutter/widgets/State-class.html).
 `StatefulWidget`s don't have a build method; instead, their user interface is
 built through their `State` object.
 
-然而，当 widget 拥有需要根据用户交互或其他因素而变化的特有属性，它就是 **有状态的**。
-例如，计数器 widget 在用户点击按钮时数字递增，那么计数值就是计数器 widget 的状态。
-当值变化时，widget 则需要被重建以更新相关部分的 UI。
-这些 widget 会继承
+然而，當 widget 擁有需要根據使用者互動或其他因素而變化的特有屬性，它就是 **有狀態的**。
+例如，計數器 widget 在使用者點選按鈕時數字遞增，那麼計數值就是計數器 widget 的狀態。
+當值變化時，widget 則需要被重建以更新相關部分的 UI。
+這些 widget 會繼承
 [`StatefulWidget`]({{site.api}}/flutter/widgets/StatefulWidget-class.html)，
-并且「可变的」状态会保存在继承
-[`State`]({{site.api}}/flutter/widgets/State-class.html) 的另一个子类中
-（因为 widget 本身是不可变的）。
-`StatefulWidget` 自身没有 build 方法，而在其对应的 `State` 对象中。
+並且「可變的」狀態會儲存在繼承
+[`State`]({{site.api}}/flutter/widgets/State-class.html) 的另一個子類中
+（因為 widget 本身是不可變的）。
+`StatefulWidget` 自身沒有 build 方法，而在其對應的 `State` 物件中。
 
 Whenever you mutate a `State` object (for example, by incrementing the counter),
 you must call [`setState()`]({{site.api}}/flutter/widgets/State/setState.html)
 to signal the framework to update the user interface by calling the `State`'s
 build method again.
 
-每当你更改 `State` 对象时（例如计数增加），你需要调用
+每當你更改 `State` 物件時（例如計數增加），你需要呼叫
 [`setState()`]({{site.api}}/flutter/widgets/State/setState.html)
-来告知框架，再次调用 `State` 的构建方法来更新 UI。
+來告知框架，再次呼叫 `State` 的建構方法來更新 UI。
 
 Having separate state and widget objects lets other widgets treat both stateless
 and stateful widgets in exactly the same way, without being concerned about
@@ -781,26 +781,26 @@ the parent can create a new instance of the child at any time without losing the
 child's persistent state. The framework does all the work of finding and reusing
 existing state objects when appropriate.
 
-将状态和 widget 对象分离，可以使其他 widget 无差异地看待无状态和有状态 widget，
-而不必担心丢失状态。父级无需担心状态的丢失，可以随时创建新的实例，
-并不需要通过子级关系保持其状态。
-框架也会在合适的时间，复用已存在的状态对象。
+將狀態和 widget 物件分離，可以使其他 widget 無差異地看待無狀態和有狀態 widget，
+而不必擔心丟失狀態。父級無需擔心狀態的丟失，可以隨時建立新的例項，
+並不需要透過子級關係保持其狀態。
+框架也會在合適的時間，複用已存在的狀態物件。
 
 ### State management
 
-### 状态管理
+### 狀態管理
 
 So, if many widgets can contain state, how is state managed and passed around
 the system?
 
-那么，在众多 widget 都持有状态的情况下，系统中的状态是如何被传递和管理的呢？
+那麼，在眾多 widget 都持有狀態的情況下，系統中的狀態是如何被傳遞和管理的呢？
 
 As with any other class, you can use a constructor in a widget to initialize its
 data, so a `build()` method can ensure that any child widget is instantiated
 with the data it needs:
 
-与其他类相同，你可以通过 widget 的构造函数来初始化数据，
-如此一来 `build()` 方法可以确保子 widget 使用其所需的数据进行实例化：
+與其他類相同，你可以透過 widget 的建構函式來初始化資料，
+如此一來 `build()` 方法可以確保子 widget 使用其所需的資料進行例項化：
 
 ```dart
 @override
@@ -816,19 +816,19 @@ provides an easy way to grab data from a shared ancestor. You can use
 `InheritedWidget` to create a state widget that wraps a common ancestor in the
 widget tree, as shown in this example:
 
-然而，随着 widget 树层级逐渐加深，依赖树形结构上下传递状态信息会变得十分麻烦。
-这时，第三种类型的 widget&mdash;&mdash;
+然而，隨著 widget 樹層級逐漸加深，依賴樹形結構上下傳遞狀態資訊會變得十分麻煩。
+這時，第三種類型的 widget&mdash;&mdash;
 [`InheritedWidget`]({{site.api}}/flutter/widgets/InheritedWidget-class.html)，
-提供了一种从共同的祖先节点获取数据的简易方法。
-你可以使用 `InheritedWidget` 创建包含状态的 widget，
-该 widget 会将一个共同的祖先节点包裹在 widget 树中，如下面的例子所示：
+提供了一種從共同的祖先節點獲取資料的簡易方法。
+你可以使用 `InheritedWidget` 建立包含狀態的 widget，
+該 widget 會將一個共同的祖先節點包裹在 widget 樹中，如下面的例子所示：
 
 ![Inherited widgets]({{site.url}}/assets/images/docs/arch-overview/inherited-widget.png){:width="50%"}
 
 Whenever one of the `ExamWidget` or `GradeWidget` objects needs data from
 `StudentState`, it can now access it with a command such as:
 
-现在，当 `ExamWidget` 或 `GradeWidget` 对象需要获取 `StudentState` 的数据时，
+現在，當 `ExamWidget` 或 `GradeWidget` 物件需要獲取 `StudentState` 的資料時，
 可以直接使用以下方式：
 
 ```dart
@@ -842,11 +842,11 @@ that matches the `StudentState` type. `InheritedWidget`s also offer an
 `updateShouldNotify()` method, which Flutter calls to determine whether a state
 change should trigger a rebuild of child widgets that use it.
 
-调用 `of(context)` 会根据当前构建的上下文（即当前 widget 位置的句柄），
-并返回类型为 `StudentState` 的
-[在树中距离最近的祖先节点]({{site.api}}/flutter/flutter/widgets/BuildContext/dependOnInheritedWidgetOfExactType.html)。
-`InheritedWidget` 同时也包含了 `updateShouldNotify()` 方法，
-Flutter 会调用它来判断依赖了某个状态的 widget 是否需要重建。
+呼叫 `of(context)` 會根據當前建構的上下文（即當前 widget 位置的控制代碼），
+並返回型別為 `StudentState` 的
+[在樹中距離最近的祖先節點]({{site.api}}/flutter/flutter/widgets/BuildContext/dependOnInheritedWidgetOfExactType.html)。
+`InheritedWidget` 同時也包含了 `updateShouldNotify()` 方法，
+Flutter 會呼叫它來判斷依賴了某個狀態的 widget 是否需要重建。
 
 Flutter itself uses `InheritedWidget` extensively as part of the framework for
 shared state, such as the application's _visual theme_, which includes
@@ -856,11 +856,11 @@ pervasive throughout an application. The `MaterialApp` `build()` method inserts
 a theme in the tree when it builds, and then deeper in the hierarchy a widget
 can use the `.of()` method to look up the relevant theme data, for example:
 
-`InheritedWidget` 在 Flutter 框架中被大量用于共享状态，例如应用的 **视觉主题**，
-包含了应用于整个应用的
-[颜色和字体样式等属性]({{site.api}}/flutter/material/ThemeData-class.html)。
-`MaterialApp` 的 `build()` 方法会在构建时在树中插入一个主题，
-更深层级的 widget 便可以使用 `.of()` 方法来查找相关的主题数据，例如：
+`InheritedWidget` 在 Flutter 框架中被大量用於共享狀態，例如應用的 **視覺主題**，
+包含了應用於整個應用的
+[顏色和字型樣式等屬性]({{site.api}}/flutter/material/ThemeData-class.html)。
+`MaterialApp` 的 `build()` 方法會在建構時在樹中插入一個主題，
+更深層級的 widget 便可以使用 `.of()` 方法來查詢相關的主題資料，例如：
 
 <?code-excerpt "lib/main.dart (Container)"?>
 ```dart
@@ -879,9 +879,9 @@ page routing; and
 [MediaQuery]({{site.api}}/flutter/widgets/MediaQuery-class.html), which provides
 access to screen metrics such as orientation, dimensions, and brightness.
 
-类似地，以该方法实现的还有
-提供了页面路由的 [Navigator]({{site.api}}/flutter/widgets/Navigator-class.html)、
-提供了屏幕信息指标，包括方向、尺寸和亮度的 [MediaQuery]({{site.api}}/flutter/widgets/MediaQuery-class.html) 等。
+類似地，以該方法實現的還有
+提供了頁面路由的 [Navigator]({{site.api}}/flutter/widgets/Navigator-class.html)、
+提供了螢幕資訊指標，包括方向、尺寸和亮度的 [MediaQuery]({{site.api}}/flutter/widgets/MediaQuery-class.html) 等。
 
 As applications grow, more advanced state management approaches that reduce the
 ceremony of creating and using stateful widgets become more attractive. Many
@@ -891,23 +891,23 @@ Flutter apps use utility packages like
 approaches to implement the transformation of state into UI, such as the
 [flutter_hooks]({{site.pub}}/packages/flutter_hooks) package.
 
-随着应用程序的不断迭代，更高级的状态管理方法变得更有吸引力，
-它们可以减少有状态的 widget 的创建。
-许多 Flutter 应用使用了 [provider]({{site.pub}}/packages/provider) 用于状态管理，
-它对 `InheritedWidget` 进行了进一步的包装。
-Flutter 的分层架构也允许使用其他实现来替换状态至 UI 的方案，例如
+隨著應用程式的不斷迭代，更進階的狀態管理方法變得更有吸引力，
+它們可以減少有狀態的 widget 的建立。
+許多 Flutter 應用使用了 [provider]({{site.pub}}/packages/provider) 用於狀態管理，
+它對 `InheritedWidget` 進行了進一步的包裝。
+Flutter 的分層架構也允許使用其他實現來替換狀態至 UI 的方案，例如
 [flutter_hooks]({{site.pub}}/packages/flutter_hooks)。
 
 ## Rendering and layout
 
-## 渲染和布局
+## 渲染和佈局
 
 This section describes the rendering pipeline, which is the series of steps that
 Flutter takes to convert a hierarchy of widgets into the actual pixels painted
 onto a screen.
 
-本节介绍 Flutter 的渲染机制，
-包括将 widget 层级结构转换成屏幕上绘制的实际像素的一系列步骤。
+本節介紹 Flutter 的渲染機制，
+包括將 widget 層級結構轉換成螢幕上繪製的實際畫素的一系列步驟。
 
 ### Flutter's rendering model
 
@@ -916,7 +916,7 @@ onto a screen.
 You may be wondering: if Flutter is a cross-platform framework, then how can it
 offer comparable performance to single-platform frameworks?
 
-你可能思考过：既然 Flutter 是一个跨平台的框架，那么它如何提供与原生平台框架相当的性能？
+你可能思考過：既然 Flutter 是一個跨平臺的框架，那麼它如何提供與原生平台框架相當的效能？
 
 It's useful to start by thinking about how traditional
 Android apps work. When drawing,
@@ -927,11 +927,11 @@ which Android can then render with [Skia][],
 a graphics engine written in C/C++ that calls the
 CPU or GPU to complete the drawing on the device.
 
-让我们从安卓原生应用的角度开始思考。
-当你在编写绘制的内容时，你需要调用 Android 框架的 Java 代码。
-Android 的系统库提供了可以将自身绘制到 Canvas 对象的组件，
-接下来 Android 就可以使用由 C/C++ 编写的 [Skia][] 图像引擎，
-调用 CPU 和 GPU 完成在设备上的绘制。
+讓我們從安卓原生應用的角度開始思考。
+當你在編寫繪製的內容時，你需要呼叫 Android 框架的 Java 程式碼。
+Android 的系統庫提供了可以將自身繪製到 Canvas 物件的元件，
+接下來 Android 就可以使用由 C/C++ 編寫的 [Skia][] 圖像引擎，
+呼叫 CPU 和 GPU 完成在裝置上的繪製。
 
 Cross-platform frameworks _typically_ work by creating
 an abstraction layer over the underlying native
@@ -944,12 +944,12 @@ All this adds overhead that can be significant,
 particularly where there is a lot of
 interaction between the UI and the app logic.
 
-**通常来说**，跨平台框架都会在 Android 和 iOS 的 UI 底层库上创建一层抽象，
-该抽象层尝试抹平各个系统之间的差异。
-这时，应用程序的代码常常使用 JavaScript 等解释型语言来进行编写，
-这些代码会与基于 Java 的 Android 和基于 Objective-C 的 iOS 系统进行交互，
-最终显示 UI 界面。
-所有的流程都增加了显著的开销，在 UI 和应用逻辑有繁杂的交互时更为如此。
+**通常來說**，跨平臺框架都會在 Android 和 iOS 的 UI 底層庫上建立一層抽象，
+該抽象層嘗試抹平各個系統之間的差異。
+這時，應用程式的程式碼常常使用 JavaScript 等解釋型語言來進行編寫，
+這些程式碼會與基於 Java 的 Android 和基於 Objective-C 的 iOS 系統進行互動，
+最終顯示 UI 介面。
+所有的流程都增加了顯著的開銷，在 UI 和應用邏輯有繁雜的互動時更為如此。
 
 By contrast, Flutter minimizes those abstractions,
 bypassing the system UI widget libraries in favor
@@ -963,11 +963,11 @@ even if the phone hasn't been updated with a new Android version.
 The same is true for Flutter on other native platforms,
 such as Windows or macOS.
 
-相比之下，Flutter 通过绕过系统 UI 组件库，使用自己的 widget 内容集，削减了抽象层的开销。
-用于绘制 Flutter 图像内容的 Dart 代码被编译为机器码，并使用 Skia 进行渲染。
-Flutter 同时也嵌入了自己的 Skia 副本（未来会迁移到 Impeller），
-让开发者能在设备未更新到最新的系统时，
-也能跟进升级自己的应用，保证稳定性并提升性能。
+相比之下，Flutter 透過繞過系統 UI 元件庫，使用自己的 widget 內容集，削減了抽象層的開銷。
+用於繪製 Flutter 圖像內容的 Dart 程式碼被編譯為機器碼，並使用 Skia 進行渲染。
+Flutter 同時也嵌入了自己的 Skia 副本（未來會遷移到 Impeller），
+讓開發者能在裝置未更新到最新的系統時，
+也能跟進升級自己的應用，保證穩定性並提升效能。
 
 {{site.alert.note}}
 
@@ -975,36 +975,36 @@ Flutter 同时也嵌入了自己的 Skia 副本（未来会迁移到 Impeller）
   rendering engine on iOS. It's in preview
   for Android behind a flag.
 
-  Flutter 3.10 默认启用 Impeller。
-  Android 可以通过标志启用。
+  Flutter 3.10 預設啟用 Impeller。
+  Android 可以透過標誌啟用。
 
 {{site.alert.end}}
 
 ### From user input to the GPU
 
-### 从用户操作到 GPU
+### 從使用者操作到 GPU
 
 The overriding principle that Flutter applies to its rendering pipeline is that
 **simple is fast**. Flutter has a straightforward pipeline for how data flows to
 the system, as shown in the following sequencing diagram:
 
-对于 Flutter 的渲染机制而言，首要原则是 **简单快速**。
-Flutter 为数据流向系统提供了直通的管道，如以下的流程图所示：
+對於 Flutter 的渲染機制而言，首要原則是 **簡單快速**。
+Flutter 為資料流向系統提供了直通的管道，如以下的流程圖所示：
 
 ![Render pipeline sequencing
 diagram]({{site.url}}/assets/images/docs/arch-overview/render-pipeline.png){:width="100%"}
 
 Let's take a look at some of these phases in greater detail.
 
-接下来，让我们更加深入了解其中的一些阶段。
+接下來，讓我們更加深入瞭解其中的一些階段。
 
 ### Build: from Widget to Element
 
-### 构建：从 Widget 到 Element
+### 建構：從 Widget 到 Element
 
 Consider this code fragment that demonstrates a widget hierarchy:
 
-首先观察以下的代码片段，它代表了一个简单的 widget 层次结构：
+首先觀察以下的程式碼片段，它代表了一個簡單的 widget 層次結構：
 
 <?code-excerpt "lib/main.dart (Container2)"?>
 ```dart
@@ -1029,13 +1029,13 @@ code]({{site.repo.flutter}}/blob/02efffc134ab4ce4ff50a9ddd86c832efdb80462/packag
 for `Container`, you can see that if the color is not null, it inserts a
 `ColoredBox` representing the color:
 
-当 Flutter 需要绘制这段代码片段时，框架会调用 `build()` 方法，
-返回一棵基于当前应用状态来绘制 UI 的 widget 子树。
-在这个过程中，`build()` 方法可能会在必要时，根据状态引入新的 widget。
+當 Flutter 需要繪製這段程式碼片段時，框架會呼叫 `build()` 方法，
+返回一棵基於當前應用狀態來繪製 UI 的 widget 子樹。
+在這個過程中，`build()` 方法可能會在必要時，根據狀態引入新的 widget。
 在上面的例子中，`Container` 的 `color` 和 `child` 就是典型的例子。
-我们可以查看 `Container` 的
-[源代码]({{site.repo.flutter}}/blob/02efffc134ab4ce4ff50a9ddd86c832efdb80462/packages/flutter/lib/src/widgets/container.dart#L401)，
-你会看到当 `color` 属性不为空时，`ColoredBox` 会被加入用于颜色布局。
+我們可以檢視 `Container` 的
+[原始碼]({{site.repo.flutter}}/blob/02efffc134ab4ce4ff50a9ddd86c832efdb80462/packages/flutter/lib/src/widgets/container.dart#L401)，
+你會看到當 `color` 屬性不為空時，`ColoredBox` 會被加入用於顏色佈局。
 
 ```dart
 if (color != null)
@@ -1047,9 +1047,9 @@ as `RawImage` and `RichText` during the build process. The eventual widget
 hierarchy may therefore be deeper than what the code represents, as in this
 case<sup><a href="#a2">2</a></sup>:
 
-与之对应的，`Image` 和 `Text` 在构建过程中也会引入 `RawImage` 和 `RichText`。
-如此一来，最终生成的 widget 结构比代码表示的层级更深，
-在该场景中如下图<sup><a href="#a2">2</a></sup>：
+與之對應的，`Image` 和 `Text` 在建構過程中也會引入 `RawImage` 和 `RichText`。
+如此一來，最終產生的 widget 結構比程式碼表示的層級更深，
+在該場景中如下圖<sup><a href="#a2">2</a></sup>：
 
 ![Render pipeline sequencing
 diagram]({{site.url}}/assets/images/docs/arch-overview/widgets.png){:width="35%"}
@@ -1059,19 +1059,19 @@ This explains why, when you examine the tree through a debug tool such as the
 Dart DevTools, you might see a structure that is considerably deeper than what
 is in your original code.
 
-这就是为什么你在使用 Dart DevTools 的
+這就是為什麼你在使用 Dart DevTools 的
 [Flutter inspector]({{site.url}}/development/tools/devtools/inspector)
-调试 widget 树结构时，会发现实际的结构比你原本代码中的结构层级更深。
+除錯 widget 樹結構時，會發現實際的結構比你原本程式碼中的結構層級更深。
 
 During the build phase, Flutter translates the widgets expressed in code into a
 corresponding **element tree**, with one element for every widget. Each element
 represents a specific instance of a widget in a given location of the tree
 hierarchy. There are two basic types of elements:
 
-在构建的阶段，Flutter 会将代码中描述的 widgets 转换成对应的 **Element 树**，
-每一个 Widget 都有一个对应的 Element。
-每一个 Element 代表了树状层级结构中特定位置的 widget 实例。
-目前有两种 Element 的基本类型：
+在建構的階段，Flutter 會將程式碼中描述的 widgets 轉換成對應的 **Element 樹**，
+每一個 Widget 都有一個對應的 Element。
+每一個 Element 代表了樹狀層級結構中特定位置的 widget 例項。
+目前有兩種 Element 的基本型別：
 
 - `ComponentElement`, a host for other elements.
 
@@ -1080,7 +1080,7 @@ hierarchy. There are two basic types of elements:
 - `RenderObjectElement`, an element that participates in the layout or paint
   phases.
 
-  `RenderObjectElement`，参与布局或绘制阶段的 Element。
+  `RenderObjectElement`，參與佈局或繪製階段的 Element。
 
 ![Render pipeline sequencing
 diagram]({{site.url}}/assets/images/docs/arch-overview/widget-element.png){:width="85%"}
@@ -1088,18 +1088,18 @@ diagram]({{site.url}}/assets/images/docs/arch-overview/widget-element.png){:widt
 `RenderObjectElement`s are an intermediary between their widget analog and the
 underlying `RenderObject`, which we'll come to later.
 
-`RenderObjectElement` 是底层 `RenderObject` 与对应的 widget 之间的桥梁，
-我们晚些会介绍它。
+`RenderObjectElement` 是底層 `RenderObject` 與對應的 widget 之間的橋樑，
+我們晚些會介紹它。
 
 The element for any widget can be referenced through its `BuildContext`, which
 is a handle to the location of a widget in the tree. This is the `context` in a
 function call such as `Theme.of(context)`, and is supplied to the `build()`
 method as a parameter.
 
-任何 widget 都可以通过其 `BuildContext` 引用到 Element，
-它是该 widget 在树中的位置的句柄。
-类似 `Theme.of(context)` 方法调用中的 `context`，
-它作为 `build()` 方法的参数被传递。
+任何 widget 都可以透過其 `BuildContext` 參考到 Element，
+它是該 widget 在樹中的位置的控制代碼。
+類似 `Theme.of(context)` 方法呼叫中的 `context`，
+它作為 `build()` 方法的引數被傳遞。
 
 Because widgets are immutable, including the parent/child relationship between
 nodes, any change to the widget tree (such as changing `Text('A')` to
@@ -1111,27 +1111,27 @@ fully disposable while caching its underlying representation. By only walking
 through the widgets that changed, Flutter can rebuild just the parts of the
 element tree that require reconfiguration.
 
-由于 widgets 以及它上下节点的关系都是不可变的，
-因此，对 widget 树做的任何操作
-（例如将 `Text('A')` 替换成 `Text('B')`）
-都会返回一个新的 widget 对象集合。
-但这并不意味着底层呈现的内容必须要重新构建。
-Element 树每一帧之间都是持久化的，因此起着至关重要的性能作用，
-Flutter 依靠该优势，实现了一种好似 widget 树被完全抛弃，而缓存了底层表示的机制。
-Flutter 可以根据发生变化的 widget，来重建需要重新配置的 Element 树的部分。
+由於 widgets 以及它上下節點的關係都是不可變的，
+因此，對 widget 樹做的任何操作
+（例如將 `Text('A')` 替換成 `Text('B')`）
+都會返回一個新的 widget 物件集合。
+但這並不意味著底層呈現的內容必須要重新建構。
+Element 樹每一幀之間都是持久化的，因此起著至關重要的效能作用，
+Flutter 依靠該優勢，實現了一種好似 widget 樹被完全拋棄，而快取了底層表示的機制。
+Flutter 可以根據發生變化的 widget，來重建需要重新配置的 Element 樹的部分。
 
 ### Layout and rendering
 
-### 布局和渲染
+### 佈局和渲染
 
 It would be a rare application that drew only a single widget. An important part
 of any UI framework is therefore the ability to efficiently lay out a hierarchy
 of widgets, determining the size and position of each element before they are
 rendered on the screen.
 
-很少有应用只绘制单个 widget。
-因此，有效地排布 widget 的结构及在渲染完成前决定每个 Element 的大小和位置，
-是所有 UI 框架的重点之一。
+很少有應用只繪製單個 widget。
+因此，有效地排布 widget 的結構及在渲染完成前決定每個 Element 的大小和位置，
+是所有 UI 框架的重點之一。
 
 The base class for every node in the render tree is
 [`RenderObject`]({{site.api}}/flutter/rendering/RenderObject-class.html), which
@@ -1143,14 +1143,14 @@ system]({{site.dartpad}}/596b1d6331e3b9d7b00420085fab3e27)). Each
 how to _visit_ them and their constraints. This provides `RenderObject` with
 sufficient abstraction to be able to handle a variety of use cases.
 
-在渲染树中，每个节点的基类都是
+在渲染樹中，每個節點的基底類別都是
 [`RenderObject`]({{site.api}}/flutter/rendering/RenderObject-class.html)，
-该基类为布局和绘制定义了一个抽象模型。
-这是再平凡不过的事情：它并不总是一个固定的大小，甚至不遵循笛卡尔坐标规律
-（根据该 [极坐标系的示例]({{site.dartpad}}/596b1d6331e3b9d7b00420085fab3e27) 所示）。
-每一个 `RenderObject` 都了解其父节点的信息，
-但对于其子节点，除了如何 **访问** 和获得他们的布局约束，并没有更多的信息。
-这样的设计让 `RenderObject` 拥有高效的抽象能力，能够处理各种各样的使用场景。
+該基底類別為佈局和繪製定義了一個抽象模型。
+這是再平凡不過的事情：它並不總是一個固定的大小，甚至不遵循笛卡爾座標規律
+（根據該 [極座標系的範例]({{site.dartpad}}/596b1d6331e3b9d7b00420085fab3e27) 所示）。
+每一個 `RenderObject` 都瞭解其父節點的資訊，
+但對於其子節點，除了如何 **存取** 和獲得他們的佈局約束，並沒有更多的資訊。
+這樣的設計讓 `RenderObject` 擁有高效的抽象能力，能夠處理各種各樣的使用場景。
 
 During the build phase, Flutter creates or updates an object that inherits from
 `RenderObject` for each `RenderObjectElement` in the element tree.
@@ -1162,16 +1162,16 @@ an image, and
 [`RenderTransform`]({{site.api}}/flutter/rendering/RenderTransform-class.html)
 applies a transformation before painting its child.
 
-在构建阶段，Flutter 会为 Element 树中的每个 `RenderObjectElement` 创建
-或更新其对应的一个从 `RenderObject` 继承的对象。
-`RenderObject` 实际上是原语：
+在建構階段，Flutter 會為 Element 樹中的每個 `RenderObjectElement` 建立
+或更新其對應的一個從 `RenderObject` 繼承的物件。
+`RenderObject` 實際上是原語：
 渲染文字的
 [`RenderParagraph`]({{site.api}}/flutter/rendering/RenderParagraph-class.html)、
-渲染图片的
+渲染圖片的
 [`RenderImage`]({{site.api}}/flutter/rendering/RenderImage-class.html)
-以及在绘制子节点内容前应用变换的
+以及在繪製子節點內容前應用變換的
 [`RenderTransform`]({{site.api}}/flutter/rendering/RenderTransform-class.html)
-是更为上层的实现。
+是更為上層的實現。
 
 ![Differences between the widgets hierarchy and the element and render
 trees]({{site.url}}/assets/images/docs/arch-overview/trees.png){:width="100%"}
@@ -1182,9 +1182,9 @@ Cartesian space. `RenderBox` provides the basis of a _box constraint model_,
 establishing a minimum and maximum width and height for each widget to be
 rendered.
 
-大部分的 Flutter widget 是由一个继承了 `RenderBox` 的子类的对象渲染的，
-它们呈现出的 `RenderObject` 会在二维笛卡尔空间中拥有固定的大小。
-`RenderBox` 提供了 **盒子限制模型**，为每个 widget 关联了渲染的最小和最大的宽度和高度。
+大部分的 Flutter widget 是由一個繼承了 `RenderBox` 的子類別的物件渲染的，
+它們呈現出的 `RenderObject` 會在二維笛卡爾空間中擁有固定的大小。
+`RenderBox` 提供了 **盒子限制模型**，為每個 widget 關聯了渲染的最小和最大的寬度和高度。
 
 To perform layout, Flutter walks the render tree in a depth-first traversal and
 **passes down size constraints** from parent to child. In determining its size,
@@ -1192,10 +1192,10 @@ the child _must_ respect the constraints given to it by its parent. Children
 respond by **passing up a size** to their parent object within the constraints
 the parent established.
 
-在进行布局的时候，Flutter 会以 DFS（深度优先遍历）方式遍历渲染树，
-并 **将限制以自上而下的方式** 从父节点传递给子节点。
-子节点若要确定自己的大小，则 **必须** 遵循父节点传递的限制。
-子节点的响应方式是在父节点建立的约束内 **将大小以自下而上的方式** 传递给父节点。
+在進行佈局的時候，Flutter 會以 DFS（深度優先遍歷）方式遍歷渲染樹，
+並 **將限制以自上而下的方式** 從父節點傳遞給子節點。
+子節點若要確定自己的大小，則 **必須** 遵循父節點傳遞的限制。
+子節點的響應方式是在父節點建立的約束內 **將大小以自下而上的方式** 傳遞給父節點。
 
 ![Constraints go down, sizes go
 up]({{site.url}}/assets/images/docs/arch-overview/constraints-sizes.png){:width="80%"}
@@ -1205,14 +1205,14 @@ within its parent's constraints and is ready to be painted by calling the
 [`paint()`]({{site.api}}/flutter/rendering/RenderObject/paint.html)
 method.
 
-在遍历完一次树后，每个对象都通过父级约束而拥有了明确的大小，随时可以通过调用
+在遍歷完一次樹後，每個物件都透過父級約束而擁有了明確的大小，隨時可以透過呼叫
 [`paint()`]({{site.api}}/flutter/rendering/RenderObject/paint.html)
-进行渲染。
+進行渲染。
 
 The box constraint model is very powerful as a way to layout objects in _O(n)_
 time:
 
-盒子限制模型十分强大，它的对象布局的时间复杂度是 **O(n)**：
+盒子限制模型十分強大，它的物件佈局的時間複雜度是 **O(n)**：
 
 - Parents can dictate the size of a child object by setting maximum and minimum
   constraints to the same value. For example, the topmost render object in a
@@ -1220,17 +1220,17 @@ time:
   choose how to use that space. For example, they might just center what they
   want to render within the dictated constraints.)
 
-  父节点可以通过设定最大和最小的尺寸限制，决定其子节点对象的大小。
-  例如，在一个手机应用中，最高层级的渲染对象将会限制其子节点的大小为屏幕的尺寸。
-  （子节点可以选择如何占用空间。例如，它们可能在设定的限制中以居中的方式布局。）
+  父節點可以透過設定最大和最小的尺寸限制，決定其子節點物件的大小。
+  例如，在一個手機應用中，最高層級的渲染物件將會限制其子節點的大小為螢幕的尺寸。
+  （子節點可以選擇如何佔用空間。例如，它們可能在設定的限制中以居中的方式佈局。）
 
 - A parent can dictate the child's width but give the child flexibility over
   height (or dictate height but offer flexible over width). A real-world example
   is flow text, which might have to fit a horizontal constraint but vary
   vertically depending on the quantity of text.
 
-  父节点可以决定子节点的宽度，而让子节点灵活地自适应布局高度（或决定高度而自适应宽度）。
-  现实中有一种例子就是流式布局的文本，它们常常会填充横向限制，再根据文字内容的多少决定高度。
+  父節點可以決定子節點的寬度，而讓子節點靈活地自適應佈局高度（或決定高度而自適應寬度）。
+  現實中有一種例子就是流式佈局的文字，它們常常會填充橫向限制，再根據文字內容的多少決定高度。
 
 This model works even when a child object needs to know how much space it has
 available to decide how it will render its content. By using a
@@ -1238,9 +1238,9 @@ available to decide how it will render its content. By using a
 the child object can examine the passed-down constraints and use those to
 determine how it will use them, for example:
 
-这样的盒子约束模型，同样也适用于子节点对象需要知道有多少可用空间渲染其内容的场景，
-通过使用 [`LayoutBuilder`]({{site.api}}/flutter/widgets/LayoutBuilder-class.html) widget，
-子节点可以得到从上层传递下来的约束，并合理利用该约束对象，使用方法如下：
+這樣的盒子約束模型，同樣也適用於子節點物件需要知道有多少可用空間渲染其內容的場景，
+透過使用 [`LayoutBuilder`]({{site.api}}/flutter/widgets/LayoutBuilder-class.html) widget，
+子節點可以得到從上層傳遞下來的約束，併合理利用該約束物件，使用方法如下：
 
 <?code-excerpt "lib/main.dart (LayoutBuilder)"?>
 ```dart
@@ -1261,9 +1261,9 @@ More information about the constraint and layout system, along with worked
 examples, can be found in the [Understanding
 constraints]({{site.url}}/ui/layout/constraints) topic.
 
-更多有关约束和布局系统的信息，及可参考的例子，可以在
-[深入理解 Flutter 布局约束]({{site.url}}/development/ui/layout/constraints)
-文章中查看。
+更多有關約束和佈局系統的資訊，及可參考的例子，可以在
+[深入理解 Flutter 佈局約束]({{site.url}}/development/ui/layout/constraints)
+文章中檢視。
 
 The root of all `RenderObject`s is the `RenderView`, which represents the total
 output of the render tree. When the platform demands a new frame to be rendered
@@ -1276,24 +1276,24 @@ scene. When the scene is complete, the `RenderView` object passes the composited
 scene to the `Window.render()` method in `dart:ui`, which passes control to the
 GPU to render it.
 
-所有 `RenderObject` 的根节点是 `RenderView`，代表了渲染树的总体输出。
-当平台需要渲染新的一帧内容时
-（例如一个 [vsync](https://source.android.com/devices/graphics/implement-vsync)
-信号或者一个纹理的更新完成），会调用一次 `compositeFrame()` 方法，
+所有 `RenderObject` 的根節點是 `RenderView`，代表了渲染樹的總體輸出。
+當平台需要渲染新的一幀內容時
+（例如一個 [vsync](https://source.android.com/devices/graphics/implement-vsync)
+訊號或者一個紋理的更新完成），會呼叫一次 `compositeFrame()` 方法，
 它是 `RenderView` 的一部分。
-该方法会创建一个 `SceneBuilder` 来触发当前画面的更新。
-当画面更新完毕，`RenderView` 会将合成的画面传递给 `dart:ui` 中的 `Window.render()` 方法，
-控制 GPU 进行渲染。
+該方法會建立一個 `SceneBuilder` 來觸發當前畫面的更新。
+當畫面更新完畢，`RenderView` 會將合成的畫面傳遞給 `dart:ui` 中的 `Window.render()` 方法，
+控制 GPU 進行渲染。
 
 Further details of the composition and rasterization stages of the pipeline are
 beyond the scope of this high-level article, but more information can be found
 [in this talk on the Flutter rendering
 pipeline]({{site.youtube-site}}/watch?v=UUfXWzp0-DU).
 
-有关渲染流程的合成和栅格化阶段的更多细节，将不在本篇深入文章中讨论，
+有關渲染流程的合成和網格化階段的更多細節，將不在本篇深入文章中討論，
 但可以在
-[关于 Flutter 渲染流程的讨论](https://www.bilibili.com/video/BV1Zx411o7tq/)
-中了解更多。
+[關於 Flutter 渲染流程的討論](https://www.bilibili.com/video/BV1Zx411o7tq/)
+中瞭解更多。
 
 ## Platform embedding
 
@@ -1306,11 +1306,11 @@ unique concerns of that platform. The engine is platform-agnostic, presenting a
 Interface)]({{site.github}}/flutter/engine/blob/main/shell/platform/embedder/embedder.h)
 that provides a _platform embedder_ with a way to set up and use Flutter.
 
-我们都知道，Flutter 的界面构建、布局、合成和绘制全都由 Flutter 自己完成，
-而不是转换为对应平台系统的原生组件。
-获取纹理和联动应用底层的生命周期的方法，不可避免地会根据平台特性而改变。
-Flutter 引擎本身是与平台无关的，它提供了一个稳定的 ABI（应用二进制接口），
-包含一个 **平台嵌入层**，可以通过其方法设置并使用 Flutter。
+我們都知道，Flutter 的介面建構、佈局、合成和繪製全都由 Flutter 自己完成，
+而不是轉換為對應平台系統的原生元件。
+獲取紋理和聯動應用底層的生命週期的方法，不可避免地會根據平台特性而改變。
+Flutter 引擎本身是與平台無關的，它提供了一個穩定的 ABI（應用二進位制介面），
+包含一個 **平台嵌入層**，可以透過其方法設定並使用 Flutter。
 
 The platform embedder is the native OS application that hosts all Flutter
 content, and acts as the glue between the host operating system and Flutter.
@@ -1325,22 +1325,22 @@ example]({{site.github}}/chinmaygarde/fluttercast) that supports remoting
 Flutter sessions through a VNC-style framebuffer or [this worked example for
 Raspberry Pi]({{site.github}}/ardera/flutter-pi).
 
-平台嵌入层是用于呈现所有 Flutter 内容的原生系统应用，
-它充当着宿主操作系统和 Flutter 之间的粘合剂的角色。
-当你启动一个 Flutter 应用时，嵌入层会提供一个入口，初始化 Flutter 引擎，
-获取 UI 和栅格化线程，创建 Flutter 可以写入的纹理。
-嵌入层同时负责管理应用的生命周期，包括输入的操作（例如鼠标、键盘和触控）、
-窗口大小的变化、线程管理和平台消息的传递。
-Flutter 拥有 Android、iOS、Windows、macOS 和 Linux 的平台嵌入层，
-当然，开发者可以创建自定义的嵌入层，正如这个
+平台嵌入層是用於呈現所有 Flutter 內容的原生系統應用，
+它充當著宿主作業系統和 Flutter 之間的粘合劑的角色。
+當你啟動一個 Flutter 應用時，嵌入層會提供一個入口，初始化 Flutter 引擎，
+獲取 UI 和網格化執行緒，建立 Flutter 可以寫入的紋理。
+嵌入層同時負責管理應用的生命週期，包括輸入的操作（例如滑鼠、鍵盤和觸控）、
+視窗大小的變化、執行緒管理和平台訊息的傳遞。
+Flutter 擁有 Android、iOS、Windows、macOS 和 Linux 的平台嵌入層，
+當然，開發者可以建立自訂的嵌入層，正如這個
 [可用的例子]({{site.github}}/chinmaygarde/fluttercast)
-以 VNC 风格的帧缓冲区支持了远程 Flutter，还有
-[支持树莓派运行的例子]{{site.github}}/ardera/flutter-pi)。
+以 VNC 風格的幀緩衝區支援了遠端 Flutter，還有
+[支援樹莓派執行的例子]{{site.github}}/ardera/flutter-pi)。
 
 Each platform has its own set of APIs and constraints. Some brief
 platform-specific notes:
 
-每一个平台都有各自的一套 API 和限制。以下是一些关于平台简短的说明：
+每一個平台都有各自的一套 API 和限制。以下是一些關於平台簡短的說明：
 
 - On iOS and macOS, Flutter is loaded into the embedder as a `UIViewController`
   or `NSViewController`, respectively. The platform embedder creates a
@@ -1350,11 +1350,11 @@ platform-specific notes:
   rendered by the `FlutterEngine` using Metal or OpenGL.
 
   在 iOS 和 macOS 上，
-  Flutter 分别通过 `UIViewController` 和 `NSViewController` 载入到嵌入层。
-  这些嵌入层会创建一个 `FlutterEngine`，作为 Dart VM 和您的 Flutter 运行时的宿主，
-  还有一个 `FlutterViewController`，关联对应的 `FlutterEngine`，
-  传递 UIKit 或者 Cocoa 的输入事件到 Flutter，
-  并将 `FlutterEngine` 渲染的帧内容通过 Metal 或 OpenGL 进行展示。
+  Flutter 分別透過 `UIViewController` 和 `NSViewController` 載入到嵌入層。
+  這些嵌入層會建立一個 `FlutterEngine`，作為 Dart VM 和您的 Flutter 執行時的宿主，
+  還有一個 `FlutterViewController`，關聯對應的 `FlutterEngine`，
+  傳遞 UIKit 或者 Cocoa 的輸入事件到 Flutter，
+  並將 `FlutterEngine` 渲染的幀內容透過 Metal 或 OpenGL 進行展示。
 
 - On Android, Flutter is, by default, loaded into the embedder as an `Activity`.
   The view is controlled by a
@@ -1362,35 +1362,35 @@ platform-specific notes:
   which renders Flutter content either as a view or a texture, depending on the
   composition and z-ordering requirements of the Flutter content.
 
-  在 Android 上，Flutter 默认作为一个 `Activity` 加载到嵌入层中。
-  此时视图是通过一个
+  在 Android 上，Flutter 預設作為一個 `Activity` 載入到嵌入層中。
+  此時檢視是透過一個
   [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-  进行控制的，基于 Flutter 内容的合成和 z 排列 (z-ordering) 的要求，
-  将 Flutter 的内容以视图模式或纹理模式进行呈现。
+  進行控制的，基於 Flutter 內容的合成和 z 排列 (z-ordering) 的要求，
+  將 Flutter 的內容以檢視模式或紋理模式進行呈現。
 
 - On Windows, Flutter is hosted in a traditional Win32 app, and content is
   rendered using
   [ANGLE](https://chromium.googlesource.com/angle/angle/+/master/README.md), a
   library that translates OpenGL API calls to the DirectX 11 equivalents.
 
-  在 Windows 上，Flutter 的宿主是一个传统的 Win32 应用，内容是通过一个将 OpenGL API
-  调用转换成 DirectX 11 的等价调用的库
+  在 Windows 上，Flutter 的宿主是一個傳統的 Win32 應用，內容是透過一個將 OpenGL API
+  呼叫轉換成 DirectX 11 的等價呼叫的函式庫
   [ANGLE](https://chromium.googlesource.com/angle/angle/+/master/README.md)
-  进行渲染的。目前正在尝试将 UWP 应用作为 Windows 的一种嵌入层，并将 ANGLE 替换为
-  通过 DirectX 12 直接调用 GPU 的方式。
+  進行渲染的。目前正在嘗試將 UWP 應用作為 Windows 的一種嵌入層，並將 ANGLE 替換為
+  透過 DirectX 12 直接呼叫 GPU 的方式。
 
 ## Integrating with other code
 
-## 与其他代码进行集成
+## 與其他程式碼進行整合
 
 Flutter provides a variety of interoperability mechanisms, whether you're
 accessing code or APIs written in a language like Kotlin or Swift, calling a
 native C-based API, embedding native controls in a Flutter app, or embedding
 Flutter in an existing application.
 
-Flutter 提供了多种代码交互机制，无论你是在调用 Kotlin 或者 Swift 这些语言编写的代码或 API，
-或是调用 C 语言基础的 API，或是将原生代码能力嵌入 Flutter 应用，
-又或是将 Flutter 嵌入现有的应用。
+Flutter 提供了多種程式碼互動機制，無論你是在呼叫 Kotlin 或者 Swift 這些語言編寫的程式碼或 API，
+或是呼叫 C 語言基礎的 API，或是將原生程式碼能力嵌入 Flutter 應用，
+又或是將 Flutter 嵌入現有的應用。
 
 ### Platform channels
 
@@ -1405,12 +1405,12 @@ Swift. Data is serialized from a Dart type like `Map` into a standard format,
 and then deserialized into an equivalent representation in Kotlin (such as
 `HashMap`) or Swift (such as `Dictionary`).
 
-对于移动端和桌面端应用而言，Flutter 提供了通过 **平台通道** 调用自定义代码的能力，
-这是一种非常简单的在宿主应用之间让 Dart 代码与平台代码通信的机制。
-通过创建一个常用的通道（封装通道名称和编码），开发者可以在
-Dart 与使用 Kotlin 和 Swift 等语言编写的平台组件之间发送和接收消息。
-数据会由 Dart 类型（例如 Map）序列化为一种标准格式，
-然后反序列化为 Kotlin（例如 `HashMap`）或者 Swift（例如 `Dictionary`）中的等效类型。 
+對於移動端和桌面端應用而言，Flutter 提供了透過 **平台通道** 呼叫自訂程式碼的能力，
+這是一種非常簡單的在宿主應用之間讓 Dart 程式碼與平台程式碼通訊的機制。
+透過建立一個常用的通道（封裝通道名稱和編碼），開發者可以在
+Dart 與使用 Kotlin 和 Swift 等語言編寫的平台元件之間傳送和接收訊息。
+資料會由 Dart 型別（例如 Map）序列化為一種標準格式，
+然後反序列化為 Kotlin（例如 `HashMap`）或者 Swift（例如 `Dictionary`）中的等效型別。 
 
 ![How platform channels allow Flutter to communicate with host
 code]({{site.url}}/assets/images/docs/arch-overview/platform-channels.png){:width="70%"}
@@ -1418,8 +1418,8 @@ code]({{site.url}}/assets/images/docs/arch-overview/platform-channels.png){:widt
 The following is a short platform channel example of a Dart call to a receiving
 event handler in Kotlin (Android) or Swift (iOS):
 
-下方的示例是在 Kotlin (Android) 或 Swift (iOS) 中处理 Dart 调用平台通道事件
-的简单接收处理：
+下方的範例是在 Kotlin (Android) 或 Swift (iOS) 中處理 Dart 呼叫平台通道事件
+的簡單接收處理：
 
 <?code-excerpt "lib/main.dart (MethodChannel)"?>
 ```dart
@@ -1459,13 +1459,13 @@ already available]({{site.pub}}/flutter) for Flutter that cover many common
 scenarios, ranging from Firebase to ads to device hardware like camera and
 Bluetooth.
 
-更多关于如何使用平台通道的例子，包括 macOS 平台的示例，可以在
-[flutter/plugins]({{site.github}}/flutter/plugins) 代码仓库
+更多關於如何使用平台通道的例子，包括 macOS 平台的範例，可以在
+[flutter/plugins]({{site.github}}/flutter/plugins) 程式碼儲存庫
 <sup><a href="#a3">3</a></sup>找到。
 
 ### Foreign Function Interface
 
-### 外部函数接口
+### 外部函式介面
 
 For C-based APIs, including those that can be generated for code written in
 modern languages like Rust or Go, Dart provides a direct mechanism for binding
@@ -1477,20 +1477,20 @@ calls to statically or dynamically linked libraries. FFI is available for all
 platforms other than web, where the [js package]({{site.pub}}/packages/js)
 serves an equivalent purpose.
 
-对于基于 C 语言的 API，包括使用现代语言 Rust 或 Go 生成的代码，
-Dart 也提供了 `dart:ffi` 库，一套直接绑定原生代码的机制。
-外部函数接口 (foreign function interface，FFI) 比平台通道更快，因为不需要序列化即可传递数据。
-实际上，Dart 的运行时提供了在堆上分配 Dart 对象内存的支持，以及调用静态或动态链接库的能力。
-除了 Web 平台外，FFI 在其他平台均可以使用，因为 Web 平台上的
-[js 包]({{site.pub}}/packages/js) 已经具有相同的用途。
+對於基於 C 語言的 API，包括使用現代語言 Rust 或 Go 產生的程式碼，
+Dart 也提供了 `dart:ffi` 庫，一套直接繫結原生程式碼的機制。
+外部函式介面 (foreign function interface，FFI) 比平台通道更快，因為不需要序列化即可傳遞資料。
+實際上，Dart 的執行時提供了在堆上分配 Dart 物件記憶體的支援，以及呼叫靜態或動態連結庫的能力。
+除了 Web 平台外，FFI 在其他平台均可以使用，因為 Web 平臺上的
+[js 包]({{site.pub}}/packages/js) 已經具有相同的用途。
 
 To use FFI, you create a `typedef` for each of the Dart and unmanaged method
 signatures, and instruct the Dart VM to map between them. As an example,
 here's a fragment of code to call the traditional Win32 `MessageBox()` API:
 
-若您需要使用 FFI，请为每一个 Dart 和未经管理的函数的签名创建一个 `typedef`，
-并且指示 Dart VM 为它们创建关联。
-下面这段代码片段是调用 Win32 的 `MessageBox()` API 的简单示例：
+若您需要使用 FFI，請為每一個 Dart 和未經管理的函式的簽名建立一個 `typedef`，
+並且指示 Dart VM 為它們建立關聯。
+下面這段程式碼片段是呼叫 Win32 的 `MessageBox()` API 的簡單範例：
 
 <?code-excerpt "lib/ffi.dart (FFI)"?>
 ```dart
@@ -1527,7 +1527,7 @@ void exampleFfi() {
 
 ### Rendering native controls in a Flutter app
 
-### 在 Flutter 应用中渲染原生内容
+### 在 Flutter 應用中渲染原生內容
 
 Because Flutter content is drawn to a texture and its widget tree is entirely
 internal, there's no place for something like an Android view to exist within
@@ -1535,9 +1535,9 @@ Flutter's internal model or render interleaved within Flutter widgets. That's a
 problem for developers that would like to include existing platform components
 in their Flutter apps, such as a browser control.
 
-由于 Flutter 的内容会绘制在单一的纹理内，并且 widget 树是完全在内部的，
-因此在 Flutter 的内部模型中无法存在 Android 视图之类的内容，也无法与 Flutter 的 widget 交错渲染
-对于需要在 Flutter 应用中展示原生组件（例如内置浏览器）的开发者来说，这是一个问题。
+由於 Flutter 的內容會繪製在單一的紋理內，並且 widget 樹是完全在內部的，
+因此在 Flutter 的內部模型中無法存在 Android 檢視之類別的內容，也無法與 Flutter 的 widget 交錯渲染
+對於需要在 Flutter 應用中展示原生元件（例如內建瀏覽器）的開發者來說，這是一個問題。
 
 Flutter solves this by introducing platform view widgets
 ([`AndroidView`]({{site.api}}/flutter/widgets/AndroidView-class.html)
@@ -1547,44 +1547,44 @@ integrated with other Flutter content<sup><a href="#a4">4</a></sup>. Each of
 these widgets acts as an intermediary to the underlying operating system. For
 example, on Android, `AndroidView` serves three primary functions:
 
-Flutter 通过引入了平台 widget
+Flutter 透過引入了平台 widget
 ([`AndroidView`]({{site.api}}/flutter/widgets/AndroidView-class.html) 和
 [`UiKitView`]({{site.api}}/flutter/widgets/UiKitView-class.html))
-解决了这个问题，开发者可以在每一种平台上嵌入此类内容。
-平台视图可以与其他的 Flutter 内容集成<sup><a href="#a4">4</a></sup>。
-这些 widget 充当了底层操作系统与 Flutter 之间的桥梁。
-例如在 Android 上，`AndroidView` 主要提供了三项功能：
+解決了這個問題，開發者可以在每一種平臺上嵌入此類內容。
+平臺視圖可以與其他的 Flutter 內容整合<sup><a href="#a4">4</a></sup>。
+這些 widget 充當了底層作業系統與 Flutter 之間的橋樑。
+例如在 Android 上，`AndroidView` 主要提供了三項功能：
 
 - Making a copy of the graphics texture rendered by the native view and
   presenting it to Flutter for composition as part of a Flutter-rendered surface
   each time the frame is painted.
 
-  拷贝原生视图渲染的图形纹理，在 Flutter 每帧渲染时提交给 Flutter 渲染层进行合成。
+  複製原生檢視渲染的圖形紋理，在 Flutter 每幀渲染時提交給 Flutter 渲染層進行合成。
 
 - Responding to hit testing and input gestures, and translating those into the
   equivalent native input.
 
-  响应命中测试和输入手势，将其转换为等效的原生输入事件。
+  響應命中測試和輸入手勢，將其轉換為等效的原生輸入事件。
 
 - Creating an analog of the accessibility tree, and passing commands and
   responses between the native and Flutter layers.
 
-  创建类似的可访问性树，并在原生层与 Flutter 层之间传递命令和响应。
+  建立類似的可及性樹，並在原生層與 Flutter 層之間傳遞命令和響應。
 
 Inevitably, there is a certain amount of overhead associated with this
 synchronization. In general, therefore, this approach is best suited for complex
 controls like Google Maps where reimplementing in Flutter isn't practical.
 
-但不可避免的是，这样的同步操作必然会带来相应的开销。
-因此该方法通常更适合复杂的控件，例如谷歌地图这种不适合在 Flutter 中重新实现的。
+但不可避免的是，這樣的同步操作必然會帶來相應的開銷。
+因此該方法通常更適合複雜的控制項，例如谷歌地圖這種不適合在 Flutter 中重新實現的。
 
 Typically, a Flutter app instantiates these widgets in a `build()` method based
 on a platform test. As an example, from the
 [google_maps_flutter]({{site.pub}}/packages/google_maps_flutter) plugin:
 
-通常 Flutter 应用会在 `build()` 方法中基于平台判断来实例化这些 widget。
+通常 Flutter 應用會在 `build()` 方法中基於平台判斷來例項化這些 widget。
 例如在 [google_maps_flutter]({{site.pub}}/packages/google_maps_flutter)
-插件中：
+外掛中：
 
 ```dart
 if (defaultTargetPlatform == TargetPlatform.android) {
@@ -1611,17 +1611,17 @@ return Text(
 Communicating with the native code underlying the `AndroidView` or `UiKitView`
 typically occurs using the platform channels mechanism, as previously described.
 
-如上文所述，`AndroidView` 和 `UiKitView` 通常是利用平台通道的机制与原生进行通信。
+如上文所述，`AndroidView` 和 `UiKitView` 通常是利用平台通道的機制與原生進行通訊。
 
 At present, platform views aren't available for desktop platforms, but this is
 not an architectural limitation; support might be added in the future.
 
-目前桌面平台尚未支持平台视图，但这并不是一个架构层面的限制。
-未来可能将增加对桌面平台的支持。
+目前桌面平台尚未支援平臺視圖，但這並不是一個架構層面的限制。
+未來可能將增加對桌面平台的支援。
 
 ### Hosting Flutter content in a parent app
 
-### 在上层应用中托管 Flutter 内容
+### 在上層應用中託管 Flutter 內容
 
 The converse of the preceding scenario is embedding a Flutter widget in an
 existing Android or iOS app. As described in an earlier section, a newly created
@@ -1629,20 +1629,20 @@ Flutter app running on a mobile device is hosted in an Android activity or iOS
 `UIViewController`. Flutter content can be embedded into an existing Android or
 iOS app using the same embedding API.
 
-与上一个场景相反的是，将 Flutter widget 集成至现有的 Android 或 iOS 应用中。
-先前提到，新创建的 Flutter 应用，在移动设备上是在一个 Android 的 Activity 或
-iOS 的 `UIViewController` 中运行。
-开发者可以使用相同的嵌入 API 将 Flutter 内容集成至现有的 Android 或 iOS 应用中。
+與上一個場景相反的是，將 Flutter widget 整合至現有的 Android 或 iOS 應用中。
+先前提到，新建立的 Flutter 應用，在移動裝置上是在一個 Android 的 Activity 或
+iOS 的 `UIViewController` 中執行。
+開發者可以使用相同的嵌入 API 將 Flutter 內容整合至現有的 Android 或 iOS 應用中。
 
 The Flutter module template is designed for easy embedding; you can either embed
 it as a source dependency into an existing Gradle or Xcode build definition, or
 you can compile it into an Android Archive or iOS Framework binary for use
 without requiring every developer to have Flutter installed.
 
-Flutter 模块模板设计简单，易于嵌入。
-开发者可以将其作为源代码依赖项集成到 Gradle 或 Xcode 构建定义中，
-或者将其打包成 Android Archive (AAR) 或 iOS Framework 二进制供其他开发者使用，
-而无需安装 Flutter。
+Flutter 模組範本設計簡單，易於嵌入。
+開發者可以將其作為原始碼依賴項整合到 Gradle 或 Xcode 建構定義中，
+或者將其打包成 Android Archive (AAR) 或 iOS Framework 二進位制供其他開發者使用，
+而無需安裝 Flutter。
 
 The Flutter engine takes a short while to initialize, because it needs to load
 Flutter shared libraries, initialize the Dart runtime, create and run a Dart
@@ -1654,31 +1654,31 @@ Flutter code is loaded. In addition, separating the Flutter engine allows it to
 be reused across multiple Flutter screens and share the memory overhead involved
 with loading the necessary libraries.
 
-Flutter 引擎需要一段短暂的时间做初始化，用于加载 Flutter 的共享库、初始化 Dart 的运行时、
-创建并运行 Dart isolate 线程并将渲染层与 UI 进行绑定。
-为了最大限度地减少呈现 Flutter 界面时的延迟，
-最好是在应用初始化时或至少在第一个 Flutter 页面展示前，一并初始化 Flutter 引擎，
-如此一来用户不会在首个 Flutter 页面加载时感到突然地卡顿。
-另外，Flutter 的引擎分离使得多个 Flutter 页面可以复用引擎，共享必要库加载时的内存消耗。
+Flutter 引擎需要一段短暫的時間做初始化，用於載入 Flutter 的共享庫、初始化 Dart 的執行時、
+建立並執行 Dart isolate 執行緒並將渲染層與 UI 進行繫結。
+為了最大限度地減少呈現 Flutter 介面時的延遲，
+最好是在應用初始化時或至少在第一個 Flutter 頁面展示前，一併初始化 Flutter 引擎，
+如此一來使用者不會在首個 Flutter 頁面載入時感到突然地卡頓。
+另外，Flutter 的引擎分離使得多個 Flutter 頁面可以複用引擎，共享必要庫載入時的記憶體消耗。
 
 More information about how Flutter is loaded into an existing Android or iOS app
 can be found at the [Load sequence, performance and memory
 topic]({{site.url}}/add-to-app/performance).
 
-更多将 Flutter 集成至现有的 Android 和 iOS 应用的内容，可在
-[控制加载顺序，优化性能与内存]({{site.url}}/development/add-to-app/performance)
-文章中查看。
+更多將 Flutter 整合至現有的 Android 和 iOS 應用的內容，可在
+[控制載入順序，最佳化效能與記憶體]({{site.url}}/development/add-to-app/performance)
+文章中檢視。
 
 ## Flutter web support
 
-## Flutter 对 Web 的支持
+## Flutter 對 Web 的支援
 
 While the general architectural concepts apply to all platforms that Flutter
 supports, there are some unique characteristics of Flutter's web support that
 are worthy of comment.
 
-虽然 Flutter 支持的所有平台的都适用于同一个架构概念，
-但是在 Web 平台的支持上有一些独特的特征值得说明。
+雖然 Flutter 支援的所有平台的都適用於同一個架構概念，
+但是在 Web 平台的支援上有一些獨特的特徵值得說明。
 
 Dart has been compiling to JavaScript for as long as the language has existed,
 with a toolchain optimized for both development and production purposes. Many
@@ -1687,10 +1687,10 @@ including the [advertiser tooling for Google Ads](https://ads.google.com/home/).
 Because the Flutter framework is written in Dart, compiling it to JavaScript was
 relatively straightforward.
 
-Dart 语言存在之初就已经支持直接编译成 JavaScript，并且针对开发和生产目的对其工具链进行了优化。
-许多重要的应用已经使用 Dart 编译成的 JavaScript 在生产环境上运行，
-包括 [Google Ads 的广告商工具](https://ads.google.cn/home/)。
-由于 Flutter 框架是 Dart 编写的，将其编译成 JavaScript 相对而言更为简单。
+Dart 語言存在之初就已經支援直接編譯成 JavaScript，並且針對開發和生產目的對其工具鏈進行了最佳化。
+許多重要的應用已經使用 Dart 編譯成的 JavaScript 在生產環境上執行，
+包括 [Google Ads 的廣告商工具](https://ads.google.cn/home/)。
+由於 Flutter 框架是 Dart 編寫的，將其編譯成 JavaScript 相對而言更為簡單。
 
 However, the Flutter engine, written in C++,
 is designed to interface with the
@@ -1710,18 +1710,18 @@ browser's graphics stack,
 and offers somewhat higher graphical fidelity with the
 native mobile targets<sup><a href="#a5">5</a></sup>.
 
-然而，使用 C++ 编写的 Flutter 引擎是为了与底层操作系统进行交互的，而不是 Web 浏览器。
-因此我们需要另辟蹊径。Flutter 在 Web 平台上以浏览器的标准 API 重新实现了引擎。
-目前我们有两种在 Web 上呈现内容的选项：HTML 和 WebGL。
-在 HTML 模式下，Flutter 使用 HTML、CSS、Canvas 和 SVG 进行渲染。
-而在 WebGL 模式下，Flutter 使用了一个编译为 WebAssembly 的 Skia 版本，
-名为 [CanvasKit](https://skia.org/user/modules/canvaskit)。
-HTML 模式提供了最佳的代码大小，CanvasKit 则提供了浏览器图形堆栈渲染的最快途径，
-并为原生平台的内容<sup><a href="#a5">5</a></sup>提供了更高的图形保真度。
+然而，使用 C++ 編寫的 Flutter 引擎是為了與底層作業系統進行互動的，而不是 Web 瀏覽器。
+因此我們需要另闢蹊徑。Flutter 在 Web 平臺上以瀏覽器的標準 API 重新實現了引擎。
+目前我們有兩種在 Web 上呈現內容的選項：HTML 和 WebGL。
+在 HTML 模式下，Flutter 使用 HTML、CSS、Canvas 和 SVG 進行渲染。
+而在 WebGL 模式下，Flutter 使用了一個編譯為 WebAssembly 的 Skia 版本，
+名為 [CanvasKit](https://skia.org/user/modules/canvaskit)。
+HTML 模式提供了最佳的程式碼大小，CanvasKit 則提供了瀏覽器圖形堆疊渲染的最快途徑，
+併為原生平台的內容<sup><a href="#a5">5</a></sup>提供了更高的圖形保真度。
 
 The web version of the architectural layer diagram is as follows:
 
-Web 版本的分层架构图如下所示：
+Web 版本的分層架構圖如下所示：
 
 ![Flutter web
 architecture]({{site.url}}/assets/images/docs/arch-overview/web-arch.png){:width="100%"}
@@ -1733,10 +1733,10 @@ It's also worthy to note that Dart has very few language semantic differences
 across all its modes (JIT versus AOT, native versus web compilation), and most
 developers will never write a line of code that runs into such a difference.
 
-与其他运行 Flutter 的平台相比，最明显的区别也许是 Flutter 不再需要提供 Dart 的运行时。
-取而代之的是 Flutter 框架本身（和你写的代码）一并编译成 JavaScript。
-另外值得注意的是，Dart 在不同模式下（JIT 和 AOT、平台原生和 Web 编译）的语义几乎没有差异，
-大部分开发者绝对可以无差异地编写这两种模式下的代码。
+與其他執行 Flutter 的平台相比，最明顯的區別也許是 Flutter 不再需要提供 Dart 的執行時。
+取而代之的是 Flutter 框架本身（和你寫的程式碼）一併編譯成 JavaScript。
+另外值得注意的是，Dart 在不同模式下（JIT 和 AOT、平台原生和 Web 編譯）的語義幾乎沒有差異，
+大部分開發者絕對可以無差異地編寫這兩種模式下的程式碼。
 
 During development time, Flutter web uses
 [`dartdevc`]({{site.dart-site}}/tools/dartdevc), a compiler that supports
@@ -1750,48 +1750,48 @@ into multiple files through [deferred imports][].
 
 [deferred imports]: {{site.dart-site}}/language/libraries#lazily-loading-a-library
 
-在进行开发时，Web 版本的 Flutter 使用支持增量编译的编译器
-[`dartdevc`]({{site.dart-site}}/tools/dartdevc) 进行编译，
-以支持应用热重启（尽管目前尚未支持热重载）。
-相反，当你准备好创建一个生产环境的 Web 应用时，Dart 深度优化的编译器
-[`dart2js`]({{site.dart-site}}/tools/dart2js) 将会用于编译，
-将 Flutter 核心框架和你的应用打包至缩小的源文件中，可部署在任何服务器上。
-代码可以在单个文件中提供，也可拆分至多个文件以
-[延迟加载库]({{site.dart-site}}/guides/language/language-tour#lazily-loading-a-library)
+在進行開發時，Web 版本的 Flutter 使用支援增量編譯的編譯器
+[`dartdevc`]({{site.dart-site}}/tools/dartdevc) 進行編譯，
+以支援應用熱重啟（儘管目前尚未支援熱重載）。
+相反，當你準備好建立一個生產環境的 Web 應用時，Dart 深度最佳化的編譯器
+[`dart2js`]({{site.dart-site}}/tools/dart2js) 將會用於編譯，
+將 Flutter 核心框架和你的應用打包至縮小的原始檔中，可部署在任何伺服器上。
+程式碼可以在單個檔案中提供，也可拆分至多個檔案以
+[延遲載入庫]({{site.dart-site}}/guides/language/language-tour#lazily-loading-a-library)
 提供。
 
 
 ## Further information
 
-## 更多信息
+## 更多資訊
 
 For those interested in more information about the internals of Flutter, the
 [Inside Flutter]({{site.url}}/resources/inside-flutter) whitepaper
 provides a useful guide to the framework's design philosophy.
 
-若你对 Flutter 的更多内部细节感兴趣
+若你對 Flutter 的更多內部細節感興趣
 [Flutter 工作原理]({{site.url}}/resources/inside-flutter)
-白皮书为框架的设计理念提供了很好的入门途径。
+白皮書為框架的設計理念提供了很好的入門途徑。
 
 ---
 
 **Footnotes:**
 
-**脚注：**
+**腳註：**
 
 <sup><a id="a1">1</a></sup> While the `build` function returns a fresh tree,
 you only need to return something _different_ if there's some new
 configuration to incorporate. If the configuration is in fact the same, you can
 just return the same widget.
 
-<sup><a id="a1">1</a></sup> 在 `build` 方法返回一个全新的结构树时，
-你只需要返回不同的内容，就可以合并一些新的配置。
-如果配置实际上是相同的，完全可以返回同样的 widget。
+<sup><a id="a1">1</a></sup> 在 `build` 方法返回一個全新的結構樹時，
+你只需要返回不同的內容，就可以合併一些新的配置。
+如果配置實際上是相同的，完全可以返回同樣的 widget。
 
 <sup><a id="a2">2</a></sup> This is a slight simplification for ease of
 reading. In practice, the tree might be more complex.
 
-<sup><a id="a2">2</a></sup> 为了便于阅读，该图已进行简化。实际上的结构可能更为复杂。
+<sup><a id="a2">2</a></sup> 為了便於閱讀，該圖已進行簡化。實際上的結構可能更為複雜。
 
 <sup><a id="a3">3</a></sup> While work is underway on Linux and Windows,
 examples for those platforms can be found in the [Flutter desktop embedding
@@ -1799,19 +1799,19 @@ repository]({{site.github}}/google/flutter-desktop-embedding/tree/master/plugins
 As development on those platforms reaches maturity, this content will be
 gradually migrated into the main Flutter repository.
 
-<sup><a id="a3">3</a></sup> 在 Linux 和 Windows 平台的开发进程中，平台对应的示例可以在
-[Flutter 桌面集成代码仓库]({{site.github}}/google/flutter-desktop-embedding/tree/master/plugins)
-中找到。随着这些平台的开发愈发成熟，这些内容会逐步迁移到 Flutter 主代码仓库中。
+<sup><a id="a3">3</a></sup> 在 Linux 和 Windows 平台的開發處理序中，平台對應的範例可以在
+[Flutter 桌面整合程式碼儲存庫]({{site.github}}/google/flutter-desktop-embedding/tree/master/plugins)
+中找到。隨著這些平台的開發愈發成熟，這些內容會逐步遷移到 Flutter 主程式碼儲存庫中。
 
 <sup><a id="a4">4</a></sup> There are some limitations with this approach, for
 example, transparency doesn't composite the same way for a platform view as it
 would for other Flutter widgets.
 
-<sup><a id="a4">4</a></sup> 该方法有一些局限性，例如，
-平台视图的透明度计算与其他 Flutter widget 的计算不同。
+<sup><a id="a4">4</a></sup> 該方法有一些侷限性，例如，
+平臺視圖的透明度計算與其他 Flutter widget 的計算不同。
 
 <sup><a id="a5">5</a></sup> One example is shadows, which have to be
 approximated with DOM-equivalent primitives at the cost of some fidelity.
 
-<sup><a id="a5">5</a></sup> 其中一个例子便是阴影，
-它必须以等效于 DOM 原语的内容来实现，并且需要丢失一定的保真度。
+<sup><a id="a5">5</a></sup> 其中一個例子便是陰影，
+它必須以等效於 DOM 原語的內容來實現，並且需要丟失一定的保真度。

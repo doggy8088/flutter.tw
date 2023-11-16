@@ -1,5 +1,5 @@
 ---
-title: 用 Flutter 和 Firebase 轻松构建 Web 应用
+title: 用 Flutter 和 Firebase 輕鬆建構 Web 應用
 toc: true
 ---
 
@@ -7,26 +7,26 @@ toc: true
 
 *作者 / Very Good Ventures Team*
 
-我们 (Very Good Ventures 团队) 与 Google 合作，在今年 5 月推出了 [照相亭互动体验](https://photobooth.flutter.cn/) (Flutter Photo Booth)。您可以与深受喜爱的 Google 吉祥物合影: [Flutter 的 Dash](https://flutter.cn/dash)、Android Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky，并用各种贴纸装饰照片，包括派对帽、披萨、时髦眼镜等。当然，您也可以通过社交媒体下载并分享，或者用作您的个人头像！
+我們 (Very Good Ventures 團隊) 與 Google 合作，在今年 5 月推出了 [照相亭互動體驗](https://photobooth.flutter.cn/) (Flutter Photo Booth)。您可以與深受喜愛的 Google 吉祥物合影: [Flutter 的 Dash](https://flutter.cn/dash)、Android Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky，並用各種貼紙裝飾照片，包括派對帽、披薩、時髦眼鏡等。當然，您也可以透過社交媒體下載並分享，或者用作您的個人頭像！
 
 ![△ Flutter 的 Dash、Firebase 的 Sparky、Android Jetpack 和 Chrome 的 Dino](https://devrel.andfun.cn/devrel/posts/2021/06/Rjow8V.png)
 
 △ Flutter 的 Dash、Firebase 的 Sparky、Android Jetpack 和 Chrome 的 Dino
 
-我们使用 [Flutter web](https://flutter.cn/web) 和 [Firebase](https://firebase.google.com/) 构建了 Flutter 照相亭。因为 [Flutter 现在支持打造 Web 应用](https://flutter.cn/posts/whats-new-in-flutter-2-0)，我们认为这将是一个很好的方式，可以让世界各地的与会者在线上轻松访问这一应用。Flutter web 消除了必须通过应用商店安装应用的障碍，同时用户还可以灵活选择运行应用的设备: 移动设备、桌面设备或平板电脑。因此，只要能使用浏览器，用户便可无需下载直接使用 Flutter 照相亭。
+我們使用 [Flutter web](https://flutter.cn/web) 和 [Firebase](https://firebase.google.com/) 建構了 Flutter 照相亭。因為 [Flutter 現在支援打造 Web 應用](https://flutter.cn/posts/whats-new-in-flutter-2-0)，我們認為這將是一個很好的方式，可以讓世界各地的與會者在線上輕鬆存取這一應用。Flutter web 消除了必須透過應用商店安裝應用的障礙，同時使用者還可以靈活選擇執行應用的裝置: 移動裝置、桌面裝置或平板電腦。因此，只要能使用瀏覽器，使用者便可無需下載直接使用 Flutter 照相亭。
 
-尽管 Flutter 照相亭旨在提供 Web 体验，但所有代码均采用与平台无关的架构编写而成。当相机插件等原生功能的支持在各个平台就绪后，这套代码即可在所有平台 (桌面、Web 和移动设备) 通用。
+儘管 Flutter 照相亭旨在提供 Web 體驗，但所有程式碼均採用與平台無關的架構編寫而成。當相機外掛等原生功能的支援在各個平台就緒後，這套程式碼即可在所有平台 (桌面、Web 和移動裝置) 通用。
 
-## **使用 Flutter 构建虚拟照相亭**
+## **使用 Flutter 建構虛擬照相亭**
 
-**构建 Web 版 Flutter 相机插件**
+**建構 Web 版 Flutter 相機外掛**
 
-第一个挑战即在 Web 上为 Flutter 构建摄像头插件。最初，我们联系了 [Baseflow](https://www.baseflow.com/) 团队，因为他们负责维护现有的开源 [Flutter 摄像头插件](https://github.com/Baseflow/flutter-plugins)。Baseflow 致力于构建适用于 iOS 和 Android 的一流摄像头插件支持，我们也很乐于与其合作，使用 [联合插件](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#federated-plugins) 方法为插件提供 Web 支持。我们尽可能符合官方插件接口，以便我们可以在准备就绪时将其合并回官方插件。
+第一個挑戰即在 Web 上為 Flutter 建構攝影頭外掛。最初，我們聯絡了 [Baseflow](https://www.baseflow.com/) 團隊，因為他們負責維護現有的開源 [Flutter 攝影頭外掛](https://github.com/Baseflow/flutter-plugins)。Baseflow 致力於建構適用於 iOS 和 Android 的一流攝影頭外掛支援，我們也很樂於與其合作，使用 [聯合外掛](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#federated-plugins) 方法為外掛提供 Web 支援。我們儘可能符合官方外掛介面，以便我們可以在準備就緒時將其合併回官方外掛。
 
-我们确定了两个对于在 Flutter 中构建 Flutter 照相亭相体验至关重要的 API。
+我們確定了兩個對於在 Flutter 中建構 Flutter 照相亭相體驗至關重要的 API。
 
-* **初始化摄像头:** 应用首先需要访问您的设备摄像头。对于桌面设备，访问的可能是网络摄像头，而对于移动设备，我们选择了访问前置摄像头。我们还提供了 1080p 的预期分辨率，以根据用户设备类型充分提高拍摄质量。
-* **拍照:** 我们使用了内置的 [HtmlElementView](https://api.flutter.cn/flutter/widgets/HtmlElementView-class.html)，该控件使用平台视图将原生 Web 元素渲染为 Flutter widget。在此项目中，我们将 [VideoElement](https://api.flutter.cn/flutter/dart-html/VideoElement-class.html) 渲染为原生 HTML 元素，这便是您在拍照前会在屏幕上看到的内容。我们还使用了一个 [CanvasElement](https://api.flutter.cn/flutter/dart-html/CanvasElement-class.html)，用于在您点击拍照按钮时从媒体流中捕获图像。
+* **初始化攝影頭:** 應用首先需要存取您的裝置攝影頭。對於桌面裝置，存取的可能是網路攝影頭，而對於移動裝置，我們選擇了存取前置攝影頭。我們還提供了 1080p 的預期解析度，以根據使用者裝置型別充分提高拍攝品質。
+* **拍照:** 我們使用了內建的 [HtmlElementView](https://api.flutter.cn/flutter/widgets/HtmlElementView-class.html)，該控制項使用平臺視圖將原生 Web 元素渲染為 Flutter widget。在此專案中，我們將 [VideoElement](https://api.flutter.cn/flutter/dart-html/VideoElement-class.html) 渲染為原生 HTML 元素，這便是您在拍照前會在螢幕上看到的內容。我們還使用了一個 [CanvasElement](https://api.flutter.cn/flutter/dart-html/CanvasElement-class.html)，用於在您點選拍照按鈕時從媒體流中捕獲圖像。
 
 
 ```dart
@@ -50,9 +50,9 @@ Future<CameraImage> takePicture() async {
 }
 ```
 
-**摄像头权限**
+**攝影頭許可權**
 
-在 Web 上完成 Flutter 摄像头插件后，我们创建了一个抽象布局，以根据相机权限显示不同的界面。例如，在等待您允许或拒绝使用浏览器摄像头时，或者如果没有可供访问的摄像头时，我们可以显示一条说明性消息。
+在 Web 上完成 Flutter 攝影頭外掛後，我們建立了一個抽象佈局，以根據相機許可權顯示不同的介面。例如，在等待您允許或拒絕使用瀏覽器攝影頭時，或者如果沒有可供存取的攝影頭時，我們可以顯示一條說明性訊息。
 
 ```dart
 Camera(
@@ -66,29 +66,29 @@ Camera(
 )
 ```
 
-在上面的抽象布局中，placeholder 会在应用等待您授予摄像头权限时返回初始界面。Preview 则会在您授予权限后返回真实的界面，并显示摄像头的实时视频流。结尾的 Error 构造语句则可以在错误发生时捕获错误并显示相应的消息。
+在上面的抽象佈局中，placeholder 會在應用等待您授予攝影頭許可權時返回初始介面。Preview 則會在您授予許可權後返回真實的介面，並顯示攝影頭的即時影片流。結尾的 Error 構造陳述式則可以在錯誤發生時捕獲錯誤並顯示相應的訊息。
 
-**生成镜像照片**
+**產生鏡像照片**
 
-我们的下一个挑战是生成镜像照片。如果我们照原样使用摄像头拍摄的照片，那么您看到的内容将与您在照镜子时所看到的内容不一样。[某些设备会提供专门处理这一问题的设置选项](https://9to5mac.com/2020/07/09/iphone-mirror-selfie-photos/)，所以，如果您用前置摄像头拍照，您看到的其实是照片的镜像版本。
+我們的下一個挑戰是產生鏡像照片。如果我們照原樣使用攝影頭拍攝的照片，那麼您看到的內容將與您在照鏡子時所看到的內容不一樣。[某些裝置會提供專門處理這一問題的設定選項](https://9to5mac.com/2020/07/09/iphone-mirror-selfie-photos/)，所以，如果您用前置攝影頭拍照，您看到的其實是照片的鏡像版本。
 
-在我们的第一种方法中，我们尝试捕捉默认的摄像头视图，然后围绕 y 轴对其进行 180 度翻转。这种方法似乎有效，但后来我们遇到了 [一个问题](https://github.com/flutter/flutter/issues/79519)，即 Flutter 偶尔会覆盖这个翻转，导致视频恢复到未镜像的版本。
+在我們的第一種方法中，我們嘗試捕捉預設的攝影頭檢視，然後圍繞 y 軸對其進行 180 度翻轉。這種方法似乎有效，但後來我們遇到了 [一個問題](https://github.com/flutter/flutter/issues/79519)，即 Flutter 偶爾會覆蓋這個翻轉，導致影片恢復到未鏡像的版本。
 
-在 Flutter 团队的帮助下，我们将 VideoElement 放在 [DivElement](https://api.flutter.cn/flutter/dart-html/DivElement-class.html) 中，并更新 VideoElement 以填充 DivElement 的宽度和高度，解决了这个问题。这样一来，我们能够为视频元素应用镜像，同时因为父元素是 div，所以不会被 Flutter 覆盖翻转效果。如此一来，我们便获得了所需的镜像摄像头视图！
+在 Flutter 團隊的幫助下，我們將 VideoElement 放在 [DivElement](https://api.flutter.cn/flutter/dart-html/DivElement-class.html) 中，並更新 VideoElement 以填充 DivElement 的寬度和高度，解決了這個問題。這樣一來，我們能夠為影片元素應用鏡像，同時因為父元素是 div，所以不會被 Flutter 覆蓋翻轉效果。如此一來，我們便獲得了所需的鏡像攝影頭檢視！
 
-![△ 未镜像的视图](https://devrel.andfun.cn/devrel/posts/2021/06/rPthpJ.png)
+![△ 未鏡像的檢視](https://devrel.andfun.cn/devrel/posts/2021/06/rPthpJ.png)
 
-△ 未镜像的视图
+△ 未鏡像的檢視
 
-![△ 镜像视图](https://devrel.andfun.cn/devrel/posts/2021/06/CRBd2x.png)
+![△ 鏡像檢視](https://devrel.andfun.cn/devrel/posts/2021/06/CRBd2x.png)
 
-△ 镜像视图
+△ 鏡像檢視
 
-**保持宽高比**
+**保持寬高比**
 
-在大屏幕上保持 4:3 宽高比，以及在小屏幕上保持 3:4 宽高比，这个操作起来比看起来更难！保持宽高比非常重要，既要符合 Web 应用的整体设计，又要确保在社交媒体上分享照片时，令其中的像素呈现出清晰的本色效果。这是一项具有挑战性的任务，因为不同设备上内置摄像头的宽高比差异很大。
+在大螢幕上保持 4:3 寬高比，以及在小螢幕上保持 3:4 寬高比，這個操作起來比看起來更難！保持寬高比非常重要，既要符合 Web 應用的整體設計，又要確保在社交媒體上分享照片時，令其中的畫素呈現出清晰的本色效果。這是一項具有挑戰性的任務，因為不同裝置上內建攝影頭的寬高比差異很大。
 
-为了强制保持宽高比，应用首先使用 JavaScript [getUserMedia API](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) 从设备摄像头请求可能的最大分辨率。随后，我们将此 API 传递到 VideoElement 流中，这便是您在摄像头视图中看到的内容 (当然是已镜像的版本)。我们还应用了 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS 属性来确保视频元素能盖住其父级容器。我们使用 Flutter 自带的 AspectRatio widget 来设置宽高比。因此，摄像头不会对显示的宽高比做出任何假设；它始终返回支持的最大分辨率，然后遵守 Flutter 提供的约束条件 (在本例中为 4:3 或 3:4)。
+為了強制保持寬高比，應用首先使用 JavaScript [getUserMedia API](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) 從裝置攝影頭請求可能的最大解析度。隨後，我們將此 API 傳遞到 VideoElement 流中，這便是您在攝影頭檢視中看到的內容 (當然是已鏡像的版本)。我們還應用了 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS 屬性來確保影片元素能蓋住其父級容器。我們使用 Flutter 自帶的 AspectRatio widget 來設定寬高比。因此，攝影頭不會對顯示的寬高比做出任何假設；它始終返回支援的最大解析度，然後遵守 Flutter 提供的約束條件 (在本例中為 4:3 或 3:4)。
 
 ```dart
 final orientation = MediaQuery.of(context).orientation;
@@ -113,9 +113,9 @@ return Scaffold(
 );
 ```
 
-**通过拖放添加贴纸**
+**透過拖放新增貼紙**
 
-Flutter 照相亭的一大重要体验在于与您最喜欢的 Google 吉祥物合影并添加道具。您能够在照片中拖放吉祥物和道具，以及调整大小和旋转，直到获得您喜欢的图像。您也会发现，在将吉祥物添加到屏幕上时，您可以拖动它们并调整其大小。吉祥物们还是有动画效果的——这种效果由 sprite sheet 来实现。
+Flutter 照相亭的一大重要體驗在於與您最喜歡的 Google 吉祥物合影並新增道具。您能夠在照片中拖放吉祥物和道具，以及調整大小和旋轉，直到獲得您喜歡的圖像。您也會發現，在將吉祥物新增到螢幕上時，您可以拖動它們並調整其大小。吉祥物們還是有動畫效果的——這種效果由 sprite sheet 來實現。
 
 ```dart
 for (final character in state.characters)
@@ -133,9 +133,9 @@ for (final character in state.characters)
  ),
 ```
 
-为调整对象的大小，我们创建了可拖动、可调整大小且可以容纳其他 Flutter widget 的 widget，在本例中，即为吉祥物和道具。该 widget 会使用 [LayoutBuilder](https://api.flutter.cn/flutter/widgets/LayoutBuilder-class.html)，根据窗口的约束条件来处理 widget 的缩放。在内部，我们使用 [GestureDetector](https://api.flutter.cn/flutter/widgets/GestureDetector-class.html) 以挂接到 onScaleStart、onScaleUpdate 和 onScaleEnd 事件。这些回调提供了必要的手势详细信息，以反映用户对吉祥物和道具的操作。
+為調整物件的大小，我們建立了可拖動、可調整大小且可以容納其他 Flutter widget 的 widget，在本例中，即為吉祥物和道具。該 widget 會使用 [LayoutBuilder](https://api.flutter.cn/flutter/widgets/LayoutBuilder-class.html)，根據視窗的約束條件來處理 widget 的縮放。在內部，我們使用 [GestureDetector](https://api.flutter.cn/flutter/widgets/GestureDetector-class.html) 以掛接到 onScaleStart、onScaleUpdate 和 onScaleEnd 事件。這些回呼(Callback)提供了必要的手勢詳細資訊，以反映使用者對吉祥物和道具的操作。
 
-通过多个 GestureDetector 回馈的数据，[Transform](https://api.flutter.cn/flutter/widgets/Transform-class.html) widget 和 4D 矩阵变换即可根据用户所做的各种手势处理缩放，以及旋转吉祥物和道具。
+透過多個 GestureDetector 回饋的資料，[Transform](https://api.flutter.cn/flutter/widgets/Transform-class.html) widget 和 4D 矩陣變換即可根據使用者所做的各種手勢處理縮放，以及旋轉吉祥物和道具。
 
 ```dart
 Transform(
@@ -147,51 +147,51 @@ Transform(
 )
 ```
 
-最后，我们创建了单独的 package 来确定您的设备是否支持触摸输入。可拖动、可调整大小的 widget 会根据触摸功能做出相应的调整。在具有触摸输入功能的设备上，您并不能看到调整大小的锚点和旋转图标，因为您可以通过双指张合和平移手势来直接操纵图像；而在不支持触摸输入的设备 (例如您的桌面设备) 上，我们则添加了锚点和旋转图标，以适应单击和拖动操作。
+最後，我們建立了單獨的 package 來確定您的裝置是否支援觸控輸入。可拖動、可調整大小的 widget 會根據觸控功能做出相應的調整。在具有觸控輸入功能的裝置上，您並不能看到調整大小的錨點和旋轉圖示，因為您可以透過雙指張合和平移手勢來直接操縱圖像；而在不支援觸控輸入的裝置 (例如您的桌面裝置) 上，我們則添加了錨點和旋轉圖示，以適應單擊和拖動操作。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/06/XfyErj.png)
 
-## **针对 Web 优化 Flutter**
+## **針對 Web 最佳化 Flutter**
 
-**使用 Flutter 针对 Web 进行开发**
+**使用 Flutter 針對 Web 進行開發**
 
-这是我们使用 Flutter 构建的首批纯 Web 项目之一，其与移动应用具有不同的特征。
+這是我們使用 Flutter 建構的首批純 Web 專案之一，其與移動應用具有不同的特徵。
 
-我们需要确保该应用对任何设备上的任何浏览器都具有 [响应性和自适应性](https://flutter.cn/docs/development/ui/layout/adaptive-responsive)。也就是说，我们必须确保 Flutter 照相亭可以根据浏览器大小进行缩放，并且能够处理移动设备和 Web 端的输入。我们通过以下几种方式做到了这一点:
+我們需要確保該應用對任何裝置上的任何瀏覽器都具有 [響應性和自適應性](https://flutter.cn/docs/development/ui/layout/adaptive-responsive)。也就是說，我們必須確保 Flutter 照相亭可以根據瀏覽器大小進行縮放，並且能夠處理移動裝置和 Web 端的輸入。我們透過以下幾種方式做到了這一點:
 
-* **响应式调整大小:** 用户能够随意调整浏览器的大小，并且界面能做出响应。如果您的浏览器窗口为纵向，则相机会从 4:3 的横向视图翻转为 3:4 的纵向视图。
-* **响应式设计:** 针对桌面浏览器，我们设计为在右侧显示 Dash、Android Jetpack、Dino 和 Sparky，而对于移动设备，这些要素则会显示在顶部。我们针对桌面设备，在摄像头右侧设计使用了抽屉式导航栏，而对于移动设备，则使用了 BottomSheet 类。
-* **自适应输入:** 如果您使用桌面设备访问 Flutter 照相亭，则鼠标点击操作将被视为输入，如果您使用的是平板电脑或手机，则使用触摸输入。在调整贴纸大小并将其放置在照片中时，这一点尤其重要。移动设备支持双指张合和平移手势，桌面设备支持点击和拖动操作。
+* **響應式調整大小:** 使用者能夠隨意調整瀏覽器的大小，並且介面能做出響應。如果您的瀏覽器視窗為縱向，則相機會從 4:3 的橫向檢視翻轉為 3:4 的縱向檢視。
+* **響應式設計:** 針對桌面瀏覽器，我們設計為在右側顯示 Dash、Android Jetpack、Dino 和 Sparky，而對於移動裝置，這些要素則會顯示在頂部。我們針對桌面裝置，在攝影頭右側設計使用了抽屜式導航欄，而對於移動裝置，則使用了 BottomSheet 類別。
+* **自適應輸入:** 如果您使用桌面裝置存取 Flutter 照相亭，則滑鼠點選操作將被視為輸入，如果您使用的是平板電腦或手機，則使用觸控輸入。在調整貼紙大小並將其放置在照片中時，這一點尤其重要。移動裝置支援雙指張合和平移手勢，桌面裝置支援點選和拖動操作。
 
-**可扩展架构**
+**可擴充架構**
 
-我们还为此应用构建了可扩展的移动应用。我们的 Flutter 照相亭在创建之初就具有稳固的基础，包括良好的空安全性、国际化，以及从第一次提交开始就做到的 100% 单元和 widget 测试覆盖率。我们使用 [flutter_bloc](https://pub.flutter-io.cn/packages/flutter_bloc) 进行状态管理，因为它支持我们轻松测试业务逻辑，并观察应用中的所有状态变化。这对于生成开发者日志和确保可追溯性特别有用，因为我们可以准确地观察到从一个状态到另一个状态的变化，并更快地隔离问题。
+我們還為此應用建構了可擴充的移動應用。我們的 Flutter 照相亭在建立之初就具有穩固的基礎，包括良好的空安全性、國際化，以及從第一次提交開始就做到的 100% 單元和 widget 測試覆蓋率。我們使用 [flutter_bloc](https://pub.flutter-io.cn/packages/flutter_bloc) 進行狀態管理，因為它支援我們輕鬆測試業務邏輯，並觀察應用中的所有狀態變化。這對於產生開發者日誌和確保可追溯性特別有用，因為我們可以準確地觀察到從一個狀態到另一個狀態的變化，並更快地隔離問題。
 
-我们还实现了由功能驱动的单一代码库结构。例如，贴纸、分享和实时相机预览，均在各自的文件夹中得到实现，其中每个文件夹包含其各自的界面组件和业务逻辑。这些功能也会用到外部依赖，例如位于 package 子目录中的相机插件。利用这种架构，我们的团队能够在互不干扰的情况下并行处理多个功能，最大限度地减少合并冲突，并有效地重用代码。例如，界面组件库是名为 [photobooth_ui](https://github.com/flutter/photobooth/tree/main/packages/photobooth_ui) 的单独 package，相机插件也是单独的。
+我們還實現了由功能驅動的單一程式碼庫結構。例如，貼紙、分享和即時相機預覽，均在各自的資料夾中得到實現，其中每個資料夾包含其各自的介面元件和業務邏輯。這些功能也會用到外部依賴，例如位於 package 子目錄中的相機外掛。利用這種架構，我們的團隊能夠在互不干擾的情況下並行處理多個功能，最大限度地減少合併衝突，並有效地重用程式碼。例如，介面元件函式庫是名為 [photobooth_ui](https://github.com/flutter/photobooth/tree/main/packages/photobooth_ui) 的單獨 package，相機外掛也是單獨的。
 
-通过将组件分成独立的 package，我们可以提取未与此特定项目绑定的各个组件，并将其开源。与 [Material](https://flutter.cn/docs/development/ui/widgets/material) 和 [Cupertino](https://flutter.cn/docs/development/ui/widgets/cupertino) 组件库类似，我们甚至可以将界面组件库 package 做开源处理，以供 Flutter 社区使用。
+透過將元件分成獨立的 package，我們可以提取未與此特定專案繫結的各個元件，並將其開源。與 [Material](https://flutter.cn/docs/development/ui/widgets/material) 和 [Cupertino](https://flutter.cn/docs/development/ui/widgets/cupertino) 元件庫類似，我們甚至可以將介面元件庫 package 做開源處理，以供 Flutter 社群使用。
 
-## **Firebase + Flutter = 完美组合**
+## **Firebase + Flutter = 完美組合**
 
-**Firebase Auth、存储、托管等**
+**Firebase Auth、儲存、託管等**
 
-照相亭利用 Firebase 生态系统进行各种后端集成。[firebase_auth](https://pub.flutter-io.cn/packages/firebase_auth) package 支持用户在应用启动后立即匿名登录。每个会话都使用 Firebase Auth 创建具有唯一 ID 的匿名用户。
+照相亭利用 Firebase 生態系統進行各種後端整合。[firebase_auth](https://pub.flutter-io.cn/packages/firebase_auth) package 支援使用者在應用啟動後立即匿名登入。每個會話都使用 Firebase Auth 建立具有唯一 ID 的匿名使用者。
 
-当您来到共享页面时，此设置即会开始发挥作用。您可以下载照片以保存为个人头像，也可以直接将其分享到社交媒体。如果您下载照片，则该照片将存储在您的本地设备上。如果您分享照片，我们会使用 [firebase_storage](https://pub.flutter-io.cn/packages/firebase_storage) package 将照片存储在 Firebase 中，以便稍后检索并生成帖子通过社交媒体发布。
+當您來到共享頁面時，此設定即會開始發揮作用。您可以下載照片以儲存為個人頭像，也可以直接將其分享到社交媒體。如果您下載照片，則該照片將儲存在您的本地裝置上。如果您分享照片，我們會使用 [firebase_storage](https://pub.flutter-io.cn/packages/firebase_storage) package 將照片儲存在 Firebase 中，以便稍後檢索並產生帖子透過社交媒體釋出。
 
-我们在 Firebase 的存储分区上定义了 [Firebase 安全规则](https://firebase.google.cn/docs/rules)，确保照片在创建后不可变。这可以防止其他用户修改或删除存储分区中的照片。此外，我们使用 Google Cloud 提供的 [对象生命周期管理](https://cloud.google.com/storage/docs/lifecycle)，定义了一个删除 30 天前所有对象的规则，但您可以按照应用中列出的说明请求尽快删除您的照片。
+我們在 Firebase 的儲存分割槽上定義了 [Firebase 安全規則](https://firebase.google.cn/docs/rules)，確保照片在建立後不可變。這可以防止其他使用者修改或刪除儲存分割槽中的照片。此外，我們使用 Google Cloud 提供的 [物件生命週期管理](https://cloud.google.com/storage/docs/lifecycle)，定義了一個刪除 30 天前所有物件的規則，但您可以按照應用中列出的說明請求儘快刪除您的照片。
 
-此应用还使用 [Firebase Hosting](https://firebase.google.cn/docs/hosting) 快速安全地进行托管。我们可以借助 [action-hosting-deploy](https://github.com/FirebaseExtended/action-hosting-deploy) GitHub Action，根据目标分支，将应用自动部署到 Firebase Hosting。当我们将变更合并到主分支时，该操作会触发一个工作流，用于构建应用的特定开发版本，并将其部署到 Firebase Hosting。同样，当我们将变更合并到发布分支时，该操作也会触发部署生产版本。通过结合使用 GitHub Action 与 Firebase Hosting，我们的团队能够快速迭代，并始终得到最新版本的预览。
+此應用還使用 [Firebase Hosting](https://firebase.google.cn/docs/hosting) 快速安全地進行託管。我們可以藉助 [action-hosting-deploy](https://github.com/FirebaseExtended/action-hosting-deploy) GitHub Action，根據目標分支，將應用自動部署到 Firebase Hosting。當我們將變更合併到主分支時，該操作會觸發一個工作流，用於建構應用的特定開發版本，並將其部署到 Firebase Hosting。同樣，當我們將變更合併到釋出分支時，該操作也會觸發部署生產版本。透過結合使用 GitHub Action 與 Firebase Hosting，我們的團隊能夠快速迭代，並始終得到最新版本的預覽。
 
-最后，我们使用 [Firebase 性能监测](https://firebase.google.cn/products/performance) 来监控主要的 Web 性能指标。
+最後，我們使用 [Firebase 效能監測](https://firebase.google.cn/products/performance) 來監控主要的 Web 效能指標。
 
-**使用 Cloud Functions 进行社交**
+**使用 Cloud Functions 進行社交**
 
-在生成您的社交帖子之前，我们首先会确保照片内容是像素级完美的。最终图像包含漂亮的边框，以呈现 Flutter 照相亭特色，并按 4:3 或 3:4 的宽高比进行裁剪，以便在社交帖子上呈现出色的效果。
+在產生您的社交帖子之前，我們首先會確保照片內容是畫素級完美的。最終圖像包含漂亮的邊框，以呈現 Flutter 照相亭特色，並按 4:3 或 3:4 的寬高比進行裁剪，以便在社交帖子上呈現出色的效果。
 
-我们使用 [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) API 或 [CanvasElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 来合成原始照片、吉祥物和道具的图层，并生成您可以下载的单个图像。这个处理步骤由 [image_compositor](https://github.com/flutter/photobooth/tree/main/packages/image_compositor) package 负责执行。
+我們使用 [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) API 或 [CanvasElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 來合成原始照片、吉祥物和道具的圖層，並產生您可以下載的單個圖像。這個處理步驟由 [image_compositor](https://github.com/flutter/photobooth/tree/main/packages/image_compositor) package 負責執行。
 
-然后，我们利用 Firebase 强大的 [Cloud Functions](https://firebase.google.cn/docs/functions)，来将照片分享到社交媒体。当您点击分享按钮时，系统会带您前往新标签页，并在所选的社交平台上自动生成待发布的帖子。该帖子还包含一个链接，连接到我们编写的 Cloud Functions。浏览器在分析网址时，会检测 Cloud Functions 生成的动态元数据，并据此在您的社交帖子中显示照片的精美预览，以及一个指向分享页面的链接，您的粉丝们可以在该页面上查看照片，并导航回 Flutter 照相亭应用，以获取他们自己的照片。
+然後，我們利用 Firebase 強大的 [Cloud Functions](https://firebase.google.cn/docs/functions)，來將照片分享到社交媒體。當您點選分享按鈕時，系統會帶您前往新標籤頁，並在所選的社交平臺上自動產生待發布的帖子。該帖子還包含一個連結，連線到我們編寫的 Cloud Functions。瀏覽器在分析網址時，會檢測 Cloud Functions 產生的動態元資料，並據此在您的社交帖子中顯示照片的精美預覽，以及一個指向分享頁面的連結，您的粉絲們可以在該頁面上檢視照片，並導航回 Flutter 照相亭應用，以獲取他們自己的照片。
 
 ```dart
 function renderSharePage(imageFileName: string, baseUrl: string): string {
@@ -208,16 +208,16 @@ function renderSharePage(imageFileName: string, baseUrl: string): string {
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/06/6TLvkS.png)
 
-有关如何在 Flutter 项目中使用 Firebase 的更多信息，请查看 [此 Codelab](https://firebase.google.cn/codelabs/firebase-get-to-know-flutter#0)。
+有關如何在 Flutter 專案中使用 Firebase 的更多資訊，請檢視 [此 Codelab](https://firebase.google.cn/codelabs/firebase-get-to-know-flutter#0)。
 
-## **最终成果**
+## **最終成果**
 
-本项目详细地示范了如何针对 Web 来构建应用的方法。令我们感到惊喜的是，与使用 Flutter 构建移动应用的体验相比，这个 Web 应用的构建工作流与之非常相似。我们必须考虑窗口大小、自适应、触摸与鼠标输入、图像加载时间、浏览器兼容性等元素，以及在构建 Web 应用时所必需考虑的其他所有因素。但是，我们仍然可以使用相同的模式、架构和编码标准来编写 Flutter 代码，这让我们在构建 Web 应用时感到非常自在。Flutter package 提供的工具和不断发展的生态系统，包括 Firebase 工具套件，帮助我们实现了 Flutter 照相亭。
+本專案詳細地示範瞭如何針對 Web 來建構應用的方法。令我們感到驚喜的是，與使用 Flutter 建構移動應用的體驗相比，這個 Web 應用的建構工作流與之非常相似。我們必須考慮視窗大小、自適應、觸控與滑鼠輸入、圖像載入時間、瀏覽器相容性等元素，以及在建構 Web 應用時所必需考慮的其他所有因素。但是，我們仍然可以使用相同的模式、架構和編碼標準來編寫 Flutter 程式碼，這讓我們在建構 Web 應用時感到非常自在。Flutter package 提供的工具和不斷髮展的生態系統，包括 Firebase 工具套件，幫助我們實現了 Flutter 照相亭。
 
-![△ 打造 Flutter 照相亭的 Very Good Ventures 团队](https://devrel.andfun.cn/devrel/posts/2021/11/0219cca9b22ab.png)
+![△ 打造 Flutter 照相亭的 Very Good Ventures 團隊](https://devrel.andfun.cn/devrel/posts/2021/11/0219cca9b22ab.png)
 
-△ 打造 Flutter 照相亭的 Very Good Ventures 团队
+△ 打造 Flutter 照相亭的 Very Good Ventures 團隊
 
-我们已经开放了所有源代码，欢迎大家前往 GitHub 查看 [photo_booth](https://github.com/flutter/photobooth) 项目，也别忘了多多拍照秀出来哦！
+我們已經開放了所有原始碼，歡迎大家前往 GitHub 檢視 [photo_booth](https://github.com/flutter/photobooth) 專案，也別忘了多多拍照秀出來哦！
 
-*Flutter 照相亭中文版有部分功能删减，您可以在 <a href="https://photobooth.flutter.dev">https://photobooth.flutter.dev</a> 体验完整功能*
+*Flutter 照相亭中文版有部分功能刪減，您可以在 <a href="https://photobooth.flutter.dev">https://photobooth.flutter.dev</a> 體驗完整功能*

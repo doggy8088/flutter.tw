@@ -1,10 +1,10 @@
 ---
 title: Using the Performance view
-title: 使用性能视图 (Performance view)
+title: 使用效能檢視 (Performance view)
 description: Learn how to use the DevTools performance view.
-description: 学习如何使用开发者工具的性能视图。
-tags: Flutter开发工具,DevTools
-keywords: 开发者工具,性能视图,Dart,性能优化
+description: 學習如何使用開發者工具的效能檢視。
+tags: Flutter開發工具,DevTools
+keywords: 開發者工具,效能檢視,Dart,效能最佳化
 ---
 
 {{site.alert.note}}
@@ -14,10 +14,10 @@ keywords: 开发者工具,性能视图,Dart,性能优化
   performance panel of Chrome DevTools instead. 
   To learn about profiling web apps, check out [Debugging web performance][].
 
-  性能视图可用于 Flutter 移动端、Flutter 桌面端、Dart 和 Flutter 网页端应用。
-  Flutter 会在 Chrome DevTools 中添加时间线事件。
-  若你想了解如何分析 Flutter 网页应用的性能，请参阅
-  [调试 Web 应用性能][Debugging web performance]。
+  效能檢視可用於 Flutter 移動端、Flutter 桌面端、Dart 和 Flutter 網頁端應用。
+  Flutter 會在 Chrome DevTools 中新增時間線事件。
+  若你想了解如何分析 Flutter 網頁應用的效能，請參閱
+  [除錯 Web 應用效能][Debugging web performance]。
 
 {{site.alert.end}}
 
@@ -30,29 +30,29 @@ for activity in your application.
 It consists of several tools to help you identify
 the cause of poor performance in your app:
 
-性能页面可以帮助您诊断应用中的性能问题和 UI 卡顿。
-该页面提供了应用中活动的时间和性能信息。
-它由几个工具组成，可帮助您识别应用中性能不佳的原因：
+效能頁面可以幫助您診斷應用中的效能問題和 UI 卡頓。
+該頁面提供了應用中活動的時間和效能資訊。
+它由幾個工具組成，可幫助您識別應用中效能不佳的原因：
 
 * Flutter frames chart (Flutter apps only)
 
-  Flutter 帧图表（仅 Flutter 应用）
+  Flutter 幀圖表（僅 Flutter 應用）
 
 * Frame analysis tab (Flutter apps only)
 
-  帧分析标签页（仅 Flutter 应用）
+  幀分析標籤頁（僅 Flutter 應用）
 
 * Raster stats tab (Flutter apps only)
 
-  光栅统计标签页（仅 Flutter 应用）
+  光柵統計標籤頁（僅 Flutter 應用）
 
 * Timeline events trace viewer (all native Dart applications)
 
-  时间轴事件跟踪查看器（所有原生 Dart 应用）
+  時間軸事件追蹤檢視器（所有原生 Dart 應用）
 
 * Advanced debugging tools (Flutter apps only)
 
-  高级调试工具（仅 Flutter 应用）
+  高階除錯工具（僅 Flutter 應用）
 
 
 {{site.alert.secondary}}
@@ -62,9 +62,9 @@ the cause of poor performance in your app:
   when running in debug mode. Run your app in profile mode,
   which still preserves useful debugging information.
 
-  **使用 [profile build][] 来分析性能。**
-  帧渲染时间在调试模式下不代表发布模式的性能。
-  请在 profile 模式下运行应用，它仍然保留了有用的调试信息。
+  **使用 [profile build][] 來分析效能。**
+  幀渲染時間在除錯模式下不代表釋出模式的效能。
+  請在 profile 模式下執行應用，它仍然保留了有用的除錯資訊。
 
 {{site.alert.end}}
 
@@ -74,12 +74,12 @@ The performance view also supports importing and exporting of
 data snapshots. For more information,
 check out the [Import and export][] section.
 
-性能视图还支持导入和导出数据快照。
-更多信息，请查看 [导入和导出][Import and export] 部分。
+效能檢視還支援匯入和匯出資料快照。
+更多資訊，請檢視 [匯入和匯出][Import and export] 部分。
 
 ### What is a frame in Flutter?
 
-### Flutter 中的帧是什么？
+### Flutter 中的幀是什麼？
 
 Flutter is designed to render its UI at 60 frames per second
 (fps), or 120 fps on devices capable of 120Hz updates.
@@ -89,14 +89,14 @@ to reflect animations or other changes to the UI. A frame
 that takes longer than 16ms to render causes jank 
 (jerky motion) on the display device.
 
-Flutter 的 UI 设计为每秒渲染 60 帧（fps），或者在支持 120Hz 更新的设备上为 120 帧。
-每次渲染称为一帧。
-这意味着，大约每 16ms，UI 就会更新以反映动画或 UI 的其他更改。
-渲染时间超过 16ms 的帧会导致显示设备上的卡顿（抖动）。
+Flutter 的 UI 設計為每秒渲染 60 幀（fps），或者在支援 120Hz 更新的裝置上為 120 幀。
+每次渲染稱為一幀。
+這意味著，大約每 16ms，UI 就會更新以反映動畫或 UI 的其他更改。
+渲染時間超過 16ms 的幀會導致顯示裝置上的卡頓（抖動）。
 
 ## Flutter frames chart
 
-## Flutter 帧图表
+## Flutter 幀圖表
 
 This chart contains Flutter frame information for your application.
 Each bar set in the chart represents a single Flutter frame.
@@ -105,10 +105,10 @@ of work that occur when rendering a Flutter frame: work from
 the UI thread and work from the raster thread (previously known
 as the GPU thread).
 
-此图表包含了应用的帧信息。
-图表中每组条形图代表每一帧。
-这些条形图以颜色区分渲染帧时进行的不同工作：
-UI 线程和光栅线程（以前称为 GPU 线程）。
+此圖表包含了應用的幀資訊。
+圖表中每組條形圖代表每一幀。
+這些條形圖以顏色區分渲染幀時進行的不同工作：
+UI 執行緒和光柵執行緒（以前稱為 GPU 執行緒）。
 
 This chart contains Flutter frame timing information for your
 application. Each pair of bars in the chart represents a single
@@ -118,12 +118,12 @@ or the [Timeline events](#timeline-events-tab) tab.
 (As of [DevTools 2.23.1][], the [Raster stats](#raster-stats-tab)
 is a standalone feature without data per frame).
 
-此图表在时间线上显示应用的帧信息。
-图表中每组条形图代表每一帧。
-从图表选中一帧，
-就会更新下面 [帧分析](#frame-analysis-tab) 标签页
-或 [时间线事件](#timeline-events-tab) 标签页中显示的数据。
-（从 [DevTools 2.23.1][] 开始，[光栅统计](#raster-stats-tab) 是一个独立的功能，没有每帧的数据）。
+此圖表在時間線上顯示應用的幀資訊。
+圖表中每組條形圖代表每一幀。
+從圖表選中一幀，
+就會更新下面 [幀分析](#frame-analysis-tab) 標籤頁
+或 [時間線事件](#timeline-events-tab) 標籤頁中顯示的資料。
+（從 [DevTools 2.23.1][] 開始，[光柵統計](#raster-stats-tab) 是一個獨立的功能，沒有每幀的資料）。
 
 [DevTools 2.23.1]: {{site.url}}/tools/devtools/release-notes/release-notes-2.23.1
 
@@ -133,10 +133,10 @@ click the pause button to the right of the chart.
 This chart can be collapsed to provide more viewing space
 for data below by clicking the **Flutter frames** button above the chart. 
 
-在应用程序运行过程中绘制新的帧时，会更新 Flutter 帧图表。
-点击图表右侧的暂停按钮就可以暂停图表的更新，
-点击图表上方的 **Flutter frames** 按钮，
-可以将此图表折叠起来，为下面的数据提供更多的观察空间。
+在應用程式執行過程中繪製新的幀時，會更新 Flutter 幀圖表。
+點選圖表右側的暫停按鈕就可以暫停圖表的更新，
+點選圖表上方的 **Flutter frames** 按鈕，
+可以將此圖表摺疊起來，為下面的資料提供更多的觀察空間。
 
 ![Screenshot of a Flutter frames chart]({{site.url}}/assets/images/docs/tools/devtools/flutter-frames-chart.png)
 
@@ -145,8 +145,8 @@ to highlight the different portions of work that occur when rendering
 a Flutter frame: work from the UI thread and work from the raster thread
 (previously known as the GPU thread).
 
-每一组条形图以颜色区分，突出显示渲染每一帧时进行的不同工作：
-来自 UI 线程和光栅线程（以前称为 GPU 线程）的工作。
+每一組條形圖以顏色區分，突出顯示渲染每一幀時進行的不同工作：
+來自 UI 執行緒和光柵執行緒（以前稱為 GPU 執行緒）的工作。
 
 ### UI
 
@@ -157,16 +157,16 @@ a layer tree, a lightweight object containing device-agnostic
 painting commands, and sends the layer tree to the raster thread
 to be rendered on the device. Do **not** block this thread.
 
-UI 线程执行 Dart VM 中的 Dart 代码。
-它包括你的应用程序和 Flutter 框架的所有代码。
-当你创建或打开一个页面，
-UI 线程会创建一个图层树和一个轻量级的与设备无关的绘制指令集，
-并把图层树交给设备的光栅线程进行渲染。
-**不要** 阻塞这个线程。
+UI 執行緒執行 Dart VM 中的 Dart 程式碼。
+它包括你的應用程式和 Flutter 框架的所有程式碼。
+當你建立或開啟一個頁面，
+UI 執行緒會建立一個圖層樹和一個輕量級的與裝置無關的繪製指令集，
+並把圖層樹交給裝置的光柵執行緒進行渲染。
+**不要** 阻塞這個執行緒。
 
 ### Raster
 
-### 光栅线程 (Raster)
+### 光柵執行緒 (Raster)
 
 The raster thread (previously known as the GPU thread)
 executes graphics code from the Flutter Engine.
@@ -180,12 +180,12 @@ also uses this thread.
 
 [Impeller]: {{site.url}}/perf/impeller
 
-光栅线程（也就是我们之前知道的 GPU 线程）执行 Flutter 引擎中图形相关的代码。
-这个线程通过与 GPU (图形处理单元) 通信，获取图形树并显示它。
-你不能直接访问光栅线程或它的数据，但如果这个线程较慢，
-那它肯定是由你的 Dart 代码引起的。
-图形化库 Skia 运行在这个线程上。
-[Impeller][]（目前处于预览阶段）也将运行在这个线程上。
+光柵執行緒（也就是我們之前知道的 GPU 執行緒）執行 Flutter 引擎中圖形相關的程式碼。
+這個執行緒透過與 GPU (圖形處理單元) 通訊，獲取圖形樹並顯示它。
+你不能直接存取光柵執行緒或它的資料，但如果這個執行緒較慢，
+那它肯定是由你的 Dart 程式碼引起的。
+圖形化庫 Skia 執行在這個執行緒上。
+[Impeller][]（目前處於預覽階段）也將執行在這個執行緒上。
 
 Sometimes a scene results in a layer tree that is easy to construct,
 but expensive to render on the raster thread. In this case, you
@@ -195,20 +195,20 @@ difficult for the GPU. They might involve unnecessary calls to
 `saveLayer()`, intersecting opacities with multiple objects,
 and clips or shadows in specific situations.
 
-有时候一个页面的图形层树比较容易构建但光栅线程的渲染却比较昂贵。
-在这种情形下，你需要找出导致渲染变慢的代码。
-为 GPU 设定特定多种类型的 workload 是相当困难的。
-在一些特定的情形下，多个对象的透明度重叠、剪切或阴影，
-有可能会导致不必要的 `saveLayer()` 的调用。
+有時候一個頁面的圖形層樹比較容易建構但光柵執行緒的渲染卻比較昂貴。
+在這種情形下，你需要找出導致渲染變慢的程式碼。
+為 GPU 設定特定多種型別的 workload 是相當困難的。
+在一些特定的情形下，多個物件的透明度重疊、剪下或陰影，
+有可能會導致不必要的 `saveLayer()` 的呼叫。
 
 For more information on profiling, check out
 [Identifying problems in the GPU graph][GPU graph].
 
-更多详细信息，请查看文档 [定位 GPU 图表中的问题][GPU graph]。
+更多詳細資訊，請檢視文件 [定位 GPU 圖表中的問題][GPU graph]。
 
 ### Jank (slow frame)
 
-### 卡顿 (Jank)
+### 卡頓 (Jank)
 
 The frame rendering chart shows jank with a red overlay.
 A frame is considered to be janky if it takes more than
@@ -217,38 +217,38 @@ A frame is considered to be janky if it takes more than
 ~16 ms or less. When this target is missed, you may
 experience UI jank or dropped frames.
 
-帧渲染图表使用红色图层显示帧延时。
-如果一帧的渲染时间超过 16ms，则会被认为此帧是延时的，
-为了达到帧渲染频率到 60 FPS (每秒帧数)，
-每一帧的渲染时间必须等于或少于 16 ms。
-如果没有达到这个目标，你会发现 UI 不流畅或丢帧。
+幀渲染圖表使用紅色圖層顯示幀延時。
+如果一幀的渲染時間超過 16ms，則會被認為此幀是延時的，
+為了達到幀渲染頻率到 60 FPS (每秒幀數)，
+每一幀的渲染時間必須等於或少於 16 ms。
+如果沒有達到這個目標，你會發現 UI 不流暢或丟幀。
 
 For more information on how to analyze your app's performance,
 check out [Flutter performance profiling][].
 
-更多关于性能分析信息，请查看文档：[Flutter 性能分析][Flutter performance profiling]。
+更多關於效能分析資訊，請檢視文件：[Flutter 效能分析][Flutter performance profiling]。
 
 ### Shader compilation
 
-### 着色器渲染
+### 著色器渲染
 
 Shader compilation occurs when a shader is first used in your Flutter
 app. Frames that perform shader compilation are marked in dark
 red:
 
-在 Flutter 应用中，着色器会在初次使用时发生渲染。参与了着色器编译的构建帧已标记为深红色：
+在 Flutter 應用中，著色器會在初次使用時發生渲染。參與了著色器編譯的建構幀已標記為深紅色：
 
 ![Screenshot of shader compilation for a frame]({{site.url}}/assets/images/docs/tools/devtools/shader-compilation-frames-chart.png)
 
 For more information on how to reduce shader compilation jank,
 check out [Reduce shader compilation jank on mobile][].
 
-想要了解更多关于如何减少着色器缓存卡顿的内容，阅读
-[在移动端减少着色器编译卡顿][Reduce shader compilation jank on mobile]。
+想要了解更多關於如何減少著色器快取卡頓的內容，閱讀
+[在移動端減少著色器編譯卡頓][Reduce shader compilation jank on mobile]。
 
 ## Frame analysis tab
 
-## 帧分析标签页
+## 幀分析標籤頁
 
 Selecting a janky frame (slow, colored in red)
 from the Flutter frames chart above shows debugging hints
@@ -256,16 +256,16 @@ in the Frame analysis tab. These hints help you diagnose
 jank in your app, and notify you of any expensive operations
 that we have detected that might have contributed to the slow frame time.
 
-从上面的 Flutter 帧图表中选择一个延时的帧（红色），
-会在帧分析标签页中显示调试提示。
-这些提示可以帮助你诊断应用中的卡顿，
-并通知你任何昂贵的操作，我们检测到这些操作可能会导致帧延时。
+從上面的 Flutter 幀圖表中選擇一個延時的幀（紅色），
+會在幀分析標籤頁中顯示除錯提示。
+這些提示可以幫助你診斷應用中的卡頓，
+並通知你任何昂貴的操作，我們檢測到這些操作可能會導致幀延時。
 
 ![Screenshot of the frame analysis tab]({{site.url}}/assets/images/docs/tools/devtools/frame-analysis-tab.png)
 
 ## Raster stats tab
 
-## 光栅统计标签页
+## 光柵統計標籤頁
 
 {{site.alert.note}}
 
@@ -274,9 +274,9 @@ that we have detected that might have contributed to the slow frame time.
   the raster stats reported might be inconsistent
   due to the timing of when shaders are compiled.
 
-  为了获得最佳的效果，该工具应该和 Impeller 渲染引擎一起使用。
-  当使用 Skia 时，由于着色器编译的时间不同，
-  光栅统计报告的数据可能会存在差异。
+  為了獲得最佳的效果，該工具應該和 Impeller 渲染引擎一起使用。
+  當使用 Skia 時，由於著色器編譯的時間不同，
+  光柵統計報告的資料可能會存在差異。
 
 {{site.alert.end}}
 
@@ -285,22 +285,22 @@ slow raster thread times, this tool might be able
 to help you diagnose the source of the slow performance.
 To generate raster stats:
 
-如果帧的卡顿来自光栅线程，
-这个工具也许能够帮助你诊断性能缓慢的原因。
-生成光栅统计的步骤：
+如果幀的卡頓來自光柵執行緒，
+這個工具也許能夠幫助你診斷效能緩慢的原因。
+產生光柵統計的步驟：
 
 1. Navigate to the screen in your app where you are seeing
    raster thread jank.
 
-   在应用程序中导航到你看见光栅线程卡顿的画面。
+   在應用程式中導航到你看見光柵執行緒卡頓的畫面。
 
 2. Click **Take Snapshot**.
 
-   点击 **Take Snapshot** 生成快照。
+   點選 **Take Snapshot** 產生快照。
 
 3. View different layers and their respective rendering times.
 
-   查看不同图层和它们各自的渲染时间。
+   檢視不同圖層和它們各自的渲染時間。
 
 If you see an expensive layer, find the Dart code in your app
 that is producing this layer and investigate further.
@@ -308,16 +308,16 @@ You can make changes to your code, hot reload,
 and take new snapshots to see if the performance of a layer
 was improved by your change.
 
-如果你看到一个图层特别耗时，请找到应用程序中产生这个图层的 Dart 代码
-并一步调查原因。
-你可以对代码进行修改、热重载和生成新的快照，
-看看图层的性能是否因你的修改而得到改善。
+如果你看到一個圖層特別耗時，請找到應用程式中產生這個圖層的 Dart 程式碼
+並一步調查原因。
+你可以對程式碼進行修改、熱重載和產生新的快照，
+看看圖層的效能是否因你的修改而得到改善。
 
 ![Screenshot of the raster stats tab]({{site.url}}/assets/images/docs/tools/devtools/raster-stats-tab.png)
 
 ## Timeline events tab
 
-## 时间线事件表
+## 時間線事件表
 
 The timeline events chart shows all event tracing from your application.
 The Flutter framework emits timeline events as it works to build frames,
@@ -326,12 +326,12 @@ and garbage collection. These events show up here in the Timeline.
 You can also send your own Timeline events using the dart:developer
 [`Timeline`][] and [`TimelineTask`][] APIs.
 
-时间线事件图表显示了应用程序的所有事件追踪。
-Flutter 底层框架在构建帧、绘制场景和
-跟踪其他活动（如 HTTP 请求时间和垃圾回收）时，会发出时间线事件。
-这些事件会在时间线中显示出来。
-你也可以使用 dart:developer [`Timeline`][] 和 [`TimelineTask`][] API 发送
-你自己的时间线事件。
+時間線事件圖表顯示了應用程式的所有事件追蹤。
+Flutter 底層框架在建構幀、繪製場景和
+追蹤其他活動（如 HTTP 請求時間和垃圾回收）時，會發出時間線事件。
+這些事件會在時間線中顯示出來。
+你也可以使用 dart:developer [`Timeline`][] 和 [`TimelineTask`][] API 傳送
+你自己的時間線事件。
 
 [`Timeline`]: {{site.api}}/flutter/dart-developer/Timeline-class.html
 [`TimelineTask`]: {{site.api}}/flutter/dart-developer/TimelineTask-class.html
@@ -344,28 +344,28 @@ events tab bar. To refresh the timeline with new events from
 your application, click the refresh button
 (also in the upper right corner of the tab controls).
 
-关于导航和使用跟踪查看器的帮助，
-请点击时间线事件标签栏右上方的 **?** 按钮。
-要使用应用程序中的新事件，请单击刷新按钮（也位于选项卡的右上角）。
+關於導航和使用追蹤檢視器的幫助，
+請點選時間線事件標籤欄右上方的 **?** 按鈕。
+要使用應用程式中的新事件，請單擊重新整理按鈕（也位於選項卡的右上角）。
 
 ## Advanced debugging tools
 
-## 高级调试工具
+## 高階除錯工具
 
 ### Enhance tracing 
 
-### 增强的追踪选项
+### 增強的追蹤選項
 
 To view more detailed tracing in the timeline events chart,
 use the options in the enhance tracing dropdown:
 
-想要在时间线事件图表里查看更详细的追踪内容，请使用增强的追踪下拉控件里的选项：
+想要在時間線事件圖表裡檢視更詳細的追蹤內容，請使用增強的追蹤下拉控制項裡的選項：
 
 {{site.alert.note}}
 
   Frame times might be negatively affected when these options are enabled.
 
-  启用该选项后，帧构建时间可能会受到影响。
+  啟用該選項後，幀建構時間可能會受到影響。
 
 {{site.alert.end}}
 
@@ -375,55 +375,55 @@ To see the new timeline events, reproduce the activity
 in your app that you are interested in tracing,
 and then select a frame to inspect the timeline.
 
-你可以重复操作你想要追踪的行为来查看新的时间线事件，
-操作后可以在时间线中选择一个构建帧进行查看。
+你可以重複操作你想要追蹤的行為來檢視新的時間線事件，
+操作後可以在時間線中選擇一個建構幀進行檢視。
 
 ### Track widget builds
 
-### 追踪 widget 的构建
+### 追蹤 widget 的建構
 
 To see the `build()` method events in the timeline,
 enable the **Track Widget Builds** option.
 The name of the widget is shown in the timeline event.
 
-想要在时间线中查看 `build()` 方法的事件，启用 **Track Widget Builds** 选项，
-时间线中将出现 widget 对应名称的事件。
+想要在時間線中檢視 `build()` 方法的事件，啟用 **Track Widget Builds** 選項，
+時間線中將出現 widget 對應名稱的事件。
 
 ![Screenshot of track widget builds]({{site.url}}/assets/images/docs/tools/devtools/track-widget-builds.png)
 
 ### Track layouts
 
-### 追踪布局
+### 追蹤佈局
 
 To see render object layout events in the timeline,
 enable the **Track Layouts** option:
 
-想要在时间线中查看 `RenderObject` 布局构建的事件，启用 Track Layouts 选项：
+想要在時間線中檢視 `RenderObject` 佈局建構的事件，啟用 Track Layouts 選項：
 
 ![Screenshot of track layouts]({{site.url}}/assets/images/docs/tools/devtools/track-layouts.png)
 
 ### Track paints
 
-### 追踪绘制
+### 追蹤繪製
 
 To see render object paint events in the timeline,
 enable the **Track Paints** option:
 
-想要在时间线中查看 `RenderObject` 的绘制事件，
-启用 **Track Paints** 选项：
+想要在時間線中檢視 `RenderObject` 的繪製事件，
+啟用 **Track Paints** 選項：
 
 ![Screenshot of track paints]({{site.url}}/assets/images/docs/tools/devtools/track-paints.png)
 
 ## More debugging options
 
-## 更多调试选项
+## 更多除錯選項
 
 To diagnose performance problems related to rendering layers,
 toggle off a rendering layer.
 These options are enabled by default.
 
-想要诊断渲染图层相关的问题，请先关闭渲染层。
-下述的选项将会默认启动。
+想要診斷渲染圖層相關的問題，請先關閉渲染層。
+下述的選項將會預設啟動。
 
 To see the effects on your app's performance,
 reproduce the activity in your app.
@@ -434,11 +434,11 @@ If Raster time has significantly decreased,
 excessive use of the effects you disabled might be contributing
 to the jank you saw in your app.
 
-想要查看你的应用的性能影响，请尝试以相同的操作重现性能问题。
-在渲染层关闭的情况下，于构建帧图表里选择一个新的构建帧，
-查看它的时间线细节。
-如果光栅线程的时间消耗有显著降低，
-那么你禁用的效果的滥用可能是导致卡顿的主要原因。
+想要檢視你的應用的效能影響，請嘗試以相同的操作重現效能問題。
+在渲染層關閉的情況下，於建構幀圖表裡選擇一個新的建構幀，
+檢視它的時間線細節。
+如果光柵執行緒的時間消耗有顯著降低，
+那麼你禁用的效果的濫用可能是導致卡頓的主要原因。
 
 **Render Clip layers**
 <br> Disable this option to check whether excessive use of clipping
@@ -446,9 +446,9 @@ to the jank you saw in your app.
   If performance improves with this option disabled,
   try to reduce the use of clipping effects in your app.
 
-**渲染裁剪的图层**
-<br> 禁用该选项来检查已使用的裁剪图层是否影响了性能。
-     如果禁用后性能有显著提升，请尝试减少你的应用中裁剪效果的使用。
+**渲染裁剪的圖層**
+<br> 禁用該選項來檢查已使用的裁剪圖層是否影響了效能。
+     如果禁用後效能有顯著提升，請嘗試減少你的應用中裁剪效果的使用。
 
 **Render Opacity layers**
 <br> Disable this option to check whether
@@ -456,9 +456,9 @@ to the jank you saw in your app.
      If performance improves with this option disabled,
      try to reduce the use of opacity effects in your app.
 
-**渲染透明度图层**
-<br> 禁用该选项来检查已使用的透明度图层是否影响了性能。
-     如果禁用后性能有显著提升，请尝试减少你的应用中透明度效果的使用。
+**渲染透明度圖層**
+<br> 禁用該選項來檢查已使用的透明度圖層是否影響了效能。
+     如果禁用後效能有顯著提升，請嘗試減少你的應用中透明度效果的使用。
 
 **Render Physical Shape layers**
 <br> Disable this option to check whether excessive
@@ -467,15 +467,15 @@ to the jank you saw in your app.
   If performance improves with this option disabled,
   try to reduce the use of physical modeling effects in your app.
 
-**渲染物理形状图层**
-<br> 禁用该选项来检查已使用的物理形状图层是否影响了性能，例如阴影和背景特效。
-     如果禁用后性能有显著提升，请尝试减少你的应用中物理效果的使用。
+**渲染物理形狀圖層**
+<br> 禁用該選項來檢查已使用的物理形狀圖層是否影響了效能，例如陰影和背景特效。
+     如果禁用後效能有顯著提升，請嘗試減少你的應用中物理效果的使用。
 
 ![Screenshot of more debugging options]({{site.url}}/assets/images/docs/tools/devtools/more-debugging-options.png)
 
 ## Import and export
 
-## 导入导出
+## 匯入匯出
 
 DevTools supports importing and exporting performance snapshots.
 Clicking the export button (upper-right corner above the
@@ -484,21 +484,21 @@ performance page. To import a performance snapshot, you can drag and drop the
 snapshot into DevTools from any page. **Note that DevTools only
 supports importing files that were originally exported from DevTools.**
 
-DevTools 支持导入和导出时间线快照。单击 export 按钮
-(帧渲染图表右上角) 下载当前时间线的快照。
-要导入时间线快照，可以从任何页面拖放快照到 DevTools。
-提示：DevTools 仅支持导入 DevTools 导出的源文件。
+DevTools 支援匯入和匯出時間線快照。單擊 export 按鈕
+(幀渲染圖表右上角) 下載當前時間線的快照。
+要匯入時間線快照，可以從任何頁面拖放快照到 DevTools。
+提示：DevTools 僅支援匯入 DevTools 匯出的原始檔。
 
 ## Other resources
 
-## 其他资源
+## 其他資源
 
 To learn how to monitor an app's performance and
 detect jank using DevTools, check out a guided
 [Performance View tutorial][performance-tutorial].
 
-想要学习如何使用 DevTools 监控应用的性能和检测卡顿，
-可以阅读 [性能视图教程][performance-tutorial]。
+想要學習如何使用 DevTools 監控應用的效能和檢測卡頓，
+可以閱讀 [效能檢視課程][performance-tutorial]。
 
 [GPU graph]: {{site.url}}/perf/ui-performance#identifying-problems-in-the-gpu-graph
 [Flutter performance profiling]: {{site.url}}/perf/ui-performance

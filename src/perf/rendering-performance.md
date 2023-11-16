@@ -1,10 +1,10 @@
 ---
 title: Improving rendering performance
-title: 提高渲染性能
+title: 提高渲染效能
 description: How to measure and evaluate your app's rendering performance.
-description: 如何测量以及评估你的应用渲染性能。
-tags: Flutter性能
-keywords: 性能测量,建议,常见问题,性能调试
+description: 如何測量以及評估你的應用渲染效能。
+tags: Flutter效能
+keywords: 效能測量,建議,常見問題,效能除錯
 ---
 
 {% include docs/performance.md %}
@@ -17,14 +17,14 @@ Flutter applications are performant by default,
 so you only need to avoid common pitfalls to achieve
 excellent performance.
 
-在衡量性能时，应用程序中的渲染动画一直是最受关注的话题之一。
-由于 Flutter 自带的 Skia 引擎以及它能够快速创建和处理组件的能力，
-Flutter 应用在默认情况下就能保证拥有良好的性能，
-因此我们只需避开常见的陷阱就可以获得出色的性能。
+在衡量效能時，應用程式中的渲染動畫一直是最受關注的話題之一。
+由於 Flutter 自帶的 Skia 引擎以及它能夠快速建立和處理元件的能力，
+Flutter 應用在預設情況下就能保證擁有良好的效能，
+因此我們只需避開常見的陷阱就可以獲得出色的效能。
 
 ## General advice
 
-## 一些基本的建议
+## 一些基本的建議
 
 If you see janky (non smooth) animations, make
 **sure** that you are profiling performance with an
@@ -34,77 +34,77 @@ which is not indicative of release performance.
 For information,
 see [Flutter's build modes][].
 
-如果看到不稳定（不流畅）的动画，
-请 **确保** 你正在做性能分析的应用是在 **profile** 模式下构建的，
-因为默认情况下 Flutter 会在 debug 模式下创建应用，这并不表示应用正式发布后的性能。
-更多信息，参见 [Flutter 的构建模式][Flutter's build modes]。
+如果看到不穩定（不流暢）的動畫，
+請 **確保** 你正在做效能分析的應用是在 **profile** 模式下建構的，
+因為預設情況下 Flutter 會在 debug 模式下建立應用，這並不表示應用正式釋出後的效能。
+更多資訊，參見 [Flutter 的建構模式][Flutter's build modes]。
 
 A couple common pitfalls:
 
-有几种常见的陷阱：
+有幾種常見的陷阱：
 
 * Rebuilding far more of the UI than expected each frame.
   To track widget rebuilds, see [Show performance data][].
   
-  每帧重建的 UI 比预期的要多得多。要跟踪组件的重建，
-  请参阅 [显示性能数据][Show performance data]。
+  每幀重建的 UI 比預期的要多得多。要追蹤元件的重建，
+  請參閱 [顯示效能資料][Show performance data]。
   
 * Building a large list of children directly, rather than
   using a ListView.
   
-  直接构建大量的子组件列表，而不使用 ListView。
+  直接建構大量的子元件列表，而不使用 ListView。
 
 For more information on evaluating performance
 including information on common pitfalls,
 see the following docs:
 
-有关评估性能的更多资料（包括常见缺陷），请参阅以下文档：
+有關評估效能的更多資料（包括常見缺陷），請參閱以下文件：
 
 * [Performance best practices][]
 
-  [Flutter 应用性能优化最佳实践][Performance best practices]
+  [Flutter 應用效能最佳化最佳實踐][Performance best practices]
 
 * [Flutter performance profiling][]
 
-  [Flutter 性能分析][Flutter performance profiling]
+  [Flutter 效能分析][Flutter performance profiling]
 
 ## Mobile-only advice
 
-## 纯移动应用
+## 純移動應用
 
 Do you see noticeable jank on your mobile app, but only on
 the first run of an animation? If so, see
 [Reduce shader animation jank on mobile][].
 
-如果移动应用里遇到一些肉眼可见的卡顿，单只是在第一次运行动画的时候？
-如果是这样的话，可以查看这个文档
-[减少过移动应用的着色器动画卡顿][Reduce shader animation jank on mobile]。
+如果移動應用裡遇到一些肉眼可見的卡頓，單只是在第一次執行動畫的時候？
+如果是這樣的話，可以檢視這個文件
+[減少過移動應用的著色器動畫卡頓][Reduce shader animation jank on mobile]。
 
 [Reduce shader animation jank on mobile]: {{site.url}}/perf/shader
 
 ## Web-only advice
 
-## 纯 Web 应用
+## 純 Web 應用
 
 The following series of articles cover what the Flutter Material
 team learned when improving performance of the Flutter Gallery
 app on the web:
 
-下面的内容是 Flutter Material 团队在提高
-Flutter Gallery Web 应用性能时候总结的经验：
+下面的內容是 Flutter Material 團隊在提高
+Flutter Gallery Web 應用效能時候總結的經驗：
 
 * [Optimizing performance in Flutter web apps with tree shaking and deferred loading][shaking]
 
-  [通过 tree shaking 和延迟加载来优化 Flutter Web 应用的性能 (Optimizing performance in Flutter web apps with 
+  [透過 tree shaking 和延遲載入來最佳化 Flutter Web 應用的效能 (Optimizing performance in Flutter web apps with 
   tree shaking and deferred loading)][shaking]
 
 * [Improving perceived performance with image placeholders, precaching, and disabled navigation transitions][images]
 
-  [通过使用图像占位符、预缓存和禁用导航效果来提高性能(Improving perceived performance with image placeholders, precaching, and disabled navigation transitions)][images]
+  [透過使用圖像佔位符、預快取和禁用導航效果來提高效能(Improving perceived performance with image placeholders, precaching, and disabled navigation transitions)][images]
   
 * [Building performant Flutter widgets][]
 
-  [高效构建 Flutter widgets (Building performant Flutter widgets)][Building performant Flutter widgets]
+  [高效建構 Flutter widgets (Building performant Flutter widgets)][Building performant Flutter widgets]
 
 [Building performant Flutter widgets]: {{site.flutter-medium}}/building-performant-flutter-widgets-3b2558aa08fa
 [Flutter's build modes]: {{site.url}}/testing/build-modes

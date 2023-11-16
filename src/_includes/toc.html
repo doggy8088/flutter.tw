@@ -32,7 +32,7 @@
   {% if include.kind == 'side' %}data-fixed-column{% endif %}
 >
   <header class="site-toc__title">
-    {{include.header | default: '目录'}}
+    {{include.header | default: '目錄'}}
     {% unless include.kind == 'inline' -%}
       <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
     {% endunless -%}

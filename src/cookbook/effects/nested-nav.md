@@ -1,8 +1,8 @@
 ---
 title: Create a nested navigation flow
-title: 创建一个嵌套导航
+title: 建立一個巢狀(Nesting)導航
 description: How to implement a flow with nested navigation.
-description: 如何实现嵌套的导航
+description: 如何實現巢狀(Nesting)的導航
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js

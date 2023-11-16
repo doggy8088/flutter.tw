@@ -1,6 +1,6 @@
 ---
 title: Create a download button
-title: 创建一个带进度条的下载按钮
+title: 建立一個帶進度條的下載按鈕
 description: How to implement a download button.
 js:
   - defer: true

@@ -1,25 +1,25 @@
 ---
 title: Breaking changes and migration guides
-title: 破坏性改动 (Breaking changes) 及迁移指南
+title: 破壞性改動 (Breaking changes) 及遷移指南
 short-title: Breaking changes
 description: A list of migration guides for breaking changes in Flutter.
-description: Flutter 破坏性改动的迁移文档。
+description: Flutter 破壞性改動的遷移文件。
 ---
 
-<!-- 请勿翻译该文档。 -->
+<!-- 請勿翻譯該文件。 -->
 
 As described in the [breaking change policy][],
 on occasion we publish guides
 for migrating code across a breaking change.
 
-正如 [破坏性改动策略][breaking change policy] 中描述的，
-我们会不定期地发布关于破坏性改动的迁移指南。
+正如 [破壞性改動策略][breaking change policy] 中描述的，
+我們會不定期地釋出關於破壞性改動的遷移指南。
 
 To be notified about future breaking changes,
 join the groups [Flutter announce][] and [Dart announce][].
 
 你可以加入 [Flutter announce][] 和 [Dart announce][]，
-以获得关于未来破坏性改动的通知。
+以獲得關於未來破壞性改動的通知。
 
 When facing Dart errors after upgrading Flutter,
 consider using the [`dart fix`][] command
@@ -27,21 +27,21 @@ to automatically migrate your code.
 Not every breaking change is supported in this way,
 but many are.
 
-当你在升级 Flutter 后遇到 Dart 错误时，
-可以考虑使用 [`dart fix`][] 命令自动迁移你的代码。
-并非所有的破坏性改动都支持这种方式，但很多都是支持的。
+當你在升級 Flutter 後遇到 Dart 錯誤時，
+可以考慮使用 [`dart fix`][] 命令自動遷移你的程式碼。
+並非所有的破壞性改動都支援這種方式，但很多都是支援的。
 
 To avoid being broken by future versions of Flutter,
 consider submitting your tests to our [test registry].
 
-为了避免被未来的 Flutter 版本破坏，
-可以考虑将你的测试提交到我们的 [测试注册表][test registry]。
+為了避免被未來的 Flutter 版本破壞，
+可以考慮將你的測試提交到我們的 [測試登錄檔][test registry]。
 
 The following guides are available. They are sorted by
 release, and listed in alphabetical order:
 
-以下是可用的迁移指南，
-它们按发行版本分类并按字母顺序排列。
+以下是可用的遷移指南，
+它們按發行版本分類並按字母順序排列。
 
 [breaking change policy]: {{site.url}}/release/compatibility-policy
 [Flutter announce]: {{site.groups}}/forum/#!forum/flutter-announce

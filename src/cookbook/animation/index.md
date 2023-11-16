@@ -1,8 +1,8 @@
 ---
 title: Animation
-title: 动画 (Animation)
+title: 動畫 (Animation)
 description: A catalog of recipes for adding animations to your Flutter app.
-description: 为你的 Flutter 应用添加动画的文章目录
+description: 為你的 Flutter 應用新增動畫的文章目錄
 ---
 
 {% include docs/cookbook-group-index.md %}

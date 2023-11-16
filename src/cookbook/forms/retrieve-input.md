@@ -1,8 +1,8 @@
 ---
 title: Retrieve the value of a text field
-title: 获取文本框的输入值
+title: 獲取文字框的輸入值
 description: How to retrieve text from a text field.
-description: 如何获取文本框输入的文字
+description: 如何獲取文字框輸入的文字
 js:
   - defer: true
     url: https://dartpad.cn/inject_embed.dart.js
@@ -14,36 +14,36 @@ In this recipe,
 learn how to retrieve the text a user has entered into a text field
 using the following steps:
 
-这个章节讲解的是如何获取文本框的输入值。
+這個章節講解的是如何獲取文字框的輸入值。
 
   1. Create a `TextEditingController`.
      
-     创建一个  `TextEditingController`
+     建立一個  `TextEditingController`
 
   2. Supply the `TextEditingController` to a `TextField`.
      
-     把 `TextEditingController` 应用到 `TextField` 上
+     把 `TextEditingController` 應用到 `TextField` 上
 
   3. Display the current value of the text field.
 
-     展示文本框当前值  
+     展示文字框當前值  
 
 ## 1. Create a `TextEditingController`
 
-## 1. 创建 `TextEditingController`
+## 1. 建立 `TextEditingController`
 
 To retrieve the text a user has entered into a text field,
 create a [`TextEditingController`][]
 and supply it to a `TextField` or `TextFormField`.
 
-为了获取文本框输入值，需要创建一个 [`TextEditingController`][]。
-在后续步骤中，这个 `TextEditingController` 将会被应用到 `TextField` 上。
+為了獲取文字框輸入值，需要建立一個 [`TextEditingController`][]。
+在後續步驟中，這個 `TextEditingController` 將會被應用到 `TextField` 上。
 
 Once a `TextEditingController` is supplied to a `TextField` or `TextFormField`,
 we can use it to retrieve the text a user has typed into that text field.
 
-`TextEditingController` 被应用于 `TextField` 或者 `TextFormField` 后，
-就可以使用它来获取文本框输入值。
+`TextEditingController` 被應用於 `TextField` 或者 `TextFormField` 後，
+就可以使用它來獲取文字框輸入值。
 
 {{site.alert.secondary}}
 
@@ -51,8 +51,8 @@ we can use it to retrieve the text a user has typed into that text field.
   you've finished using it. This ensures that you discard any resources
   used by the object.
   
-  **记住:**当不再使用 `TextEditingController` 时，
-  请销毁它以确保相关的资源得到释放。
+  **記住:**當不再使用 `TextEditingController` 時，
+  請銷燬它以確保相關的資源得到釋放。
   
 {{site.alert.end}}
 
@@ -89,13 +89,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
 ## 2. Supply the `TextEditingController` to a `TextField`
 
-## 2. 把 `TextEditingController` 应用到 `TextField` 上
+## 2. 把 `TextEditingController` 應用到 `TextField` 上
 
 Now that you have a `TextEditingController`, wire it up
 to a text field using the `controller` property:
 
-创建完 `TextEditingController`，
-就可以使用 `controller` 属性完成 text field 绑定。
+建立完 `TextEditingController`，
+就可以使用 `controller` 屬性完成 text field 繫結。
 
 <?code-excerpt "lib/step2.dart (TextFieldController)"?>
 ```dart
@@ -106,22 +106,22 @@ return TextField(
 
 ## 3. Display the current value of the text field
 
-## 3. 展示文本框当前值
+## 3. 展示文字框當前值
 
 After supplying the `TextEditingController` to the text field,
 begin reading values. Use the [`text()`][]
 method provided by the `TextEditingController` to retrieve the
 String that the user has entered into the text field.
 
-在 `TextEditingController` 作用于文本框后，就可以开始取值了。
-通过 `TextEditingController` 提供的 [`text()`][] 方法，
-就能够获取到文本框输入值了。
+在 `TextEditingController` 作用於文字框後，就可以開始取值了。
+透過 `TextEditingController` 提供的 [`text()`][] 方法，
+就能夠獲取到文字框輸入值了。
 
 The following code displays an alert dialog with the current
 value of the text field when the user taps a floating action button.
 
-在下面的示例中，用户点击浮层按钮，
-将会触发弹出一个对话框，对话框获取并显示文本框的当前值。
+在下面的範例中，使用者點選浮層按鈕，
+將會觸發彈出一個對話方塊，對話方塊獲取並顯示文字框的當前值。
 
 <?code-excerpt "lib/step3.dart (FloatingActionButton)" replace="/^floatingActionButton\: //g"?>
 ```dart
@@ -147,7 +147,7 @@ FloatingActionButton(
 
 ## Interactive example
 
-## 交互式样例
+## 互動式範例
 
 <?code-excerpt "lib/main.dart"?>
 ```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60:ga_id-interactive_example

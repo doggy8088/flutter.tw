@@ -1,24 +1,24 @@
 ---
 title: Flutter release notes
-title: Flutter 发行注记
+title: Flutter 發行註記
 short-title: Release notes
-short-title: 发行注记
+short-title: 發行註記
 description: Release notes for Flutter for prior releases.
-description: Flutter 先前版本的发行注记。 
+description: Flutter 先前版本的發行註記。 
 ---
 
 This page links to announcements and release notes for
 releases to the stable channel.
 
-本篇链接的是发布稳定渠道的公告和发行注记。
+本篇連結的是釋出穩定渠道的公告和發行註記。
 
 {{site.alert.note}}
 
   For information about bug-fix releases, see
   [Hotfixes to the Stable Channel][] on the Flutter wiki.
 
-  有关于专门用于问题修复的发行版本的内容，
-  请查阅 Flutter wiki 上的 [Hotfixes to the Stable Channel][]。
+  有關於專門用於問題修復的發行版本的內容，
+  請查閱 Flutter wiki 上的 [Hotfixes to the Stable Channel][]。
 
 {{site.alert.end}}
 

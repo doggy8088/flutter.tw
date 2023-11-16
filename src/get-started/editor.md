@@ -1,17 +1,17 @@
 ---
 title: Set up an editor
-title: 编辑工具设定
+title: 編輯工具設定
 description: Configuring an IDE for Flutter.
-description: 为 Flutter 配置 IDE 环境。
-tags: Flutter安装,Flutter起步教程
-keywords: Flutter编辑工具,IDE配置
+description: 為 Flutter 配置 IDE 環境。
+tags: Flutter安裝,Flutter起步課程
+keywords: Flutter編輯工具,IDE配置
 prev:
   title: Install
-  title: 安装和环境配置
+  title: 安裝和環境配置
   path: /docs/get-started/install
 next:
   title: Test drive
-  title: 开发体验初探
+  title: 開發體驗初探
   path: /docs/get-started/test-drive
 toc: false
 ---
@@ -24,10 +24,10 @@ a Flutter extension or plugin, like VS Code and Android Studio.
 These plugins provide code completion, syntax highlighting,
 widget editing assists, run & debug support, and more.
 
-你可以使用任意文本编辑器，结合我们的命令行工具来开发 Flutter 应用。
-Flutter 团队推荐使用支持 Flutter 插件的编辑器，以获取更好的开发体验。
-这些插件提供了代码补全、代码高亮、widget 辅助编辑的功能，
-以及为项目的运行和调试提供支持等。
+你可以使用任意文字編輯器，結合我們的命令列工具來開發 Flutter 應用。
+Flutter 團隊推薦使用支援 Flutter 外掛的編輯器，以獲取更好的開發體驗。
+這些外掛提供了程式碼自動完成、程式碼高亮、widget 輔助編輯的功能，
+以及為專案的執行和除錯提供支援等。
 
 You can add a supported plugin for Visual Studio Code,
 Android Studio, or IntelliJ IDEA Community, Educational,
@@ -43,12 +43,12 @@ Android Studio and the listed editions of IntelliJ IDEA.
 Follow these procedures to add the Flutter plugin to VS Code,
 Android Studio, or IntelliJ.
 
-参考以下步骤为 VS Code、Android Studio 或者 IntelliJ 添加编辑器插件。
+參考以下步驟為 VS Code、Android Studio 或者 IntelliJ 新增編輯器外掛。
 
 If you choose another IDE, skip ahead to the [next step: Test drive][].
 
-如果你想使用其他的编辑器，请前往
-[下一节: 开发体验初探][next step: Test drive]。
+如果你想使用其他的編輯器，請前往
+[下一節: 開發體驗初探][next step: Test drive]。
 
 {% comment %} Nav tabs {% endcomment -%}
 <ul class="nav nav-tabs" id="editor-setup" role="tablist">
@@ -66,19 +66,19 @@ If you choose another IDE, skip ahead to the [next step: Test drive][].
 
 ## Install VS Code
 
-## 安装 VS Code
+## 安裝 VS Code
 
 [VS Code][] is a code editor to build and debug apps.
 With the Flutter extension installed, you can compile, deploy, and debug
 Flutter apps.
 
-[VS Code][] 是一个可以运行和调试 Flutter 的编辑器。
-安装 Flutter 插件后，你可以编译、部署及调试 Flutter 应用。
+[VS Code][] 是一個可以執行和除錯 Flutter 的編輯器。
+安裝 Flutter 外掛後，你可以編譯、部署及除錯 Flutter 應用。
 
 To install the latest version of VS Code,
 follow Microsoft's instructions for the relevant platform:
 
-请参考 Microsoft 针对不同平台的安装指引来安装最新版本的 VS Code：
+請參考 Microsoft 針對不同平台的安裝指引來安裝最新版本的 VS Code：
 
 - [Install on macOS][]
 - [Install on Windows][]
@@ -91,21 +91,21 @@ follow Microsoft's instructions for the relevant platform:
 
 ## Install the VS Code Flutter extension
 
-## 安装 VS Code 的 Flutter 扩展
+## 安裝 VS Code 的 Flutter 擴充
 
 1. Start **VS Code**.
 
-   打开 **VS Code**。
+   開啟 **VS Code**。
 
 1. Open a browser and go to the [Flutter extension][] page
    on the Visual Studio Marketplace.
 
-   打开浏览器，访问市场的 [Flutter 插件][Flutter extension] 页面。
+   開啟瀏覽器，存取市場的 [Flutter 外掛][Flutter extension] 頁面。
 
 1. Click **Install**.
    Installing the Flutter extension also installs the Dart extension.
 
-   点击 **Install**，安装 Flutter 与 Dart 依赖。
+   點選 **Install**，安裝 Flutter 與 Dart 依賴。
 
 [Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
 
@@ -113,7 +113,7 @@ follow Microsoft's instructions for the relevant platform:
 
 1. Go to **View** <span aria-label="and then">></span> **Output**.
 
-   打开 **View** <span aria-label="and then">></span> **Output**。
+   開啟 **View** <span aria-label="and then">></span> **Output**。
 
    You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
    <kbd>Shift</kbd> + <kbd>U</kbd>.
@@ -124,12 +124,12 @@ follow Microsoft's instructions for the relevant platform:
 1. In the dropdown on the upper right of the **Output** panel,
    select **flutter (flutter)**.
 
-   在 **Output** 面板右上角的下拉菜单中选择 **flutter (flutter)**。
+   在 **Output** 面板右上角的下拉選單中選擇 **flutter (flutter)**。
 
 1. Go to **View** <span aria-label="and then">></span>
    **Command Palette...**.
 
-   打开 **View** <span aria-label="and then">></span> **Command Palette...**。
+   開啟 **View** <span aria-label="and then">></span> **Command Palette...**。
 
    You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
    <kbd>Shift</kbd> + <kbd>P</kbd>.
@@ -139,30 +139,30 @@ follow Microsoft's instructions for the relevant platform:
 
 1. Type `doctor`.
 
-   输入 "doctor"。
+   輸入 "doctor"。
 
 1. Select the **Flutter: Run Flutter Doctor**.
    Flutter Doctor runs and its response displays in the **Output** panel.
 
-   选择 **Flutter: Run Flutter Doctor**。
-   输出结果会显示在 **Output** 面板中。
+   選擇 **Flutter: Run Flutter Doctor**。
+   輸出結果會顯示在 **Output** 面板中。
 
 </div>
 <div class="tab-pane" id="androidstudio" role="tabpanel" aria-labelledby="androidstudio-tab" markdown="1">
 
 ## Install Android Studio or IntelliJ IDEA
 
-## 安装 Android Studio 或 IntelliJ IDEA
+## 安裝 Android Studio 或 IntelliJ IDEA
 
 Android Studio and IntelliJ IDEA offer a complete,
 IDE experience once you install the Flutter plugin.
 
 Android Studio 和 IntelliJ IDEA
-为 Flutter 提供了一个完整的集成开发环境。
+為 Flutter 提供了一個完整的整合開發環境。
 
 To install the latest version of the following IDEs, follow their instructions:
 
-你可以按照以下指引安装对应 IDE 的最新版本：
+你可以按照以下指引安裝對應 IDE 的最新版本：
 
 - [Android Studio][]
 - [IntelliJ IDEA Community][]
@@ -170,26 +170,26 @@ To install the latest version of the following IDEs, follow their instructions:
 
 ## Install the Flutter plugin
 
-## 安装 Flutter 和 Dart 插件
+## 安裝 Flutter 和 Dart 外掛
 
 The installation instructions vary by platform.
 
-请参考下面不同平台的安装指南：
+請參考下面不同平台的安裝指南：
 
 ### macOS
 
 Use the following instructions for macOS:
 
-安装过程如下：
+安裝過程如下：
 
 1. Start Android Studio or IntelliJ.
 
-   打开 Android Studio 或 IntelliJ。
+   開啟 Android Studio 或 IntelliJ。
 
 1. From the macOS menu bar, go to **Android Studio** (or **IntelliJ**)
    <span aria-label="and then">></span> **Settings...**.
 
-   从 macOS 的菜单栏中打开插件设置。
+   從 macOS 的選單欄中開啟外掛設定。
 
    You can also press <kbd>Cmd</kbd> + <kbd>,</kbd>.
 
@@ -197,35 +197,35 @@ Use the following instructions for macOS:
 
    The **Preferences** dialog opens.
 
-   **Preferences** 弹窗会打开。
+   **Preferences** 彈窗會開啟。
 
 1. From the list at the left, select **Plugins**.
 
-   在左侧列表中选择 **Plugins**。
+   在左側列表中選擇 **Plugins**。
 
 1. From the top of this panel, select **Marketplace**.
 
-   在面板的上方选择 **Marketplace**。
+   在面板的上方選擇 **Marketplace**。
 
 1. Type `flutter` in the plugins search field.
 
-   在搜索框中输入 `flutter`。
+   在搜尋框中輸入 `flutter`。
 
 1. Select the **Flutter** plugin.
 
-   选择 **Flutter** 插件。
+   選擇 **Flutter** 外掛。
 
 1. Click **Install**.
 
-   点击 **Install** 安装。
+   點選 **Install** 安裝。
 
 1. Click **Yes** when prompted to install the plugin.
 
-   提示安装时点击确认。如果提示同时安装 Dart 插件也点击确认。
+   提示安裝時點選確認。如果提示同時安裝 Dart 外掛也點選確認。
 
 1. Click **Restart** when prompted.
 
-   当弹出重新启动提示时，点击 **Restart**。
+   當彈出重新啟動提示時，點選 **Restart**。
 
 ### Linux or Windows
 
@@ -233,12 +233,12 @@ Use the following instructions for macOS:
 
 Use the following instructions for Linux or Windows:
 
-参考使用下面介绍的步骤：
+參考使用下面介紹的步驟：
 
 1. Go to **File** <span aria-label="and then">></span>
    **Settings**.
 
-   打开 **File** <span aria-label="and then">></span>
+   開啟 **File** <span aria-label="and then">></span>
    **Settings**。
 
    You can also press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
@@ -248,35 +248,35 @@ Use the following instructions for Linux or Windows:
 
    The **Preferences** dialog opens.
 
-   **Preferences** 弹窗会打开。
+   **Preferences** 彈窗會開啟。
 
 1. From the list at the left, select **Plugins**.
 
-   在左侧列表中选择 **Plugins**。
+   在左側列表中選擇 **Plugins**。
 
 1. From the top of this panel, select **Marketplace**.
 
-   在面板的上方选择 **Marketplace**。
+   在面板的上方選擇 **Marketplace**。
 
 1. Type `flutter` in the plugins search field.
 
-   在搜索框中输入 `flutter`。
+   在搜尋框中輸入 `flutter`。
 
 1. Select the **Flutter** plugin.
 
-   选择 **Flutter** 插件。
+   選擇 **Flutter** 外掛。
 
 1. Click **Install**.
 
-   点击 **Install** 安装。
+   點選 **Install** 安裝。
 
 1. Click **Yes** when prompted to install the plugin.
 
-   提示安装时点击确认。如果提示同时安装 Dart 插件也点击确认。
+   提示安裝時點選確認。如果提示同時安裝 Dart 外掛也點選確認。
 
 1. Click **Restart** when prompted.
 
-   当弹出重新启动提示时，点击 **Restart**。
+   當彈出重新啟動提示時，點選 **Restart**。
 
 </div>
 </div>{% comment %} End: Tab panes. {% endcomment -%}

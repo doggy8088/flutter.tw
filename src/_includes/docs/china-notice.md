@@ -1,6 +1,6 @@
 {{site.alert.important}}
-  国内的网络环境下可能需要对 Flutter 工具进行一些额外配置，
-  请参考文档 [在中国网络环境下使用 Flutter][Using Flutter in China]。
+  國內的網路環境下可能需要對 Flutter 工具進行一些額外配置，
+  請參考文件 [在中國網路環境下使用 Flutter][Using Flutter in China]。
 {{site.alert.end}}
 
 [Using Flutter in China]: {{site.main-url}}/community/china
