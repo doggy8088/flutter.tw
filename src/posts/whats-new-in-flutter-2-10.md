@@ -70,7 +70,7 @@ Flutter 2.10 版本還包含許多針對 Android 平台的改進。現在在預�
 
 ![在 Web 平台選中並拖拽 TextField 游標](https://devrel.andfun.cn/devrel/posts/2022/02/516ce9d6c26e3.gif)
 
-Flutter 2.10 還包括對 Web 平台的另一項顯著改進，我們也一直在尋求減少將 Flutter 應用執行到 Web 平台的開銷，在先前的版本中，每次我們想要將原⽣ HTML 的 widget 引⼊ Flutter 應⽤時，我們都需要一個覆蓋層 (Overlay) 作為我們對 Web 的平臺視圖 (Platform view) ⽀持的一部分。這些疊加層中的每一個都⽀持⾃定義繪製，但同時也代表了一定數量的效能開銷。如果你的應⽤中有⼤量原⽣ HTML 的 widget (例如連結)，那這將造成非常大效能開銷。在這個版本中我們為 Web 平台建構了一個新的「⾮繪製的平臺視圖」，已經基本上消除了這種開銷。我們已經 [將這種最佳化](https://github.com/flutter/plugins/pull/4578 "使用⾮繪製的平臺視圖最佳化") 應用到 [Link widget](https://pub.flutter-io.cn/documentation/url_launcher/latest/link/Link-class.html "Link widget API 文件") 中，這意味著如果您的 Flutter Web 應⽤中有⼤量的連結，它們將不再產生額外的效能消耗。隨著時間的推移，我們會將此最佳化應⽤到其他的 widget。
+Flutter 2.10 還包括對 Web 平台的另一項顯著改進，我們也一直在尋求減少將 Flutter 應用執行到 Web 平台的開銷，在先前的版本中，每次我們想要將原⽣ HTML 的 widget 引⼊ Flutter 應⽤時，我們都需要一個覆蓋層 (Overlay) 作為我們對 Web 的平臺視圖 (Platform view) ⽀持的一部分。這些疊加層中的每一個都⽀持⾃定義繪製，但同時也代表了一定數量的效能開銷。如果你的應⽤中有⼤量原⽣ HTML 的 widget (例如連結)，那這將造成非常大效能開銷。在這個版本中我們為 Web 平台建構了一個新的「⾮繪製的平臺視圖」，已經基本上消除了這種開銷。我們已經 [將這種最佳化](https://github.com/flutter/plugins/pull/4578 "使用⾮繪製的平臺視圖最佳化") 應用到 [Link widget](https://pub.dev/documentation/url_launcher/latest/link/Link-class.html "Link widget API 文件") 中，這意味著如果您的 Flutter Web 應⽤中有⼤量的連結，它們將不再產生額外的效能消耗。隨著時間的推移，我們會將此最佳化應⽤到其他的 widget。
 
 ## Material 3
 
@@ -100,11 +100,11 @@ final darkTheme = ThemeData(colorSchemeSeed: Colors.orange, brightness: Brightne
 
 ## 整合測試改進
 
-2020 年 12 ⽉，我們宣佈了使⽤ `integration_test` 進行端到端測試的新⽅法，檢視中文文件 [整合測試介紹](https://flutter.cn/docs/cookbook/testing/integration/introduction "中文文件: 整合測試介紹") 瞭解更多。這個新的 package 取代了 `flutter_driver` 作為進行整合測試的推薦⽅式，提供了新功能，如 Firebase 測試實驗室⽀持以及對 Web 和桌⾯的⽀持。
+2020 年 12 ⽉，我們宣佈了使⽤ `integration_test` 進行端到端測試的新⽅法，檢視中文文件 [整合測試介紹](https://flutter.tw/cookbook/testing/integration/introduction "中文文件: 整合測試介紹") 瞭解更多。這個新的 package 取代了 `flutter_driver` 作為進行整合測試的推薦⽅式，提供了新功能，如 Firebase 測試實驗室⽀持以及對 Web 和桌⾯的⽀持。
 
-從那時起，我們對整合測試進行了進一步改進，包括 **將 `integration_test` package 內建在 Flutter SDK 中**，使其更容易與您的應⽤整合。現在，我們撰寫了一份新的遷移指南，幫助你 [從 flutter_driver 測試遷移到 integration_test](https://flutter.cn/docs/testing/integration-tests/migration "從 flutter_driver 測試遷移到 integration_test")。
+從那時起，我們對整合測試進行了進一步改進，包括 **將 `integration_test` package 內建在 Flutter SDK 中**，使其更容易與您的應⽤整合。現在，我們撰寫了一份新的遷移指南，幫助你 [從 flutter_driver 測試遷移到 integration_test](https://flutter.tw/testing/integration-tests/migration "從 flutter_driver 測試遷移到 integration_test")。
 
-[現有的⽂檔](https://flutter.cn/docs/testing/integration-tests "整合測試說明⽂檔")、[範例](https://github.com/flutter/samples/tree/master/testing_app "整合測試範例") 和 [codelab](https://codelabs.developers.google.com/codelabs/flutter-app-testing "整合測試的 codelab") 也已針對 `integration_test` 進行了更新。如果你還沒有在 Flutter 應⽤上使⽤ `integration_test`，那麼從現在就開始吧！
+[現有的⽂檔](https://flutter.tw/testing/integration-tests "整合測試說明⽂檔")、[範例](https://github.com/flutter/samples/tree/master/testing_app "整合測試範例") 和 [codelab](https://codelabs.developers.google.com/codelabs/flutter-app-testing "整合測試的 codelab") 也已針對 `integration_test` 進行了更新。如果你還沒有在 Flutter 應⽤上使⽤ `integration_test`，那麼從現在就開始吧！
 
 ## DevTools
 
@@ -143,7 +143,7 @@ Dev 渠道現已被徹底移除。如果我們漏了一些沒有移除的位置�
 
 ## 對 iOS 9.3.6 的⽀持進入尾聲
 
-由於我們實驗室中⽬標裝置的使⽤減少和維護難度增加，我們正在 [調整對於 iOS 9.3.6 的支援](https://files.flutter-io.cn/flutter-design-docs/RFC_Move_32-bit_iOS_to_Best_Effort_Tier.pdf "RFC 文件: 調整對於 iOS 9.3.6 的支援")，[從「⽀持」到「盡力⽽為」](https://flutter.cn/docs/development/tools/sdk/release-notes/supported-platforms "對於 iOS 9.3.6 的支援從「⽀持」到「盡力⽽為」")。這意味著對 iOS 9.3.6 的⽀持和對 32 位 iOS 裝置的⽀持將僅透過編碼實踐、Ad-Hoc 和社群測試來維護了。 
+由於我們實驗室中⽬標裝置的使⽤減少和維護難度增加，我們正在 [調整對於 iOS 9.3.6 的支援](https://files.flutter-io.cn/flutter-design-docs/RFC_Move_32-bit_iOS_to_Best_Effort_Tier.pdf "RFC 文件: 調整對於 iOS 9.3.6 的支援")，[從「⽀持」到「盡力⽽為」](https://flutter.tw/development/tools/sdk/release-notes/supported-platforms "對於 iOS 9.3.6 的支援從「⽀持」到「盡力⽽為」")。這意味著對 iOS 9.3.6 的⽀持和對 32 位 iOS 裝置的⽀持將僅透過編碼實踐、Ad-Hoc 和社群測試來維護了。 
 
 我們預計在 2022 年第三季度的 Flutter 穩定版本中放棄對 32 位 iOS 裝置以及 iOS 版本 9 和 10 的 ⽀持。這意味著基於穩定的 Flutter SDK 建構的應⽤將不再在 32 位 iOS 裝置上執行，並且 Flutter ⽀持的最低 iOS 版本將增加到 iOS 11。
 
@@ -151,12 +151,12 @@ Dev 渠道現已被徹底移除。如果我們漏了一些沒有移除的位置�
 
 我們還努力在每個版本和此版本中減少破壞性改動，儘管我們還沒有完全歸零，但我們會繼續努力！
 
-- [建構 Flutter 應用的 Kotlin 版本應高於 1.5.31](https://flutter.cn/docs/release/breaking-changes/kotlin-version "建構 Flutter 應用的 Kotlin 版本應高於 1.5.31")
-- [Flutter 2.5 之後移除的已棄用的 API](https://flutter.cn/docs/release/breaking-changes/2-5-deprecations "Flutter 2.5 之後移除的已棄用的 API")
-- [Web 上的原始圖像使用正確的來源和顏色](https://flutter.cn/docs/release/breaking-changes/raw-images-on-web-uses-correct-origin-and-colors "Web 上的原始圖像使用正確的來源和顏色")
-- [Apple Pencil 隨手寫 TextInputClient 變動](https://flutter.cn/docs/release/breaking-changes/scribble-text-input-client "Apple Pencil 隨手寫 TextInputClient 變動")
+- [建構 Flutter 應用的 Kotlin 版本應高於 1.5.31](https://flutter.tw/release/breaking-changes/kotlin-version "建構 Flutter 應用的 Kotlin 版本應高於 1.5.31")
+- [Flutter 2.5 之後移除的已棄用的 API](https://flutter.tw/release/breaking-changes/2-5-deprecations "Flutter 2.5 之後移除的已棄用的 API")
+- [Web 上的原始圖像使用正確的來源和顏色](https://flutter.tw/release/breaking-changes/raw-images-on-web-uses-correct-origin-and-colors "Web 上的原始圖像使用正確的來源和顏色")
+- [Apple Pencil 隨手寫 TextInputClient 變動](https://flutter.tw/release/breaking-changes/scribble-text-input-client "Apple Pencil 隨手寫 TextInputClient 變動")
 
-如果您仍在使⽤這些 API，可以閱讀 [flutter.cn 上的遷移指南](https://flutter.cn/docs/release/breaking-changes "flutter.cn 上的遷移指南")。一如既往，⾮常感謝社群貢獻測試，幫助我們識別這些破壞性改動。
+如果您仍在使⽤這些 API，可以閱讀 [flutter.cn 上的遷移指南](https://flutter.tw/release/breaking-changes "flutter.cn 上的遷移指南")。一如既往，⾮常感謝社群貢獻測試，幫助我們識別這些破壞性改動。
 
 ## 總結
 

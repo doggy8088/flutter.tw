@@ -26,7 +26,7 @@ Flutter 1.12 帶來的一個重磅訊息是，我們現已支援 iOS 13 風格�
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot12-release/cupertino-context-menu-and-cupertino-sliding-segmented-control.png){:width="60%"}
 
-[CupertinoContextMenu](https://api.flutter.cn/flutter/cupertino/CupertinoContextMenu-class.html) 和 [CupertinoSlidingSegmentedControl](https://api.flutter.cn/flutter/cupertino/CupertinoSlidingSegmentedControl-class.html)
+[CupertinoContextMenu](https://api.flutter.dev/flutter/cupertino/CupertinoContextMenu-class.html) 和 [CupertinoSlidingSegmentedControl](https://api.flutter.dev/flutter/cupertino/CupertinoSlidingSegmentedControl-class.html)
 
 最後，為了讓 Flutter 應用能在 iOS 13 裝置上實現原生級別的介面和操作感受，我們還[提高了捲軸保真度](https://github.com/flutter/flutter/pull/41799)，[提供了自適應對話方塊彈出模式 CupertinoAlertDialog](https://github.com/flutter/flutter/pull/42967)，並在 [CupertinoDatePicker 內添加了最小/最大日期約束](https://github.com/flutter/flutter/pull/44149)。
 
@@ -40,10 +40,10 @@ Flutter 1.12 現已正式支援 Add-to-App 功能，允許開發者在應用中�
 
 -   提高了 API 穩定性，以便在平臺中整合 Java、Kotlin、Objective-C 和 Swift 程式碼，其中包括一套全新的 Android API。請參閱 [Android 專案遷移說明](https://flutter.cn/go/android-project-migration)，瞭解變更細節。
 -   支援在內嵌 Flutter 模組中使用外掛。
--   透過 [Android AAR](https://flutter.cn/docs/development/add-to-app/android/project-setup#option-a---depend-on-the-android-archive-aar) 和 [iOS 框架提供額外的整合機制](https://flutter.cn/docs/development/add-to-app/ios/project-setup#option-b---embed-frameworks-in-xcode)，以提高與現有建構系統的相容性。
+-   透過 [Android AAR](https://flutter.tw/development/add-to-app/android/project-setup#option-a---depend-on-the-android-archive-aar) 和 [iOS 框架提供額外的整合機制](https://flutter.tw/development/add-to-app/ios/project-setup#option-b---embed-frameworks-in-xcode)，以提高與現有建構系統的相容性。
 -   更新了命令列工具、VSCode 和 IntelliJ 外掛中的 "flutter attach" 機制，方便開發者接入正在執行的 Flutter 模組，並進行除錯，使用 DevTools 或者進行熱重載。    
 
-如果您想要體驗 [Add-to-App](https://flutter.cn/docs/development/add-to-app) 功能，請參閱文件或瀏覽我們的[範例專案](https://github.com/flutter/samples/tree/master/experimental/add_to_app)，我們在這些專案中展示了多種整合場景。
+如果您想要體驗 [Add-to-App](https://flutter.tw/development/add-to-app) 功能，請參閱文件或瀏覽我們的[範例專案](https://github.com/flutter/samples/tree/master/experimental/add_to_app)，我們在這些專案中展示了多種整合場景。
 
 **Dart 2.7**
 
@@ -118,7 +118,7 @@ macOS 端支援的 alpha 版代表著 Flutter 在桌面支援領域的重大進�
 
 全新的 DartPad 活用了 Flutter 的 web 端支援，當您在左側編寫 Flutter 程式碼的時候，右側就會即時執行一個真實的 Flutter (web) 程式。DartPad 的獨特之處在於，您無需安裝任何程式就能立即開始編寫 Flutter 應用。
 
-除了單獨的 DartPad 網站之外，我們還在文件和 codelab (如 "Flutter [佈局基礎課程](https://flutter.cn/docs/codelabs/layout-basics)" 和 "[隱含動畫](https://flutter.cn/docs/codelabs/implicit-animations)") 中加入了帶 Flutter 支援的 DartPad，從而方便大家在瀏覽器中學習 Flutter。如果您想要了解更多關於 DartPad 的資訊，請閱讀《[DartPad.dev 全面升級，現已支援 Flutter](https://medium.com/dartlang/a-brand-new-dartpad-dev-with-flutter-support-16fe6027784)》。
+除了單獨的 DartPad 網站之外，我們還在文件和 codelab (如 "Flutter [佈局基礎課程](https://flutter.tw/codelabs/layout-basics)" 和 "[隱含動畫](https://flutter.tw/codelabs/implicit-animations)") 中加入了帶 Flutter 支援的 DartPad，從而方便大家在瀏覽器中學習 Flutter。如果您想要了解更多關於 DartPad 的資訊，請閱讀《[DartPad.dev 全面升級，現已支援 Flutter](https://medium.com/dartlang/a-brand-new-dartpad-dev-with-flutter-support-16fe6027784)》。
 
 **在 IDE 中透過 Hot UI 直接建構 widget**
 
@@ -132,7 +132,7 @@ macOS 端支援的 alpha 版代表著 Flutter 在桌面支援領域的重大進�
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot12-release/layout-explorer.gif){:width="95%"}
 
-Layout Explorer 不僅能以視覺化的方式展現正在執行的應用中的 widget 佈局，而且還允許您以互動的方式更改佈局選項。我們希望這個功能預覽可以讓您更容易理解並修正佈局問題。如需啟用這一功能，請參閱 [Layout Explorer 官方文件](https://flutter.cn/docs/development/tools/devtools/inspector#flutter-layout-explorer)。
+Layout Explorer 不僅能以視覺化的方式展現正在執行的應用中的 widget 佈局，而且還允許您以互動的方式更改佈局選項。我們希望這個功能預覽可以讓您更容易理解並修正佈局問題。如需啟用這一功能，請參閱 [Layout Explorer 官方文件](https://flutter.tw/development/tools/devtools/inspector#flutter-layout-explorer)。
 
 **多裝置除錯**
 
@@ -144,7 +144,7 @@ Layout Explorer 不僅能以視覺化的方式展現正在執行的應用中的 
 
 **Android 建構改進**
 
-最後一點，為了繼續改進 Android，我們在新版本中解決了一些建構方面的問題。首先，我們讓 Android 建構體驗更加強健了，尤其是使用 Support 庫的外掛與使用 AndroidX 的外掛混用的情況。我們的做法是把 Flutter 團隊的外掛移入 AndroidX，我們[建議大家把應用和外掛也遷移至 AndroidX](https://flutter.cn/docs/development/packages-and-plugins/plugin-api-migration)。對於那些尚未遷移的外掛，如果存在建構問題，我們已經在建構中添加了其它的程式碼路徑，這個路徑使用的是 Android Archive 檔案和 Jetifier。但如此一來建構的速度也減慢了，所以我們不把它作為主要的建構機制，但我們發現，這個做法解決了我們遇到的大約 95% 的建構問題。
+最後一點，為了繼續改進 Android，我們在新版本中解決了一些建構方面的問題。首先，我們讓 Android 建構體驗更加強健了，尤其是使用 Support 庫的外掛與使用 AndroidX 的外掛混用的情況。我們的做法是把 Flutter 團隊的外掛移入 AndroidX，我們[建議大家把應用和外掛也遷移至 AndroidX](https://flutter.tw/development/packages-and-plugins/plugin-api-migration)。對於那些尚未遷移的外掛，如果存在建構問題，我們已經在建構中添加了其它的程式碼路徑，這個路徑使用的是 Android Archive 檔案和 Jetifier。但如此一來建構的速度也減慢了，所以我們不把它作為主要的建構機制，但我們發現，這個做法解決了我們遇到的大約 95% 的建構問題。
 
 我們解決的另一個問題使用 Google 開發的最新程式碼最佳化器 [R8](https://developer.android.google.cn/studio/build/shrink-code) 來替代 ProGuard。在此版本之前，應用開發者必須按照外掛作者提供的指南手動配置 ProGuard 規則。在從新版本開始，外掛可在原始碼中定義規則，R8 會自動根據這些規則進行程式碼最佳化，從而為開發者解決了手動配置的難題。
 
@@ -152,7 +152,7 @@ Layout Explorer 不僅能以視覺化的方式展現正在執行的應用中的 
 
 **Golden 圖像測試**
 
-Golden 圖像指的是一個主圖像檔案，它是 widget、state、應用或其它您選擇捕捉的視覺內容的正確渲染結果。在 Flutter 1.12 中，我們實現了 [GoldenFileComparator](https://api.flutter.cn/flutter/flutter_test/GoldenFileComparator-class.html) 和 [LocalFileComparator](https://api.flutter.cn/flutter/flutter_test/LocalFileComparator-class.html) 類，它們依照畫素而不是位元來進行比較，因此可以徹底消除錯誤的比較結果。這些新的實現強調呈現視覺差異，從而更清楚地展現出 Golden 圖像和正在測試中的更新檔案之間的差異。
+Golden 圖像指的是一個主圖像檔案，它是 widget、state、應用或其它您選擇捕捉的視覺內容的正確渲染結果。在 Flutter 1.12 中，我們實現了 [GoldenFileComparator](https://api.flutter.dev/flutter/flutter_test/GoldenFileComparator-class.html) 和 [LocalFileComparator](https://api.flutter.dev/flutter/flutter_test/LocalFileComparator-class.html) 類，它們依照畫素而不是位元來進行比較，因此可以徹底消除錯誤的比較結果。這些新的實現強調呈現視覺差異，從而更清楚地展現出 Golden 圖像和正在測試中的更新檔案之間的差異。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot12-release/golden-image-testing.png){:width="60%"}
 
@@ -170,13 +170,13 @@ Golden 圖像指的是一個主圖像檔案，它是 widget、state、應用或�
 
 當我們在 2019 年 12 月推出 Flutter 1.0 的時候，pub.dev 上大約有 1,000 個程式碼包支援 Flutter，我們當時認為這個數字很大。現在，這個數字已經增加至 6 倍以上。選擇這麼多，究竟該用哪個程式碼包反而成了一件麻煩事。pub.dev 的綜合評分系統和全新的 [Verified Publishers (釋出者認證)](https://medium.com/dartlang/verified-publishers-98f05466558a) 功能都能幫助大家更好地做出選擇。另外，pub.dev 即將迎來[評分系統](https://medium.com/dartlang/dart-2-7-a3710ec54e97)，進一步為大家提供方便。
 
-我們的使用者仍在不斷要求推出 "官方推薦" 的程式碼套件和外掛。為此，我們很高興地推出 [Flutter Favorite 計劃](https://flutter.cn/docs/development/packages-and-plugins/favorites)。
+我們的使用者仍在不斷要求推出 "官方推薦" 的程式碼套件和外掛。為此，我們很高興地推出 [Flutter Favorite 計劃](https://flutter.tw/development/packages-and-plugins/favorites)。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2019/flutter-1dot12-release/the-flutter-favorite-program.png){:width="30%"}
 
 Flutter Favorite 程式碼包 (或外掛) 是我們認為您在建構應用時的第一選擇。這裡的 "我們" 指的是 Flutter Ecosystem Committee (Flutter 生態圈委員會)。委員會成員來自各個地區，由 Google 的 Flutter 團隊和 Flutter 社群共同推選，他們的目標是解決 Flutter 生態圈中存在的各種問題。委員會要做的第一件事就是建立一個高標準基線，並依照這個標準線挑選出合適的程式碼套件。被選中的程式碼套件的作者可以在程式碼包說明文件中使用 Flutter Favorite 徽標。此外，pub.dev 在更新後也會在搜尋結果等位置顯示 Flutter Favorite 徽標。
 
-請大家前往 flutter.cn 網站上的 [Flutter Favorite 頁面](https://flutter.cn/docs/development/packages-and-plugins/favorites)瞭解詳情。您也可以前往 pub.dev 檢視[完整的 Flutter Favorite 程式碼包列表](https://pub.dev/flutter/favorites)。關鍵是，如果您是應用開發者，而且您看到了 Flutter Favorite 徽標，那麼您就可以認為這個程式碼包是可以信賴的。如果您是得到 Flutter Favorite 認證的程式碼包作者，我們非常感謝您對 Flutter 生態圈所做的貢獻。
+請大家前往 flutter.cn 網站上的 [Flutter Favorite 頁面](https://flutter.tw/development/packages-and-plugins/favorites)瞭解詳情。您也可以前往 pub.dev 檢視[完整的 Flutter Favorite 程式碼包列表](https://pub.dev/flutter/favorites)。關鍵是，如果您是應用開發者，而且您看到了 Flutter Favorite 徽標，那麼您就可以認為這個程式碼包是可以信賴的。如果您是得到 Flutter Favorite 認證的程式碼包作者，我們非常感謝您對 Flutter 生態圈所做的貢獻。
 
 **來自社群的工具**
 
@@ -206,7 +206,7 @@ Remote Mac 擴充外掛可以讓您直接連上一臺由團隊託管在雲端的
 
 **結語**
 
-今年對於 Flutter 來說是非常重要的一年，Flutter 1.12 更是一次意義重大的釋出。本文大致為大家展示了本次釋出版本中的新內容；如果您想要檢視您最喜歡的 pull release，瞭解我們把精力投放在了哪些地方，想要看看每個領域中有多少 pull release，或者看看我們在程式碼和功能上做了哪些改動，歡迎查閱 [Flutter v1.12 釋出說明](https://flutter.cn/docs/development/tools/sdk/release-notes/release-notes-1.12.13)。
+今年對於 Flutter 來說是非常重要的一年，Flutter 1.12 更是一次意義重大的釋出。本文大致為大家展示了本次釋出版本中的新內容；如果您想要檢視您最喜歡的 pull release，瞭解我們把精力投放在了哪些地方，想要看看每個領域中有多少 pull release，或者看看我們在程式碼和功能上做了哪些改動，歡迎查閱 [Flutter v1.12 釋出說明](https://flutter.tw/development/tools/sdk/release-notes/release-notes-1.12.13)。
 
 我們認為 Flutter 正朝著正確的方向快步前進，希望您也同意我們的看法。擁有這麼多的新功能和新工具之後，您會建構什麼呢？我們拭目以待。
 

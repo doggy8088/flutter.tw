@@ -3234,7 +3234,7 @@ These plugins are first-party integrations, maintained by the Flutter team:
 You can also find some third-party Firebase plugins on pub.dev
 that cover areas not directly covered by the first-party plugins.
 
-你可以在 [Pub](https://pub.flutter-io.cn/flutter) 網站上查詢一些官方外掛
+你可以在 [Pub](https://pub.dev/flutter) 網站上查詢一些官方外掛
 沒有直接支援的功能的第三方 Firebase 外掛。
 
 ### How do I build my own custom native integrations?

@@ -117,7 +117,7 @@ void main() {
 此外，工廠建構函式也並不要求我們每次都必須產生新的物件，
 我們也可以在類中預先定義一些物件供工廠建構函式使用，
 這樣每次在使用同樣的引數建構物件時，返回的會是同一個物件，
-在 [單例模式](https://flutter.cn/community/tutorials/singleton-pattern-in-flutter-n-dart) 的章節中我們已經介紹過：
+在 [單例模式](https://flutter.tw/community/tutorials/singleton-pattern-in-flutter-n-dart) 的章節中我們已經介紹過：
 
 ```dart
 class Product {

@@ -75,7 +75,7 @@ Nubank 選擇了 Flutter，並在此後將其前端開發團隊統一在同一�
 
 ** 揀選 (cherry-pick): 指從一組既定的物件中挑選出最合適/最佳的。*
 
-我們還藉此機會同步了 Flutter 和 [Dart 的釋出流程和渠道](https://dart.cn/get-dart#about-release-channels-and-version-strings)。
+我們還藉此機會同步了 Flutter 和 [Dart 的釋出流程和渠道](https://dart.tw.gh.miniasp.com/get-dart#about-release-channels-and-version-strings)。
 因此，Dart 現在也增加了一個 beta 版渠道，
 並將在未來與 Flutter 同步釋出 
 (例如，Flutter 的 beta 版將包含 Dart 的 beta 版)。

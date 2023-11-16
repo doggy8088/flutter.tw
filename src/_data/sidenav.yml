@@ -31,7 +31,7 @@
         - title: Flutter 對比 Swift 的併發
           permalink: /get-started/flutter-for/dart-swift-concurrency
     - title: Dart 語言概覽
-      permalink: https://dart.cn/overview
+      permalink: https://dart.tw.gh.miniasp.com/overview
 
 - title: 保持版本更新
   permalink: /docs/release
@@ -130,7 +130,7 @@
         - title: 將字型從 package 中對外暴露
           permalink: /docs/cookbook/design/package-fonts
         - title: Google 字型 package
-          permalink: https://pub.flutter-io.cn/packages/google_fonts
+          permalink: https://pub.dev/packages/google_fonts
       # Consider renaming this 'Custom drawing & graphics'
       # once more docs are added
     - title: 自訂圖形
@@ -394,7 +394,7 @@
     - title: Flutter Favorites 專案
       permalink: /docs/packages-and-plugins/favorites
     - title: Package 儲存庫
-      permalink: https://pub.flutter-io.cn/flutter
+      permalink: https://pub.dev/flutter
 
 - title: 測試和除錯
   permalink: /docs/testing
@@ -635,6 +635,6 @@
     - title: Flutter Widget 列表
       permalink: /docs/reference/widgets
     - title: Flutter API 文件
-      permalink: https://api.flutter-io.cn
+      permalink: https://api.flutter.dev
     - title: Flutter 命令列文件
       permalink: /docs/reference/flutter-cli

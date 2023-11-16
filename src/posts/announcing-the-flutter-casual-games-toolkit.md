@@ -42,9 +42,9 @@ image:
 
 除了在遊戲中可能需要用到的常見使用者介面和功能元素之外，您還會得到遊戲開發所需的關鍵服務的預整合模組和範例程式碼。例如，遊戲範本中就集成了 Apple Game Center 和 Google Play Games Services，因此您可以輕鬆地實現排行榜和成就等功能。
 
-如果您打算透過遊戲盈利，範本還使用了 [Google 移動廣告 SDK](https://pub.flutter-io.cn/packages/google_mobile_ads "Flutter package: Google 移動廣告 SDK")，並告訴您如何實現廣告樣本。該範本還使用了 [應用內購買](https://pub.flutter-io.cn/packages/in_app_purchase "Flutter package: 應用內購買") package，可讓您在遊戲中為玩家提供額外的內容，如高階體驗、數字商品和訂閱等。
+如果您打算透過遊戲盈利，範本還使用了 [Google 移動廣告 SDK](https://pub.dev/packages/google_mobile_ads "Flutter package: Google 移動廣告 SDK")，並告訴您如何實現廣告樣本。該範本還使用了 [應用內購買](https://pub.dev/packages/in_app_purchase "Flutter package: 應用內購買") package，可讓您在遊戲中為玩家提供額外的內容，如高階體驗、數字商品和訂閱等。
 
-最後，遊戲範本還包含 [Firebase Crashlytics](https://pub.flutter-io.cn/packages/firebase_crashlytics "Flutter package: Firebase Crashlytics")，讓您可以獲得更多關於遊戲中可能發生的崩潰和錯誤的洞察。該遊戲範本的所有原始碼都可以在 GitHub 上的 [Flutter 範例 repo](https://github.com/flutter/samples/tree/master/game_template#readme "Flutter 範例程式碼儲存庫") 中找到。
+最後，遊戲範本還包含 [Firebase Crashlytics](https://pub.dev/packages/firebase_crashlytics "Flutter package: Firebase Crashlytics")，讓您可以獲得更多關於遊戲中可能發生的崩潰和錯誤的洞察。該遊戲範本的所有原始碼都可以在 GitHub 上的 [Flutter 範例 repo](https://github.com/flutter/samples/tree/master/game_template#readme "Flutter 範例程式碼儲存庫") 中找到。
 
 ## **Flutter 遊戲 Discord 頻道**
 

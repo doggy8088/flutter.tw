@@ -30,7 +30,7 @@ Flutter 希望成為任您揮灑創意的畫布。
 
 首先，安裝 Flutter 匯出外掛。在 Adobe XD 中，選擇 *外掛* > *發現外掛* ( *Plugins* > *Discover Plugins* )，然後搜尋 Flutter。安裝完成後，選擇 *外掛* > *Flutter* > *UI 面板* ( *Plugins* > *Flutter* > *UI Panel* )，即可顯示上圖中的 UI 面板。
 
-現在將 [adobe_xd package](https://pub.flutter-io.cn/packages/adobe_xd) 新增到您的 Flutter 專案中，只需將其包含在您的 pubspec.yaml 檔案中即可。這個 package 提供了幫助函式，用來減少產生的 XD 程式碼中的樣板程式碼。
+現在將 [adobe_xd package](https://pub.dev/packages/adobe_xd) 新增到您的 Flutter 專案中，只需將其包含在您的 pubspec.yaml 檔案中即可。這個 package 提供了幫助函式，用來減少產生的 XD 程式碼中的樣板程式碼。
 
 要匯出單個元素，只需選擇您想匯出至 Flutter 的單個 widget，然後點選 UI 面板中的 *複製所選項* ( *Copy Selected* ) 按鈕。這會將元素對應的 Dart 程式碼複製到您的剪貼簿中，您可以基於這些程式碼打造有狀態或無狀態的 widget:
 

@@ -49,7 +49,7 @@ toc: true
 由於你正在執行一個容器，在當前版本中下載到容器例項的最簡單方法是使用 `wget`（你也可以使用 Chrome 下載它們並透過 SSH 隧道傳送它們，但那會更加複雜）。你能夠透過以下命令很輕鬆地下載並安裝 Flutter。
 
 ```
-$ curl -O https://storage.flutter-io.cn/flutter_infra/releases/stable/linux/flutter_linux_v1.5.4-hotfix.2-stable.tar.xz 
+$ curl -O https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.5.4-hotfix.2-stable.tar.xz 
 $ tar xf flutter_linux_v1.5.4-hotfix.2-stable.tar.xz
 $ export PATH=`pwd`/flutter/bin:$PATH
 ```

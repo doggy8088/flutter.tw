@@ -67,7 +67,7 @@ Flutter 團隊為什麼要不惜這些代價對 Navigator API 做這次的重構
 ## Navigator 2.0
 
 Navigator 2.0 新增的宣告式 API 主要包含
-[Page](https://api.flutter-io.cn/flutter/widgets/Page-class.html) API、[Router](https://api.flutter-io.cn/flutter/widgets/Router-class.html) API 兩個部分，
+[Page](https://api.flutter.dev/flutter/widgets/Page-class.html) API、[Router](https://api.flutter.dev/flutter/widgets/Router-class.html) API 兩個部分，
 它們各自強大的功能為 Navigator 2.0 提供了強有力的基石，
 本節我就帶讀者們看看它們各自的實現細節。
 

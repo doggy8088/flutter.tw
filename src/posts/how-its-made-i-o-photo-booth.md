@@ -21,12 +21,12 @@ toc: true
 
 **建構 Web 版 Flutter 相機外掛**
 
-第一個挑戰即在 Web 上為 Flutter 建構攝影頭外掛。最初，我們聯絡了 [Baseflow](https://www.baseflow.com/) 團隊，因為他們負責維護現有的開源 [Flutter 攝影頭外掛](https://github.com/Baseflow/flutter-plugins)。Baseflow 致力於建構適用於 iOS 和 Android 的一流攝影頭外掛支援，我們也很樂於與其合作，使用 [聯合外掛](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#federated-plugins) 方法為外掛提供 Web 支援。我們儘可能符合官方外掛介面，以便我們可以在準備就緒時將其合併回官方外掛。
+第一個挑戰即在 Web 上為 Flutter 建構攝影頭外掛。最初，我們聯絡了 [Baseflow](https://www.baseflow.com/) 團隊，因為他們負責維護現有的開源 [Flutter 攝影頭外掛](https://github.com/Baseflow/flutter-plugins)。Baseflow 致力於建構適用於 iOS 和 Android 的一流攝影頭外掛支援，我們也很樂於與其合作，使用 [聯合外掛](https://flutter.tw/development/packages-and-plugins/developing-packages#federated-plugins) 方法為外掛提供 Web 支援。我們儘可能符合官方外掛介面，以便我們可以在準備就緒時將其合併回官方外掛。
 
 我們確定了兩個對於在 Flutter 中建構 Flutter 照相亭相體驗至關重要的 API。
 
 * **初始化攝影頭:** 應用首先需要存取您的裝置攝影頭。對於桌面裝置，存取的可能是網路攝影頭，而對於移動裝置，我們選擇了存取前置攝影頭。我們還提供了 1080p 的預期解析度，以根據使用者裝置型別充分提高拍攝品質。
-* **拍照:** 我們使用了內建的 [HtmlElementView](https://api.flutter.cn/flutter/widgets/HtmlElementView-class.html)，該控制項使用平臺視圖將原生 Web 元素渲染為 Flutter widget。在此專案中，我們將 [VideoElement](https://api.flutter.cn/flutter/dart-html/VideoElement-class.html) 渲染為原生 HTML 元素，這便是您在拍照前會在螢幕上看到的內容。我們還使用了一個 [CanvasElement](https://api.flutter.cn/flutter/dart-html/CanvasElement-class.html)，用於在您點選拍照按鈕時從媒體流中捕獲圖像。
+* **拍照:** 我們使用了內建的 [HtmlElementView](https://api.flutter.dev/flutter/widgets/HtmlElementView-class.html)，該控制項使用平臺視圖將原生 Web 元素渲染為 Flutter widget。在此專案中，我們將 [VideoElement](https://api.flutter.dev/flutter/dart-html/VideoElement-class.html) 渲染為原生 HTML 元素，這便是您在拍照前會在螢幕上看到的內容。我們還使用了一個 [CanvasElement](https://api.flutter.dev/flutter/dart-html/CanvasElement-class.html)，用於在您點選拍照按鈕時從媒體流中捕獲圖像。
 
 
 ```dart
@@ -74,7 +74,7 @@ Camera(
 
 在我們的第一種方法中，我們嘗試捕捉預設的攝影頭檢視，然後圍繞 y 軸對其進行 180 度翻轉。這種方法似乎有效，但後來我們遇到了 [一個問題](https://github.com/flutter/flutter/issues/79519)，即 Flutter 偶爾會覆蓋這個翻轉，導致影片恢復到未鏡像的版本。
 
-在 Flutter 團隊的幫助下，我們將 VideoElement 放在 [DivElement](https://api.flutter.cn/flutter/dart-html/DivElement-class.html) 中，並更新 VideoElement 以填充 DivElement 的寬度和高度，解決了這個問題。這樣一來，我們能夠為影片元素應用鏡像，同時因為父元素是 div，所以不會被 Flutter 覆蓋翻轉效果。如此一來，我們便獲得了所需的鏡像攝影頭檢視！
+在 Flutter 團隊的幫助下，我們將 VideoElement 放在 [DivElement](https://api.flutter.dev/flutter/dart-html/DivElement-class.html) 中，並更新 VideoElement 以填充 DivElement 的寬度和高度，解決了這個問題。這樣一來，我們能夠為影片元素應用鏡像，同時因為父元素是 div，所以不會被 Flutter 覆蓋翻轉效果。如此一來，我們便獲得了所需的鏡像攝影頭檢視！
 
 ![△ 未鏡像的檢視](https://devrel.andfun.cn/devrel/posts/2021/06/rPthpJ.png)
 
@@ -133,9 +133,9 @@ for (final character in state.characters)
  ),
 ```
 
-為調整物件的大小，我們建立了可拖動、可調整大小且可以容納其他 Flutter widget 的 widget，在本例中，即為吉祥物和道具。該 widget 會使用 [LayoutBuilder](https://api.flutter.cn/flutter/widgets/LayoutBuilder-class.html)，根據視窗的約束條件來處理 widget 的縮放。在內部，我們使用 [GestureDetector](https://api.flutter.cn/flutter/widgets/GestureDetector-class.html) 以掛接到 onScaleStart、onScaleUpdate 和 onScaleEnd 事件。這些回呼(Callback)提供了必要的手勢詳細資訊，以反映使用者對吉祥物和道具的操作。
+為調整物件的大小，我們建立了可拖動、可調整大小且可以容納其他 Flutter widget 的 widget，在本例中，即為吉祥物和道具。該 widget 會使用 [LayoutBuilder](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html)，根據視窗的約束條件來處理 widget 的縮放。在內部，我們使用 [GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html) 以掛接到 onScaleStart、onScaleUpdate 和 onScaleEnd 事件。這些回呼(Callback)提供了必要的手勢詳細資訊，以反映使用者對吉祥物和道具的操作。
 
-透過多個 GestureDetector 回饋的資料，[Transform](https://api.flutter.cn/flutter/widgets/Transform-class.html) widget 和 4D 矩陣變換即可根據使用者所做的各種手勢處理縮放，以及旋轉吉祥物和道具。
+透過多個 GestureDetector 回饋的資料，[Transform](https://api.flutter.dev/flutter/widgets/Transform-class.html) widget 和 4D 矩陣變換即可根據使用者所做的各種手勢處理縮放，以及旋轉吉祥物和道具。
 
 ```dart
 Transform(
@@ -157,7 +157,7 @@ Transform(
 
 這是我們使用 Flutter 建構的首批純 Web 專案之一，其與移動應用具有不同的特徵。
 
-我們需要確保該應用對任何裝置上的任何瀏覽器都具有 [響應性和自適應性](https://flutter.cn/docs/development/ui/layout/adaptive-responsive)。也就是說，我們必須確保 Flutter 照相亭可以根據瀏覽器大小進行縮放，並且能夠處理移動裝置和 Web 端的輸入。我們透過以下幾種方式做到了這一點:
+我們需要確保該應用對任何裝置上的任何瀏覽器都具有 [響應性和自適應性](https://flutter.tw/development/ui/layout/adaptive-responsive)。也就是說，我們必須確保 Flutter 照相亭可以根據瀏覽器大小進行縮放，並且能夠處理移動裝置和 Web 端的輸入。我們透過以下幾種方式做到了這一點:
 
 * **響應式調整大小:** 使用者能夠隨意調整瀏覽器的大小，並且介面能做出響應。如果您的瀏覽器視窗為縱向，則相機會從 4:3 的橫向檢視翻轉為 3:4 的縱向檢視。
 * **響應式設計:** 針對桌面瀏覽器，我們設計為在右側顯示 Dash、Android Jetpack、Dino 和 Sparky，而對於移動裝置，這些要素則會顯示在頂部。我們針對桌面裝置，在攝影頭右側設計使用了抽屜式導航欄，而對於移動裝置，則使用了 BottomSheet 類別。
@@ -165,19 +165,19 @@ Transform(
 
 **可擴充架構**
 
-我們還為此應用建構了可擴充的移動應用。我們的 Flutter 照相亭在建立之初就具有穩固的基礎，包括良好的空安全性、國際化，以及從第一次提交開始就做到的 100% 單元和 widget 測試覆蓋率。我們使用 [flutter_bloc](https://pub.flutter-io.cn/packages/flutter_bloc) 進行狀態管理，因為它支援我們輕鬆測試業務邏輯，並觀察應用中的所有狀態變化。這對於產生開發者日誌和確保可追溯性特別有用，因為我們可以準確地觀察到從一個狀態到另一個狀態的變化，並更快地隔離問題。
+我們還為此應用建構了可擴充的移動應用。我們的 Flutter 照相亭在建立之初就具有穩固的基礎，包括良好的空安全性、國際化，以及從第一次提交開始就做到的 100% 單元和 widget 測試覆蓋率。我們使用 [flutter_bloc](https://pub.dev/packages/flutter_bloc) 進行狀態管理，因為它支援我們輕鬆測試業務邏輯，並觀察應用中的所有狀態變化。這對於產生開發者日誌和確保可追溯性特別有用，因為我們可以準確地觀察到從一個狀態到另一個狀態的變化，並更快地隔離問題。
 
 我們還實現了由功能驅動的單一程式碼庫結構。例如，貼紙、分享和即時相機預覽，均在各自的資料夾中得到實現，其中每個資料夾包含其各自的介面元件和業務邏輯。這些功能也會用到外部依賴，例如位於 package 子目錄中的相機外掛。利用這種架構，我們的團隊能夠在互不干擾的情況下並行處理多個功能，最大限度地減少合併衝突，並有效地重用程式碼。例如，介面元件函式庫是名為 [photobooth_ui](https://github.com/flutter/photobooth/tree/main/packages/photobooth_ui) 的單獨 package，相機外掛也是單獨的。
 
-透過將元件分成獨立的 package，我們可以提取未與此特定專案繫結的各個元件，並將其開源。與 [Material](https://flutter.cn/docs/development/ui/widgets/material) 和 [Cupertino](https://flutter.cn/docs/development/ui/widgets/cupertino) 元件庫類似，我們甚至可以將介面元件庫 package 做開源處理，以供 Flutter 社群使用。
+透過將元件分成獨立的 package，我們可以提取未與此特定專案繫結的各個元件，並將其開源。與 [Material](https://flutter.tw/development/ui/widgets/material) 和 [Cupertino](https://flutter.tw/development/ui/widgets/cupertino) 元件庫類似，我們甚至可以將介面元件庫 package 做開源處理，以供 Flutter 社群使用。
 
 ## **Firebase + Flutter = 完美組合**
 
 **Firebase Auth、儲存、託管等**
 
-照相亭利用 Firebase 生態系統進行各種後端整合。[firebase_auth](https://pub.flutter-io.cn/packages/firebase_auth) package 支援使用者在應用啟動後立即匿名登入。每個會話都使用 Firebase Auth 建立具有唯一 ID 的匿名使用者。
+照相亭利用 Firebase 生態系統進行各種後端整合。[firebase_auth](https://pub.dev/packages/firebase_auth) package 支援使用者在應用啟動後立即匿名登入。每個會話都使用 Firebase Auth 建立具有唯一 ID 的匿名使用者。
 
-當您來到共享頁面時，此設定即會開始發揮作用。您可以下載照片以儲存為個人頭像，也可以直接將其分享到社交媒體。如果您下載照片，則該照片將儲存在您的本地裝置上。如果您分享照片，我們會使用 [firebase_storage](https://pub.flutter-io.cn/packages/firebase_storage) package 將照片儲存在 Firebase 中，以便稍後檢索並產生帖子透過社交媒體釋出。
+當您來到共享頁面時，此設定即會開始發揮作用。您可以下載照片以儲存為個人頭像，也可以直接將其分享到社交媒體。如果您下載照片，則該照片將儲存在您的本地裝置上。如果您分享照片，我們會使用 [firebase_storage](https://pub.dev/packages/firebase_storage) package 將照片儲存在 Firebase 中，以便稍後檢索並產生帖子透過社交媒體釋出。
 
 我們在 Firebase 的儲存分割槽上定義了 [Firebase 安全規則](https://firebase.google.cn/docs/rules)，確保照片在建立後不可變。這可以防止其他使用者修改或刪除儲存分割槽中的照片。此外，我們使用 Google Cloud 提供的 [物件生命週期管理](https://cloud.google.com/storage/docs/lifecycle)，定義了一個刪除 30 天前所有物件的規則，但您可以按照應用中列出的說明請求儘快刪除您的照片。
 

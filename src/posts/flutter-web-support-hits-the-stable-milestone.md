@@ -27,18 +27,18 @@ Flutter 的首個版本支援 iOS 和 Android，開發者們已經用它在移�
 
 如今的 web 平台比以往任何時候都要豐富多彩，開發者可以使用的工具套件括: [硬體加速的 2D 和 3D 圖形](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)，[離線功能和安裝體驗](https://web.dev/progressive-web-apps/)，以及 [對底層作業系統和硬體的存取](https://web.dev/fugu-status/) 等。在 web 這個底層平臺上已經建立起了 [種類](https://vuejs.org/)[繁多](https://angular.io/)[的](https://flask.palletsprojects.com/)[框架](https://reactjs.org/)，因此，開發者在建立 web 應用時擁有極大的靈活性。
 
-Flutter 是用 [Dart](https://dart.cn/) 編寫的，而 Dart 能編譯成 JavaScript，所以我們的下一步自然就是要探討支援 web 平台的可能性。這符合我們的願景，也就是提供一個可移植的框架，方便您在任何能描繪畫素的地方構建出精美的 UI。
+Flutter 是用 [Dart](https://dart.tw.gh.miniasp.com/) 編寫的，而 Dart 能編譯成 JavaScript，所以我們的下一步自然就是要探討支援 web 平台的可能性。這符合我們的願景，也就是提供一個可移植的框架，方便您在任何能描繪畫素的地方構建出精美的 UI。
 
 我們的方法是，建立一個在所有平臺上都能使用的一致的工具套件 (而不是建立兩個有著各種微妙差異的獨立框架)，以確保開發者的程式碼執行時不會出現意外。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/edb077dfd7dda.png)
 
-Flutter 框架由 [一系列層結構](https://flutter.cn/docs/resources/technical-overview#layer-cakes-are-delicious) 組成，其中包含:
+Flutter 框架由 [一系列層結構](https://flutter.tw/resources/technical-overview#layer-cakes-are-delicious) 組成，其中包含:
 
 * **框架**，用於為 widget、動畫和手勢等常見的習慣用法提供抽象
 * **引擎**，使用公開的系統 API 在目標裝置上進行渲染
 
-框架本身採用 Dart 編寫，大約 70 萬行 Flutter 框架核心程式碼在所有平臺上相同: 包括移動端、桌面端和現在的 web 端。對於您的程式碼來說也是這樣，我們使用 Dart 開發編譯器 ([dartdevc](https://dart.cn/tools/dartdevc)) 或 Dart 部署編譯器 ([dart2js](https://dart.cn/tools/dart2js)) 將您的程式碼編譯成 JavaScript，這些 JavaScript 程式碼可以託管在伺服器上。
+框架本身採用 Dart 編寫，大約 70 萬行 Flutter 框架核心程式碼在所有平臺上相同: 包括移動端、桌面端和現在的 web 端。對於您的程式碼來說也是這樣，我們使用 Dart 開發編譯器 ([dartdevc](https://dart.tw.gh.miniasp.com/tools/dartdevc)) 或 Dart 部署編譯器 ([dart2js](https://dart.tw.gh.miniasp.com/tools/dart2js)) 將您的程式碼編譯成 JavaScript，這些 JavaScript 程式碼可以託管在伺服器上。
 
 由於 Dart 擁有將 Flutter 框架 (以及開發者的應用程式碼) 編譯成 JavaScript 的能力，我們對 web 的支援工作就變成了用對映 web 平台 API 的程式碼來取代移動應用所使用的底層 C++ 渲染引擎。Flutter 並不會簡單地將 widget 移植為 HTML 裡的等價元件，Flutter 的 web 引擎為開發者提供了兩種渲染器: 一個是針對尺寸和相容性進行最佳化的 HTML 渲染器，另一個則是使用 WebAssembly 和 WebGL 透過 Skia 繪圖命令向瀏覽器畫布進行渲染的 CanvasKit 渲染器。
 
@@ -75,23 +75,23 @@ Flutter 框架由 [一系列層結構](https://flutter.cn/docs/resources/technic
 
 為了針對每個裝置的特性最佳化您的 Flutter web 應用，渲染模式預設設定為自動。這意味著您的應用將在移動瀏覽器上使用 HTML 渲染器執行，在桌面瀏覽器上使用 CanvasKit 渲染器執行。
 
-您還可以使用 --web-renderer html 或 --web-renderer canvaskit 來明確選擇使用何種渲染器。如需瞭解詳細資訊，請參閱 [官方文件](https://flutter.cn/docs/development/tools/web-renderers)。
+您還可以使用 --web-renderer html 或 --web-renderer canvaskit 來明確選擇使用何種渲染器。如需瞭解詳細資訊，請參閱 [官方文件](https://flutter.tw/development/tools/web-renderers)。
 
 ### **Web 專屬功能**
 
 在瀏覽器中執行的 Flutter 應用給人的感覺應該像 web 應用一樣。所以我們為 Flutter 添加了一些功能，幫助您發揮 web 的優勢。
 
-Web 有很多優勢，尤其是在全球的覆蓋率。將您現有的 Flutter 應用帶到 web 上的原因之一就是接觸應用商店以外的使用者。為了做到這一點，我們添加了 [自訂 URL 策略](https://flutter.cn/docs/development/ui/navigation/url-strategies)，以確保您的使用者只需點選 URL，就可以從任何地方存取您的應用。有了這個功能，您就可以控制位址列中顯示的 URL，以及您的應用在 web 上的路由。
+Web 有很多優勢，尤其是在全球的覆蓋率。將您現有的 Flutter 應用帶到 web 上的原因之一就是接觸應用商店以外的使用者。為了做到這一點，我們添加了 [自訂 URL 策略](https://flutter.tw/development/ui/navigation/url-strategies)，以確保您的使用者只需點選 URL，就可以從任何地方存取您的應用。有了這個功能，您就可以控制位址列中顯示的 URL，以及您的應用在 web 上的路由。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/abd6aee377a66.png)
 
-> △ Flutter Plasma 示範的 Showroom 頁面，實際上就是一個基於 Flutter 自訂 URL 策略的 [url_strategy](https://pub.flutter-io.cn/packages/url_strategy) 外掛範例
+> △ Flutter Plasma 示範的 Showroom 頁面，實際上就是一個基於 Flutter 自訂 URL 策略的 [url_strategy](https://pub.dev/packages/url_strategy) 外掛範例
 
-當用戶在 web 上導航時，超連結也至關重要。url_launcher package 中的一個新的 [link](https://pub.flutter-io.cn/documentation/url_launcher/latest/link/Link-class.html) widget 使使用者能夠透過深連結直達您應用內的錨點或外部網站。您可以在相關的 widget 上使用 link，包括按鈕、內聯文字、圖像，並指定連結是在同一個標籤頁還是新標籤頁中開啟。
+當用戶在 web 上導航時，超連結也至關重要。url_launcher package 中的一個新的 [link](https://pub.dev/documentation/url_launcher/latest/link/Link-class.html) widget 使使用者能夠透過深連結直達您應用內的錨點或外部網站。您可以在相關的 widget 上使用 link，包括按鈕、內聯文字、圖像，並指定連結是在同一個標籤頁還是新標籤頁中開啟。
 
-對於任何應用來說，文字渲染都是不可或缺的。開發文字佈局系統，是建構 Flutter web 支援所面臨的重大挑戰之一。由於 web 缺乏直接文字佈局 API，Flutter 必須透過觸發 [layout()](https://api.flutter.cn/flutter/dart-ui/Paragraph/layout.html) 來對 [Parapraph](https://api.flutter.cn/flutter/dart-ui/Paragraph-class.html) 執行各種測量操作。有時，這些測量的代價相當高昂，所以我們添加了 [基於 Canvas 的文字測量](https://github.com/flutter/flutter/issues/33523)，此測量方式可同時支援純文字與富文字。現在，Flutter 可以在 web 上高效地完成精細測量，進而完成正確的繪製任務，比如正確地高亮顯示所選文字。
+對於任何應用來說，文字渲染都是不可或缺的。開發文字佈局系統，是建構 Flutter web 支援所面臨的重大挑戰之一。由於 web 缺乏直接文字佈局 API，Flutter 必須透過觸發 [layout()](https://api.flutter.dev/flutter/dart-ui/Paragraph/layout.html) 來對 [Parapraph](https://api.flutter.dev/flutter/dart-ui/Paragraph-class.html) 執行各種測量操作。有時，這些測量的代價相當高昂，所以我們添加了 [基於 Canvas 的文字測量](https://github.com/flutter/flutter/issues/33523)，此測量方式可同時支援純文字與富文字。現在，Flutter 可以在 web 上高效地完成精細測量，進而完成正確的繪製任務，比如正確地高亮顯示所選文字。
 
-與文字進行互動同樣重要，其重要性不亞於快速準確地渲染文字。透過 SelectableText 和 EditableText widget，您不僅可以選中 Flutter web 應用中的文字，還可以執行復制貼上操作。此外，表單文字欄位現已支援 [自動填充](https://api.flutter.cn/flutter/widgets/AutofillGroup-class.html)，瀏覽器能夠儲存資料以便將來填充使用。
+與文字進行互動同樣重要，其重要性不亞於快速準確地渲染文字。透過 SelectableText 和 EditableText widget，您不僅可以選中 Flutter web 應用中的文字，還可以執行復制貼上操作。此外，表單文字欄位現已支援 [自動填充](https://api.flutter.dev/flutter/widgets/AutofillGroup-class.html)，瀏覽器能夠儲存資料以便將來填充使用。
 
 Flutter 2 特別適合實現漸進式 web 應用 (PWA)。我們建議開發者使用 PWA，透過 Chrome 的 [Project Fugu](https://web.dev/fugu-status/)，以安全和可信的方式，彌合移動端和 web 端應用之間的差異。
 
@@ -105,7 +105,7 @@ Flutter 2 特別適合實現漸進式 web 應用 (PWA)。我們建議開發者�
 
 儘管瀏覽器的形態大小各異，我們都希望提供美好的 Flutter web 體驗。由於 Flutter 最初是為移動應用設計而成，因此 Flutter web 應用已經對移動瀏覽器的手勢和滾動物理效果提供了很好的支援。但桌面瀏覽器 UI 的呈現和使用有所不同，所以我們對 Flutter 進行了相應的更新。
 
-比如，使用者希望應用在桌面瀏覽器中執行時能夠顯示捲軸，以便透過滑鼠或鍵盤進行控制。我們為桌面裝置添加了 [可自訂的互動式捲軸](https://files.flutter-io.cn/flutter-design-docs/Updating_Scrollbars_(PUBLICLY_SHARED).docx)，這意味著我們可為捲軸使用 [主題](https://api.flutter.cn/flutter/material/ScrollbarTheme-class.html)，顯示捲軸軌道，而且還可以拖動滑塊。我們還擴充了 [PrimaryScrollController](https://api.flutter.cn/flutter/widgets/PrimaryScrollController-class.html)，便於使用者 [使用鍵盤快捷鍵進行滾動](https://files.flutter-io.cn/flutter-design-docs/Fallback_ScrollAction_(PUBLICLY_SHARED).docx)，也省去了您使用自訂滾動檢視的工作。
+比如，使用者希望應用在桌面瀏覽器中執行時能夠顯示捲軸，以便透過滑鼠或鍵盤進行控制。我們為桌面裝置添加了 [可自訂的互動式捲軸](https://files.flutter-io.cn/flutter-design-docs/Updating_Scrollbars_(PUBLICLY_SHARED).docx)，這意味著我們可為捲軸使用 [主題](https://api.flutter.dev/flutter/material/ScrollbarTheme-class.html)，顯示捲軸軌道，而且還可以拖動滑塊。我們還擴充了 [PrimaryScrollController](https://api.flutter.dev/flutter/widgets/PrimaryScrollController-class.html)，便於使用者 [使用鍵盤快捷鍵進行滾動](https://files.flutter-io.cn/flutter-design-docs/Fallback_ScrollAction_(PUBLICLY_SHARED).docx)，也省去了您使用自訂滾動檢視的工作。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/03/72812bd5afb8b.jpg)
 
@@ -117,18 +117,18 @@ Flutter 2 特別適合實現漸進式 web 應用 (PWA)。我們建議開發者�
 
 ### **Flutter web 對外掛的支援**
 
-最後，我們為那些最常用的外掛帶來了 web 支援，使您能夠將自己的 Flutter 應用帶到 web 平台。藉助 [Flutter 外掛](https://pub.flutter-io.cn/)，您的程式碼可與所執行平台的原生開發庫進行互操作。在 web 上執行 Flutter 應用時，您可以透過外掛存取現有的 JavaScript 庫。
+最後，我們為那些最常用的外掛帶來了 web 支援，使您能夠將自己的 Flutter 應用帶到 web 平台。藉助 [Flutter 外掛](https://pub.dev/)，您的程式碼可與所執行平台的原生開發庫進行互操作。在 web 上執行 Flutter 應用時，您可以透過外掛存取現有的 JavaScript 庫。
 
 自測試版釋出以來，我們在社群的幫助下為以下外掛添加了 web 支援:
 
-* [image_picker](https://pub.flutter-io.cn/packages/image_picker_for_web)
-* [google_maps](https://pub.flutter-io.cn/packages/google_maps)
-* [firebase_analytics](https://pub.flutter-io.cn/packages/firebase_analytics)
-* [firebase_storage](https://pub.flutter-io.cn/packages/firebase_storage)
-* [connectivity](https://pub.flutter-io.cn/packages/experimental_connectivity_web)
-* [cloud_firestore](https://pub.flutter-io.cn/packages/cloud_firestore)
-* [cloud_functions](https://pub.flutter-io.cn/packages/cloud_functions)
-* [cross_file](https://pub.flutter-io.cn/packages/cross_file)
+* [image_picker](https://pub.dev/packages/image_picker_for_web)
+* [google_maps](https://pub.dev/packages/google_maps)
+* [firebase_analytics](https://pub.dev/packages/firebase_analytics)
+* [firebase_storage](https://pub.dev/packages/firebase_storage)
+* [connectivity](https://pub.dev/packages/experimental_connectivity_web)
+* [cloud_firestore](https://pub.dev/packages/cloud_firestore)
+* [cloud_functions](https://pub.dev/packages/cloud_functions)
+* [cross_file](https://pub.dev/packages/cross_file)
 
 ## **展望未來**
 
@@ -157,6 +157,6 @@ Flutter 2 特別適合實現漸進式 web 應用 (PWA)。我們建議開發者�
 
 藉助 Dart 的可移植性、Web 平台的強大功能，以及 Flutter 框架的靈活性，您現在可以用同一套程式碼庫，建構用於 iOS、Android 以及瀏覽器的應用。
 
-如果您已經開發了 Flutter web 應用，現在就可以在 [穩定渠道](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels#stable) 中進行建構。如果您剛開始學習建構 Flutter web 應用，請移步官方文件存取我們的 [入門 codelab 課程](https://flutter.cn/docs/get-started/codelab-web)，以及 Flutter Engage 上的 [web 演講](https://www.bilibili.com/video/BV1Jv411h7x6)。建構 web 應用時，如果您發現了任何問題，請隨時 [前往 GitHub 提交給我們](https://goo.gle/flutter_web_issue)。
+如果您已經開發了 Flutter web 應用，現在就可以在 [穩定渠道](https://github.com/flutter/flutter/wiki/Flutter-build-release-channels#stable) 中進行建構。如果您剛開始學習建構 Flutter web 應用，請移步官方文件存取我們的 [入門 codelab 課程](https://flutter.tw/get-started/codelab-web)，以及 Flutter Engage 上的 [web 演講](https://www.bilibili.com/video/BV1Jv411h7x6)。建構 web 應用時，如果您發現了任何問題，請隨時 [前往 GitHub 提交給我們](https://goo.gle/flutter_web_issue)。
 
 我們非常期待看到您使用 Flutter web 所建構的精彩應用！

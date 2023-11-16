@@ -21,11 +21,11 @@ Dart 的併發模型基於 [isolate](https://dart.dev/guides/language/concurrenc
 
 雖然 isolate 組仍然阻止在 isolate 間共享存取可變物件，但由於 isolate 組使用共享堆實現，這也讓其擁有了更多的功能。我們可以將物件從一個 isolate 傳遞到另一個 isolate，這可用於執行返回大量記憶體資料的任務的工作器 isolate。例如，工作器 isolate 透過網路呼叫獲得資料，將該資料解析為大型 JSON 物件圖，然後將這個 JSON 圖返回到主 isolate 中。在推出 Dart 2.15 之前，執行該操作需要深度複製，如果複製花費的時間超過幀預算時間，就會導致介面卡頓。
 
-在 Dart 2.15 中，工作器 isolate 可以呼叫 [`Isolate.exit()`](https://api.dart.cn/stable/2.15.0/dart-isolate/Isolate/exit.html)，將其結果作為引數傳遞。然後，Dart 執行時將包含結果的記憶體資料從工作器 isolate 傳遞到主 isolate 中，無需複製，且主 isolate 可以在固定時間內接收結果。我們已經在 [Flutter 2.8](https://mp.weixin.qq.com/s/22Ylncb3V95MGkMBRSrZoA) 中更新了 [compute()](https://api.flutter-io.cn/flutter/foundation/compute-constant.html) 實用函式，來利用 Isolate.exit()。如果您已經在使用 compute()，那麼在升級到 Flutter 2.8 後，您將自動獲得這些效能提升。
+在 Dart 2.15 中，工作器 isolate 可以呼叫 [`Isolate.exit()`](https://api.dart.tw.gh.miniasp.com/stable/2.15.0/dart-isolate/Isolate/exit.html)，將其結果作為引數傳遞。然後，Dart 執行時將包含結果的記憶體資料從工作器 isolate 傳遞到主 isolate 中，無需複製，且主 isolate 可以在固定時間內接收結果。我們已經在 [Flutter 2.8](https://mp.weixin.qq.com/s/22Ylncb3V95MGkMBRSrZoA) 中更新了 [compute()](https://api.flutter.dev/flutter/foundation/compute-constant.html) 實用函式，來利用 Isolate.exit()。如果您已經在使用 compute()，那麼在升級到 Flutter 2.8 後，您將自動獲得這些效能提升。
 
-最後，我們還重新設計了 isolate 訊息傳遞機制的實現方式，使得中小型訊息的傳遞速度提高了大約 8 倍。傳送訊息的速度明顯更快，而接收資訊幾乎總是在恆定的時間內完成。另外，我們擴充了 isolate 可以相互發送的物件種類，增加了對函式型別、閉套件和堆疊追蹤物件的支援。請參閱 [SendPort.send()](https://api.dart.cn/stable/2.15.0/dart-isolate/SendPort/send.html) 的 API 文件瞭解詳情。
+最後，我們還重新設計了 isolate 訊息傳遞機制的實現方式，使得中小型訊息的傳遞速度提高了大約 8 倍。傳送訊息的速度明顯更快，而接收資訊幾乎總是在恆定的時間內完成。另外，我們擴充了 isolate 可以相互發送的物件種類，增加了對函式型別、閉套件和堆疊追蹤物件的支援。請參閱 [SendPort.send()](https://api.dart.tw.gh.miniasp.com/stable/2.15.0/dart-isolate/SendPort/send.html) 的 API 文件瞭解詳情。
 
-要了解有關如何使用 isolate 的更多資訊，請參閱我們為 Dart 2.15 新增的官方文件 [Dart 中的併發](https://dart.cn/guides/language/concurrency)，以及更多 [程式碼範例](https://github.com/dart-lang/samples/tree/master/isolates)。
+要了解有關如何使用 isolate 的更多資訊，請參閱我們為 Dart 2.15 新增的官方文件 [Dart 中的併發](https://dart.tw.gh.miniasp.com/guides/language/concurrency)，以及更多 [程式碼範例](https://github.com/dart-lang/samples/tree/master/isolates)。
 
 ## **新語言特性: 建構函式拆分**
 
@@ -155,9 +155,9 @@ Package validation found the following errors:
 2 │ final refreshToken = "1//042ys8uoFwZrkCgYIARAAGAQSNwF-L9IrXmFYE-sfKefSpoCnyqEcsHX97Y90KY-p8TPYPPnY2IPgRXdy0QeVw7URuF5u9oUeIF0";
 ```
 
-在極少數情況下，此項檢測可能會出現誤報，將您實際上打算釋出的內容或檔案標記為潛在洩露。在這些情況下，您可以將檔案新增到 [許可名單](https://dart.cn/tools/pub/pubspec#false_secrets) 中。
+在極少數情況下，此項檢測可能會出現誤報，將您實際上打算釋出的內容或檔案標記為潛在洩露。在這些情況下，您可以將檔案新增到 [許可名單](https://dart.tw.gh.miniasp.com/tools/pub/pubspec#false_secrets) 中。
 
-其次，我們還為釋出者添加了另一個功能: 撤銷已釋出的 package 版本。當釋出了有問題的 package 版本時，我們通常的建議是釋出一個小幅升級的新版本來修復意外問題。但在極少數情況下，例如您尚未修復這些問題，或是您在原打算只發佈一個次要版本時意外發布了一個主要版本，那麼您就可以使用新的 [package 撤銷功能](https://dart.cn/tools/pub/publishing#retract)，作為最後的補救方法。此功能在 pub.dev 的管理介面中提供:
+其次，我們還為釋出者添加了另一個功能: 撤銷已釋出的 package 版本。當釋出了有問題的 package 版本時，我們通常的建議是釋出一個小幅升級的新版本來修復意外問題。但在極少數情況下，例如您尚未修復這些問題，或是您在原打算只發佈一個次要版本時意外發布了一個主要版本，那麼您就可以使用新的 [package 撤銷功能](https://dart.tw.gh.miniasp.com/tools/pub/publishing#retract)，作為最後的補救方法。此功能在 pub.dev 的管理介面中提供:
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/12/Cr4RZ4.png)
 
@@ -215,4 +215,4 @@ info • bin/cvetest.dart:4:27 • The Unicode code point 'U+202E'
 
 ## **最後**
 
-希望您喜歡 [已經推出](https://dart.cn/get-dart) 的 Dart 2.15 中的新功能。這是我們今年的最後一個版本，我們想借此機會表達我們對美妙的 Dart 生態系統的感謝。感謝大家的寶貴反饋，以及對我們一直以來的支援，感謝大家在過去的一年中在 [pub.dev](https://pub.dev) 上釋出的數千個 package，它們豐富了我們的生態系統。我們迫切期待明年再次投入工作，我們計劃在 2022 年推出很多激動人心的內容。預祝大家新年快樂，好好享受即將到來的假期吧！
+希望您喜歡 [已經推出](https://dart.tw.gh.miniasp.com/get-dart) 的 Dart 2.15 中的新功能。這是我們今年的最後一個版本，我們想借此機會表達我們對美妙的 Dart 生態系統的感謝。感謝大家的寶貴反饋，以及對我們一直以來的支援，感謝大家在過去的一年中在 [pub.dev](https://pub.dev) 上釋出的數千個 package，它們豐富了我們的生態系統。我們迫切期待明年再次投入工作，我們計劃在 2022 年推出很多激動人心的內容。預祝大家新年快樂，好好享受即將到來的假期吧！

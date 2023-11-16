@@ -41,7 +41,7 @@ Flutter 的核心部分是跨平臺的：從可移植的硬體加速的 Skia 圖
 
 ![目前已經有上百個 package 為透過 Flutter 建構 Windows 應用程式提供了適配。](https://devrel.andfun.cn/devrel/posts/2022/02/8eff674e59263.jpg)
 
-要完全為 Windows 的 UI 進行客製，你也可以使使用案例如像是 [fluent_ui](https://pub.flutter-io.cn/packages/fluent_ui "使用 fluent_ui package 實現具有 Microsoft Fluent 設計美學的設計") 以及 [flutter_acrylic](https://pub.flutter-io.cn/packages/flutter_acrylic "使用 flutter_acrylic package 實現具有 Microsoft Fluent 設計美學的設計") 這樣的 package 創造具有 Microsoft Fluent 設計美學的應用。而且使用 [msix](https://pub.dev/packages/msix "使用 msix 工具打包釋出 Windows 桌面應用程式") 工具能將你的應用包裝進安裝器，這樣就可以上傳到 Windows 上的 Microsoft Store。
+要完全為 Windows 的 UI 進行客製，你也可以使使用案例如像是 [fluent_ui](https://pub.dev/packages/fluent_ui "使用 fluent_ui package 實現具有 Microsoft Fluent 設計美學的設計") 以及 [flutter_acrylic](https://pub.dev/packages/flutter_acrylic "使用 flutter_acrylic package 實現具有 Microsoft Fluent 設計美學的設計") 這樣的 package 創造具有 Microsoft Fluent 設計美學的應用。而且使用 [msix](https://pub.dev/packages/msix "使用 msix 工具打包釋出 Windows 桌面應用程式") 工具能將你的應用包裝進安裝器，這樣就可以上傳到 Windows 上的 Microsoft Store。
 
 總的來說，這促進了在 Window 平臺上建立應用程式。以極快的速度在 Windows 上執行的同時還能轉到其他桌面或者移動應用以及 web 平臺上執行。讓我們來看看到目前為止的一些早期範例：
 

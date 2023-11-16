@@ -9,7 +9,7 @@ const filenameReplacement = new RegExp(`^(.*?)\\b${FILE_NAME_PREFIX}\\w+_v?[X|0-
 // Fetches Flutter release JSON for the given OS and calls the callback once the data is available.
 function fetchFlutterReleases(os, callback, errorCallback) {
   // OS: windows, macos, linux
-  const url = `https://storage.flutter-io.cn/flutter_infra_release/releases/releases_${os}.json`;
+  const url = `https://storage.googleapis.com/flutter_infra_release/releases/releases_${os}.json`;
   fetch(url, { method: 'GET' })
     .then(response => response.json())
     .then(data => callback(data, os))
@@ -260,7 +260,7 @@ function updateDownloadLinkFailed(os) {
 }
 
 function getProvenanceLink(os, release, date, channel) {
-  const baseUrl = 'https://storage.flutter-io.cn/flutter_infra_release/releases/';
+  const baseUrl = 'https://storage.googleapis.com/flutter_infra_release/releases/';
   if (os === 'windows' && date < new Date(Date.parse('4/3/2023'))) {
     // provenance not available before 4/3/2023 for Windows
     const spanElement = document.createElement('span');

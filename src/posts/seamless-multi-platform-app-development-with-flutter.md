@@ -29,12 +29,12 @@ Flutter 的 *dev_compiler* 具有與 JIT 編譯相同的智慧功能。因此，
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/04/4OS8ol.png)
 
-> 資料來源: [pub.flutter-io.cn/packages?q=url_launcher](https://pub.flutter-io.cn/packages?q=url_launcher)
+> 資料來源: [pub.dev/packages?q=url_launcher](https://pub.dev/packages?q=url_launcher)
 
 如果您希望更新某個外掛以使其適用於 web 應用，您可以參閱以下文章，瞭解如何為現有的外掛專案加入平台的支援:
 
-[https://flutter.cn/docs/development/packages-and-plugins/developing-packages#add-support-for-platforms-in-an-existing-plugin-project
-](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#add-support-for-platforms-in-an-existing-plugin-project)
+[https://flutter.tw/development/packages-and-plugins/developing-packages#add-support-for-platforms-in-an-existing-plugin-project
+](https://flutter.tw/development/packages-and-plugins/developing-packages#add-support-for-platforms-in-an-existing-plugin-project)
 
 雖然您可以針對 web 應用使用與移動應用一致的程式碼，但您還需要針對使用者體驗進行最佳化。您可以使用約束條件新增動態佈局特性，以增強使用者體驗，例如，如果瀏覽器可以提供更多的螢幕空間，您可以將單列布局擴充至雙列。
 

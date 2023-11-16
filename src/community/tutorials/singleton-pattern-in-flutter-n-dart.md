@@ -188,8 +188,8 @@ Text(
 
 - 圖書 [《Flutter 開發之旅從南到北》](https://item.jd.com/12757223.html)—— 第 2 章、第 9 章
 - [單例模式](https://c.biancheng.net/view/1338.html)
-- [Dart 空安全](https://dart.cn/null-safety)
-- [延遲初始化](https://dart.cn/null-safety/understanding-null-safety#lazy-initialization)
+- [Dart 空安全](https://dart.tw.gh.miniasp.com/null-safety)
+- [延遲初始化](https://dart.tw.gh.miniasp.com/null-safety/understanding-null-safety#lazy-initialization)
 
 ## 關於本系列文章
 

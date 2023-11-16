@@ -30,7 +30,7 @@ toc: true
 
 從第一個方面來講，我們去年對大的編譯過程做了很多最佳化，主要是在 iOS 端。iOS 端產物的體積已經有了比較顯著的縮小。目前來看，想要進一步縮小包產物的話，需要更多的由開發者根據自己 App 的實際情況做一些取捨，以及對 Flutter 引擎做一定的客製。
 
-我們最近也推出了一款工具，在 Dart DevTools 裡面，叫做 [Code Size Analysis](https://flutter.cn/docs/development/tools/devtools/app-size#analysis-tab)，這個工具可以幫大家視覺化包裡具體有哪些內容，每個內容佔用了多少空間。有的時候您可能會發現，有一些資源或者有一些依賴的函式庫佔用了過多的空間。這個工具也會幫您解析 Flutter 引擎裡面具體的產物是什麼，如果您有計劃去對 Flutter 引擎進行客製的話，這些都會是很好的參考資料。
+我們最近也推出了一款工具，在 Dart DevTools 裡面，叫做 [Code Size Analysis](https://flutter.tw/development/tools/devtools/app-size#analysis-tab)，這個工具可以幫大家視覺化包裡具體有哪些內容，每個內容佔用了多少空間。有的時候您可能會發現，有一些資源或者有一些依賴的函式庫佔用了過多的空間。這個工具也會幫您解析 Flutter 引擎裡面具體的產物是什麼，如果您有計劃去對 Flutter 引擎進行客製的話，這些都會是很好的參考資料。
 
 *回答者: 袁輝輝，位元組跳動 Flutter 技術負責人*
 
@@ -44,7 +44,7 @@ toc: true
 
 這個問題其實可以理解為在這種複雜卡片的場景下，在列表做慣性滾動的時候出現的一些效能問題。這個問題非常典型，實際上在應用層有很多最佳化手段可以去做。
 
-首先我們可以使用 Flutter 提供的效能分析工具來定位問題，去發現是否在寫法上面存在著一些可以最佳化的地方。比如在列表滾動的時候，是否存在 widget 建構的次數過多，或者建構的層級過深的問題，導致 UI 執行緒出現卡頓。我們也可以使用 Flutter 提供的 [RepaintBoundary](https://api.flutter-io.cn/flutter/widgets/RepaintBoundary-class.html)，來減少重繪的範圍。並且檢查是否使用到了 ClipPath 或者 BackdropFilter 這種可能會對 Raster 執行緒造成一定影響的操作，是否可以儘量去避免。
+首先我們可以使用 Flutter 提供的效能分析工具來定位問題，去發現是否在寫法上面存在著一些可以最佳化的地方。比如在列表滾動的時候，是否存在 widget 建構的次數過多，或者建構的層級過深的問題，導致 UI 執行緒出現卡頓。我們也可以使用 Flutter 提供的 [RepaintBoundary](https://api.flutter.dev/flutter/widgets/RepaintBoundary-class.html)，來減少重繪的範圍。並且檢查是否使用到了 ClipPath 或者 BackdropFilter 這種可能會對 Raster 執行緒造成一定影響的操作，是否可以儘量去避免。
 
 在最佳化完寫法後，可以去評估使用 SurfaceView 作為 FlutterView 渲染的實現。SurfaceView 從原理上來講比 TextureView 的效能更好，因為它有獨立的渲染管線。從實際測試的效果來看，SurfaceView 的幀率平均有 2~4 幀的提升。它的問題可能存在於混合開發的場景，由於它跟 AndroidView 不相容，會導致黑屏等相容性問題。我的建議是，如果是開發一個完整的 Flutter App 的話，優先選用 SurfaceView；如果做混合棧開發的話，需要評估 SurfaceView 是否存在導致相容性問題的場景，然後儘量去使用 SurfaceView。
 

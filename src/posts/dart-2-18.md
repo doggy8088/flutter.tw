@@ -22,7 +22,7 @@ Dart 2.18 穩定版也隨著 [Flutter 3.3 穩定版]({{site.main-url}}/posts/wha
 
 Dart 團隊希望主流程式語言之間的互操作能夠在所有 Dart 可以執行的平臺上都支援，2.18 正式版達到了這個目標的下一個里程碑，現在，Dart 程式碼可以直接呼叫 Objective-C 和 Swift 程式碼了，主要用於在 macOS 和 iOS 平台呼叫 API。Dart 支援“全端呼叫”——從後端的命令列程式碼，再到前端的 Flutter 介面，你可以在任何應用中使用這種互操作機制。
 
-這種全新機制源自於 Objective-C 和 Swift 程式碼可以透過 API 繫結機制用 C 語言程式碼來呼叫。Dart 的 [ffigen](https://pub.flutter-io.cn/packages/ffigen "Dart FFI 工具: ffigen 的 pub.dev 頁面") 工具可以透過 API 標頭檔案來建立這些繫結，接下來看一個例子。
+這種全新機制源自於 Objective-C 和 Swift 程式碼可以透過 API 繫結機制用 C 語言程式碼來呼叫。Dart 的 [ffigen](https://pub.dev/packages/ffigen "Dart FFI 工具: ffigen 的 pub.dev 頁面") 工具可以透過 API 標頭檔案來建立這些繫結，接下來看一個例子。
 
 ## 在 Objective-C 中操作時區的例子
 
@@ -99,7 +99,7 @@ void main(List<String> args) async {
 
 這樣就可以啦，這個新特性從 Dart 2.18 開始以實驗性的支援開始提供，它增強了 Dart 的基礎互操作特性，可以直接在 Dart 程式碼裡或者透過 Flutter 外掛來呼叫 macOS 和 iOS API 了。
 
-我們非常歡迎開發者們的反饋，你可以透過我們的 GitHub Issue [提出反饋建議](https://github.com/dart-lang/sdk/issues/49673 "針對 Dart 和 Objective-C 和 Swift 的互操作提出反饋建議")，讓我們知道哪些已然做的很好了、哪些地方尚有待改進，以及任何你遇到的問題。瞭解互操作性的更多資訊，可以參閱 Dart 文件: [使用 package:ffigen 來進行與 Objective-C 和 Swift 的互操作](https://dart.cn/guides/libraries/objective-c-interop "Dart 文件: 使用 package:ffigen 來進行與 Objective-C 和 Swift 的互操作")。
+我們非常歡迎開發者們的反饋，你可以透過我們的 GitHub Issue [提出反饋建議](https://github.com/dart-lang/sdk/issues/49673 "針對 Dart 和 Objective-C 和 Swift 的互操作提出反饋建議")，讓我們知道哪些已然做的很好了、哪些地方尚有待改進，以及任何你遇到的問題。瞭解互操作性的更多資訊，可以參閱 Dart 文件: [使用 package:ffigen 來進行與 Objective-C 和 Swift 的互操作](https://dart.tw.gh.miniasp.com/guides/libraries/objective-c-interop "Dart 文件: 使用 package:ffigen 來進行與 Objective-C 和 Swift 的互操作")。
 
 
 ## 平台特定的 http 庫
@@ -154,7 +154,7 @@ final task = session.downloadTaskWithRequest(
 
 我們的設計目標仍舊是儘可能保持應用的多平臺通用性，因此我們為 `http` API 保留了多平臺通用的基礎網路請求的等操作，並且可以透過配置檔案在不同平台配置網路請求庫。開發者們可以使用 `package:http` 的 Client API 來減少編寫平台特定的程式碼，它可以按照平台進行配置並以獨立於平台的方式使用。
 
-Dart 2.18 對 `package:http` [Client API](https://pub.flutter-io.cn/documentation/http/latest/http/Client-class.html "Client API 文件頁面") 提供了特定平台 http 庫的實驗性支援:
+Dart 2.18 對 `package:http` [Client API](https://pub.dev/documentation/http/latest/http/Client-class.html "Client API 文件頁面") 提供了特定平台 http 庫的實驗性支援:
 
 * 在 macOS / iOS 使用基於 [NSURLSession](https://developer.apple.com/documentation/foundation/nsurlsession "NSURLSession 類別的 API 頁面")
 * 在 Android 上使用基於 [Cronet](https://developer.android.google.cn/guide/topics/connectivity/cronet "Android 開發者文件: 使用 Cronet 執行網路操作")，Cronet 是一個在 Android 上非常流行的網路請求庫
@@ -163,7 +163,7 @@ Dart 2.18 對 `package:http` [Client API](https://pub.flutter-io.cn/documentatio
 
 ## 增強型別推斷
 
-Dart 使用了許多通用方法，試想這個可以將集合元素轉換為一個單一值的 [fold](https://api.dart.cn/stable/2.17.6/dart-core/Iterable/fold.html "Dart fold 類別的 API 頁面") 方法。下面是一個對集合中的數字進行求和的例子：
+Dart 使用了許多通用方法，試想這個可以將集合元素轉換為一個單一值的 [fold](https://api.dart.tw.gh.miniasp.com/stable/2.17.6/dart-core/Iterable/fold.html "Dart fold 類別的 API 頁面") 方法。下面是一個對集合中的數字進行求和的例子：
 
 ```dart
 List<int> numbers = [1, 2, 3];
@@ -197,7 +197,7 @@ VM 中還包含了一些額外的小的行為變更，瞭解更多請檢視 [發
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2022/dart-2-18/image2.png)
 
-瞭解更多請存取 [pubspec 文件](https://dart.cn/tools/pub/pubspec%23funding "pubspec 規範文件中關於 funding 標籤的部分")。
+瞭解更多請存取 [pubspec 文件](https://dart.tw.gh.miniasp.com/tools/pub/pubspec%23funding "pubspec 規範文件中關於 funding 標籤的部分")。
 
 此外，我們也希望促進開源 package 的豐富生態，為了突出這一點，`pub.dev` 上的自動評分系統會為使用了 [OSI 批准的許可證](https://opensource.org/licenses "OSI 批准的許可證列表") 的 package 額外獎勵 10 分。
 
@@ -218,7 +218,7 @@ Dart 特別注重簡單性和可學習性，因此在增加新功能時，我們
 
 首先，`pub.dev` 上大部分流行 package 的開發者都已遷移到了空安全。我們的分析表明，最常用的 package 前 250 已全部支援空安全，前 1,000 中也有 98% 已經支援空安全。
 
-其次，大部分開發者已經在具有完全空安全性的程式碼庫中開發。這一點至關重要，因為在將所有程式碼和所有依賴項 (包括傳遞性) 遷移之前，[Dart 健全的空安全性](https://dart.cn/null-safety/understanding-null-safety "Dart 健全的空安全性") 並不會發揮作用，我們正在透過 `flutter run` 命令的遙測來追蹤這一點。
+其次，大部分開發者已經在具有完全空安全性的程式碼庫中開發。這一點至關重要，因為在將所有程式碼和所有依賴項 (包括傳遞性) 遷移之前，[Dart 健全的空安全性](https://dart.tw.gh.miniasp.com/null-safety/understanding-null-safety "Dart 健全的空安全性") 並不會發揮作用，我們正在透過 `flutter run` 命令的遙測來追蹤這一點。
 
 下圖展示了 `flutter run` 命令執行中非健全 (Unsound) 和健全 (Sound) 的空安全的對比情況。在引入空安全之前，兩者都為零。隨後非健全的空安全快速增長，此時應用開始逐漸遷移到空安全，開發者先進行了部分遷移，但有些部分仍然需要遷移。一段時間過後，我們可以看到健全的空安全曲線穩定增長，到上月底，與非健全的空安全相比，健全的空安全執行量多出了四倍。我們希望在接下來的幾個季度中，我們將看到健全空安全到達 100%！
 
@@ -228,7 +228,7 @@ Dart 特別注重簡單性和可學習性，因此在增加新功能時，我們
 
 同時支援非健全和健全的空安全性不可避免地會增加開銷和複雜性。
 
-首先，Dart 開發者需要學習和理解這兩種模式。每當閱讀一段 Dart 程式碼時，都需要 [檢查語言版本](https://dart.cn/guides/language/evolution%23language-versioning "Dart 文件: 語言版本控制")。
+首先，Dart 開發者需要學習和理解這兩種模式。每當閱讀一段 Dart 程式碼時，都需要 [檢查語言版本](https://dart.tw.gh.miniasp.com/guides/language/evolution%23language-versioning "Dart 文件: 語言版本控制")。
 
 其次，在編譯器和執行時同時支援這兩種模式也會減慢 Dart SDK 支援新功能的發展。
 

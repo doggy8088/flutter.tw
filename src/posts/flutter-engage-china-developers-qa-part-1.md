@@ -14,9 +14,9 @@ toc: true
 
 *回答者: 於瀟，Google Flutter 移動端團隊負責人*
 
-和硬體 API 互動最好的方法是透過 [平台通道](https://flutter.cn/docs/development/platform-integration/platform-channels) (Platform Channel) 和平台的 SDK 進行互動。在這之上也有 [Pigeon](https://pub.flutter-io.cn/packages/pigeon) 之類別的外掛可供大家使用，它可以產生針對所有語言的終點 (endpoint)，從而簡化平台通道程式碼的編寫過程。
+和硬體 API 互動最好的方法是透過 [平台通道](https://flutter.tw/development/platform-integration/platform-channels) (Platform Channel) 和平台的 SDK 進行互動。在這之上也有 [Pigeon](https://pub.dev/packages/pigeon) 之類別的外掛可供大家使用，它可以產生針對所有語言的終點 (endpoint)，從而簡化平台通道程式碼的編寫過程。
 
-如果硬體有 C++ 的驅動的話，也可以使用 [外部函式介面](https://flutter.cn/docs/development/platform-integration/c-interop) (FFI)，透過 FFI 呼叫 C++ 的 SDK 來使用硬體層的能力。
+如果硬體有 C++ 的驅動的話，也可以使用 [外部函式介面](https://flutter.tw/development/platform-integration/c-interop) (FFI)，透過 FFI 呼叫 C++ 的 SDK 來使用硬體層的能力。
 
 ## **Flutter 在開發效率方面有哪些優勢？**
 
@@ -52,7 +52,7 @@ Flutter 2.0 版本的釋出是一個比較主要的升級，從 release note 來
 
 如果在升級 Flutter 的過程中碰到 API 變更的問題，這裡有兩個建議:
 
-* 請考慮使用我們在 2.0 版本中同時釋出的 [Flutter Fix](https://flutter.cn/docs/development/tools/flutter-fix) 工具。這個工具有命令列，也有和 IDE 進行整合，可以幫助大家更方便地自動進行 API 升級。
+* 請考慮使用我們在 2.0 版本中同時釋出的 [Flutter Fix](https://flutter.tw/development/tools/flutter-fix) 工具。這個工具有命令列，也有和 IDE 進行整合，可以幫助大家更方便地自動進行 API 升級。
 * 建議大家放心及時地升級 Flutter 版本。如果您從一個相鄰的版本升級到一個新的版本，那麼需要更改的程式碼一般是比較少的。
 
 ## **Flutter 的渲染預設不是平台的主執行緒，那在渲染的時候會不會由於執行緒優先順序問題而影響流暢度？如果出現流暢度問題，該如何解決？**
@@ -65,7 +65,7 @@ Flutter 2.0 版本的釋出是一個比較主要的升級，從 release note 來
 
 *回答者: 董韜，Google Flutter 使用者體驗研究負責人*
 
-Flutter 對 Linux 的支援其實是不僅限於 Ubuntu 的。只要您使用的 Linux 是 64 位的，就可以安裝和使用 Flutter 去開發 App。具體可以參考 [Flutter 官方的 Linux 安裝說明](https://flutter.cn/docs/get-started/install/linux)。
+Flutter 對 Linux 的支援其實是不僅限於 Ubuntu 的。只要您使用的 Linux 是 64 位的，就可以安裝和使用 Flutter 去開發 App。具體可以參考 [Flutter 官方的 Linux 安裝說明](https://flutter.tw/get-started/install/linux)。
 
 Ubuntu 則更方便了一些，提供了一個官方的 Flutter 安裝工具。另外 Ubuntu 也開始用 Flutter 開發一些內建的 App。
 

@@ -15,24 +15,24 @@ toc: true
 
 在 Flutter 3.7 中，以下的 widget 已經進行了 Material 3 的適配：
 
--  [`Badge`](https://api.flutter.cn/flutter/material/Badge-class.html)
--  [`BottomAppBar`](https://api.flutter.cn/flutter/material/BottomAppBar-class.html)
--  [`Filled`](https://api.flutter.cn/flutter/material/FilledButton-class.html) and [`Filled Tonal`](https://api.flutter.cn/flutter/material/FilledButton/FilledButton.tonal.html) buttons
--  [`SegmentedButton`](https://api.flutter.cn/flutter/material/SegmentedButton-class.html)
--  [`Checkbox`](https://api.flutter.cn/flutter/material/Checkbox-class.html)
--  [`Divider`](https://api.flutter.cn/flutter/material/Divider-class.html)
--  [`Menus`](https://api.flutter.cn/flutter/material/MenuBar-class.html)
--  [`DropdownMenu`](https://api.flutter.cn/flutter/material/DropdownMenu-class.html)
--  [`Drawer`](https://api.flutter.cn/flutter/material/Drawer-class.html) and [`NavigationDrawer`](https://api.flutter.cn/flutter/material/NavigationDrawer-class.html)
--  [`ProgressIndicator`](https://api.flutter.cn/flutter/material/ProgressIndicator-class.html)
--  [`Radio`](https://api.flutter.cn/flutter/material/Radio-class.html) buttons
--  [`Slider`](https://api.flutter.cn/flutter/material/Slider-class.html)
--  [`SnackBar`](https://api.flutter.cn/flutter/material/SnackBar-class.html)
--  [`TabBar`](https://api.flutter.cn/flutter/material/TabBar-class.html)
--  [`TextFields`](https://api.flutter.cn/flutter/material/TextField-class.html) and [`InputDecorator`](https://api.flutter.cn/flutter/material/InputDecorator-class.html)
--  [`Banner`](https://api.flutter.cn/flutter/widgets/Banner-class.html)
+-  [`Badge`](https://api.flutter.dev/flutter/material/Badge-class.html)
+-  [`BottomAppBar`](https://api.flutter.dev/flutter/material/BottomAppBar-class.html)
+-  [`Filled`](https://api.flutter.dev/flutter/material/FilledButton-class.html) and [`Filled Tonal`](https://api.flutter.dev/flutter/material/FilledButton/FilledButton.tonal.html) buttons
+-  [`SegmentedButton`](https://api.flutter.dev/flutter/material/SegmentedButton-class.html)
+-  [`Checkbox`](https://api.flutter.dev/flutter/material/Checkbox-class.html)
+-  [`Divider`](https://api.flutter.dev/flutter/material/Divider-class.html)
+-  [`Menus`](https://api.flutter.dev/flutter/material/MenuBar-class.html)
+-  [`DropdownMenu`](https://api.flutter.dev/flutter/material/DropdownMenu-class.html)
+-  [`Drawer`](https://api.flutter.dev/flutter/material/Drawer-class.html) and [`NavigationDrawer`](https://api.flutter.dev/flutter/material/NavigationDrawer-class.html)
+-  [`ProgressIndicator`](https://api.flutter.dev/flutter/material/ProgressIndicator-class.html)
+-  [`Radio`](https://api.flutter.dev/flutter/material/Radio-class.html) buttons
+-  [`Slider`](https://api.flutter.dev/flutter/material/Slider-class.html)
+-  [`SnackBar`](https://api.flutter.dev/flutter/material/SnackBar-class.html)
+-  [`TabBar`](https://api.flutter.dev/flutter/material/TabBar-class.html)
+-  [`TextFields`](https://api.flutter.dev/flutter/material/TextField-class.html) and [`InputDecorator`](https://api.flutter.dev/flutter/material/InputDecorator-class.html)
+-  [`Banner`](https://api.flutter.dev/flutter/widgets/Banner-class.html)
 
-你可以直接在應用中的 [`ThemeData`](https://api.flutter.cn/flutter/material/ThemeData-class.html) 裡設定 [`useMaterial3`](https://api.flutter.cn/flutter/material/ThemeData/useMaterial3.html) 來啟用 Material 3。只有在完整的顏色方案下才能展現出 Material 3 最完整的細節，你可以使用新的 [Material 主題建構器](https://m3.material-io.cn/theme-builder#/custom) 產生你的主題配置，也可以透過 Flutter [`ThemeData`](https://api.flutter.cn/flutter/material/ThemeData-class.html) 構造中的 `colorSchemeSeed` (顏色種子) 自動產生一整套的主題：
+你可以直接在應用中的 [`ThemeData`](https://api.flutter.dev/flutter/material/ThemeData-class.html) 裡設定 [`useMaterial3`](https://api.flutter.dev/flutter/material/ThemeData/useMaterial3.html) 來啟用 Material 3。只有在完整的顏色方案下才能展現出 Material 3 最完整的細節，你可以使用新的 [Material 主題建構器](https://m3.material-io.cn/theme-builder#/custom) 產生你的主題配置，也可以透過 Flutter [`ThemeData`](https://api.flutter.dev/flutter/material/ThemeData-class.html) 構造中的 `colorSchemeSeed` (顏色種子) 自動產生一整套的主題：
 
 ```dart
 MaterialApp(
@@ -56,7 +56,7 @@ Flutter 現在可以建立選單欄和級聯選單了。
 
 在 macOS 上，你可以使用 `PlatformMenuBar` widget 來建立選單欄，你的選單欄將由 macOS 系統來渲染，而不是使用 Flutter。
 
-此外，對於所有其他的平台，你可以定義一個 [Material Design 選單](https://m3.material-io.cn/components/menus/overview)，它提供了級聯選單欄 ([`MenuBar`](https://api.flutter.cn/flutter/material/MenuBar-class.html))，或者使用由 UI 介面元素觸發的  ([`MenuAnchor`](https://api.flutter.cn/flutter/material/MenuAnchor-class.html)) 來建立一個級聯選單。這些選單都是完全可自訂的，其中的選單項可以是自訂的 widget，也可以使用新的選單項 widget: ([`MenuItemButton`](https://api.flutter.cn/flutter/material/MenuItemButton-class.html) 和 [`SubmenuButton`](https://api.flutter.cn/flutter/material/SubmenuButton-class.html))。
+此外，對於所有其他的平台，你可以定義一個 [Material Design 選單](https://m3.material-io.cn/components/menus/overview)，它提供了級聯選單欄 ([`MenuBar`](https://api.flutter.dev/flutter/material/MenuBar-class.html))，或者使用由 UI 介面元素觸發的  ([`MenuAnchor`](https://api.flutter.dev/flutter/material/MenuAnchor-class.html)) 來建立一個級聯選單。這些選單都是完全可自訂的，其中的選單項可以是自訂的 widget，也可以使用新的選單項 widget: ([`MenuItemButton`](https://api.flutter.dev/flutter/material/MenuItemButton-class.html) 和 [`SubmenuButton`](https://api.flutter.dev/flutter/material/SubmenuButton-class.html))。
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/f15288d8fe378.png)
 
@@ -74,7 +74,7 @@ Impeller 的進展飛速離不開社群貢獻者的支援。尤其是 [ColdPaleL
 
 ## iOS 釋出校驗
 
-當你在建構一個釋出版本的 iOS 應用時，Flutter 會為你提供 [專案設定檢查清單](https://flutter.cn/docs/deployment/ios#review-xcode-project-settings) 來確保你的應用已經準備好釋出到 App Store。
+當你在建構一個釋出版本的 iOS 應用時，Flutter 會為你提供 [專案設定檢查清單](https://flutter.tw/deployment/ios#review-xcode-project-settings) 來確保你的應用已經準備好釋出到 App Store。
 
 現在 `flutter build ipa` 命令會校驗專案的一部分設定，並且在清單中告知你在釋出前進行更改。
 
@@ -86,7 +86,7 @@ Impeller 的進展飛速離不開社群貢獻者的支援。尤其是 [ColdPaleL
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/0498c7b2659ab.png)
 
-以上的這些記憶體特性已經在 [文件](https://flutter.cn/docs/development/tools/devtools/memory) 中進行了介紹，若你感興趣可以前往瞭解更多細節。
+以上的這些記憶體特性已經在 [文件](https://flutter.tw/development/tools/devtools/memory) 中進行了介紹，若你感興趣可以前往瞭解更多細節。
 
 效能頁面也有一些值得注意的新功能，該頁面現在在頂部新增了 **Frame Analysis** (幀分析) 選項卡，它能夠提供在 Flutter 中詳細追蹤大量消耗的某些幀和操作的一些建議。
 
@@ -94,20 +94,20 @@ Impeller 的進展飛速離不開社群貢獻者的支援。尤其是 [ColdPaleL
 
 除了以上的新功能，本次更新還有其他的問題修復和最佳化改進，包括檢視器 (Inspector)、網路記錄器的 CPU 記錄器的問題修復。你可以檢視下面的 DevTools 更新日誌瞭解更多細節。
 
-- [Flutter DevTools 2.17.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.17.0)
-- [Flutter DevTools 2.18.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.18.0)
-- [Flutter DevTools 2.19.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.19.0)
-- [Flutter DevTools 2.20.0 發行註記](https://flutter.cn/docs/development/tools/devtools/release-notes/release-notes-2.20.0)
+- [Flutter DevTools 2.17.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.17.0)
+- [Flutter DevTools 2.18.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.18.0)
+- [Flutter DevTools 2.19.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.19.0)
+- [Flutter DevTools 2.20.0 發行註記](https://flutter.tw/development/tools/devtools/release-notes/release-notes-2.20.0)
 
 ## 自訂上下文選單
 
 從新版本開始，你可以在 Flutter 應用的任意位置建立自訂的上下文選單，也可以自訂內建的上下文選單。
 
-舉例來說，你可以在使用者選中郵件地址時，為文字框預設的選擇選單新增「傳送郵件」的按鈕 ([程式碼地址](https://github.com/flutter/samples/blob/main/experimental/context_menus/lib/email_button_page.dart))。[`contextMenuBuilder`](https://master-api.flutter-io.cn/flutter/cupertino/CupertinoTextField/contextMenuBuilder.html) 引數也已經新增到現有包含上下文選單的 widget 中。你可以在 `contextMenuBuilder` 中返回任何你想返回的 widget，也包括平台自適應的上下文選單。
+舉例來說，你可以在使用者選中郵件地址時，為文字框預設的選擇選單新增「傳送郵件」的按鈕 ([程式碼地址](https://github.com/flutter/samples/blob/main/experimental/context_menus/lib/email_button_page.dart))。[`contextMenuBuilder`](https://master-api.flutter.dev/flutter/cupertino/CupertinoTextField/contextMenuBuilder.html) 引數也已經新增到現有包含上下文選單的 widget 中。你可以在 `contextMenuBuilder` 中返回任何你想返回的 widget，也包括平台自適應的上下文選單。
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/ffb979eb8fa7d.gif)
 
-這一新特性也可以用於文字選擇以外的場景。例如，你可以為一個 `Image` widget 的右鍵和長按操作新增「儲存」按鈕 ([程式碼地址](https://github.com/flutter/samples/blob/main/experimental/context_menus/lib/image_page.dart))。你也可以使用 [`ContextMenuController`](https://api.flutter.cn/flutter/widgets/ContextMenuController-class.html) 在應用內的任意位置展示平台預設或者自訂的上下文選單。
+這一新特性也可以用於文字選擇以外的場景。例如，你可以為一個 `Image` widget 的右鍵和長按操作新增「儲存」按鈕 ([程式碼地址](https://github.com/flutter/samples/blob/main/experimental/context_menus/lib/image_page.dart))。你也可以使用 [`ContextMenuController`](https://api.flutter.dev/flutter/widgets/ContextMenuController-class.html) 在應用內的任意位置展示平台預設或者自訂的上下文選單。
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/0332c5f7dcc77.gif)
 
@@ -142,7 +142,7 @@ Flutter 對國際化的支援已經煥然一新！我們對 `gen-l10n` 進行了
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/93b17a42072f8.png)
 
-更多內容可以瞭解已經更新的 [Flutter 應用裡的國際化](https://flutter.cn/docs/development/accessibility-and-localization/internationalization) 文件。
+更多內容可以瞭解已經更新的 [Flutter 應用裡的國際化](https://flutter.tw/development/accessibility-and-localization/internationalization) 文件。
 
 ## 全域的選擇最佳化
 
@@ -150,11 +150,11 @@ Flutter 對國際化的支援已經煥然一新！我們對 `gen-l10n` 進行了
 
 ## 後臺 isolate
 
-現在 [平台通道](https://flutter.cn/docs/development/platform-integration/platform-channels) 可以在 [任意 isolate](https://flutter.cn/docs/development/packages-and-plugins/background-processes) 中進行呼叫。先前平台通道只能在主 isolate 中進行呼叫。最佳化後會讓外掛和混合開發呼叫 isolate 和宿主平台程式碼更加簡單。更多內容可以閱讀 [撰寫平台程式碼](https://flutter.cn/docs/development/platform-integration/platform-channels) 文件以及 [介紹後臺 isolate 通道](https://medium.com/flutter/introducing-background-isolate-channels-7a299609cad8) 文章。
+現在 [平台通道](https://flutter.tw/development/platform-integration/platform-channels) 可以在 [任意 isolate](https://flutter.tw/development/packages-and-plugins/background-processes) 中進行呼叫。先前平台通道只能在主 isolate 中進行呼叫。最佳化後會讓外掛和混合開發呼叫 isolate 和宿主平台程式碼更加簡單。更多內容可以閱讀 [撰寫平台程式碼](https://flutter.tw/development/platform-integration/platform-channels) 文件以及 [介紹後臺 isolate 通道](https://medium.com/flutter/introducing-background-isolate-channels-7a299609cad8) 文章。
 
 ## 文字放大鏡
 
-在 Android 和 iOS 上進行文字選擇時會出現的放大鏡現在也會在 Flutter 中出現了。它已經新增至了所有的文字選擇，但是你也可以透過 [`magnifierConfiguration`](https://api.flutter.cn/flutter/material/TextField/magnifierConfiguration.html) 禁用或者自訂。
+在 Android 和 iOS 上進行文字選擇時會出現的放大鏡現在也會在 Flutter 中出現了。它已經新增至了所有的文字選擇，但是你也可以透過 [`magnifierConfiguration`](https://api.flutter.dev/flutter/material/TextField/magnifierConfiguration.html) 禁用或者自訂。
 
 ![](https://devrel.andfun.cn/devrel/posts/2023/01/c375f8ae339e9.gif)
 
@@ -162,17 +162,17 @@ Flutter 對國際化的支援已經煥然一新！我們對 `gen-l10n` 進行了
 
 ## 外掛程式碼遷移至 Swift
 
-Apple 整將它們的程式碼遷移至 Swift，我們也希望能為開發者建構 Swift 外掛的範例和指導。[quick_actions](https://pub.flutter-io.cn/packages/quick_actions) 已經從 Objective-C 遷移至了 Swift，也可以作為 Swift 外掛的最佳實踐。如果你對幫助 Flutter 遷移第一方外掛至 Swift 感興趣，請參考 [wiki 中的 Swift 遷移部分](https://github.com/flutter/flutter/wiki/Contributing-to-Plugins-and-Packages#swift-migration-for-1p-plugins)。
+Apple 整將它們的程式碼遷移至 Swift，我們也希望能為開發者建構 Swift 外掛的範例和指導。[quick_actions](https://pub.dev/packages/quick_actions) 已經從 Objective-C 遷移至了 Swift，也可以作為 Swift 外掛的最佳實踐。如果你對幫助 Flutter 遷移第一方外掛至 Swift 感興趣，請參考 [wiki 中的 Swift 遷移部分](https://github.com/flutter/flutter/wiki/Contributing-to-Plugins-and-Packages#swift-migration-for-1p-plugins)。
 
 **給 iOS 開發者準備的資源**
 
 我們新發布了一系列為 iOS 開發者準備的資源，包括：
 
-- [給 SwiftUI 開發者的 Flutter 指南](https://flutter.cn/docs/get-started/flutter-for/swiftui-devs)
+- [給 SwiftUI 開發者的 Flutter 指南](https://flutter.tw/get-started/flutter-for/swiftui-devs)
 - [給 Swift 開發者的 Dart 指南](https://dart.dev/guides/language/coming-from/swift-to-dart)
-- [給 Swift 開發者的 Flutter 併發開發指南](https://flutter.cn/docs/resources/dart-swift-concurrency)
-- [將 Flutter 新增到現有的 SwiftUI 應用中](https://flutter.cn/docs/development/add-to-app/ios/add-flutter-screen)
-- [為 Flutter 建立多渠道](https://flutter.cn/docs/deployment/flavors) (針對 Android 和 iOS)
+- [給 Swift 開發者的 Flutter 併發開發指南](https://flutter.tw/resources/dart-swift-concurrency)
+- [將 Flutter 新增到現有的 SwiftUI 應用中](https://flutter.tw/development/add-to-app/ios/add-flutter-screen)
+- [為 Flutter 建立多渠道](https://flutter.tw/deployment/flavors) (針對 Android 和 iOS)
 
 ## 廢棄 Bitcode
 
@@ -243,8 +243,8 @@ Bitcode 在 Flutter 應用中預設是關閉的，所以這也不應該會影響
 - [https://twitter.com/TakRutvik/status/1601380047599808513](https://twitter.com/TakRutvik/status/1601380047599808513)
 - [https://twitter.com/wolfenrain/status/1600601043477401606](https://twitter.com/wolfenrain/status/1600601043477401606)
 
-請參閱 [文件網站上的文件](https://flutter.cn/docs/development/ui/advanced/shaders) 以及 pub.dev 上的 
-[`flutter_shaders`](https://pub.flutter-io.cn/packages/flutter_shaders) package 瞭解更多。
+請參閱 [文件網站上的文件](https://flutter.tw/development/ui/advanced/shaders) 以及 pub.dev 上的 
+[`flutter_shaders`](https://pub.dev/packages/flutter_shaders) package 瞭解更多。
 
 ## 字型資源支援熱重載
 

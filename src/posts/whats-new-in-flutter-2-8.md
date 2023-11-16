@@ -51,7 +51,7 @@ Flutter 的首要目標是一如既往地保證其品質。我們花費了大量
 
 ### Web 平台的平臺視圖 (PlatformView)
 
-不僅僅是 Android 和 iOS 平台獲得了效能提升，本次釋出同時包含了對 Flutter Web 平臺視圖的效能最佳化。平臺視圖是從宿主平台向 Flutter 嵌入 UI 元件的媒介。Flutter Web 使用 [HtmlElementView](https://api.flutter-io.cn/flutter/widgets/HtmlElementView-class.html) widget 實現了這一功能，讓你能在 Flutter Web 應用中嵌入 HTML 元素。如果你正在使用 `google_maps_flutter` 外掛或 `video_player` 外掛的 Web 版本，或者你正在遵循 Flutter 團隊關於 [如何最佳化網路上顯示圖像](https://flutter.cn/docs/development/platform-integration/web-images#use-img-in-a-platform-view) 的建議，那說明你已經在使用平臺視圖了。
+不僅僅是 Android 和 iOS 平台獲得了效能提升，本次釋出同時包含了對 Flutter Web 平臺視圖的效能最佳化。平臺視圖是從宿主平台向 Flutter 嵌入 UI 元件的媒介。Flutter Web 使用 [HtmlElementView](https://api.flutter.dev/flutter/widgets/HtmlElementView-class.html) widget 實現了這一功能，讓你能在 Flutter Web 應用中嵌入 HTML 元素。如果你正在使用 `google_maps_flutter` 外掛或 `video_player` 外掛的 Web 版本，或者你正在遵循 Flutter 團隊關於 [如何最佳化網路上顯示圖像](https://flutter.tw/development/platform-integration/web-images#use-img-in-a-platform-view) 的建議，那說明你已經在使用平臺視圖了。
 
 在之前版本的 Flutter 中，嵌入平臺視圖會建立一個新的 canvas，每嵌入一個平臺視圖都會新增一個 canvas。
 建立額外的 canvas 是十分消耗效能的操作，因為每個 canvas 的大小都與整個視窗相等。在 Flutter 2.8 中，將 [複用為先前的平臺視圖建立的 canvas](https://github.com/flutter/engine/pull/28087)。因此，你不會在應用的整個生命週期內產生每秒 60 倍的成本，而是隻有一次建立的成本。這意味著你可以在 Web 應用中擁有多個 `HtmlElementView` 例項而不會降低效能，同時還可以減少使用平臺視圖時的滾動卡頓。
@@ -62,13 +62,13 @@ Flutter 不僅僅是框架、引擎和工具——pub.dev 上現有超過 2w 個
 
 ### 適用於 Flutter 廣告的 Google 廣告
 
-首先也是最重要的是，[Google Mobile SDK for Flutter 已於 11 月正式釋出](https://medium.com/flutter/announcing-general-availability-for-the-google-mobile-ads-sdk-for-flutter-574e51ea6783)。此版本支援 5 種廣告格式，集成了 AdMob 和 Ad Manager 支援，幷包含一個新的中轉功能的測試版，可以幫助你最佳化廣告展現的效果。有關將 Google Ads 整合到 Flutter 應用以及其他貨幣化選項的更多資訊，請檢視 [Flutter 網站上的頁面](https://flutter.cn/monetization)。
+首先也是最重要的是，[Google Mobile SDK for Flutter 已於 11 月正式釋出](https://medium.com/flutter/announcing-general-availability-for-the-google-mobile-ads-sdk-for-flutter-574e51ea6783)。此版本支援 5 種廣告格式，集成了 AdMob 和 Ad Manager 支援，幷包含一個新的中轉功能的測試版，可以幫助你最佳化廣告展現的效果。有關將 Google Ads 整合到 Flutter 應用以及其他貨幣化選項的更多資訊，請檢視 [Flutter 網站上的頁面](https://flutter.dev/monetization)。
 
 ![](https://files.flutter-io.cn/posts/flutter-cn/2021/whats-new-in-flutter-2-8/admob-sdk-flutter-ga.png)
 
 ### WebView 3.0
 
-這次 Flutter 附帶的另一個新版本是 [webview_flutter 外掛](https://pub.flutter-io.cn/packages/webview_flutter) 的 3.0 版本。因為新功能的數量增加，我們提升了主要版本號，但也因為 Web 檢視在 Android 上的工作方式可能發生了重大變化。在之前的 `webview_flutter` 版本中，Hybrid composition 已經可用，但不是預設的。而現在它修復了先前預設以虛擬顯示模式執行的許多問題。
+這次 Flutter 附帶的另一個新版本是 [webview_flutter 外掛](https://pub.dev/packages/webview_flutter) 的 3.0 版本。因為新功能的數量增加，我們提升了主要版本號，但也因為 Web 檢視在 Android 上的工作方式可能發生了重大變化。在之前的 `webview_flutter` 版本中，Hybrid composition 已經可用，但不是預設的。而現在它修復了先前預設以虛擬顯示模式執行的許多問題。
 根據使用者反饋和我們的問題追蹤，我們認為是時候讓 Hybrid composition 成為預設設定了。此外，`webview_flutter` 還增加了一些呼聲極高的功能: 
 
 * 支援使用 POST 和 GET 來載入內容
@@ -133,19 +133,19 @@ dependencies:
 
 Flutter 生態系統委員會再次召開會議，將以下 package 指定為 Flutter Favorite 的 package: 
 
-* 新路由 API (又名 Navigator 2) 的三個自訂路由 package: [beamer](https://pub.flutter-io.cn/packages/beamer)、[routemaster](https://pub.flutter-io.cn/packages/routemaster) 和 [go_router](https://pub.flutter-io.cn/packages/go_router)；
-* [drift](https://pub.flutter-io.cn/packages/drift): 對 Flutter 和 Dart 已經功能強大且流行的響應式永續性庫的重新命名，基於 sqlite 建構；
-* [freezed](https://pub.flutter-io.cn/packages/freezed): 一個 Dart「語言補丁」，為定義模型、複製物件、模式匹配等提供簡單的語法；
-* [dart_code_metrics](https://pub.flutter-io.cn/packages/dart_code_metrics): 一個幫助您分析和提高程式碼品質的靜態分析工具；
-* 以及有著漂亮介面的 package: [flex_color_scheme](https://pub.flutter-io.cn/packages/flex_color_scheme)、[flutter_svg](https://pub.flutter-io.cn/packages/flutter_svg)、[feedback](https://pub.flutter-io.cn/packages/feedback)、[toggle_switch](https://pub.flutter-io.cn/packages/toggle_switch) 和 [auto_size_text](https://pub.flutter-io.cn/packages/auto_size_text)。
+* 新路由 API (又名 Navigator 2) 的三個自訂路由 package: [beamer](https://pub.dev/packages/beamer)、[routemaster](https://pub.dev/packages/routemaster) 和 [go_router](https://pub.dev/packages/go_router)；
+* [drift](https://pub.dev/packages/drift): 對 Flutter 和 Dart 已經功能強大且流行的響應式永續性庫的重新命名，基於 sqlite 建構；
+* [freezed](https://pub.dev/packages/freezed): 一個 Dart「語言補丁」，為定義模型、複製物件、模式匹配等提供簡單的語法；
+* [dart_code_metrics](https://pub.dev/packages/dart_code_metrics): 一個幫助您分析和提高程式碼品質的靜態分析工具；
+* 以及有著漂亮介面的 package: [flex_color_scheme](https://pub.dev/packages/flex_color_scheme)、[flutter_svg](https://pub.dev/packages/flutter_svg)、[feedback](https://pub.dev/packages/feedback)、[toggle_switch](https://pub.dev/packages/toggle_switch) 和 [auto_size_text](https://pub.dev/packages/auto_size_text)。
 
 ![使用 flex_color_scheme 建構的可靈活摺疊的應用](https://files.flutter-io.cn/posts/flutter-cn/2021/whats-new-in-flutter-2-8/flex_color_scheme-demo-in-2-8.gif)
 
-祝賀這些 package 的作者，並感謝你透過你的辛勤工作支援 Flutter 社群。如果你有興趣提名你最喜歡的 Flutter package 加入 Flutter Favorite 嘉獎，請按照 [Flutter Favorite 計劃頁面](https://flutter.cn/docs/development/packages-and-plugins/favorites) 上的指南和說明進行操作。
+祝賀這些 package 的作者，並感謝你透過你的辛勤工作支援 Flutter 社群。如果你有興趣提名你最喜歡的 Flutter package 加入 Flutter Favorite 嘉獎，請按照 [Flutter Favorite 計劃頁面](https://flutter.tw/development/packages-and-plugins/favorites) 上的指南和說明進行操作。
 
 ### 特定平台的外掛
 
-如果你是 package / 外掛作者，你需要宣告和實現支援哪些平台。如果你正在使用特定於平台的原生程式碼建構外掛，你可以 [使用專案 pubspec.yaml 中的 pluginClass 屬性](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#plugin-platforms)
+如果你是 package / 外掛作者，你需要宣告和實現支援哪些平台。如果你正在使用特定於平台的原生程式碼建構外掛，你可以 [使用專案 pubspec.yaml 中的 pluginClass 屬性](https://flutter.tw/development/packages-and-plugins/developing-packages#plugin-platforms)
 來實現，該屬性將指定提供原生功能的原生類別名稱: 
 
 ```yaml
@@ -159,7 +159,7 @@ flutter:
         pluginClass: HelloPlugin
 ```
 
-然而，隨著 Dart FFI 變得更加成熟，有可能使用 100% 的 Dart 實現特定平台的功能，就像 [path_provider_windows package](https://pub.flutter-io.cn/packages/path_provider_windows) 所做的那樣。在這種情況下，你沒有任何本地類可以使用，但你仍然希望將你的外掛指定為僅支援某些平台。此時你可以改用 `dartPluginClass` 屬性: 
+然而，隨著 Dart FFI 變得更加成熟，有可能使用 100% 的 Dart 實現特定平台的功能，就像 [path_provider_windows package](https://pub.dev/packages/path_provider_windows) 所做的那樣。在這種情況下，你沒有任何本地類可以使用，但你仍然希望將你的外掛指定為僅支援某些平台。此時你可以改用 `dartPluginClass` 屬性: 
 
 ```yaml
 flutter:
@@ -170,7 +170,7 @@ flutter:
         dartPluginClass: HelloPluginWindows
 ```
 
-經過這樣的設定後，即使你沒有任何本機程式碼，也可以為特定平台客製外掛。你還必須提供 Dart 外掛的類，有關詳細內容，你可以在 [Flutter 文件上閱讀 Dart 平台實現文件](https://flutter.cn/docs/development/packages-and-plugins/developing-packages#dart-only-platform-implementations) 以瞭解更多。
+經過這樣的設定後，即使你沒有任何本機程式碼，也可以為特定平台客製外掛。你還必須提供 Dart 外掛的類，有關詳細內容，你可以在 [Flutter 文件上閱讀 Dart 平台實現文件](https://flutter.tw/development/packages-and-plugins/developing-packages#dart-only-platform-implementations) 以瞭解更多。
 
 ## Firebase 相關的更新
 
@@ -485,7 +485,7 @@ Flutter 的釋出「渠道」(也就是 channel) 決定了 Flutter 框架和引�
 * [90295](https://github.com/flutter/flutter/pull/90295) 移除已廢棄的 `BottomNavigationBarItem.title`
 * [90296](https://github.com/flutter/flutter/pull/90296) 移除已廢棄的文字輸入格式化類
 
-如果你仍在使用這些 API 並想了解如何遷移程式碼，你可以閱讀 [Flutter 文件網站上的遷移指南](https://flutter.cn/docs/release/breaking-changes/2-5-deprecations)。
+如果你仍在使用這些 API 並想了解如何遷移程式碼，你可以閱讀 [Flutter 文件網站上的遷移指南](https://flutter.tw/release/breaking-changes/2-5-deprecations)。
 與往常一樣，非常感謝社群 [貢獻的測試使用案例](https://github.com/flutter/tests/blob/master/README.md)，幫助我們識別這些破壞性改動。
 
 ## 總結

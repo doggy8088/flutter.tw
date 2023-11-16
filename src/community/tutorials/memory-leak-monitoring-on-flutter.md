@@ -97,7 +97,7 @@ Flutter 中的 Dart 是不支援反射的（為了最佳化打包體積，關閉
 [Dart VM Service](https://github.com/dart-lang/sdk/blob/master/runtime/vm/service/service.md) （後面簡稱 `vm_service`）
 是 Dart 虛擬機器內部提供的一套 Web 服務，資料傳輸協議是 JSON-RPC 2.0。
 不過我們並不需要要自己去實現資料請求解析，
-官方已經寫好了一個可用的 Dart SDK 給我們用：[`vm_service`](https://pub.flutter-io.cn/packages/vm_service)。
+官方已經寫好了一個可用的 Dart SDK 給我們用：[`vm_service`](https://pub.dev/packages/vm_service)。
 
 ### `ObjRef`, `Obj` 和 `id` 的作用
 
@@ -129,7 +129,7 @@ Flutter 中的 Dart 是不支援反射的（為了最佳化打包體積，關閉
 - iOS 在 `FlutterEngine.observatoryUrl` 中。
 
 有了 URI 之後我們就可以使用 `vm_service` 的服務了，
-官方有一個幫我們寫好的 SDK: [vm_service](https://pub.flutter-io.cn/packages/vm_service) ，
+官方有一個幫我們寫好的 SDK: [vm_service](https://pub.dev/packages/vm_service) ，
 直接使用內部的 `vmServiceConnectUri` 就可以獲得一個可用的 `VmService` 物件。
 
 {{site.alert.note}}

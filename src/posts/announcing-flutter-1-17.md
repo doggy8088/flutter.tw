@@ -47,7 +47,7 @@ Apple 的 Metal API 使開發者幾乎直接存取底層 GPU，它也是 Apple �
 
 ## **Material widgets: NavigationRail, DatePicker, 以及更多**
 
-基於多方使用者的反饋，我們也在持續推進 Material 設計系統在 Flutter 中落地。在新版本中我們加入了 [NavigationRail](https://master-api.flutter-io.cn/flutter/material/NavigationRail-class.html)，這是一個新的 widget，提供了響應式的應用導航模型。它由 Google Material Design 團隊 [設計](https://material.io/components/navigation-rail) 並實現。NavigationRail 非常適合可以在移動和桌面裝置之間切換的應用，當您的應用所在的螢幕尺寸增大時，您可以非常容易地從 BottomNavigator 切換成 NavigationRail。
+基於多方使用者的反饋，我們也在持續推進 Material 設計系統在 Flutter 中落地。在新版本中我們加入了 [NavigationRail](https://master-api.flutter.dev/flutter/material/NavigationRail-class.html)，這是一個新的 widget，提供了響應式的應用導航模型。它由 Google Material Design 團隊 [設計](https://material.io/components/navigation-rail) 並實現。NavigationRail 非常適合可以在移動和桌面裝置之間切換的應用，當您的應用所在的螢幕尺寸增大時，您可以非常容易地從 BottomNavigator 切換成 NavigationRail。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/10uOeq.gif)
 
@@ -73,7 +73,7 @@ DatePicker 基於更新過的 [Material 設計指南](https://material.io/compon
 
 如上圖，當按鈕總長度超過了顯示範圍時，[Android](https://github.com/flutter/flutter/pull/49391) 和 [iOS](https://github.com/flutter/flutter/pull/54140) 中的文字選擇選單保真度也得到了提高。選單文字越長，這項更新越顯著。
 
-另外，[全新的 Animations Package](https://pub.flutter-io.cn/packages/animations)，雖然並沒有被包含進 Flutter 1.17 版本中，但也已同期釋出。它實現了 [新的 Material 動效規範](https://material.io/design/motion/the-motion-system.html)。
+另外，[全新的 Animations Package](https://pub.dev/packages/animations)，雖然並沒有被包含進 Flutter 1.17 版本中，但也已同期釋出。它實現了 [新的 Material 動效規範](https://material.io/design/motion/the-motion-system.html)。
 
 ![](https://devrel.andfun.cn/devrel/posts/2021/05/cDpbsU.gif)
 

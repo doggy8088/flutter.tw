@@ -183,7 +183,7 @@ in your app, see the [documentation for conditional imports][]
 on [dart.dev]({{site.dart-site}}).
 
 部分外掛需要在特定平台匯入庫或者檔案，尤其是當使用瀏覽器無法存取的檔案系統時。
-若要在你的應用裡使用這些外掛，請參閱 [dart.cn]({{site.dart-site}})：
+若要在你的應用裡使用這些外掛，請參閱 [dart.tw.gh.miniasp.com]({{site.dart-site}})：
 [選擇性的匯入][documentation for conditional imports]。
 
 ### Does Flutter web support concurrency?

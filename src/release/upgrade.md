@@ -97,7 +97,7 @@ Flutter 團隊的外掛和 packages 的持續整合包括
 The latest documentation for the **stable** branch
 is at: <https://api.flutter.dev>
 
-**stable** 分支的最新文件在： <https://api.flutter.cn>。
+**stable** 分支的最新文件在： <https://api.flutter.dev>。
 
 ### The **beta** channel
 
@@ -151,7 +151,7 @@ it is more likely to contain serious regressions.
 The latest documentation for the **master** branch
 is at: <https://main-api.flutter.dev>
 
-**master** 分支的最新文件在： <https://master-api.flutter-io.cn>。
+**master** 分支的最新文件在： <https://master-api.flutter.dev>。
 
 ### Changing channels
 
@@ -237,7 +237,7 @@ the Dart [`pub outdated` documentation]({{site.dart-site}}/tools/pub/cmd/pub-out
 
 如果需要自動判斷那些過時了的 package 依賴以及獲取更新建議，
 現在你可以使用 `outdated` 命令。更多相關的資訊，
-請參考 Dart 文件中關於 [`pub outdated`](https://dart.cn/tools/pub/cmd/pub-outdated) 的說明。
+請參考 Dart 文件中關於 [`pub outdated`](https://dart.tw.gh.miniasp.com/tools/pub/cmd/pub-outdated) 的說明。
 
 ```terminal
 $ flutter pub outdated

@@ -1256,7 +1256,7 @@ published to pub.dev/documentation.
 For example, see the docs for [`device_info`][].
 
 當你提交一個 package 時，會自動產生 API 文件並將其提交到 
-pub.flutter-io.cn/documentation，範例請參見 [`device_info`][] 文件。
+pub.dev/documentation，範例請參見 [`device_info`][] 文件。
 
 If you wish to generate API documentation locally on
 your development machine, use the following commands:
