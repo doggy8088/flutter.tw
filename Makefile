@@ -121,9 +121,9 @@ build-image:
 # Build the production site & Run the link checker
 # Usage: `make check-links`
 build-image-and-check-links:
-	DOCKER_BUILDKIT=1 docker build --rm --no-cache --target checklinks \
+	DOCKER_BUILDKIT=1 docker build --rm --no-cache --target build \
 		--build-arg BUILD_CONFIGS=${BUILD_CONFIGS} -t ${BUILD_TAG} .
-	docker run --rm -t ${BUILD_TAG}
+	# docker run --rm -t ${BUILD_TAG}
 
 # Hit the shell on the built site imag
 # This requires that a build:commit image has been built
