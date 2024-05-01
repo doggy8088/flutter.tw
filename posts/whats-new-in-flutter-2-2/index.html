@@ -1,0 +1,3739 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>Flutter 2.2 更新詳解 | Flutter 中文文件 - Flutter 中文開發者網站 - Flutter</title>
+    <link rel="icon" href="/assets/images/cn/flutter-icon.png">
+    <link rel="apple-touch-icon" href="/assets/images/cn/flutter-320px.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.cn">
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+    <!--      <meta name="google-site-verification" content="" />-->
+     <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','G-HPSFTRXK91');
+      </script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-122680122-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?459029b086376519fc9bf43c184e2a4f";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      </script>
+    
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@flutterchina">
+
+    <meta property="og:title" content="Flutter 2.2 更新詳解">
+    <meta property="og:url" content="https://flutter.tw/posts/whats-new-in-flutter-2-2">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://flutter.tw/assets/images/cn/flutter-cn-logo.png">
+
+    <link rel="preconnect" href="https://files.flutter-io.cn">
+    <link href="https://files.flutter-io.cn/fonts/flutter/fonts.css" rel="stylesheet">
+    <link href="https://files.flutter-io.cn/fonts/material-icons/material-icons-symbols-outlined.css" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" /> -->
+    <script>
+      window.__CALLBACKS = [];
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/main.css?v=1714594673">
+    </head>
+  <body>
+
+<!--    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+-->
+
+   
+     <noscript>
+       <iframe
+         src="https://www.googletagmanager.com/ns.html?id=G-HPSFTRXK91"
+         height="0" width="0" style="display:none;visibility:hidden">
+       </iframe>
+     </noscript>
+   
+
+    <div id="overlay-under-drawer"></div>
+
+    
+
+<header class="site-header">
+  <nav class="navbar navbar-expand-md justify-content-start justify-content-md-between">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="material-symbols">menu</i>
+    </button>
+
+    <a class="navbar-brand" href="https://flutter.tw/">
+      <img
+        src='/assets/images/cn/flutter-cn-logo.png'
+        alt='Flutter CN logo'
+        height="37"
+        width="129"
+        class="align-middle">
+    </a>
+
+    <div
+      id="navbarSupportedContent"
+      class="collapse navbar-collapse flex-grow-0">
+      <div
+        class="site-header__sheet-bg"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+      </div>
+      <div class="site-header__sheet">
+        <ul class="navbar-nav">
+          <div class="site-sidebar site-sidebar--header d-md-none">
+            <ul class="nav flex-column"><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-1" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-1"
+          >開始使用 Flutter</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-1">
+            <li class="nav-item">
+    <a class="nav-link" href="/get-started/install">安裝和環境設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/test-drive">開發體驗初探</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/codelab">編寫第一個 Flutter 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/learn-more">瞭解更多</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-1-6"
+      href="#header-sidenav-1-6" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-1-6"
+    >擁有其他平台開發經驗？
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/android-devs">給 Android 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/swiftui-devs">給 iOS SwiftUI 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/uikit-devs">給 iOS UIKit 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/react-native-devs">給 React Native 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/web-devs">給 Web 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/xamarin-forms-devs">給 Xamarin.Forms 開發者的 Flutter 指南</a>
+  </li>
+
+<div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/declarative">宣告式 UI 介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/dart-swift-concurrency">Flutter 對比 Swift 的併發</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dart.tw.gh.miniasp.com/overview" target="_blank" rel="noopener">Dart 語言概覽</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-2" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-2"
+          >保持版本更新</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-2">
+            <li class="nav-item">
+    <a class="nav-link" href="/release/upgrade">版本升級</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/archive">SDK 版本清單</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link" href="/release/whats-new">最近更新</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/release-notes">版本發行注記</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/breaking-changes">破壞性改動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/compatibility-policy">相容性策略</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-3" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-3"
+          >教程和範例程式碼</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-3">
+            <li class="nav-item">
+    <a class="nav-link" href="/codelabs">Codelabs</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook">實用教程 (Cookbook)</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">GitHub 上的範例應用</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-4" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-4"
+          >應用解決方案</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-4">
+            <li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-4-1"
+      href="#header-sidenav-4-1" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-4-1"
+    >遊戲
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-4-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/resources/games-toolkit">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/games/achievements-leaderboard">新增成就和排行榜</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/plugins/google-mobile-ads">新增廣告</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/games/firestore-multiplayer">新增多人遊戲支援</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0" target="_blank" rel="noopener">新增應用內購買</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://firebase.google.cn/codelabs/firebase-auth-in-flutter-apps#0" target="_blank" rel="noopener">新增使用者身份驗證</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://firebase.google.cn/docs/crashlytics/get-started?platform=flutter" target="_blank" rel="noopener">使用 Crashlytics 除錯</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-4-2"
+      href="#header-sidenav-4-2" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-4-2"
+    >新聞
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-4-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/resources/news-toolkit">建立新聞應用程式</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-4-3"
+      href="#header-sidenav-4-3" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-4-3"
+    >盈利
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-4-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/monetization" target="_blank" rel="noopener">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0" target="_blank" rel="noopener">新增應用內購買</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-4-4"
+      href="#header-sidenav-4-4" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-4-4"
+    >地圖
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-4-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://developers.google.com/maps/flutter-package" target="_blank" rel="noopener">為應用程式新增地圖</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-header">使用者介面</li>
+    <li class="nav-item">
+          <a class=" nav-link" href="/ui">介紹</a>
+        </li>
+      <li class="nav-item">
+          <a class=" nav-link" href="/ui/widgets">Widget 目錄</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-9" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-9"
+          >佈局建立</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-9">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/layout">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/tutorial">佈局建立教程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-9-3"
+      href="/ui/layout/lists" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-9-3"
+    >清單 & 網格
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-9-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/basic-list">建立與使用清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/horizontal-list">建立一個橫向清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/grid-lists">建立一個網格檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/mixed-list">建立包含不同型別元素的清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/spaced-items">建立元素之間包含間隔的清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/long-lists">處理長清單</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-9-4"
+      href="/ui/layout/scrolling" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-9-4"
+    >捲動
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-9-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/layout/scrolling">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/scrolling/slivers">使用 Slivers 實現各種捲動需求</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/floating-app-bar">在清單開頭新增一個浮動的頂欄</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/parallax-scrolling">建立一個平行錯位捲動的效果</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-9-5"
+      href="/ui/layout/responsive" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-9-5"
+    >回應式設計
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-9-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/layout/responsive/adaptive-responsive">建立回應式和自適應的應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/responsive/building-adaptive-apps">建立自適應應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/orientation">根據旋轉角度更新應用的介面元素</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-10" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-10"
+          >設計 & 主題</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-10">
+            <li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/themes">共享主題樣式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/design/material">Material 設計</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/breaking-changes/material-3-migration">遷移至 Material 3</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-10-4"
+      href="/ui/design/text" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-10-4"
+    >文字
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-10-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/design/text/typography">字型 & 版式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/fonts">使用自定義字型</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/package-fonts">將字型從 package 中對外暴露</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google 字型 package</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-10-5"
+      href="/ui/design/graphics" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-10-5"
+    >自定義圖形
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-10-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/design/graphics/fragment-shaders">使用自定義的著色器</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-11" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-11"
+          >互動</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-11">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity">為你的應用新增互動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-11-2"
+      href="/ui/interactivity/gestures" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-11-2"
+    >手勢
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-11-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/gestures">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/handling-taps">處理點選</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/gestures/drag-outside">跨應用拖放物件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/drag-a-widget">拖動介面元素</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/ripples">新增 Material 風格的水波紋</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/dismissible">實現滑動取消</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-11-3"
+      href="/ui/interactivity/input" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-11-3"
+    >輸入 & 表單
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-11-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/text-input">建立輸入框並且調整樣式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/retrieve-input">讀取輸入框的內容</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/text-field-changes">處理輸入框的內容變動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/focus">管理輸入框之間的焦點</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/validation">建立具有校驗功能的表單</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/snackbars">展示 SnackBar</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/actions-and-shortcuts">實現快捷方式和捷徑</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/focus">管理鍵盤焦點</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-12" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-12"
+          >資源 & 媒體</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-12">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/assets/assets-and-images">新增資源和圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/images/network-image">載入網路圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/images/fading-in-images">從佔位圖轉場到圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/plugins/play-video">播放及暫停影片</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-13" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-13"
+          >導向 & 路由</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-13">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/navigation">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/tabs">新增 Tab 到應用中</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/navigation-basics">導向至新頁面並回傳</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/passing-data">傳遞資料到新頁面</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/returning-data">從新頁面回傳資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/drawer">在頁面上新增抽屜</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/navigation/deep-linking">設定 Deeplink</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/set-up-app-links">設定 Android Deeplink</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/set-up-universal-links">設定 iOS Universal Link</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/navigation/url-strategies">設定 Web 的 URL 策略</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-14" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-14"
+          >動畫 & 轉場</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-14">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/animations">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/tutorial">教程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/implicit-animations">隱式動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/animated-container">轉場 Container 的屬性</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/opacity-animation">漸入漸出 widget</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/hero-animations">Hero（跨頁面共享元素）動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/page-route-animation">頁面轉場動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/physics-simulation">模擬物理屬性動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/staggered-animations">交錯動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/staggered-menu-animation">建立選單的交錯動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/overview">API 概覽</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-15" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-15"
+          >無障礙 & 國際化</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-15">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/accessibility-and-internationalization/accessibility">無障礙</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/accessibility-and-internationalization/internationalization">國際化</a>
+  </li>
+
+
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-header">介面以外的開發</li>
+    <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-18" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-18"
+          >資料呼叫和後端</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-18">
+            <li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-18-1"
+      href="/data-and-backend/state-mgmt" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-18-1"
+    >狀態管理
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-18-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/intro">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/declarative">從宣告式的角度思考</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/ephemeral-vs-app">短暫狀態 & 持久狀態</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/simple">簡單的狀態管理</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/options">狀態管理參考</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-18-2"
+      href="/data-and-backend/networking" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-18-2"
+    >網路 & http
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-18-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/networking">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/fetch-data">從網路上獲取資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/authenticated-requests">建立需要認證的請求</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/send-data">傳送資料到伺服器</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/update-data">更新網路上的資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/delete-data">刪除網路上的資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/web-sockets">WebSocket 通訊</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-18-3"
+      href="/data-and-backend/serialization" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-18-3"
+    >序列化
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-18-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/serialization/json">JSON 序列化</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/background-parsing">在後台處理 JSON 解析</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-18-4"
+      href="/data-and-backend/persistence" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-18-4"
+    >持久化
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-18-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/key-value">將 key-value 資料儲存在硬碟上</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/reading-writing-files">讀寫檔案</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/sqlite">利用 SQLite 持久化資料</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/firebase">Firebase</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/google-apis">Google APIs</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-19" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-19"
+          >平台整合</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19">
+            <li class="nav-item">
+    <a class="nav-link" href="/reference/supported-platforms">支援的平台</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/desktop">建立桌面端應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/platform-channels">撰寫平台程式碼 (外掛編寫實現)</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/platform-adaptations">自動化平台適配</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-5"
+      href="/platform-integration/android" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-5"
+    >Android 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/splash-screen">新增螢幕閃爍頁</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/c-interop">呼叫原生程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/platform-views">託管 Android 原生檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/restore-state-android">在 Android 上恢復狀態</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/chromeos">建立適合 Chrome OS 的 Android 應用</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-6"
+      href="/platform-integration/ios" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-6"
+    >iOS 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/apple-frameworks">使用 Apple 的系統函式庫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/launch-screen">新增啟動頁</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/ios-app-clip">新增 iOS App Clip 支援</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/app-extensions">新增 iOS App 擴充套件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/c-interop">呼叫原生程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/platform-views">託管 iOS 原生檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/ios-debugging">iOS 平台除錯</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/restore-state-ios">在 iOS 上恢復狀態</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-7"
+      href="/platform-integration/linux" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-7"
+    >Linux 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/linux/building">建立 Linux 桌面軟體</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-8"
+      href="/platform-integration/macos" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-8"
+    >macOS 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/macos/building">建立 macOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/macos/c-interop">C 語言程式碼整合及呼叫</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-9"
+      href="/platform-integration/web" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-9"
+    >Web 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-9">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/building">建立一個 Web 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/faq">Web 平台常見問題</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/renderers">Web 平台渲染器</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/initialization">自定義 Web 應用初始化</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/web-images">在網頁裡顯示圖片</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-19-10"
+      href="/platform-integration/windows" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-19-10"
+    >Windows 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-19-10">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/windows/building">建立 Windows 桌面軟體</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-20" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-20"
+          >Package 和外掛</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-20">
+            <li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/using-packages">使用 package 和外掛</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/developing-packages">開發 Package 和外掛</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/favorites">Flutter Favorites 專案</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package 倉庫</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-21" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-21"
+          >測試和除錯</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-21">
+            <li class="nav-header">測試</li><li class="nav-item">
+    <a class="nav-link" href="/testing/overview">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-21-3"
+      href="#header-sidenav-21-3" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-21-3"
+    >單元測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-21-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/unit/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/unit/mocking">模擬依賴</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-21-4"
+      href="#header-sidenav-21-4" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-21-4"
+    >Widget 測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-21-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/finders">尋找 widgets</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/scrolling">模擬捲動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/tap-drag">模擬使用者操作</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-21-5"
+      href="#header-sidenav-21-5" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-21-5"
+    >整合測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-21-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/integration/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/integration-tests">編寫並執行整合測試</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/integration/profiling">衡量整合測試的效能指標</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/testing/testing-plugins">測試外掛</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/plugins-in-tests">在測試中處理外掛程式碼</a>
+  </li>
+
+<li class="nav-header">除錯</li><li class="nav-item">
+    <a class="nav-link" href="/testing/debugging">除錯工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/code-debugging">透過程式碼除錯應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/native-debugging">使用原生語言的除錯</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/build-modes">Flutter 的建立模式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/common-errors">常見的 Flutter 錯誤</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/errors">處理錯誤</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/maintenance/error-reporting">將錯誤上報到收集服務</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-22" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-22"
+          >效能最佳化</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-22">
+            <li class="nav-item">
+    <a class="nav-link" href="/perf">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/impeller">使用 Impeller</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/best-practices">效能最佳實踐</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/app-size">應用大小</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/deferred-components">延遲載入元件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/rendering-performance">渲染效能</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/ui-performance">效能分析</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/web-performance">Web 效能分析</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/shader">著色器編譯時卡頓</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/metrics">效能指標</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/isolates">併發與隔離</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/faq">效能常見問題和回答</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/appendix">附錄</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-23" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-23"
+          >打包部署</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-23">
+            <li class="nav-item">
+    <a class="nav-link" href="/deployment/obfuscate">混淆 Dart 程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/flavors">設定 flavors</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/android">建立和發布為 Android 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/ios">建立和發布為 iOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/macos">建立和發布為 macOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/linux">建立和發布為 Linux 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/windows">建立和發布為 Windows 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/web">建立和發布為 Web 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/cd">持續部署</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-24" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-24"
+          >將 Flutter 新增到現有應用</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-24">
+            <li class="nav-item">
+    <a class="nav-link" href="/add-to-app">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-24-2"
+      href="/add-to-app/android" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-24-2"
+    >將 Flutter 新增到現有 Android 應用
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-24-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/project-setup">工程設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-screen">新增單個 Flutter 頁面</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-fragment">新增一個 Flutter Fragment</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-view">新增 Flutter 檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/plugin-setup">Plugin 初始化</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-24-3"
+      href="/add-to-app/ios" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-24-3"
+    >將 Flutter 新增到現有 iOS 應用
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-24-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/add-to-app/ios/project-setup">工程設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/ios/add-flutter-screen">新增單個 Flutter 頁面</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/add-to-app/debugging">除錯及熱過載</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/multiple-flutters">多個 Flutter 實例</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/performance">載入順序和效能</a>
+  </li>
+
+
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-26" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-26"
+          >工具 & 程式碼編輯器</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-26">
+            <li class="nav-item">
+    <a class="nav-link" href="/tools/android-studio">Android Studio & IntelliJ</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">Visual Studio Code</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#header-sidenav-26-3"
+      href="/tools/devtools" role="button"
+      aria-expanded="false" aria-controls="header-sidenav-26-3"
+    >DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-26-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/overview">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/android-studio">在 Android Studio & IntelliJ 中安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/vscode">在 VS Code 中安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/cli">利用終端指令安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/performance">效能檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/cpu-profiler">CPU 效能檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/memory">記憶體檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/console">除錯控制條檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/network">網路檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/debugger">除錯工具 Debugger</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/logging">日誌檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/app-size">應用體積工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/extensions">DevTools 擴充套件工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/release-notes">發布日誌</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">SDK 概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/pubspec">Flutter pubspec 選項</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/flutter-fix">自動修復</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/formatting">程式碼格式化</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-27" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-27"
+          >Flutter 相關概念</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-27">
+            <li class="nav-item">
+    <a class="nav-link" href="/resources/architectural-overview">Flutter 架構概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/inside-flutter">Flutter 工作原理</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/constraints">理解佈局約束</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/build-modes">Flutter 建立模式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/hot-reload">熱過載</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#header-sidenav-28" role="button"
+             aria-expanded="false" aria-controls="header-sidenav-28"
+          >開發者資源清單</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="header-sidenav-28">
+            <li class="nav-header">學習</li><li class="nav-item">
+    <a class="nav-link" href="/resources/faq">常見問題解答</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/books">相關書籍</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">相關影片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/courses">相關課程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/bootstrap-into-dart">學習 Dart</a>
+  </li>
+
+<li class="nav-header">貢獻</li><li class="nav-item">
+    <a class="nav-link" href="/resources/bug-reports">提出 Bug</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/flutter/flutter/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">為 Flutter 做出貢獻</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3A%22design+doc%22" target="_blank" rel="noopener">設計文件</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link  collapsable" data-toggle="collapse" href="#header-sidenav-29" role="button"
+             aria-expanded="true" aria-controls="header-sidenav-29"
+          >更多資料</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse show" id="header-sidenav-29">
+            <li class="nav-item">
+    <a class="nav-link" href="/dash">瞭解 Dash</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/reference/widgets">Flutter Widget 清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev" target="_blank" rel="noopener">Flutter API 文件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/reference/flutter-cli">Flutter 指令行文件</a>
+  </li>
+
+
+</ul>
+        </li></ul>
+
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="platform-navbar-dropdown"
+               href="https://flutter.cn/multi-platform"
+               role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               多平臺
+            </a>
+            <div class="dropdown-menu" aria-labelledby="platform-navbar-dropdown">
+              <a class="dropdown-item" href="https://flutter.cn/multi-platform/mobile">行動平台</a>
+              <a class="dropdown-item" href="https://flutter.cn/multi-platform/web">Web 平台</a>
+              <a class="dropdown-item" href="https://flutter.cn/multi-platform/desktop">桌面平台</a>
+              <a class="dropdown-item" href="https://flutter.cn/multi-platform/embedded">嵌入式平台</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dev-navbar-dropdown"
+               href="https://flutter.cn/"
+               role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               開發
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dev-navbar-dropdown">
+              <a class="dropdown-item" href="https://flutter.cn/learn">學習資源</a>
+              <a class="dropdown-item" href="https://pub.dev/flutter/favorites" target="_blank">Flutter Favorites 系列外掛</a>
+              <a class="dropdown-item" href="https://pub.dev/" target="_blank">使用 Packages</a>
+              <a class="dropdown-item" href="https://flutter.cn/monetization">盈利</a>
+              <a class="dropdown-item" href="https://flutter.cn/games">遊戲</a>
+              <a class="dropdown-item" href="https://flutter.cn/news">新聞</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="ecosystem-navbar-dropdown"
+               href="https://flutter.cn/ecosystem"
+               role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               生態
+            </a>
+            <div class="dropdown-menu" aria-labelledby="ecosystem-navbar-dropdown">
+              <a class="dropdown-item" href="https://flutter.cn/community">社群</a>
+              <!-- <a class="dropdown-item" href="https://flutter.cn/events">Events</a> -->
+              <a class="dropdown-item" href="https://flutter.cn/culture">文化</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.cn/showcase">成功故事</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.cn/about">關於中文文件</a>
+          </li>
+          <li class="nav-item dropdown docs-item">
+            <a class="nav-link dropdown-toggle"
+               id="docs-navbar-dropdown"
+               href="/"
+               role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               文件
+            </a>
+            <div class="dropdown-menu" aria-labelledby="docs-navbar-dropdown">
+              <a class="dropdown-item "
+                 href="/posts">最新更新</a>
+              <a class="dropdown-item "
+                 href="/get-started/editor">IDE 整合</a>
+              <a class="dropdown-item "
+                 href="/tools/hot-reload">熱過載</a>
+              <a class="dropdown-item "
+                 href="/perf/ui-performance">效能分析</a>
+              <a class="dropdown-item "
+                 href="/get-started/install">安裝 Flutter</a>
+              <a class="dropdown-item "
+                 href="/tools/devtools/overview">開發者工具</a>
+              <a class="dropdown-item "
+                 href="/cookbook">實用教程</a>
+              <a class="dropdown-item "
+                 href="/codelabs">Codelabs</a>
+              <a class="dropdown-item "
+                 href="/community/tutorials">社群教程</a>
+            </div>
+          </li>
+        </ul>
+        <form action="/search/" class="site-header__search form-inline">
+          <input
+            class="site-header__searchfield form-control"
+            type="search" name="q" id="q" autocomplete="off"
+            placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+    <div class="site-header__social navbar-nav flex-row">
+      <a
+        class="nav-item nav-link nav-icon"
+        href="https://twitter.com/FlutterDev"
+        aria-label="Open Flutter's Twitter in a new tab"
+        target="_blank" rel="noreferrer">
+        <svg><use href="/assets/images/social/twitter.svg#twitter"></use></svg>
+      </a>
+      <a
+        class="nav-item nav-link nav-icon"
+        href="https://www.youtube.com/flutterdev"
+        aria-label="Open Flutter's YouTube in a new tab"
+        target="_blank" rel="noreferrer">
+        <svg><use href="/assets/images/social/youtube.svg#youtube"></use></svg>
+      </a>
+      <a
+        class="nav-item nav-link nav-icon"
+        href="https://medium.com/flutter"
+        aria-label="Open Flutter's Medium blog in a new tab"
+        target="_blank" rel="noreferrer">
+        <svg><use href="/assets/images/social/medium.svg#medium"></use></svg>
+      </a>
+      <a
+        class="nav-item nav-link nav-icon"
+        href="https://github.com/flutter"
+        aria-label="Open Flutter's GitHub in a new tab"
+        target="_blank" rel="noreferrer">
+        <svg><use href="/assets/images/social/github.svg#github"></use></svg>
+      </a>
+    </div>
+    <a
+        class="site-header__cta btn btn-primary"
+        href="/get-started/install/">開始使用
+      </a>
+    </nav>
+</header>
+
+
+    <div class="site-banner site-banner--default" role="alert">
+  Flutter 3.19 已發布！
+  <!-- <p>Flutter and Dart」s latest releases are helping to
+  define the future of app development.
+  <a href="https://medium.com/flutter/starting-2024-strong-with-flutter-and-dart-cae9845264fe">Read the blog</a> to learn more.
+  </p>
+  <p>Help improve Flutter! Take our <a href="https://google.qualtrics.com/jfe/form/SV_6gplhwAySeRz7Gm?Source=Website">survey</a>.</p> -->
+</div>
+
+
+    <div class="container-fluid position-relative">
+  <div class="row flex-xl-nowrap">
+    <div class="fixed-col site-sidebar site-sidebar--fixed col-12 col-md-3 col-xl-2 d-none d-md-block" data-fixed-column>
+      
+      <ul class="nav flex-column"><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-1" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-1"
+          >開始使用 Flutter</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-1">
+            <li class="nav-item">
+    <a class="nav-link" href="/get-started/install">安裝和環境設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/test-drive">開發體驗初探</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/codelab">編寫第一個 Flutter 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/learn-more">瞭解更多</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-1-6"
+      href="#fixed-sidenav-1-6" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-1-6"
+    >擁有其他平台開發經驗？
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/android-devs">給 Android 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/swiftui-devs">給 iOS SwiftUI 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/uikit-devs">給 iOS UIKit 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/react-native-devs">給 React Native 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/web-devs">給 Web 開發者的 Flutter 指南</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/xamarin-forms-devs">給 Xamarin.Forms 開發者的 Flutter 指南</a>
+  </li>
+
+<div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/declarative">宣告式 UI 介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/get-started/flutter-for/dart-swift-concurrency">Flutter 對比 Swift 的併發</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dart.tw.gh.miniasp.com/overview" target="_blank" rel="noopener">Dart 語言概覽</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-2" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-2"
+          >保持版本更新</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-2">
+            <li class="nav-item">
+    <a class="nav-link" href="/release/upgrade">版本升級</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/archive">SDK 版本清單</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link" href="/release/whats-new">最近更新</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/release-notes">版本發行注記</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/breaking-changes">破壞性改動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/compatibility-policy">相容性策略</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-3" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-3"
+          >教程和範例程式碼</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-3">
+            <li class="nav-item">
+    <a class="nav-link" href="/codelabs">Codelabs</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook">實用教程 (Cookbook)</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">GitHub 上的範例應用</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-4" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-4"
+          >應用解決方案</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-4">
+            <li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-4-1"
+      href="#fixed-sidenav-4-1" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-4-1"
+    >遊戲
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-4-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/resources/games-toolkit">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/games/achievements-leaderboard">新增成就和排行榜</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/plugins/google-mobile-ads">新增廣告</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/games/firestore-multiplayer">新增多人遊戲支援</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0" target="_blank" rel="noopener">新增應用內購買</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://firebase.google.cn/codelabs/firebase-auth-in-flutter-apps#0" target="_blank" rel="noopener">新增使用者身份驗證</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://firebase.google.cn/docs/crashlytics/get-started?platform=flutter" target="_blank" rel="noopener">使用 Crashlytics 除錯</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-4-2"
+      href="#fixed-sidenav-4-2" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-4-2"
+    >新聞
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-4-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/resources/news-toolkit">建立新聞應用程式</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-4-3"
+      href="#fixed-sidenav-4-3" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-4-3"
+    >盈利
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-4-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/monetization" target="_blank" rel="noopener">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0" target="_blank" rel="noopener">新增應用內購買</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-4-4"
+      href="#fixed-sidenav-4-4" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-4-4"
+    >地圖
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-4-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://developers.google.com/maps/flutter-package" target="_blank" rel="noopener">為應用程式新增地圖</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-header">使用者介面</li>
+    <li class="nav-item">
+          <a class=" nav-link" href="/ui">介紹</a>
+        </li>
+      <li class="nav-item">
+          <a class=" nav-link" href="/ui/widgets">Widget 目錄</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-9" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-9"
+          >佈局建立</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-9">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/layout">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/tutorial">佈局建立教程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-9-3"
+      href="/ui/layout/lists" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-9-3"
+    >清單 & 網格
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-9-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/basic-list">建立與使用清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/horizontal-list">建立一個橫向清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/grid-lists">建立一個網格檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/mixed-list">建立包含不同型別元素的清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/spaced-items">建立元素之間包含間隔的清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/long-lists">處理長清單</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-9-4"
+      href="/ui/layout/scrolling" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-9-4"
+    >捲動
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-9-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/layout/scrolling">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/scrolling/slivers">使用 Slivers 實現各種捲動需求</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/lists/floating-app-bar">在清單開頭新增一個浮動的頂欄</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/parallax-scrolling">建立一個平行錯位捲動的效果</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-9-5"
+      href="/ui/layout/responsive" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-9-5"
+    >回應式設計
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-9-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/layout/responsive/adaptive-responsive">建立回應式和自適應的應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/responsive/building-adaptive-apps">建立自適應應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/orientation">根據旋轉角度更新應用的介面元素</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-10" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-10"
+          >設計 & 主題</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-10">
+            <li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/themes">共享主題樣式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/design/material">Material 設計</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/release/breaking-changes/material-3-migration">遷移至 Material 3</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-10-4"
+      href="/ui/design/text" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-10-4"
+    >文字
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-10-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/design/text/typography">字型 & 版式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/fonts">使用自定義字型</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/package-fonts">將字型從 package 中對外暴露</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google 字型 package</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-10-5"
+      href="/ui/design/graphics" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-10-5"
+    >自定義圖形
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-10-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/design/graphics/fragment-shaders">使用自定義的著色器</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-11" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-11"
+          >互動</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-11">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity">為你的應用新增互動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-11-2"
+      href="/ui/interactivity/gestures" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-11-2"
+    >手勢
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-11-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/gestures">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/handling-taps">處理點選</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/gestures/drag-outside">跨應用拖放物件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/drag-a-widget">拖動介面元素</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/ripples">新增 Material 風格的水波紋</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/gestures/dismissible">實現滑動取消</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-11-3"
+      href="/ui/interactivity/input" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-11-3"
+    >輸入 & 表單
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-11-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/text-input">建立輸入框並且調整樣式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/retrieve-input">讀取輸入框的內容</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/text-field-changes">處理輸入框的內容變動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/focus">管理輸入框之間的焦點</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/forms/validation">建立具有校驗功能的表單</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/snackbars">展示 SnackBar</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/actions-and-shortcuts">實現快捷方式和捷徑</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/interactivity/focus">管理鍵盤焦點</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-12" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-12"
+          >資源 & 媒體</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-12">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/assets/assets-and-images">新增資源和圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/images/network-image">載入網路圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/images/fading-in-images">從佔位圖轉場到圖片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/plugins/play-video">播放及暫停影片</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-13" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-13"
+          >導向 & 路由</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-13">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/navigation">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/tabs">新增 Tab 到應用中</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/navigation-basics">導向至新頁面並回傳</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/passing-data">傳遞資料到新頁面</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/returning-data">從新頁面回傳資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/design/drawer">在頁面上新增抽屜</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/navigation/deep-linking">設定 Deeplink</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/set-up-app-links">設定 Android Deeplink</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/navigation/set-up-universal-links">設定 iOS Universal Link</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/navigation/url-strategies">設定 Web 的 URL 策略</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-14" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-14"
+          >動畫 & 轉場</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-14">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/animations">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/tutorial">教程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/implicit-animations">隱式動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/animated-container">轉場 Container 的屬性</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/opacity-animation">漸入漸出 widget</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/hero-animations">Hero（跨頁面共享元素）動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/page-route-animation">頁面轉場動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/animation/physics-simulation">模擬物理屬性動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/staggered-animations">交錯動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/effects/staggered-menu-animation">建立選單的交錯動畫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/animations/overview">API 概覽</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-15" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-15"
+          >無障礙 & 國際化</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-15">
+            <li class="nav-item">
+    <a class="nav-link" href="/ui/accessibility-and-internationalization/accessibility">無障礙</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/accessibility-and-internationalization/internationalization">國際化</a>
+  </li>
+
+
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-header">介面以外的開發</li>
+    <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-18" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-18"
+          >資料呼叫和後端</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-18">
+            <li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-18-1"
+      href="/data-and-backend/state-mgmt" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-18-1"
+    >狀態管理
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-18-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/intro">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/declarative">從宣告式的角度思考</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/ephemeral-vs-app">短暫狀態 & 持久狀態</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/simple">簡單的狀態管理</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/state-mgmt/options">狀態管理參考</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-18-2"
+      href="/data-and-backend/networking" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-18-2"
+    >網路 & http
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-18-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/networking">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/fetch-data">從網路上獲取資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/authenticated-requests">建立需要認證的請求</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/send-data">傳送資料到伺服器</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/update-data">更新網路上的資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/delete-data">刪除網路上的資料</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/web-sockets">WebSocket 通訊</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-18-3"
+      href="/data-and-backend/serialization" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-18-3"
+    >序列化
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-18-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/serialization/json">JSON 序列化</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/networking/background-parsing">在後台處理 JSON 解析</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-18-4"
+      href="/data-and-backend/persistence" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-18-4"
+    >持久化
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-18-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/key-value">將 key-value 資料儲存在硬碟上</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/reading-writing-files">讀寫檔案</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/persistence/sqlite">利用 SQLite 持久化資料</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/firebase">Firebase</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/data-and-backend/google-apis">Google APIs</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-19" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-19"
+          >平台整合</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19">
+            <li class="nav-item">
+    <a class="nav-link" href="/reference/supported-platforms">支援的平台</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/desktop">建立桌面端應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/platform-channels">撰寫平台程式碼 (外掛編寫實現)</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/platform-adaptations">自動化平台適配</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-5"
+      href="/platform-integration/android" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-5"
+    >Android 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/splash-screen">新增螢幕閃爍頁</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/c-interop">呼叫原生程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/platform-views">託管 Android 原生檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/restore-state-android">在 Android 上恢復狀態</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/android/chromeos">建立適合 Chrome OS 的 Android 應用</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-6"
+      href="/platform-integration/ios" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-6"
+    >iOS 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/apple-frameworks">使用 Apple 的系統函式庫</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/launch-screen">新增啟動頁</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/ios-app-clip">新增 iOS App Clip 支援</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/app-extensions">新增 iOS App 擴充套件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/c-interop">呼叫原生程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/platform-views">託管 iOS 原生檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/ios-debugging">iOS 平台除錯</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/ios/restore-state-ios">在 iOS 上恢復狀態</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-7"
+      href="/platform-integration/linux" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-7"
+    >Linux 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/linux/building">建立 Linux 桌面軟體</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-8"
+      href="/platform-integration/macos" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-8"
+    >macOS 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/macos/building">建立 macOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/macos/c-interop">C 語言程式碼整合及呼叫</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-9"
+      href="/platform-integration/web" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-9"
+    >Web 平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-9">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/building">建立一個 Web 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/faq">Web 平台常見問題</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/renderers">Web 平台渲染器</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/initialization">自定義 Web 應用初始化</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/platform-integration/web/web-images">在網頁裡顯示圖片</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-19-10"
+      href="/platform-integration/windows" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-19-10"
+    >Windows 作業系統平台
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-19-10">
+      <li class="nav-item">
+    <a class="nav-link" href="/platform-integration/windows/building">建立 Windows 桌面軟體</a>
+  </li>
+
+</ul>
+  </li>
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-20" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-20"
+          >Package 和外掛</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-20">
+            <li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/using-packages">使用 package 和外掛</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/developing-packages">開發 Package 和外掛</a>
+  </li>
+
+<div class="dropdown-divider"></div>
+<li class="nav-item">
+    <a class="nav-link" href="/packages-and-plugins/favorites">Flutter Favorites 專案</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package 倉庫</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-21" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-21"
+          >測試和除錯</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-21">
+            <li class="nav-header">測試</li><li class="nav-item">
+    <a class="nav-link" href="/testing/overview">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-21-3"
+      href="#fixed-sidenav-21-3" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-21-3"
+    >單元測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-21-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/unit/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/unit/mocking">模擬依賴</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-21-4"
+      href="#fixed-sidenav-21-4" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-21-4"
+    >Widget 測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-21-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/finders">尋找 widgets</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/scrolling">模擬捲動</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/widget/tap-drag">模擬使用者操作</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-21-5"
+      href="#fixed-sidenav-21-5" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-21-5"
+    >整合測試
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-21-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/integration/introduction">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/integration-tests">編寫並執行整合測試</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/testing/integration/profiling">衡量整合測試的效能指標</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/testing/testing-plugins">測試外掛</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/plugins-in-tests">在測試中處理外掛程式碼</a>
+  </li>
+
+<li class="nav-header">除錯</li><li class="nav-item">
+    <a class="nav-link" href="/testing/debugging">除錯工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/code-debugging">透過程式碼除錯應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/native-debugging">使用原生語言的除錯</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/build-modes">Flutter 的建立模式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/common-errors">常見的 Flutter 錯誤</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/errors">處理錯誤</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/cookbook/maintenance/error-reporting">將錯誤上報到收集服務</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-22" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-22"
+          >效能最佳化</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-22">
+            <li class="nav-item">
+    <a class="nav-link" href="/perf">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/impeller">使用 Impeller</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/best-practices">效能最佳實踐</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/app-size">應用大小</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/deferred-components">延遲載入元件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/rendering-performance">渲染效能</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/ui-performance">效能分析</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/web-performance">Web 效能分析</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/shader">著色器編譯時卡頓</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/metrics">效能指標</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/isolates">併發與隔離</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/faq">效能常見問題和回答</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/perf/appendix">附錄</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-23" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-23"
+          >打包部署</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-23">
+            <li class="nav-item">
+    <a class="nav-link" href="/deployment/obfuscate">混淆 Dart 程式碼</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/flavors">設定 flavors</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/android">建立和發布為 Android 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/ios">建立和發布為 iOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/macos">建立和發布為 macOS 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/linux">建立和發布為 Linux 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/windows">建立和發布為 Windows 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/web">建立和發布為 Web 應用</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/deployment/cd">持續部署</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-24" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-24"
+          >將 Flutter 新增到現有應用</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-24">
+            <li class="nav-item">
+    <a class="nav-link" href="/add-to-app">介紹</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-24-2"
+      href="/add-to-app/android" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-24-2"
+    >將 Flutter 新增到現有 Android 應用
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-24-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/project-setup">工程設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-screen">新增單個 Flutter 頁面</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-fragment">新增一個 Flutter Fragment</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/add-flutter-view">新增 Flutter 檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/android/plugin-setup">Plugin 初始化</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-24-3"
+      href="/add-to-app/ios" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-24-3"
+    >將 Flutter 新增到現有 iOS 應用
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-24-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/add-to-app/ios/project-setup">工程設定</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/ios/add-flutter-screen">新增單個 Flutter 頁面</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/add-to-app/debugging">除錯及熱過載</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/multiple-flutters">多個 Flutter 實例</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/add-to-app/performance">載入順序和效能</a>
+  </li>
+
+
+</ul>
+        </li><li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
+    <li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-26" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-26"
+          >工具 & 程式碼編輯器</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-26">
+            <li class="nav-item">
+    <a class="nav-link" href="/tools/android-studio">Android Studio & IntelliJ</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">Visual Studio Code</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#fixed-sidenav-26-3"
+      href="/tools/devtools" role="button"
+      aria-expanded="false" aria-controls="fixed-sidenav-26-3"
+    >DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-26-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/overview">概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/android-studio">在 Android Studio & IntelliJ 中安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/vscode">在 VS Code 中安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/cli">利用終端指令安裝 DevTools</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/performance">效能檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/cpu-profiler">CPU 效能檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/memory">記憶體檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/console">除錯控制條檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/network">網路檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/debugger">除錯工具 Debugger</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/logging">日誌檢視</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/app-size">應用體積工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/extensions">DevTools 擴充套件工具</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/devtools/release-notes">發布日誌</a>
+  </li>
+
+</ul>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">SDK 概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/pubspec">Flutter pubspec 選項</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/flutter-fix">自動修復</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/formatting">程式碼格式化</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-27" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-27"
+          >Flutter 相關概念</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-27">
+            <li class="nav-item">
+    <a class="nav-link" href="/resources/architectural-overview">Flutter 架構概覽</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/inside-flutter">Flutter 工作原理</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/ui/layout/constraints">理解佈局約束</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/testing/build-modes">Flutter 建立模式</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/tools/hot-reload">熱過載</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link collapsed collapsable" data-toggle="collapse" href="#fixed-sidenav-28" role="button"
+             aria-expanded="false" aria-controls="fixed-sidenav-28"
+          >開發者資源清單</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse " id="fixed-sidenav-28">
+            <li class="nav-header">學習</li><li class="nav-item">
+    <a class="nav-link" href="/resources/faq">常見問題解答</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/books">相關書籍</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">相關影片</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/courses">相關課程</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/resources/bootstrap-into-dart">學習 Dart</a>
+  </li>
+
+<li class="nav-header">貢獻</li><li class="nav-item">
+    <a class="nav-link" href="/resources/bug-reports">提出 Bug</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/flutter/flutter/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">為 Flutter 做出貢獻</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3A%22design+doc%22" target="_blank" rel="noopener">設計文件</a>
+  </li>
+
+
+</ul>
+        </li><li class="nav-item">
+          <a class="nav-link  collapsable" data-toggle="collapse" href="#fixed-sidenav-29" role="button"
+             aria-expanded="true" aria-controls="fixed-sidenav-29"
+          >更多資料</a>
+      
+          <ul class="nav flex-column flex-nowrap collapse show" id="fixed-sidenav-29">
+            <li class="nav-item">
+    <a class="nav-link" href="/dash">瞭解 Dash</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/reference/widgets">Flutter Widget 清單</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev" target="_blank" rel="noopener">Flutter API 文件</a>
+  </li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/reference/flutter-cli">Flutter 指令行文件</a>
+  </li>
+
+
+</ul>
+        </li></ul>
+
+    </div>
+
+    
+  
+  
+  
+  
+  <div
+    id="site-toc--side"
+    class="site-toc site-toc--side fixed-col col-xl-2 order-3 "
+    data-fixed-column
+  >
+    <header class="site-toc__title">
+      目錄
+      </header>
+    <ul class="section-nav nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#flutter-22-穩定版更新">Flutter 2.2 穩定版更新</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#flutter-22-中新的預覽版功能">Flutter 2.2 中新的預覽版功能</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#flutter-生態系統和工具更新">Flutter 生態系統和工具更新</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#對相容性有影響的重大變更">對相容性有影響的重大變更</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#結語">結語</a></li>
+</ul>
+  </div>
+<main class="site-content col-12 col-md-9 offset-md-3 col-xl-8 offset-xl-2 col-xxl-8 offset-xxl-2">
+      <div class="container">
+
+        
+
+        
+
+        <header class="site-content__title">
+          <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href='https://github.com/cfug/flutter.cn/tree/main/src/posts/whats-new-in-flutter-2-2.md' class="btn no-automatic-external" title="檢視文件原始碼" target="_blank" rel="noopener">
+    <i class="material-symbols">description</i>
+  </a>
+  <a href="https://github.com/cfug/flutter.cn/issues/new?template=1_page_issue.yml&title=[頁面問題] 'Flutter 2.2 更新詳解'&page-url=https://flutter.tw/posts/whats-new-in-flutter-2-2/&page-source=https://github.com/cfug/flutter.cn/tree/main/src/posts/whats-new-in-flutter-2-2.md" class="btn no-automatic-external" title="為本頁面內容提出建議"
+    target="_blank" rel="noopener">
+    <i class="material-symbols">bug_report</i>
+  </a>
+</div>
+
+          <h1>Flutter 2.2 更新詳解</h1>
+          </header>
+        
+        
+  <div
+    id="site-toc--inline"
+    class="site-toc site-toc--inline "
+  >
+    <header class="site-toc__title">
+      目錄
+    </header>
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#flutter-22-穩定版更新">Flutter 2.2 穩定版更新</a></li>
+<li class="toc-entry toc-h2"><a href="#flutter-22-中新的預覽版功能">Flutter 2.2 中新的預覽版功能</a></li>
+<li class="toc-entry toc-h2"><a href="#flutter-生態系統和工具更新">Flutter 生態系統和工具更新</a></li>
+<li class="toc-entry toc-h2"><a href="#對相容性有影響的重大變更">對相容性有影響的重大變更</a></li>
+<li class="toc-entry toc-h2"><a href="#結語">結語</a></li>
+</ul>
+  </div>
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/fHLvPr.jpg" alt=""></p>
+
+<p><a href="https://flutter.cn/posts/announcing-flutter-2-2?t=1">Flutter 2.2 版</a>已正式發布！要獲取新版本，你只需切換到 stable 渠道並更新目前安裝的 Flutter，或前往 <a href="https://flutter.tw/get-started">flutter.cn/docs/get-started</a> 從頭開始安裝。</p>
+
+<p>雖然與 2.0 版只相隔數月，2.2 版還是滿載大量改進。此版本共計納入了框架、引擎和外掛函式庫等方面的 2,456 個 PR 並解決了 3,105 個問題。我們要特此鳴謝為此版本貢獻了大量 PR 和 PR review 的整個 Flutter 社群，包括 PR 貢獻最多 (17) 的 <a href="https://github.com/Abhishek01039">Abhishek01039</a> 和 PR review 貢獻最多 (9) 的 <a href="https://github.com/xu-baolin">xu-baolin</a>。衷心感謝所有開發者對 Flutter 2.2 順利發布穩定版做出的貢獻。沒有大家的支援，我們將無法做到。</p>
+
+<p>每個新的 Flutter 穩定版都會帶來諸如效能提升、新功能、bug 修復等一系列變化，並會提供一些尚未試用於生產環境的試驗性功能，希望你能幫助我們驗證這些功能能否正常工作並滿足你的需求。此外，新版本還會包含一系列相關工具的更新和來自 Flutter 社群的更新。坦白講，如今 Flutter 每個新版本的內容都非常豐富，不可能在一篇文章中巨細無遺地詳述，因此下面我們將著重為你介紹一些主要亮點。</p>
+
+<h2 id="flutter-22-穩定版更新">
+<a class="anchor" href="#flutter-22-%E7%A9%A9%E5%AE%9A%E7%89%88%E6%9B%B4%E6%96%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Flutter 2.2 穩定版更新</strong>
+</h2>
+
+<p>此版本在 Flutter 2 的基礎上做了諸多改進，其中不但有面向 Android、iOS 和 web 平台的更新，還有新的 Material 圖示、文字處理方式的改進、捲軸行為的變化、TextSpan widget 的滑鼠游標支援，以及用一份程式碼適配多個平台方面的新指南。這些功能皆已發布穩定版，可供你在正式版應用中使用。同時，所有這些功能都是在 <a href="https://flutter.cn/posts/announcing-dart-2-13">新版 Dart</a> 的基礎上建立而成。</p>
+
+<p><strong>Dart 2.13</strong></p>
+
+<p>隨 Flutter 2.2 版一起發布的還有 <a href="https://flutter.cn/posts/announcing-dart-2-13">Dart 2.13 版</a>。此 Dart 版本包含眾多新功能，其中之一是新的型別別名，該功能讓你可為型別建立別名，就像為函式建立別名一樣:</p>
+
+<pre><code class="language-Dart">// Type alias for functions (existing)
+typedef ValueChanged&lt;T&gt; = void Function(T value);
+
+// Type alias for classes (new!)
+typedef StringList = List&lt;String&gt;;
+
+// Rename classes in a non-breaking way (new!)
+@Deprecated("Use NewClassName instead")
+typedef OldClassName&lt;T&gt; = NewClassName&lt;T&gt;;
+</code></pre>
+
+<p>有了型別別名，你可為長而複雜的型別賦予簡短易懂的名稱，並以不會破壞程式碼的方式重新命名你的類。Dart 2.13 版還包含其他多項更新，你可以在我們之前的推文 <a href="https://flutter.cn/posts/announcing-dart-2-13">Dart 2.13 版本發布</a> 中瞭解詳情。</p>
+
+<p><strong>Flutter web 更新</strong></p>
+
+<p>作為 Flutter 穩定版最新支援的平台，web 平台在此版本也有多項改進。</p>
+
+<p>首先，我們藉助新的 service worker 載入機制最佳化了快取行為，並修復了 <code class="language-plaintext highlighter-rouge">main.dart.js</code> 的重複下載問題。在舊版 Flutter web 中，service worker 會在後臺下載應用更新，使用者在此期間可照常使用應用的舊版本。更新下載完畢後，使用者要多次重新整理瀏覽器頁面後才會看到相應更新。在 Flutter 2.2 版中，當新的 service worker 檢測到更新後，使用者需要先等待更新下載完畢才能使用應用，但屆時他們無需再次手動重新整理頁面即可看到更新內容。</p>
+
+<p>要啟用此項變更，你需要重新生成你的 Flutter 應用的 <code class="language-plaintext highlighter-rouge">index.html</code>。具體來說，請儲存你的修改、刪除 <code class="language-plaintext highlighter-rouge">index.html</code> 檔案，然後在專案目錄中執行 <code class="language-plaintext highlighter-rouge">flutter create</code> . 以重新生成該檔案。</p>
+
+<p>我們還對兩個 web 渲染器都做了改進。在 HTML 渲染器上，我們新增了對 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings">字型屬性</a> 的支援，以啟用 <a href="https://api.flutter.dev/flutter/dart-ui/FontFeature-class.html"><code class="language-plaintext highlighter-rouge">FontFeature</code></a> 設定並使用 canvas API 渲染文字，從而使滑鼠懸停處的文字能夠顯示在適當的位置。在 HTML 和 CanvasKit 渲染器上，我們新增了對著色器遮罩 (shader masks) 和 <a href="https://api.flutter.dev/flutter/painting/TextPainter/computeLineMetrics.html"><code class="language-plaintext highlighter-rouge">computeLineMetrics</code></a> 的支援，以解決 Flutter web 應用和移動應用兩者不一致的問題。例如，開發者現在可以透過 <a href="https://api.flutter.dev/flutter/widgets/Opacity-class.html">不透明度遮罩</a> 使用著色器遮罩實現淡出轉場，並像在移動應用中一樣使用 <code class="language-plaintext highlighter-rouge">computeLineMetrics</code>。</p>
+
+<p>無障礙功能不但是 Flutter web 的一大重點，也是整個 Flutter 的一個重心所在。按照設計，是透過建立 <code class="language-plaintext highlighter-rouge">SemanticsNode</code> 樹來實現無障礙功能。Flutter web 應用的使用者啟用無障礙功能後，我們會生成一個與 <code class="language-plaintext highlighter-rouge">RenderObject</code> DOM 樹並行的 DOM 樹，並將語義屬性轉換為 Aira。在此版本中，我們改進了語義節點位置，消除了移動應用和 web 應用在使用轉換 (transform) 時的不一致，這意味著在使用轉換對 widget 進行樣式設定時，焦點框會正確地顯示在元素上方。如需直觀瞭解其實際效果，你可以觀看 Material Design 無障礙專案負責人 Victor Tsaran 的影片，瞭解他如何對 <a href="https://devrel.andfun.cn/devrel/posts/2021/05/yFhscX.mp4">Flutter Gallery App 使用 VoiceOver</a>。</p>
+
+<video controls="" width="640px" height="480px" src="https://devrel.andfun.cn/devrel/posts/2021/05/yFhscX.mp4"></video>
+
+<p>我們現在還提供一個適用於效能分析 (profile) 和發布 (release) 模式的指令行 flag，以供開發者訪問語義節點除錯樹，並直觀檢視系統為其 web 應用建立的語義節點，從而對應用的無障礙功能進行除錯。</p>
+
+<p>要為你的 Flutter web 應用啟用此功能，請執行以下指令:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ flutter run -d chrome --profile \
+  --dart-define=FLUTTER_WEB_DEBUG_SHOW_SEMANTICS=true
+</code></pre></div></div>
+
+<p>啟用該 flag 後，你將能夠在各個 widget 上方看到你的語義節點，從而進行除錯並檢查語義元素的位置是否符合預期。如果你發現這類問題，歡迎向我們 <a href="https://goo.gle/flutter_web_issue">送出 bug 報告</a>。</p>
+
+<p>雖然在核心無障礙功能的支援方面已經取得了長足進步，但我們仍在這個領域不斷改進。在 <a href="https://flutter.cn/posts/announcing-flutter-2-2?t=1">2.2 穩定版</a> 之後的 master 和 dev 渠道 build 中，我們新增了一個 API，供開發者以程式設計方式為其應用 <a href="https://github.com/flutter/engine/pull/25830">自動啟用無障礙功能</a>，同時我們正在著手解決 <a href="https://github.com/flutter/engine/pull/25797">在螢幕閱讀器中使用 Tab 鍵</a> 的問題。</p>
+
+<p>最後但也同樣重要的是，最新版的 Flutter DevTools 現在還支援為你的 Flutter web 應用使用佈局瀏覽器。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/5Ux1TW.png" alt=""></p>
+
+<p>你現在可以在 web 應用中使用你所熟悉的佈局除錯工具，這與移動應用和桌面應用別無二致。</p>
+
+<p><strong>iOS 頁面轉場和增量式安裝</strong></p>
+
+<p>對於 iOS 平台，此版本將動畫幀的渲染時間縮減了 75%，<a href="https://github.com/flutter/flutter/pull/75670">使 Cupertino 主題中頁面轉場更流暢</a>。在低端手機上的縮減比例甚至可能更高。我們不僅改善了最終使用者可感知到的效能，還一直在想方設法提升開發效能。</p>
+
+<p>在此版本中，我們實現了開發過程中的 <a href="https://github.com/flutter/flutter/pull/77756">增量式 iOS 安裝</a>。基準測試結果顯示，iOS 應用的更新版本安裝時間縮短了 40%，這也就縮短了你的應用變更測試週期。</p>
+
+<p><strong>使用 Flutter 建立平台自適應應用</strong></p>
+
+<p>隨著 Flutter 穩定版逐步支援更多平台，你在設計應用時不僅需要考慮相容不同的裝置型別 (如手機、平板電腦和桌面電腦)，還需要考慮支援不同的輸入方式 (觸控與鍵鼠)，以及適配各個平台上的不同使用習慣 (例如在導向時是使用抽屜式導向欄還是系統選單)。如果應用能夠根據不同目標平台的細節差異做出相應調整，我們就稱之為平台自適應應用。</p>
+
+<p>如果你想初步瞭解在建立平台自適應應用時要考慮哪些因素，請觀看 Kevin Moore 關於 “<a href="https://events.google.com/io/session/868dfd56-7f8c-49ee-84ad-ac69a23ba19d?lng=en">建立平台自適應應用</a>” 的影片。如需詳細瞭解，你可以閱讀 <a href="https://flutter.tw/development/ui/layout/building-adaptive-apps">Flutter 文件中關於平台自適應應用的指南</a>。</p>
+
+<p>最後，如需參考遵循這些指南編寫出的多平臺應用範例。我們建議你看看 gSkinner 打造的 <a href="https://flutter.gskinner.com/flokk">Flokk</a> 和 <a href="https://flutter.gskinner.com/folio">Flutter Folio</a> 應用。你既可以下載 <a href="https://github.com/gskinnerTeam/flokk">Flokk</a> 和 <a href="https://github.com/gskinnerTeam/flutter-folio">Folio</a> 的原始碼，也可以從各個應用商店下載 <a href="https://flutter.gskinner.com/flokk/#g-download">Flokk</a> 和 <a href="https://flutter.gskinner.com/folio/#g-download">Folio</a> 應用，還可以直接在瀏覽器中執行它們。另一個優秀範例是 <a href="https://www.youtube.com/watch?v=8YUIrIGGc3Y">用於建立指南本身的應用</a>。</p>
+
+<p>Flutter 平台自適應應用指南的 UX 部分以新的 <a href="https://material.io/blog/material-design-for-large-screens">Material 大螢幕指南</a> 為基礎。Material 團隊在新發布的這一指南中，根據大螢幕的屬性，修訂了多篇主要的佈局文章，調整了多個元件，並更新了 Design Kit。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/oXdq99.png" alt=""></p>
+
+<p>Flutter 的目標始終是讓應用可以走得更高更遠，而不僅是能夠在多個平台上正常執行。不做到讓你的應用能夠良好適配所有目標平台，我們不會停下腳步。Flutter 能夠為你提供所需支援，讓你的應用不但能夠覆蓋多個目標平台，而且能夠針對不同的螢幕尺寸、輸入方式以及各平台的不同使用習慣而做出適當的調整。</p>
+
+<p><a href="https://github.com/flutter/flutter/pull/76607"><strong>更多 Material 圖示</strong></a></p>
+
+<p>說起 Material 指南，此版本還納入了兩個獨立的 PR，向 Flutter 中新增了更多 <a href="https://github.com/flutter/flutter/pull/78311">Material 圖示</a>。我們可愛的吉祥物 Dash 現在也有專屬的圖示了！</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/U8KghW.png" alt="">
+<img src="https://devrel.andfun.cn/devrel/posts/2021/05/3nWtj6.png" alt=""></p>
+
+<p>加上這些新圖示，可供你的應用使用的 Material 圖示總數現已突破 7,000 大關。如果你在這海量圖示中尋找所需圖示時遇到了困難，可以訪問 <a href="https://fonts.google.com/icons">fonts.google.com/icons</a>，按類別和名稱來搜尋圖示。</p>
+
+<p>找到理想的圖示後，你可以在新的 “Flutter” 標籤頁中檢視有關如何使用該圖標的說明。你也可以單獨下載這個圖示，將其用作應用中的獨立資源。在你的 Flutter 應用中加入 Dash 的可愛形象從未如此簡單。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/BmOCBD.png" alt="透過名稱搜尋 Material 圖示"></p>
+
+<p>透過名稱搜尋 Material 圖示</p>
+
+<p><strong>改進文字處理方式</strong></p>
+
+<p>隨著我們持續改進 Flutter 以使其能夠更好地適配各個平台的具體屬性，我們正逐步涉足一些在行動裝置上不突出但在桌面裝置上很重要的新領域，其中之一就是文字處理。在此版本中，我們著手對文字輸入的處理方式進行重構，以實現下述功能: 在按鍵事件於 widget 層次結構內傳播的過程中將其取消，以及能夠完全自定義與文字操作相關聯的按鍵。</p>
+
+<p>由於現在能夠取消按鍵事件，Flutter 按下空格鍵和箭頭鍵時不會再觸發捲動事件，從而讓使用者獲享更直觀的體驗。你還可以使用此功能來實現在一個按鍵事件傳播到你應用中的父級 widget 之前對其進行處理。另一個例子是，你可以在你的 Flutter 應用中實現用 Tab 鍵在 TextField 和按鈕之間跳轉，一切都可按預期正常運作:</p>
+
+<pre><code class="language-Dart">import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(App());
+
+class App extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; MaterialApp(
+       title: 'Flutter Text Editing Fun',
+       home: HomePage(),
+     );
+}
+
+class HomePage extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; Scaffold(
+       body: Column(
+         children: [
+           TextField(),
+           OutlinedButton(onPressed: () {}, child: const Text('Press Me')),
+         ],
+       ),
+     );
+}
+</code></pre>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/0YgCDW.png" alt="Flutter 2.2 可在按鍵事件於 widget 層次結構內向上傳播的過程中將其取消；例如，你可以將 TAB 鍵用於將焦點從 TextField 切換到其他元素"></p>
+
+<p>Flutter 2.2 可在按鍵事件於 widget 層次結構內向上傳播的過程中將其取消；例如，你可以將 TAB 鍵用於將焦點從 TextField 切換到其他元素</p>
+
+<p>自定義文字操作讓你可以實現對 TextField 中的 Enter 按鍵事件進行特殊處理，例如，使 Enter 鍵在聊天用戶端中觸發訊息傳送操作，同時讓使用者可以按 Ctrl+Enter 鍵來換行。此類文字操作 <a href="https://github.com/flutter/flutter/pull/75032">讓 Flutter 本身也能夠提供不同的按鍵設定</a>，從而使文字編輯行為與主機作業系統相一致，例如在 Windows 和 Linux 上使用 Ctrl+C 複製文字，而在 macOS 上使用 Cmd+C。</p>
+
+<p>下面就是一個這樣的例子，它覆蓋了預設的向左箭頭按鍵操作，併為退格鍵和刪除鍵設定了新的操作:</p>
+
+<pre><code class="language-Dart">import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; MaterialApp(
+       title: 'Flutter TextField Key Binding Demo',
+       home: Scaffold(body: UnforgivingTextField()),
+     );
+}
+
+/// A text field that clears itself if the user tries to back up or correct
+/// something.
+class UnforgivingTextField extends StatefulWidget {
+ @override
+ State&lt;UnforgivingTextField&gt; createState() =&gt; _UnforgivingTextFieldState();
+}
+
+class _UnforgivingTextFieldState extends State&lt;UnforgivingTextField&gt; {
+ // The text editing controller used to clear the text field.
+ late TextEditingController controller;
+
+ @override
+ void initState() {
+   super.initState();
+   controller = TextEditingController();
+ }
+
+ @override
+ Widget build(BuildContext context) =&gt; Shortcuts(
+       shortcuts: &lt;LogicalKeySet, Intent&gt;{
+         // This overrides the left arrow key binding that the text field normally
+         // has in order to move the cursor back by a character. The default is
+         // created by the MaterialApp, which has a DefaultTextEditingShortcuts
+         // widget in it.
+         LogicalKeySet(LogicalKeyboardKey.arrowLeft): const ClearIntent(),
+
+         // This binds the delete and backspace keys to also clear the text field.
+         // You can bind any key, not just those already bound in
+         // DefaultTextEditingShortcuts.
+         LogicalKeySet(LogicalKeyboardKey.delete): const ClearIntent(),
+         LogicalKeySet(LogicalKeyboardKey.backspace): const ClearIntent(),
+       },
+       child: Actions(
+         actions: &lt;Type, Action&lt;Intent&gt;&gt;{
+           // This binds the intent that indicates clearing a text field to the
+           // action that does the clearing.
+           ClearIntent: ClearAction(controller: controller),
+         },
+         child: Center(child: TextField(controller: controller)),
+       ),
+     );
+}
+
+/// An intent that is bound to ClearAction.
+class ClearIntent extends Intent {
+ const ClearIntent();
+}
+
+/// An action that is bound to ClearIntent that clears the TextEditingController
+/// passed to it.
+class ClearAction extends Action&lt;ClearIntent&gt; {
+ ClearAction({required this.controller});
+
+ final TextEditingController controller;
+
+ @override
+ Object? invoke(covariant ClearIntent intent) {
+   controller.clear();
+ }
+}
+</code></pre>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/hpCWg7.png" alt="一個糟糕的 TextField 範例，按下左箭頭鍵或 ESC 鍵會清除文字"></p>
+
+<p>一個糟糕的 TextField 範例，按下左箭頭鍵或 ESC 鍵會清除文字</p>
+
+<p>在這方面，我們的確還有很多工作要做，但我們將不遺餘力賦予開發者對文字編輯操作的完全控制權。目標是在 Flutter 桌面版達到穩定時，最終使用者將無法區分 Flutter 應用中的文字編輯功能與主機作業系統中的其他應用有什麼差別。</p>
+
+<p><strong>自動捲動行為</strong></p>
+
+<p>我們一直致力於讓 Flutter 應用的表現與各個平台上最優秀的應用如出一轍，為此，我們在這個版本中對捲軸又做了進一步最佳化。在捲軸的顯示方式上，Android 和 iOS 將完全相同，即預設不顯示捲軸。但在桌面應用中，只要內容大於容器，通常就會自動顯示捲軸。這就要求你新增一個型別為 <code class="language-plaintext highlighter-rouge">Scrollbar</code> 的父級 widget。為了在行動裝置和桌面裝置上都實現正確的行為，此版本會在需要時自動新增一個 <code class="language-plaintext highlighter-rouge">Scrollbar</code>。</p>
+
+<p>以下是一段不含 Scrollbar 的程式碼:</p>
+
+<pre><code class="language-Dart">import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(App());
+
+class App extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; MaterialApp(
+       title: 'Automatic Scrollbars',
+       home: HomePage(),
+     );
+}
+
+class HomePage extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; Scaffold(
+       body: ListView.builder(
+         itemCount: 100,
+         itemBuilder: (context, index) =&gt; Text('Item $index'),
+       ),
+     );
+}
+</code></pre>
+
+<p>上述程式碼在桌面平台上執行時，將會顯示一個捲軸:</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/t8U8U6.png" alt=""></p>
+
+<p>如果你不喜歡捲軸的外觀或不想讓捲軸一直顯示，可以設定 <a href="https://api.flutter.dev/flutter/material/ThemeData/scrollbarTheme.html"><code class="language-plaintext highlighter-rouge">ScrollBarTheme</code></a>。如果你不喜歡該預設行為，可以在應用層級或具體實例層級透過設定 <a href="https://api.flutter.dev/flutter/widgets/ScrollBehavior-class.html"><code class="language-plaintext highlighter-rouge">ScrollBehavior</code></a> 來對其進行更改。如需詳細瞭解新的預設捲軸行為以及如何遷移程式碼以遵循新的最佳實踐，請參閱 <a href="https://flutter.tw/release/breaking-changes/default-desktop-scrollbars">Flutter 官方文件</a>。</p>
+
+<p><strong>TextSpan 上的滑鼠指標</strong></p>
+
+<p>在之前的 Flutter 版本中，你可以在任何 widget 上新增一個滑鼠指標 (例如用手型指標來表示元素可供點選)。實際上，Flutter 會在大部分情況下替你新增此類滑鼠指標，例如在所有按鈕上新增手型滑鼠指標。不過，如果你是用多個不同樣式的 TextSpan 來實現一段富文字，而且其長度可能長到需要換行，那就沒辦法給它新增滑鼠指標了，這是因為 <code class="language-plaintext highlighter-rouge">TextSpan</code> 不屬於 <code class="language-plaintext highlighter-rouge">widget</code>，不能用於界定滑鼠指標的視效範圍。但現在不一樣了！在新版本中，如果你的 <code class="language-plaintext highlighter-rouge">TextSpan</code> 具備手勢識別器 (GestureRecognizer)，系統將自動為其設定滑鼠指標:</p>
+
+<pre><code class="language-Dart">import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as urlLauncher;
+
+void main() =&gt; runApp(App());
+
+class App extends StatelessWidget {
+ static const title = 'Flutter App';
+ @override
+ Widget build(BuildContext context) =&gt; MaterialApp(
+       title: title,
+       home: HomePage(),
+     );
+}
+
+class HomePage extends StatelessWidget {
+ @override
+ Widget build(BuildContext context) =&gt; Scaffold(
+       appBar: AppBar(title: Text(App.title)),
+       body: Center(
+         child: RichText(
+           text: TextSpan(
+             style: TextStyle(fontSize: 48),
+             children: [
+               TextSpan(
+                 text: 'This is not a link, ',
+                 style: TextStyle(color: Colors.black),
+               ),
+               TextSpan(
+                 text: 'but this is',
+                 style: TextStyle(color: Colors.blue),
+                 recognizer: TapGestureRecognizer()
+                   ..onTap = () {
+                     urlLauncher.launch('https://flutter.dev');
+                   },
+               ),
+             ],
+           ),
+         ),
+       ),
+     );
+}
+</code></pre>
+
+<p>現在你可以自由使用任意換行的 TextSpan，只要其具備手勢識別器，系統即會為其設定適當的滑鼠指標。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/fnraQI.png" alt=""></p>
+
+<p>在此版本中，<code class="language-plaintext highlighter-rouge">TextSpan</code> 除了支援 <code class="language-plaintext highlighter-rouge">mouseCursor</code>，還支援 <code class="language-plaintext highlighter-rouge">onEnter</code> 和 <code class="language-plaintext highlighter-rouge">onExit</code>。這些改進看似細小，對使用者體驗的影響卻大，能讓 Flutter 應用提供更貼近使用者預期的使用體驗。</p>
+
+<h2 id="flutter-22-中新的預覽版功能">
+<a class="anchor" href="#flutter-22-%E4%B8%AD%E6%96%B0%E7%9A%84%E9%A0%90%E8%A6%BD%E7%89%88%E5%8A%9F%E8%83%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Flutter 2.2 中新的預覽版功能</strong>
+</h2>
+
+<p>除了適用於生產環境的新功能，Flutter 2.2 還搭載了多項新的預覽版功能，包括 iOS 著色器編譯效能改進、Android 延遲載入元件支援、Flutter 桌面平台更新以及 Sony 貢獻的 ARM64 Linux 主機支援。歡迎你體驗這些功能，並 <a href="http://github.com/flutter/flutter/issues">在遇到問題時向我們報告</a>。</p>
+
+<p><strong>iOS 著色器編譯改進</strong></p>
+
+<p>在圖形渲染領域，”著色器” 指的是一個在終端使用者裝置可用的 GPU 上編譯並執行的程式。Flutter 自誕生伊始就在底層的 Skia 圖形庫中使用著色器，從而在色彩、陰影、動畫等方面實現高質量圖形效果的同時達成可媲美原生程式碼的優越效能。得益於 Flutter API 的靈活性，著色器能夠以 JIT 方式即時生成和編譯，並與需要它們的幀工作負載同步。不過，當著色器的編譯耗時超出相應幀的時間預算，就會導致使用者感受到卡頓。</p>
+
+<p>為了避免這類卡頓，Flutter 讓你可以在訓練執行期間快取著色器，並將其打包到應用中，然後於 Flutter 引擎啟動時的第一幀之前對其進行編譯。這樣一來，這些預先編譯的著色器就不必在幀工作負載期間進行編譯，也就不會造成卡頓。不過，Skia 一開始只針對 OpenGL 實現了此功能。</p>
+
+<p>這就導致，我們因 Apple 廢棄 OpenGL 而在 iOS 上預設啟用 Metal 後端後，基準測試測得的最差幀時間數值有所增長，使用者報告卡頓的情況也有所增多。經過調查，我們發現此類卡頓往往由下列因素造成: 著色器編譯時間增加、Skia 為 Metal 後端生成的著色器數量增多，以及未能在多次執行之間對編譯後的著色器進行快取並因而導致應用在後續執行時仍然出現卡頓。</p>
+
+<p>到目前為止，在 iOS 上杜絕此類卡頓的唯一方式就是對場景和動畫進行簡化，而這不是一個理想的解決方案。</p>
+
+<p>為解決這個問題，我們已在 dev 渠道中發布 <a href="https://github.com/flutter/flutter/issues/79298">Skia 針對 Metal 新增對著色器預熱的支援</a> 這一預覽版功能。Flutter 現在會通過 Skia 在第一個幀工作負載開始之前對捆綁的著色器進行編譯。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/6E40Xj.png" alt="應用啟動期間的預編譯操作的跟蹤記錄"></p>
+
+<p>應用啟動期間的預編譯操作的跟蹤記錄</p>
+
+<p>不過，此解決方案存在一些不足之處:</p>
+
+<ul>
+  <li>相比 OpenGL 後端，Skia 仍會為 Metal 後端生成更多的著色器。</li>
+  <li>最終將著色器編譯為機器碼的操作仍然與幀工作負載同步發生，但這好過在幀渲染時段內執行所有著色器生成和編譯操作。</li>
+  <li>最終生成的機器碼會在應用首次執行後得到快取，直到裝置被重新啟動。</li>
+</ul>
+
+<p>如果你希望在自己的應用中使用此新功能，可以參考
+<a href="https://flutter.tw/perf/shader#how-to-use-sksl-warmup">Flutter 官方文件</a> 上的說明進行操作。</p>
+
+<p>我們將持續改進此實現方案。在 Android 和 iOS 上，它目前有幾個缺點:</p>
+
+<ul>
+  <li>由於捆綁了著色器，應用的部署體積更大。</li>
+  <li>由於需要預編譯捆綁的著色器，應用啟動延時更長。</li>
+  <li>對開發者體驗可能存在負面影響。</li>
+</ul>
+
+<p>其中，我們最為重視最後一點。我們認為開發者不應該需要執行訓練執行，也不應該在應用體積和啟動延時方面承擔代價。因此，我們還在繼續探索是否有不依賴此實現方案的其他方法來消除著色器編譯卡頓以及其他型別的卡頓。我們正在與 Skia 團隊攜手合作，降低 Flutter 請求產生的著色器數量，並探討在 Flutter 引擎中捆綁少量靜態定義的著色器的可行性。</p>
+
+<p>你可以關注 <a href="https://github.com/flutter/flutter/projects/188">Flutter 程式碼庫中的相關專案</a> 瞭解相關進展。</p>
+
+<p><strong>Android 延遲載入元件: 可下載的 AOT 程式碼和資源</strong></p>
+
+<p>在 Android 平台上，此版本利用 Dart 的分拆式 AOT 編譯功能來 <a href="https://github.com/flutter/flutter/pull/76192">讓 Flutter 應用能夠在執行時下載內含預先編譯的程式碼和資源的模組</a>。我們將這種可安裝的分拆模組稱為 “延遲載入元件”。由於可在需要時才下載程式碼和資源，應用的初始安裝體積顯著縮小。例如，我們實現了一個特殊版本的 Flutter Gallery 應用，將其中所有案例和 demo 都設為延遲載入，從而將初始安裝體積縮減了 46%。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/TJQbmZ.gif" alt="在 Flutter Gallery 應用中下載 Crane 案例"></p>
+
+<p>在 Flutter Gallery 應用中下載 Crane 案例</p>
+
+<p>如果在建立應用時啟用延遲載入元件，Dart 會將那些單獨用 <code class="language-plaintext highlighter-rouge">deferred</code> 關鍵字匯入的程式碼編譯到獨立的共享庫中，並將這些函式庫與相關資源一起打包為延遲載入元件。</p>
+
+<p>該功能還處於早期預覽階段，目前只支援 Android。你可以在 Flutter 官方文件上新的 <a href="https://flutter.tw/perf/deferred-components">延遲載入元件</a> 頁面中瞭解如何實現此類元件。此頁面還連結到了 Flutter wiki 上的一個頁面，後者詳細介紹了此功能的工作原理。如果發現問題，請透過 <a href="http://github.com/flutter/flutter/issues">Flutter 問題跟蹤器</a> 告知我們。</p>
+
+<p><strong>Flutter Windows UWP alpha 版</strong></p>
+
+<p>此版本 Flutter 的另一項更新針對的是桌面平台: 對 Windows UWP 的支援現已在 dev 渠道中進入 alpha 版階段 (2.2 穩定版之後)。藉助 UWP，你的 Flutter 應用將可以覆蓋 Xbox 等無法執行標準 Windows 應用的裝置。如需試用此功能，請先 <a href="https://flutter.cn/desktop#windows-uwp">滿足 UWP 前置條件</a>，然後切換到 dev 渠道並啟用 UWP 支援。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ flutter channel dev
+$ flutter upgrade
+$ flutter config — enable-windows-uwp-desktop
+</code></pre></div></div>
+
+<p>啟用後，建立的 Flutter 應用會包含一個新的 <code class="language-plaintext highlighter-rouge">winuwp</code> 資料夾，以便你在 UWP 容器中建立和執行你的應用:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ flutter create uwp_fun
+$ cd uwp_fun
+$ flutter pub get
+$ flutter run -d winuwp
+</code></pre></div></div>
+
+<p>由於建立的是在 Windows 沙盒環境中執行的 Windows UWP 應用，你需要在開發期間對應用的防火牆進行 localhost 穿透設定，以實現熱過載和除錯器斷點等功能。為此，你可以按照 <a href="http://flutter.cn/desktop/#windows-uwp">Flutter 桌面文件頁面</a> 上的說明使用 <em>checknetisolation</em> 進行操作。完成相關操作後，你就可以在 Windows 上以 UWP 應用的形式執行你喜愛的 Flutter 應用了。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/KxCQcf.png" alt="在 Windows UWP 容器中執行你喜愛的 Flutter 應用"></p>
+
+<p>在 Windows UWP 容器中執行你喜愛的 Flutter 應用</p>
+
+<p>當然，你也可以執行一些更豐富有趣的 UWP 應用，例如這個 <a href="https://devrel.andfun.cn/devrel/posts/2021/05/q5hepO.mp4">影片</a> 中在 Xbox 上執行的 Flutter 應用。</p>
+
+<video controls="" width="640px" height="480px" src="https://devrel.andfun.cn/devrel/posts/2021/05/q5hepO.mp4"></video>
+
+<p>我們要特此致謝 <a href="https://github.com/clarkezone">clarkezone</a>，從我加入 Flutter 團隊時起，他就一直投身於實現這項功能。如需詳細瞭解 Windows UWP alpha 版支援，請參閱 <a href="http://flutter.cn/desktop/#windows-uwp">官方文件</a>。</p>
+
+<p><strong>Sony 貢獻的 ARM64 Linux 主機支援</strong></p>
+
+<p>這項傑出貢獻來自於 Flutter 社群的 Sony 軟體工程師 <a href="https://github.com/HidenoriMatsubayashi">HidenoriMatsubayashi</a>。他送出的 <a href="https://github.com/flutter/flutter/pull/61221">ARM64 Linux 目標支援</a> 這條 PR 讓你可以在 ARM64 Linux 機器上建立和執行 Flutter 應用。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/tpaxju.png" alt="在 ARM64 Linux 機器上執行你喜愛的 Flutter 應用"></p>
+
+<p>在 ARM64 Linux 機器上執行你喜愛的 Flutter 應用</p>
+
+<p>我們很高興看到 Flutter 社群將 Flutter 移植到超乎 Google 團隊想象的平台。HidenoriMatsubayashi，感激不盡！</p>
+
+<h2 id="flutter-生態系統和工具更新">
+<a class="anchor" href="#flutter-%E7%94%9F%E6%85%8B%E7%B3%BB%E7%B5%B1%E5%92%8C%E5%B7%A5%E5%85%B7%E6%9B%B4%E6%96%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Flutter 生態系統和工具更新</strong>
+</h2>
+
+<p>Flutter 引擎和框架只是整體體驗的一部分，package 生態系統和工具方面的更新對 Flutter 開發者的體驗來說同樣重要。我們在這個領域也有幾項很棒的更新與你分享。</p>
+
+<p>在生態系統端，我們發布了多個 Flutter Favorite package，並更新了 Flutter 的 Firebase 支援外掛集 FlutterFire。FlutterFire 現在還支援新的 Firebase App Check 預覽版，讓 Flutter 開發者自第一天起就可受益於這個產品。</p>
+
+<p>在工具端，Flutter DevTools 做了多項更新以方便你最佳化應用的記憶體使用方式，還為 Provider package 提供了一個標籤頁。適用於 VS Code 和 Android Studio/IntelliJ 的 IDE 外掛也有重大更新。此外，如果你是 Flutter 相關內容的創作者，我們還提供了一種全新方式讓你將 DartPad 整合到你的創作流程中。</p>
+
+<p>最後，Flutter 現在有了一個新的低程式碼 (low-code) 應用設計和建立工具，名為 FlutterFlow。該工具在 web 上執行，本身也是使用 Flutter 建立而成。</p>
+
+<p><strong>Flutter Favorite 更新</strong></p>
+
+<p>在此版本中，得益於 Flutter 生態系統委員會 (FEC) 的辛勤工作，我們增加了 24 個 Flutter Favorite 認證 package，堪稱有史以來步伐最大的一次擴張。這些新出爐的 Flutter Favorites package 包括:</p>
+
+<ul>
+  <li>
+<a href="http://firebase.flutter.dev"><strong>FlutterFire package</strong></a> <strong>(正式版)</strong> : <code class="language-plaintext highlighter-rouge">cloud_firestore</code>、<code class="language-plaintext highlighter-rouge">cloud_functions</code>、<code class="language-plaintext highlighter-rouge">firebase_auth</code>、<code class="language-plaintext highlighter-rouge">firebase_core</code>、<code class="language-plaintext highlighter-rouge">firebase_crashlytics</code>、<code class="language-plaintext highlighter-rouge">firebase_messaging</code> 和 <code class="language-plaintext highlighter-rouge">firebase_storage</code>
+</li>
+  <li>
+<a href="http://plus.fluttercommunity.dev"><strong>Flutter Community “plus”</strong></a> package: <code class="language-plaintext highlighter-rouge">android_alarm_manager_plus</code>、<code class="language-plaintext highlighter-rouge">android_intent_plus</code>、<code class="language-plaintext highlighter-rouge">battery_plus</code>、<code class="language-plaintext highlighter-rouge">connectivity_plus</code>、<code class="language-plaintext highlighter-rouge">device_info_plus</code>、<code class="language-plaintext highlighter-rouge">network_info_plus</code>、<code class="language-plaintext highlighter-rouge">package_info_plus</code>、<code class="language-plaintext highlighter-rouge">sensors_plus</code> 和 <code class="language-plaintext highlighter-rouge">share_plus</code>
+</li>
+  <li>
+<a href="https://pub.dev/packages/googleapis"><strong>googleapis</strong></a> <strong>package</strong>
+</li>
+  <li><a href="https://pub.dev/packages/win32"><strong>win32</strong> <strong>package</strong></a></li>
+  <li>
+<a href="https://pub.dev/packages/intl"><strong>Intl</strong></a> 和 <a href="https://pub.dev/packages/characters"><strong>characters</strong></a> <strong>package</strong>
+</li>
+  <li>
+<a href="https://pub.dev/packages/sentry_flutter"><strong>Sentry</strong></a> <strong>package</strong>: sentry 和 sentry_flutter</li>
+  <li>
+<a href="https://pub.dev/packages/infinite_scroll_pagination"><strong>infinite_scroll_pagination</strong></a> 和 <a href="https://pub.dev/packages/flutter_native_splash"><strong>flutter_native_splash</strong></a> <strong>package</strong>
+</li>
+</ul>
+
+<p>所有這些 package 都已支援空 (null) 安全屬性，並儘可能支援 Android、iOS 和 web 平台。其中有一些例外，例如 <code class="language-plaintext highlighter-rouge">firebase_crashlytics</code> 沒有適用於 web 平台的底層 SDK，而 <code class="language-plaintext highlighter-rouge">android_alarm_manager_plus</code> 則是專為 Android 平台設計。</p>
+
+<p>Flutter Community “plus” package 在 Flutter 團隊官方 package 的基礎上提供了更多屬性。例如，Google 的 Flutter 團隊提供的 <a href="https://pub.dev/packages/battery">battery package</a> 可以追溯到初版 Flutter 發布之前，它現在具備空安全屬性，但只支援 Android 和 iOS 平台。與此相對，<a href="https://pub.dev/packages/battery_plus">Flutter Community battery_plus package</a> 則支援全部 6 個 Flutter 平台，包括 web、Windows、macOS 和 Linux。該套件內建的全部 9 個 “plus” package 都獲得了 Flutter Favorite 認可，這是標誌著整個 Flutter 社群邁向成熟的重大一步。Flutter 專案已經遠遠不止是 Google 工程團隊獨力奮戰。你應儘快將你的程式碼遷移至 “plus” package。在未來幾周中，Google 的相關 package 將會更新，建議你進行遷移。</p>
+
+<p>googleapis 外掛為 185 個 <a href="https://developers.google.cn/api-client-library">Google API</a> 提供了自動生成的 Dart 封裝，供你在用戶端或伺服器端的 Dart 應用 (包括你的 Flutter 應用) 中使用。如需進一步瞭解此 package，你可以觀看其作者關於使用 Google API 為你的 Flutter 應用賦能的 <a href="https://events.google.com/io/session/7f706716-0de0-4a9e-bad3-581afe8ef360">I/O 大會演講</a>。</p>
+
+<p>win32 package 堪稱一件工程傑作，它使用 <a href="https://dart.tw.gh.miniasp.com/guides/libraries/c-interop">Dart FFI</a> 封裝了大部分常用 Win32 API 介面，讓 Dart 程式碼無需依賴 C 編譯器或 Windows SDK 即可使用這些 API。隨著 Flutter 在 Windows 平台上越來越受關注，win32 package 成為了許多熱門外掛的關鍵依賴項，其中包括最熱門 Flutter package 之一的 <a href="https://pub.dev/packages/path_provider">path_provider</a>。為了挑戰極限，其作者 <a href="https://github.com/timsneath">timsneath</a> 創下了一些驚人壯舉，例如使用純 Win32 和純 Dart 來實現 <a href="https://github.com/timsneath/win32/tree/main/example/notepad">notepad</a> (記事本)、<a href="https://github.com/timsneath/win32/blob/main/example/snake.dart">snake</a> (貪吃蛇) 和 <a href="https://github.com/timsneath/win32/tree/main/example/tetris">tetris</a> (俄羅斯方塊)。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/86UACo.png" alt="僅使用 Dart FFI 和 Win32 介面實現的在 Windows 平台執行的俄羅斯方塊遊戲"></p>
+
+<p>僅使用 Dart FFI 和 Win32 介面實現的在 Windows 平台執行的俄羅斯方塊遊戲</p>
+
+<p>如果你有在 Windows 上進行任何 Dart 或 Flutter 開發，win32 package 值得你一探究竟。</p>
+
+<p><strong>FlutterFire 更新和 Firebase App Check</strong></p>
+
+<p>作為 Flutter 的 Firebase 支援外掛集，FlutterFire 已躋身最熱門 Flutter 外掛之列。為了讓該外掛集的正式版能夠與 Flutter 2 一道發布並在隨後對其持續進行改進，其主要貢獻者 Invertase 團隊做了許多出色的工作。自 FlutterFire 的首個正式版發布之後，Invertase 將未解決問題的數量降低了 79%，並將待處理 PR 的數量降低了 88%。他們不僅在正式版外掛的開發上成績斐然，還成功將所有 Beta 版外掛都支援了空安全機制，同時讓這些外掛在你可能遇到的各種核心上都能正常建立和執行。</p>
+
+<p>Invertase 還在繼續為 FlutterFire 外掛增添更多功能，包括在新版 Flutter 中對 Cloud Firebase 整合做的多項更新:</p>
+
+<ul>
+  <li>用於讀寫資料的 <a href="https://firebase.flutter.dev/docs/firestore/usage/#typing-collectionreference-and-documentreference">Typesafe API</a>
+</li>
+  <li>支援 <a href="https://firebase.flutter.dev/docs/storage/usage/#emulator-usage">Firebase Local Emulator Suite</a>
+</li>
+  <li>利用 <a href="https://firebase.flutter.dev/docs/firestore/usage#data-bundles">data bundles</a> 最佳化你的資料查詢</li>
+</ul>
+
+<p>FlutterFire 現在還支援 Firebase 新推出的 beta 版產品 <a href="https://firebase.google.cn/docs/app-check">Firebase App Check</a>。Firebase App Check 可幫助你保護 Cloud Storage 等後端資源，使其不受付費欺詐或釣魚攻擊等濫用行為的侵害。有了 App Check，執行你的 Flutter 應用的裝置會通過一個應用身份證明提供方來證明應用實例的正當身份，並可檢查應用是否執行在未受篡改的可信裝置上。一旦你啟用 App Check，相應證明信息會附加到你的應用向 Firebase 後端資源發出的每一個請求中。要了解詳情，請參閱 <a href="https://firebase.flutter.dev/docs/app-check/overview">FlutterFire App Check 文件</a>。</p>
+
+<p><strong>Flutter DevTools 更新</strong></p>
+
+<p>此版本的 Flutter DevTools 帶來了多項重大更新，包括記憶體跟蹤方面的兩項改進和一個 Provider 外掛專屬的新標籤頁。</p>
+
+<p>記憶體跟蹤方面的第一項改進: 跟蹤物件的記憶體分配位置。這有助於找出導致記憶體洩漏的程式碼。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/bi1jDH.png" alt="Flutter DevTools 記憶體標籤頁分配棧軌跡"></p>
+
+<p>Flutter DevTools 記憶體標籤頁分配棧軌跡</p>
+
+<p>第二項改進: 向記憶體時間軸中注入自定義訊息。這讓你可以根據應用的具體情況新增標註，例如標出記憶體密集型工作的開始點和結束點，以驗證是否適當地執行了清理。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/xQYYra.png" alt="Flutter DevTools 時間軸標籤頁自定義記憶體事件"></p>
+
+<p>Flutter DevTools 時間軸標籤頁自定義記憶體事件</p>
+
+<p>隨著 Flutter 應用的體積逐步增長，我們將繼續努力為 Flutter 開發者提供所需的工具，助其跟蹤和修復記憶體洩漏和其他各種執行時問題。</p>
+
+<p>你需要排查的問題並不僅僅是那些與 Flutter 框架相關的執行時問題，有時還有與所依賴 package 相關的問題。隨著 pub.dev 上的 Flutter 相容 package 數量突破 15,000 大關，你的應用使用的 package 數量也很可能隨之增長。有鑑於此，Flutter DevTools 中新加入了一個實驗性的 <strong>Provider</strong> 標籤頁，由 <a href="http://pub.dev/packages/provider">provider package</a> 本身及其他很多出色軟體的開發者 <a href="https://github.com/rrousselGit">Remi Roussel</a> 傾力打造。如果你執行的是最新版 Flutter，在你對一個包含 provider 外掛的 Flutter 應用進行除錯時，<strong>Provider</strong> 標籤頁就會自動顯示。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/Q04qlm.gif" alt="實戰示範: Flutter DevTools Provider 標籤頁"></p>
+
+<p>實戰示範: Flutter DevTools Provider 標籤頁</p>
+
+<p>Provider 標籤頁會向你展示每個 provider 的相關資料，並會實時反映你在應用執行過程中做出的更改。很棒吧？不僅如此，它還可以讓你直接更改這些資料，從而對應用的邊角案例進行測試。太讚了！</p>
+
+<p>在協力 Remi 開發此標籤頁的過程中，我們也學到了一些寶貴經驗，知道了該如何更好地為具有類似需求的 package 作者服務。你可以瞭解 <a href="https://invertase.io/blog/how-to-flutter-devtool-plugin">Remi 是如何建立出 Provider 標籤頁的</a>，還可以透過 <a href="https://docs.google.com/document/d/1BWX8YQ962Vsx-EUDuDHRG7RX94fJlZSDRu299YRwasE/">Flutter DevTools</a> 外掛提案瞭解我們當前的改進思路。歡迎向我們提供反饋；同時，如果你在 Flutter DevTools 新增更多標籤頁方面也有自己的想法，我們也很期待聽到你的高見。</p>
+
+<p>上述改進只是此版本 Flutter DevTools 眾多改進中的幾項。如需完整清單，請檢視下列公告:</p>
+
+<ul>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/tCreMfJaJFU/m/38p1BBeiCAAJ">Flutter DevTools 2.1 版本說明</a></li>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/t8opLnUyiFQ/m/dJth-jKxAAAJ">Flutter DevTools 2.2.1 版本說明</a></li>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/t8opLnUyiFQ/m/YX5Ds_q0AgAJ">Flutter DevTools 2.2.3 版本說明</a></li>
+</ul>
+
+<p><strong>IDE 外掛更新</strong></p>
+
+<p>在此版本中，針對 Flutter 的 Visual Studio Code 和 IntelliJ/Android Studio IDE 擴充套件也得到了更新。例如，Visual Studio Code 擴充套件現在支援兩項額外的 Dart 程式碼重構: 行內函式和行內本地變數。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/bBJcfx.gif" alt='實戰示範: 新的 "行內函式" Dart 重構'></p>
+
+<p>實戰示範: 新的 “行內函式” Dart 重構</p>
+
+<p>在 Android Studio/IntelliJ 擴充套件中，我們新增了一個在控制台中輸出所有堆疊軌跡的選項。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/KKLGup.png" alt="你現在可以輸出所有堆疊軌跡，而不僅限於第一條"></p>
+
+<p>你現在可以輸出所有堆疊軌跡，而不僅限於第一條</p>
+
+<p>如果專案中某個問題的根源是在另一個 package，以前相關軌跡不會納入到輸出中，這項新功能就可以派上大用場。但隨之而來的一個問題是，該如何讓軌跡訊息更易於梳理解讀？我們已經有了一些想法，歡迎關注後續相關改動。</p>
+
+<p>如需此版本中 IDE 擴充套件的完整變更清單，請檢視下列公告:</p>
+
+<ul>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/gNtKp9c1glU/m/SZYTuwcQBwAJ">VS Code 擴充套件 v3.21</a></li>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/1XR7baYZOVI/m/y6MGYrGhAAAJ">VS Code 擴充套件 v3.22</a></li>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/tYwFDPAtLu0/m/FrsntcNNBwAJ">Flutter IntelliJ 外掛 M55 版本</a></li>
+  <li><a href="https://groups.google.com/g/flutter-announce/c/EkgiAO4p3UM/m/P32ZXXKfAAAJ">Flutter IntelliJ 外掛 M56 版本</a></li>
+</ul>
+
+<p><strong>DartPad 隨堂實踐</strong></p>
+
+<p>為了確保 Flutter 開發者社群蓬勃發展的同時讓相關文件也能跟上腳步，Dart 和 Flutter 團隊始終在想方設法改進和拓展相關培訓內容的製作方法。在此版本中，我們為 DartPad 新增了一個新的分步式介面，讓開發者在學習講師主導的課程/講座時可以方便地隨堂動手實踐。</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/rOt9q7.png" alt="實戰示範: DartPad 課程/講座隨堂實踐"></p>
+
+<p>實戰示範: DartPad 課程/講座隨堂實踐</p>
+
+<p>透過將實踐指引直接加入到 DartPad 中，我們在今年的 I/O 大會實現了 <a href="https://events.google.com/io/program/content?4=topic_flutter&amp;5=type_workshop">引導式講座體驗</a>。不過，此功能並非專為我們自己的需求而開發，如果你要在自己的 Dart 或 Flutter 課程/講座中使用該工具，可以按 <a href="https://github.com/dart-lang/dart-pad/wiki/Workshop-Authoring-Guide">DartPad 培訓內容創作指南</a> 中的說明操作。請勿將此功能與 <a href="https://github.com/dart-lang/dart-pad/wiki/Sharing-Guide">在 Gist 中透過 DartPad 分享程式碼</a> 和 <a href="https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide">在你的網站上嵌入 DartPad</a> 這兩項功能相混淆，後兩者已經推出了一段時間。</p>
+
+<p>我們希望所有 Dart 和 Flutter 內容作者都能夠為其受眾帶去豐富的互動式體驗。歡迎試用並 <a href="https://github.com/dart-lang/dart-pad/issues">向我們提供反饋</a>。</p>
+
+<p><strong>社群聚焦: FlutterFlow</strong></p>
+
+<p>FlutterFlow 是一個 “低程式碼” (low code) 應用設計和開發工具，用於在瀏覽器中建立應用。它提供了一個 “所見即所得” 環境，讓你可根據實際 Firebase 資料來設計橫跨多個頁面的應用佈局。此工具的目標是讓你能夠輕鬆執行大部分常見操作，並儘量減少你自己需要編寫的程式碼量。實際上，在一次示範中，示範者不到一個小時就使用此工具建立出了一個包含多個頁面、可幫助使用者遊覽大都會藝術博物館的完整移動應用，整個過程沒有寫一行程式碼。你可以在 YouTube 上觀看整個過程的 <a href="https://devrel.andfun.cn/devrel/posts/2021/05/ilIETB.mp4">影片記錄</a>。</p>
+
+<video controls="" width="640px" height="480px" src="https://devrel.andfun.cn/devrel/posts/2021/05/ilIETB.mp4"></video>
+
+<h2 id="對相容性有影響的重大變更">
+<a class="anchor" href="#%E5%B0%8D%E7%9B%B8%E5%AE%B9%E6%80%A7%E6%9C%89%E5%BD%B1%E9%9F%BF%E7%9A%84%E9%87%8D%E5%A4%A7%E8%AE%8A%E6%9B%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>對相容性有影響的重大變更</strong>
+</h2>
+
+<p>一如既往，我們會盡量避免進行影響相容性的重大變更。在此版本中，此類變更僅限於移除下面這些已廢棄的元件:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/flutter/flutter/pull/73750">73750</a> 移除已廢棄的 BinaryMessages</li>
+  <li>
+<a href="https://github.com/flutter/flutter/pull/73751">73751</a> 移除已廢棄的 TypeMatcher 類</li>
+</ul>
+
+<p>你可以 <a href="https://flutter.tw/release/breaking-changes/1-22-deprecations">在 flutter.cn 上找到這些變更對應的遷移指南</a>.</p>
+
+<h2 id="結語">
+<a class="anchor" href="#%E7%B5%90%E8%AA%9E" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>結語</strong>
+</h2>
+
+<p>Google Flutter 團隊全體同仁謹此向大家致以誠摯謝意！我們要感謝 Flutter 社群的每一個人，Flutter 取得的成績離不開大家的每一份貢獻。如今，Play 商店中有超過八分之一的新應用是採用 Flutter 建立而成，僅在 Play 商店就收錄了多達 20 萬款 Flutter 應用。Flutter 的迅猛發展勢頭出人意表。世界各地大大小小的應用團隊都使用 Flutter 進行開發，為諸多平台上的使用者打造優質體驗。謝謝大家選擇 Flutter！</p>
+
+<p><img src="https://devrel.andfun.cn/devrel/posts/2021/05/KTpWHI.png" alt=""></p>
+
+<p>最後，以免你錯過，不要忘了體驗下在本次 I/O 大會推出的 <a href="https://photobooth.flutter.cn/#/">I/O Photo Booth web 應用</a>，它是由 Flutter 和 Firebase 建立而成的 web 應用，讓你可以和 Dash 合拍萌萌的大頭照。我們還 <a href="https://github.com/flutter/photobooth">開放了其源程式碼</a>，方便你進一步瞭解 Flutter web 最佳實踐、相機外掛 web 支援以及如何使用 Cloud Functions 函式來生成自定義社交內容。機不可失，趕緊一睹為快吧！</p>
+
+
+        
+      </div>
+    </main>
+  </div>
+</div>
+
+
+    
+      <footer class="site-footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 site-footer__wrapper">
+          <div class="site-footer__logo">
+            <img src="/assets/images/shared/brand/flutter/logo/flutter-mono-81x100.png" alt="Flutter Logo" width="81" height="100">
+          </div>
+          <div class="site-footer__content">
+            <ul class="site-footer__link-list">
+                <li><a href="https://groups.google.com/forum/#!forum/flutter-dev">cfug-dev@</a></li>
+                <li><a href="/tos" class="text-nowrap">使用條款</a></li>
+                <li><a href="/brand" class="text-nowrap">品牌指南</a></li>
+                <li><a href="/security" class="text-nowrap">安全性</a></li>
+                <li><a href="https://policies.google.com/privacy?hl=zh-TW" class="text-nowrap">隱私權說明</a></li>
+                <li><a href="https://flutter.dev/" class="text-nowrap">官方網站</a></li>
+                <li><a href="/disclaimer" class="text-nowrap">免責宣告</a></li>
+                <li><a href="https://flutter.tw" class="text-nowrap">Flutter 簡體中文文檔</a></li>
+            </ul>
+            <p class="licenses">
+              參考中文內容需註明本站及連結作為出處，英文內容和範例程式碼均遵從源站授權協議。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+
+    <script src="https://cdn.staticfile.net/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.staticfile.net/popper.js/1.16.1/umd/popper.min.js" integrity="sha512-ubuT8Z88WxezgSqf3RLuNi5lmjstiJcyezx34yIU2gAHonIi27Na7atqzUZCOoY4CExaoFumzOsFQ2Ch+I/HCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.staticfile.net/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.staticfile.net/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://cdn.staticfile.net/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+
+    <script src="/assets/js/vendor/code-prettify/prettify.js?v=1714594673"></script>
+    <script src="/assets/js/vendor/code-prettify/lang-css.js?v=1714594673"></script>
+    <script src="/assets/js/vendor/code-prettify/lang-dart.js?v=1714594673"></script>
+    <script src="/assets/js/vendor/code-prettify/lang-yaml.js?v=1714594673"></script>
+    <script src="/assets/js/tabs.js?v=1714594673"></script>
+    <script src="/assets/js/archive.js?v=1714594673"></script>
+    <script src="/assets/js/main.js?v=1714594673"></script>
+
+    
+
+  </body>
+</html>
